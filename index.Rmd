@@ -15,6 +15,17 @@ link-citations: yes
 
 ---
 
+```{r, include = FALSE}
+library(bslib)
+library(xml2)
+library(downlit)
+```
+
+```{r, eval = FALSE, include=FALSE}
+rsconnect::writeManifest(appPrimaryDoc = "index.Rmd", contentCategory = "site")
+```
+
+
 # Welcome! {-}
 
 <img src="images/cover.jpg" width="100%" align="right" alt="" class="cover" /> 

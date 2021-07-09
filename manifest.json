@@ -10,6 +10,32 @@
     "has_parameters": false
   },
   "packages": {
+    "R6": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "R6",
+        "Title": "Encapsulated Classes with Reference Semantics",
+        "Version": "2.5.0",
+        "Authors@R": "person(\"Winston\", \"Chang\", role = c(\"aut\", \"cre\"), email = \"winston@stdout.org\")",
+        "Description": "Creates classes with reference semantics, similar to R's built-in\n    reference classes. Compared to reference classes, R6 classes are simpler\n    and lighter-weight, and they are not built on S4 classes so they do not\n    require the methods package. These classes allow public and private\n    members, and they support inheritance, even when the classes are defined in\n    different packages.",
+        "Depends": "R (>= 3.0)",
+        "Suggests": "knitr, microbenchmark, pryr, testthat, ggplot2, scales",
+        "License": "MIT + file LICENSE",
+        "URL": "https://r6.r-lib.org, https://github.com/r-lib/R6/",
+        "LazyData": "true",
+        "BugReports": "https://github.com/r-lib/R6/issues",
+        "RoxygenNote": "6.1.1",
+        "NeedsCompilation": "no",
+        "Packaged": "2020-10-28 18:30:05 UTC; winston",
+        "Author": "Winston Chang [aut, cre]",
+        "Maintainer": "Winston Chang <winston@stdout.org>",
+        "Repository": "RSPM",
+        "Date/Publication": "2020-10-28 19:30:02 UTC",
+        "Encoding": "UTF-8",
+        "Built": "R 4.0.1; ; 2021-04-03 08:26:29 UTC; unix"
+      }
+    },
     "base64enc": {
       "Source": "CRAN",
       "Repository": "https://rspm.merck.com/unrestricted/latest",
@@ -60,6 +86,59 @@
         "Built": "R 4.0.1; ; 2021-07-09 04:08:53 UTC; unix"
       }
     },
+    "brio": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "brio",
+        "Title": "Basic R Input Output",
+        "Version": "1.1.1",
+        "Authors@R": "\n    c(person(given = \"Jim\",\n             family = \"Hester\",\n             role = c(\"aut\", \"cre\"),\n             email = \"jim.hester@rstudio.com\",\n             comment = c(ORCID = \"0000-0002-2739-7082\")),\n      person(given = \"RStudio\",\n             role = c(\"cph\", \"fnd\")))",
+        "Description": "Functions to handle basic input output, these functions always\n  read and write UTF-8 (8-bit Unicode Transformation Format) files and provide\n  more explicit control over line endings.",
+        "License": "MIT + file LICENSE",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1",
+        "Suggests": "testthat (>= 2.1.0), covr",
+        "URL": "https://github.com/r-lib/brio",
+        "BugReports": "https://github.com/r-lib/brio/issues",
+        "NeedsCompilation": "yes",
+        "Packaged": "2021-01-20 18:12:29 UTC; jhester",
+        "Author": "Jim Hester [aut, cre] (<https://orcid.org/0000-0002-2739-7082>),\n  RStudio [cph, fnd]",
+        "Maintainer": "Jim Hester <jim.hester@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-01-20 18:40:02 UTC",
+        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 06:13:48 UTC; unix"
+      }
+    },
+    "bslib": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "bslib",
+        "Title": "Custom 'Bootstrap' 'Sass' Themes for 'shiny' and 'rmarkdown'",
+        "Version": "0.2.4",
+        "Authors@R": "c(\n    person(\"Carson\", \"Sievert\", role = c(\"aut\", \"cre\"), email = \"carson@rstudio.com\"),\n    person(\"Joe\", \"Cheng\", role = \"aut\", email = \"joe@rstudio.com\"),\n    person(family = \"RStudio\", role = \"cph\"),\n    person(family = \"Bootstrap contributors\", role = \"ctb\",\n    comment = \"Bootstrap library\"),\n    person(family = \"Twitter, Inc\", role = \"cph\",\n    comment = \"Bootstrap library\"),\n    person(\"Javi\", \"Aguilar\", role = c(\"ctb\", \"cph\"),\n    comment = \"Bootstrap colorpicker library\"),\n    person(\"Thomas\", \"Park\", role = c(\"ctb\", \"cph\"),\n    comment = \"Bootswatch library\"),\n    person(family = \"PayPal\", role = c(\"ctb\", \"cph\"),\n    comment = \"Bootstrap accessibility plugin\")\n    )",
+        "Description": "Simplifies custom 'CSS' styling of both 'shiny' and 'rmarkdown' via 'Bootstrap' 'Sass'. Supports both 'Bootstrap' 3 and 4 as well as their various 'Bootswatch' themes. An interactive widget is also provided for previewing themes in real time.",
+        "Depends": "R (>= 2.10)",
+        "Imports": "grDevices, htmltools (>= 0.5.1), jsonlite, sass (>= 0.3.0),\ndigest (>= 0.6.25), jquerylib (>= 0.1.3), rlang, magrittr",
+        "Suggests": "shiny, rmarkdown, knitr, testthat, withr, rappdirs, curl",
+        "License": "MIT + file LICENSE",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1",
+        "Collate": "'bootswatch.R' 'bs-current-theme.R' 'bs-dependencies.R'\n'bs-global.R' 'bs-remove.R' 'bs-theme-layers.R' 'utils.R'\n'bs-theme-preview.R' 'bs-theme-update.R' 'bs-theme.R'\n'deprecated.R' 'files.R' 'fonts.R' 'imports.R' 'onLoad.R'\n'precompiled.R' 'shiny-devmode.R' 'version-default.R'\n'versions.R' 'web-font.R'",
+        "URL": "https://rstudio.github.io/bslib/, https://github.com/rstudio/bslib",
+        "BugReports": "https://github.com/rstudio/bslib/issues",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-01-20 15:08:19 UTC; cpsievert",
+        "Author": "Carson Sievert [aut, cre],\n  Joe Cheng [aut],\n  RStudio [cph],\n  Bootstrap contributors [ctb] (Bootstrap library),\n  Twitter, Inc [cph] (Bootstrap library),\n  Javi Aguilar [ctb, cph] (Bootstrap colorpicker library),\n  Thomas Park [ctb, cph] (Bootswatch library),\n  PayPal [ctb, cph] (Bootstrap accessibility plugin)",
+        "Maintainer": "Carson Sievert <carson@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-01-25 08:00:02 UTC",
+        "Built": "R 4.0.1; ; 2021-04-03 06:47:41 UTC; unix"
+      }
+    },
     "digest": {
       "Source": "CRAN",
       "Repository": "https://rspm.merck.com/unrestricted/latest",
@@ -84,6 +163,60 @@
         "Date/Publication": "2020-10-24 22:10:06 UTC",
         "Encoding": "UTF-8",
         "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 07:00:20 UTC; unix"
+      }
+    },
+    "downlit": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "downlit",
+        "Title": "Syntax Highlighting and Automatic Linking",
+        "Version": "0.2.1",
+        "Authors@R": "\n    c(person(given = \"Hadley\",\n             family = \"Wickham\",\n             role = c(\"aut\", \"cre\"),\n             email = \"hadley@rstudio.com\"),\n      person(given = \"RStudio\",\n             role = \"cph\"))",
+        "Description": "Syntax highlighting of R code, specifically designed\n    for the needs of 'RMarkdown' packages like 'pkgdown', 'hugodown', and\n    'bookdown'. It includes linking of function calls to their documentation\n    on the web, and automatic translation of ANSI escapes in output to the\n    equivalent HTML.",
+        "License": "MIT + file LICENSE",
+        "Depends": "R (>= 3.2.0)",
+        "Imports": "brio, digest, evaluate, fansi, rlang, vctrs, yaml",
+        "Suggests": "rmarkdown, jsonlite, MASS, testthat (>= 3.0.0), covr,\npkgload, xml2",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1",
+        "URL": "https://downlit.r-lib.org/, https://github.com/r-lib/downlit",
+        "BugReports": "https://github.com/r-lib/downlit/issues",
+        "Config/testthat/edition": "3",
+        "NeedsCompilation": "no",
+        "Packaged": "2020-11-03 21:01:32 UTC; hadley",
+        "Author": "Hadley Wickham [aut, cre],\n  RStudio [cph]",
+        "Maintainer": "Hadley Wickham <hadley@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2020-11-04 06:50:05 UTC",
+        "Built": "R 4.0.1; ; 2021-04-03 07:01:48 UTC; unix"
+      }
+    },
+    "ellipsis": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "ellipsis",
+        "Version": "0.3.2",
+        "Title": "Tools for Working with ...",
+        "Description": "The ellipsis is a powerful tool for extending functions. Unfortunately \n    this power comes at a cost: misspelled arguments will be silently ignored. \n    The ellipsis package provides a collection of functions to catch problems\n    and alert the user.",
+        "Authors@R": "c(\n      person(\"Hadley\", \"Wickham\", , \"hadley@rstudio.com\", role = c(\"aut\", \"cre\")),\n      person(\"RStudio\", role = \"cph\")\n    )",
+        "License": "MIT + file LICENSE",
+        "Encoding": "UTF-8",
+        "RoxygenNote": "7.1.1",
+        "URL": "https://ellipsis.r-lib.org, https://github.com/r-lib/ellipsis",
+        "BugReports": "https://github.com/r-lib/ellipsis/issues",
+        "Depends": "R (>= 3.2)",
+        "Imports": "rlang (>= 0.3.0)",
+        "Suggests": "covr, testthat",
+        "NeedsCompilation": "yes",
+        "Packaged": "2021-04-29 12:06:44 UTC; lionel",
+        "Author": "Hadley Wickham [aut, cre],\n  RStudio [cph]",
+        "Maintainer": "Hadley Wickham <hadley@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-04-29 12:40:02 UTC",
+        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-07-07 03:38:58 UTC; unix"
       }
     },
     "evaluate": {
@@ -111,6 +244,66 @@
         "Repository": "RSPM",
         "Date/Publication": "2019-05-28 15:50:02 UTC",
         "Built": "R 4.0.1; ; 2021-04-03 07:05:55 UTC; unix"
+      }
+    },
+    "fansi": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "fansi",
+        "Title": "ANSI Control Sequence Aware String Functions",
+        "Description": "Counterparts to R string manipulation functions that account for\n   the effects of ANSI text formatting control sequences.",
+        "Version": "0.4.2",
+        "Authors@R": "c(\n    person(\"Brodie\", \"Gaslam\", email=\"brodie.gaslam@yahoo.com\",\n    role=c(\"aut\", \"cre\")),\n    person(\"Elliott\", \"Sales De Andrade\", role=\"ctb\"),\n    person(family=\"R Core Team\",\n    email=\"R-core@r-project.org\", role=\"cph\",\n    comment=\"UTF8 byte length calcs from src/util.c\"\n    ))",
+        "Depends": "R (>= 3.1.0)",
+        "License": "GPL (>= 2)",
+        "LazyData": "true",
+        "URL": "https://github.com/brodieG/fansi",
+        "BugReports": "https://github.com/brodieG/fansi/issues",
+        "VignetteBuilder": "knitr",
+        "Suggests": "unitizer, knitr, rmarkdown",
+        "RoxygenNote": "7.1.1",
+        "Encoding": "UTF-8",
+        "Collate": "'constants.R' 'fansi-package.R' 'has.R' 'internal.R' 'load.R'\n'misc.R' 'nchar.R' 'strip.R' 'strwrap.R' 'strtrim.R'\n'strsplit.R' 'substr2.R' 'tohtml.R' 'unhandled.R'",
+        "NeedsCompilation": "yes",
+        "Packaged": "2021-01-15 02:13:47 UTC; bg",
+        "Author": "Brodie Gaslam [aut, cre],\n  Elliott Sales De Andrade [ctb],\n  R Core Team [cph] (UTF8 byte length calcs from src/util.c)",
+        "Maintainer": "Brodie Gaslam <brodie.gaslam@yahoo.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-01-15 12:00:02 UTC",
+        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 07:07:15 UTC; unix"
+      }
+    },
+    "fs": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "fs",
+        "Title": "Cross-Platform File System Operations Based on 'libuv'",
+        "Version": "1.5.0",
+        "Authors@R": "c(\n    person(\"Jim\", \"Hester\", email = \"james.f.hester@gmail.com\", role = c(\"aut\", \"cre\")),\n    person(\"Hadley\", \"Wickham\", , \"hadley@rstudio.com\", \"aut\"),\n    person(\"libuv project contributors\", role = \"cph\", comment = \"libuv library\"),\n    person(\"Joyent, Inc. and other Node contributors\", role = \"cph\", comment = \"libuv library\"),\n    person(\"RStudio\", role = c(\"cph\", \"fnd\"))\n    )",
+        "Description": "A cross-platform interface to file system operations, built on\n  top of the 'libuv' C library.",
+        "Depends": "R (>= 3.1)",
+        "License": "GPL-3",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "ByteCompile": "true",
+        "Imports": "methods",
+        "SystemRequirements": "GNU make",
+        "RoxygenNote": "7.1.1",
+        "URL": "http://fs.r-lib.org, https://github.com/r-lib/fs",
+        "BugReports": "https://github.com/r-lib/fs/issues",
+        "Copyright": "file COPYRIGHTS",
+        "Suggests": "testthat, covr, pillar (>= 1.0.0), tibble (>= 1.1.0), crayon,\nrmarkdown, knitr, withr, spelling, vctrs (>= 0.3.0)",
+        "VignetteBuilder": "knitr",
+        "Language": "en-US",
+        "NeedsCompilation": "yes",
+        "Packaged": "2020-07-31 21:00:55 UTC; jhester",
+        "Author": "Jim Hester [aut, cre],\n  Hadley Wickham [aut],\n  libuv project contributors [cph] (libuv library),\n  Joyent, Inc. and other Node contributors [cph] (libuv library),\n  RStudio [cph, fnd]",
+        "Maintainer": "Jim Hester <james.f.hester@gmail.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2020-07-31 21:30:03 UTC",
+        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 07:19:46 UTC; unix"
       }
     },
     "glue": {
@@ -196,6 +389,30 @@
         "Repository": "RSPM",
         "Date/Publication": "2021-01-22 22:40:02 UTC",
         "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 07:43:40 UTC; unix"
+      }
+    },
+    "jquerylib": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "jquerylib",
+        "Title": "Obtain 'jQuery' as an HTML Dependency Object",
+        "Version": "0.1.3",
+        "Authors@R": "c(\n    person(\"Carson\", \"Sievert\", role = c(\"aut\", \"cre\"), email = \"carson@rstudio.com\", comment = c(ORCID = \"0000-0002-4958-2844\")),\n    person(\"Joe\", \"Cheng\", role = \"aut\", email = \"joe@rstudio.com\"),\n    person(family = \"RStudio\", role = \"cph\"),\n    person(family = \"jQuery Foundation\", role = \"cph\",\n    comment = \"jQuery library and jQuery UI library\"),\n    person(family = \"jQuery contributors\", role = c(\"ctb\", \"cph\"),\n    comment = \"jQuery library; authors listed in inst/lib/jquery-AUTHORS.txt\")\n    )",
+        "Description": "Obtain any major version of 'jQuery' (<https://code.jquery.com/>) and use it in any webpage generated by 'htmltools' (e.g. 'shiny', 'htmlwidgets', and 'rmarkdown').\n    Most R users don't need to use this package directly, but other R packages (e.g. 'shiny', 'rmarkdown', etc.) depend on this package to avoid bundling redundant copies of 'jQuery'.",
+        "License": "MIT + file LICENSE",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.0.2",
+        "Imports": "htmltools",
+        "Suggests": "testthat",
+        "NeedsCompilation": "no",
+        "Packaged": "2020-12-17 16:05:25 UTC; cpsievert",
+        "Author": "Carson Sievert [aut, cre] (<https://orcid.org/0000-0002-4958-2844>),\n  Joe Cheng [aut],\n  RStudio [cph],\n  jQuery Foundation [cph] (jQuery library and jQuery UI library),\n  jQuery contributors [ctb, cph] (jQuery library; authors listed in\n    inst/lib/jquery-AUTHORS.txt)",
+        "Maintainer": "Carson Sievert <carson@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2020-12-17 16:40:03 UTC",
+        "Built": "R 4.0.1; ; 2021-04-03 06:45:01 UTC; unix"
       }
     },
     "jsonlite": {
@@ -335,6 +552,34 @@
         "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 08:04:27 UTC; unix"
       }
     },
+    "rappdirs": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Type": "Package",
+        "Package": "rappdirs",
+        "Title": "Application Directories: Determine Where to Save Data, Caches,\nand Logs",
+        "Version": "0.3.3",
+        "Authors@R": "\n    c(person(given = \"Hadley\",\n             family = \"Wickham\",\n             role = c(\"trl\", \"cre\", \"cph\"),\n             email = \"hadley@rstudio.com\"),\n      person(given = \"RStudio\",\n             role = \"cph\"),\n      person(given = \"Sridhar\",\n             family = \"Ratnakumar\",\n             role = \"aut\"),\n      person(given = \"Trent\",\n             family = \"Mick\",\n             role = \"aut\"),\n      person(given = \"ActiveState\",\n             role = \"cph\",\n             comment = \"R/appdir.r, R/cache.r, R/data.r, R/log.r translated from appdirs\"),\n      person(given = \"Eddy\",\n             family = \"Petrisor\",\n             role = \"ctb\"),\n      person(given = \"Trevor\",\n             family = \"Davis\",\n             role = c(\"trl\", \"aut\")),\n      person(given = \"Gabor\",\n             family = \"Csardi\",\n             role = \"ctb\"),\n      person(given = \"Gregory\",\n             family = \"Jefferis\",\n             role = \"ctb\"))",
+        "Description": "An easy way to determine which directories on the\n    users computer you should use to save data, caches and logs. A port of\n    Python's 'Appdirs' (<https://github.com/ActiveState/appdirs>) to\n    R.",
+        "License": "MIT + file LICENSE",
+        "URL": "https://rappdirs.r-lib.org, https://github.com/r-lib/rappdirs",
+        "BugReports": "https://github.com/r-lib/rappdirs/issues",
+        "Depends": "R (>= 3.2)",
+        "Suggests": "roxygen2, testthat (>= 3.0.0), covr, withr",
+        "Copyright": "Original python appdirs module copyright (c) 2010\nActiveState Software Inc. R port copyright Hadley Wickham,\nRStudio. See file LICENSE for details.",
+        "Encoding": "UTF-8",
+        "RoxygenNote": "7.1.1",
+        "Config/testthat/edition": "3",
+        "NeedsCompilation": "yes",
+        "Packaged": "2021-01-28 22:29:57 UTC; hadley",
+        "Author": "Hadley Wickham [trl, cre, cph],\n  RStudio [cph],\n  Sridhar Ratnakumar [aut],\n  Trent Mick [aut],\n  ActiveState [cph] (R/appdir.r, R/cache.r, R/data.r, R/log.r translated\n    from appdirs),\n  Eddy Petrisor [ctb],\n  Trevor Davis [trl, aut],\n  Gabor Csardi [ctb],\n  Gregory Jefferis [ctb]",
+        "Maintainer": "Hadley Wickham <hadley@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-01-31 05:40:02 UTC",
+        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 08:28:25 UTC; unix"
+      }
+    },
     "rlang": {
       "Source": "CRAN",
       "Repository": "https://rspm.merck.com/unrestricted/latest",
@@ -392,6 +637,35 @@
         "Repository": "RSPM",
         "Date/Publication": "2021-02-19 08:10:02 UTC",
         "Built": "R 4.0.1; ; 2021-04-03 08:42:30 UTC; unix"
+      }
+    },
+    "sass": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Type": "Package",
+        "Package": "sass",
+        "Version": "0.3.1",
+        "Title": "Syntactically Awesome Style Sheets ('Sass')",
+        "Description": "An 'SCSS' compiler, powered by the 'LibSass' library. With this,\n    R developers can use variables, inheritance, and functions to generate\n    dynamic style sheets. The package uses the 'Sass CSS' extension language,\n    which is stable, powerful, and CSS compatible.",
+        "Authors@R": "c(\n    person(\"Joe\", \"Cheng\", , \"joe@rstudio.com\", \"aut\"),\n    person(\"Timothy\", \"Mastny\", , \"tim.mastny@gmail.com\", \"aut\"),\n    person(\"Richard\", \"Iannone\", , \"rich@rstudio.com\", \"aut\",\n       comment = c(ORCID = \"0000-0003-3925-190X\")),\n    person(\"Barret\", \"Schloerke\", , \"barret@rstudio.com\", \"aut\",\n           comment = c(ORCID = \"0000-0001-9986-114X\")),\n    person(\"Carson\", \"Sievert\", , \"carson@rstudio.com\", c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"0000-0002-4958-2844\")),\n    person(family = \"RStudio\", role = c(\"cph\", \"fnd\")),\n    person(family = \"Sass Open Source Foundation\", role = c(\"ctb\", \"cph\"),\n           comment = \"LibSass library\"),\n    person(\"Greter\", \"Marcel\", role = c(\"ctb\", \"cph\"),\n           comment = \"LibSass library\"),\n    person(\"Mifsud\", \"Michael\", role = c(\"ctb\", \"cph\"),\n           comment = \"LibSass library\"),\n    person(\"Hampton\", \"Catlin\", role = c(\"ctb\", \"cph\"),\n           comment = \"LibSass library\"),\n    person(\"Natalie\", \"Weizenbaum\", role = c(\"ctb\", \"cph\"),\n           comment = \"LibSass library\"),\n    person(\"Chris\", \"Eppstein\", role = c(\"ctb\", \"cph\"),\n           comment = \"LibSass library\"),\n    person(\"Adams\", \"Joseph\", role = c(\"ctb\", \"cph\"),\n           comment = \"json.cpp\"),\n    person(\"Trifunovic\", \"Nemanja\", role = c(\"ctb\", \"cph\"),\n           comment = \"utf8.h\")\n    )",
+        "License": "MIT + file LICENSE",
+        "URL": "https://github.com/rstudio/sass",
+        "BugReports": "https://github.com/rstudio/sass/issues",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1",
+        "SystemRequirements": "GNU make",
+        "Imports": "digest, fs, rlang, htmltools, R6, rappdirs",
+        "Suggests": "testthat, knitr, rmarkdown, withr, shiny",
+        "VignetteBuilder": "knitr",
+        "NeedsCompilation": "yes",
+        "Packaged": "2021-01-22 19:21:04 UTC; cpsievert",
+        "Author": "Joe Cheng [aut],\n  Timothy Mastny [aut],\n  Richard Iannone [aut] (<https://orcid.org/0000-0003-3925-190X>),\n  Barret Schloerke [aut] (<https://orcid.org/0000-0001-9986-114X>),\n  Carson Sievert [aut, cre] (<https://orcid.org/0000-0002-4958-2844>),\n  RStudio [cph, fnd],\n  Sass Open Source Foundation [ctb, cph] (LibSass library),\n  Greter Marcel [ctb, cph] (LibSass library),\n  Mifsud Michael [ctb, cph] (LibSass library),\n  Hampton Catlin [ctb, cph] (LibSass library),\n  Natalie Weizenbaum [ctb, cph] (LibSass library),\n  Chris Eppstein [ctb, cph] (LibSass library),\n  Adams Joseph [ctb, cph] (json.cpp),\n  Trifunovic Nemanja [ctb, cph] (utf8.h)",
+        "Maintainer": "Carson Sievert <carson@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-01-24 17:10:02 UTC",
+        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 09:00:03 UTC; unix"
       }
     },
     "stringi": {
@@ -477,6 +751,35 @@
         "Built": "R 4.0.1; ; 2021-04-03 09:19:53 UTC; unix"
       }
     },
+    "vctrs": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "vctrs",
+        "Title": "Vector Helpers",
+        "Version": "0.3.6",
+        "Authors@R": "\n    c(person(given = \"Hadley\",\n             family = \"Wickham\",\n             role = \"aut\",\n             email = \"hadley@rstudio.com\"),\n      person(given = \"Lionel\",\n             family = \"Henry\",\n             role = c(\"aut\", \"cre\"),\n             email = \"lionel@rstudio.com\"),\n      person(given = \"Davis\",\n             family = \"Vaughan\",\n             role = \"aut\",\n             email = \"davis@rstudio.com\"),\n      person(given = \"data.table team\",\n             role = \"cph\",\n             comment = \"Radix sort based on data.table's forder() and their contribution to R's order()\"),\n      person(given = \"RStudio\",\n             role = \"cph\"))",
+        "Description": "Defines new notions of prototype and size that are\n    used to provide tools for consistent and well-founded type-coercion\n    and size-recycling, and are in turn connected to ideas of type- and\n    size-stability useful for analysing function interfaces.",
+        "License": "MIT + file LICENSE",
+        "URL": "https://vctrs.r-lib.org/",
+        "BugReports": "https://github.com/r-lib/vctrs/issues",
+        "Depends": "R (>= 3.3)",
+        "Imports": "ellipsis (>= 0.2.0), digest, glue, rlang (>= 0.4.7)",
+        "Suggests": "bit64, covr, crayon, dplyr (>= 0.8.5), generics, knitr,\npillar (>= 1.4.4), pkgdown, rmarkdown, testthat (>= 2.3.0),\ntibble, withr, xml2, waldo (>= 0.2.0), zeallot",
+        "VignetteBuilder": "knitr",
+        "Encoding": "UTF-8",
+        "Language": "en-GB",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1",
+        "NeedsCompilation": "yes",
+        "Packaged": "2020-12-17 09:22:46 UTC; lionel",
+        "Author": "Hadley Wickham [aut],\n  Lionel Henry [aut, cre],\n  Davis Vaughan [aut],\n  data.table team [cph] (Radix sort based on data.table's forder() and\n    their contribution to R's order()),\n  RStudio [cph]",
+        "Maintainer": "Lionel Henry <lionel@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2020-12-17 10:30:02 UTC",
+        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 09:24:55 UTC; unix"
+      }
+    },
     "xfun": {
       "Source": "CRAN",
       "Repository": "https://rspm.merck.com/unrestricted/latest",
@@ -503,6 +806,35 @@
         "Repository": "RSPM",
         "Date/Publication": "2021-03-11 07:50:02 UTC",
         "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 09:29:12 UTC; unix"
+      }
+    },
+    "xml2": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "xml2",
+        "Title": "Parse XML",
+        "Version": "1.3.2",
+        "Authors@R": "\n    c(person(given = \"Hadley\",\n             family = \"Wickham\",\n             role = \"aut\",\n             email = \"hadley@rstudio.com\"),\n      person(given = \"Jim\",\n             family = \"Hester\",\n             role = c(\"aut\", \"cre\"),\n             email = \"jim.hester@rstudio.com\"),\n      person(given = \"Jeroen\",\n             family = \"Ooms\",\n             role = \"aut\"),\n      person(given = \"RStudio\",\n             role = \"cph\"),\n      person(given = \"R Foundation\",\n             role = \"ctb\",\n             comment = \"Copy of R-project homepage cached as example\"))",
+        "Description": "Work with XML files using a simple, consistent\n    interface. Built on top of the 'libxml2' C library.",
+        "License": "GPL (>= 2)",
+        "URL": "https://xml2.r-lib.org/, https://github.com/r-lib/xml2",
+        "BugReports": "https://github.com/r-lib/xml2/issues",
+        "Depends": "R (>= 3.1.0)",
+        "Imports": "methods",
+        "Suggests": "covr, curl, httr, knitr, magrittr, mockery, rmarkdown,\ntestthat (>= 2.1.0)",
+        "VignetteBuilder": "knitr",
+        "Encoding": "UTF-8",
+        "RoxygenNote": "7.1.0",
+        "SystemRequirements": "libxml2: libxml2-dev (deb), libxml2-devel (rpm)",
+        "Collate": "'S4.R' 'as_list.R' 'xml_parse.R' 'as_xml_document.R'\n'classes.R' 'init.R' 'paths.R' 'utils.R' 'xml_attr.R'\n'xml_children.R' 'xml_find.R' 'xml_modify.R' 'xml_name.R'\n'xml_namespaces.R' 'xml_path.R' 'xml_schema.R'\n'xml_serialize.R' 'xml_structure.R' 'xml_text.R' 'xml_type.R'\n'xml_url.R' 'xml_write.R' 'zzz.R'",
+        "NeedsCompilation": "yes",
+        "Packaged": "2020-04-23 15:45:47 UTC; jhester",
+        "Author": "Hadley Wickham [aut],\n  Jim Hester [aut, cre],\n  Jeroen Ooms [aut],\n  RStudio [cph],\n  R Foundation [ctb] (Copy of R-project homepage cached as example)",
+        "Maintainer": "Jim Hester <jim.hester@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2020-04-23 22:00:03 UTC",
+        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 09:29:54 UTC; unix"
       }
     },
     "yaml": {
@@ -532,7 +864,7 @@
   },
   "files": {
     "_bookdown.yml": {
-      "checksum": "bbf895697439a36ac7a3740aa7e41109"
+      "checksum": "8194dd4d3093b45082eb9bc9e14fc5f1"
     },
     "_output.yml": {
       "checksum": "ca600e548757534c6618514dbd3ce26b"
@@ -540,17 +872,20 @@
     "book.bib": {
       "checksum": "b4a54042e402828e8c22909eca5dbc75"
     },
+    "ectd.html": {
+      "checksum": "7034b4f8b020b208cd067f1be67159df"
+    },
     "images/cover.jpg": {
       "checksum": "2b33fa53ecef6313aa30a5c800098163"
     },
     "index.Rmd": {
-      "checksum": "96611ba821fa2021399346c05467b770"
+      "checksum": "539dd3534dad93881bf11c47768d01a9"
     },
     "intro.html": {
-      "checksum": "3dca1ac98f30b5eb050ed8c9e2f841b7"
+      "checksum": "5aceed255f117702101db9ddc9d9eb0e"
     },
     "intro.Rmd": {
-      "checksum": "a8a0dcef44f51d454022bf19f46f3167"
+      "checksum": "ce4c5f514bc5dc5a517ddcac499a5cef"
     },
     "libs/bootstrap-4.5.3/bootstrap.bundle.min.js": {
       "checksum": "7f389f5d2622ce2090eca7c36bcb90bc"
@@ -633,11 +968,29 @@
     "packrat/desc/bookdown": {
       "checksum": "3b6ef501acc8fcb842337d450ba4d84a"
     },
+    "packrat/desc/brio": {
+      "checksum": "4f7d72430c60252192141409e5621bd1"
+    },
+    "packrat/desc/bslib": {
+      "checksum": "4bc2e8c730a8bd1b93d2c7651ab77aa3"
+    },
     "packrat/desc/digest": {
       "checksum": "2ba522bf7aefb69942d603d0936fa3b4"
     },
+    "packrat/desc/downlit": {
+      "checksum": "fd50c064234996018952987bdeb470a9"
+    },
+    "packrat/desc/ellipsis": {
+      "checksum": "3dad263b3c5f6682661bf66a0ffb6e0e"
+    },
     "packrat/desc/evaluate": {
       "checksum": "981a091e5016218af724ee71cf221ba4"
+    },
+    "packrat/desc/fansi": {
+      "checksum": "264f83b33ebec49e1b90b7e3bb770904"
+    },
+    "packrat/desc/fs": {
+      "checksum": "344e90f8d1a7ef50819e205e1bf7db60"
     },
     "packrat/desc/glue": {
       "checksum": "d442f9de4f921ef58ec89f528b6db73a"
@@ -647,6 +1000,9 @@
     },
     "packrat/desc/htmltools": {
       "checksum": "8551cc7662ab63e00c706d2bfe07bbdd"
+    },
+    "packrat/desc/jquerylib": {
+      "checksum": "124c20357e919506692e19a9407cbad6"
     },
     "packrat/desc/jsonlite": {
       "checksum": "e8b95a2267e28353c24f3cf702c37d82"
@@ -663,11 +1019,20 @@
     "packrat/desc/mime": {
       "checksum": "0a33da30eac47200f6d9b806da704144"
     },
+    "packrat/desc/R6": {
+      "checksum": "51f2c694aa6f8b510718e51bd6483b92"
+    },
+    "packrat/desc/rappdirs": {
+      "checksum": "4bb4949bf2b7fd182b3bdccef7cc23cf"
+    },
     "packrat/desc/rlang": {
       "checksum": "24b8a6152d626d7a2964b206a2ea47df"
     },
     "packrat/desc/rmarkdown": {
       "checksum": "d4d98b41c0cb55a328df65b552214607"
+    },
+    "packrat/desc/sass": {
+      "checksum": "f083fcc5784cb57cfd3a63acddae1294"
     },
     "packrat/desc/stringi": {
       "checksum": "19c6295e96c3cca423421af4cae5a8ca"
@@ -678,26 +1043,53 @@
     "packrat/desc/tinytex": {
       "checksum": "13a6327a6eb3137e6f0822b86eeed0b9"
     },
+    "packrat/desc/vctrs": {
+      "checksum": "f69ce7c0143c36e16f1bb7c9bf843014"
+    },
     "packrat/desc/xfun": {
       "checksum": "5ea712972bbb0f8ad74d2425cc37e6c9"
+    },
+    "packrat/desc/xml2": {
+      "checksum": "74bb9305b827440eb2736a747d00fa8e"
     },
     "packrat/desc/yaml": {
       "checksum": "e8d47ded9c196784ec5ce07f4f92e492"
     },
     "packrat/packrat.lock": {
-      "checksum": "dcaa9e9572d452c0781f43627d14fdae"
+      "checksum": "0eb1c9529c0a430024ef8446bfab1fc4"
     },
     "preamble.tex": {
       "checksum": "1fd1a3c59e951f9f95b6b39785d600ff"
     },
+    "project-folder.html": {
+      "checksum": "490f122a045e7fea0e3f2688dd9e346e"
+    },
+    "project-management.html": {
+      "checksum": "d226394df0feaf2411cc71a2b4cc5dd9"
+    },
+    "project.Rmd": {
+      "checksum": "c3b935347c306de860fc22e1308d6db6"
+    },
     "README.md": {
-      "checksum": "353cc7724d0b6a78c639c28a046e5714"
+      "checksum": "10789bdc7c7347beafd0e709e96eea5a"
+    },
+    "reporting.html": {
+      "checksum": "035f776772b0240277c6cad09091925c"
     },
     "style.css": {
       "checksum": "0d47cd4731c8a71e1c6e712d28285b6d"
     },
+    "submission-package.html": {
+      "checksum": "d59c7eceb36efc10ecd8df61fa3f2904"
+    },
+    "submission.Rmd": {
+      "checksum": "7935565177803d24dfaba709ea44c17f"
+    },
+    "tlf.Rmd": {
+      "checksum": "d0fc9f51075295bb54fed2a4f5417a09"
+    },
     "welcome.html": {
-      "checksum": "a9175cd777be0e0a72e735ab3a14dbbb"
+      "checksum": "fb323b7c211ecb0332d6105bb8814463"
     }
   },
   "users": null
