@@ -1,1 +1,4 @@
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). Please see the page "Get Started" at https://bookdown.org/home/about/ for how to compile this example.
+# R for Clinical Study Report and Submission
+
+The site of this book is now deployed to rsconnect-production, 
+the website location is at https://rconnect.merck.com:3939/r4csr
