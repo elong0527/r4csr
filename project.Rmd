@@ -1,0 +1,15 @@
+# (PART) Clinical Trial Project {-}
+
+# Project Folder
+
+ToDo:
+
+- add mkstdpkg/mkdev/mkuse related information. 
+
+# Project Management 
+
+ToDo:
+
+- add version control 
+- add team building 
+- add ADRG and PDVT related information

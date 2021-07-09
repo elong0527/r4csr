@@ -1,0 +1,14 @@
+# (PART) Clinical Trial Project {-}
+
+# eCTD
+
+ToDo:
+
+- introduce eCTD
+
+# Submission Package
+
+ToDo:
+
+- add pkglite and cleanslate information
+
