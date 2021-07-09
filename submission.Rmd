@@ -1,4 +1,4 @@
-# (PART) Clinical Trial Project {-}
+# (PART) eCTD Submission {-}
 
 # eCTD
 

@@ -1,4 +1,4 @@
-# (PART) Part Delivering TLFs in CSR {-}
+# (PART) Delivering TLFs in CSR {-}
 
 # Reporting 
 

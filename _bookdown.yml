@@ -18,5 +18,7 @@ rmd_files: [
   
   "project.Rmd",
   
-  "submission.Rmd"
+  "submission.Rmd",
+  
+  "reference.Rmd"
 ]
