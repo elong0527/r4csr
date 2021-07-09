@@ -1,0 +1,30 @@
+--- 
+title: "R for Clinical Study Reports and Submission"
+author: ["Yilong Zhang"]
+knit: "bookdown::render_book"
+description: >
+  This book will teach you how to prepare clinical statistiacal report and submit to regulatory agency, 
+  the essential part of clinical trial development. 
+
+site: bookdown::bookdown_site
+
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+
+---
+
+# Welcome! {-}
+
+<img src="images/cover.jpg" width="100%" align="right" alt="" class="cover" /> 
+
+Welcome to R for clinical study report and submission. 
+Clinical study reports (CSR) are the essential part of clinical trials development. 
+a CSR is an "integrated" full scientific report of an individual clinical trial. 
+
+The [ICH E3: strcuture and content of clinical study reports](https://database.ich.org/sites/default/files/E3_Guideline.pdf) 
+provide guidance to assist sponsors in the development of a CSR. 
+In this book, you will learn how to use R to prepare CSR and submit to regulatory agency. 
+
+This is the work-in-progress draft of the book.

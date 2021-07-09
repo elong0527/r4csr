@@ -1,0 +1,49 @@
+# Introduction {#intro}
+
+## Folder structure 
+
+In clinical trial development, developer needs to organize source code to deliver SDTM or ADaM datasets and table, listing and figures (TLFs).
+For example, a Phase 3 clinical trial typically require hundreds of TLFs. 
+A consistent and well-defined folder structure is crucial to manage a clinical trial development project. 
+
+We recommended to use R package folder structure to organize all the analysis and reporting related source code and documentation
+for a clinical trial development project. 
+By using the R package folder structure you can follow the convention to organize your code as other contributors on CRAN.
+The consistent approach simplify the communication for developers within and across organizations. 
+
+- For a new R developer, it is an essential step to learn R package when you want to share your work with others. 
+You will learn one folder structure that is widely used in R community with outstanding tutorial and tools for free. 
+
+- For an experienced R developer, there is minimal learning curve.
+
+- For an organization, it simplify process, tool, template, and training development, because a unified folder structure is used to develop and maintain standard tool and analysis project.  
+
+The workflow around an R package can also improve the tractability and reproducibility for an analysis project [@marwick2018packaging].
+
+In addition, R package folder structure are also recommended to develop Shiny app as discussed in [Chapter 20 of Master Shiny](https://mastering-shiny.org/scaling-packaging.html) book and [Engineering Production-Grade Shiny Apps](https://engineering-shiny.org/golem.html) book.   
+
+## In this book
+
+This book is an intermediate level book by assuming reader has equipped some R programming and clinical development knowledge.
+The assumption of each part is as below:
+
+- Part 1, "Delivering TLFs in CSR" provides general information with examples to create table, listing and figures. 
+In this part, we assume readers are an individual contributor of a clinical project with some experience in R programming. 
+Some good reference includes [Hands-On Programming with R](https://rstudio-education.github.io/hopr/) book and 
+[R for Data Science](https://r4ds.had.co.nz/) book.
+
+- Part 2, "Clinical Trial Project" provides general information with examples to manage a clinical trial analysis and reporting 
+project. In this part, we assume readers are project lead of a clinical project with experience in R package development. 
+Some good reference includes [R packages](https://r-pkgs.org/) and [The tidyverse style guide](https://style.tidyverse.org/). 
+
+- Part 3, "Submission package in eCTD" provides general information in preparing submission package related to CSR in 
+electronic Common Technical Document (eCTD). In this part, we assume readers are project lead of a clinical project 
+with experience in R package development as well.     
+
+## Philosophy 
+
+We follow the same philosophy described in [Section 1.1 of R Packages book](https://r-pkgs.org/intro.html?q=Marwick#intro-phil) and quote here.
+
+- Anything that can be automated, should be automated. 
+- Do as little as possible by hand. Do as much as possible with functions. 
+- The goal is to spend your time thinking about what you want to do rather than thinking about the minutiae of package structure.

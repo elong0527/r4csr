@@ -1,0 +1,6 @@
+bookdown::bs4_book:
+  theme:
+    primary: "#00857C"
+    fg: "#0C2340"
+    bg: "#ffffff"
+  repo: https://stash.merck.com/users/zhanyilo/repos/r4csr/browse
