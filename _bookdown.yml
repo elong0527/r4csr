@@ -1,5 +1,5 @@
 book_filename: "r4csr"
-repo: https://stash.merck.com/projects/BARDS/repos/r4csr
+repo: https://stash.merck.com/projects/BARDS/repos/r4csr/browse
 delete_merged_file: true
 language:
   label:
