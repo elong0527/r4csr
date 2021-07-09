@@ -36,7 +36,7 @@ Some good reference includes [Hands-On Programming with R](https://rstudio-educa
 project. In this part, we assume readers are project lead of a clinical project with experience in R package development. 
 Some good reference includes [R packages](https://r-pkgs.org/) and [The tidyverse style guide](https://style.tidyverse.org/). 
 
-- Part 3, "Submission package in eCTD" provides general information in preparing submission package related to CSR in 
+- Part 3, "eCTD Submission package" provides general information in preparing submission package related to CSR in 
 electronic Common Technical Document (eCTD). In this part, we assume readers are project lead of a clinical project 
 with experience in R package development as well.     
 
