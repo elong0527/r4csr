@@ -10,6 +10,28 @@
     "has_parameters": false
   },
   "packages": {
+    "Formula": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "Formula",
+        "Version": "1.2-4",
+        "Date": "2020-10-16",
+        "Title": "Extended Model Formulas",
+        "Description": "Infrastructure for extended formulas with multiple parts on the\n             right-hand side and/or multiple responses on the left-hand side\n\t     (see <doi:10.18637/jss.v034.i01>).",
+        "Authors@R": "c(person(given = \"Achim\", family = \"Zeileis\", role = c(\"aut\", \"cre\"), email = \"Achim.Zeileis@R-project.org\",\n             comment = c(ORCID = \"0000-0003-0918-3766\")),\n             person(given = \"Yves\", family = \"Croissant\", role = \"aut\", email = \"Yves.Croissant@univ-reunion.fr\"))",
+        "Depends": "R (>= 2.0.0), stats",
+        "License": "GPL-2 | GPL-3",
+        "NeedsCompilation": "no",
+        "Packaged": "2020-10-16 12:39:27 UTC; zeileis",
+        "Author": "Achim Zeileis [aut, cre] (<https://orcid.org/0000-0003-0918-3766>),\n  Yves Croissant [aut]",
+        "Maintainer": "Achim Zeileis <Achim.Zeileis@R-project.org>",
+        "Repository": "RSPM",
+        "Date/Publication": "2020-10-16 13:50:06 UTC",
+        "Encoding": "UTF-8",
+        "Built": "R 4.0.1; ; 2021-04-03 07:16:36 UTC; unix"
+      }
+    },
     "R6": {
       "Source": "CRAN",
       "Repository": "https://rspm.merck.com/unrestricted/latest",
@@ -495,7 +517,7 @@
         "Maintainer": "Lionel Henry <lionel@rstudio.com>",
         "Repository": "RSPM",
         "Date/Publication": "2020-11-17 16:20:06 UTC",
-        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-07-07 01:22:32 UTC; unix"
+        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 08:00:44 UTC; unix"
       }
     },
     "markdown": {
@@ -550,6 +572,35 @@
         "Repository": "RSPM",
         "Date/Publication": "2021-02-13 07:30:02 UTC",
         "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 08:04:27 UTC; unix"
+      }
+    },
+    "r2rtf": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "r2rtf",
+        "Title": "Easily Create Production-Ready Rich Text Format (RTF) Table and\nFigure",
+        "Version": "0.3.0",
+        "Authors@R": "c(\n    person(\"Yilong\", \"Zhang\", email = \"yilong.zhang@merck.com\", role = c(\"aut\", \"cre\")),\n    person(\"Siruo\", \"Wang\", role = \"aut\"),\n    person(\"Simiao\", \"Ye\", role = \"aut\"),\n    person(\"Fansen\", \"Kong\", role = \"aut\"), \n    person(\"Nan\", \"Xiao\", role = \"ctb\"),\n    person(\"Madhusudhan\", \"Ginnaram\", role = \"ctb\"),\n    person(\"Ruchitbhai\", \"Patel\", role = \"ctb\"), \n    person(\"Huei-Ling\", \"Chen\", role = \"ctb\"), \n    person(\"Peikun\", \"Wu\", role = \"ctb\"), \n    person(\"Uday Preetham\", \"Palukuru\", role = \"ctb\"),\n    person(\"Daniel\", \"Woodie\", role = \"ctb\"),\n    person(\"Sarad\", \"Nepal\", role = \"ctb\"),\n    person(\"Jane\", \"Liao\", role = \"ctb\"),\n    person(\"Benjamin\", \"Wang\", role = \"ctb\"),\n    person(\"Jeff\", \"Cheng\", role = \"ctb\"),\n    person(\"Yirong\", \"Cao\", role = \"ctb\"),\n    person(\"Merck Sharp & Dohme Corp\", role = \"cph\")\n    )",
+        "Description": "Create production-ready Rich Text Format (RTF) table and figure with flexible format.",
+        "Depends": "R (>= 3.5.0)",
+        "License": "GPL-3",
+        "Encoding": "UTF-8",
+        "VignetteBuilder": "knitr",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1",
+        "Imports": "grDevices",
+        "Suggests": "stringi, knitr, rmarkdown, emmeans, tidyr, devtools, covr,\ndplyr, testthat, ggplot2",
+        "URL": "https://merck.github.io/r2rtf/, https://github.com/Merck/r2rtf",
+        "BugReports": "https://github.com/Merck/r2rtf/issues",
+        "Config/testthat/edition": "3",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-06-01 03:12:55 UTC; zhanyilo",
+        "Author": "Yilong Zhang [aut, cre],\n  Siruo Wang [aut],\n  Simiao Ye [aut],\n  Fansen Kong [aut],\n  Nan Xiao [ctb],\n  Madhusudhan Ginnaram [ctb],\n  Ruchitbhai Patel [ctb],\n  Huei-Ling Chen [ctb],\n  Peikun Wu [ctb],\n  Uday Preetham Palukuru [ctb],\n  Daniel Woodie [ctb],\n  Sarad Nepal [ctb],\n  Jane Liao [ctb],\n  Benjamin Wang [ctb],\n  Jeff Cheng [ctb],\n  Yirong Cao [ctb],\n  Merck Sharp & Dohme Corp [cph]",
+        "Maintainer": "Yilong Zhang <yilong.zhang@merck.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-06-01 05:00:02 UTC",
+        "Built": "R 4.0.1; ; 2021-07-30 02:09:49 UTC; unix"
       }
     },
     "rappdirs": {
@@ -724,6 +775,35 @@
         "Built": "R 4.0.1; ; 2021-04-03 09:12:34 UTC; unix"
       }
     },
+    "table1": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "table1",
+        "Type": "Package",
+        "Version": "1.4.2",
+        "Date": "2021-06-06",
+        "Title": "Tables of Descriptive Statistics in HTML",
+        "Authors@R": "person(\"Benjamin\", \"Rich\", role=c(\"aut\", \"cre\", \"cph\"), email=\"mail@benjaminrich.net\")",
+        "Author": "Benjamin Rich [aut, cre, cph]",
+        "Maintainer": "Benjamin Rich <mail@benjaminrich.net>",
+        "URL": "https://github.com/benjaminrich/table1",
+        "BugReports": "https://github.com/benjaminrich/table1/issues",
+        "Description": "Create HTML tables of descriptive statistics, as one would expect\n    to see as the first table (i.e. \"Table 1\") in a medical/epidemiological journal\n    article.",
+        "License": "GPL-3",
+        "Depends": "R (>= 3.5.0)",
+        "Imports": "stats,Formula,knitr,htmltools,yaml",
+        "Suggests": "boot,MatchIt,rmarkdown,printr,kableExtra,flextable",
+        "VignetteBuilder": "knitr",
+        "Encoding": "UTF-8",
+        "RoxygenNote": "7.1.1",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-06-06 20:37:43 UTC; ben",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-06-06 21:00:02 UTC",
+        "Built": "R 4.0.1; ; 2021-07-30 02:08:27 UTC; unix"
+      }
+    },
     "tinytex": {
       "Source": "CRAN",
       "Repository": "https://rspm.merck.com/unrestricted/latest",
@@ -863,17 +943,95 @@
     }
   },
   "files": {
+    "_book/ectd.html": {
+      "checksum": "4b080655c1cd8105a255735ec64d1695"
+    },
+    "_book/images/cover.jpg": {
+      "checksum": "2b33fa53ecef6313aa30a5c800098163"
+    },
+    "_book/index.html": {
+      "checksum": "f2aa501adf6943013dce027e678a1c50"
+    },
+    "_book/intro.html": {
+      "checksum": "b2c2b37b81c5c8584efe9f73f29d8f02"
+    },
+    "_book/libs/bootstrap-4.5.3/bootstrap.bundle.min.js": {
+      "checksum": "7f389f5d2622ce2090eca7c36bcb90bc"
+    },
+    "_book/libs/bootstrap-4.5.3/bootstrap.min.css": {
+      "checksum": "c9f7c4a9e48ecd0933b1efddccee0736"
+    },
+    "_book/libs/bootstrap-4.5.3/fonts/bootstrap/glyphicons-halflings-regular.eot": {
+      "checksum": "f4769f9bdb7466be65088239c12046d1"
+    },
+    "_book/libs/bootstrap-4.5.3/fonts/bootstrap/glyphicons-halflings-regular.svg": {
+      "checksum": "89889688147bd7575d6327160d64e760"
+    },
+    "_book/libs/bootstrap-4.5.3/fonts/bootstrap/glyphicons-halflings-regular.ttf": {
+      "checksum": "e18bbf611f2a2e43afc071aa2f4e1512"
+    },
+    "_book/libs/bootstrap-4.5.3/fonts/bootstrap/glyphicons-halflings-regular.woff": {
+      "checksum": "fa2772327f55d8198301fdb8bcfc8158"
+    },
+    "_book/libs/bootstrap-4.5.3/fonts/bootstrap/glyphicons-halflings-regular.woff2": {
+      "checksum": "448c34a56d699c29117adc64c43affeb"
+    },
+    "_book/libs/bs3compat-0.2.4/bs3compat.js": {
+      "checksum": "8f2df3a89373a9da39230bbc7b487eef"
+    },
+    "_book/libs/bs3compat-0.2.4/tabs.js": {
+      "checksum": "a19cc7ef41a2f9683a10c8d29f1e1241"
+    },
+    "_book/libs/bs4_book-1.0.0/bs4_book.css": {
+      "checksum": "b9f5b642360677403130ece5459f8a8a"
+    },
+    "_book/libs/bs4_book-1.0.0/bs4_book.js": {
+      "checksum": "fee4b8d560dcd98905b2e2ca8bee540a"
+    },
+    "_book/libs/header-attrs-2.7/header-attrs.js": {
+      "checksum": "9c32b58ed5fd8fe2efbd5bd7023cdef0"
+    },
+    "_book/libs/jquery-3.5.1/jquery-3.5.1.min.js": {
+      "checksum": "dc5e7f18c8d36ac1d3d4753a87c98d0a"
+    },
+    "_book/libs/table1-1.0/table1_defaults.css": {
+      "checksum": "fdf39717a9efdce3be27f4a9d8ec9051"
+    },
+    "_book/project-folder.html": {
+      "checksum": "6cae9596da6c1026c67d157ddcad4566"
+    },
+    "_book/project-management.html": {
+      "checksum": "d56f13a2bee47649ab156a2e0638e4ef"
+    },
+    "_book/reference-keys.txt": {
+      "checksum": "d59d5935cd2d9ec6cf3c113ccc667561"
+    },
+    "_book/reference.html": {
+      "checksum": "1a3a27b1c0b9851efeda00081932fc77"
+    },
+    "_book/reporting.html": {
+      "checksum": "a51750cb36d7a6d3e962b718d3e4d4d3"
+    },
+    "_book/search.json": {
+      "checksum": "6cbbf91e11fdde1079dbfee847c71770"
+    },
+    "_book/submission-package.html": {
+      "checksum": "1b05db229f5ce24a312b8ca69d7a2b92"
+    },
+    "_book/tlf/bs-1.pdf": {
+      "checksum": "9369e8af117a23e43f53ab09ae5fdf7f"
+    },
     "_bookdown.yml": {
-      "checksum": "8194dd4d3093b45082eb9bc9e14fc5f1"
+      "checksum": "9d84a2fda88214303168a7c73f04ce18"
     },
     "_output.yml": {
-      "checksum": "ca600e548757534c6618514dbd3ce26b"
+      "checksum": "47ed0097215ea0381a84c907f522b537"
     },
     "book.bib": {
       "checksum": "b4a54042e402828e8c22909eca5dbc75"
     },
     "ectd.html": {
-      "checksum": "7034b4f8b020b208cd067f1be67159df"
+      "checksum": "8fa268d2d212d7632d7154565e719e1e"
     },
     "images/cover.jpg": {
       "checksum": "2b33fa53ecef6313aa30a5c800098163"
@@ -882,10 +1040,10 @@
       "checksum": "539dd3534dad93881bf11c47768d01a9"
     },
     "intro.html": {
-      "checksum": "5aceed255f117702101db9ddc9d9eb0e"
+      "checksum": "5594bc31eef68944dae3a4acc00a07a2"
     },
     "intro.Rmd": {
-      "checksum": "ce4c5f514bc5dc5a517ddcac499a5cef"
+      "checksum": "8a4b85f6691782b0140eb778271217c9"
     },
     "libs/bootstrap-4.5.3/bootstrap.bundle.min.js": {
       "checksum": "7f389f5d2622ce2090eca7c36bcb90bc"
@@ -989,6 +1147,9 @@
     "packrat/desc/fansi": {
       "checksum": "264f83b33ebec49e1b90b7e3bb770904"
     },
+    "packrat/desc/Formula": {
+      "checksum": "c593394a0d89167877df28daa5cba119"
+    },
     "packrat/desc/fs": {
       "checksum": "344e90f8d1a7ef50819e205e1bf7db60"
     },
@@ -1011,13 +1172,16 @@
       "checksum": "87f04ac2b855e5e2aaa2b20fe3d65ee1"
     },
     "packrat/desc/magrittr": {
-      "checksum": "4a9217809f06de2824035e8c5835d4fa"
+      "checksum": "e39cfdbd8337f704a0f567fcfabf6480"
     },
     "packrat/desc/markdown": {
       "checksum": "ee8793c3fd14361f0c9615a1a6a9c25a"
     },
     "packrat/desc/mime": {
       "checksum": "0a33da30eac47200f6d9b806da704144"
+    },
+    "packrat/desc/r2rtf": {
+      "checksum": "fb9cab092f24853c3606568c9d87f9c6"
     },
     "packrat/desc/R6": {
       "checksum": "51f2c694aa6f8b510718e51bd6483b92"
@@ -1040,6 +1204,9 @@
     "packrat/desc/stringr": {
       "checksum": "d5a6bc527ff2c0c678fe09e5ecfd1250"
     },
+    "packrat/desc/table1": {
+      "checksum": "df691a0377243669806080bf770396d7"
+    },
     "packrat/desc/tinytex": {
       "checksum": "13a6327a6eb3137e6f0822b86eeed0b9"
     },
@@ -1056,16 +1223,16 @@
       "checksum": "e8d47ded9c196784ec5ce07f4f92e492"
     },
     "packrat/packrat.lock": {
-      "checksum": "0eb1c9529c0a430024ef8446bfab1fc4"
+      "checksum": "1bc363a44fb2418013f4c880ae6b3a36"
     },
     "preamble.tex": {
       "checksum": "1fd1a3c59e951f9f95b6b39785d600ff"
     },
     "project-folder.html": {
-      "checksum": "490f122a045e7fea0e3f2688dd9e346e"
+      "checksum": "bdb5d742e6544ebae1d76a18d695a5f0"
     },
     "project-management.html": {
-      "checksum": "d226394df0feaf2411cc71a2b4cc5dd9"
+      "checksum": "4f8925cd864a4f7ba253433bece71d2b"
     },
     "project.Rmd": {
       "checksum": "c3b935347c306de860fc22e1308d6db6"
@@ -1073,23 +1240,35 @@
     "README.md": {
       "checksum": "10789bdc7c7347beafd0e709e96eea5a"
     },
+    "reference.html": {
+      "checksum": "300efefed6fee5f421ed997933adc2d7"
+    },
+    "reference.Rmd": {
+      "checksum": "a7a7929587c58ed042e53d61ab67f28f"
+    },
     "reporting.html": {
-      "checksum": "035f776772b0240277c6cad09091925c"
+      "checksum": "99758ecbbc0e27d74c274a845a969cfe"
     },
     "style.css": {
       "checksum": "0d47cd4731c8a71e1c6e712d28285b6d"
     },
     "submission-package.html": {
-      "checksum": "d59c7eceb36efc10ecd8df61fa3f2904"
+      "checksum": "5c5fa1a822d466c0db495d8bed63a829"
     },
     "submission.Rmd": {
-      "checksum": "7935565177803d24dfaba709ea44c17f"
+      "checksum": "60b9f7e4725aafcfb720c71c68cc569d"
     },
     "tlf.Rmd": {
-      "checksum": "d0fc9f51075295bb54fed2a4f5417a09"
+      "checksum": "f1531c31f219c22e69d7a8437b1df70d"
+    },
+    "tlf/bs-1.pdf": {
+      "checksum": "9369e8af117a23e43f53ab09ae5fdf7f"
+    },
+    "tlf/bs-1.rtf": {
+      "checksum": "d631fc222048a10ed1d6a07647caca94"
     },
     "welcome.html": {
-      "checksum": "fb323b7c211ecb0332d6105bb8814463"
+      "checksum": "1543e7905a23aacc0b9c57ba493877ad"
     }
   },
   "users": null
