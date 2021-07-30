@@ -58,7 +58,6 @@ tbl %>% as.data.frame() %>%
 ```
 
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
-r2rtf:::rtf_convert_format("tlf/bs-1.rtf", output_dir = "tlf")
 knitr::include_graphics("tlf/bs-1.pdf")
 ```
 

@@ -22,6 +22,7 @@ library(downlit)
 ```
 
 ```{r, eval = FALSE, include=FALSE}
+r2rtf:::rtf_convert_format("tlf/bs-1.rtf", output_dir = "tlf")
 rsconnect::writeManifest(appPrimaryDoc = "index.Rmd", contentCategory = "site")
 ```
 
