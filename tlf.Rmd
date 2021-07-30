@@ -2,6 +2,68 @@
 
 # Reporting 
 
-ToDo:
+## Background
 
-add r2rtf related inforamtion
+In clinical trial development, it is a critical step to submit information on medicinal products to regulatory agencies. [Electronic Common Technical Document (eCTD)](https://en.wikipedia.org/wiki/Electronic_common_technical_document) 
+has become a worldwide regulatory submission standard format. 
+For example, [the United States Food and Drug Administration (US FDA) required new drug applications, biologics license applications must be submitted using eCTD format](https://www.fda.gov/drugs/electronic-regulatory-submission-and-review/electronic-common-technical-document-ectd). Clinical Data Interchange Standards Consortium (CDISC) provided a 
+[pilot project
+following ICH E3 guidance](https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse).  
+
+Within eCTD, clinical study reports (CSR) are located at module 5. 
+[ICH E3 guidance](https://www.ich.org/page/efficacy-guidelines) provide 
+compilation of structure and content of clinical study reports.
+
+A typical CSR contain full details of an individual clinical study 
+including clinical and statistical description, presentations, and analyses. 
+A large number of tables and figures are incorporated into the main text and appendices 
+of a CSR. In CDISC pilot project, an [example CSR](file:///C:/Users/zhanyilo/OneDrive%20-%20Merck%20Sharp%20&%20Dohme,%20Corp/Desktop/cdiscpilot01.pdf) is also provided. If you are interested in more examples of clinical study reports, 
+the European Medicines Agency (EMA) publishes clinical data including 
+clinical study reports submitted by pharmaceutical companies 
+on [EMA clincal data website](https://clinicaldata.ema.europa.eu/web/cdp/home).  
+
+Building CSR is a team work with clinicians, medical writers, statisticians and statistical programmers.
+Here, We focus on the work and deliverables completed by statisticians and statistical programmers. 
+In an organization, A group of statisticians and statistical programmers commonly work together to 
+define, develop, validate and deliver tables, listings and figures (TLFs) required for a CSR.
+Microsoft Word is widely used to prepare CSR in pharmaceutical industry. 
+Therefore, `rtf`, `doc`, `docx` are commonly used format to deliver TLFs. 
+
+In this chapter, our focus is to illustrate how to create tables, listings and figures (TLFs) in RTF format 
+that is commonly used in a CSR. The examples are in compliance of 
+[FDA's Portable Document Format (PDF) Specifications](https://www.fda.gov/media/76797/download)
+
+> FDA's PDF specification is a general reference, each organization may define 
+> more specific TLF format requirement that can be different from the examples in this book. 
+
+These TLFs are typically used to summarize efficacy and safety statistical analysis results of a drug (or treatment).  
+
+
+## Table for Baseline Characteristics
+
+```{r}
+library(table1)
+library(r2rtf)
+data(r2rtf_adsl)
+
+tbl <- table1(~ SEX + AGE + RACE | TRT01P, data = r2rtf_adsl)
+tbl
+```
+
+```{r}
+tbl %>% as.data.frame() %>% 
+        rtf_body() %>% 
+        rtf_encode() %>% 
+        write_rtf("tlf/bs-1.rtf")
+```
+
+```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+r2rtf:::rtf_convert_format("tlf/bs-1.rtf", output_dir = "tlf")
+knitr::include_graphics("tlf/bs-1.pdf")
+```
+
+
+
+
+
+
