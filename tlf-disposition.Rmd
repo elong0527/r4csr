@@ -98,7 +98,7 @@ adsl %>% select(TRT01P, TRT01PN) %>%
 ```
 
 ```{r}
-tbl_disp %>% rtf_title("Disposition of Patients")
+tbl_disp %>% rtf_title("Disposition of Patients") %>%
   
              rtf_colheader(" | Placebo | Xanomeline Low Dose| Xanomeline High Dose", 
                            col_rel_width = c(3, rep(2,3)) ) %>%
