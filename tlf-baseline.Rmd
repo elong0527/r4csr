@@ -1,4 +1,4 @@
-## Table for Baseline Characteristics
+# Table for Baseline Characteristics
 
 ```{r}
 library(table1)

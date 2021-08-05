@@ -1,4 +1,4 @@
-## Table for Study Patients
+# Table for Study Patients
 
 In section 10, study patients of a CSR, we need to summarize accounting 
 of all patients who entered the study. 
