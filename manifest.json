@@ -10,6 +10,29 @@
     "has_parameters": false
   },
   "packages": {
+    "BH": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "BH",
+        "Type": "Package",
+        "Title": "Boost C++ Header Files",
+        "Version": "1.75.0-0",
+        "Date": "2020-12-12",
+        "Author": "Dirk Eddelbuettel, John W. Emerson and Michael J. Kane",
+        "Maintainer": "Dirk Eddelbuettel <edd@debian.org>",
+        "Description": "Boost provides free peer-reviewed portable C++ source \n libraries.  A large part of Boost is provided as C++ template code\n which is resolved entirely at compile-time without linking.  This \n package aims to provide the most useful subset of Boost libraries \n for template use among CRAN packages. By placing these libraries in \n this package, we offer a more efficient distribution system for CRAN \n as replication of this code in the sources of other packages is \n avoided. As of release 1.75.0-0, the following Boost libraries are\n included: 'accumulators' 'algorithm' 'align' 'any' 'atomic' 'beast'\n 'bimap' 'bind' 'circular_buffer' 'compute' 'concept' 'config'\n 'container' 'date_time' 'detail' 'dynamic_bitset' 'exception'\n 'flyweight' 'foreach' 'functional' 'fusion' 'geometry' 'graph' 'heap'\n 'icl' 'integer' 'interprocess' 'intrusive' 'io' 'iostreams'\n 'iterator' 'math' 'move' 'mp11' 'mpl' 'multiprecision' 'numeric'\n 'pending' 'phoenix' 'polygon' 'preprocessor' 'propery_tree' 'random'\n 'range' 'scope_exit' 'smart_ptr' 'sort' 'spirit' 'tuple'\n 'type_traits' 'typeof' 'unordered' 'utility' 'uuid'.",
+        "License": "BSL-1.0",
+        "URL": "https://github.com/eddelbuettel/bh",
+        "BugReports": "https://github.com/eddelbuettel/bh/issues",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-01-09 03:50:01 UTC; edd",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-01-11 22:50:06 UTC",
+        "Encoding": "UTF-8",
+        "Built": "R 4.0.1; ; 2021-04-03 06:10:13 UTC; unix"
+      }
+    },
     "Formula": {
       "Source": "CRAN",
       "Repository": "https://rspm.merck.com/unrestricted/latest",
@@ -56,6 +79,56 @@
         "Date/Publication": "2020-10-28 19:30:02 UTC",
         "Encoding": "UTF-8",
         "Built": "R 4.0.1; ; 2021-04-03 08:26:29 UTC; unix"
+      }
+    },
+    "Rcpp": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "Rcpp",
+        "Title": "Seamless R and C++ Integration",
+        "Version": "1.0.6",
+        "Date": "2021-01-14",
+        "Author": "Dirk Eddelbuettel, Romain Francois, JJ Allaire, Kevin Ushey, Qiang Kou,\n Nathan Russell, Douglas Bates and John Chambers",
+        "Maintainer": "Dirk Eddelbuettel <edd@debian.org>",
+        "Description": "The 'Rcpp' package provides R functions as well as C++ classes which\n offer a seamless integration of R and C++. Many R data types and objects can be\n mapped back and forth to C++ equivalents which facilitates both writing of new\n code as well as easier integration of third-party libraries. Documentation\n about 'Rcpp' is provided by several vignettes included in this package, via the\n 'Rcpp Gallery' site at <https://gallery.rcpp.org>, the paper by Eddelbuettel and\n Francois (2011, <doi:10.18637/jss.v040.i08>), the book by Eddelbuettel (2013,\n <doi:10.1007/978-1-4614-6868-4>) and the paper by Eddelbuettel and Balamuta (2018,\n <doi:10.1080/00031305.2017.1375990>); see 'citation(\"Rcpp\")' for details.",
+        "Imports": "methods, utils",
+        "Suggests": "tinytest, inline, rbenchmark, pkgKitten (>= 0.1.2)",
+        "URL": "http://www.rcpp.org, https://dirk.eddelbuettel.com/code/rcpp.html,\nhttps://github.com/RcppCore/Rcpp",
+        "License": "GPL (>= 2)",
+        "BugReports": "https://github.com/RcppCore/Rcpp/issues",
+        "MailingList": "rcpp-devel@lists.r-forge.r-project.org",
+        "RoxygenNote": "6.1.1",
+        "NeedsCompilation": "yes",
+        "Packaged": "2021-01-14 13:44:02 UTC; edd",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-01-15 13:10:13 UTC",
+        "Encoding": "UTF-8",
+        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 08:32:51 UTC; unix"
+      }
+    },
+    "assertthat": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "assertthat",
+        "Title": "Easy Pre and Post Assertions",
+        "Version": "0.2.1",
+        "Authors@R": "\n  person(\"Hadley\", \"Wickham\", , \"hadley@rstudio.com\", c(\"aut\", \"cre\"))",
+        "Description": "An extension to stopifnot() that makes it easy to declare \n    the pre and post conditions that you code should satisfy, while also \n    producing friendly error messages so that your users know what's gone\n    wrong.",
+        "License": "GPL-3",
+        "Imports": "tools",
+        "Suggests": "testthat, covr",
+        "RoxygenNote": "6.0.1",
+        "Collate": "'assert-that.r' 'on-failure.r' 'assertions-file.r'\n'assertions-scalar.R' 'assertions.r' 'base.r'\n'base-comparison.r' 'base-is.r' 'base-logical.r' 'base-misc.r'\n'utils.r' 'validate-that.R'",
+        "NeedsCompilation": "no",
+        "Packaged": "2019-03-21 13:11:01 UTC; hadley",
+        "Author": "Hadley Wickham [aut, cre]",
+        "Maintainer": "Hadley Wickham <hadley@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2019-03-21 14:53:46 UTC",
+        "Encoding": "UTF-8",
+        "Built": "R 4.0.1; ; 2021-04-03 06:04:09 UTC; unix"
       }
     },
     "base64enc": {
@@ -161,6 +234,119 @@
         "Built": "R 4.0.1; ; 2021-04-03 06:47:41 UTC; unix"
       }
     },
+    "cli": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "cli",
+        "Title": "Helpers for Developing Command Line Interfaces",
+        "Version": "2.3.1",
+        "Authors@R": "c(\n    person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", c(\"aut\", \"cre\")),\n    person(\"Hadley\", \"Wickham\", role = c(\"ctb\")),\n    person(\"Kirill\", \"Müller\", role = c(\"ctb\")),\n    person(\"RStudio\", role = \"cph\")\n    )",
+        "Description": "A suite of tools to build attractive command line interfaces\n    ('CLIs'), from semantic elements: headings, lists, alerts, paragraphs,\n    etc. Supports custom themes via a 'CSS'-like language. It also contains a\n    number of lower level 'CLI' elements: rules, boxes, trees, and\n    'Unicode' symbols with 'ASCII' alternatives. It support ANSI colors and\n    text styles as well.",
+        "License": "MIT + file LICENSE",
+        "LazyData": "true",
+        "URL": "https://github.com/r-lib/cli#readme",
+        "BugReports": "https://github.com/r-lib/cli/issues",
+        "RoxygenNote": "7.1.1",
+        "Depends": "R (>= 2.10)",
+        "Imports": "assertthat, glue, methods, utils",
+        "Suggests": "callr, covr, grDevices, htmlwidgets, knitr, mockery, ps (>=\n1.3.4.9000), rmarkdown, rstudioapi, prettycode (>= 1.1.0),\ntestthat, withr",
+        "Encoding": "UTF-8",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-02-09 14:57:01 UTC; gaborcsardi",
+        "Author": "Gábor Csárdi [aut, cre],\n  Hadley Wickham [ctb],\n  Kirill Müller [ctb],\n  RStudio [cph]",
+        "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-02-23 16:30:05 UTC",
+        "Built": "R 4.0.1; ; 2021-04-03 06:40:42 UTC; unix"
+      }
+    },
+    "clipr": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Type": "Package",
+        "Package": "clipr",
+        "Title": "Read and Write from the System Clipboard",
+        "Version": "0.7.1",
+        "Authors@R": "\n    c(person(given = \"Matthew\",\n             family = \"Lincoln\",\n             role = c(\"aut\", \"cre\"),\n             email = \"matthew.d.lincoln@gmail.com\",\n             comment = c(ORCID = \"0000-0002-4387-3384\")),\n      person(given = \"Louis\",\n             family = \"Maddox\",\n             role = \"ctb\"),\n      person(given = \"Steve\",\n             family = \"Simpson\",\n             role = \"ctb\"),\n      person(given = \"Jennifer\",\n             family = \"Bryan\",\n             role = \"ctb\"))",
+        "Description": "Simple utility functions to read from and write to\n    the Windows, OS X, and X11 clipboards.",
+        "License": "GPL-3",
+        "URL": "https://github.com/mdlincoln/clipr",
+        "BugReports": "https://github.com/mdlincoln/clipr/issues",
+        "Imports": "utils",
+        "Suggests": "covr, knitr, rmarkdown, rstudioapi (>= 0.5), testthat (>=\n2.0.0)",
+        "VignetteBuilder": "knitr",
+        "Encoding": "UTF-8",
+        "Language": "en-US",
+        "LazyData": "TRUE",
+        "RoxygenNote": "7.1.1",
+        "SystemRequirements": "xclip (https://github.com/astrand/xclip) or xsel\n(http://www.vergenet.net/~conrad/software/xsel/) for accessing\nthe X11 clipboard",
+        "NeedsCompilation": "no",
+        "Packaged": "2020-10-08 13:13:31 UTC; mlincoln",
+        "Author": "Matthew Lincoln [aut, cre] (<https://orcid.org/0000-0002-4387-3384>),\n  Louis Maddox [ctb],\n  Steve Simpson [ctb],\n  Jennifer Bryan [ctb]",
+        "Maintainer": "Matthew Lincoln <matthew.d.lincoln@gmail.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2020-10-08 14:00:05 UTC",
+        "Built": "R 4.0.1; ; 2021-04-03 06:40:54 UTC; unix"
+      }
+    },
+    "cpp11": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "cpp11",
+        "Title": "A C++11 Interface for R's C Interface",
+        "Version": "0.2.6",
+        "Authors@R": "\n    c(person(given = \"Jim\",\n             family = \"Hester\",\n             role = c(\"aut\", \"cre\"),\n             email = \"jim.hester@rstudio.com\",\n             comment = c(ORCID = \"0000-0002-2739-7082\")),\n      person(given = \"Romain\",\n             family = \"François\",\n             role = \"ctb\"),\n      person(given = \"Benjamin\",\n             family = \"Kietzman\",\n             role = \"ctb\"),\n      person(given = \"RStudio\",\n             role = c(\"cph\", \"fnd\")))",
+        "Description": "Provides a header only, C++11 interface to R's C\n    interface.  Compared to other approaches 'cpp11' strives to be safe\n    against long jumps from the C API as well as C++ exceptions, conform\n    to normal R function semantics and supports interaction with 'ALTREP'\n    vectors.",
+        "License": "MIT + file LICENSE",
+        "URL": "https://github.com/r-lib/cpp11",
+        "BugReports": "https://github.com/r-lib/cpp11/issues",
+        "Suggests": "bench, brio, callr, cli, covr, decor, desc, ggplot2, glue,\nknitr, lobstr, mockery, progress, rmarkdown, scales, testthat,\ntibble, utils, vctrs, withr",
+        "VignetteBuilder": "knitr",
+        "Config/testthat/edition": "3",
+        "Config/Needs/cpp11/cpp_register": "brio, cli, decor, desc, glue, tibble,\nvctrs",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1",
+        "SystemRequirements": "C++11",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-01-28 19:04:03 UTC; jhester",
+        "Author": "Jim Hester [aut, cre] (<https://orcid.org/0000-0002-2739-7082>),\n  Romain François [ctb],\n  Benjamin Kietzman [ctb],\n  RStudio [cph, fnd]",
+        "Maintainer": "Jim Hester <jim.hester@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-01-29 10:10:05 UTC",
+        "Built": "R 4.0.1; ; 2021-04-03 06:50:27 UTC; unix"
+      }
+    },
+    "crayon": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "crayon",
+        "Title": "Colored Terminal Output",
+        "Version": "1.4.1",
+        "Authors@R": "c(\n    person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\",\n    role = c(\"aut\", \"cre\")),\n    person(\n    \"Brodie\", \"Gaslam\", email=\"brodie.gaslam@yahoo.com\",\n    role=c(\"ctb\"))\n    )",
+        "Description": "Colored terminal output on terminals that support 'ANSI'\n    color and highlight codes. It also works in 'Emacs' 'ESS'. 'ANSI'\n    color support is automatically detected. Colors and highlighting can\n    be combined and nested. New styles can also be created easily.\n    This package was inspired by the 'chalk' 'JavaScript' project.",
+        "License": "MIT + file LICENSE",
+        "LazyData": "true",
+        "URL": "https://github.com/r-lib/crayon#readme",
+        "BugReports": "https://github.com/r-lib/crayon/issues",
+        "Collate": "'aaa-rstudio-detect.R' 'aab-num-ansi-colors.R' 'ansi-256.r'\n'combine.r' 'string.r' 'utils.r' 'crayon-package.r'\n'disposable.r' 'has_ansi.r' 'has_color.r' 'link.R' 'styles.r'\n'machinery.r' 'parts.r' 'print.r' 'rematch2.R' 'style-var.r'\n'show.r' 'string_operations.r'",
+        "Imports": "grDevices, methods, utils",
+        "Suggests": "mockery, rstudioapi, testthat, withr",
+        "RoxygenNote": "7.1.1",
+        "Encoding": "UTF-8",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-02-08 18:57:04 UTC; gaborcsardi",
+        "Author": "Gábor Csárdi [aut, cre],\n  Brodie Gaslam [ctb]",
+        "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-02-08 19:50:02 UTC",
+        "Built": "R 4.0.1; ; 2021-04-03 06:50:37 UTC; unix"
+      }
+    },
     "digest": {
       "Source": "CRAN",
       "Repository": "https://rspm.merck.com/unrestricted/latest",
@@ -213,6 +399,36 @@
         "Repository": "RSPM",
         "Date/Publication": "2020-11-04 06:50:05 UTC",
         "Built": "R 4.0.1; ; 2021-04-03 07:01:48 UTC; unix"
+      }
+    },
+    "dplyr": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Type": "Package",
+        "Package": "dplyr",
+        "Title": "A Grammar of Data Manipulation",
+        "Version": "1.0.5",
+        "Authors@R": "\n    c(person(given = \"Hadley\",\n             family = \"Wickham\",\n             role = c(\"aut\", \"cre\"),\n             email = \"hadley@rstudio.com\",\n             comment = c(ORCID = \"0000-0003-4757-117X\")),\n      person(given = \"Romain\",\n             family = \"François\",\n             role = \"aut\",\n             comment = c(ORCID = \"0000-0002-2444-4226\")),\n      person(given = \"Lionel\",\n             family = \"Henry\",\n             role = \"aut\"),\n      person(given = \"Kirill\",\n             family = \"Müller\",\n             role = \"aut\",\n             comment = c(ORCID = \"0000-0002-1416-3412\")),\n      person(given = \"RStudio\",\n             role = c(\"cph\", \"fnd\")))",
+        "Description": "A fast, consistent tool for working with data frame\n    like objects, both in memory and out of memory.",
+        "License": "MIT + file LICENSE",
+        "URL": "https://dplyr.tidyverse.org, https://github.com/tidyverse/dplyr",
+        "BugReports": "https://github.com/tidyverse/dplyr/issues",
+        "Depends": "R (>= 3.3.0)",
+        "Imports": "ellipsis, generics, glue (>= 1.3.2), lifecycle (>= 1.0.0),\nmagrittr (>= 1.5), methods, R6, rlang (>= 0.4.10), tibble (>=\n2.1.3), tidyselect (>= 1.1.0), utils, vctrs (>= 0.3.5)",
+        "Suggests": "bench, broom, callr, covr, DBI, dbplyr (>= 1.4.3), knitr,\nLahman, lobstr, microbenchmark, nycflights13, purrr, rmarkdown,\nRMySQL, RPostgreSQL, RSQLite, testthat (>= 3.0.2), tidyr, withr",
+        "VignetteBuilder": "knitr",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1",
+        "Config/testthat/edition": "3",
+        "NeedsCompilation": "yes",
+        "Packaged": "2021-02-19 10:54:12 UTC; romainfrancois",
+        "Author": "Hadley Wickham [aut, cre] (<https://orcid.org/0000-0003-4757-117X>),\n  Romain François [aut] (<https://orcid.org/0000-0002-2444-4226>),\n  Lionel Henry [aut],\n  Kirill Müller [aut] (<https://orcid.org/0000-0002-1416-3412>),\n  RStudio [cph, fnd]",
+        "Maintainer": "Hadley Wickham <hadley@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-03-05 11:00:02 UTC",
+        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 07:02:00 UTC; unix"
       }
     },
     "ellipsis": {
@@ -296,6 +512,34 @@
         "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 07:07:15 UTC; unix"
       }
     },
+    "forcats": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "forcats",
+        "Title": "Tools for Working with Categorical Variables (Factors)",
+        "Version": "0.5.1",
+        "Authors@R": "\n    c(person(given = \"Hadley\",\n             family = \"Wickham\",\n             role = c(\"aut\", \"cre\"),\n             email = \"hadley@rstudio.com\"),\n      person(given = \"RStudio\",\n             role = c(\"cph\", \"fnd\")))",
+        "Description": "Helpers for reordering factor levels (including\n    moving specified levels to front, ordering by first appearance,\n    reversing, and randomly shuffling), and tools for modifying factor\n    levels (including collapsing rare levels into other, 'anonymising',\n    and manually 'recoding').",
+        "License": "MIT + file LICENSE",
+        "URL": "https://forcats.tidyverse.org,\nhttps://github.com/tidyverse/forcats",
+        "BugReports": "https://github.com/tidyverse/forcats/issues",
+        "Depends": "R (>= 3.2)",
+        "Imports": "ellipsis, magrittr, rlang, tibble",
+        "Suggests": "covr, dplyr, ggplot2, knitr, readr, rmarkdown, testthat",
+        "VignetteBuilder": "knitr",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-01-27 18:16:43 UTC; hadley",
+        "Author": "Hadley Wickham [aut, cre],\n  RStudio [cph, fnd]",
+        "Maintainer": "Hadley Wickham <hadley@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-01-27 19:50:02 UTC",
+        "Built": "R 4.0.1; ; 2021-04-03 07:16:09 UTC; unix"
+      }
+    },
     "fs": {
       "Source": "CRAN",
       "Repository": "https://rspm.merck.com/unrestricted/latest",
@@ -328,6 +572,33 @@
         "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 07:19:46 UTC; unix"
       }
     },
+    "generics": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "generics",
+        "Title": "Common S3 Generics not Provided by Base R Methods Related to\nModel Fitting",
+        "Version": "0.1.0",
+        "Authors@R": "\n    c(person(given = \"Hadley\",\n             family = \"Wickham\",\n             role = c(\"aut\", \"cre\"),\n             email = \"hadley@rstudio.com\"),\n      person(given = \"Max\",\n             family = \"Kuhn\",\n             role = \"aut\",\n             email = \"max@rstudio.com\"),\n      person(given = \"Davis\",\n             family = \"Vaughan\",\n             role = \"aut\",\n             email = \"davis@rstudio.com\"),\n      person(given = \"RStudio\",\n             role = \"cph\"))",
+        "Description": "In order to reduce potential package dependencies\n    and conflicts, generics provides a number of commonly used S3\n    generics.",
+        "License": "MIT + file LICENSE",
+        "URL": "https://generics.r-lib.org, https://github.com/r-lib/generics",
+        "BugReports": "https://github.com/r-lib/generics/issues",
+        "Depends": "R (>= 3.1)",
+        "Imports": "methods",
+        "Suggests": "covr, pkgload, testthat, tibble",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1",
+        "NeedsCompilation": "no",
+        "Packaged": "2020-10-30 18:38:40 UTC; hadley",
+        "Author": "Hadley Wickham [aut, cre],\n  Max Kuhn [aut],\n  Davis Vaughan [aut],\n  RStudio [cph]",
+        "Maintainer": "Hadley Wickham <hadley@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2020-10-31 06:10:15 UTC",
+        "Built": "R 4.0.1; ; 2021-04-03 07:26:09 UTC; unix"
+      }
+    },
     "glue": {
       "Source": "CRAN",
       "Repository": "https://rspm.merck.com/unrestricted/latest",
@@ -357,6 +628,36 @@
         "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-07-07 01:22:25 UTC; unix"
       }
     },
+    "haven": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "haven",
+        "Title": "Import and Export 'SPSS', 'Stata' and 'SAS' Files",
+        "Version": "2.3.1",
+        "Authors@R": "\n    c(person(given = \"Hadley\",\n             family = \"Wickham\",\n             role = c(\"aut\", \"cre\"),\n             email = \"hadley@rstudio.com\"),\n      person(given = \"Evan\",\n             family = \"Miller\",\n             role = c(\"aut\", \"cph\"),\n             comment = \"Author of included ReadStat code\"),\n      person(given = \"RStudio\",\n             role = c(\"cph\", \"fnd\")))",
+        "Description": "Import foreign statistical formats into R via the\n    embedded 'ReadStat' C library,\n    <https://github.com/WizardMac/ReadStat>.",
+        "License": "MIT + file LICENSE",
+        "URL": "http://haven.tidyverse.org, https://github.com/tidyverse/haven,\nhttps://github.com/WizardMac/ReadStat",
+        "BugReports": "https://github.com/tidyverse/haven/issues",
+        "Depends": "R (>= 3.2)",
+        "Imports": "forcats (>= 0.2.0), hms, methods, Rcpp (>= 0.11.4), readr (>=\n0.1.0), rlang (>= 0.4.0), tibble, tidyselect, vctrs (>= 0.3.0)",
+        "Suggests": "covr, fs, knitr, rmarkdown, testthat, pillar (>= 1.4.0), cli,\ncrayon",
+        "LinkingTo": "Rcpp",
+        "VignetteBuilder": "knitr",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.0",
+        "SystemRequirements": "GNU make",
+        "NeedsCompilation": "yes",
+        "Packaged": "2020-06-01 14:26:57 UTC; hadley",
+        "Author": "Hadley Wickham [aut, cre],\n  Evan Miller [aut, cph] (Author of included ReadStat code),\n  RStudio [cph, fnd]",
+        "Maintainer": "Hadley Wickham <hadley@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2020-06-01 15:00:06 UTC",
+        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 07:40:28 UTC; unix"
+      }
+    },
     "highr": {
       "Source": "CRAN",
       "Repository": "https://rspm.merck.com/unrestricted/latest",
@@ -382,6 +683,34 @@
         "Date/Publication": "2019-03-20 21:10:33 UTC",
         "Encoding": "UTF-8",
         "Built": "R 4.0.1; ; 2021-04-03 07:41:42 UTC; unix"
+      }
+    },
+    "hms": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "hms",
+        "Title": "Pretty Time of Day",
+        "Date": "2021-01-13",
+        "Version": "1.0.0",
+        "Authors@R": "c(\n    person(\"Kirill\", \"Müller\", role = c(\"aut\", \"cre\"), email = \"krlmlr+r@mailbox.org\"),\n    person(\"R Consortium\", role = \"fnd\"),\n    person(\"RStudio\", role = \"fnd\")\n    )",
+        "Description": "Implements an S3 class for storing and formatting time-of-day\n    values, based on the 'difftime' class.",
+        "Imports": "ellipsis, lifecycle, methods, pkgconfig, rlang, vctrs (>=\n0.2.1)",
+        "Suggests": "crayon, lubridate, pillar (>= 1.1.0), testthat (>= 3.0.0)",
+        "License": "MIT + file LICENSE",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "URL": "https://hms.tidyverse.org/, https://github.com/tidyverse/hms",
+        "BugReports": "https://github.com/tidyverse/hms/issues",
+        "RoxygenNote": "7.1.1.9000",
+        "Config/testthat/edition": "3",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-01-13 15:32:33 UTC; kirill",
+        "Author": "Kirill Müller [aut, cre],\n  R Consortium [fnd],\n  RStudio [fnd]",
+        "Maintainer": "Kirill Müller <krlmlr+r@mailbox.org>",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-01-13 17:30:02 UTC",
+        "Built": "R 4.0.1; ; 2021-04-03 07:43:06 UTC; unix"
       }
     },
     "htmltools": {
@@ -493,6 +822,35 @@
         "Built": "R 4.0.1; ; 2021-04-03 07:52:45 UTC; unix"
       }
     },
+    "lifecycle": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "lifecycle",
+        "Title": "Manage the Life Cycle of your Package Functions",
+        "Version": "1.0.0",
+        "Authors@R": "\n    c(person(given = \"Lionel\",\n             family = \"Henry\",\n             role = c(\"aut\", \"cre\"),\n             email = \"lionel@rstudio.com\"),\n      person(given = \"Hadley\",\n             family = \"Wickham\",\n             role = \"aut\",\n             email = \"hadley@rstudio.com\",\n             comment = c(ORCID = \"0000-0003-4757-117X\")),\n      person(given = \"RStudio\",\n             role = \"cph\"))",
+        "Description": "Manage the life cycle of your exported functions\n    with shared conventions, documentation badges, and user-friendly\n    deprecation warnings.",
+        "License": "MIT + file LICENSE",
+        "URL": "https://lifecycle.r-lib.org/, https://github.com/r-lib/lifecycle",
+        "BugReports": "https://github.com/r-lib/lifecycle/issues",
+        "Depends": "R (>= 3.3)",
+        "Imports": "glue, rlang (>= 0.4.10)",
+        "Suggests": "covr, crayon, knitr, rmarkdown, testthat (>= 3.0.1), tibble",
+        "VignetteBuilder": "knitr",
+        "Config/testthat/edition": "3",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-02-15 13:48:33 UTC; hadley",
+        "Author": "Lionel Henry [aut, cre],\n  Hadley Wickham [aut] (<https://orcid.org/0000-0003-4757-117X>),\n  RStudio [cph]",
+        "Maintainer": "Lionel Henry <lionel@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-02-15 15:20:06 UTC",
+        "Built": "R 4.0.1; ; 2021-04-03 07:57:17 UTC; unix"
+      }
+    },
     "magrittr": {
       "Source": "CRAN",
       "Repository": "https://rspm.merck.com/unrestricted/latest",
@@ -517,7 +875,7 @@
         "Maintainer": "Lionel Henry <lionel@rstudio.com>",
         "Repository": "RSPM",
         "Date/Publication": "2020-11-17 16:20:06 UTC",
-        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 08:00:44 UTC; unix"
+        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-07-07 01:22:32 UTC; unix"
       }
     },
     "markdown": {
@@ -572,6 +930,88 @@
         "Repository": "RSPM",
         "Date/Publication": "2021-02-13 07:30:02 UTC",
         "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 08:04:27 UTC; unix"
+      }
+    },
+    "pillar": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "pillar",
+        "Title": "Coloured Formatting for Columns",
+        "Version": "1.5.1",
+        "Authors@R": "\n    c(person(given = \"Kirill\",\n             family = \"M\\u00fcller\",\n             role = c(\"aut\", \"cre\"),\n             email = \"krlmlr+r@mailbox.org\"),\n      person(given = \"Hadley\",\n             family = \"Wickham\",\n             role = \"aut\"),\n      person(given = \"RStudio\",\n             role = \"cph\"))",
+        "Description": "Provides 'pillar' and 'colonnade' generics designed\n    for formatting columns of data using the full range of colours\n    provided by modern terminals.",
+        "License": "MIT + file LICENSE",
+        "URL": "https://pillar.r-lib.org/, https://github.com/r-lib/pillar",
+        "BugReports": "https://github.com/r-lib/pillar/issues",
+        "Imports": "cli, crayon (>= 1.3.4), ellipsis, fansi, lifecycle, rlang (>=\n0.3.0), utf8 (>= 1.1.0), utils, vctrs (>= 0.2.0)",
+        "Suggests": "bit64, debugme, DiagrammeR, knitr, lubridate, nycflights13,\npalmerpenguins, rmarkdown, survival, testthat (>= 3.0.2),\ntibble, withr",
+        "VignetteBuilder": "knitr",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1.9001",
+        "Config/testthat/edition": "3",
+        "Config/testthat/parallel": "true",
+        "Config/testthat/start-first": "format_multi_fuzz, format_multi_fuzz_2,\nformat_multi, ctl_colonnade, ctl_colonnade_1, ctl_colonnade_2",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-03-05 16:24:18 UTC; kirill",
+        "Author": "Kirill Müller [aut, cre],\n  Hadley Wickham [aut],\n  RStudio [cph]",
+        "Maintainer": "Kirill Müller <krlmlr+r@mailbox.org>",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-03-05 18:20:02 UTC",
+        "Built": "R 4.0.1; ; 2021-04-03 08:16:18 UTC; unix"
+      }
+    },
+    "pkgconfig": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "pkgconfig",
+        "Title": "Private Configuration for 'R' Packages",
+        "Version": "2.0.3",
+        "Author": "Gábor Csárdi",
+        "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
+        "Description": "Set configuration options on a per-package basis.\n    Options set by a given package only apply to that package,\n    other packages are unaffected.",
+        "License": "MIT + file LICENSE",
+        "LazyData": "true",
+        "Imports": "utils",
+        "Suggests": "covr, testthat, disposables (>= 1.0.3)",
+        "URL": "https://github.com/r-lib/pkgconfig#readme",
+        "BugReports": "https://github.com/r-lib/pkgconfig/issues",
+        "Encoding": "UTF-8",
+        "NeedsCompilation": "no",
+        "Packaged": "2019-09-22 08:42:40 UTC; gaborcsardi",
+        "Repository": "RSPM",
+        "Date/Publication": "2019-09-22 09:20:02 UTC",
+        "Built": "R 4.0.1; ; 2021-04-03 08:17:05 UTC; unix"
+      }
+    },
+    "purrr": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "purrr",
+        "Title": "Functional Programming Tools",
+        "Version": "0.3.4",
+        "Authors@R": "\n    c(person(given = \"Lionel\",\n             family = \"Henry\",\n             role = c(\"aut\", \"cre\"),\n             email = \"lionel@rstudio.com\"),\n      person(given = \"Hadley\",\n             family = \"Wickham\",\n             role = \"aut\",\n             email = \"hadley@rstudio.com\"),\n      person(given = \"RStudio\",\n             role = c(\"cph\", \"fnd\")))",
+        "Description": "A complete and consistent functional programming\n    toolkit for R.",
+        "License": "GPL-3 | file LICENSE",
+        "URL": "http://purrr.tidyverse.org, https://github.com/tidyverse/purrr",
+        "BugReports": "https://github.com/tidyverse/purrr/issues",
+        "Depends": "R (>= 3.2)",
+        "Imports": "magrittr (>= 1.5), rlang (>= 0.3.1)",
+        "Suggests": "covr, crayon, dplyr (>= 0.7.8), knitr, rmarkdown, testthat,\ntibble, tidyselect",
+        "VignetteBuilder": "knitr",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.0",
+        "NeedsCompilation": "yes",
+        "Packaged": "2020-04-16 21:54:48 UTC; hadley",
+        "Author": "Lionel Henry [aut, cre],\n  Hadley Wickham [aut],\n  RStudio [cph, fnd]",
+        "Maintainer": "Lionel Henry <lionel@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2020-04-17 12:10:07 UTC",
+        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 08:23:01 UTC; unix"
       }
     },
     "r2rtf": {
@@ -629,6 +1069,40 @@
         "Repository": "RSPM",
         "Date/Publication": "2021-01-31 05:40:02 UTC",
         "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 08:28:25 UTC; unix"
+      }
+    },
+    "readr": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "readr",
+        "Title": "Read Rectangular Text Data",
+        "Version": "1.4.0",
+        "Authors@R": "\n    c(person(given = \"Hadley\",\n             family = \"Wickham\",\n             role = \"aut\",\n             email = \"hadley@rstudio.com\"),\n      person(given = \"Jim\",\n             family = \"Hester\",\n             role = c(\"aut\", \"cre\"),\n             email = \"james.hester@rstudio.com\"),\n      person(given = \"Romain\",\n             family = \"Francois\",\n             role = \"ctb\"),\n      person(given = \"R Core Team\",\n             role = \"ctb\",\n             comment = \"Date time code adapted from R\"),\n      person(given = \"RStudio\",\n             role = c(\"cph\", \"fnd\")),\n      person(given = \"Jukka\",\n             family = \"Jylänki\",\n             role = c(\"ctb\", \"cph\"),\n             comment = \"grisu3 implementation\"),\n      person(given = \"Mikkel\",\n             family = \"Jørgensen\",\n             role = c(\"ctb\", \"cph\"),\n             comment = \"grisu3 implementation\"))",
+        "Description": "The goal of 'readr' is to provide a fast and\n    friendly way to read rectangular data (like 'csv', 'tsv', and 'fwf').\n    It is designed to flexibly parse many types of data found in the wild,\n    while still cleanly failing when data unexpectedly changes.",
+        "License": "GPL (>= 2) | file LICENSE",
+        "URL": "https://readr.tidyverse.org, https://github.com/tidyverse/readr",
+        "BugReports": "https://github.com/tidyverse/readr/issues",
+        "Depends": "R (>= 3.1)",
+        "Imports": "cli, clipr, crayon, hms (>= 0.4.1), methods, rlang, R6,\ntibble, utils, lifecycle",
+        "Suggests": "covr, curl, dplyr, knitr, rmarkdown, spelling, stringi,\ntestthat, xml2",
+        "LinkingTo": "BH, cpp11",
+        "VignetteBuilder": "knitr",
+        "Config/Needs/website": "pkgdown, tidyverse/tidytemplate",
+        "Config/testthat/edition": "3",
+        "Config/testthat/parallel": "false",
+        "Encoding": "UTF-8",
+        "Language": "en-US",
+        "RoxygenNote": "7.1.1",
+        "SystemRequirements": "C++11",
+        "RdMacros": "lifecycle",
+        "NeedsCompilation": "yes",
+        "Packaged": "2020-10-01 15:34:22 UTC; jhester",
+        "Author": "Hadley Wickham [aut],\n  Jim Hester [aut, cre],\n  Romain Francois [ctb],\n  R Core Team [ctb] (Date time code adapted from R),\n  RStudio [cph, fnd],\n  Jukka Jylänki [ctb, cph] (grisu3 implementation),\n  Mikkel Jørgensen [ctb, cph] (grisu3 implementation)",
+        "Maintainer": "Jim Hester <james.hester@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2020-10-05 08:50:03 UTC",
+        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 08:36:37 UTC; unix"
       }
     },
     "rlang": {
@@ -804,6 +1278,97 @@
         "Built": "R 4.0.1; ; 2021-07-30 02:08:27 UTC; unix"
       }
     },
+    "tibble": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "tibble",
+        "Title": "Simple Data Frames",
+        "Version": "3.1.0",
+        "Authors@R": "\n    c(person(given = \"Kirill\",\n             family = \"M\\u00fcller\",\n             role = c(\"aut\", \"cre\"),\n             email = \"krlmlr+r@mailbox.org\"),\n      person(given = \"Hadley\",\n             family = \"Wickham\",\n             role = \"aut\",\n             email = \"hadley@rstudio.com\"),\n      person(given = \"Romain\",\n             family = \"Francois\",\n             role = \"ctb\",\n             email = \"romain@r-enthusiasts.com\"),\n      person(given = \"Jennifer\",\n             family = \"Bryan\",\n             role = \"ctb\",\n             email = \"jenny@rstudio.com\"),\n      person(given = \"RStudio\",\n             role = \"cph\"))",
+        "Description": "Provides a 'tbl_df' class (the 'tibble') that\n    provides stricter checking and better formatting than the traditional\n    data frame.",
+        "License": "MIT + file LICENSE",
+        "URL": "https://tibble.tidyverse.org/, https://github.com/tidyverse/tibble",
+        "BugReports": "https://github.com/tidyverse/tibble/issues",
+        "Depends": "R (>= 3.1.0)",
+        "Imports": "ellipsis (>= 0.2.0), fansi (>= 0.4.0), lifecycle (>= 0.2.0),\nmagrittr, methods, pillar (>= 1.5.0), pkgconfig, rlang (>=\n0.4.3), utils, vctrs (>= 0.3.2)",
+        "Suggests": "bench, bit64, blob, cli, covr, crayon (>= 1.3.4), DiagrammeR,\ndplyr, evaluate, formattable, ggplot2, hms, htmltools, import,\nknitr, lubridate, mockr, nycflights13, purrr, rmarkdown,\ntestthat (>= 3.0.2), tidyr, withr",
+        "VignetteBuilder": "knitr",
+        "Encoding": "UTF-8",
+        "LazyData": "yes",
+        "RoxygenNote": "7.1.1.9001",
+        "Config/testthat/edition": "3",
+        "Config/testthat/parallel": "true",
+        "Config/testthat/start-first": "subsetting, as_tibble, add, invariants",
+        "NeedsCompilation": "yes",
+        "Packaged": "2021-02-25 06:57:46 UTC; kirill",
+        "Author": "Kirill Müller [aut, cre],\n  Hadley Wickham [aut],\n  Romain Francois [ctb],\n  Jennifer Bryan [ctb],\n  RStudio [cph]",
+        "Maintainer": "Kirill Müller <krlmlr+r@mailbox.org>",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-02-25 15:50:02 UTC",
+        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 09:17:16 UTC; unix"
+      }
+    },
+    "tidyr": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "tidyr",
+        "Title": "Tidy Messy Data",
+        "Version": "1.1.3",
+        "Authors@R": "\n    c(person(given = \"Hadley\",\n             family = \"Wickham\",\n             role = c(\"aut\", \"cre\"),\n             email = \"hadley@rstudio.com\"),\n      person(given = \"RStudio\",\n             role = \"cph\"))",
+        "Description": "Tools to help to create tidy data, where each\n    column is a variable, each row is an observation, and each cell\n    contains a single value.  'tidyr' contains tools for changing the\n    shape (pivoting) and hierarchy (nesting and 'unnesting') of a dataset,\n    turning deeply nested lists into rectangular data frames\n    ('rectangling'), and extracting values out of string columns. It also\n    includes tools for working with missing values (both implicit and\n    explicit).",
+        "License": "MIT + file LICENSE",
+        "URL": "https://tidyr.tidyverse.org, https://github.com/tidyverse/tidyr",
+        "BugReports": "https://github.com/tidyverse/tidyr/issues",
+        "Depends": "R (>= 3.1)",
+        "Imports": "dplyr (>= 0.8.2), ellipsis (>= 0.1.0), glue, lifecycle,\nmagrittr, purrr, rlang, tibble (>= 2.1.1), tidyselect (>=\n1.1.0), utils, vctrs (>= 0.3.6)",
+        "Suggests": "covr, data.table, jsonlite, knitr, readr, repurrrsive (>=\n1.0.0), rmarkdown, testthat (>= 3.0.0)",
+        "LinkingTo": "cpp11 (>= 0.2.6)",
+        "VignetteBuilder": "knitr",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1",
+        "SystemRequirements": "C++11",
+        "Config/testthat/edition": "3",
+        "NeedsCompilation": "yes",
+        "Packaged": "2021-03-02 14:39:15 UTC; hadley",
+        "Author": "Hadley Wickham [aut, cre],\n  RStudio [cph]",
+        "Maintainer": "Hadley Wickham <hadley@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-03-03 09:20:06 UTC",
+        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 09:17:28 UTC; unix"
+      }
+    },
+    "tidyselect": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "tidyselect",
+        "Title": "Select from a Set of Strings",
+        "Version": "1.1.0",
+        "Authors@R": "c(\n    person(\"Lionel\", \"Henry\", ,\"lionel@rstudio.com\", c(\"aut\", \"cre\")),\n    person(\"Hadley\", \"Wickham\", ,\"hadley@rstudio.com\", \"aut\"),\n    person(\"RStudio\", role = \"cph\")\n    )",
+        "Description": "A backend for the selecting functions of the 'tidyverse'.\n    It makes it easy to implement select-like functions in your own\n    packages in a way that is consistent with other 'tidyverse'\n    interfaces for selection.",
+        "Depends": "R (>= 3.2)",
+        "Imports": "ellipsis, glue (>= 1.3.0), purrr (>= 0.3.2), rlang (>= 0.4.6),\nvctrs (>= 0.2.2)",
+        "Suggests": "covr, crayon, dplyr, knitr, magrittr, rmarkdown, testthat (>=\n2.3.0), tibble (>= 2.1.3), withr",
+        "License": "GPL-3",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "ByteCompile": "true",
+        "RoxygenNote": "7.1.0",
+        "URL": "https://tidyselect.r-lib.org, https://github.com/r-lib/tidyselect",
+        "BugReports": "https://github.com/r-lib/tidyselect/issues",
+        "VignetteBuilder": "knitr",
+        "NeedsCompilation": "yes",
+        "Packaged": "2020-05-11 17:13:55 UTC; lionel",
+        "Author": "Lionel Henry [aut, cre],\n  Hadley Wickham [aut],\n  RStudio [cph]",
+        "Maintainer": "Lionel Henry <lionel@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2020-05-11 23:10:07 UTC",
+        "Built": "R 4.0.1; ; 2021-04-03 09:17:44 UTC; unix"
+      }
+    },
     "tinytex": {
       "Source": "CRAN",
       "Repository": "https://rspm.merck.com/unrestricted/latest",
@@ -829,6 +1394,33 @@
         "Repository": "RSPM",
         "Date/Publication": "2021-03-04 06:20:05 UTC",
         "Built": "R 4.0.1; ; 2021-04-03 09:19:53 UTC; unix"
+      }
+    },
+    "utf8": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "utf8",
+        "Title": "Unicode Text Processing",
+        "Version": "1.2.1",
+        "Authors@R": "\n    c(person(given = c(\"Patrick\", \"O.\"),\n             family = \"Perry\",\n             role = c(\"aut\", \"cph\")),\n      person(given = \"Kirill\",\n             family = \"M\\u00fcller\",\n             role = \"cre\",\n             email = \"krlmlr+r@mailbox.org\"),\n      person(given = \"Unicode, Inc.\",\n             role = c(\"cph\", \"dtc\"),\n             comment = \"Unicode Character Database\"))",
+        "Description": "Process and print 'UTF-8' encoded international\n    text (Unicode). Input, validate, normalize, encode, format, and\n    display.",
+        "License": "Apache License (== 2.0) | file LICENSE",
+        "URL": "https://ptrckprry.com/r-utf8/, https://github.com/patperry/r-utf8",
+        "BugReports": "https://github.com/patperry/r-utf8/issues",
+        "Depends": "R (>= 2.10)",
+        "Suggests": "covr, knitr, rlang, rmarkdown, testthat (>= 3.0.0)",
+        "VignetteBuilder": "knitr, rmarkdown",
+        "Config/testthat/edition": "3",
+        "Encoding": "UTF-8",
+        "LazyData": "Yes",
+        "NeedsCompilation": "yes",
+        "Packaged": "2021-03-12 03:51:46 UTC; kirill",
+        "Author": "Patrick O. Perry [aut, cph],\n  Kirill Müller [cre],\n  Unicode, Inc. [cph, dtc] (Unicode Character Database)",
+        "Maintainer": "Kirill Müller <krlmlr+r@mailbox.org>",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-03-12 21:30:02 UTC",
+        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 09:24:23 UTC; unix"
       }
     },
     "vctrs": {
@@ -950,7 +1542,7 @@
       "checksum": "2b33fa53ecef6313aa30a5c800098163"
     },
     "_book/index.html": {
-      "checksum": "f2aa501adf6943013dce027e678a1c50"
+      "checksum": "9a5f486db0d12cdc83b38613c847a47f"
     },
     "_book/intro.html": {
       "checksum": "b2c2b37b81c5c8584efe9f73f29d8f02"
@@ -1022,25 +1614,61 @@
       "checksum": "9369e8af117a23e43f53ab09ae5fdf7f"
     },
     "_bookdown.yml": {
-      "checksum": "9d84a2fda88214303168a7c73f04ce18"
+      "checksum": "8f06f239d277c23c211fbb26af9ea913"
     },
     "_output.yml": {
       "checksum": "47ed0097215ea0381a84c907f522b537"
+    },
+    "adam_data/adae.sas7bdat": {
+      "checksum": "0f8b432f089a75aee71c980fcd7c8f9f"
+    },
+    "adam_data/adlbc.sas7bdat": {
+      "checksum": "09fa39cedbcc3bcb3defeabdbbc99ed9"
+    },
+    "adam_data/adlbh.sas7bdat": {
+      "checksum": "d5a997cef8fe1a83e243fe508cbb6ebc"
+    },
+    "adam_data/adlbhy.sas7bdat": {
+      "checksum": "7c17a249e2c7c0aacbd9d3778dd5c382"
+    },
+    "adam_data/adqsadas.sas7bdat": {
+      "checksum": "8ce022663c0f4d17330b954d678a3a2e"
+    },
+    "adam_data/adqscibc.sas7bdat": {
+      "checksum": "6762a4cc97b8503c309791c21427e5b2"
+    },
+    "adam_data/adqsnpix.sas7bdat": {
+      "checksum": "9ccac393db5dac59f9e4c08cd0d34080"
+    },
+    "adam_data/adsl.sas7bdat": {
+      "checksum": "51abb0d68fd9f629f5c2a3685382da1b"
+    },
+    "adam_data/adtte.sas7bdat": {
+      "checksum": "7a311cf74f1ddf70eca03fed7dbddaa9"
+    },
+    "adam_data/advs.sas7bdat": {
+      "checksum": "de2ace78c29a122929c9f1c9cefa5a94"
     },
     "book.bib": {
       "checksum": "b4a54042e402828e8c22909eca5dbc75"
     },
     "ectd.html": {
-      "checksum": "8fa268d2d212d7632d7154565e719e1e"
+      "checksum": "927837e5e92b41487d618b896d88c7a2"
+    },
+    "file542e3fca7e72.html": {
+      "checksum": "9c02f40b7f8c1dff2f293b1cffa9fd7d"
+    },
+    "file542e7800130d.html": {
+      "checksum": "1ac5b4927e8aa906fba19168569e14c8"
     },
     "images/cover.jpg": {
       "checksum": "2b33fa53ecef6313aa30a5c800098163"
     },
     "index.Rmd": {
-      "checksum": "539dd3534dad93881bf11c47768d01a9"
+      "checksum": "8c87e48b12d140b9b1a27759bdceb453"
     },
     "intro.html": {
-      "checksum": "5594bc31eef68944dae3a4acc00a07a2"
+      "checksum": "caefe52e5dbe6cc9b42bc42be1c6b0e8"
     },
     "intro.Rmd": {
       "checksum": "8a4b85f6691782b0140eb778271217c9"
@@ -1120,8 +1748,14 @@
     "packages.bib": {
       "checksum": "cf57eae52cb4a9ef3ec9d38cc384f278"
     },
+    "packrat/desc/assertthat": {
+      "checksum": "2568c3d8ab6911f77049ad820b0c99b8"
+    },
     "packrat/desc/base64enc": {
       "checksum": "e30c83f776d693d2bb631ca2fa1d8346"
+    },
+    "packrat/desc/BH": {
+      "checksum": "2014af9d5a943446954c08bc8e90ac1a"
     },
     "packrat/desc/bookdown": {
       "checksum": "3b6ef501acc8fcb842337d450ba4d84a"
@@ -1132,11 +1766,26 @@
     "packrat/desc/bslib": {
       "checksum": "4bc2e8c730a8bd1b93d2c7651ab77aa3"
     },
+    "packrat/desc/cli": {
+      "checksum": "7a50c89c1fd32d1cc1ce453b659d3f4b"
+    },
+    "packrat/desc/clipr": {
+      "checksum": "8cf341bedd61c7c3ae66071f3063bdc6"
+    },
+    "packrat/desc/cpp11": {
+      "checksum": "e2c4dcbef07d5fa6c88f1b9401efad3f"
+    },
+    "packrat/desc/crayon": {
+      "checksum": "f43d6ca9c4a891bf473df580f7ccc2ce"
+    },
     "packrat/desc/digest": {
       "checksum": "2ba522bf7aefb69942d603d0936fa3b4"
     },
     "packrat/desc/downlit": {
       "checksum": "fd50c064234996018952987bdeb470a9"
+    },
+    "packrat/desc/dplyr": {
+      "checksum": "353cfc34c0fc8ecc9516f0dca6746d50"
     },
     "packrat/desc/ellipsis": {
       "checksum": "3dad263b3c5f6682661bf66a0ffb6e0e"
@@ -1147,17 +1796,29 @@
     "packrat/desc/fansi": {
       "checksum": "264f83b33ebec49e1b90b7e3bb770904"
     },
+    "packrat/desc/forcats": {
+      "checksum": "247eed85645ba709ee4e6a6839ab0cc4"
+    },
     "packrat/desc/Formula": {
       "checksum": "c593394a0d89167877df28daa5cba119"
     },
     "packrat/desc/fs": {
       "checksum": "344e90f8d1a7ef50819e205e1bf7db60"
     },
+    "packrat/desc/generics": {
+      "checksum": "1f3cf22cecdfefbe14ff0d1a7e456cb3"
+    },
     "packrat/desc/glue": {
       "checksum": "d442f9de4f921ef58ec89f528b6db73a"
     },
+    "packrat/desc/haven": {
+      "checksum": "78a7e7be7bc84bd595930cbf01734300"
+    },
     "packrat/desc/highr": {
       "checksum": "9ee3d9ced153f78a0ee696052c0c3364"
+    },
+    "packrat/desc/hms": {
+      "checksum": "ad43cbc5259b811672d4795bf5ad4383"
     },
     "packrat/desc/htmltools": {
       "checksum": "8551cc7662ab63e00c706d2bfe07bbdd"
@@ -1171,14 +1832,26 @@
     "packrat/desc/knitr": {
       "checksum": "87f04ac2b855e5e2aaa2b20fe3d65ee1"
     },
+    "packrat/desc/lifecycle": {
+      "checksum": "ce2f1eecc20f67fc460785891df26552"
+    },
     "packrat/desc/magrittr": {
-      "checksum": "e39cfdbd8337f704a0f567fcfabf6480"
+      "checksum": "4a9217809f06de2824035e8c5835d4fa"
     },
     "packrat/desc/markdown": {
       "checksum": "ee8793c3fd14361f0c9615a1a6a9c25a"
     },
     "packrat/desc/mime": {
       "checksum": "0a33da30eac47200f6d9b806da704144"
+    },
+    "packrat/desc/pillar": {
+      "checksum": "a6f83fae6d8d9e5ac6a0bdceb82cb31e"
+    },
+    "packrat/desc/pkgconfig": {
+      "checksum": "5eaaacf524f5aece47af596f08b61585"
+    },
+    "packrat/desc/purrr": {
+      "checksum": "0797bd94cc168674ee1ac2c45679890f"
     },
     "packrat/desc/r2rtf": {
       "checksum": "fb9cab092f24853c3606568c9d87f9c6"
@@ -1188,6 +1861,12 @@
     },
     "packrat/desc/rappdirs": {
       "checksum": "4bb4949bf2b7fd182b3bdccef7cc23cf"
+    },
+    "packrat/desc/Rcpp": {
+      "checksum": "04c73dde52819ab2e17a34fee3414a5a"
+    },
+    "packrat/desc/readr": {
+      "checksum": "55754c8fe3626e4c7d227f791e5bf8c8"
     },
     "packrat/desc/rlang": {
       "checksum": "24b8a6152d626d7a2964b206a2ea47df"
@@ -1207,8 +1886,20 @@
     "packrat/desc/table1": {
       "checksum": "df691a0377243669806080bf770396d7"
     },
+    "packrat/desc/tibble": {
+      "checksum": "42550ab2b98789c2d7639e2952e6f9e2"
+    },
+    "packrat/desc/tidyr": {
+      "checksum": "584e8ceece3cc30f2098e06da9a91fd0"
+    },
+    "packrat/desc/tidyselect": {
+      "checksum": "1add6d37baa39d80d688e329f96bf420"
+    },
     "packrat/desc/tinytex": {
       "checksum": "13a6327a6eb3137e6f0822b86eeed0b9"
+    },
+    "packrat/desc/utf8": {
+      "checksum": "add530c01d54a90bfcbb920ca82656f7"
     },
     "packrat/desc/vctrs": {
       "checksum": "f69ce7c0143c36e16f1bb7c9bf843014"
@@ -1223,16 +1914,16 @@
       "checksum": "e8d47ded9c196784ec5ce07f4f92e492"
     },
     "packrat/packrat.lock": {
-      "checksum": "1bc363a44fb2418013f4c880ae6b3a36"
+      "checksum": "8cc0f2b39ef56236abc0b719448c0936"
     },
     "preamble.tex": {
       "checksum": "1fd1a3c59e951f9f95b6b39785d600ff"
     },
     "project-folder.html": {
-      "checksum": "bdb5d742e6544ebae1d76a18d695a5f0"
+      "checksum": "ae0b165e3a28eb03af34550153389c76"
     },
     "project-management.html": {
-      "checksum": "4f8925cd864a4f7ba253433bece71d2b"
+      "checksum": "03448d17c790c8a1c7a3d8c421ca4b62"
     },
     "project.Rmd": {
       "checksum": "c3b935347c306de860fc22e1308d6db6"
@@ -1241,34 +1932,52 @@
       "checksum": "10789bdc7c7347beafd0e709e96eea5a"
     },
     "reference.html": {
-      "checksum": "300efefed6fee5f421ed997933adc2d7"
+      "checksum": "115ebec8bade69997955dde0b7aa6711"
     },
     "reference.Rmd": {
       "checksum": "a7a7929587c58ed042e53d61ab67f28f"
     },
     "reporting.html": {
-      "checksum": "99758ecbbc0e27d74c274a845a969cfe"
+      "checksum": "058f7dc0dafb7f43a7f62610f2e398f5"
     },
     "style.css": {
       "checksum": "0d47cd4731c8a71e1c6e712d28285b6d"
     },
     "submission-package.html": {
-      "checksum": "5c5fa1a822d466c0db495d8bed63a829"
+      "checksum": "8f2dbd2e44c752ba87ca29e10739ee1e"
     },
     "submission.Rmd": {
       "checksum": "60b9f7e4725aafcfb720c71c68cc569d"
     },
+    "tlf-baseline.Rmd": {
+      "checksum": "67530581e1be581eec7e762ce68eeefa"
+    },
+    "tlf-disposition.Rmd": {
+      "checksum": "2b7976c2dfa951ccf6cdec67c69e5e5d"
+    },
     "tlf.Rmd": {
-      "checksum": "f1531c31f219c22e69d7a8437b1df70d"
+      "checksum": "dfc5237c6a525ef40686cd4173af9f94"
     },
     "tlf/bs-1.pdf": {
-      "checksum": "9369e8af117a23e43f53ab09ae5fdf7f"
+      "checksum": "2d5ad7144cf6eac7bbc4b59a187ae04b"
     },
     "tlf/bs-1.rtf": {
-      "checksum": "d631fc222048a10ed1d6a07647caca94"
+      "checksum": "c95a18fbe2a546a409f7ff6cb560659f"
+    },
+    "tlf/tbl_disp1.pdf": {
+      "checksum": "1dc56a24d93987db715bd7b6f6cd8e52"
+    },
+    "tlf/tbl_disp1.rtf": {
+      "checksum": "92735b9d4481add925bbfc741636605b"
+    },
+    "tlf/tbl_disp2.pdf": {
+      "checksum": "665d6e7d55f3e7aa0d43ea6a306edcaa"
+    },
+    "tlf/tbl_disp2.rtf": {
+      "checksum": "b24b8e23097b4153490242d5ae410c8b"
     },
     "welcome.html": {
-      "checksum": "1543e7905a23aacc0b9c57ba493877ad"
+      "checksum": "cb489abb58222c82da331a02e376602a"
     }
   },
   "users": null

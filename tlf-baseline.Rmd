@@ -1,0 +1,30 @@
+## Table for Baseline Characteristics
+
+```{r}
+library(table1)
+library(r2rtf)
+data(r2rtf_adsl)
+
+tbl <- table1(~ SEX + AGE + RACE | TRT01P, data = r2rtf_adsl)
+tbl
+```
+
+```{r}
+tbl <- tbl %>% as.data.frame() %>% 
+               as_tibble() %>% 
+               mutate( across(everything(), 
+                        ~ stringr::str_replace_all(.x, intToUtf8(160), " ") ) 
+                      )
+```
+
+```{r}
+tbl %>% 
+      rtf_body() %>% 
+      rtf_encode() %>% 
+      write_rtf("tlf/bs-1.rtf")
+```
+
+```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("tlf/bs-1.pdf")
+```
+

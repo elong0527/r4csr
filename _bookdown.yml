@@ -15,6 +15,8 @@ rmd_files: [
   "intro.Rmd",
   
   "tlf.Rmd",
+  "tlf-disposition",
+  "tlf-baseline",
   
   "project.Rmd",
   

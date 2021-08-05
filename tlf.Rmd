@@ -38,31 +38,25 @@ that is commonly used in a CSR. The examples are in compliance of
 
 These TLFs are typically used to summarize efficacy and safety statistical analysis results of a drug (or treatment).  
 
+## Structure and Content
 
-## Table for Baseline Characteristics
+In the rest of this chapter, we are following the [ICH E3 guidance](https://www.ich.org/page/efficacy-guidelines) on 
+structure and content of clincial study reports. 
 
-```{r}
-library(table1)
-library(r2rtf)
-data(r2rtf_adsl)
+In a CSR, most of TLFs are located in 
 
-tbl <- table1(~ SEX + AGE + RACE | TRT01P, data = r2rtf_adsl)
-tbl
-```
+- Section 10: Study patients 
+- Section 11: Efficacy evaluation
+- Section 12: Safety evaluation 
+- Section 14: Tables, Figures and Graphs referred to but not included in the text
+- Section 16: Appendices
 
-```{r}
-tbl %>% as.data.frame() %>% 
-        rtf_body() %>% 
-        rtf_encode() %>% 
-        write_rtf("tlf/bs-1.rtf")
-```
+## Datasets
 
-```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
-knitr::include_graphics("tlf/bs-1.pdf")
-```
+We used public available CDISC pilot [study data located at CDISC Bitbucket repository](https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse/updated-pilot-submission-package/900172/m5/datasets/cdiscpilot01/analysis/adam/datasets).
 
+For simplicity, we have downloaded all these datasets into `adam_data` folder of 
+this project and transfer them from `.xpt` format to `sas7bdat` format. 
 
-
-
-
+The dataset structure is following [CDISC Analysis Data Model (ADaM)](https://www.cdisc.org/standards/foundational/adam). 
 

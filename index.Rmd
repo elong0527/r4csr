@@ -3,7 +3,7 @@ title: "R for Clinical Study Reports and Submission"
 author: ["Yilong Zhang"]
 knit: "bookdown::render_book"
 description: >
-  This book will teach you how to prepare clinical statistiacal report and submit to regulatory agency, 
+  This book will teach you how to prepare tables, listings and figures for clinical study report and submit to regulatory agency, 
   the essential part of clinical trial development. 
 
 site: bookdown::bookdown_site
@@ -21,8 +21,15 @@ library(xml2)
 library(downlit)
 ```
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+```
+
 ```{r, eval = FALSE, include=FALSE}
-r2rtf:::rtf_convert_format("tlf/bs-1.rtf", output_dir = "tlf")
+r2rtf:::rtf_convert_format(list.files("tlf", pattern = ".rtf", full.names = TRUE), output_dir = "tlf")
+```
+
+```{r, eval = FALSE, include=FALSE}
 rsconnect::writeManifest(appPrimaryDoc = "index.Rmd", contentCategory = "site")
 ```
 

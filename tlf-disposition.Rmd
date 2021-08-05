@@ -1,0 +1,122 @@
+## Table for Study Patients
+
+In section 10, study patients of a CSR, we need to summarize accounting 
+of all patients who entered the study. 
+
+```{r}
+library(haven)     # Read SAS data
+library(dplyr)     # Manipulate data
+library(tidyr)     # Manipulate data
+library(r2rtf)     # Reporting in RTF format
+```
+
+The first step is to read relevant datasets into R. 
+For disposition table, all the information is saved in the ADSL dataset.
+We can use `haven` package to read the dataset.
+
+```{r}
+adsl <- read_sas("adam_data/adsl.sas7bdat")
+```
+
+We illustrate how to prepare a report data for a simple disposition of patients table using variables below: 
+
+- USUBJID: Unique subject identifier 
+- TRT01P: Planed treatment
+- TRT01PN: Planned treatment encoding
+- DISCONFL: Discontinued from study flag
+- DCREASCD: Discontinued from study reason 
+
+```{r}
+adsl %>% select(USUBJID, TRT01P, TRT01PN, DISCONFL, DCREASCD) %>% 
+         head()
+```
+```{r}
+library(tidyr)
+```
+
+```{r}
+n_rand <- adsl %>% group_by(TRT01PN) %>%
+                   summarize(n = n()) %>% 
+                   pivot_wider(names_from = TRT01PN, names_prefix = "n_", values_from = n) %>% 
+                   mutate(row = "Patients in population")
+n_rand
+```
+
+```{r}
+n_disc <- adsl %>% group_by(TRT01PN) %>%
+                   summarize(n = sum(DISCONFL == "Y"), 
+                             pct = formatC(n / n() * 100, digits = 1, format = "f", width = 5)) %>% 
+                   pivot_wider(names_from = TRT01PN, values_from = c(n, pct) ) %>% 
+                   mutate(row = "Discontinued")
+n_disc
+```
+
+```{r}
+n_reason <- adsl %>% group_by(TRT01PN) %>%
+                     mutate(n_total = n()) %>%
+                     group_by(TRT01PN, DCREASCD) %>%
+                     summarize(n = n(),
+                               pct = formatC(n / unique(n_total) * 100, digits = 1, format = "f", width = 5)) %>% 
+                     pivot_wider(id_cols = DCREASCD, names_from = TRT01PN, 
+                                 values_from = c(n, pct), values_fill = list(n = 0, pct = "  0.0") ) %>% 
+                     rename(row = DCREASCD)
+n_reason
+```
+
+```{r}
+n_complete <- n_reason %>% filter(row == "Completed")
+n_complete
+```
+
+```{r}
+n_reason   <- n_reason %>% filter(row != "Completed") %>% 
+                  mutate(row = paste0("    ", row))
+n_reason
+```
+
+```{r}
+tbl_disp <- bind_rows(n_rand, n_complete, n_disc, n_reason) %>% 
+            select(row, ends_with(c("_0", "_54", "_81")))
+
+tbl_disp
+```
+
+```{r}
+tbl_disp %>% rtf_body() %>% 
+             rtf_encode() %>% 
+             write_rtf("tlf/tbl_disp1.rtf")
+```
+
+```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("tlf/tbl_disp1.pdf")
+```
+
+```{r}
+adsl %>% select(TRT01P, TRT01PN) %>% 
+         unique() %>% 
+         arrange(TRT01PN)
+```
+
+```{r}
+tbl_disp %>% rtf_title("Disposition of Patients")
+  
+             rtf_colheader(" | Placebo | Xanomeline Low Dose| Xanomeline High Dose", 
+                           col_rel_width = c(3, rep(2,3)) ) %>%
+  
+             rtf_colheader(" | n | (%) | n | (%) | n | (%)",
+                           col_rel_width = c(3, rep(c(0.7, 1.3),3)),
+                           border_top = c("", rep("single", 6)),
+                           border_left = c("single", rep(c("single",""), 3))) %>% 
+
+             rtf_body(col_rel_width      = c(3, rep(c(0.7, 1.3),3)),
+                      text_justification = c("l", rep("c",6)),
+                      border_left        = c("single", rep(c("single",""), 3))) %>%
+  
+             rtf_encode() %>% 
+  
+             write_rtf("tlf/tbl_disp2.rtf")
+```
+
+```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("tlf/tbl_disp2.pdf")
+```
