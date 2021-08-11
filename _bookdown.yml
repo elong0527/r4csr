@@ -18,7 +18,8 @@ rmd_files: [
   "tlf-disposition.Rmd",
   "tlf-baseline.Rmd",
   
-  "project.Rmd",
+  "project-folder.Rmd",
+  "project-management.Rmd",
   
   "submission.Rmd",
   

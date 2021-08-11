@@ -1,0 +1,29 @@
+# Project Management 
+
+- ToDo 
+
+A clearly defined software development lifecycle (SDLC) for the programming of A&R deliverables is crucial to manage all
+the outputs and to facilitate the development of the deliverables.
+A typical SDLC for the A&R deliverables is comprised of 4 stages: define, develop, validate and operations.
+The define stage is the most critical stage in the lifecycle as the requirements for all A&R deliverables are
+gathered and documented. Validation plan for the deliverables is also planned and documented at this
+stage. After the define stage is complete, the programming development occurs in the develop stage. The
+programs completed in the develop stage are then validated according to the validation plan in the validate
+stage. Test runs of the completed programs are conducted to ensure quality of the deliverables.
+The development of programs and their associated validation is usually carried out in a dedicated test area
+in the computing platform. After the validation stage is completed, the operations stage commences with
+the promotion of validated programs to the production area in the computing platform. The promoted
+programs are then executed in the production area with production data to generate the final version of the
+deliverables. The deliverables are then handed over to the end customer for review. Any changes in
+requirements of the deliverables at this stage based on end customer review, results in the deliverable
+being processed through the 4 stages of SDLC again, starting with the changes to the specifications in the
+define stage.
+Several different software and programming languages have used in analyzing clinical trial data, with R
+being among them. R is a popular programming language and an open-source software environment. R
+has been widely used in various fields of data analytics for statistical analyses. There is a growing interest
+within the pharmaceutical industry in analyzing clinical trial data using R and its associated software under
+a regulatory environment. However, there is a gap in defining the appropriate SDLC to complete typical
+A&R deliverables and ensure regulatory compliance. 
+ToDo:
+
+- add mkstdpkg/mkdev/mkuse related information.

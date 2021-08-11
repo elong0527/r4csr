@@ -1536,16 +1536,16 @@
   },
   "files": {
     "_book/ectd.html": {
-      "checksum": "4b080655c1cd8105a255735ec64d1695"
+      "checksum": "a732379c34e1e448d93282938e49edfa"
     },
     "_book/images/cover.jpg": {
       "checksum": "2b33fa53ecef6313aa30a5c800098163"
     },
     "_book/index.html": {
-      "checksum": "9a5f486db0d12cdc83b38613c847a47f"
+      "checksum": "89fe2c024a0cca1b64c25c576b277869"
     },
     "_book/intro.html": {
-      "checksum": "b2c2b37b81c5c8584efe9f73f29d8f02"
+      "checksum": "9412f395d42fb1a8230e97288ecfe158"
     },
     "_book/libs/bootstrap-4.5.3/bootstrap.bundle.min.js": {
       "checksum": "7f389f5d2622ce2090eca7c36bcb90bc"
@@ -1589,32 +1589,47 @@
     "_book/libs/table1-1.0/table1_defaults.css": {
       "checksum": "fdf39717a9efdce3be27f4a9d8ec9051"
     },
+    "_book/overview.html": {
+      "checksum": "735571cb72d3dfc5e0fe765ff96456e8"
+    },
     "_book/project-folder.html": {
-      "checksum": "6cae9596da6c1026c67d157ddcad4566"
+      "checksum": "ce369eaade637d8de02a6cfbdb3d16c4"
     },
     "_book/project-management.html": {
-      "checksum": "d56f13a2bee47649ab156a2e0638e4ef"
+      "checksum": "b9a9ec00c8a24942f6548740e4eb6d9c"
     },
     "_book/reference-keys.txt": {
-      "checksum": "d59d5935cd2d9ec6cf3c113ccc667561"
+      "checksum": "38a29747bb2db78b8f5c4986510ede1a"
     },
     "_book/reference.html": {
-      "checksum": "1a3a27b1c0b9851efeda00081932fc77"
+      "checksum": "636af06a4e91acd87a648d5ff000c4e2"
     },
     "_book/reporting.html": {
-      "checksum": "a51750cb36d7a6d3e962b718d3e4d4d3"
+      "checksum": "1683dc666ec7fcbe8b7fa426f3e8922d"
     },
     "_book/search.json": {
-      "checksum": "6cbbf91e11fdde1079dbfee847c71770"
+      "checksum": "453ce9505fb40ff472f8796156e815cd"
     },
     "_book/submission-package.html": {
-      "checksum": "1b05db229f5ce24a312b8ca69d7a2b92"
+      "checksum": "1b526241e18bf2deafb8b03e394b0813"
+    },
+    "_book/table-for-baseline-characteristics.html": {
+      "checksum": "41291b6ea0c41643c70964878875791a"
+    },
+    "_book/table-for-study-patients.html": {
+      "checksum": "0c8cc9b5827c455e55dda6402ef2c6e1"
     },
     "_book/tlf/bs-1.pdf": {
-      "checksum": "9369e8af117a23e43f53ab09ae5fdf7f"
+      "checksum": "ed9e2ec27865a1e9481d4d22a20fed5a"
+    },
+    "_book/tlf/tbl_disp1.pdf": {
+      "checksum": "1df1194d60a7ba8082b4c2c01c1d4075"
+    },
+    "_book/tlf/tbl_disp2.pdf": {
+      "checksum": "51d551e33212f25b323d487a405020b2"
     },
     "_bookdown.yml": {
-      "checksum": "8f06f239d277c23c211fbb26af9ea913"
+      "checksum": "9bbf4f96af76598ab765168babf275f4"
     },
     "_output.yml": {
       "checksum": "47ed0097215ea0381a84c907f522b537"
@@ -1650,16 +1665,10 @@
       "checksum": "de2ace78c29a122929c9f1c9cefa5a94"
     },
     "book.bib": {
-      "checksum": "b4a54042e402828e8c22909eca5dbc75"
+      "checksum": "2b4f6de1e031a12400b6d81c89e993b0"
     },
     "ectd.html": {
-      "checksum": "927837e5e92b41487d618b896d88c7a2"
-    },
-    "file542e3fca7e72.html": {
-      "checksum": "9c02f40b7f8c1dff2f293b1cffa9fd7d"
-    },
-    "file542e7800130d.html": {
-      "checksum": "1ac5b4927e8aa906fba19168569e14c8"
+      "checksum": "e6ea5355965705017c0e1b50906c33a4"
     },
     "images/cover.jpg": {
       "checksum": "2b33fa53ecef6313aa30a5c800098163"
@@ -1668,7 +1677,7 @@
       "checksum": "8c87e48b12d140b9b1a27759bdceb453"
     },
     "intro.html": {
-      "checksum": "caefe52e5dbe6cc9b42bc42be1c6b0e8"
+      "checksum": "7a9d91874eff054ac3cb85799a34885a"
     },
     "intro.Rmd": {
       "checksum": "8a4b85f6691782b0140eb778271217c9"
@@ -1744,6 +1753,9 @@
     },
     "libs/jquery-3.5.1/LICENSE.txt": {
       "checksum": "de877aa6d744cc160ff41c26a8e4811f"
+    },
+    "overview.html": {
+      "checksum": "ec9553eaa7d5291e6df7f237a9b79b41"
     },
     "packages.bib": {
       "checksum": "cf57eae52cb4a9ef3ec9d38cc384f278"
@@ -1920,64 +1932,70 @@
       "checksum": "1fd1a3c59e951f9f95b6b39785d600ff"
     },
     "project-folder.html": {
-      "checksum": "ae0b165e3a28eb03af34550153389c76"
+      "checksum": "22bf0320d5832862cd4b9de3d6aa7616"
+    },
+    "project-folder.Rmd": {
+      "checksum": "75812d130e7ca55daf7d0223590498b3"
     },
     "project-management.html": {
-      "checksum": "03448d17c790c8a1c7a3d8c421ca4b62"
+      "checksum": "96d8946cfcefa0f1cb4e8b4413aa59cf"
     },
-    "project.Rmd": {
-      "checksum": "c3b935347c306de860fc22e1308d6db6"
+    "project-management.Rmd": {
+      "checksum": "080e4bf46f42bf311ef478c5f237454f"
     },
     "README.md": {
       "checksum": "10789bdc7c7347beafd0e709e96eea5a"
     },
     "reference.html": {
-      "checksum": "115ebec8bade69997955dde0b7aa6711"
+      "checksum": "907ef80d46245af9f33b35ffac718bf8"
     },
     "reference.Rmd": {
       "checksum": "a7a7929587c58ed042e53d61ab67f28f"
-    },
-    "reporting.html": {
-      "checksum": "058f7dc0dafb7f43a7f62610f2e398f5"
     },
     "style.css": {
       "checksum": "0d47cd4731c8a71e1c6e712d28285b6d"
     },
     "submission-package.html": {
-      "checksum": "8f2dbd2e44c752ba87ca29e10739ee1e"
+      "checksum": "f20854c8b0d1b8f9ce6d4a80b107f98d"
     },
     "submission.Rmd": {
       "checksum": "60b9f7e4725aafcfb720c71c68cc569d"
     },
+    "table-for-baseline-characteristics.html": {
+      "checksum": "c1b367f249498e18d1452fdc190da6ca"
+    },
+    "table-for-study-patients.html": {
+      "checksum": "1e285a712ab7c70e1ef4167c3dea3c23"
+    },
     "tlf-baseline.Rmd": {
-      "checksum": "67530581e1be581eec7e762ce68eeefa"
+      "checksum": "fb9823cba6ea42ebb82b09ff83741079"
     },
     "tlf-disposition.Rmd": {
-      "checksum": "2b7976c2dfa951ccf6cdec67c69e5e5d"
+      "checksum": "914a967d078751f7c6ddb454ba6871e3"
     },
-    "tlf.Rmd": {
-      "checksum": "dfc5237c6a525ef40686cd4173af9f94"
+    "tlf-overview.Rmd": {
+      "checksum": "010078fbff890b3d3c5d56e0737c8f44"
     },
     "tlf/bs-1.pdf": {
-      "checksum": "2d5ad7144cf6eac7bbc4b59a187ae04b"
+      "checksum": "ed9e2ec27865a1e9481d4d22a20fed5a"
     },
     "tlf/bs-1.rtf": {
-      "checksum": "c95a18fbe2a546a409f7ff6cb560659f"
+      "checksum": "70e05f8964dd121fb18fadfde9b7f285"
     },
     "tlf/tbl_disp1.pdf": {
-      "checksum": "1dc56a24d93987db715bd7b6f6cd8e52"
+      "checksum": "1df1194d60a7ba8082b4c2c01c1d4075"
     },
     "tlf/tbl_disp1.rtf": {
-      "checksum": "92735b9d4481add925bbfc741636605b"
+      "checksum": "54bdb4ad02da0021a873bc92fed32125"
     },
     "tlf/tbl_disp2.pdf": {
-      "checksum": "665d6e7d55f3e7aa0d43ea6a306edcaa"
+      "checksum": "51d551e33212f25b323d487a405020b2"
     },
     "tlf/tbl_disp2.rtf": {
-      "checksum": "b24b8e23097b4153490242d5ae410c8b"
+      "checksum": "0d2294a27bbeaf83b401b181a8cf1ad7"
     },
     "welcome.html": {
-      "checksum": "cb489abb58222c82da331a02e376602a"
+      "checksum": "b7b09766cc2bb32546fd1a15cf615665"
     }
   },
   "users": null

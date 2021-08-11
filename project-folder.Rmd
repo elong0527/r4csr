@@ -1,0 +1,162 @@
+# (PART) Clinical Trial Project {-}
+
+# Project Folder
+
+In a late-stage clinical trial, the number of A&R deliverables can easily be in the hundreds. 
+For an organization, it is possible to have multiple ongoing clinical trials in a clincial program. 
+
+A clearly defined project folder structure can have many benefits to 
+clinical development teams in an organization. 
+Specifically a well defined project folder can achieve:
+
+- Consistency
+- Reproducibility
+- Automation
+- Compliance
+
+## Consistency 
+
+For consistency, a well defined folder structure with potential templates
+ensures project teams organize A&R work consistently across multiple projects. 
+Consistent folder structure also reduce communication cost between study team members 
+and enhances the transparency of projects.
+
+For R user, you already benefit from a well defined and consistent folder structure. 
+That is the R package folder structure. 
+Every R package developer is required to follow the same convention to organize their R
+functions, before the function package can be disseminated through the Comprehensive R Archive Network
+(CRAN). As a user, you can easily install and user those packages after installing from CRAN. 
+
+We recommend to also use R package folder structure to organize analysis scripts 
+for clincial trial development. 
+Using the R package folder structure to streamline data analysis work has been proposed 
+(@marwick2018packaging, @wuanalysis). 
+
+In this book, we refer an R package as **project specific R package** 
+if the purpose of an R package is to organize analysis scripts for a clinical project.
+We refer an R package as **standard R package** if the purpose of an R package is to 
+share commonly used R functions to be hosted in an code repository such as CRAN. 
+
+Below is a minimal sufficient folders and files based on the R package folder structure.  
+
+- `*.Rproj`: RStudio project file used to open RStudio project.
+- `DESCRIPTION`: Metadata for a package including authors, license, dependency etc.
+- `vignettes/`: Analysis scripts using Rmarkdown.
+- `R/`: Project specific R functions.
+- `man/`: Manual of project specific R functions.
+
+We demonstrate the the idea using the [`esubdemo`](https://github.com/elong0527/esubdemo) project.
+
+A general discussion of the R package folder structure can be found in Chapter 4 of “R packages:
+organize, test, document, and share your code” book (@wickham2015r).
+
+## Reproducibility
+
+Reproducibility of analysis can be challenge. 
+By using R package folder structure and proper tools (e.g. `renv`, `packrat`), 
+we can easily achieve reproducibility for R and R package versions. 
+
+> This is the same level of reproducibility in most SAS environment.
+> https://support.sas.com/techsup/pcn/altopsys.html
+
+In `esubdemo` project, a reproducible environment is created when you open the 
+`esubdemo.Rproj` from RStudio. 
+While RStudio open `esubdemo` project, RStudio will automatically execute R code in `.Rprofile`.
+So we are using `.Rprofile` to setup a reproducible environment. 
+More details can be found in [https://rstats.wtf/r-startup.html](https://rstats.wtf/r-startup.html). 
+
+> `.Rprofile` is only for project specific R package. 
+> A standard R package should not use `.Rprofile`.   
+
+After the `esubdemo` project is open, the code in `.Rprofile` will automatically check 
+current R version is the same as we defined in `.Rprofile` 
+
+```{r, eval = FALSE}
+R_version <- "4.0.1"	# set up project R version
+```
+
+If the R version mismatch, an error message is displayed.
+
+```
+Error: The current R version is not the same as the current project in R4.0.1
+```
+
+If we are running under the same R version, 
+you shall be able to see similar messages to inform how we control R package version. 
+
+```
+* Project '~/esubdemo' loaded. [renv 0.14.0]
+Current oroject R package repository:
+    https://mran.microsoft.com/snapshot/2021-08-06
+```
+
+The R package version is controlled in two layers. 
+Firstly, we define a snapshot date in `.Rprofile`. 
+The snapshot date allows to freeze the repository. 
+In other words, all R packages installed in this RStudio project 
+are based on the frozen R version at the snapshot date. 
+Here it is `2021-08-06` by using Microsoft R Application Network (MRAN) server. 
+
+```{r, eval = FALSE}
+snapshot  <- "2021-08-06" 									                           # set up snapshot date
+repos     <- paste0("https://mran.microsoft.com/snapshot/", snapshot)  # set up repository based on snapshot
+```
+
+> RStudio Package Manager (RSPM) provided a solution to host both 
+> public avaiable and internally developed R packages. 
+> However, public RSPM server (https://packagemanager.rstudio.com/client/#/repos/2/overview) 
+> did not provide daily snapshot as MRAN had. 
+
+Secondly, we use `renv` to lock R package versions and saved in `renv.lock` file. 
+The exact same R package versions can be restored with `renv::restore()`.
+An introduction of `renv` can be found in its [package website](https://rstudio.github.io/renv/articles/renv.html).
+
+```
+* Project '~/github-repo/esubdemo' loaded. [renv 0.14.0]
+```
+
+> `renv.lock` file and `renv/` folder are only for project specific R package. 
+> A standard R package should not use `renv`.   
+
+Once R packages have been properly installed, 
+the system will use the R packages located in the search path defined based on the order of `.libPaths()`.
+The startup message also provided the R package search path. 
+
+```
+Below R package path are searching in order to find installed R pacakges in this R session:
+    /home/esubdemo/renv/library/R-4.0/x86_64-pc-linux-gnu
+    /rtmp/Rtmp8d5mcL/renv-system-library
+```
+
+For an organization, a cloud based R environment (e.g. RStudio Workbench) 
+can enhance the development and operation of a clinical development team by 
+centralize managing R and R package version. 
+More details can be found in [https://environments.rstudio.com/](https://environments.rstudio.com/).   
+
+In summary, to achieve reproducibility for a project specific R package, 
+a clinical project team can work under a controlled R environment 
+in the same R version and R package versions defined by a repository snapshot date.
+
+## Automation 
+
+- ToDo
+
+There are additional folders and files required in this demo for an analysis project
+
+> people may use different folder name as it is not a standard R package folder.
+> These folders and files needs to be added in `.Rbuildignore` to pass
+> R package check 
+
+- `adam`: ADaM datasets in `.sas7bdat` format.
+  + one may also put it in `inst/exdata` following [R package convention](https://r-pkgs.org/data.html)
+  + in reality, we suggest to have real data saved outside of this project. (e.g. in a database)
+- `output`: TLFs output 
+- `renv.lock` and `renv`: R package management using `renv` package. ([Introduction](https://rstudio.github.io/renv/articles/renv.html)) 
+- `_pkgdown.yml`: [pkgdown](https://pkgdown.r-lib.org/articles/pkgdown.html) configuration file
+- `.Rprofile`: Project startup file to setup running environment including R version, repository, folder path etc. 
+  - We further use `inst/startup.R` and `R/zzz.R` to allow the startup file is executed while running. `devtools::load_all()` and RStudio build panel. 
+  
+  
+## Compliance
+
+- ToDo
