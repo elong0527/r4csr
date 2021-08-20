@@ -1536,16 +1536,19 @@
   },
   "files": {
     "_book/ectd.html": {
-      "checksum": "a732379c34e1e448d93282938e49edfa"
+      "checksum": "c1c767e066f799c19ee6e26bc2154896"
+    },
+    "_book/folder.html": {
+      "checksum": "74874b263a56b2263d9ff19ac691c70b"
     },
     "_book/images/cover.jpg": {
       "checksum": "2b33fa53ecef6313aa30a5c800098163"
     },
     "_book/index.html": {
-      "checksum": "89fe2c024a0cca1b64c25c576b277869"
+      "checksum": "ee8ce6bad8e0aa844eb87e0f9da86341"
     },
     "_book/intro.html": {
-      "checksum": "9412f395d42fb1a8230e97288ecfe158"
+      "checksum": "019df103f66d9cd6168e02dacc0ed256"
     },
     "_book/libs/bootstrap-4.5.3/bootstrap.bundle.min.js": {
       "checksum": "7f389f5d2622ce2090eca7c36bcb90bc"
@@ -1589,35 +1592,41 @@
     "_book/libs/table1-1.0/table1_defaults.css": {
       "checksum": "fdf39717a9efdce3be27f4a9d8ec9051"
     },
+    "_book/manage.html": {
+      "checksum": "635d9ed6c50b663a0fbe1012a0646f05"
+    },
+    "_book/overview-1.html": {
+      "checksum": "44950084f759d43146a0e53e374f28c2"
+    },
     "_book/overview.html": {
-      "checksum": "735571cb72d3dfc5e0fe765ff96456e8"
+      "checksum": "0fc64448f1708954ff53047155542ebf"
     },
     "_book/project-folder.html": {
-      "checksum": "ce369eaade637d8de02a6cfbdb3d16c4"
+      "checksum": "d06be5043d59106dd1a758d990530d88"
     },
     "_book/project-management.html": {
-      "checksum": "b9a9ec00c8a24942f6548740e4eb6d9c"
+      "checksum": "cc7ba26c26d7bc4b634e898d379515c7"
     },
     "_book/reference-keys.txt": {
-      "checksum": "38a29747bb2db78b8f5c4986510ede1a"
+      "checksum": "7807549f129022691cf012fbd49cab94"
     },
     "_book/reference.html": {
-      "checksum": "636af06a4e91acd87a648d5ff000c4e2"
+      "checksum": "f0f7254d3f4753ccac83fa8f17bc0507"
     },
     "_book/reporting.html": {
       "checksum": "1683dc666ec7fcbe8b7fa426f3e8922d"
     },
     "_book/search.json": {
-      "checksum": "453ce9505fb40ff472f8796156e815cd"
+      "checksum": "f38628d59e3533850ac572ac4188f330"
     },
     "_book/submission-package.html": {
-      "checksum": "1b526241e18bf2deafb8b03e394b0813"
+      "checksum": "69abc64167556879917fc4be1708712d"
     },
     "_book/table-for-baseline-characteristics.html": {
-      "checksum": "41291b6ea0c41643c70964878875791a"
+      "checksum": "a42d35a3cfcae2aa70a87472658854c7"
     },
     "_book/table-for-study-patients.html": {
-      "checksum": "0c8cc9b5827c455e55dda6402ef2c6e1"
+      "checksum": "da2428158529a63e74ccd2e2d1e6511b"
     },
     "_book/tlf/bs-1.pdf": {
       "checksum": "ed9e2ec27865a1e9481d4d22a20fed5a"
@@ -1668,7 +1677,10 @@
       "checksum": "2b4f6de1e031a12400b6d81c89e993b0"
     },
     "ectd.html": {
-      "checksum": "e6ea5355965705017c0e1b50906c33a4"
+      "checksum": "5de0b96bdadae49498a63a61d967ce3c"
+    },
+    "folder.html": {
+      "checksum": "ed2e46f63c9a43d36f3fb63676bfe769"
     },
     "images/cover.jpg": {
       "checksum": "2b33fa53ecef6313aa30a5c800098163"
@@ -1677,7 +1689,7 @@
       "checksum": "8c87e48b12d140b9b1a27759bdceb453"
     },
     "intro.html": {
-      "checksum": "7a9d91874eff054ac3cb85799a34885a"
+      "checksum": "93f8bd54203f074bd17d30b2fd48be4b"
     },
     "intro.Rmd": {
       "checksum": "8a4b85f6691782b0140eb778271217c9"
@@ -1754,8 +1766,11 @@
     "libs/jquery-3.5.1/LICENSE.txt": {
       "checksum": "de877aa6d744cc160ff41c26a8e4811f"
     },
+    "manage.html": {
+      "checksum": "7aa8f609d6896f0d9c69e3b183321c5d"
+    },
     "overview.html": {
-      "checksum": "ec9553eaa7d5291e6df7f237a9b79b41"
+      "checksum": "8983ce27455bbfe66901dc8e1b4b46f3"
     },
     "packages.bib": {
       "checksum": "cf57eae52cb4a9ef3ec9d38cc384f278"
@@ -1931,23 +1946,17 @@
     "preamble.tex": {
       "checksum": "1fd1a3c59e951f9f95b6b39785d600ff"
     },
-    "project-folder.html": {
-      "checksum": "22bf0320d5832862cd4b9de3d6aa7616"
-    },
     "project-folder.Rmd": {
-      "checksum": "75812d130e7ca55daf7d0223590498b3"
-    },
-    "project-management.html": {
-      "checksum": "96d8946cfcefa0f1cb4e8b4413aa59cf"
+      "checksum": "7fac894bb1dac7ee81e1b95ee88a6012"
     },
     "project-management.Rmd": {
-      "checksum": "080e4bf46f42bf311ef478c5f237454f"
+      "checksum": "42e8cf5dfa47f36f2ba50dceb60cde2d"
     },
     "README.md": {
       "checksum": "10789bdc7c7347beafd0e709e96eea5a"
     },
     "reference.html": {
-      "checksum": "907ef80d46245af9f33b35ffac718bf8"
+      "checksum": "1e96f37f2297e7a10e3a2db16f52002f"
     },
     "reference.Rmd": {
       "checksum": "a7a7929587c58ed042e53d61ab67f28f"
@@ -1956,16 +1965,16 @@
       "checksum": "0d47cd4731c8a71e1c6e712d28285b6d"
     },
     "submission-package.html": {
-      "checksum": "f20854c8b0d1b8f9ce6d4a80b107f98d"
+      "checksum": "656986e5b7cdac2ba74198fc01c8a7b4"
     },
     "submission.Rmd": {
       "checksum": "60b9f7e4725aafcfb720c71c68cc569d"
     },
     "table-for-baseline-characteristics.html": {
-      "checksum": "c1b367f249498e18d1452fdc190da6ca"
+      "checksum": "dfdf3d370c3830f9480f99e307be7b81"
     },
     "table-for-study-patients.html": {
-      "checksum": "1e285a712ab7c70e1ef4167c3dea3c23"
+      "checksum": "1a25f9ed2bea17e2f9f049418719b438"
     },
     "tlf-baseline.Rmd": {
       "checksum": "fb9823cba6ea42ebb82b09ff83741079"
@@ -1995,7 +2004,7 @@
       "checksum": "0d2294a27bbeaf83b401b181a8cf1ad7"
     },
     "welcome.html": {
-      "checksum": "b7b09766cc2bb32546fd1a15cf615665"
+      "checksum": "86c306c5244e300c26fc055dd5a2b22c"
     }
   },
   "users": null
