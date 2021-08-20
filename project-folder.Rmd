@@ -1,9 +1,21 @@
 # (PART) Clinical Trial Project {-}
 
-# Project Folder
+# Overview
 
 In a late-stage clinical trial, the number of A&R deliverables can easily be in the hundreds. 
-For an organization, it is possible to have multiple ongoing clinical trials in a clincial program. 
+For an organization, it is also common to have multiple ongoing clinical trials in a clinical program. 
+
+In this part, we would like to put you as an A&R leader for a clinical project. 
+
+In Chapter \@ref(folder), we will discuss how to organize source code, documents, 
+deliverables in an A&R clinical project. 
+We recommend to use the R package folder structure. 
+
+In Chapter \@ref(manage), we will discuss a process or system development lifecycle 
+to manage A&R of a clinical project. 
+We recommend to follow an agile management approach to define, develop, validate and deliver work.
+
+# Project Folder {#folder}
 
 A clearly defined project folder structure can have many benefits to 
 clinical development teams in an organization. 
@@ -50,7 +62,7 @@ We demonstrate the the idea using the [`esubdemo`](https://github.com/elong0527/
 A general discussion of the R package folder structure can be found in Chapter 4 of “R packages:
 organize, test, document, and share your code” book (@wickham2015r).
 
-## Reproducibility
+## Reproducibility {#reproduce}
 
 Reproducibility of analysis can be challenge. 
 By using R package folder structure and proper tools (e.g. `renv`, `packrat`), 
@@ -75,7 +87,7 @@ current R version is the same as we defined in `.Rprofile`
 R_version <- "4.0.1"	# set up project R version
 ```
 
-If the R version mismatch, an error message is displayed.
+If the R version mismatch, an error message is displayed as below.
 
 ```
 Error: The current R version is not the same as the current project in R4.0.1
