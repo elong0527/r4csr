@@ -8,7 +8,8 @@ In clinical trial development, it is a critical step to submit information on me
 has become a worldwide regulatory submission standard format. 
 For example, [the United States Food and Drug Administration (US FDA) required new drug applications, biologics license applications must be submitted using eCTD format](https://www.fda.gov/drugs/electronic-regulatory-submission-and-review/electronic-common-technical-document-ectd). Clinical Data Interchange Standards Consortium (CDISC) provided a 
 [pilot project
-following ICH E3 guidance](https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse).  
+following ICH E3 guidance](https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse).
+(??? What is the correlation between CDISC and eCTD? Are they to standard format of CSR? Besides, as a beginner, I feel it is better to explain "pilot project" in details.)
 
 Within eCTD, clinical study reports (CSR) are located at module 5. 
 [ICH E3 guidance](https://www.ich.org/page/efficacy-guidelines) provide 
@@ -17,13 +18,14 @@ compilation of structure and content of clinical study reports.
 A typical CSR contain full details of an individual clinical study 
 including clinical and statistical description, presentations, and analyses. 
 A large number of tables and figures are incorporated into the main text and appendices 
-of a CSR. In CDISC pilot project, an [example CSR](file:///C:/Users/zhanyilo/OneDrive%20-%20Merck%20Sharp%20&%20Dohme,%20Corp/Desktop/cdiscpilot01.pdf) is also provided. If you are interested in more examples of clinical study reports, 
+of a CSR. In CDISC pilot project, an [example CSR](file:///C:/Users/zhanyilo/OneDrive%20-%20Merck%20Sharp%20&%20Dohme,%20Corp/Desktop/cdiscpilot01.pdf) (??? This link is not workable)
+is also provided. If you are interested in more examples of clinical study reports, 
 the European Medicines Agency (EMA) publishes clinical data including 
 clinical study reports submitted by pharmaceutical companies 
 on [EMA clincal data website](https://clinicaldata.ema.europa.eu/web/cdp/home).  
 
 Building CSR is a team work with clinicians, medical writers, statisticians and statistical programmers.
-Here, We focus on the work and deliverables completed by statisticians and statistical programmers. 
+Here, we focus on the work and deliverables completed by statisticians and statistical programmers. 
 In an organization, A group of statisticians and statistical programmers commonly work together to 
 define, develop, validate and deliver tables, listings and figures (TLFs) required for a CSR.
 Microsoft Word is widely used to prepare CSR in pharmaceutical industry. 
@@ -41,7 +43,7 @@ These TLFs are typically used to summarize efficacy and safety statistical analy
 ## Structure and Content
 
 In the rest of this chapter, we are following the [ICH E3 guidance](https://www.ich.org/page/efficacy-guidelines) on 
-structure and content of clincial study reports. 
+structure and content of clinical study reports. 
 
 In a CSR, most of TLFs are located in 
 
