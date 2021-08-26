@@ -9,7 +9,6 @@ has become a worldwide regulatory submission standard format.
 For example, [the United States Food and Drug Administration (US FDA) required new drug applications, biologics license applications must be submitted using eCTD format](https://www.fda.gov/drugs/electronic-regulatory-submission-and-review/electronic-common-technical-document-ectd). Clinical Data Interchange Standards Consortium (CDISC) provided a 
 [pilot project
 following ICH E3 guidance](https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse).
-(??? What is the correlation between CDISC and eCTD? Are they to standard format of CSR? Besides, as a beginner, I feel it is better to explain "pilot project" in details.)
 
 Within eCTD, clinical study reports (CSR) are located at module 5. 
 [ICH E3 guidance](https://www.ich.org/page/efficacy-guidelines) provide 
