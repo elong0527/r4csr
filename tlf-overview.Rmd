@@ -18,7 +18,7 @@ compilation of structure and content of clinical study reports.
 A typical CSR contain full details of an individual clinical study 
 including clinical and statistical description, presentations, and analyses. 
 A large number of tables and figures are incorporated into the main text and appendices 
-of a CSR. In CDISC pilot project, an [example CSR](file:///C:/Users/zhanyilo/OneDrive%20-%20Merck%20Sharp%20&%20Dohme,%20Corp/Desktop/cdiscpilot01.pdf) (??? This link is not workable)
+of a CSR. In CDISC pilot project, an [example CSR](https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse/updated-pilot-submission-package/900172/m5/53-clin-stud-rep/535-rep-effic-safety-stud/5351-stud-rep-contr/cdiscpilot01/cdiscpilot01.pdf) 
 is also provided. If you are interested in more examples of clinical study reports, 
 the European Medicines Agency (EMA) publishes clinical data including 
 clinical study reports submitted by pharmaceutical companies 
