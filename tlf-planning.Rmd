@@ -1,0 +1,20 @@
+# Table for Planning
+
+Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
+we need to summarize important deviations in the section 10.2, protocol deviations of a CSR. 
+
+Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
+we need to summarize which patients were included in each efficacy analysis 
+in the section 11.1, data sets analysed of a CSR. 
+
+Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
+we need to summarize critical demographic and baseline characteristics of the patients
+in the section 11.2, demographic and other baseline characteristics of a CSR. 
+
+Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
+we need to summarize measurements of compliance of the patients
+in the section 11.3, measurements of treatment compliance of a CSR. 
+
+Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
+we need to summarize primary and secondary efficacy endpoints. 
+in the section 11.4, efficacy results and tabulations of individual patient data of a CSR. 

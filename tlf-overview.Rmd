@@ -41,8 +41,9 @@ These TLFs are typically used to summarize efficacy and safety statistical analy
 
 ## Structure and Content
 
-In the rest of this chapter, we are following the [ICH E3 guidance](https://www.ich.org/page/efficacy-guidelines) on 
-structure and content of clinical study reports. 
+In the rest of this chapter, we are following the 
+[ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf) 
+on structure and content of clinical study reports. 
 
 In a CSR, most of TLFs are located in 
 
@@ -126,6 +127,7 @@ In this example we consider three variables:
 
 ```{r}
 library(r2rtf)
+
 r2rtf_adae %>%
   select(USUBJID, TRTA, AEDECOD) %>%
   head(4)
@@ -137,6 +139,7 @@ that contains all the information we want to add in an RTF table.
 ```{r}
 library(tidyr)
 library(dplyr)
+
 tbl <- r2rtf_adae %>%
   count(TRTA, AEDECOD) %>%
   pivot_wider(names_from = TRTA, values_from = n, values_fill = 0)
@@ -167,9 +170,9 @@ A minimal example below illustrates how to combine verbs using pipes to create a
 
 ```{r}
 head(tbl) %>%
-  rtf_body() %>%                        # Step 1 Add table  attributes
-  rtf_encode() %>%                      # Step 2 Convert attributes to RTF encode
-  write_rtf("tlf/intro-ae1.rtf")        # Step 3 Write to a .rtf file
+  rtf_body() %>%                 # Step 1 Add table  attributes
+  rtf_encode() %>%               # Step 2 Convert attributes to RTF encode
+  write_rtf("tlf/intro-ae1.rtf") # Step 3 Write to a .rtf file
 ```
 
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
@@ -191,7 +194,9 @@ or `col_rel_width = c(1.5,1,1,1)`.
 
 ```{r}
 head(tbl) %>%
-  rtf_body(col_rel_width = c(3, 2, 2, 2)) %>%    # define relative width
+  rtf_body(col_rel_width = c(3, 2, 2, 2)) %>%
+  
+  # define relative width
   rtf_encode() %>%
   write_rtf("tlf/intro-ae2.rtf")
 ```
@@ -212,12 +217,16 @@ define a column header with 4 columns.
 
 ```{r}
 head(tbl) %>%
+  
   rtf_colheader(
     colheader = "Adverse Events | Placebo | Xanomeline High Dose | Xanomeline Low Dose",
     col_rel_width = c(3, 2, 2, 2)
   ) %>%
+  
   rtf_body(col_rel_width = c(3, 2, 2, 2)) %>%
+  
   rtf_encode() %>%
+  
   write_rtf("tlf/intro-ae3.rtf")
 ```
 
@@ -241,8 +250,11 @@ Below is an example to make first column left aligned and center aligned for the
 
 ```{r}
 head(tbl) %>%
+  
   rtf_body(text_justification = c("l", "c", "c", "c")) %>%
+  
   rtf_encode() %>%
+  
   write_rtf("tlf/intro-ae5.rtf")
 ```
 
@@ -263,17 +275,22 @@ In this example, we also demonstrate the possibility to add multiple column head
 
 ```{r}
 head(tbl) %>%
+  
   rtf_colheader(
     colheader = " | Treatment",
     col_rel_width = c(3, 6)
   ) %>%
+  
   rtf_colheader(
     colheader = "Adverse Events | Placebo | Xanomeline High Dose | Xanomeline Low Dose",
     border_top = c("", "single", "single", "single"),
     col_rel_width = c(3, 2, 2, 2)
   ) %>%
+  
   rtf_body(col_rel_width = c(3, 2, 2, 2)) %>%
+  
   rtf_encode() %>%
+  
   write_rtf("tlf/intro-ae7.rtf")
 ```
 
@@ -281,7 +298,7 @@ head(tbl) %>%
 knitr::include_graphics("tlf/intro-ae7.pdf")
 ```
 
-In the r2rtf [get started](https://merck.github.io/r2rtf/articles/r2rtf.html) page
+In the `r2rtf` R package [get started](https://merck.github.io/r2rtf/articles/r2rtf.html) page
 there are more examples to illustrate how to customize
 
 - title, subtitle
