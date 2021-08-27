@@ -286,11 +286,11 @@ there are more examples to illustrate how to customize
 - title, subtitle
 - footnote, data source
 - special character
-- etc
+- etc.
 
 Those features will be introduced when we first use them in the rest of chapters. 
 
-There are other R packages that can achieve similar goals.
+There are other R packages that can create TLFs in `.rtf` or `.docx` format.
 Interested reader can refer "Microsoft/LibreOffice Formats" section in 
 [CRAN Task View: Reproducible Research](https://cran.r-project.org/web/views/ReproducibleResearch.html)
 for an overview. 
