@@ -33,7 +33,6 @@ r2rtf:::rtf_convert_format(list.files("tlf", pattern = ".rtf", full.names = TRUE
 rsconnect::writeManifest(appPrimaryDoc = "index.Rmd", contentCategory = "site")
 ```
 
-
 # Welcome! {-}
 
 <img src="images/cover.jpg" width="100%" align="right" alt="" class="cover" /> 
