@@ -2,14 +2,13 @@
 
 ## Folder structure 
 
-In clinical trial development, developer needs to organize source code to deliver SDTM or ADaM datasets and table, listing and figures (TLFs).
+In clinical trial development, developers needs to organize source code to deliver Study Data Tabulation Model (SDTM) or Analysis Dataset Model (ADaM) datasets and table, listing and figures (TLFs).
 For example, a Phase 3 clinical trial typically require hundreds of TLFs. 
 A consistent and well-defined folder structure is crucial to manage a clinical trial analysis and reporting (A&R) project. 
 
-We recommend to use R package folder structure to organize all the analysis and reporting related source code and documentation
-for a clinical trial A&R project. 
-By using the R package folder structure you can follow the convention to organize your code as other contributors on CRAN.
-The consistent approach simplify the communication for developers within and across organizations. 
+We recommend to use R package folder structure to organize all the A&R related source code and documentation for a clinical trial A&R project. 
+By using the R package folder structure, you can follow the convention to organize your code as other contributors on CRAN.
+This consistent approach simplifies the communication for all developers within and across organizations. 
 
 - For a new R developer, it is an essential step to learn R package when you want to share your work with others. 
 You will learn one folder structure that is widely used in R community with outstanding tutorial and tools for free. 
