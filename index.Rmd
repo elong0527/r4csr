@@ -23,6 +23,7 @@ library(downlit)
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+options(dplyr.summarise.inform = FALSE)
 ```
 
 ```{r, eval = FALSE, include=FALSE}
