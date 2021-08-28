@@ -113,7 +113,7 @@ count_by <- function(data, # Input data set
       id_cols = var,
       names_from = grp,
       values_from = c(n, pct, npct),
-      values_fill = list(n = "0", pct = fmt_pct(0))
+      values_fill = list(n = "0", pct = fmt_num(0))
     ) %>%
     mutate(var_label = var_label)
 }
