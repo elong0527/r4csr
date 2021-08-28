@@ -19,6 +19,10 @@ link-citations: yes
 library(bslib)
 library(xml2)
 library(downlit)
+library(haven) 
+library(dplyr) 
+library(tidyr) 
+library(r2rtf) 
 ```
 
 ```{r setup, include=FALSE}
