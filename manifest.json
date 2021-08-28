@@ -1536,135 +1536,6 @@
     }
   },
   "files": {
-    "_book/disposition.html": {
-      "checksum": "7c71e830674094d0a1955f59873b60a6"
-    },
-    "_book/ectd.html": {
-      "checksum": "17ea50c498e6085724442b761f6a5d50"
-    },
-    "_book/folder.html": {
-      "checksum": "8318a350bf8cbd73eba8c59c9ec00869"
-    },
-    "_book/images/cover.jpg": {
-      "checksum": "2b33fa53ecef6313aa30a5c800098163"
-    },
-    "_book/index.html": {
-      "checksum": "a90e73e7f7cee504f90a48b6fd946dad"
-    },
-    "_book/intro.html": {
-      "checksum": "932b81087ecd1f6b8e3b1649184a114c"
-    },
-    "_book/libs/bootstrap-4.5.3/bootstrap.bundle.min.js": {
-      "checksum": "7f389f5d2622ce2090eca7c36bcb90bc"
-    },
-    "_book/libs/bootstrap-4.5.3/bootstrap.min.css": {
-      "checksum": "c9f7c4a9e48ecd0933b1efddccee0736"
-    },
-    "_book/libs/bootstrap-4.5.3/fonts/bootstrap/glyphicons-halflings-regular.eot": {
-      "checksum": "f4769f9bdb7466be65088239c12046d1"
-    },
-    "_book/libs/bootstrap-4.5.3/fonts/bootstrap/glyphicons-halflings-regular.svg": {
-      "checksum": "89889688147bd7575d6327160d64e760"
-    },
-    "_book/libs/bootstrap-4.5.3/fonts/bootstrap/glyphicons-halflings-regular.ttf": {
-      "checksum": "e18bbf611f2a2e43afc071aa2f4e1512"
-    },
-    "_book/libs/bootstrap-4.5.3/fonts/bootstrap/glyphicons-halflings-regular.woff": {
-      "checksum": "fa2772327f55d8198301fdb8bcfc8158"
-    },
-    "_book/libs/bootstrap-4.5.3/fonts/bootstrap/glyphicons-halflings-regular.woff2": {
-      "checksum": "448c34a56d699c29117adc64c43affeb"
-    },
-    "_book/libs/bs3compat-0.2.4/bs3compat.js": {
-      "checksum": "8f2df3a89373a9da39230bbc7b487eef"
-    },
-    "_book/libs/bs3compat-0.2.4/tabs.js": {
-      "checksum": "a19cc7ef41a2f9683a10c8d29f1e1241"
-    },
-    "_book/libs/bs4_book-1.0.0/bs4_book.css": {
-      "checksum": "b9f5b642360677403130ece5459f8a8a"
-    },
-    "_book/libs/bs4_book-1.0.0/bs4_book.js": {
-      "checksum": "fee4b8d560dcd98905b2e2ca8bee540a"
-    },
-    "_book/libs/header-attrs-2.7/header-attrs.js": {
-      "checksum": "9c32b58ed5fd8fe2efbd5bd7023cdef0"
-    },
-    "_book/libs/jquery-3.5.1/jquery-3.5.1.min.js": {
-      "checksum": "dc5e7f18c8d36ac1d3d4753a87c98d0a"
-    },
-    "_book/libs/table1-1.0/table1_defaults.css": {
-      "checksum": "fdf39717a9efdce3be27f4a9d8ec9051"
-    },
-    "_book/manage.html": {
-      "checksum": "70ca65403598cebee4033c73a3a3d378"
-    },
-    "_book/overview-1.html": {
-      "checksum": "f66ed05588546b9bc666b7b2d9008e22"
-    },
-    "_book/overview.html": {
-      "checksum": "e18568ee2d3a3bac2d2651c997b6ea72"
-    },
-    "_book/population.html": {
-      "checksum": "9dd40ee025e6b979d6dfaad434386f99"
-    },
-    "_book/project-folder.html": {
-      "checksum": "d06be5043d59106dd1a758d990530d88"
-    },
-    "_book/project-management.html": {
-      "checksum": "cc7ba26c26d7bc4b634e898d379515c7"
-    },
-    "_book/reference-keys.txt": {
-      "checksum": "865a0061dc94d5fe7831501d1e82aa47"
-    },
-    "_book/reference.html": {
-      "checksum": "67e451731eac3bebab2ead90169146a1"
-    },
-    "_book/reporting.html": {
-      "checksum": "1683dc666ec7fcbe8b7fa426f3e8922d"
-    },
-    "_book/search.json": {
-      "checksum": "8a248698a063b08a01ae84b3aa2e7de2"
-    },
-    "_book/submission-package.html": {
-      "checksum": "5e30a112c1799b53628d8b35313acb04"
-    },
-    "_book/table-for-baseline-characteristics.html": {
-      "checksum": "5795f3aa0f07141695f27c69ca4d8df6"
-    },
-    "_book/table-for-study-patients.html": {
-      "checksum": "04b11563a9d83c36aedb38698c75d114"
-    },
-    "_book/tlf/bs-1.pdf": {
-      "checksum": "ed9e2ec27865a1e9481d4d22a20fed5a"
-    },
-    "_book/tlf/intro-ae1.pdf": {
-      "checksum": "a037e6597cce31982745a9212e6ff0c7"
-    },
-    "_book/tlf/intro-ae2.pdf": {
-      "checksum": "448274a071a5fb509ab578b56ea3aad1"
-    },
-    "_book/tlf/intro-ae3.pdf": {
-      "checksum": "9710380bef89e48ceb89a68d41e60130"
-    },
-    "_book/tlf/intro-ae5.pdf": {
-      "checksum": "13f1fa924619e8e8a38f49411c891a78"
-    },
-    "_book/tlf/intro-ae7.pdf": {
-      "checksum": "6a34a2ed0e476e736ad9f0fa0b041fa8"
-    },
-    "_book/tlf/tbl_disp.pdf": {
-      "checksum": "51d551e33212f25b323d487a405020b2"
-    },
-    "_book/tlf/tbl_disp1.pdf": {
-      "checksum": "1df1194d60a7ba8082b4c2c01c1d4075"
-    },
-    "_book/tlf/tbl_disp2.pdf": {
-      "checksum": "51d551e33212f25b323d487a405020b2"
-    },
-    "_book/tlf/tbl_pop.pdf": {
-      "checksum": "854a0ee462436842aa9c30d4f70620f5"
-    },
     "_bookdown.yml": {
       "checksum": "cdcec1835577ae60b8e62bccfd824316"
     },
@@ -1705,13 +1576,13 @@
       "checksum": "2b4f6de1e031a12400b6d81c89e993b0"
     },
     "disposition.html": {
-      "checksum": "fbe21ad5485ded5089de8a97e19c2a7d"
+      "checksum": "a090449249f1c49c3dfc8ba7eb17a44a"
     },
     "ectd.html": {
-      "checksum": "94a50526c5bb4465f7458618b639bf7e"
+      "checksum": "bd3a07b32d9b833652fd8ce2c73c808b"
     },
     "folder.html": {
-      "checksum": "9d3b5d28bc74785771b2bc05e9463d33"
+      "checksum": "0f8934d43bfab5fd7c068e2699e8f33d"
     },
     "images/cover.jpg": {
       "checksum": "2b33fa53ecef6313aa30a5c800098163"
@@ -1720,7 +1591,7 @@
       "checksum": "ba45ad25b2e1964366a6d5848e57f026"
     },
     "intro.html": {
-      "checksum": "fd4e99c065eef38ad3710a6f75055742"
+      "checksum": "cad8e762e9272f0cbb42037a915ae6de"
     },
     "intro.Rmd": {
       "checksum": "cf42a71e5e4e7778f0574ec129e95a56"
@@ -1798,10 +1669,10 @@
       "checksum": "de877aa6d744cc160ff41c26a8e4811f"
     },
     "manage.html": {
-      "checksum": "50dd36783f1749a08a6456448ab932d6"
+      "checksum": "2f968194419ac1edbf88f5a10ef88d89"
     },
     "overview.html": {
-      "checksum": "199263049ef3535652042a1e4c657e58"
+      "checksum": "10a70d3e584cfc5d96fedee5d99a857d"
     },
     "packages.bib": {
       "checksum": "cf57eae52cb4a9ef3ec9d38cc384f278"
@@ -1975,7 +1846,7 @@
       "checksum": "d61c6dea51047d2d10e5faacbb58e539"
     },
     "population.html": {
-      "checksum": "fa26f6c07eeb25ab10437cc15f96856d"
+      "checksum": "55ef0d7e3b56ba985872d343d744a8cc"
     },
     "preamble.tex": {
       "checksum": "1fd1a3c59e951f9f95b6b39785d600ff"
@@ -1990,7 +1861,7 @@
       "checksum": "10789bdc7c7347beafd0e709e96eea5a"
     },
     "reference.html": {
-      "checksum": "1a7bf1ed11d4b87c9eec6ca7488e63e7"
+      "checksum": "95a642a71bd7e10d5b75a1e5855794fe"
     },
     "reference.Rmd": {
       "checksum": "a7a7929587c58ed042e53d61ab67f28f"
@@ -1999,19 +1870,19 @@
       "checksum": "0d47cd4731c8a71e1c6e712d28285b6d"
     },
     "submission-package.html": {
-      "checksum": "5515acf7feaa49590894998947dafb02"
+      "checksum": "83fc2fc9ca151056f7c64fad5e8e4caf"
     },
     "submission.Rmd": {
       "checksum": "60b9f7e4725aafcfb720c71c68cc569d"
     },
     "table-for-baseline-characteristics.html": {
-      "checksum": "e365d02c2ac360f7083d82a31f818745"
+      "checksum": "15400d6d309e7a9a6a4ee238e8ca9164"
     },
     "table-for-planning.html": {
-      "checksum": "8e38816397c7f54d85c173114bd8cd03"
+      "checksum": "02cefcaa900faad9d3241a72020da271"
     },
     "table-for-study-patients.html": {
-      "checksum": "29ee965527624494201ca2f0f50e6e70"
+      "checksum": "eb223fa4a257f27feb37256412b059b6"
     },
     "tlf-baseline.Rmd": {
       "checksum": "2d83b99480a4be4378d97e063a46937d"
@@ -2080,7 +1951,7 @@
       "checksum": "36b2b660e1e1860ac9d1913e300a2468"
     },
     "welcome.html": {
-      "checksum": "06687c4c8bde273151e6f4b587201406"
+      "checksum": "3ac928e0688ee877e1deb485c303aeae"
     }
   },
   "users": null
