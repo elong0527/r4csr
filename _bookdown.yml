@@ -16,6 +16,7 @@ rmd_files: [
   
   "tlf-overview.Rmd",
   "tlf-disposition.Rmd",
+  "tlf-population.Rmd",
   "tlf-baseline.Rmd",
   
   "project-folder.Rmd",

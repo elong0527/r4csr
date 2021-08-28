@@ -1,4 +1,4 @@
-# Table for Study Patients {#population}
+# Table for Analysis Population {#population}
 
 Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
 we need to summarize which patients were included in each efficacy analysis 
@@ -50,7 +50,7 @@ As discussed in
 "You should consider writing a function 
 whenever you’ve copied and pasted a block of code more than twice"
 
-In Chapter \@ref(dispositon), there are few repeating steps:
+In Chapter \@ref(disposition), there are few repeating steps to:
 
 - format percentage using `formatC` 
 - calculate number and percentage by groups
@@ -61,28 +61,28 @@ To format number and percentage, we created a function called `fmt_num`.
 It is a very simple function that is a wrapper of `formatC`. 
 
 ```{r}
-fmt_num <- function(x, digits, width = digits + 4){
+fmt_num <- function(x, digits, width = digits + 4) {
   formatC(x,
-          digits = digits, 
-          format = "f", 
-          width = width
-    )
+    digits = digits,
+    format = "f",
+    width = width
+  )
 }
 ```
 
 The main reason to create `fmt_num` is to enhance readability of the analysis code.
 
 For example, we can compare the two versions of code to format percentage 
-used in \@ref(dispositon). 
+used in \@ref(disposition) and `fmt_num`. 
 
 ```{r, eval = FALSE}
 formatC(n / n() * 100,
-      digits = 1, format = "f", width = 5
-    )
+  digits = 1, format = "f", width = 5
+)
 ```
 
 ```{r, eval = FALSE}
-fmt_pct(n / n() * 100)
+fmt_num(n / n() * 100, digits = 1)
 ```
 
 To calculate number and percentage of patients by groups, 
@@ -92,29 +92,29 @@ The function can be enhanced in multiple ways, but here we only focus on simplif
 More details about writting R functions can be found in [Stat454 course](https://stat545.com/functions-part1.html).
 
 ```{r}
-count_by <- function(data,               # Input data set
-                     grp,                # Group variable
-                     var,                # Analysis variable
-                     var_label = var,    # Analysis variable label
-                     id = "USUBJID") {   # Subject ID variable 
+count_by <- function(data, # Input data set
+                     grp, # Group variable
+                     var, # Analysis variable
+                     var_label = var, # Analysis variable label
+                     id = "USUBJID") { # Subject ID variable
   data <- data %>% rename(grp = !!grp, var = !!var, id = !!id)
 
   left_join(
     count(data, grp, var),
-    count(data, grp, name = "tot"), 
+    count(data, grp, name = "tot"),
     by = "grp",
   ) %>%
     mutate(
       pct = fmt_num(100 * n / tot, digits = 1),
-      n   = fmt_num(n, digits = 0), 
-      npct = paste0(n , " (", pct, ")")
+      n = fmt_num(n, digits = 0),
+      npct = paste0(n, " (", pct, ")")
     ) %>%
     pivot_wider(
       id_cols = var,
       names_from = grp,
       values_from = c(n, pct, npct),
       values_fill = list(n = "0", pct = fmt_pct(0))
-    ) %>% 
+    ) %>%
     mutate(var_label = var_label)
 }
 ```
@@ -122,67 +122,76 @@ count_by <- function(data,               # Input data set
 By using `count_by`, we can simplify the analysis code as below. 
 
 ```{r}
-count_by(adsl, "TRT01PN", "EFFFL")
+count_by(adsl, "TRT01PN", "EFFFL") %>% 
+  select(- ends_with(c("_54", "_81")))
 ```
 
-### Analysis Code 
+## Analysis Code 
 
 With the helper functions `count_by`, we can easily prepare report dataset as
 
 ```{r}
-# Derive a randomization flag 
-adsl <- adsl %>% mutate(RANDFL = "Y") 
-pop <- count_by(adsl, "TRT01PN", "RANDFL", var_label = "Participants in Population") %>% 
-          select(var_label,starts_with("n_"))
+# Derive a randomization flag
+adsl <- adsl %>% mutate(RANDFL = "Y")
+
+pop <- count_by(adsl, "TRT01PN", "RANDFL", 
+                var_label = "Participants in Population") %>%
+  select(var_label, starts_with("n_"))
 ```
 
 ```{r}
 pop1 <- bind_rows(
-  count_by(adsl, "TRT01PN", "ITTFL", 
-           var_label = "Participants included in ITT population"), 
-  count_by(adsl, "TRT01PN", "EFFFL", 
-           var_label = "Participants included in efficacy population"),
-  count_by(adsl, "TRT01PN", "SAFFL", 
-           var_label = "Participants included in safety population")
-) %>% 
-  filter(var == "Y") %>% 
+  count_by(adsl, "TRT01PN", "ITTFL",
+    var_label = "Participants included in ITT population"
+  ),
+  count_by(adsl, "TRT01PN", "EFFFL",
+    var_label = "Participants included in efficacy population"
+  ),
+  count_by(adsl, "TRT01PN", "SAFFL",
+    var_label = "Participants included in safety population"
+  )
+) %>%
+  filter(var == "Y") %>%
   select(var_label, starts_with("npct_"))
 ```
+
+Now we combined individual rows into the whole table for reporting purpose. 
+`tbl_pop` is used as input for `r2rtf` to create final report. 
 
 ```{r}
 names(pop) <- gsub("n_", "npct_", names(pop))
 tbl_pop <- bind_rows(pop, pop1)
-tbl_pop
+
+tbl_pop %>% select(var_label, npct_0)
 ```
+
+We start to define the format of the output. 
 
 ```{r}
 rel_width <- c(2, rep(1, 3))
-colheader <- " | \\line Placebo | Xanomeline \\line Low Dose| Xanomeline \\line High Dose"
+colheader <- " | Placebo | Xanomeline line Low Dose| Xanomeline line High Dose"
 tbl_pop %>%
-  
   # Table title
-  rtf_title("Participants Accounting in Analysis Population", 
-            "(All Participants Randomized)") %>%
-  
+  rtf_title(
+    "Participants Accounting in Analysis Population",
+    "(All Participants Randomized)"
+  ) %>%
   # First row of column header
   rtf_colheader(colheader,
     col_rel_width = rel_width
   ) %>%
-  
   # Second row of column header
   rtf_colheader(" | n (%) | n (%) | n (%)",
     border_top = "",
-    col_rel_width = rel_width) %>%
-  
+    col_rel_width = rel_width
+  ) %>%
   # Table body
   rtf_body(
     col_rel_width = rel_width,
     text_justification = c("l", rep("c", 3))
   ) %>%
-  
   # Encoding RTF syntax
   rtf_encode() %>%
-  
   # Save to a file
   write_rtf("tlf/tbl_pop.rtf")
 ```
