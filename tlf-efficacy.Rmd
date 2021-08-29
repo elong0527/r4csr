@@ -33,7 +33,7 @@ efficacy population flag `EFFFL` and
 all records post baseline (`AVISITN > 1`) and on or before Week 24 (`AVISITN <= 12`).
 
 ```{r}
-gluc <- adcibic %>%
+gluc <- adlb %>%
   left_join(adsl %>% select(USUBJID, EFFFL), by = "USUBJID") %>%
   filter(EFFFL == "Y" & PARAMCD == "GLUC") %>% 
   arrange(TRTPN) %>% 
