@@ -1,6 +1,6 @@
 --- 
 title: "R for Clinical Study Reports and Submission"
-author: ["Yilong Zhang"]
+author: ["Yilong Zhang", "Nan Xiao", "Keaven Anderson"]
 knit: "bookdown::render_book"
 description: >
   This book will teach you how to prepare tables, listings and figures for clinical study report and submit to regulatory agency, 
@@ -23,6 +23,8 @@ library(haven)
 library(dplyr) 
 library(tidyr) 
 library(r2rtf) 
+library(knitr)
+library(kableExtra)
 ```
 
 ```{r setup, include=FALSE}
@@ -52,3 +54,25 @@ provide guidance to assist sponsors in the development of a CSR.
 In this book, you will learn how to use R to prepare CSR and submit to regulatory agency. 
 
 This is the work-in-progress draft of the book.
+
+## List of Authors and Contributors
+
+```{r, echo = FALSE}
+contributors <- c(person("Yilong", "Zhang", email = "yilong.zhang@merck.com", role = "aut"), 
+                  person("Nan", "Xiao", role = "aut"), 
+                  person("Keaven", "Anderson", role = "aut"),
+                  person("Yujie", "Zhao", role = "ctr"))
+```
+
+The document is maintained by a community. 
+While reading the document, you can be a contributor as well. 
+The quality of this document relies on you. 
+
+- Author: contribute majority content of at least one chapter. 
+- Contributor: [contribute at least one commit to the source code](https://stash.merck.com/projects/BARDS/repos/r4csr/browse)
+
+```{r}
+data.frame(contributors = as.character(contributors)) %>%   
+  kable(format = "html") %>%
+  kable_styling()
+```
