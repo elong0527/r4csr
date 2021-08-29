@@ -30,7 +30,7 @@ adlb <- read_sas("adam_data/adlbc.sas7bdat")
 
 We first define the analysis dataset using 
 efficacy population flag `EFFFL` and 
-all records post baseline (`AVISITN > 1`) and on or before Week 24 (`AVISITN <= 12`).
+all records post baseline (`AVISITN > 1`) and on or before Week 24 (`AVISITN <= 24`).
 
 ```{r}
 gluc <- adlb %>%
