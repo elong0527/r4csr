@@ -1,4 +1,4 @@
-# AE Summary
+# AE Summary {#aesummary}
 
 Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
 we need to summarize which patients were included in each efficacy analysis 

@@ -2,7 +2,7 @@
 
 Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
 we need to summarize which patients were included in each efficacy analysis 
-in the section 11.1, data sets analysed of a CSR. 
+in the section 12.2, adverse events of a CSR. 
 
 ```{r}
 library(haven) # Read SAS data
@@ -11,3 +11,151 @@ library(tidyr) # Manipulate data
 library(r2rtf) # Reporting in RTF format
 ```
 
+In this chapter, we illustrate how to summarize simplified specific AE information in a study.
+
+```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("tlf/tlf_spec_ae.pdf")
+```
+
+The data used to summarize AE information is in `adsl` and `adae` datasets. 
+
+```{r}
+adsl <- read_sas("adam_data/adsl.sas7bdat")
+adae <- read_sas("adam_data/adae.sas7bdat")
+```
+
+For illustration purpose, we only provide count in the simplified table. 
+The percentage of participants 
+for each AE criteria can be calculated as in Chapter \@ref(aesummary). 
+
+In this way, let's focus on the analysis script for advanced feature for table layout.
+
+- group content: AE can be summarized in multiple nested layer. 
+(e.g. by system organ class (SOC, `AESOC`) and specific AE term (`AEDECOD`))
+- pagenization: there are many AE terms that can not be covered in one page. 
+Column headers and SOC information needs to be repeated in every page. 
+
+In the code below, we count number of subjects in each AE term by SOC and treatment group. 
+
+```{r}
+ana <- adae %>% 
+  mutate(AESOC = toTitleCase(tolower(AESOC)), 
+         AEDECOD =  toTitleCase(tolower(AEDECOD)))
+
+t1 <-ana %>% 
+  group_by(TRTAN, AESOC) %>%
+  summarise(n = fmt_num(n_distinct(USUBJID), digits = 0)) %>% 
+  mutate(AEDECOD = AESOC, order = 0)
+
+t1 %>% head(4)
+```
+In the code below, we count number of subjects in each AE term by SOC, AE term, and treatment group. 
+
+```{r}
+t2 <- ana %>% 
+  group_by(TRTAN, AESOC, AEDECOD) %>%
+  summarise(n = fmt_num(n_distinct(USUBJID), digits = 0)) %>%
+  mutate(order = 1)
+  
+t2 %>% head(4)
+```
+We prepare reporting data for AE information. 
+
+```{r}
+t_ae <- bind_rows(t1, t2) %>% 
+        pivot_wider(id_cols = c(AESOC, order, AEDECOD), 
+                    names_from = TRTAN, 
+                    names_prefix = "n_",
+                    values_from = n, 
+                    values_fill = fmt_num(0, digits = 0)) %>%
+        arrange(AESOC, order, AEDECOD) %>% 
+        select(AESOC, AEDECOD, starts_with("n"))
+
+t_ae %>% head(4)
+```
+We prepare reporting data for analysis population.
+
+```{r}
+t_pop <- adsl %>%
+  filter(SAFFL == "Y") %>%
+  count_by("TRT01AN", "SAFFL",
+    var_label = "Participants in population"
+  ) %>%
+  mutate(
+    AESOC = "pop", 
+    AEDECOD = var_label) %>%
+  select(AESOC,AEDECOD, starts_with("n_"))
+
+t_pop
+```
+The final report data is saved in `tbl_ae_spec`.
+We also add a blank row between population and AE information in the reporting table.
+
+```{r}
+tbl_ae_spec <- bind_rows(t_pop,
+                         data.frame(AESOC = "pop"), 
+                         t_ae) %>% 
+  mutate(AEDECOD = ifelse(AEDECOD == AESOC , 
+                          AEDECOD, paste0("  ", AEDECOD)))
+
+tbl_ae_spec %>% head(4)
+```
+We start to define the format of the output. 
+
+To obtain the nested layout, we use `page_by` argument in `rtf_body` function.
+By defining `page_by="AESOC"`, 
+`r2rtf` recognize the variable as a group indicator. 
+
+After setting `pageby_row = "first_row"`, the first row is displayed as group header. If a group of information is breaked into multiple page, 
+the group header row is repeated in each page by default. 
+
+We can also customize the text format by providing a matrix that have 
+same dimention of the input dataset (i.e. `tbl_ae_spec`). 
+In the code below, we illustrate how to display **bold** text for group headers
+to highlight the nested structure of the table layout. 
+
+```{r}
+n_row <- nrow(tbl_ae_spec)
+n_col <- ncol(tbl_ae_spec)
+id <- tbl_ae_spec$AESOC == tbl_ae_spec$AEDECOD
+id <- ifelse(is.na(id), FALSE, id)
+
+text_format   <- ifelse(id, "b", "")
+```
+
+More discussion on `page_by`, `group_by` and `subline_by` 
+features can be found in the 
+[`r2rtf` package website](https://merck.github.io/r2rtf/articles/example-sublineby-pageby-groupby.html.
+
+```{r}
+tbl_ae_spec %>% 
+  rtf_title("Analysis of Participants With Specific Adverse Events", 
+            "(Safty Analysis Population)") %>%
+  
+    rtf_colheader(" | Placebo | Xanomeline Low Dose| Xanomeline High Dose",
+    col_rel_width = c(3, rep(1, 3))
+  ) %>%
+  rtf_colheader(" | n |  n | n ",
+    border_top = "",
+    border_bottom = "single",
+    col_rel_width = c(3, rep(1, 3))
+  ) %>%
+  
+  rtf_body(
+    col_rel_width = c(1, 3, rep(1, 3)),
+    text_justification = c("l", "l", rep("c", 3)),
+    text_format = matrix(text_format, nrow = n_row, ncol = n_col), 
+    page_by = "AESOC", 
+    pageby_row = "first_row") %>% 
+  
+  rtf_footnote("Every subject is counted a single time for each applicable row and column.") %>%
+  
+  rtf_encode() %>%
+  
+  write_rtf("tlf/tlf_spec_ae.rtf")
+
+```
+
+```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("tlf/tlf_spec_ae.pdf")
+```
