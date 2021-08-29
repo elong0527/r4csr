@@ -110,7 +110,7 @@ After setting `pageby_row = "first_row"`, the first row is displayed as group he
 the group header row is repeated in each page by default. 
 
 We can also customize the text format by providing a matrix that have 
-same dimention of the input dataset (i.e. `tbl_ae_spec`). 
+same dimension of the input dataset (i.e. `tbl_ae_spec`). 
 In the code below, we illustrate how to display **bold** text for group headers
 to highlight the nested structure of the table layout. 
 

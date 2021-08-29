@@ -11,7 +11,7 @@ baseline characteristics table in a study.
 knitr::include_graphics("tlf/tlf_base.pdf")
 ```
 
-There is many R packages that can effciently summarize baseline information.
+There is many R packages that can efficiently summarize baseline information.
 The [`table1`](https://github.com/benjaminrich/table1) R package is one of them. 
 
 ```{r}

@@ -88,8 +88,8 @@ fmt_num(n / n() * 100, digits = 1)
 To calculate number and percentage of patients by groups, 
 we provide a simple (but not robust) wrapper function, `count_by` using `dplyr` and `tidyr`.
 
-The function can be enhanced in multiple ways, but here we only focus on simplificy and readability.
-More details about writting R functions can be found in [Stat454 course](https://stat545.com/functions-part1.html).
+The function can be enhanced in multiple ways, but here we only focus on simplicity and readability.
+More details about writing R functions can be found in [Stat454 course](https://stat545.com/functions-part1.html).
 
 ```{r}
 count_by <- function(data, # Input data set

@@ -40,7 +40,7 @@ functions, before the function package can be disseminated through the Comprehen
 (CRAN). As a user, you can easily install and user those packages after installing from CRAN. 
 
 We recommend to also use R package folder structure to organize analysis scripts 
-for clincial trial development. 
+for clinical trial development. 
 Using the R package folder structure to streamline data analysis work has been proposed 
 (@marwick2018packaging, @wuanalysis). 
 
