@@ -41,6 +41,10 @@ r2rtf:::rtf_convert_format(list.files("tlf", pattern = ".rtf", full.names = TRUE
 rsconnect::writeManifest(appPrimaryDoc = "index.Rmd", contentCategory = "site")
 ```
 
+```{r, eval = FALSE, include=FALSE}
+bookdown::render_book("index.Rmd", "bookdown::pdf_book")
+```
+
 # Welcome! {-}
 
 <img src="images/cover.jpg" width="100%" align="right" alt="" class="cover" /> 
@@ -71,7 +75,7 @@ The quality of this document relies on you.
 - Author: contribute majority content of at least one chapter. 
 - Contributor: [contribute at least one commit to the source code](https://stash.merck.com/projects/BARDS/repos/r4csr/browse)
 
-```{r}
+```{r, echo = FALSE, eval = TRUE}
 data.frame(contributors = as.character(contributors)) %>%   
   kable(format = "html") %>%
   kable_styling()
