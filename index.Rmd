@@ -31,7 +31,8 @@ options(dplyr.summarise.inform = FALSE)
 ```
 
 ```{r, eval = FALSE, include=FALSE}
-r2rtf:::rtf_convert_format(list.files("tlf", pattern = ".rtf", full.names = TRUE), output_dir = "tlf")
+r2rtf:::rtf_convert_format(list.files("tlf", pattern = ".rtf", full.names = TRUE), 
+                           output_dir = "tlf")
 ```
 
 ```{r, eval = FALSE, include=FALSE}
