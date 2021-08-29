@@ -1,4 +1,4 @@
-# Table for Baseline Characteristics
+# Baseline Characteristics
 
 Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
 we need to summarize critical demographic and baseline characteristics of the patients
@@ -18,7 +18,10 @@ The [`table1`](https://github.com/benjaminrich/table1) R package is one of them.
 library(table1)
 library(r2rtf)
 library(haven)
+library(dplyr)
+library(tidyr)
 library(stringr)
+library(tools)
 ```
 
 As in previous chapters, we first read `adsl` dataset that contain all 
@@ -36,7 +39,11 @@ More details of the `table` R package can be found in the package
 The `table1` R package directly create an HTML report.
 
 ```{r}
-tbl <- table1(~ SEX + AGE + RACE | TRT01P, data = adsl)
+ana <- adsl %>% 
+  mutate(SEX = factor(SEX, c("F", "M"), c("Female", "Male")), 
+         RACE = toTitleCase(tolower(RACE))) 
+
+tbl <- table1(~ SEX + AGE + RACE | TRT01P, data = ana)
 tbl
 ```
 
@@ -48,9 +55,11 @@ recommended by regulatory agencies.
 ```{r}
 tbl_base <- tbl %>% 
               as.data.frame() %>% 
+              as_tibble() %>%
               mutate( across(everything(), 
                       ~ str_replace_all(.x, intToUtf8(160), " ") ) 
-                    )
+                    ) 
+              
 
 names(tbl_base) <- str_replace_all(names(tbl_base), intToUtf8(160), " ")
 tbl_base
