@@ -126,8 +126,6 @@ In this example we consider three variables:
 - AEDECOD: Dictionary-Derived Term
 
 ```{r}
-library(r2rtf)
-
 r2rtf_adae %>%
   select(USUBJID, TRTA, AEDECOD) %>%
   head(4)
@@ -137,9 +135,6 @@ for data manipulation to create a data frame
 that contains all the information we want to add in an RTF table. 
 
 ```{r}
-library(tidyr)
-library(dplyr)
-
 tbl <- r2rtf_adae %>%
   count(TRTA, AEDECOD) %>%
   pivot_wider(names_from = TRTA, values_from = n, values_fill = 0)

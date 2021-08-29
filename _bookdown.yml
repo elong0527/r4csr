@@ -18,6 +18,9 @@ rmd_files: [
   "tlf-disposition.Rmd",
   "tlf-population.Rmd",
   "tlf-baseline.Rmd",
+  "tlf-efficacy.Rmd", 
+  "tlf-ae-summary.Rmd",
+  "tlf-specific-ae.Rmd",
   
   "project-folder.Rmd",
   "project-management.Rmd",

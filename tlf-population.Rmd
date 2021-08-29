@@ -1,4 +1,4 @@
-# Table for Analysis Population {#population}
+# Analysis Population {#population}
 
 Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
 we need to summarize which patients were included in each efficacy analysis 

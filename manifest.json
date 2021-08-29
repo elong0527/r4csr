@@ -436,26 +436,82 @@
       "Repository": "https://rspm.merck.com/unrestricted/latest",
       "description": {
         "Package": "ellipsis",
-        "Version": "0.3.1",
+        "Version": "0.3.2",
         "Title": "Tools for Working with ...",
         "Description": "The ellipsis is a powerful tool for extending functions. Unfortunately \n    this power comes at a cost: misspelled arguments will be silently ignored. \n    The ellipsis package provides a collection of functions to catch problems\n    and alert the user.",
         "Authors@R": "c(\n      person(\"Hadley\", \"Wickham\", , \"hadley@rstudio.com\", role = c(\"aut\", \"cre\")),\n      person(\"RStudio\", role = \"cph\")\n    )",
-        "License": "GPL-3",
+        "License": "MIT + file LICENSE",
         "Encoding": "UTF-8",
-        "LazyData": "true",
-        "RoxygenNote": "7.1.0",
+        "RoxygenNote": "7.1.1",
         "URL": "https://ellipsis.r-lib.org, https://github.com/r-lib/ellipsis",
         "BugReports": "https://github.com/r-lib/ellipsis/issues",
         "Depends": "R (>= 3.2)",
         "Imports": "rlang (>= 0.3.0)",
         "Suggests": "covr, testthat",
         "NeedsCompilation": "yes",
-        "Packaged": "2020-05-15 05:57:33 UTC; lionel",
+        "Packaged": "2021-04-29 12:06:44 UTC; lionel",
         "Author": "Hadley Wickham [aut, cre],\n  RStudio [cph]",
         "Maintainer": "Hadley Wickham <hadley@rstudio.com>",
         "Repository": "RSPM",
-        "Date/Publication": "2020-05-15 14:10:06 UTC",
-        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 07:03:21 UTC; unix"
+        "Date/Publication": "2021-04-29 12:40:02 UTC",
+        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-07-07 03:38:58 UTC; unix"
+      }
+    },
+    "emmeans": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "emmeans",
+        "Type": "Package",
+        "Title": "Estimated Marginal Means, aka Least-Squares Means",
+        "Version": "1.5.4",
+        "Date": "2021-02-03",
+        "Authors@R": "c(person(\"Russell V.\", \"Lenth\", role = c(\"aut\", \"cre\", \"cph\"), \n    email = \"russell-lenth@uiowa.edu\"),\n    person(\"Paul\", \"Buerkner\", role = \"ctb\"),\n    person(\"Maxime\", \"Herve\", role = \"ctb\"),\n    person(\"Jonathon\", \"Love\", role = \"ctb\"),\n    person(\"Hannes\", \"Riebl\", role = \"ctb\"),\n    person(\"Henrik\", \"Singmann\", role = \"ctb\"))",
+        "Depends": "R (>= 3.5.0)",
+        "Imports": "estimability (>= 1.3), graphics, methods, numDeriv, stats,\nutils, plyr, mvtnorm, xtable (>= 1.8-2)",
+        "Suggests": "bayesplot, bayestestR, biglm, brms, car, coda (>= 0.17),\nggplot2, lattice, logspline, mediation, mgcv, multcomp,\nmultcompView, nlme, ordinal (>= 2014.11-12), pbkrtest (>=\n0.4-1), lme4, lmerTest (>= 2.0.32), MASS, MuMIn, rsm, knitr,\nrmarkdown, scales, splines, testthat",
+        "Enhances": "CARBayes, coxme, gee, geepack, MCMCglmm, MCMCpack, mice,\nnnet, pscl, rstanarm, sommer, survival",
+        "URL": "https://github.com/rvlenth/emmeans",
+        "BugReports": "https://github.com/rvlenth/emmeans/issues",
+        "LazyData": "yes",
+        "ByteCompile": "yes",
+        "Description": "Obtain estimated marginal means (EMMs) for many linear, generalized \n  linear, and mixed models. Compute contrasts or linear functions of EMMs,\n  trends, and comparisons of slopes. Plots and other displays.\n  Least-squares means are discussed, and the term \"estimated marginal means\"\n  is suggested, in Searle, Speed, and Milliken (1980) Population marginal means \n  in the linear model: An alternative to least squares means, The American \n  Statistician 34(4), 216-221 <doi:10.1080/00031305.1980.10483031>.",
+        "License": "GPL-2 | GPL-3",
+        "Encoding": "UTF-8",
+        "RoxygenNote": "7.1.1",
+        "VignetteBuilder": "knitr",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-02-03 20:32:41 UTC; rlenth",
+        "Author": "Russell V. Lenth [aut, cre, cph],\n  Paul Buerkner [ctb],\n  Maxime Herve [ctb],\n  Jonathon Love [ctb],\n  Hannes Riebl [ctb],\n  Henrik Singmann [ctb]",
+        "Maintainer": "Russell V. Lenth <russell-lenth@uiowa.edu>",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-02-03 21:40:03 UTC",
+        "Built": "R 4.0.1; ; 2021-04-03 07:03:30 UTC; unix"
+      }
+    },
+    "estimability": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "estimability",
+        "Type": "Package",
+        "Title": "Tools for Assessing Estimability of Linear Predictions",
+        "Version": "1.3",
+        "Date": "2018-02-10",
+        "Authors@R": "c(person(\"Russell\", \"Lenth\", role = c(\"aut\", \"cre\", \"cph\"), \n    email = \"russell-lenth@uiowa.edu\"))",
+        "Depends": "stats",
+        "Description": "Provides tools for determining estimability of linear functions \n  of regression coefficients, and 'epredict' methods that handle \n  non-estimable cases correctly. Estimability theory is discussed in\n  many linear-models textbooks including Chapter 3 of Monahan, JF (2008), \n  \"A Primer on Linear Models\", Chapman and Hall (ISBN 978-1-4200-6201-4).",
+        "LazyData": "yes",
+        "ByteCompile": "yes",
+        "License": "GPL (>= 3)",
+        "NeedsCompilation": "no",
+        "Packaged": "2018-02-11 18:23:39 UTC; rlenth",
+        "Author": "Russell Lenth [aut, cre, cph]",
+        "Maintainer": "Russell Lenth <russell-lenth@uiowa.edu>",
+        "Repository": "RSPM",
+        "Date/Publication": "2018-02-11 20:58:37 UTC",
+        "Encoding": "UTF-8",
+        "Built": "R 4.0.1; ; 2021-04-03 07:05:03 UTC; unix"
       }
     },
     "evaluate": {
@@ -626,7 +682,7 @@
         "Maintainer": "Jim Hester <james.f.hester@gmail.com>",
         "Repository": "RSPM",
         "Date/Publication": "2020-08-27 13:50:06 UTC",
-        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 07:37:51 UTC; unix"
+        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-07-07 01:22:25 UTC; unix"
       }
     },
     "haven": {
@@ -876,7 +932,7 @@
         "Maintainer": "Lionel Henry <lionel@rstudio.com>",
         "Repository": "RSPM",
         "Date/Publication": "2020-11-17 16:20:06 UTC",
-        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 08:00:44 UTC; unix"
+        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-07-07 01:22:32 UTC; unix"
       }
     },
     "markdown": {
@@ -933,6 +989,54 @@
         "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 08:04:27 UTC; unix"
       }
     },
+    "mvtnorm": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "mvtnorm",
+        "Title": "Multivariate Normal and t Distributions",
+        "Version": "1.1-1",
+        "Date": "2020-06-09",
+        "Authors@R": "c(person(\"Alan\", \"Genz\", role = \"aut\"),\n             person(\"Frank\", \"Bretz\", role = \"aut\"),\n             person(\"Tetsuhisa\", \"Miwa\", role = \"aut\"),\n             person(\"Xuefei\", \"Mi\", role = \"aut\"),\n             person(\"Friedrich\", \"Leisch\", role = \"ctb\"),\n             person(\"Fabian\", \"Scheipl\", role = \"ctb\"),\n             person(\"Bjoern\", \"Bornkamp\", role = \"ctb\", comment = c(ORCID = \"0000-0002-6294-8185\")),\n             person(\"Martin\", \"Maechler\", role = \"ctb\"),\n             person(\"Torsten\", \"Hothorn\", role = c(\"aut\", \"cre\"),\n                    email = \"Torsten.Hothorn@R-project.org\", comment = c(ORCID = \"0000-0001-8301-0471\")))",
+        "Description": "Computes multivariate normal and t probabilities, quantiles,\n  random deviates and densities.",
+        "Imports": "stats, methods",
+        "Depends": "R(>= 3.5.0)",
+        "License": "GPL-2",
+        "URL": "http://mvtnorm.R-forge.R-project.org",
+        "NeedsCompilation": "yes",
+        "Packaged": "2020-06-09 13:32:09 UTC; hothorn",
+        "Author": "Alan Genz [aut],\n  Frank Bretz [aut],\n  Tetsuhisa Miwa [aut],\n  Xuefei Mi [aut],\n  Friedrich Leisch [ctb],\n  Fabian Scheipl [ctb],\n  Bjoern Bornkamp [ctb] (<https://orcid.org/0000-0002-6294-8185>),\n  Martin Maechler [ctb],\n  Torsten Hothorn [aut, cre] (<https://orcid.org/0000-0001-8301-0471>)",
+        "Maintainer": "Torsten Hothorn <Torsten.Hothorn@R-project.org>",
+        "Repository": "RSPM",
+        "Date/Publication": "2020-06-09 15:50:02 UTC",
+        "Encoding": "UTF-8",
+        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 08:08:58 UTC; unix"
+      }
+    },
+    "numDeriv": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "numDeriv",
+        "Version": "2016.8-1.1",
+        "Title": "Accurate Numerical Derivatives",
+        "Description": "Methods for calculating (usually) accurate\n\tnumerical first and second order derivatives. Accurate calculations \n\tare done using 'Richardson''s' extrapolation or, when applicable, a\n\tcomplex step derivative is available. A simple difference \n\tmethod is also provided. Simple difference is (usually) less accurate\n\tbut is much quicker than 'Richardson''s' extrapolation and provides a \n\tuseful cross-check. \n\tMethods are provided for real scalar and vector valued functions. ",
+        "Depends": "R (>= 2.11.1)",
+        "LazyLoad": "yes",
+        "ByteCompile": "yes",
+        "License": "GPL-2",
+        "Copyright": "2006-2011, Bank of Canada. 2012-2016, Paul Gilbert",
+        "Author": "Paul Gilbert and Ravi Varadhan",
+        "Maintainer": "Paul Gilbert <pgilbert.ttv9z@ncf.ca>",
+        "URL": "http://optimizer.r-forge.r-project.org/",
+        "NeedsCompilation": "no",
+        "Packaged": "2019-06-04 11:04:44 UTC; hornik",
+        "Repository": "RSPM",
+        "Date/Publication": "2019-06-06 09:51:09 UTC",
+        "Encoding": "UTF-8",
+        "Built": "R 4.0.1; ; 2021-04-03 08:10:10 UTC; unix"
+      }
+    },
     "pillar": {
       "Source": "CRAN",
       "Repository": "https://rspm.merck.com/unrestricted/latest",
@@ -985,6 +1089,34 @@
         "Repository": "RSPM",
         "Date/Publication": "2019-09-22 09:20:02 UTC",
         "Built": "R 4.0.1; ; 2021-04-03 08:17:05 UTC; unix"
+      }
+    },
+    "plyr": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "plyr",
+        "Title": "Tools for Splitting, Applying and Combining Data",
+        "Version": "1.8.6",
+        "Authors@R": "\n    person(given = \"Hadley\",\n           family = \"Wickham\",\n           role = c(\"aut\", \"cre\"),\n           email = \"hadley@rstudio.com\")",
+        "Description": "A set of tools that solves a common set of\n    problems: you need to break a big problem down into manageable pieces,\n    operate on each piece and then put all the pieces back together.  For\n    example, you might want to fit a model to each spatial location or\n    time point in your study, summarise data by panels or collapse\n    high-dimensional arrays to simpler summary statistics. The development\n    of 'plyr' has been generously supported by 'Becton Dickinson'.",
+        "License": "MIT + file LICENSE",
+        "URL": "http://had.co.nz/plyr, https://github.com/hadley/plyr",
+        "BugReports": "https://github.com/hadley/plyr/issues",
+        "Depends": "R (>= 3.1.0)",
+        "Imports": "Rcpp (>= 0.11.0)",
+        "Suggests": "abind, covr, doParallel, foreach, iterators, itertools,\ntcltk, testthat",
+        "LinkingTo": "Rcpp",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.0.2",
+        "NeedsCompilation": "yes",
+        "Packaged": "2020-03-02 23:46:56 UTC; hadley",
+        "Author": "Hadley Wickham [aut, cre]",
+        "Maintainer": "Hadley Wickham <hadley@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2020-03-03 14:40:02 UTC",
+        "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 08:18:43 UTC; unix"
       }
     },
     "purrr": {
@@ -1510,6 +1642,32 @@
         "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 09:29:54 UTC; unix"
       }
     },
+    "xtable": {
+      "Source": "CRAN",
+      "Repository": "https://rspm.merck.com/unrestricted/latest",
+      "description": {
+        "Package": "xtable",
+        "Version": "1.8-4",
+        "Date": "2019-04-08",
+        "Title": "Export Tables to LaTeX or HTML",
+        "Authors@R": "c(person(\"David B.\", \"Dahl\", role=\"aut\"),\n             person(\"David\", \"Scott\", role=c(\"aut\",\"cre\"),\n               email=\"d.scott@auckland.ac.nz\"),\n             person(\"Charles\", \"Roosen\", role=\"aut\"),\n             person(\"Arni\", \"Magnusson\", role=\"aut\"),\n             person(\"Jonathan\", \"Swinton\", role=\"aut\"),\n             person(\"Ajay\", \"Shah\", role=\"ctb\"),\n             person(\"Arne\", \"Henningsen\", role=\"ctb\"),\n             person(\"Benno\", \"Puetz\", role=\"ctb\"),\n             person(\"Bernhard\", \"Pfaff\", role=\"ctb\"),\n             person(\"Claudio\", \"Agostinelli\", role=\"ctb\"),\n             person(\"Claudius\", \"Loehnert\", role=\"ctb\"),\n             person(\"David\", \"Mitchell\", role=\"ctb\"),\n             person(\"David\", \"Whiting\", role=\"ctb\"),\n             person(\"Fernando da\", \"Rosa\", role=\"ctb\"),\n             person(\"Guido\", \"Gay\", role=\"ctb\"),\n             person(\"Guido\", \"Schulz\", role=\"ctb\"),\n             person(\"Ian\", \"Fellows\", role=\"ctb\"),\n             person(\"Jeff\", \"Laake\", role=\"ctb\"),\n             person(\"John\", \"Walker\", role=\"ctb\"),\n             person(\"Jun\", \"Yan\", role=\"ctb\"),\n             person(\"Liviu\", \"Andronic\", role=\"ctb\"),\n             person(\"Markus\", \"Loecher\", role=\"ctb\"),\n             person(\"Martin\", \"Gubri\", role=\"ctb\"),\n             person(\"Matthieu\", \"Stigler\", role=\"ctb\"),\n             person(\"Robert\", \"Castelo\", role=\"ctb\"),\n             person(\"Seth\", \"Falcon\", role=\"ctb\"),\n             person(\"Stefan\", \"Edwards\", role=\"ctb\"),\n             person(\"Sven\", \"Garbade\", role=\"ctb\"),\n             person(\"Uwe\", \"Ligges\", role=\"ctb\"))",
+        "Maintainer": "David Scott <d.scott@auckland.ac.nz>",
+        "Imports": "stats, utils",
+        "Suggests": "knitr, plm, zoo, survival",
+        "VignetteBuilder": "knitr",
+        "Description": "Coerce data to LaTeX and HTML tables.",
+        "URL": "http://xtable.r-forge.r-project.org/",
+        "Depends": "R (>= 2.10.0)",
+        "License": "GPL (>= 2)",
+        "Repository": "RSPM",
+        "NeedsCompilation": "no",
+        "Packaged": "2019-04-21 10:56:51 UTC; dsco036",
+        "Author": "David B. Dahl [aut],\n  David Scott [aut, cre],\n  Charles Roosen [aut],\n  Arni Magnusson [aut],\n  Jonathan Swinton [aut],\n  Ajay Shah [ctb],\n  Arne Henningsen [ctb],\n  Benno Puetz [ctb],\n  Bernhard Pfaff [ctb],\n  Claudio Agostinelli [ctb],\n  Claudius Loehnert [ctb],\n  David Mitchell [ctb],\n  David Whiting [ctb],\n  Fernando da Rosa [ctb],\n  Guido Gay [ctb],\n  Guido Schulz [ctb],\n  Ian Fellows [ctb],\n  Jeff Laake [ctb],\n  John Walker [ctb],\n  Jun Yan [ctb],\n  Liviu Andronic [ctb],\n  Markus Loecher [ctb],\n  Martin Gubri [ctb],\n  Matthieu Stigler [ctb],\n  Robert Castelo [ctb],\n  Seth Falcon [ctb],\n  Stefan Edwards [ctb],\n  Sven Garbade [ctb],\n  Uwe Ligges [ctb]",
+        "Date/Publication": "2019-04-21 12:20:03 UTC",
+        "Encoding": "UTF-8",
+        "Built": "R 4.0.1; ; 2021-04-03 09:30:15 UTC; unix"
+      }
+    },
     "yaml": {
       "Source": "CRAN",
       "Repository": "https://rspm.merck.com/unrestricted/latest",
@@ -1536,8 +1694,149 @@
     }
   },
   "files": {
+    "_book/ae-summary.html": {
+      "checksum": "f054e57e276cd4f5e5f8cbff9bda48ba"
+    },
+    "_book/baseline-characteristics.html": {
+      "checksum": "b2789d3d04583e0a88b32a6a850fe437"
+    },
+    "_book/disposition.html": {
+      "checksum": "183a7c36c1b6b14a6117c4967edb054b"
+    },
+    "_book/ectd.html": {
+      "checksum": "27d64d9d49dfd5f8f303df453044ed5e"
+    },
+    "_book/efficacy.html": {
+      "checksum": "6ae45ec24e79d8a4c5157059b8c49e43"
+    },
+    "_book/folder.html": {
+      "checksum": "9158ed9f8669c438e5998ec76be99f7d"
+    },
+    "_book/images/cover.jpg": {
+      "checksum": "2b33fa53ecef6313aa30a5c800098163"
+    },
+    "_book/index.html": {
+      "checksum": "e7bb76564666a5e0d0ca601471e23ca7"
+    },
+    "_book/intro.html": {
+      "checksum": "ae6b4f0a110badad4e45f85c64e23805"
+    },
+    "_book/libs/bootstrap-4.5.3/bootstrap.bundle.min.js": {
+      "checksum": "7f389f5d2622ce2090eca7c36bcb90bc"
+    },
+    "_book/libs/bootstrap-4.5.3/bootstrap.min.css": {
+      "checksum": "c9f7c4a9e48ecd0933b1efddccee0736"
+    },
+    "_book/libs/bootstrap-4.5.3/fonts/bootstrap/glyphicons-halflings-regular.eot": {
+      "checksum": "f4769f9bdb7466be65088239c12046d1"
+    },
+    "_book/libs/bootstrap-4.5.3/fonts/bootstrap/glyphicons-halflings-regular.svg": {
+      "checksum": "89889688147bd7575d6327160d64e760"
+    },
+    "_book/libs/bootstrap-4.5.3/fonts/bootstrap/glyphicons-halflings-regular.ttf": {
+      "checksum": "e18bbf611f2a2e43afc071aa2f4e1512"
+    },
+    "_book/libs/bootstrap-4.5.3/fonts/bootstrap/glyphicons-halflings-regular.woff": {
+      "checksum": "fa2772327f55d8198301fdb8bcfc8158"
+    },
+    "_book/libs/bootstrap-4.5.3/fonts/bootstrap/glyphicons-halflings-regular.woff2": {
+      "checksum": "448c34a56d699c29117adc64c43affeb"
+    },
+    "_book/libs/bs3compat-0.2.4/bs3compat.js": {
+      "checksum": "8f2df3a89373a9da39230bbc7b487eef"
+    },
+    "_book/libs/bs3compat-0.2.4/tabs.js": {
+      "checksum": "a19cc7ef41a2f9683a10c8d29f1e1241"
+    },
+    "_book/libs/bs4_book-1.0.0/bs4_book.css": {
+      "checksum": "b9f5b642360677403130ece5459f8a8a"
+    },
+    "_book/libs/bs4_book-1.0.0/bs4_book.js": {
+      "checksum": "fee4b8d560dcd98905b2e2ca8bee540a"
+    },
+    "_book/libs/header-attrs-2.7/header-attrs.js": {
+      "checksum": "9c32b58ed5fd8fe2efbd5bd7023cdef0"
+    },
+    "_book/libs/jquery-3.5.1/jquery-3.5.1.min.js": {
+      "checksum": "dc5e7f18c8d36ac1d3d4753a87c98d0a"
+    },
+    "_book/libs/table1-1.0/table1_defaults.css": {
+      "checksum": "fdf39717a9efdce3be27f4a9d8ec9051"
+    },
+    "_book/manage.html": {
+      "checksum": "8226f25edf30966cfd5f06ad521698a8"
+    },
+    "_book/overview-1.html": {
+      "checksum": "eeb2756559bb9da01c40620cab8df39e"
+    },
+    "_book/overview.html": {
+      "checksum": "9eaa59656e725d585dd63a02742c7cc0"
+    },
+    "_book/population.html": {
+      "checksum": "6a68aed040a6cf2b6b83c5a8ea8c5164"
+    },
+    "_book/reference-keys.txt": {
+      "checksum": "c8dcc1bb1e9094649dcc8dbf1025ea4f"
+    },
+    "_book/reference.html": {
+      "checksum": "5954dc2157b0fd113b11136566df783e"
+    },
+    "_book/search.json": {
+      "checksum": "183779052d42e7c174974f11c382a06f"
+    },
+    "_book/specific-ae.html": {
+      "checksum": "61000550640a6cf251c8405852ad7253"
+    },
+    "_book/submission-package.html": {
+      "checksum": "76696dcc0803489d74231a2be73b344b"
+    },
+    "_book/table-for-baseline-characteristics.html": {
+      "checksum": "7cd435448c82ea53efab9bae596b2b5f"
+    },
+    "_book/table-for-study-patients-1.html": {
+      "checksum": "7993661134ac562be64d91085959b874"
+    },
+    "_book/table-for-study-patients-2.html": {
+      "checksum": "f3ba9f39ebf0858316ee34cd63062df6"
+    },
+    "_book/table-for-study-patients.html": {
+      "checksum": "47427f97a1e3b33aaf2fa2f58a6ef66d"
+    },
+    "_book/tlf/intro-ae1.pdf": {
+      "checksum": "a037e6597cce31982745a9212e6ff0c7"
+    },
+    "_book/tlf/intro-ae2.pdf": {
+      "checksum": "448274a071a5fb509ab578b56ea3aad1"
+    },
+    "_book/tlf/intro-ae3.pdf": {
+      "checksum": "9710380bef89e48ceb89a68d41e60130"
+    },
+    "_book/tlf/intro-ae5.pdf": {
+      "checksum": "13f1fa924619e8e8a38f49411c891a78"
+    },
+    "_book/tlf/intro-ae7.pdf": {
+      "checksum": "6a34a2ed0e476e736ad9f0fa0b041fa8"
+    },
+    "_book/tlf/tbl_disp.pdf": {
+      "checksum": "51d551e33212f25b323d487a405020b2"
+    },
+    "_book/tlf/tbl_pop.pdf": {
+      "checksum": "b7e94c66ea2c7cd921026d954df48278"
+    },
+    "_book/tlf/tlf_base.pdf": {
+      "checksum": "3e2bdf4419adde8e87e9a86e21ec36ce"
+    },
+    "_book/tlf/tlf_eff.pdf": {
+      "checksum": "497ea478e4d4d171085a709a970e387f"
+    },
+    "_book/tlf/tlf_eff1.pdf": {
+      "checksum": "112d779e973a40d7771f9b8fc7cb407a"
+    },
+    "_book/tlf/tlf_eff2.pdf": {
+      "checksum": "6837174e605f24ac91de26d30377bc7a"
+    },
     "_bookdown.yml": {
-      "checksum": "cdcec1835577ae60b8e62bccfd824316"
+      "checksum": "3f6039c772edc08c6f416e1bf73191db"
     },
     "_output.yml": {
       "checksum": "47ed0097215ea0381a84c907f522b537"
@@ -1572,26 +1871,35 @@
     "adam_data/advs.sas7bdat": {
       "checksum": "de2ace78c29a122929c9f1c9cefa5a94"
     },
+    "ae-summary.html": {
+      "checksum": "40a9439d1024dced752c3fb8ff1b7868"
+    },
+    "baseline-characteristics.html": {
+      "checksum": "3918ffbf37b1d1cd676460cc12e248f8"
+    },
     "book.bib": {
       "checksum": "2b4f6de1e031a12400b6d81c89e993b0"
     },
     "disposition.html": {
-      "checksum": "a090449249f1c49c3dfc8ba7eb17a44a"
+      "checksum": "ac5aeef8458b0a676fe9135e37ec336a"
     },
     "ectd.html": {
-      "checksum": "bd3a07b32d9b833652fd8ce2c73c808b"
+      "checksum": "2514362747789300a54fa3d2f55957f1"
+    },
+    "efficacy.html": {
+      "checksum": "6af9b8850fee6b03eafa4093961dd4e0"
     },
     "folder.html": {
-      "checksum": "0f8934d43bfab5fd7c068e2699e8f33d"
+      "checksum": "d5a31be8434a7c4455127c5504a44d1a"
     },
     "images/cover.jpg": {
       "checksum": "2b33fa53ecef6313aa30a5c800098163"
     },
     "index.Rmd": {
-      "checksum": "ba45ad25b2e1964366a6d5848e57f026"
+      "checksum": "7f2964efa7550ebc98a3855c295838fd"
     },
     "intro.html": {
-      "checksum": "cad8e762e9272f0cbb42037a915ae6de"
+      "checksum": "eecd856b01e907d213aa6bc0780bed29"
     },
     "intro.Rmd": {
       "checksum": "cf42a71e5e4e7778f0574ec129e95a56"
@@ -1669,10 +1977,10 @@
       "checksum": "de877aa6d744cc160ff41c26a8e4811f"
     },
     "manage.html": {
-      "checksum": "2f968194419ac1edbf88f5a10ef88d89"
+      "checksum": "d06f3a5dcde41d255ed171408867f799"
     },
     "overview.html": {
-      "checksum": "10a70d3e584cfc5d96fedee5d99a857d"
+      "checksum": "81fcbea2f759c1c9a6768c0f9be650f4"
     },
     "packages.bib": {
       "checksum": "cf57eae52cb4a9ef3ec9d38cc384f278"
@@ -1717,7 +2025,13 @@
       "checksum": "353cfc34c0fc8ecc9516f0dca6746d50"
     },
     "packrat/desc/ellipsis": {
-      "checksum": "fc4017d41a2f24e2cb4e8a117a9731b6"
+      "checksum": "3dad263b3c5f6682661bf66a0ffb6e0e"
+    },
+    "packrat/desc/emmeans": {
+      "checksum": "39ec2cba77fbb9414fb10e87b5769c44"
+    },
+    "packrat/desc/estimability": {
+      "checksum": "26dc3ec587d6fd91dd4df8741e679a3b"
     },
     "packrat/desc/evaluate": {
       "checksum": "981a091e5016218af724ee71cf221ba4"
@@ -1738,7 +2052,7 @@
       "checksum": "1f3cf22cecdfefbe14ff0d1a7e456cb3"
     },
     "packrat/desc/glue": {
-      "checksum": "6a0bd217f25749e5c5d95eea0503ffee"
+      "checksum": "d442f9de4f921ef58ec89f528b6db73a"
     },
     "packrat/desc/haven": {
       "checksum": "78a7e7be7bc84bd595930cbf01734300"
@@ -1765,7 +2079,7 @@
       "checksum": "ce2f1eecc20f67fc460785891df26552"
     },
     "packrat/desc/magrittr": {
-      "checksum": "e39cfdbd8337f704a0f567fcfabf6480"
+      "checksum": "4a9217809f06de2824035e8c5835d4fa"
     },
     "packrat/desc/markdown": {
       "checksum": "ee8793c3fd14361f0c9615a1a6a9c25a"
@@ -1773,11 +2087,20 @@
     "packrat/desc/mime": {
       "checksum": "0a33da30eac47200f6d9b806da704144"
     },
+    "packrat/desc/mvtnorm": {
+      "checksum": "62640e27efe2bf59c22dd27fb4826cb4"
+    },
+    "packrat/desc/numDeriv": {
+      "checksum": "dce78210e0e75693871492ce50157ddf"
+    },
     "packrat/desc/pillar": {
       "checksum": "a6f83fae6d8d9e5ac6a0bdceb82cb31e"
     },
     "packrat/desc/pkgconfig": {
       "checksum": "5eaaacf524f5aece47af596f08b61585"
+    },
+    "packrat/desc/plyr": {
+      "checksum": "c7d28a1478dffd6db37cbb15c6b000b2"
     },
     "packrat/desc/purrr": {
       "checksum": "0797bd94cc168674ee1ac2c45679890f"
@@ -1839,14 +2162,17 @@
     "packrat/desc/xml2": {
       "checksum": "74bb9305b827440eb2736a747d00fa8e"
     },
+    "packrat/desc/xtable": {
+      "checksum": "9285d59caad86b822a06d3b1d5490866"
+    },
     "packrat/desc/yaml": {
       "checksum": "e8d47ded9c196784ec5ce07f4f92e492"
     },
     "packrat/packrat.lock": {
-      "checksum": "d61c6dea51047d2d10e5faacbb58e539"
+      "checksum": "b184350fe24f6ee80f3e90ac15ded25b"
     },
     "population.html": {
-      "checksum": "55ef0d7e3b56ba985872d343d744a8cc"
+      "checksum": "d636aa4e1d56a254f2c085c7fedbc6ee"
     },
     "preamble.tex": {
       "checksum": "1fd1a3c59e951f9f95b6b39785d600ff"
@@ -1861,52 +2187,49 @@
       "checksum": "10789bdc7c7347beafd0e709e96eea5a"
     },
     "reference.html": {
-      "checksum": "95a642a71bd7e10d5b75a1e5855794fe"
+      "checksum": "d79571753053326f9b8b2d5b96e6643a"
     },
     "reference.Rmd": {
       "checksum": "a7a7929587c58ed042e53d61ab67f28f"
+    },
+    "specific-ae.html": {
+      "checksum": "8b1052da9d6f116a1d098417a1130627"
     },
     "style.css": {
       "checksum": "0d47cd4731c8a71e1c6e712d28285b6d"
     },
     "submission-package.html": {
-      "checksum": "83fc2fc9ca151056f7c64fad5e8e4caf"
+      "checksum": "bcd8279f7666017260b3363184276b1c"
     },
     "submission.Rmd": {
       "checksum": "60b9f7e4725aafcfb720c71c68cc569d"
     },
-    "table-for-baseline-characteristics.html": {
-      "checksum": "15400d6d309e7a9a6a4ee238e8ca9164"
-    },
     "table-for-planning.html": {
-      "checksum": "02cefcaa900faad9d3241a72020da271"
+      "checksum": "d5e8d6369892f15fee14c78394374bcf"
     },
-    "table-for-study-patients.html": {
-      "checksum": "eb223fa4a257f27feb37256412b059b6"
+    "tlf-ae-summary.Rmd": {
+      "checksum": "c72702e563c95ec87864ed31af619225"
     },
     "tlf-baseline.Rmd": {
-      "checksum": "2d83b99480a4be4378d97e063a46937d"
+      "checksum": "b622707db5bbe7321cd313890b1ec707"
     },
     "tlf-disposition.Rmd": {
-      "checksum": "c24ca9e9eac51f0318d87a3c7962f4ec"
+      "checksum": "aba5e11c997ac5690a3ea3c0a7c89543"
     },
     "tlf-efficacy.Rmd": {
-      "checksum": "35eaa684ed6d5ebe6ce3f9a10aca9fed"
+      "checksum": "4bd31e41db536eff134fb62b2d305dcb"
     },
     "tlf-overview.Rmd": {
-      "checksum": "1d7726389034ea6258b412f07bf81ad9"
+      "checksum": "904459866df5fba0464610045f0a78bc"
     },
     "tlf-planning.Rmd": {
-      "checksum": "81531bb5aa128f116a8a22c13b2251fb"
+      "checksum": "6238d49d6135a585d55d467f2eddbd9a"
     },
     "tlf-population.Rmd": {
-      "checksum": "b5185905df3ad9a590a139a950a2567e"
+      "checksum": "9840c5531f514e2982c7a5ce92b54bff"
     },
-    "tlf/bs-1.pdf": {
-      "checksum": "ed9e2ec27865a1e9481d4d22a20fed5a"
-    },
-    "tlf/bs-1.rtf": {
-      "checksum": "70e05f8964dd121fb18fadfde9b7f285"
+    "tlf-specific-ae.Rmd": {
+      "checksum": "dbe0de0c8a5dfb67466d2766bcbc0cc9"
     },
     "tlf/intro-ae1.pdf": {
       "checksum": "a037e6597cce31982745a9212e6ff0c7"
@@ -1950,8 +2273,32 @@
     "tlf/tbl_pop.rtf": {
       "checksum": "36b2b660e1e1860ac9d1913e300a2468"
     },
+    "tlf/tlf_base.pdf": {
+      "checksum": "3e2bdf4419adde8e87e9a86e21ec36ce"
+    },
+    "tlf/tlf_base.rtf": {
+      "checksum": "9d112ca61de10b77341cbf38be1ee4aa"
+    },
+    "tlf/tlf_eff.pdf": {
+      "checksum": "497ea478e4d4d171085a709a970e387f"
+    },
+    "tlf/tlf_eff.rtf": {
+      "checksum": "abb879175247df24af99ada5e1076cec"
+    },
+    "tlf/tlf_eff1.pdf": {
+      "checksum": "112d779e973a40d7771f9b8fc7cb407a"
+    },
+    "tlf/tlf_eff1.rtf": {
+      "checksum": "7da3e56345583887909e372d0f02419c"
+    },
+    "tlf/tlf_eff2.pdf": {
+      "checksum": "6837174e605f24ac91de26d30377bc7a"
+    },
+    "tlf/tlf_eff2.rtf": {
+      "checksum": "2eed27b657e3d8167fd9d75684fb1a16"
+    },
     "welcome.html": {
-      "checksum": "3ac928e0688ee877e1deb485c303aeae"
+      "checksum": "50b6eb7ee7179ea6044ba6f2b6b5da78"
     }
   },
   "users": null
