@@ -1,8 +1,8 @@
 # Efficacy
 
 Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
-we need to summarize primary and secondary efficacy endpoints. 
-in the section 11.4, efficacy results and tabulations of individual patient data of a CSR. 
+we need to summarize primary and secondary efficacy endpoints,  
+in Section 11.4, Efficacy Results and Tabulations of Individual Patient. 
 
 ```{r}
 library(haven)   # Read SAS data
@@ -31,10 +31,16 @@ adlb <- read_sas("adam_data/adlbc.sas7bdat")
 We first define the analysis dataset using 
 efficacy population flag `EFFFL` and 
 all records post baseline (`AVISITN > 1`) and on or before Week 24 (`AVISITN <= 24`).
+Here the variable `AVISITN` is the numerical analysis visit. 
+For example, if the analysis visit is recorded as "Baseline", i.e., `AVISIT = Baseline`, then `AVISITN = 0`; 
+if the analysis visit is recorded as "Week 24", i.e., `AVISIT = Week 24`, then `AVISITN = 24`;
+if the analysis visit is blank, then `AVISITN` is also blank.
+We will discuss these missing values in Section 6.4.
 
 ```{r}
 gluc <- adlb %>%
   left_join(adsl %>% select(USUBJID, EFFFL), by = "USUBJID") %>%
+  # PARAMCD is parameter code and here we focus on Glucose (mg/dL) 
   filter(EFFFL == "Y" & PARAMCD == "GLUC") %>% 
   arrange(TRTPN) %>% 
   mutate(TRTP = factor(TRTP, levels = unique(TRTP)))
@@ -47,9 +53,13 @@ ana <- gluc %>%
 
 Below is the first few records of the analysis dataset. 
 
+- AVAL: analysis value
+- BASE: baseline value
+- CHG: change from baseline
+
 ```{r}
 ana %>%
-  select(USUBJID, TRTPN, AVISIT, AVAL, BASE, CHG) %>%
+  select(USUBJID, TRTPN, AVISIT, AVAL, BASE, CHG) %>%  
   head(4)
 ```
 ## Helper Functions
@@ -293,3 +303,12 @@ list(t1_rtf, t2_rtf) %>%
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tlf_eff.pdf")
 ```
+
+In conclusion, the procedure to generate the above efficacy results table is summarized as follows.
+
+- Step 1: Read the data into R, i.e., `adsl` and `adlb`.
+- Step 2: Define the analysis dataset. In this example, we define two analysis datasets. The first dataset is the efficacy population (`gluc`). The second dataset is the collection of all records post baseline and on or before week 24 (`ana`).
+- Step 3: Impute the missing values. In our example, we name the `ana` dataset after imputation as `ana_locf`.
+- Step 4: Summarize `gluc`, i.e., calculate the mean and standard derivation, and then format it into a rtf table.
+- Step 5: Summarize `ana_locf`, i.e., calculate the pairwise comparison by ANCOVA model, and then format it into a rtf table.
+- Step 6: Rowly bind the output in Step 4 and Step 5.

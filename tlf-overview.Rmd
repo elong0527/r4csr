@@ -11,7 +11,7 @@ For example, [the United States Food and Drug Administration (US FDA) required n
 following ICH E3 guidance](https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse).
 
 Within eCTD, clinical study reports (CSR) are located at module 5. 
-[ICH E3 guidance](https://www.ich.org/page/efficacy-guidelines) provide 
+[ICH E3 guidance](https://www.ich.org/page/efficacy-guidelines) provides 
 compilation of structure and content of clinical study reports.
 
 A typical CSR contain full details of an individual clinical study 
@@ -25,7 +25,7 @@ on [EMA clincal data website](https://clinicaldata.ema.europa.eu/web/cdp/home).
 
 Building CSR is a team work with clinicians, medical writers, statisticians and statistical programmers.
 Here, we focus on the work and deliverables completed by statisticians and statistical programmers. 
-In an organization, A group of statisticians and statistical programmers commonly work together to 
+In an organization, a group of statisticians and statistical programmers commonly work together to 
 define, develop, validate and deliver tables, listings and figures (TLFs) required for a CSR.
 Microsoft Word is widely used to prepare CSR in pharmaceutical industry. 
 Therefore, `rtf`, `doc`, `docx` are commonly used format to deliver TLFs. 

@@ -2,7 +2,7 @@
 
 Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
 we need to summarize which patients were included in each efficacy analysis 
-in the section 12.2, adverse events of a CSR. 
+in Section 12.2, Adverse Events (AEs). 
 
 ```{r}
 library(haven) # Read SAS data
@@ -35,7 +35,8 @@ In this way, let's focus on the analysis script for advanced feature for table l
 - pagenization: there are many AE terms that can not be covered in one page. 
 Column headers and SOC information needs to be repeated in every page. 
 
-In the code below, we count number of subjects in each AE term by SOC and treatment group. 
+In the code below, we count the number of subjects in each AE term by SOC and treatment group, and we create a new variable `order` and set it as `0` for these counted numbers. 
+The variable `order` will help with the data manipulation later.
 
 ```{r}
 ana <- adae %>% 
@@ -49,7 +50,8 @@ t1 <-ana %>%
 
 t1 %>% head(4)
 ```
-In the code below, we count number of subjects in each AE term by SOC, AE term, and treatment group. 
+In the code below, we count number of subjects in each AE term by SOC, AE term, and treatment group.
+Here we also create a new variable `order` and set it as `1` for these counted numbers. 
 
 ```{r}
 t2 <- ana %>% 
@@ -159,3 +161,13 @@ tbl_ae_spec %>%
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tlf_spec_ae.pdf")
 ```
+
+In conclusion, the procedure to generate a specific AE summary table as shown in the above example is listed as follows:
+
+- Step 1: Read data into R, i.e., `adae` and `adsl`.
+- Step 2: Count the number of subjects by SOC and treatment group (rows with bold text) and store it in a data frame `t1`.
+- Step 3: Count the number of subjects in each AE term by SOC, AE term, and treatment group (rows without bold text) and store it in a data frame `t2`.
+- Step 4: Rowly bind `t1` and `t2` into `t_ae`.
+- Step 5: Count the number of subjects in each arm as `t_pop`.
+- Step 6: Rowly bind `t_pop` with `t_ae` as `tbl_ae_spec`.
+- Step 7: Format the output by `r2rtf`.
