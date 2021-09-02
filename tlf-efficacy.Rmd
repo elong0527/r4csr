@@ -40,7 +40,8 @@ We will discuss these missing values in Section 6.4.
 ```{r}
 gluc <- adlb %>%
   left_join(adsl %>% select(USUBJID, EFFFL), by = "USUBJID") %>%
-  filter(EFFFL == "Y" & PARAMCD == "GLUC") %>% # PARAMCD is parameter code and here we focus on Glucose (mg/dL) 
+  # PARAMCD is parameter code and here we focus on Glucose (mg/dL) 
+  filter(EFFFL == "Y" & PARAMCD == "GLUC") %>% 
   arrange(TRTPN) %>% 
   mutate(TRTP = factor(TRTP, levels = unique(TRTP)))
 
@@ -52,11 +53,13 @@ ana <- gluc %>%
 
 Below is the first few records of the analysis dataset. 
 
+- AVAL: analysis value
+- BASE: baseline value
+- CHG: change from baseline
+
 ```{r}
 ana %>%
-  select(USUBJID, TRTPN, AVISIT, AVAL, BASE, CHG) %>%  # AVAL: analysis value
-                                                       # BASE: baseline value
-                                                       # CHG: change from baseline
+  select(USUBJID, TRTPN, AVISIT, AVAL, BASE, CHG) %>%  
   head(4)
 ```
 ## Helper Functions
