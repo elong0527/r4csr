@@ -1,8 +1,8 @@
 # Disposition {#disposition}
 
 Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
-we need to summarize accounting of all patients who entered the study, 
-in the section 10.1, disposition of patients of a CSR. 
+we need to summarize accounting of all patients who entered the study, in Section 10.1, Disposition of Patients.
+The disposition of patients reports the numbers of patients who were randomized, and who entered and completed each phase of the study, as well as the reasons for all post-randomization discontinuations, grouped by treatment and by major reason (lost to follow-up, adverse event, poor compliance etc.). 
 
 ```{r}
 library(haven) # Read SAS data
@@ -173,3 +173,13 @@ tbl_disp %>%
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tbl_disp.pdf")
 ```
+
+In conclusion, the procedure to generate a AE summary table as shown in the above example is listed as follows:
+
+- Step 1: Read data into R, i.e. `adsl`.
+- Step 2: Count patients in the analysis population and name the dataset as `n_rand`.
+- Step 3: Count the number and percentage of patients who discontinued the study, and name the dataset as `n_disc`.
+- Step 4: Count the number and percentage of of patients who discontinued the study in different reasons, and name the dataset as `n_reason`.
+format it by `r2rtf`.
+- Step 5: Count the number and percentage of of patients who completed the study, and name the dataset as `n_complete`.
+- Step 6: Rowly bind `n_rand`, `n_disc`, `n_reason` and `n_complete` and format it by `r2rtf`.

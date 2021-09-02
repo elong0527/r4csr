@@ -2,7 +2,7 @@
 
 Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
 we need to summarize which patients were included in each efficacy analysis 
-in the section 12.2, adverse events of a CSR. 
+in Section 12.2, Adverse Events (AEs). 
 
 ```{r}
 library(haven) # Read SAS data
@@ -153,3 +153,10 @@ tbl_ae_summary %>%
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tlf_ae_summary.pdf")
 ```
+
+In conclusion, the procedure to generate a AE summary table as shown in the above example is listed as follows:
+
+- Step 1: Read data into R, i.e., `adae` and `adsl`.
+- Step 2: Summarize participants in population by treatment group, and we name the dataset as `t_pop`.
+- Step 3: Summarize participants in population by required AE criteria of interest, and we name the dataset as `t_ae`.
+- Step 4: Rowly bind `t_pop` and `t_ae` and format it by `r2rtf`.
