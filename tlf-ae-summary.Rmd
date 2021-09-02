@@ -105,13 +105,13 @@ t_ae <- t_ae %>%
 We prepare reporting ready dataset for analysis population. 
 
 ```{r}
-t_pop <- adsl %>%
-  filter(SAFFL == "Y") %>%
-  count_by("TRT01AN", "SAFFL",
-    var_label = "Participants in population"
-  ) %>%
-  rename(name = var_label) %>%
-  select(name, starts_with("n_"))
+t_pop <- pop %>% 
+  mutate(name = "Participants in population", 
+         tot = fmt_num(tot, digits = 0)) %>% 
+  pivot_wider(id_cols = name, 
+              names_from = TRTAN, 
+              names_prefix = "n_", 
+              values_from = tot) 
 
 t_pop
 ```
