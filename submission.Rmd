@@ -2,7 +2,7 @@
 
 # eCTD
 
-ToDo: comments
+ToDo: 
 
 - introduce eCTD
 
