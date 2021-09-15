@@ -3,4 +3,5 @@
 .RData
 .Ruserdata
 renv
+_book
 .Rprofile
