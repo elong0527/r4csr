@@ -51,14 +51,14 @@ bookdown::render_book("index.Rmd", "bookdown::pdf_book")
 <img src="images/cover.jpg" width="100%" align="right" alt="" class="cover" /> 
 
 Welcome to R for clinical study report and submission. 
-Clinical study reports (CSR) are the essential part of clinical trials development. 
+Clinical study reports (CSR) are essential parts of clinical trials development. 
 a CSR is an "integrated" full scientific report of an individual clinical trial. 
 
-The [ICH E3: strcuture and content of clinical study reports](https://database.ich.org/sites/default/files/E3_Guideline.pdf) 
+The [ICH E3: structure and content of clinical study reports](https://database.ich.org/sites/default/files/E3_Guideline.pdf) 
 provide guidance to assist sponsors in the development of a CSR. 
-In this book, you will learn how to use R to prepare CSR and submit to regulatory agency. 
+In this book, you will learn how to use R to prepare CSR and submit to regulatory agencies. 
 
-This is the work-in-progress draft of the book.
+**This is the work-in-progress draft of the book.**
 
 ## List of Authors and Contributors {-}
 

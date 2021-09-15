@@ -4,11 +4,12 @@
 
 ## Background
 
-In clinical trial development, it is a critical step to submit information on medicinal products to regulatory agencies. [Electronic Common Technical Document (eCTD)](https://en.wikipedia.org/wiki/Electronic_common_technical_document) 
+In clinical trial development, it is a critical step to 
+submit information on medical products to regulatory agencies. 
+[Electronic Common Technical Document (eCTD)](https://en.wikipedia.org/wiki/Electronic_common_technical_document) 
 has become a worldwide regulatory submission standard format. 
 For example, [the United States Food and Drug Administration (US FDA) required new drug applications, biologics license applications must be submitted using eCTD format](https://www.fda.gov/drugs/electronic-regulatory-submission-and-review/electronic-common-technical-document-ectd). Clinical Data Interchange Standards Consortium (CDISC) provided a 
-[pilot project
-following ICH E3 guidance](https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse).
+[pilot project following ICH E3 guidance](https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse).
 
 Within eCTD, clinical study reports (CSR) are located at module 5. 
 [ICH E3 guidance](https://www.ich.org/page/efficacy-guidelines) provides 
@@ -16,28 +17,30 @@ compilation of structure and content of clinical study reports.
 
 A typical CSR contain full details of an individual clinical study 
 including clinical and statistical description, presentations, and analyses. 
-A large number of tables and figures are incorporated into the main text and appendices 
-of a CSR. In CDISC pilot project, an [example CSR](https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse/updated-pilot-submission-package/900172/m5/53-clin-stud-rep/535-rep-effic-safety-stud/5351-stud-rep-contr/cdiscpilot01/cdiscpilot01.pdf) 
+A large number of tables and figures are incorporated into the main text and appendices of a CSR. 
+In CDISC pilot project, an 
+[example CSR](https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse/updated-pilot-submission-package/900172/m5/53-clin-stud-rep/535-rep-effic-safety-stud/5351-stud-rep-contr/cdiscpilot01/cdiscpilot01.pdf) 
 is also provided. If you are interested in more examples of clinical study reports, 
 the European Medicines Agency (EMA) publishes clinical data including 
 clinical study reports submitted by pharmaceutical companies 
-on [EMA clincal data website](https://clinicaldata.ema.europa.eu/web/cdp/home).  
+on [EMA clinical data website](https://clinicaldata.ema.europa.eu/web/cdp/home).  
 
-Building CSR is a team work with clinicians, medical writers, statisticians and statistical programmers.
+Building CSR is teamwork with clinicians, medical writers, statisticians, and statistical programmers. 
 Here, we focus on the work and deliverables completed by statisticians and statistical programmers. 
 In an organization, a group of statisticians and statistical programmers commonly work together to 
-define, develop, validate and deliver tables, listings and figures (TLFs) required for a CSR.
-Microsoft Word is widely used to prepare CSR in pharmaceutical industry. 
-Therefore, `rtf`, `doc`, `docx` are commonly used format to deliver TLFs. 
+define, develop, validate and deliver tables, listings, and figures (TLFs) required for a CSR.
+Microsoft Word is widely used to prepare CSR in the pharmaceutical industry. 
+Therefore, `rtf`, `doc`, `docx` are commonly used formats to deliver TLFs. 
 
-In this chapter, our focus is to illustrate how to create tables, listings and figures (TLFs) in RTF format 
+In this chapter, our focus is to illustrate how to create tables, listings, and figures (TLFs) in the RTF format 
 that is commonly used in a CSR. The examples are in compliance of 
 [FDA's Portable Document Format (PDF) Specifications](https://www.fda.gov/media/76797/download)
 
-> FDA's PDF specification is a general reference, each organization may define 
+> FDA's PDF specification is a general reference, each organization can define 
 > more specific TLF format requirement that can be different from the examples in this book. 
 
-These TLFs are typically used to summarize efficacy and safety statistical analysis results of a drug (or treatment).  
+These TLFs are typically used to summarize efficacy and safety 
+statistical analysis results of a drug (or treatment).  
 
 ## Structure and Content
 
@@ -50,22 +53,24 @@ In a CSR, most of TLFs are located in
 - Section 10: Study patients 
 - Section 11: Efficacy evaluation
 - Section 12: Safety evaluation 
-- Section 14: Tables, Figures and Graphs referred to but not included in the text
+- Section 14: ables, Figures, and Graphs referred to but not included in the text
 - Section 16: Appendices
 
 ## Datasets
 
-We used public available CDISC pilot [study data located at CDISC Bitbucket repository](https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse/updated-pilot-submission-package/900172/m5/datasets/cdiscpilot01/analysis/adam/datasets).
+We used publicly available CDISC pilot 
+[study data located at CDISC Bitbucket repository](https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse/updated-pilot-submission-package/900172/m5/datasets/cdiscpilot01/analysis/adam/datasets).
 
 For simplicity, we have downloaded all these datasets into `adam_data` folder of 
 this project and transfer them from `.xpt` format to `sas7bdat` format. 
 
-The dataset structure is following [CDISC Analysis Data Model (ADaM)](https://www.cdisc.org/standards/foundational/adam). 
+The dataset structure follows 
+[CDISC Analysis Data Model (ADaM)](https://www.cdisc.org/standards/foundational/adam). 
 
 
 ## Tools 
 
-In this part, we mainly use R packages below to illustrate 
+In this part, we mainly use the R packages below to illustrate 
 how to deliver TLFs in CSR. 
 
 - [tidyverse](https://www.tidyverse.org/): prepare reporting ready datasets. 
@@ -75,8 +80,9 @@ how to deliver TLFs in CSR.
 
 `tidyverse` is a collection of R packages to simplify the workflow to manipulate, 
 visualize and analyze data in R. 
-Those R packages share [the tidy tools manifesto](https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html) 
-and easy to use for interactive data analysis.
+Those R packages share 
+[the tidy tools manifesto](https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html) 
+and are easy to use for interactive data analysis.
 
 RStudio provided outstanding [cheatsheets](https://www.rstudio.com/resources/cheatsheets/), 
 and [tutorials](https://github.com/rstudio-education/remaster-the-tidyverse) for `tidyverse`.
@@ -89,11 +95,11 @@ We assume reader to have experience in using `tidyverse` in this book.
 
 ### r2rtf
 
-`r2rtf` is an R package to create production ready tables and figures in RTF format.
+`r2rtf` is an R package to create production-ready tables and figures in RTF format.
 The R package is designed to 
 
 - provide simple "verb" functions that correspond to each component of a table, 
-  to help you translate data frame to table in RTF file.
+  to help you translate data frame to a table in RTF file.
 - enable pipes (`%>%`). 
 - only focus on **table format**. 
   Data manipulation and analysis shall be handled by other R packages. (e.g. `tidyverse`)
@@ -109,7 +115,7 @@ Before creating an RTF table we need to:
 We provided a brief introduction of `r2rtf` and show how to transfer 
 data frames into Table, Listing, and Figure (TLFs).
 
-Other extended examples and features are covered in 
+Other extended examples and features are covered in the 
 [`r2rtf` package website](https://merck.github.io/r2rtf/articles/index.html). 
 
 To explore the basic RTF generation verbs in `r2rtf`, 
@@ -117,7 +123,7 @@ we'll use the dataset `r2rtf_adae` saved in the `r2rtf` package.
 This dataset contain adverse events (AE) information from a clinical trial.
 
 Below is the meaning of relevant variables. 
-More information can be found in help page of the dataset (`?r2rtf_adae`)
+More information can be found in the help page of the dataset (`?r2rtf_adae`)
 
 In this example we consider three variables:
 
@@ -130,6 +136,7 @@ r2rtf_adae %>%
   select(USUBJID, TRTA, AEDECOD) %>%
   head(4)
 ```
+
 `dplyr` and `tidyr` packages within `tidyverse` are used 
 for data manipulation to create a data frame 
 that contains all the information we want to add in an RTF table. 
@@ -154,7 +161,7 @@ Commonly used verbs includes:
 - `rtf_footnote`: RTF footnote information
 - `rtf_source`: RTF data source information
 
-All these verbs is designed to enables usage of pipes (`%>%`).
+All these verbs are designed to enable the usage of pipes (`%>%`).
 A full list of all functions can be found in [package reference](https://merck.github.io/r2rtf/reference/index.html)
 
 A minimal example below illustrates how to combine verbs using pipes to create an RTF table.
@@ -178,7 +185,8 @@ If we want to adjust the width of each column to
 provide more space to the first column, 
 this can be achieved by updating `col_rel_width` argument in `rtf_body`.
 
-In this example, the input of `col_rel_width` is a vector with same length for number of columns. 
+In this example, the input of `col_rel_width` is a vector 
+with the same length for the number of columns. 
 This argument defines the relative width of each column 
 within a pre-defined total column width. 
 
@@ -201,10 +209,10 @@ knitr::include_graphics("tlf/intro-ae2.pdf")
 ```
 
 
-In previous example, we found issue of misaligned column header. 
-We can fix the issue by using `rtf_colheader` function.
+In the previous example, we found the issue of a misaligned column header. 
+We can fix the issue by using the `rtf_colheader` function.
 
-In `rtf_colheader`, `colheader` argument is used to provide content of column header. 
+In `rtf_colheader`, `colheader` argument is used to provide the content of the column header. 
 We use `"|"` to separate the columns. 
 
 In the example below, `"Adverse Events | Placebo | Xanomeline High Dose | Xanomeline Low Dose"`
@@ -241,7 +249,7 @@ All possible inputs can be found in the table below.
 r2rtf:::justification()
 ```
 
-Below is an example to make first column left aligned and center aligned for the rest.
+Below is an example to make the first column left-aligned and center-aligned for the rest.
 
 ```{r}
 head(tbl) %>%
@@ -260,7 +268,7 @@ knitr::include_graphics("tlf/intro-ae5.pdf")
 In `rtf_*` functions such as `rtf_body`, `rtf_footnote`, etc.,
 `border_left`, `border_right`, `border_top`, and `border_bottom` control cell borders. 
 
-If we want to remove the top border of `"Adverse Events"` in header, 
+If we want to remove the top border of `"Adverse Events"` in the header, 
 we can change default value `"single"` to `""` in `border_top` argument as showed below. 
 
 `r2rtf` support 26 different border types. The details can be found in 
