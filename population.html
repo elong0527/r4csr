@@ -72,9 +72,10 @@
 <h1>
 <span class="header-section-number">4</span> Analysis Population<a class="anchor" aria-label="anchor" href="#population"><i class="fas fa-link"></i></a>
 </h1>
-<p>Following <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3 guidance</a>,
-we need to summarize which patients were included in each efficacy analysis
-in Section 11.1, Data Sets Analysed.</p>
+<p>Following <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3
+guidance</a>,
+we need to summarize which patients were included in each efficacy
+analysis in Section 11.1, Data Sets Analysed.</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span> <span class="co"># Read SAS data</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span>
@@ -82,14 +83,13 @@ in Section 11.1, Data Sets Analysed.</p>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://merck.github.io/r2rtf/">r2rtf</a></span><span class="op">)</span> <span class="co"># Reporting in RTF format</span></code></pre></div>
 <p>In this chapter, we illustrate how to create a summary table for
 analysis population in a study.</p>
-<embed src="tlf/tbl_pop.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>The first step is to read relevant datasets into R.
-For analysis population table,
-all the required information is saved in the ADSL dataset.
-We can use <code>haven</code> package to read the dataset.</p>
+<embed src="tlf/tbl_pop.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>The first step is to read relevant datasets into R. For the analysis
+population table, all the required information is saved in the ADSL
+dataset. We can use the <code>haven</code> package to read the dataset.</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"adam_data/adsl.sas7bdat"</span><span class="op">)</span></code></pre></div>
-<p>We illustrate how to prepare a report data for a simplified
-analysis population table using variables below:</p>
+<p>We illustrate how to prepare a report data for a simplified analysis
+population table using variables below:</p>
 <ul>
 <li>USUBJID: Unique subject identifier</li>
 <li>ITTFL: Intent-to-treat population flag</li>
@@ -111,21 +111,21 @@ analysis population table using variables below:</p>
 <h2>
 <span class="header-section-number">4.1</span> Helper Functions<a class="anchor" aria-label="anchor" href="#helper-functions"><i class="fas fa-link"></i></a>
 </h2>
-<p>Before we write analysis code, let’s discuss the possibility to
-reuse R code by writing some toy helper function.</p>
-<p>As discussed in
-<a href="https://r4ds.had.co.nz/functions.html#when-should-you-write-a-function">R for data science</a>,
-“You should consider writing a function
-whenever you’ve copied and pasted a block of code more than twice”.</p>
+<p>Before we write analysis code, let’s discuss the possibility to reuse R
+code by writing some toy helper functions.</p>
+<p>As discussed in <a href="https://r4ds.had.co.nz/functions.html#when-should-you-write-a-function">R for data
+science</a>,
+“You should consider writing a function whenever you’ve copied and
+pasted a block of code more than twice”.</p>
 <p>In Chapter <a href="disposition.html#disposition">3</a>, there are few repeating steps to:</p>
 <ul>
-<li>format percentages using <code>formatC</code>
-</li>
-<li>calculate numbers and percentages by groups</li>
+<li>Format the percentages using the <code><a href="https://rdrr.io/r/base/formatc.html">formatC()</a></code> function.</li>
+<li>Calculate the numbers and percentages by groups.</li>
 </ul>
-<p>We create two ad-hoc functions and apply them to all rest of tables.</p>
-<p>To format numbers and percentages, we created a function called <code>fmt_num</code>.
-It is a very simple function wrapping <code>formatC</code>.</p>
+<p>We create two ad-hoc functions and apply them to all the rest of the
+tables.</p>
+<p>To format numbers and percentages, we created a function called
+<code>fmt_num()</code>. It is a very simple function wrapping <code><a href="https://rdrr.io/r/base/formatc.html">formatC()</a></code>.</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fmt_num</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">digits</span>, <span class="va">width</span> <span class="op">=</span> <span class="va">digits</span> <span class="op">+</span> <span class="fl">4</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/formatc.html">formatC</a></span><span class="op">(</span><span class="va">x</span>,
@@ -134,23 +134,27 @@ It is a very simple function wrapping <code>formatC</code>.</p>
     width <span class="op">=</span> <span class="va">width</span>
   <span class="op">)</span>
 <span class="op">}</span></code></pre></div>
-<p>The main reason to create <code>fmt_num</code> is to enhance readability of the analysis code.</p>
-<p>For example, we can compare the two versions of code to format percentage
-used in <a href="disposition.html#disposition">3</a> and <code>fmt_num</code>.</p>
+<p>The main reason to create the <code>fmt_num()</code> function is to enhance the
+readability of the analysis code.</p>
+<p>For example, we can compare the two versions of code to format the
+percentage used in <a href="disposition.html#disposition">3</a> and <code>fmt_num</code>.</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/formatc.html">formatC</a></span><span class="op">(</span><span class="va">n</span> <span class="op">/</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span>,
   digits <span class="op">=</span> <span class="fl">1</span>, format <span class="op">=</span> <span class="st">"f"</span>, width <span class="op">=</span> <span class="fl">5</span>
 <span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">fmt_num</span><span class="op">(</span><span class="va">n</span> <span class="op">/</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span>, digits <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
-<p>To calculate numbers and percentages of patients by groups,
-we provide a simple (but not robust) wrapper function, <code>count_by</code> using <code>dplyr</code> and <code>tidyr</code>.</p>
-<p>The function can be enhanced in multiple ways, but here we only focus on simplicity and readability.
-More details about writing R functions can be found in <a href="https://stat545.com/functions-part1.html">Stat454 course</a>.</p>
+<p>To calculate the numbers and percentages of patients by groups, we
+provide a simple (but not robust) wrapper function, <code>count_by()</code> using
+the <code>dplyr</code> and <code>tidyr</code> package.</p>
+<p>The function can be enhanced in multiple ways, but here we only focus on
+simplicity and readability. More details about writing R functions can
+be found in the <a href="https://stat545.com/functions-part1.html">Stat454
+course</a>.</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">count_by</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="co"># Input data set</span>
-                     <span class="va">grp</span>, <span class="co"># Group variable</span>
-                     <span class="va">var</span>, <span class="co"># Analysis variable</span>
+                     <span class="va">grp</span>,  <span class="co"># Group variable</span>
+                     <span class="va">var</span>,  <span class="co"># Analysis variable</span>
                      <span class="va">var_label</span> <span class="op">=</span> <span class="va">var</span>, <span class="co"># Analysis variable label</span>
                      <span class="va">id</span> <span class="op">=</span> <span class="st">"USUBJID"</span><span class="op">)</span> <span class="op">{</span> <span class="co"># Subject ID variable</span>
   <span class="va">data</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>grp <span class="op">=</span> <span class="op">!</span><span class="op">!</span><span class="va">grp</span>, var <span class="op">=</span> <span class="op">!</span><span class="op">!</span><span class="va">var</span>, id <span class="op">=</span> <span class="op">!</span><span class="op">!</span><span class="va">id</span><span class="op">)</span>
@@ -173,7 +177,8 @@ More details about writing R functions can be found in <a href="https://stat545.
     <span class="op">)</span> <span class="op">%&gt;%</span>
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>var_label <span class="op">=</span> <span class="va">var_label</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
-<p>By using <code>count_by</code>, we can simplify the analysis code as below.</p>
+<p>By using the <code>count_by()</code> function, we can simplify the analysis code as
+below.</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">count_by</span><span class="op">(</span><span class="va">adsl</span>, <span class="st">"TRT01PN"</span>, <span class="st">"EFFFL"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"_54"</span>, <span class="st">"_81"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -187,7 +192,8 @@ More details about writing R functions can be found in <a href="https://stat545.
 <h2>
 <span class="header-section-number">4.2</span> Analysis Code<a class="anchor" aria-label="anchor" href="#analysis-code"><i class="fas fa-link"></i></a>
 </h2>
-<p>With the helper functions <code>count_by</code>, we can easily prepare report dataset as</p>
+<p>With the helper functions <code>count_by</code>, we can easily prepare a report
+dataset as</p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Derive a randomization flag</span>
 <span class="va">adsl</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>RANDFL <span class="op">=</span> <span class="st">"Y"</span><span class="op">)</span>
@@ -209,8 +215,9 @@ More details about writing R functions can be found in <a href="https://stat545.
 <span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">var</span> <span class="op">==</span> <span class="st">"Y"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">var_label</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"npct_"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>Now we combine individual rows into the whole table for reporting purpose.
-<code>tbl_pop</code> is used as input for <code>r2rtf</code> to create final report.</p>
+<p>Now we combine individual rows into the whole table for reporting
+purposes. <code>tbl_pop</code> is used as input for <code>r2rtf</code> to create the final
+report.</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">pop</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">"n_"</span>, <span class="st">"npct_"</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">pop</span><span class="op">)</span><span class="op">)</span>
 <span class="va">tbl_pop</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">pop</span>, <span class="va">pop1</span><span class="op">)</span>
@@ -251,10 +258,13 @@ More details about writing R functions can be found in <a href="https://stat545.
   <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="co"># Save to a file</span>
   <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/tbl_pop.rtf"</span><span class="op">)</span></code></pre></div>
-<embed src="tlf/tbl_pop.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In conclusion, the procedure to generate a population summary table as shown in the above example is listed as follows:</p>
+<embed src="tlf/tbl_pop.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>The procedure to generate an analysis population table can be summarized
+as follow:</p>
 <ul>
 <li>Step 1: Read data into R, i.e., <code>adsl</code>.</li>
-<li>Step 2: Rowly bind the counts/percentages of the ITT population, the efficacy population and the safety population. These these types of population are generated by a help function <code>count_by</code>.</li>
+<li>Step 2: Bind the counts/percentages of the ITT population, the
+efficacy population and the safety population by row using the
+<code>count_by()</code> function.</li>
 <li>Step 3: Format the output in Step 2 by <code>r2rtf</code>.</li>
 </ul>
 </div>
