@@ -8,14 +8,14 @@
 <meta name="author" content="Yilong Zhang">
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
-<meta name="description" content="2.1 Background In clinical trial development, it is a critical step to submit information on medicinal products to regulatory agencies. Electronic Common Technical Document (eCTD) has become a...">
+<meta name="description" content="2.1 Background In clinical trial development, it is a critical step to submit information on medical products to regulatory agencies. Electronic Common Technical Document (eCTD) has become a...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 2 Overview | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
-<meta property="og:description" content="2.1 Background In clinical trial development, it is a critical step to submit information on medicinal products to regulatory agencies. Electronic Common Technical Document (eCTD) has become a...">
+<meta property="og:description" content="2.1 Background In clinical trial development, it is a critical step to submit information on medical products to regulatory agencies. Electronic Common Technical Document (eCTD) has become a...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 2 Overview | R for Clinical Study Reports and Submission">
-<meta name="twitter:description" content="2.1 Background In clinical trial development, it is a critical step to submit information on medicinal products to regulatory agencies. Electronic Common Technical Document (eCTD) has become a...">
+<meta name="twitter:description" content="2.1 Background In clinical trial development, it is a critical step to submit information on medical products to regulatory agencies. Electronic Common Technical Document (eCTD) has become a...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -76,36 +76,39 @@
 <h2>
 <span class="header-section-number">2.1</span> Background<a class="anchor" aria-label="anchor" href="#background"><i class="fas fa-link"></i></a>
 </h2>
-<p>In clinical trial development, it is a critical step to submit information on medicinal products to regulatory agencies. <a href="https://en.wikipedia.org/wiki/Electronic_common_technical_document">Electronic Common Technical Document (eCTD)</a>
+<p>In clinical trial development, it is a critical step to
+submit information on medical products to regulatory agencies.
+<a href="https://en.wikipedia.org/wiki/Electronic_common_technical_document">Electronic Common Technical Document (eCTD)</a>
 has become a worldwide regulatory submission standard format.
 For example, <a href="https://www.fda.gov/drugs/electronic-regulatory-submission-and-review/electronic-common-technical-document-ectd">the United States Food and Drug Administration (US FDA) required new drug applications, biologics license applications must be submitted using eCTD format</a>. Clinical Data Interchange Standards Consortium (CDISC) provided a
-<a href="https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse">pilot project
-following ICH E3 guidance</a>.</p>
+<a href="https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse">pilot project following ICH E3 guidance</a>.</p>
 <p>Within eCTD, clinical study reports (CSR) are located at module 5.
 <a href="https://www.ich.org/page/efficacy-guidelines">ICH E3 guidance</a> provides
 compilation of structure and content of clinical study reports.</p>
 <p>A typical CSR contain full details of an individual clinical study
 including clinical and statistical description, presentations, and analyses.
-A large number of tables and figures are incorporated into the main text and appendices
-of a CSR. In CDISC pilot project, an <a href="https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse/updated-pilot-submission-package/900172/m5/53-clin-stud-rep/535-rep-effic-safety-stud/5351-stud-rep-contr/cdiscpilot01/cdiscpilot01.pdf">example CSR</a>
+A large number of tables and figures are incorporated into the main text and appendices of a CSR.
+In CDISC pilot project, an
+<a href="https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse/updated-pilot-submission-package/900172/m5/53-clin-stud-rep/535-rep-effic-safety-stud/5351-stud-rep-contr/cdiscpilot01/cdiscpilot01.pdf">example CSR</a>
 is also provided. If you are interested in more examples of clinical study reports,
 the European Medicines Agency (EMA) publishes clinical data including
 clinical study reports submitted by pharmaceutical companies
-on <a href="https://clinicaldata.ema.europa.eu/web/cdp/home">EMA clincal data website</a>.</p>
-<p>Building CSR is a team work with clinicians, medical writers, statisticians and statistical programmers.
+on <a href="https://clinicaldata.ema.europa.eu/web/cdp/home">EMA clinical data website</a>.</p>
+<p>Building CSR is teamwork with clinicians, medical writers, statisticians, and statistical programmers.
 Here, we focus on the work and deliverables completed by statisticians and statistical programmers.
 In an organization, a group of statisticians and statistical programmers commonly work together to
-define, develop, validate and deliver tables, listings and figures (TLFs) required for a CSR.
-Microsoft Word is widely used to prepare CSR in pharmaceutical industry.
-Therefore, <code>rtf</code>, <code>doc</code>, <code>docx</code> are commonly used format to deliver TLFs.</p>
-<p>In this chapter, our focus is to illustrate how to create tables, listings and figures (TLFs) in RTF format
+define, develop, validate and deliver tables, listings, and figures (TLFs) required for a CSR.
+Microsoft Word is widely used to prepare CSR in the pharmaceutical industry.
+Therefore, <code>rtf</code>, <code>doc</code>, <code>docx</code> are commonly used formats to deliver TLFs.</p>
+<p>In this chapter, our focus is to illustrate how to create tables, listings, and figures (TLFs) in the RTF format
 that is commonly used in a CSR. The examples are in compliance of
 <a href="https://www.fda.gov/media/76797/download">FDA’s Portable Document Format (PDF) Specifications</a></p>
 <blockquote>
-<p>FDA’s PDF specification is a general reference, each organization may define
+<p>FDA’s PDF specification is a general reference, each organization can define
 more specific TLF format requirement that can be different from the examples in this book.</p>
 </blockquote>
-<p>These TLFs are typically used to summarize efficacy and safety statistical analysis results of a drug (or treatment).</p>
+<p>These TLFs are typically used to summarize efficacy and safety
+statistical analysis results of a drug (or treatment).</p>
 </div>
 <div id="structure-and-content" class="section level2">
 <h2>
@@ -119,7 +122,7 @@ on structure and content of clinical study reports.</p>
 <li>Section 10: Study patients</li>
 <li>Section 11: Efficacy evaluation</li>
 <li>Section 12: Safety evaluation</li>
-<li>Section 14: Tables, Figures and Graphs referred to but not included in the text</li>
+<li>Section 14: ables, Figures, and Graphs referred to but not included in the text</li>
 <li>Section 16: Appendices</li>
 </ul>
 </div>
@@ -127,16 +130,18 @@ on structure and content of clinical study reports.</p>
 <h2>
 <span class="header-section-number">2.3</span> Datasets<a class="anchor" aria-label="anchor" href="#datasets"><i class="fas fa-link"></i></a>
 </h2>
-<p>We used public available CDISC pilot <a href="https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse/updated-pilot-submission-package/900172/m5/datasets/cdiscpilot01/analysis/adam/datasets">study data located at CDISC Bitbucket repository</a>.</p>
+<p>We used publicly available CDISC pilot
+<a href="https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse/updated-pilot-submission-package/900172/m5/datasets/cdiscpilot01/analysis/adam/datasets">study data located at CDISC Bitbucket repository</a>.</p>
 <p>For simplicity, we have downloaded all these datasets into <code>adam_data</code> folder of
 this project and transfer them from <code>.xpt</code> format to <code>sas7bdat</code> format.</p>
-<p>The dataset structure is following <a href="https://www.cdisc.org/standards/foundational/adam">CDISC Analysis Data Model (ADaM)</a>.</p>
+<p>The dataset structure follows
+<a href="https://www.cdisc.org/standards/foundational/adam">CDISC Analysis Data Model (ADaM)</a>.</p>
 </div>
 <div id="tools" class="section level2">
 <h2>
 <span class="header-section-number">2.4</span> Tools<a class="anchor" aria-label="anchor" href="#tools"><i class="fas fa-link"></i></a>
 </h2>
-<p>In this part, we mainly use R packages below to illustrate
+<p>In this part, we mainly use the R packages below to illustrate
 how to deliver TLFs in CSR.</p>
 <ul>
 <li>
@@ -150,8 +155,9 @@ how to deliver TLFs in CSR.</p>
 </h3>
 <p><code>tidyverse</code> is a collection of R packages to simplify the workflow to manipulate,
 visualize and analyze data in R.
-Those R packages share <a href="https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html">the tidy tools manifesto</a>
-and easy to use for interactive data analysis.</p>
+Those R packages share
+<a href="https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html">the tidy tools manifesto</a>
+and are easy to use for interactive data analysis.</p>
 <p>RStudio provided outstanding <a href="https://www.rstudio.com/resources/cheatsheets/">cheatsheets</a>,
 and <a href="https://github.com/rstudio-education/remaster-the-tidyverse">tutorials</a> for <code>tidyverse</code>.</p>
 <p>There are also books to introduce tidyverse.
@@ -165,11 +171,11 @@ We assume reader to have experience in using <code>tidyverse</code> in this book
 <h3>
 <span class="header-section-number">2.4.2</span> r2rtf<a class="anchor" aria-label="anchor" href="#r2rtf"><i class="fas fa-link"></i></a>
 </h3>
-<p><code>r2rtf</code> is an R package to create production ready tables and figures in RTF format.
+<p><code>r2rtf</code> is an R package to create production-ready tables and figures in RTF format.
 The R package is designed to</p>
 <ul>
 <li>provide simple “verb” functions that correspond to each component of a table,
-to help you translate data frame to table in RTF file.</li>
+to help you translate data frame to a table in RTF file.</li>
 <li>enable pipes (<code>%&gt;%</code>).</li>
 <li>only focus on <strong>table format</strong>.
 Data manipulation and analysis shall be handled by other R packages. (e.g. <code>tidyverse</code>)</li>
@@ -182,13 +188,13 @@ Data manipulation and analysis shall be handled by other R packages. (e.g. <cod
 </ul>
 <p>We provided a brief introduction of <code>r2rtf</code> and show how to transfer
 data frames into Table, Listing, and Figure (TLFs).</p>
-<p>Other extended examples and features are covered in
+<p>Other extended examples and features are covered in the
 <a href="https://merck.github.io/r2rtf/articles/index.html"><code>r2rtf</code> package website</a>.</p>
 <p>To explore the basic RTF generation verbs in <code>r2rtf</code>,
 we’ll use the dataset <code>r2rtf_adae</code> saved in the <code>r2rtf</code> package.
 This dataset contain adverse events (AE) information from a clinical trial.</p>
 <p>Below is the meaning of relevant variables.
-More information can be found in help page of the dataset (<code>?r2rtf_adae</code>)</p>
+More information can be found in the help page of the dataset (<code>?r2rtf_adae</code>)</p>
 <p>In this example we consider three variables:</p>
 <ul>
 <li>USUBJID: Unique Subject Identifier</li>
@@ -237,7 +243,7 @@ Commonly used verbs includes:</p>
 <li>
 <code>rtf_source</code>: RTF data source information</li>
 </ul>
-<p>All these verbs is designed to enables usage of pipes (<code>%&gt;%</code>).
+<p>All these verbs are designed to enable the usage of pipes (<code>%&gt;%</code>).
 A full list of all functions can be found in <a href="https://merck.github.io/r2rtf/reference/index.html">package reference</a></p>
 <p>A minimal example below illustrates how to combine verbs using pipes to create an RTF table.</p>
 <ul>
@@ -257,7 +263,8 @@ A full list of all functions can be found in <a href="https://merck.github.io/r2
 <embed src="tlf/intro-ae1.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>If we want to adjust the width of each column to
 provide more space to the first column,
 this can be achieved by updating <code>col_rel_width</code> argument in <code>rtf_body</code>.</p>
-<p>In this example, the input of <code>col_rel_width</code> is a vector with same length for number of columns.
+<p>In this example, the input of <code>col_rel_width</code> is a vector
+with the same length for the number of columns.
 This argument defines the relative width of each column
 within a pre-defined total column width.</p>
 <p>In this example, the defined relative width is <code>3:2:2:2</code>.
@@ -271,9 +278,9 @@ or <code>col_rel_width = c(1.5,1,1,1)</code>.</p>
   <span class="co"># define relative width</span>
   <span class="fu">rtf_encode</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">write_rtf</span><span class="op">(</span><span class="st">"tlf/intro-ae2.rtf"</span><span class="op">)</span></code></pre></div>
-<embed src="tlf/intro-ae2.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In previous example, we found issue of misaligned column header.
-We can fix the issue by using <code>rtf_colheader</code> function.</p>
-<p>In <code>rtf_colheader</code>, <code>colheader</code> argument is used to provide content of column header.
+<embed src="tlf/intro-ae2.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In the previous example, we found the issue of a misaligned column header.
+We can fix the issue by using the <code>rtf_colheader</code> function.</p>
+<p>In <code>rtf_colheader</code>, <code>colheader</code> argument is used to provide the content of the column header.
 We use <code>"|"</code> to separate the columns.</p>
 <p>In the example below, <code>"Adverse Events | Placebo | Xanomeline High Dose | Xanomeline Low Dose"</code>
 define a column header with 4 columns.</p>
@@ -304,7 +311,7 @@ number of columns displayed (e.g., <code><a href="https://rdrr.io/r/base/c.html"
 ## 3    r     right          \\qr       \\trqr
 ## 4    d   decimal          \\qj             
 ## 5    j justified          \\qj</code></pre>
-<p>Below is an example to make first column left aligned and center aligned for the rest.</p>
+<p>Below is an example to make the first column left-aligned and center-aligned for the rest.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">tbl</span><span class="op">)</span> <span class="op">%&gt;%</span>
   
@@ -315,7 +322,7 @@ number of columns displayed (e.g., <code><a href="https://rdrr.io/r/base/c.html"
   <span class="fu">write_rtf</span><span class="op">(</span><span class="st">"tlf/intro-ae5.rtf"</span><span class="op">)</span></code></pre></div>
 <embed src="tlf/intro-ae5.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In <code>rtf_*</code> functions such as <code>rtf_body</code>, <code>rtf_footnote</code>, etc.,
 <code>border_left</code>, <code>border_right</code>, <code>border_top</code>, and <code>border_bottom</code> control cell borders.</p>
-<p>If we want to remove the top border of <code>"Adverse Events"</code> in header,
+<p>If we want to remove the top border of <code>"Adverse Events"</code> in the header,
 we can change default value <code>"single"</code> to <code>""</code> in <code>border_top</code> argument as showed below.</p>
 <p><code>r2rtf</code> support 26 different border types. The details can be found in
 the <a href="https://merck.github.io/r2rtf/articles/rtf-row.html#border-type">r2rtf package website</a>.</p>
