@@ -60,7 +60,7 @@ In this book, you will learn how to use R to prepare CSR and submit to regulator
 
 This is the work-in-progress draft of the book.
 
-## List of Authors and Contributors
+## List of Authors and Contributors {-}
 
 ```{r, echo = FALSE}
 contributors <- c(person("Yilong", "Zhang", email = "yilong.zhang@merck.com", role = "aut"), 
