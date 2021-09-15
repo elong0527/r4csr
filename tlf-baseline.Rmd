@@ -1,18 +1,21 @@
 # Baseline Characteristics
 
-Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
-we need to summarize critical demographic and baseline characteristics of the patients
-in Section 11.2, Demographic and Other Baseline Characteristics.
+Following [ICH E3
+guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
+we need to summarize critical demographic and baseline characteristics
+of the patients in Section 11.2, Demographic and Other Baseline
+Characteristics.
 
-In this chapter, we illustrate how to create a simplified 
-baseline characteristics table in a study.
+In this chapter, we illustrate how to create a simplified baseline
+characteristics table in a study.
 
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tlf_base.pdf")
 ```
 
-There is many R packages that can efficiently summarize baseline information.
-The [`table1`](https://github.com/benjaminrich/table1) R package is one of them. 
+There are many R packages that can efficiently summarize baseline
+information. The [`table1`](https://github.com/benjaminrich/table1) R
+package is one of them.
 
 ```{r}
 library(table1)
@@ -24,19 +27,19 @@ library(stringr)
 library(tools)
 ```
 
-As in previous chapters, we first read `adsl` dataset that contain all 
-required information for baseline characteristics table. 
+As in previous chapters, we first read `adsl` dataset that contain all
+required information for baseline characteristics table.
 
 ```{r}
 adsl <- read_sas("adam_data/adsl.sas7bdat")
 ```
 
-For simplicity, we only analyze `SEX`, `AGE` and `RACE` in this example
-using the `table1` R package. 
-More details of the `table` R package can be found in the package
+For simplicity, we only analyze `SEX`, `AGE` and, `RACE` in this example
+using the `table1` R package. More details of the `table` R package can
+be found in the package
 [vignettes](https://benjaminrich.github.io/table1/vignettes/table1-examples.html).
 
-The `table1` R package directly create an HTML report.
+The `table1` R package directly creates an HTML report.
 
 ```{r}
 ana <- adsl %>% 
@@ -47,10 +50,9 @@ tbl <- table1(~ SEX + AGE + RACE | TRT01P, data = ana)
 tbl
 ```
 
-The code below transfer the output into a dataframe 
-that only contain ASCII character 
-recommended by regulatory agencies. 
-`tbl_base` is used as input for `r2rtf` to create final report. 
+The code below transfer the output into a data frame that only contain
+ASCII character recommended by regulatory agencies. `tbl_base` is used
+as input for `r2rtf` to create a final report.
 
 ```{r}
 tbl_base <- tbl %>% 
@@ -65,13 +67,13 @@ names(tbl_base) <- str_replace_all(names(tbl_base), intToUtf8(160), " ")
 tbl_base
 ```
 
-We start to define the format of the output. We highlight items that 
-are not discussed in previous discussion.
+We start to define the format of the output. We highlight items that are
+not discussed in the previous discussion.
 
-`text_indent_first` and `test_indent_left` are used to control the indent
-space of text. They are helpful when you need to control the white space 
-of a long sentence. For example, "AMERICAN INDIAN OR ALASKA NATIVE" 
-in the table. 
+The `text_indent_first` and `test_indent_left` arguments are used to
+control the indent space of the text. They are helpful when you need to
+control the white space of a long sentence. For example, "AMERICAN
+INDIAN OR ALASKA NATIVE" in the table.
 
 ```{r}
 colheader1 <- paste(names(tbl_base), collapse = "|")
@@ -98,9 +100,13 @@ tbl_base[-1, ] %>%
 knitr::include_graphics("tlf/tlf_base.pdf")
 ```
 
-In conclusion, the procedure to generate demographic and baseline characteristics table is summarized as follows.
+The procedure to generate a baseline characteristics table can be
+summarized as follow:
 
-- Step 1: Read the data set.
-- Step 2: Use `table1::table1()` to get the baseline characteristics table.
-- Step 3: Transfer the output in Step 2 into a data frame that only contains ASCII character.
-- Step 4: Define the format of the rtf table by using R package `r2rtf`.
+-   Step 1: Read the data set.
+-   Step 2: Use `table1::table1()` to get the baseline characteristics
+    table.
+-   Step 3: Transfer the output in Step 2 into a data frame that only
+    contains ASCII characters.
+-   Step 4: Define the format of the rtf table by using R package
+    `r2rtf`.
