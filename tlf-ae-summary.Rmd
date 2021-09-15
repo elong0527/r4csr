@@ -1,0 +1,162 @@
+# AE Summary {#aesummary}
+
+Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
+we need to summarize which patients were included in each efficacy analysis 
+in Section 12.2, Adverse Events (AEs). 
+
+```{r}
+library(haven) # Read SAS data
+library(dplyr) # Manipulate data
+library(tidyr) # Manipulate data
+library(r2rtf) # Reporting in RTF format
+```
+
+In this chapter, we illustrate how to summarize AE information in a study.
+
+```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("tlf/tlf_ae_summary.pdf")
+```
+
+The data used to summarize AE information is in `adsl` and `adae` datasets. 
+
+```{r}
+adsl <- read_sas("adam_data/adsl.sas7bdat")
+adae <- read_sas("adam_data/adae.sas7bdat")
+```
+
+We first summarize participants in population by treatment group.
+
+```{r}
+pop <- adsl %>%
+  filter(SAFFL == "Y") %>%
+  rename(TRTAN = TRT01AN) %>%
+  count(TRTAN, name = "tot")
+
+pop
+```
+
+We transform the data to simplify the analysis of each required AE criteria of interest.
+
+- With one or more adverse events
+- With drug-related adverse events
+- With serious adverse events
+- With serious drug-related adverse events
+- Who died"
+
+```{r}
+tidy_ae <- adae %>%
+  mutate(
+    all = SAFFL == "Y",
+    drug = AEREL %in% c("POSSIBLE", "PROBABLE"),
+    ser = AESER == "Y",
+    drug_ser = drug & ser,
+    die = AEOUT == "FATAL"
+  ) %>%
+  select(USUBJID, TRTAN, all, drug, ser, drug_ser, die) %>%
+  pivot_longer(cols = c(all, drug, ser, drug_ser, die))
+
+tidy_ae %>% head(4)
+```
+We summarize the number and percentage of patients meet each AE criteria. 
+
+```{r}
+ana <- tidy_ae %>%
+  filter(value == TRUE) %>%
+  group_by(TRTAN, name) %>%
+  summarise(n = n_distinct(USUBJID)) %>%
+  left_join(pop, by = "TRTAN") %>%
+  mutate(
+    pct = fmt_num(n / tot * 100, digits = 1),
+    n = fmt_num(n, digits = 0),
+    pct = paste0("(", pct, ")")
+  )
+
+ana %>% head(4)
+```
+We prepare reporting ready dataset for each AE criteria. 
+
+```{r}
+t_ae <- ana %>%
+  pivot_wider(
+    id_cols = "name",
+    names_from = TRTAN,
+    values_from = c(n, pct),
+    values_fill = list(
+      n = "   0",
+      pct = "(  0.0)"
+    )
+  )
+
+t_ae <- t_ae %>%
+  mutate(name = factor(
+    name,
+    c("all", "drug", "ser", "drug_ser", "die"),
+    c(
+      "With one or more adverse events",
+      "With drug-related adverse events",
+      "With serious adverse events",
+      "With serious drug-related adverse events",
+      "Who died"
+    )
+  )) %>%
+  arrange(name)
+```
+
+We prepare reporting ready dataset for analysis population. 
+
+```{r}
+t_pop <- pop %>% 
+  mutate(name = "Participants in population", 
+         tot = fmt_num(tot, digits = 0)) %>% 
+  pivot_wider(id_cols = name, 
+              names_from = TRTAN, 
+              names_prefix = "n_", 
+              values_from = tot) 
+
+t_pop
+```
+The final report data is saved in `tbl_ae_summary`
+
+```{r}
+tbl_ae_summary <- bind_rows(t_pop, t_ae) %>%
+  select(name, ends_with("_0"), ends_with("_54"), ends_with("_81"))
+
+tbl_ae_summary
+```
+
+We start to define the format of the output. 
+
+```{r}
+tbl_ae_summary %>% 
+  rtf_title(
+    "Analysis of Adverse Event Summary",
+    "(Safety Analysis Population)"
+  ) %>%
+  rtf_colheader(" | Placebo | Xanomeline Low Dose| Xanomeline High Dose",
+    col_rel_width = c(3.5, rep(2, 3))
+  ) %>%
+  rtf_colheader(" | n | (%) | n | (%) | n | (%)",
+    col_rel_width = c(3.5, rep(c(0.7, 1.3), 3)),
+    border_top = c("", rep("single", 6)),
+    border_left = c("single", rep(c("single", ""), 3))
+  ) %>%
+  rtf_body(
+    col_rel_width = c(3.5, rep(c(0.7, 1.3), 3)),
+    text_justification = c("l", rep("c", 6)),
+    border_left = c("single", rep(c("single", ""), 3))
+  ) %>%
+  rtf_footnote("Every subject is counted a single time for each applicable row and column.") %>%
+  rtf_encode() %>%
+  write_rtf("tlf/tlf_ae_summary.rtf")
+```
+
+```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("tlf/tlf_ae_summary.pdf")
+```
+
+In conclusion, the procedure to generate a AE summary table as shown in the above example is listed as follows:
+
+- Step 1: Read data into R, i.e., `adae` and `adsl`.
+- Step 2: Summarize participants in population by treatment group, and we name the dataset as `t_pop`.
+- Step 3: Summarize participants in population by required AE criteria of interest, and we name the dataset as `t_ae`.
+- Step 4: Rowly bind `t_pop` and `t_ae` and format it by `r2rtf`.

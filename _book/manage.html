@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 11 Project Management | R for Clinical Study Reports and Submission</title>
+<meta name="author" content="Yilong Zhang">
+<meta name="author" content="Nan Xiao">
+<meta name="author" content="Keaven Anderson">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">R for Clinical Study Reports and Submission</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome!</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">1</span> Introduction</a></li>
+<li class="book-part">Delivering TLFs in CSR</li>
+<li><a class="" href="overview.html"><span class="header-section-number">2</span> Overview</a></li>
+<li><a class="" href="disposition.html"><span class="header-section-number">3</span> Disposition</a></li>
+<li><a class="" href="population.html"><span class="header-section-number">4</span> Analysis Population</a></li>
+<li><a class="" href="baseline-characteristics.html"><span class="header-section-number">5</span> Baseline Characteristics</a></li>
+<li><a class="" href="efficacy.html"><span class="header-section-number">6</span> Efficacy</a></li>
+<li><a class="" href="aesummary.html"><span class="header-section-number">7</span> AE Summary</a></li>
+<li><a class="" href="specific-ae.html"><span class="header-section-number">8</span> Specific AE</a></li>
+<li class="book-part">Clinical Trial Project</li>
+<li><a class="" href="overview-1.html"><span class="header-section-number">9</span> Overview</a></li>
+<li><a class="" href="folder.html"><span class="header-section-number">10</span> Project Folder</a></li>
+<li><a class="active" href="manage.html"><span class="header-section-number">11</span> Project Management</a></li>
+<li class="book-part">eCTD Submission</li>
+<li><a class="" href="ectd.html"><span class="header-section-number">12</span> eCTD</a></li>
+<li><a class="" href="submission-package.html"><span class="header-section-number">13</span> Submission Package</a></li>
+<li class="book-part">Appendix</li>
+<li><a class="" href="reference.html"><span class="header-section-number">14</span> Reference</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://stash.merck.com/projects/BARDS/repos/r4csr/browse">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="manage" class="section level1" number="11">
+<h1>
+<span class="header-section-number">11</span> Project Management<a class="anchor" aria-label="anchor" href="#manage"><i class="fas fa-link"></i></a>
+</h1>
+<p>For A&amp;R deliverables in a clinical project development,
+a clearly defined process or system development lifecycle (SDLC)
+is crucial to ensure regulatory compliant.</p>
+<p>SDLC for A&amp;R deliverables can be defined in stages:</p>
+<ul>
+<li>planning: a planning stage to define the scope of a project.<br>
+</li>
+<li>development: a development stage to implement target deliverables.</li>
+<li>validation: a validation stage to verify target deliverables.</li>
+<li>operation: an operation stage to deliver work to stakeholders.</li>
+</ul>
+<p>The define stage is an important stage in the SDLC lifecycle
+as the requirements for all A&amp;R deliverables are gathered and documented.</p>
+<p>Importantly, we should not consider SDLC as a linear process.
+For example, if study team identify new requirement in a development or validation stage,
+team shall return to planning stage to discuss and align the scope.
+An <a href="https://www.atlassian.com/agile/project-management">agile project management</a> approach is suitable
+and recommended to an A&amp;R clinical development project.
+The goal is to embrace an iterative approach that continue improve target deliverables based on
+frequent customer feedback.</p>
+<p>There are many good tools to implement agile project management strategy, for example:</p>
+<ul>
+<li><a href="https://docs.github.com/en/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards">github project board</a></li>
+<li><a href="https://www.atlassian.com/software/jira">Jira</a></li>
+</ul>
+<div id="planning" class="section level2" number="11.1">
+<h2>
+<span class="header-section-number">11.1</span> Planning<a class="anchor" aria-label="anchor" href="#planning"><i class="fas fa-link"></i></a>
+</h2>
+<p>In the planning stage, a project leader shall identifies all the deliverables,
+e.g. a list of table, listing, and figures (TLFs).
+For each TLFs, team shall prepare necessary specifications:</p>
+<ul>
+<li>mock-up</li>
+<li>validation level (e.g. independent review or double programming)</li>
+<li>etc.</li>
+</ul>
+<p>ToDo: add a simplified mock-up and A&amp;R grid.</p>
+<p>project leader shall also align work assignment with team members.
+The purpose is to answer the question on “who is doing what?”</p>
+<p>ToDo: add a simplified validation tracker</p>
+<p>Project lead shall also setup a project folder as discussed in Chapter <a href="folder.html#folder">10</a>.
+The project initiation can be simplified by creating an
+<a href="https://rstudio.github.io/rstudio-extensions/rstudio_project_templates.html">RStudio project template</a>.</p>
+<p>To enable reproducibility, project leader shall also review the startup file
+(i.e. <code>.Rprofile</code> discussed in Section <a href="manage.html#manage">11</a>) and define:</p>
+<ul>
+<li>R version</li>
+<li>Repository of R packages with a snapshot date</li>
+<li>Project package library path</li>
+<li>etc.</li>
+</ul>
+<blockquote>
+<p>After project initiate, modifying <code>.Rprofile</code> will be a risk of reproducibility
+and shall be handled carefully if necessary.</p>
+</blockquote>
+</div>
+<div id="development" class="section level2" number="11.2">
+<h2>
+<span class="header-section-number">11.2</span> Development<a class="anchor" aria-label="anchor" href="#development"><i class="fas fa-link"></i></a>
+</h2>
+<p>After a project is initiated, the study team start to develop TLFs based on
+pre-defined mock-up tables assigned to each team member.</p>
+<p>The analysis code and relevant description can be saved in R markdown files
+in the <code>vignettes</code> folder.
+The use of R markdown allow developer to assemble narrative text, code and its
+comments in one place to simplify documentation.
+It would be helpful to define a name convention for all TLFs deliverables.
+For example, we can use <code>tlf_</code> prefix in the filename to indicate that the Rmarkdown is to deliver TLFs.
+For example, <code>tlf_001_ds.Rmd</code> is an Rmarkdown file for disposition table.
+Multiple TLFs with similar design can be included in one Rmarkdown file.</p>
+<p>ToDo: add a file path for <code>esubdemo</code></p>
+<p>To validate the results,
+developer shall also save the last dataset before creating TLFs in RTF format to <code>.Rdata</code> files.</p>
+</div>
+<div id="validation" class="section level2" number="11.3">
+<h2>
+<span class="header-section-number">11.3</span> Validation<a class="anchor" aria-label="anchor" href="#validation"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="operation" class="section level2" number="11.4">
+<h2>
+<span class="header-section-number">11.4</span> Operation<a class="anchor" aria-label="anchor" href="#operation"><i class="fas fa-link"></i></a>
+</h2>
+
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="folder.html"><span class="header-section-number">10</span> Project Folder</a></div>
+<div class="next"><a href="ectd.html"><span class="header-section-number">12</span> eCTD</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#manage"><span class="header-section-number">11</span> Project Management</a></li>
+<li><a class="nav-link" href="#planning"><span class="header-section-number">11.1</span> Planning</a></li>
+<li><a class="nav-link" href="#development"><span class="header-section-number">11.2</span> Development</a></li>
+<li><a class="nav-link" href="#validation"><span class="header-section-number">11.3</span> Validation</a></li>
+<li><a class="nav-link" href="#operation"><span class="header-section-number">11.4</span> Operation</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://stash.merck.com/projects/BARDS/repos/r4csr/browse/blob/master/project-management.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://stash.merck.com/projects/BARDS/repos/r4csr/browse/edit/master/project-management.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R for Clinical Study Reports and Submission</strong>" was written by Yilong Zhang, Nan Xiao, Keaven Anderson. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

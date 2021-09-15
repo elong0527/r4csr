@@ -1,0 +1,31 @@
+book_filename: "r4csr"
+repo: https://stash.merck.com/projects/BARDS/repos/r4csr/browse
+delete_merged_file: true
+language:
+  label:
+    fig: "FIGURE "
+    tab: "TABLE "
+  ui:
+    edit: "Edit"
+    chapter_name: "Chapter "
+
+rmd_files: [
+  "index.Rmd",
+  
+  "intro.Rmd",
+  
+  "tlf-overview.Rmd",
+  "tlf-disposition.Rmd",
+  "tlf-population.Rmd",
+  "tlf-baseline.Rmd",
+  "tlf-efficacy.Rmd", 
+  "tlf-ae-summary.Rmd",
+  "tlf-ae-spec.Rmd",
+  
+  "project-folder.Rmd",
+  "project-management.Rmd",
+  
+  "submission.Rmd",
+  
+  "reference.Rmd"
+]

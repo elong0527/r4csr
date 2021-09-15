@@ -1,0 +1,314 @@
+# Efficacy
+
+Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
+we need to summarize primary and secondary efficacy endpoints,  
+in Section 11.4, Efficacy Results and Tabulations of Individual Patient. 
+
+```{r}
+library(haven)   # Read SAS data
+library(dplyr)   # Manipulate data
+library(tidyr)   # Manipulate data
+library(r2rtf)   # Reporting in RTF format
+library(emmeans) # LS mean estimation
+```
+
+For efficacy analysis, we only analyze change from baseline glucose data at Week 24. 
+
+```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("tlf/tlf_eff.pdf")
+```
+
+## Analysis Dataset
+
+To prepare analysis dataset, 
+we need both `adsl` and `adlbc` datasets for this analysis.
+
+```{r}
+adsl <- read_sas("adam_data/adsl.sas7bdat")
+adlb <- read_sas("adam_data/adlbc.sas7bdat")
+```
+
+We first define the analysis dataset using 
+efficacy population flag `EFFFL` and 
+all records post baseline (`AVISITN > 1`) and on or before Week 24 (`AVISITN <= 24`).
+Here the variable `AVISITN` is the numerical analysis visit. 
+For example, if the analysis visit is recorded as "Baseline", i.e., `AVISIT = Baseline`, then `AVISITN = 0`; 
+if the analysis visit is recorded as "Week 24", i.e., `AVISIT = Week 24`, then `AVISITN = 24`;
+if the analysis visit is blank, then `AVISITN` is also blank.
+We will discuss these missing values in Section 6.4.
+
+```{r}
+gluc <- adlb %>%
+  left_join(adsl %>% select(USUBJID, EFFFL), by = "USUBJID") %>%
+  # PARAMCD is parameter code and here we focus on Glucose (mg/dL) 
+  filter(EFFFL == "Y" & PARAMCD == "GLUC") %>% 
+  arrange(TRTPN) %>% 
+  mutate(TRTP = factor(TRTP, levels = unique(TRTP)))
+
+ana <- gluc %>%
+  filter(AVISITN > 0 & AVISITN <= 24) %>%
+  arrange(AVISITN) %>%
+  mutate(AVISIT = factor(AVISIT, levels = unique(AVISIT)))
+```
+
+Below is the first few records of the analysis dataset. 
+
+- AVAL: analysis value
+- BASE: baseline value
+- CHG: change from baseline
+
+```{r}
+ana %>%
+  select(USUBJID, TRTPN, AVISIT, AVAL, BASE, CHG) %>%  
+  head(4)
+```
+## Helper Functions
+
+To prepare report dataframe, we created a few helper functions 
+by using the `fmt_num` function defined in Chapter \@ref(population). 
+
+- Format Estimators
+
+```{r}
+fmt_est <- function(.mean,
+                    .sd,
+                    digits = c(1, 2)) {
+  .mean <- fmt_num(.mean, digits[1], width = digits[1] + 4)
+  .sd <- fmt_num(.sd, digits[2], width = digits[2] + 3)
+  paste0(.mean, " (", .sd, ")")
+}
+```
+
+- Format Confidence Interval
+
+```{r}
+fmt_ci <- function(.est,
+                   .lower,
+                   .upper,
+                   digits = 2,
+                   width = digits + 3) {
+  .est <- fmt_num(.est, digits, width)
+  .lower <- fmt_num(.lower, digits, width)
+  .upper <- fmt_num(.upper, digits, width)
+  paste0(.est, " (", .lower, ",", .upper, ")")
+}
+```
+
+- Format P-Value
+
+```{r}
+fmt_pval <- function(.p, digits = 3) {
+  scale <- 10^(-1 * digits)
+  p_scale <- paste0("<", digits)
+  if_else(.p < scale, p_scale, fmt_num(.p, digits = digits))
+}
+```
+
+## Summary of Observed Data
+
+We first summarize observed data at Baseline and Week 24
+
+```{r}
+t11 <- gluc %>%
+  filter(AVISITN %in% c(0, 24)) %>%
+  group_by(TRTPN, TRTP, AVISITN) %>%
+  summarise(
+    n = n(),
+    mean_sd = fmt_est(mean(AVAL), sd(AVAL))
+  ) %>%
+  pivot_wider(
+    id_cols = c(TRTP, TRTPN),
+    names_from = AVISITN,
+    values_from = c(n, mean_sd)
+  )
+
+t11
+```
+
+We also summarize observed change from baseline glucose at Week 24.
+
+```{r}
+t12 <- gluc %>%
+  filter(AVISITN %in% 24) %>%
+  group_by(TRTPN, AVISITN) %>%
+  summarise(
+    n_chg = n(),
+    mean_chg = fmt_est(
+      mean(CHG, na.rm = TRUE),
+      sd(CHG, na.rm = TRUE)
+    )
+  )
+
+t12
+```
+
+## Missing Data Imputation
+
+In clinical trials, missing data is inevitable. 
+In this study, there are also missing values in glucose data. 
+
+```{r}
+count(ana, AVISIT)
+```
+
+For simplicity and illustration purpose, 
+we use the last observation carried forward (LOCF) approach to handle missing data.
+LOCF approach is a single imputation approach that is **not recommended** 
+in real studies. 
+Interested readers can find more discussion on missing data approaches in the book:
+[The Prevention and Treatment of Missing Data in Clinical Trials](https://www.ncbi.nlm.nih.gov/books/NBK209904/pdf/Bookshelf_NBK209904.pdf).
+
+```{r}
+ana_locf <- ana %>%
+  group_by(USUBJID) %>%
+  mutate(locf = AVISITN == max(AVISITN)) %>%
+  filter(locf)
+```
+
+## ANCOVA model 
+
+We start to analyze the imputed data using ANCOVA model with treatment and baseline glucose as covariates. 
+
+```{r}
+fit <- lm(CHG ~ BASE + TRTP, data = ana_locf)
+summary(fit)
+```
+
+Then we use the `emmeans` R package to obtain 
+within and between group least square mean (LS mean)
+
+```{r}
+fit_within <- emmeans(fit, "TRTP")
+fit_within
+```
+
+```{r}
+t13 <- fit_within %>%
+  as_tibble() %>%
+  mutate(ls = fmt_ci(emmean, lower.CL, upper.CL)) %>%
+  select(TRTP, ls)
+t13
+```
+
+```{r}
+fit_between <- pairs(fit_within, reverse = TRUE)
+fit_between
+```
+
+```{r}
+t2 <- fit_between %>%
+  as_tibble() %>%
+  mutate(
+    ls = fmt_ci(
+      estimate,
+      estimate - 1.96 * SE,
+      estimate + 1.96 * SE
+    ),
+    p = fmt_pval(p.value)
+  ) %>%
+  filter(str_detect(contrast, "- Placebo")) %>%
+  select(contrast, ls, p)
+
+t2
+```
+
+## Reporting 
+
+We combine `t11`, `t12` and `t13` to get the first part of the report data
+
+```{r}
+t1 <- cbind(
+  t11 %>% ungroup() %>% select(TRTP, ends_with("0"), ends_with("24")),
+  t12 %>% ungroup() %>% select(ends_with("chg")),
+  t13 %>% ungroup() %>% select(ls)
+)
+t1
+```
+
+Then we use `r2rtf` to prepare the table format for `t1`.
+We also highlight how to handle special character in this example. 
+
+Special characters `^` and `_` are used to define superscript and subscript of text. And `{}` is to define the part that will be impacted. 
+For example, `{^a}` provide a superscript `a` for footnote notation.   
+`r2rtf` also support most LaTeX characters. 
+Examples can be found in
+[`r2rtf` Get Started Page](https://merck.github.io/r2rtf/articles/r2rtf.html#special-character). 
+The `text_convert` argument in `r2rtf_xxx` functions control whether convert special characters.
+
+```{r}
+t1_rtf <- t1 %>% 
+  data.frame() %>%
+  rtf_title(c(
+    "ANCOVA of Change from Baseline Glucose (mmol/L) at Week 24",
+    "LOCF",
+    "Efficacly Analysis Population"
+  )) %>%
+  rtf_colheader("| Baseline | Week 24 | Change from Baseline",
+    col_rel_width = c(2.5, 2, 2, 4)
+  ) %>%
+  rtf_colheader(paste(
+    "Treatment |",
+    paste0(rep("N | Mean (SD) | ", 3), collapse = ""),
+    "LS Mean (95% CI){^a}"
+  ),
+  col_rel_width = c(2.5, rep(c(0.5, 1.5), 3), 2)
+  ) %>%
+  rtf_body(text_justification = c("l", rep("c", 7)), 
+           col_rel_width = c(2.5, rep(c(0.5, 1.5), 3), 2)) %>%
+  rtf_footnote(c(
+    "{^a}Based on an ANCOVA model after adjusting baseline value. LOCF approach is used to impute missing values.",
+    "ANCOVA = Analysis of Covariance, LOCF = Last Observation Carried Forward",
+    "CI = Confidence Interval, LS = Least Squares, SD = Standard Deviation"
+  ))
+
+t1_rtf %>%
+  rtf_encode() %>%
+  write_rtf("tlf/tlf_eff1.rtf")
+```
+
+```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("tlf/tlf_eff1.pdf")
+```
+
+we also use `r2rtf` to prepare the table format for `t2`
+
+```{r}
+t2_rtf <- t2 %>% 
+  data.frame() %>%
+  rtf_colheader("Pairwise Comparison | Difference in LS Mean (95% CI){^a} | p-Value",
+    col_rel_width = c(4.5, 4, 2)
+  ) %>%
+  rtf_body(text_justification = c("l", "c", "c"), 
+           col_rel_width = c(4.5, 4, 2))
+
+t2_rtf %>%
+  rtf_encode() %>%
+  write_rtf("tlf/tlf_eff2.rtf")
+```
+
+```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("tlf/tlf_eff2.pdf")
+```
+
+Finally we combine the two parts to get the final table using `r2rtf`.
+This is achieved by providing a list of `t1_rtf` and `t2_rtf` as input for
+`rtf_encode`. 
+
+```{r}
+list(t1_rtf, t2_rtf) %>%
+  rtf_encode() %>%
+  write_rtf("tlf/tlf_eff.rtf")
+```
+
+```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("tlf/tlf_eff.pdf")
+```
+
+In conclusion, the procedure to generate the above efficacy results table is summarized as follows.
+
+- Step 1: Read the data into R, i.e., `adsl` and `adlb`.
+- Step 2: Define the analysis dataset. In this example, we define two analysis datasets. The first dataset is the efficacy population (`gluc`). The second dataset is the collection of all records post baseline and on or before week 24 (`ana`).
+- Step 3: Impute the missing values. In our example, we name the `ana` dataset after imputation as `ana_locf`.
+- Step 4: Summarize `gluc`, i.e., calculate the mean and standard derivation, and then format it into a rtf table.
+- Step 5: Summarize `ana_locf`, i.e., calculate the pairwise comparison by ANCOVA model, and then format it into a rtf table.
+- Step 6: Rowly bind the output in Step 4 and Step 5.
