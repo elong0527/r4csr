@@ -67,10 +67,10 @@
     },
     "bookdown": {
       "Package": "bookdown",
-      "Version": "0.22",
+      "Version": "0.24",
       "Source": "Repository",
       "Repository": "RSPM",
-      "Hash": "8fb0b67dfdf9d751fc93cb0036def3cc"
+      "Hash": "3837766a1e1b527af25fa3e2d12a2800"
     },
     "brio": {
       "Package": "brio",
@@ -410,10 +410,10 @@
     },
     "r2rtf": {
       "Package": "r2rtf",
-      "Version": "0.3.0",
+      "Version": "0.3.1",
       "Source": "Repository",
       "Repository": "RSPM",
-      "Hash": "219258a432ffd405f5580c494196e07b"
+      "Hash": "d2430d177db078c40c25ba322390151f"
     },
     "rappdirs": {
       "Package": "rappdirs",
@@ -431,10 +431,10 @@
     },
     "renv": {
       "Package": "renv",
-      "Version": "0.13.0",
+      "Version": "0.14.0",
       "Source": "Repository",
       "Repository": "RSPM",
-      "Hash": "9f10d9db5b50400c348920c5c603385e"
+      "Hash": "30e5eba91b67f7f4d75d31de14bbfbdc"
     },
     "rlang": {
       "Package": "rlang",
