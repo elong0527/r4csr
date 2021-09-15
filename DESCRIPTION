@@ -18,5 +18,6 @@ Imports:
   tidyr, 
   r2rtf, 
   knitr,
-  kableExtra
+  kableExtra,
+  table1
 Encoding: UTF-8
