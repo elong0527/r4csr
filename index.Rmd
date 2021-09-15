@@ -74,7 +74,7 @@ While reading the document, you can be a contributor as well.
 The quality of this document relies on you. 
 
 - Author: contribute majority content of at least one chapter. 
-- Contributor: [contribute at least one commit to the source code](https://stash.merck.com/projects/BARDS/repos/r4csr/browse)
+- Contributor: [contribute at least one commit to the source code](https://github.com/elong0527/r4csr)
 
 ```{r, echo = FALSE, eval = TRUE}
 data.frame(contributors = as.character(contributors)) %>%   

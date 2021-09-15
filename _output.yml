@@ -3,4 +3,4 @@ bookdown::bs4_book:
     primary: "#00857C"
     fg: "#0C2340"
     bg: "#ffffff"
-  repo: https://stash.merck.com/projects/BARDS/repos/r4csr/browse
+  repo: https://github.com/elong0527/r4csr
