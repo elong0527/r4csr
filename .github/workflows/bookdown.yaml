@@ -30,7 +30,7 @@ jobs:
           restore-keys: bookdown-
 
       - name: Build site
-        run: Rscript -e 'install.packages("bookdown"); bookdown::render_book("index.Rmd", quiet = TRUE)'
+        run: Rscript -e 'install.packages(c("bookdown", "bslib","xml2", "downlit", "haven", "dplyr", "tidyr", "r2rtf", "knitr", "kableExtra"); bookdown::render_book("index.Rmd", quiet = TRUE)'
 
       - name: Deploy to GitHub pages 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
