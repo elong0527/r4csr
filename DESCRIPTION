@@ -7,7 +7,7 @@ Authors@R: c(
   person("Nan", "Xiao",role = "aut")),
 Imports:
   bslib,
-  bslib,
+  bookdown,
   xml2,
   downlit,
   haven, 
