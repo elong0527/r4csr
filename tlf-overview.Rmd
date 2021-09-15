@@ -99,9 +99,9 @@ We assume reader to have experience in using `tidyverse` in this book.
 The R package is designed to 
 
 - provide simple "verb" functions that correspond to each component of a table, 
-  to help you translate data frame to a table in RTF file.
+  to help you translate a data frame to a table in RTF file.
 - enable pipes (`%>%`). 
-- only focus on **table format**. 
+- only focus on the **table format**. 
   Data manipulation and analysis shall be handled by other R packages. (e.g. `tidyverse`)
 
 Before creating an RTF table we need to:
@@ -120,7 +120,7 @@ Other extended examples and features are covered in the
 
 To explore the basic RTF generation verbs in `r2rtf`, 
 we'll use the dataset `r2rtf_adae` saved in the `r2rtf` package. 
-This dataset contain adverse events (AE) information from a clinical trial.
+This dataset contains adverse events (AE) information from a clinical trial.
 
 Below is the meaning of relevant variables. 
 More information can be found in the help page of the dataset (`?r2rtf_adae`)
@@ -152,7 +152,7 @@ tbl %>% head(4)
 Now we have a dataset `tbl` in preparing the final RTF table.
 
 `r2rtf` aims to provide one function for each type of table layout.
-Commonly used verbs includes:
+Commonly used verbs include:
 
 - `rtf_page`: RTF page information
 - `rtf_title`: RTF title information
@@ -162,7 +162,8 @@ Commonly used verbs includes:
 - `rtf_source`: RTF data source information
 
 All these verbs are designed to enable the usage of pipes (`%>%`).
-A full list of all functions can be found in [package reference](https://merck.github.io/r2rtf/reference/index.html)
+A full list of all functions can be found in the 
+[r2rtf package reference](https://merck.github.io/r2rtf/reference/index.html)
 
 A minimal example below illustrates how to combine verbs using pipes to create an RTF table.
 
@@ -183,7 +184,8 @@ knitr::include_graphics("tlf/intro-ae1.pdf")
 
 If we want to adjust the width of each column to 
 provide more space to the first column, 
-this can be achieved by updating `col_rel_width` argument in `rtf_body`.
+this can be achieved by updating the `col_rel_width` argument 
+in the `rtf_body` function.
 
 In this example, the input of `col_rel_width` is a vector 
 with the same length for the number of columns. 
@@ -269,9 +271,9 @@ In `rtf_*` functions such as `rtf_body`, `rtf_footnote`, etc.,
 `border_left`, `border_right`, `border_top`, and `border_bottom` control cell borders. 
 
 If we want to remove the top border of `"Adverse Events"` in the header, 
-we can change default value `"single"` to `""` in `border_top` argument as showed below. 
+we can change the default value `"single"` to `""` in the `border_top` argument as showed below. 
 
-`r2rtf` support 26 different border types. The details can be found in 
+`r2rtf` support 26 different border types. The details can be found on 
 the [r2rtf package website](https://merck.github.io/r2rtf/articles/rtf-row.html#border-type).
 
 In this example, we also demonstrate the possibility to add multiple column headers. 
@@ -309,9 +311,9 @@ there are more examples to illustrate how to customize
 - special character
 - etc.
 
-Those features will be introduced when we first use them in the rest of chapters. 
+Those features will be introduced when we first use them in the rest of the chapters. 
 
 There are other R packages that can create TLFs in `.rtf` or `.docx` format.
-Interested reader can refer "Microsoft/LibreOffice Formats" section in 
+Interested readers can refer "Microsoft/LibreOffice Formats" section in 
 [CRAN Task View: Reproducible Research](https://cran.r-project.org/web/views/ReproducibleResearch.html)
 for an overview. 
