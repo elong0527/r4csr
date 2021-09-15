@@ -175,9 +175,9 @@ We assume reader to have experience in using <code>tidyverse</code> in this book
 The R package is designed to</p>
 <ul>
 <li>provide simple “verb” functions that correspond to each component of a table,
-to help you translate data frame to a table in RTF file.</li>
+to help you translate a data frame to a table in RTF file.</li>
 <li>enable pipes (<code>%&gt;%</code>).</li>
-<li>only focus on <strong>table format</strong>.
+<li>only focus on the <strong>table format</strong>.
 Data manipulation and analysis shall be handled by other R packages. (e.g. <code>tidyverse</code>)</li>
 </ul>
 <p>Before creating an RTF table we need to:</p>
@@ -192,7 +192,7 @@ data frames into Table, Listing, and Figure (TLFs).</p>
 <a href="https://merck.github.io/r2rtf/articles/index.html"><code>r2rtf</code> package website</a>.</p>
 <p>To explore the basic RTF generation verbs in <code>r2rtf</code>,
 we’ll use the dataset <code>r2rtf_adae</code> saved in the <code>r2rtf</code> package.
-This dataset contain adverse events (AE) information from a clinical trial.</p>
+This dataset contains adverse events (AE) information from a clinical trial.</p>
 <p>Below is the meaning of relevant variables.
 More information can be found in the help page of the dataset (<code>?r2rtf_adae</code>)</p>
 <p>In this example we consider three variables:</p>
@@ -228,7 +228,7 @@ that contains all the information we want to add in an RTF table.</p>
 ## 4 ANXIETY              2                      0                     4</code></pre>
 <p>Now we have a dataset <code>tbl</code> in preparing the final RTF table.</p>
 <p><code>r2rtf</code> aims to provide one function for each type of table layout.
-Commonly used verbs includes:</p>
+Commonly used verbs include:</p>
 <ul>
 <li>
 <code>rtf_page</code>: RTF page information</li>
@@ -244,7 +244,8 @@ Commonly used verbs includes:</p>
 <code>rtf_source</code>: RTF data source information</li>
 </ul>
 <p>All these verbs are designed to enable the usage of pipes (<code>%&gt;%</code>).
-A full list of all functions can be found in <a href="https://merck.github.io/r2rtf/reference/index.html">package reference</a></p>
+A full list of all functions can be found in the
+<a href="https://merck.github.io/r2rtf/reference/index.html">r2rtf package reference</a></p>
 <p>A minimal example below illustrates how to combine verbs using pipes to create an RTF table.</p>
 <ul>
 <li>
@@ -262,7 +263,8 @@ A full list of all functions can be found in <a href="https://merck.github.io/r2
   <span class="fu">write_rtf</span><span class="op">(</span><span class="st">"tlf/intro-ae1.rtf"</span><span class="op">)</span> <span class="co"># Step 3 Write to a .rtf file</span></code></pre></div>
 <embed src="tlf/intro-ae1.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>If we want to adjust the width of each column to
 provide more space to the first column,
-this can be achieved by updating <code>col_rel_width</code> argument in <code>rtf_body</code>.</p>
+this can be achieved by updating the <code>col_rel_width</code> argument
+in the <code>rtf_body</code> function.</p>
 <p>In this example, the input of <code>col_rel_width</code> is a vector
 with the same length for the number of columns.
 This argument defines the relative width of each column
@@ -323,8 +325,8 @@ number of columns displayed (e.g., <code><a href="https://rdrr.io/r/base/c.html"
 <embed src="tlf/intro-ae5.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In <code>rtf_*</code> functions such as <code>rtf_body</code>, <code>rtf_footnote</code>, etc.,
 <code>border_left</code>, <code>border_right</code>, <code>border_top</code>, and <code>border_bottom</code> control cell borders.</p>
 <p>If we want to remove the top border of <code>"Adverse Events"</code> in the header,
-we can change default value <code>"single"</code> to <code>""</code> in <code>border_top</code> argument as showed below.</p>
-<p><code>r2rtf</code> support 26 different border types. The details can be found in
+we can change the default value <code>"single"</code> to <code>""</code> in the <code>border_top</code> argument as showed below.</p>
+<p><code>r2rtf</code> support 26 different border types. The details can be found on
 the <a href="https://merck.github.io/r2rtf/articles/rtf-row.html#border-type">r2rtf package website</a>.</p>
 <p>In this example, we also demonstrate the possibility to add multiple column headers.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
@@ -354,9 +356,9 @@ there are more examples to illustrate how to customize</p>
 <li>special character</li>
 <li>etc.</li>
 </ul>
-<p>Those features will be introduced when we first use them in the rest of chapters.</p>
+<p>Those features will be introduced when we first use them in the rest of the chapters.</p>
 <p>There are other R packages that can create TLFs in <code>.rtf</code> or <code>.docx</code> format.
-Interested reader can refer “Microsoft/LibreOffice Formats” section in
+Interested readers can refer “Microsoft/LibreOffice Formats” section in
 <a href="https://cran.r-project.org/web/views/ReproducibleResearch.html">CRAN Task View: Reproducible Research</a>
 for an overview.</p>
 
