@@ -1,4 +1,3 @@
-list-of-authors-and-contributors
 intro
 folder-structure
 in-this-book
