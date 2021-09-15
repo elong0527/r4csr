@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 6 Efficacy | R for Clinical Study Reports and Submission</title>
+<meta name="author" content="Yilong Zhang">
+<meta name="author" content="Nan Xiao">
+<meta name="author" content="Keaven Anderson">
+<meta name="description" content="Following ICH E3 guidance, we need to summarize primary and secondary efficacy endpoints, in Section 11.4, Efficacy Results and Tabulations of Individual Patient. library(haven)  # Read SAS data...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 6 Efficacy | R for Clinical Study Reports and Submission">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Following ICH E3 guidance, we need to summarize primary and secondary efficacy endpoints, in Section 11.4, Efficacy Results and Tabulations of Individual Patient. library(haven)  # Read SAS data...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 6 Efficacy | R for Clinical Study Reports and Submission">
+<meta name="twitter:description" content="Following ICH E3 guidance, we need to summarize primary and secondary efficacy endpoints, in Section 11.4, Efficacy Results and Tabulations of Individual Patient. library(haven)  # Read SAS data...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">R for Clinical Study Reports and Submission</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome!</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">1</span> Introduction</a></li>
+<li class="book-part">Delivering TLFs in CSR</li>
+<li><a class="" href="overview.html"><span class="header-section-number">2</span> Overview</a></li>
+<li><a class="" href="disposition.html"><span class="header-section-number">3</span> Disposition</a></li>
+<li><a class="" href="population.html"><span class="header-section-number">4</span> Analysis Population</a></li>
+<li><a class="" href="baseline-characteristics.html"><span class="header-section-number">5</span> Baseline Characteristics</a></li>
+<li><a class="active" href="efficacy.html"><span class="header-section-number">6</span> Efficacy</a></li>
+<li><a class="" href="aesummary.html"><span class="header-section-number">7</span> AE Summary</a></li>
+<li><a class="" href="specific-ae.html"><span class="header-section-number">8</span> Specific AE</a></li>
+<li class="book-part">Clinical Trial Project</li>
+<li><a class="" href="overview-1.html"><span class="header-section-number">9</span> Overview</a></li>
+<li><a class="" href="manage.html"><span class="header-section-number">10</span> Project Management</a></li>
+<li class="book-part">eCTD Submission</li>
+<li><a class="" href="ectd.html"><span class="header-section-number">11</span> eCTD</a></li>
+<li><a class="" href="submission-package.html"><span class="header-section-number">12</span> Submission Package</a></li>
+<li class="book-part">Appendix</li>
+<li><a class="" href="reference.html"><span class="header-section-number">13</span> Reference</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://stash.merck.com/projects/BARDS/repos/r4csr/browse">View book source <i class="fab fa-gitlab"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="efficacy" class="section level1">
+<h1>
+<span class="header-section-number">6</span> Efficacy<a class="anchor" aria-label="anchor" href="#efficacy"><i class="fas fa-link"></i></a>
+</h1>
+<p>Following <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3 guidance</a>,
+we need to summarize primary and secondary efficacy endpoints,<br>
+in Section 11.4, Efficacy Results and Tabulations of Individual Patient.</p>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span>   <span class="co"># Read SAS data</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>   <span class="co"># Manipulate data</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>   <span class="co"># Manipulate data</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://merck.github.io/r2rtf/">r2rtf</a></span><span class="op">)</span>   <span class="co"># Reporting in RTF format</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rvlenth/emmeans">emmeans</a></span><span class="op">)</span> <span class="co"># LS mean estimation</span></code></pre></div>
+<p>For efficacy analysis, we only analyze change from baseline glucose data at Week 24.</p>
+<embed src="tlf/tlf_eff.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><div id="analysis-dataset" class="section level2">
+<h2>
+<span class="header-section-number">6.1</span> Analysis Dataset<a class="anchor" aria-label="anchor" href="#analysis-dataset"><i class="fas fa-link"></i></a>
+</h2>
+<p>To prepare analysis dataset,
+we need both <code>adsl</code> and <code>adlbc</code> datasets for this analysis.</p>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"adam_data/adsl.sas7bdat"</span><span class="op">)</span>
+<span class="va">adlb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"adam_data/adlbc.sas7bdat"</span><span class="op">)</span></code></pre></div>
+<p>We first define the analysis dataset using
+efficacy population flag <code>EFFFL</code> and
+all records post baseline (<code>AVISITN &gt; 1</code>) and on or before Week 24 (<code>AVISITN &lt;= 24</code>).
+Here the variable <code>AVISITN</code> is the numerical analysis visit.
+For example, if the analysis visit is recorded as “Baseline”, i.e., <code>AVISIT = Baseline</code>, then <code>AVISITN = 0</code>;
+if the analysis visit is recorded as “Week 24”, i.e., <code>AVISIT = Week 24</code>, then <code>AVISITN = 24</code>;
+if the analysis visit is blank, then <code>AVISITN</code> is also blank.
+We will discuss these missing values in Section 6.4.</p>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gluc</span> <span class="op">&lt;-</span> <span class="va">adlb</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">adsl</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">USUBJID</span>, <span class="va">EFFFL</span><span class="op">)</span>, by <span class="op">=</span> <span class="st">"USUBJID"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="co"># PARAMCD is parameter code and here we focus on Glucose (mg/dL) </span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">EFFFL</span> <span class="op">==</span> <span class="st">"Y"</span> <span class="op">&amp;</span> <span class="va">PARAMCD</span> <span class="op">==</span> <span class="st">"GLUC"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">TRTPN</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>TRTP <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">TRTP</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">TRTP</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">ana</span> <span class="op">&lt;-</span> <span class="va">gluc</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">AVISITN</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">&amp;</span> <span class="va">AVISITN</span> <span class="op">&lt;=</span> <span class="fl">24</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">AVISITN</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>AVISIT <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">AVISIT</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">AVISIT</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>Below is the first few records of the analysis dataset.</p>
+<ul>
+<li>AVAL: analysis value</li>
+<li>BASE: baseline value</li>
+<li>CHG: change from baseline</li>
+</ul>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ana</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">USUBJID</span>, <span class="va">TRTPN</span>, <span class="va">AVISIT</span>, <span class="va">AVAL</span>, <span class="va">BASE</span>, <span class="va">CHG</span><span class="op">)</span> <span class="op">%&gt;%</span>  
+  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 6
+##   USUBJID     TRTPN AVISIT              AVAL  BASE     CHG
+##   &lt;chr&gt;       &lt;dbl&gt; &lt;fct&gt;              &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+## 1 01-701-1015     0 "          Week 2"  4.66  4.72 -0.0555
+## 2 01-701-1023     0 "          Week 2"  5.77  5.33  0.444 
+## 3 01-701-1047     0 "          Week 2"  5.55  5.55  0     
+## 4 01-701-1118     0 "          Week 2"  4.88  4.05  0.833</code></pre>
+</div>
+<div id="helper-functions-1" class="section level2">
+<h2>
+<span class="header-section-number">6.2</span> Helper Functions<a class="anchor" aria-label="anchor" href="#helper-functions-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>To prepare report dataframe, we created a few helper functions
+by using the <code>fmt_num</code> function defined in Chapter <a href="population.html#population">4</a>.</p>
+<ul>
+<li>Format Estimators</li>
+</ul>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fmt_est</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">.mean</span>,
+                    <span class="va">.sd</span>,
+                    <span class="va">digits</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">.mean</span> <span class="op">&lt;-</span> <span class="fu">fmt_num</span><span class="op">(</span><span class="va">.mean</span>, <span class="va">digits</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, width <span class="op">=</span> <span class="va">digits</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">+</span> <span class="fl">4</span><span class="op">)</span>
+  <span class="va">.sd</span> <span class="op">&lt;-</span> <span class="fu">fmt_num</span><span class="op">(</span><span class="va">.sd</span>, <span class="va">digits</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, width <span class="op">=</span> <span class="va">digits</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">+</span> <span class="fl">3</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">.mean</span>, <span class="st">" ("</span>, <span class="va">.sd</span>, <span class="st">")"</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+<ul>
+<li>Format Confidence Interval</li>
+</ul>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fmt_ci</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">.est</span>,
+                   <span class="va">.lower</span>,
+                   <span class="va">.upper</span>,
+                   <span class="va">digits</span> <span class="op">=</span> <span class="fl">2</span>,
+                   <span class="va">width</span> <span class="op">=</span> <span class="va">digits</span> <span class="op">+</span> <span class="fl">3</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">.est</span> <span class="op">&lt;-</span> <span class="fu">fmt_num</span><span class="op">(</span><span class="va">.est</span>, <span class="va">digits</span>, <span class="va">width</span><span class="op">)</span>
+  <span class="va">.lower</span> <span class="op">&lt;-</span> <span class="fu">fmt_num</span><span class="op">(</span><span class="va">.lower</span>, <span class="va">digits</span>, <span class="va">width</span><span class="op">)</span>
+  <span class="va">.upper</span> <span class="op">&lt;-</span> <span class="fu">fmt_num</span><span class="op">(</span><span class="va">.upper</span>, <span class="va">digits</span>, <span class="va">width</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">.est</span>, <span class="st">" ("</span>, <span class="va">.lower</span>, <span class="st">","</span>, <span class="va">.upper</span>, <span class="st">")"</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+<ul>
+<li>Format P-Value</li>
+</ul>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fmt_pval</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">.p</span>, <span class="va">digits</span> <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">scale</span> <span class="op">&lt;-</span> <span class="fl">10</span><span class="op">^</span><span class="op">(</span><span class="op">-</span><span class="fl">1</span> <span class="op">*</span> <span class="va">digits</span><span class="op">)</span>
+  <span class="va">p_scale</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"&lt;"</span>, <span class="va">digits</span><span class="op">)</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">.p</span> <span class="op">&lt;</span> <span class="va">scale</span>, <span class="va">p_scale</span>, <span class="fu">fmt_num</span><span class="op">(</span><span class="va">.p</span>, digits <span class="op">=</span> <span class="va">digits</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+</div>
+<div id="summary-of-observed-data" class="section level2">
+<h2>
+<span class="header-section-number">6.3</span> Summary of Observed Data<a class="anchor" aria-label="anchor" href="#summary-of-observed-data"><i class="fas fa-link"></i></a>
+</h2>
+<p>We first summarize observed data at Baseline and Week 24</p>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">t11</span> <span class="op">&lt;-</span> <span class="va">gluc</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">AVISITN</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">24</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">TRTPN</span>, <span class="va">TRTP</span>, <span class="va">AVISITN</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>
+    n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,
+    mean_sd <span class="op">=</span> <span class="fu">fmt_est</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">AVAL</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">AVAL</span><span class="op">)</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>
+    id_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">TRTP</span>, <span class="va">TRTPN</span><span class="op">)</span>,
+    names_from <span class="op">=</span> <span class="va">AVISITN</span>,
+    values_from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">mean_sd</span><span class="op">)</span>
+  <span class="op">)</span>
+
+<span class="va">t11</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 6
+## # Groups:   TRTPN, TRTP [3]
+##   TRTP                 TRTPN   n_0  n_24 mean_sd_0       mean_sd_24     
+##   &lt;fct&gt;                &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;           &lt;chr&gt;          
+## 1 Placebo                  0    79    57 "  5.7 ( 2.23)" "  5.7 ( 1.83)"
+## 2 Xanomeline Low Dose     54    79    26 "  5.4 ( 0.95)" "  5.7 ( 1.26)"
+## 3 Xanomeline High Dose    81    74    30 "  5.4 ( 1.37)" "  6.0 ( 1.92)"</code></pre>
+<p>We also summarize observed change from baseline glucose at Week 24.</p>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">t12</span> <span class="op">&lt;-</span> <span class="va">gluc</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">AVISITN</span> <span class="op">%in%</span> <span class="fl">24</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">TRTPN</span>, <span class="va">AVISITN</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>
+    n_chg <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,
+    mean_chg <span class="op">=</span> <span class="fu">fmt_est</span><span class="op">(</span>
+      <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">CHG</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+      <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">CHG</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+    <span class="op">)</span>
+  <span class="op">)</span>
+
+<span class="va">t12</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 4
+## # Groups:   TRTPN [3]
+##   TRTPN AVISITN n_chg mean_chg       
+##   &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;          
+## 1     0      24    57 " -0.1 ( 2.68)"
+## 2    54      24    26 "  0.2 ( 0.82)"
+## 3    81      24    30 "  0.5 ( 1.94)"</code></pre>
+</div>
+<div id="missing-data-imputation" class="section level2">
+<h2>
+<span class="header-section-number">6.4</span> Missing Data Imputation<a class="anchor" aria-label="anchor" href="#missing-data-imputation"><i class="fas fa-link"></i></a>
+</h2>
+<p>In clinical trials, missing data is inevitable.
+In this study, there are also missing values in glucose data.</p>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">ana</span>, <span class="va">AVISIT</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 8 × 2
+##   AVISIT                 n
+##   &lt;fct&gt;              &lt;int&gt;
+## 1 "          Week 2"   229
+## 2 "          Week 4"   211
+## 3 "          Week 6"   197
+## 4 "          Week 8"   187
+## 5 "         Week 12"   167
+## 6 "         Week 16"   147
+## 7 "         Week 20"   126
+## 8 "         Week 24"   113</code></pre>
+<p>For simplicity and illustration purpose,
+we use the last observation carried forward (LOCF) approach to handle missing data.
+LOCF approach is a single imputation approach that is <strong>not recommended</strong>
+in real studies.
+Interested readers can find more discussion on missing data approaches in the book:
+<a href="https://www.ncbi.nlm.nih.gov/books/NBK209904/pdf/Bookshelf_NBK209904.pdf">The Prevention and Treatment of Missing Data in Clinical Trials</a>.</p>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ana_locf</span> <span class="op">&lt;-</span> <span class="va">ana</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">USUBJID</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>locf <span class="op">=</span> <span class="va">AVISITN</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">AVISITN</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">locf</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="ancova-model" class="section level2">
+<h2>
+<span class="header-section-number">6.5</span> ANCOVA model<a class="anchor" aria-label="anchor" href="#ancova-model"><i class="fas fa-link"></i></a>
+</h2>
+<p>We start to analyze the imputed data using ANCOVA model with treatment and baseline glucose as covariates.</p>
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">CHG</span> <span class="op">~</span> <span class="va">BASE</span> <span class="op">+</span> <span class="va">TRTP</span>, data <span class="op">=</span> <span class="va">ana_locf</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = CHG ~ BASE + TRTP, data = ana_locf)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -6.9907 -0.7195 -0.2367  0.2422  7.0754 
+## 
+## Coefficients:
+##                          Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)               3.00836    0.39392   7.637 6.23e-13 ***
+## BASE                     -0.53483    0.06267  -8.535 2.06e-15 ***
+## TRTPXanomeline Low Dose  -0.17367    0.24421  -0.711    0.478    
+## TRTPXanomeline High Dose  0.32983    0.24846   1.327    0.186    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 1.527 on 226 degrees of freedom
+##   (2 observations deleted due to missingness)
+## Multiple R-squared:  0.2567, Adjusted R-squared:  0.2468 
+## F-statistic: 26.01 on 3 and 226 DF,  p-value: 1.714e-14</code></pre>
+<p>Then we use the <code>emmeans</code> R package to obtain
+within and between group least square mean (LS mean)</p>
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fit_within</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">fit</span>, <span class="st">"TRTP"</span><span class="op">)</span>
+<span class="va">fit_within</span></code></pre></div>
+<pre><code>##  TRTP                  emmean    SE  df lower.CL upper.CL
+##  Placebo               0.0676 0.172 226   -0.272    0.407
+##  Xanomeline Low Dose  -0.1060 0.173 226   -0.447    0.235
+##  Xanomeline High Dose  0.3975 0.179 226    0.045    0.750
+## 
+## Confidence level used: 0.95</code></pre>
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">t13</span> <span class="op">&lt;-</span> <span class="va">fit_within</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>ls <span class="op">=</span> <span class="fu">fmt_ci</span><span class="op">(</span><span class="va">emmean</span>, <span class="va">lower.CL</span>, <span class="va">upper.CL</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">TRTP</span>, <span class="va">ls</span><span class="op">)</span>
+<span class="va">t13</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 2
+##   TRTP                 ls                   
+##   &lt;fct&gt;                &lt;chr&gt;                
+## 1 Placebo              " 0.07 (-0.27, 0.41)"
+## 2 Xanomeline Low Dose  "-0.11 (-0.45, 0.23)"
+## 3 Xanomeline High Dose " 0.40 ( 0.05, 0.75)"</code></pre>
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fit_between</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html">pairs</a></span><span class="op">(</span><span class="va">fit_within</span>, reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">fit_between</span></code></pre></div>
+<pre><code>##  contrast                                   estimate    SE  df t.ratio p.value
+##  Xanomeline Low Dose - Placebo                -0.174 0.244 226  -0.711  0.7571
+##  Xanomeline High Dose - Placebo                0.330 0.248 226   1.327  0.3814
+##  Xanomeline High Dose - Xanomeline Low Dose    0.504 0.249 226   2.024  0.1087
+## 
+## P value adjustment: tukey method for comparing a family of 3 estimates</code></pre>
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">t2</span> <span class="op">&lt;-</span> <span class="va">fit_between</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    ls <span class="op">=</span> <span class="fu">fmt_ci</span><span class="op">(</span>
+      <span class="va">estimate</span>,
+      <span class="va">estimate</span> <span class="op">-</span> <span class="fl">1.96</span> <span class="op">*</span> <span class="va">SE</span>,
+      <span class="va">estimate</span> <span class="op">+</span> <span class="fl">1.96</span> <span class="op">*</span> <span class="va">SE</span>
+    <span class="op">)</span>,
+    p <span class="op">=</span> <span class="fu">fmt_pval</span><span class="op">(</span><span class="va">p.value</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">contrast</span>, <span class="st">"- Placebo"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">contrast</span>, <span class="va">ls</span>, <span class="va">p</span><span class="op">)</span>
+
+<span class="va">t2</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 3
+##   contrast                       ls                    p        
+##   &lt;chr&gt;                          &lt;chr&gt;                 &lt;chr&gt;    
+## 1 Xanomeline Low Dose - Placebo  "-0.17 (-0.65, 0.30)" "  0.757"
+## 2 Xanomeline High Dose - Placebo " 0.33 (-0.16, 0.82)" "  0.381"</code></pre>
+</div>
+<div id="reporting" class="section level2">
+<h2>
+<span class="header-section-number">6.6</span> Reporting<a class="anchor" aria-label="anchor" href="#reporting"><i class="fas fa-link"></i></a>
+</h2>
+<p>We combine <code>t11</code>, <code>t12</code> and <code>t13</code> to get the first part of the report data</p>
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">t1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span>
+  <span class="va">t11</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">TRTP</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"0"</span><span class="op">)</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"24"</span><span class="op">)</span><span class="op">)</span>,
+  <span class="va">t12</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"chg"</span><span class="op">)</span><span class="op">)</span>,
+  <span class="va">t13</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">ls</span><span class="op">)</span>
+<span class="op">)</span>
+<span class="va">t1</span></code></pre></div>
+<pre><code>##                   TRTP n_0     mean_sd_0 n_24    mean_sd_24 n_chg      mean_chg
+## 1              Placebo  79   5.7 ( 2.23)   57   5.7 ( 1.83)    57  -0.1 ( 2.68)
+## 2  Xanomeline Low Dose  79   5.4 ( 0.95)   26   5.7 ( 1.26)    26   0.2 ( 0.82)
+## 3 Xanomeline High Dose  74   5.4 ( 1.37)   30   6.0 ( 1.92)    30   0.5 ( 1.94)
+##                    ls
+## 1  0.07 (-0.27, 0.41)
+## 2 -0.11 (-0.45, 0.23)
+## 3  0.40 ( 0.05, 0.75)</code></pre>
+<p>Then we use <code>r2rtf</code> to prepare the table format for <code>t1</code>.
+We also highlight how to handle special character in this example.</p>
+<p>Special characters <code><a href="https://rdrr.io/r/base/Arithmetic.html">^</a></code> and <code>_</code> are used to define superscript and subscript of text. And <code>{}</code> is to define the part that will be impacted.
+For example, <code>{^a}</code> provide a superscript <code>a</code> for footnote notation.<br><code>r2rtf</code> also support most LaTeX characters.
+Examples can be found in
+<a href="https://merck.github.io/r2rtf/articles/r2rtf.html#special-character"><code>r2rtf</code> Get Started Page</a>.
+The <code>text_convert</code> argument in <code>r2rtf_xxx</code> functions control whether convert special characters.</p>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">t1_rtf</span> <span class="op">&lt;-</span> <span class="va">t1</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_title.html">rtf_title</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+    <span class="st">"ANCOVA of Change from Baseline Glucose (mmol/L) at Week 24"</span>,
+    <span class="st">"LOCF"</span>,
+    <span class="st">"Efficacly Analysis Population"</span>
+  <span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_colheader.html">rtf_colheader</a></span><span class="op">(</span><span class="st">"| Baseline | Week 24 | Change from Baseline"</span>,
+    col_rel_width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2.5</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_colheader.html">rtf_colheader</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span>
+    <span class="st">"Treatment |"</span>,
+    <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"N | Mean (SD) | "</span>, <span class="fl">3</span><span class="op">)</span>, collapse <span class="op">=</span> <span class="st">""</span><span class="op">)</span>,
+    <span class="st">"LS Mean (95% CI){^a}"</span>
+  <span class="op">)</span>,
+  col_rel_width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2.5</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">1.5</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_body.html">rtf_body</a></span><span class="op">(</span>text_justification <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"l"</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"c"</span>, <span class="fl">7</span><span class="op">)</span><span class="op">)</span>, 
+           col_rel_width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2.5</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">1.5</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_footnote.html">rtf_footnote</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+    <span class="st">"{^a}Based on an ANCOVA model after adjusting baseline value. LOCF approach is used to impute missing values."</span>,
+    <span class="st">"ANCOVA = Analysis of Covariance, LOCF = Last Observation Carried Forward"</span>,
+    <span class="st">"CI = Confidence Interval, LS = Least Squares, SD = Standard Deviation"</span>
+  <span class="op">)</span><span class="op">)</span>
+
+<span class="va">t1_rtf</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/tlf_eff1.rtf"</span><span class="op">)</span></code></pre></div>
+<embed src="tlf/tlf_eff1.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>we also use <code>r2rtf</code> to prepare the table format for <code>t2</code></p>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">t2_rtf</span> <span class="op">&lt;-</span> <span class="va">t2</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_colheader.html">rtf_colheader</a></span><span class="op">(</span><span class="st">"Pairwise Comparison | Difference in LS Mean (95% CI){^a} | p-Value"</span>,
+    col_rel_width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4.5</span>, <span class="fl">4</span>, <span class="fl">2</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_body.html">rtf_body</a></span><span class="op">(</span>text_justification <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"l"</span>, <span class="st">"c"</span>, <span class="st">"c"</span><span class="op">)</span>, 
+           col_rel_width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4.5</span>, <span class="fl">4</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">t2_rtf</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/tlf_eff2.rtf"</span><span class="op">)</span></code></pre></div>
+<embed src="tlf/tlf_eff2.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>Finally we combine the two parts to get the final table using <code>r2rtf</code>.
+This is achieved by providing a list of <code>t1_rtf</code> and <code>t2_rtf</code> as input for
+<code>rtf_encode</code>.</p>
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">t1_rtf</span>, <span class="va">t2_rtf</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/tlf_eff.rtf"</span><span class="op">)</span></code></pre></div>
+<embed src="tlf/tlf_eff.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In conclusion, the procedure to generate the above efficacy results table is summarized as follows.</p>
+<ul>
+<li>Step 1: Read the data into R, i.e., <code>adsl</code> and <code>adlb</code>.</li>
+<li>Step 2: Define the analysis dataset. In this example, we define two analysis datasets. The first dataset is the efficacy population (<code>gluc</code>). The second dataset is the collection of all records post baseline and on or before week 24 (<code>ana</code>).</li>
+<li>Step 3: Impute the missing values. In our example, we name the <code>ana</code> dataset after imputation as <code>ana_locf</code>.</li>
+<li>Step 4: Summarize <code>gluc</code>, i.e., calculate the mean and standard derivation, and then format it into a rtf table.</li>
+<li>Step 5: Summarize <code>ana_locf</code>, i.e., calculate the pairwise comparison by ANCOVA model, and then format it into a rtf table.</li>
+<li>Step 6: Rowly bind the output in Step 4 and Step 5.</li>
+</ul>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="baseline-characteristics.html"><span class="header-section-number">5</span> Baseline Characteristics</a></div>
+<div class="next"><a href="aesummary.html"><span class="header-section-number">7</span> AE Summary</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#efficacy"><span class="header-section-number">6</span> Efficacy</a></li>
+<li><a class="nav-link" href="#analysis-dataset"><span class="header-section-number">6.1</span> Analysis Dataset</a></li>
+<li><a class="nav-link" href="#helper-functions-1"><span class="header-section-number">6.2</span> Helper Functions</a></li>
+<li><a class="nav-link" href="#summary-of-observed-data"><span class="header-section-number">6.3</span> Summary of Observed Data</a></li>
+<li><a class="nav-link" href="#missing-data-imputation"><span class="header-section-number">6.4</span> Missing Data Imputation</a></li>
+<li><a class="nav-link" href="#ancova-model"><span class="header-section-number">6.5</span> ANCOVA model</a></li>
+<li><a class="nav-link" href="#reporting"><span class="header-section-number">6.6</span> Reporting</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://stash.merck.com/projects/BARDS/repos/r4csr/browse/blob/master/tlf-efficacy.Rmd">View source <i class="fab fa-gitlab"></i></a></li>
+          <li><a id="book-edit" href="https://stash.merck.com/projects/BARDS/repos/r4csr/browse/edit/master/tlf-efficacy.Rmd">Edit this page <i class="fab fa-gitlab"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R for Clinical Study Reports and Submission</strong>" was written by Yilong Zhang, Nan Xiao, Keaven Anderson. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

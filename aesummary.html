@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 7 AE Summary | R for Clinical Study Reports and Submission</title>
+<meta name="author" content="Yilong Zhang">
+<meta name="author" content="Nan Xiao">
+<meta name="author" content="Keaven Anderson">
+<meta name="description" content="Following ICH E3 guidance, we need to summarize which patients were included in each efficacy analysis in Section 12.2, Adverse Events (AEs). library(haven) # Read SAS data library(dplyr) #...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 7 AE Summary | R for Clinical Study Reports and Submission">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Following ICH E3 guidance, we need to summarize which patients were included in each efficacy analysis in Section 12.2, Adverse Events (AEs). library(haven) # Read SAS data library(dplyr) #...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 7 AE Summary | R for Clinical Study Reports and Submission">
+<meta name="twitter:description" content="Following ICH E3 guidance, we need to summarize which patients were included in each efficacy analysis in Section 12.2, Adverse Events (AEs). library(haven) # Read SAS data library(dplyr) #...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">R for Clinical Study Reports and Submission</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome!</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">1</span> Introduction</a></li>
+<li class="book-part">Delivering TLFs in CSR</li>
+<li><a class="" href="overview.html"><span class="header-section-number">2</span> Overview</a></li>
+<li><a class="" href="disposition.html"><span class="header-section-number">3</span> Disposition</a></li>
+<li><a class="" href="population.html"><span class="header-section-number">4</span> Analysis Population</a></li>
+<li><a class="" href="baseline-characteristics.html"><span class="header-section-number">5</span> Baseline Characteristics</a></li>
+<li><a class="" href="efficacy.html"><span class="header-section-number">6</span> Efficacy</a></li>
+<li><a class="active" href="aesummary.html"><span class="header-section-number">7</span> AE Summary</a></li>
+<li><a class="" href="specific-ae.html"><span class="header-section-number">8</span> Specific AE</a></li>
+<li class="book-part">Clinical Trial Project</li>
+<li><a class="" href="overview-1.html"><span class="header-section-number">9</span> Overview</a></li>
+<li><a class="" href="manage.html"><span class="header-section-number">10</span> Project Management</a></li>
+<li class="book-part">eCTD Submission</li>
+<li><a class="" href="ectd.html"><span class="header-section-number">11</span> eCTD</a></li>
+<li><a class="" href="submission-package.html"><span class="header-section-number">12</span> Submission Package</a></li>
+<li class="book-part">Appendix</li>
+<li><a class="" href="reference.html"><span class="header-section-number">13</span> Reference</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://stash.merck.com/projects/BARDS/repos/r4csr/browse">View book source <i class="fab fa-gitlab"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="aesummary" class="section level1">
+<h1>
+<span class="header-section-number">7</span> AE Summary<a class="anchor" aria-label="anchor" href="#aesummary"><i class="fas fa-link"></i></a>
+</h1>
+<p>Following <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3 guidance</a>,
+we need to summarize which patients were included in each efficacy analysis
+in Section 12.2, Adverse Events (AEs).</p>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span> <span class="co"># Read SAS data</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://merck.github.io/r2rtf/">r2rtf</a></span><span class="op">)</span> <span class="co"># Reporting in RTF format</span></code></pre></div>
+<p>In this chapter, we illustrate how to summarize AE information in a study.</p>
+<embed src="tlf/tlf_ae_summary.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>The data used to summarize AE information is in <code>adsl</code> and <code>adae</code> datasets.</p>
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"adam_data/adsl.sas7bdat"</span><span class="op">)</span>
+<span class="va">adae</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"adam_data/adae.sas7bdat"</span><span class="op">)</span></code></pre></div>
+<p>We first summarize participants in population by treatment group.</p>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pop</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">SAFFL</span> <span class="op">==</span> <span class="st">"Y"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>TRTAN <span class="op">=</span> <span class="va">TRT01AN</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">TRTAN</span>, name <span class="op">=</span> <span class="st">"tot"</span><span class="op">)</span>
+
+<span class="va">pop</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 2
+##   TRTAN   tot
+##   &lt;dbl&gt; &lt;int&gt;
+## 1     0    86
+## 2    54    84
+## 3    81    84</code></pre>
+<p>We transform the data to simplify the analysis of each required AE criteria of interest.</p>
+<ul>
+<li>With one or more adverse events</li>
+<li>With drug-related adverse events</li>
+<li>With serious adverse events</li>
+<li>With serious drug-related adverse events</li>
+<li>Who died"</li>
+</ul>
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tidy_ae</span> <span class="op">&lt;-</span> <span class="va">adae</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    all <span class="op">=</span> <span class="va">SAFFL</span> <span class="op">==</span> <span class="st">"Y"</span>,
+    drug <span class="op">=</span> <span class="va">AEREL</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"POSSIBLE"</span>, <span class="st">"PROBABLE"</span><span class="op">)</span>,
+    ser <span class="op">=</span> <span class="va">AESER</span> <span class="op">==</span> <span class="st">"Y"</span>,
+    drug_ser <span class="op">=</span> <span class="va">drug</span> <span class="op">&amp;</span> <span class="va">ser</span>,
+    die <span class="op">=</span> <span class="va">AEOUT</span> <span class="op">==</span> <span class="st">"FATAL"</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">USUBJID</span>, <span class="va">TRTAN</span>, <span class="va">all</span>, <span class="va">drug</span>, <span class="va">ser</span>, <span class="va">drug_ser</span>, <span class="va">die</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">all</span>, <span class="va">drug</span>, <span class="va">ser</span>, <span class="va">drug_ser</span>, <span class="va">die</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">tidy_ae</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 4
+##   USUBJID     TRTAN name     value
+##   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;    &lt;lgl&gt;
+## 1 01-701-1015     0 all      TRUE 
+## 2 01-701-1015     0 drug     TRUE 
+## 3 01-701-1015     0 ser      FALSE
+## 4 01-701-1015     0 drug_ser FALSE</code></pre>
+<p>We summarize the number and percentage of patients meet each AE criteria.</p>
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ana</span> <span class="op">&lt;-</span> <span class="va">tidy_ae</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">value</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">TRTAN</span>, <span class="va">name</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span><span class="op">(</span><span class="va">USUBJID</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">pop</span>, by <span class="op">=</span> <span class="st">"TRTAN"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    pct <span class="op">=</span> <span class="fu">fmt_num</span><span class="op">(</span><span class="va">n</span> <span class="op">/</span> <span class="va">tot</span> <span class="op">*</span> <span class="fl">100</span>, digits <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
+    n <span class="op">=</span> <span class="fu">fmt_num</span><span class="op">(</span><span class="va">n</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>,
+    pct <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"("</span>, <span class="va">pct</span>, <span class="st">")"</span><span class="op">)</span>
+  <span class="op">)</span>
+
+<span class="va">ana</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 5
+## # Groups:   TRTAN [2]
+##   TRTAN name  n        tot pct    
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;int&gt; &lt;chr&gt;  
+## 1     0 all   "  69"    86 ( 80.2)
+## 2     0 die   "   2"    86 (  2.3)
+## 3     0 drug  "  44"    86 ( 51.2)
+## 4    54 all   "  77"    84 ( 91.7)</code></pre>
+<p>We prepare reporting ready dataset for each AE criteria.</p>
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">t_ae</span> <span class="op">&lt;-</span> <span class="va">ana</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>
+    id_cols <span class="op">=</span> <span class="st">"name"</span>,
+    names_from <span class="op">=</span> <span class="va">TRTAN</span>,
+    values_from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">pct</span><span class="op">)</span>,
+    values_fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+      n <span class="op">=</span> <span class="st">"   0"</span>,
+      pct <span class="op">=</span> <span class="st">"(  0.0)"</span>
+    <span class="op">)</span>
+  <span class="op">)</span>
+
+<span class="va">t_ae</span> <span class="op">&lt;-</span> <span class="va">t_ae</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span>
+    <span class="va">name</span>,
+    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"all"</span>, <span class="st">"drug"</span>, <span class="st">"ser"</span>, <span class="st">"drug_ser"</span>, <span class="st">"die"</span><span class="op">)</span>,
+    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+      <span class="st">"With one or more adverse events"</span>,
+      <span class="st">"With drug-related adverse events"</span>,
+      <span class="st">"With serious adverse events"</span>,
+      <span class="st">"With serious drug-related adverse events"</span>,
+      <span class="st">"Who died"</span>
+    <span class="op">)</span>
+  <span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span></code></pre></div>
+<p>We prepare reporting ready dataset for analysis population.</p>
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">t_pop</span> <span class="op">&lt;-</span> <span class="va">pop</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Participants in population"</span>, 
+         tot <span class="op">=</span> <span class="fu">fmt_num</span><span class="op">(</span><span class="va">tot</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>id_cols <span class="op">=</span> <span class="va">name</span>, 
+              names_from <span class="op">=</span> <span class="va">TRTAN</span>, 
+              names_prefix <span class="op">=</span> <span class="st">"n_"</span>, 
+              values_from <span class="op">=</span> <span class="va">tot</span><span class="op">)</span> 
+
+<span class="va">t_pop</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 4
+##   name                       n_0    n_54   n_81  
+##   &lt;chr&gt;                      &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; 
+## 1 Participants in population "  86" "  84" "  84"</code></pre>
+<p>The final report data is saved in <code>tbl_ae_summary</code></p>
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tbl_ae_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">t_pop</span>, <span class="va">t_ae</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">name</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"_0"</span><span class="op">)</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"_54"</span><span class="op">)</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"_81"</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">tbl_ae_summary</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 7
+##   name                                     n_0    pct_0 n_54  pct_54 n_81  pct_81
+##   &lt;chr&gt;                                    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; 
+## 1 Participants in population               "  86" &lt;NA&gt;  "  8… &lt;NA&gt;   "  8… &lt;NA&gt;  
+## 2 With one or more adverse events          "  69" ( 80… "  7… ( 91.… "  7… ( 94.…
+## 3 With drug-related adverse events         "  44" ( 51… "  7… ( 86.… "  7… ( 83.…
+## 4 With serious adverse events              "   0" (  0… "   … (  1.… "   … (  2.…
+## 5 With serious drug-related adverse events "   0" (  0… "   … (  1.… "   … (  1.…
+## 6 Who died                                 "   2" (  2… "   … (  1.… "   … (  0.…</code></pre>
+<p>We start to define the format of the output.</p>
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tbl_ae_summary</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_title.html">rtf_title</a></span><span class="op">(</span>
+    <span class="st">"Analysis of Adverse Event Summary"</span>,
+    <span class="st">"(Safety Analysis Population)"</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_colheader.html">rtf_colheader</a></span><span class="op">(</span><span class="st">" | Placebo | Xanomeline Low Dose| Xanomeline High Dose"</span>,
+    col_rel_width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3.5</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_colheader.html">rtf_colheader</a></span><span class="op">(</span><span class="st">" | n | (%) | n | (%) | n | (%)"</span>,
+    col_rel_width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3.5</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.7</span>, <span class="fl">1.3</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>,
+    border_top <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"single"</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span>,
+    border_left <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"single"</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"single"</span>, <span class="st">""</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_body.html">rtf_body</a></span><span class="op">(</span>
+    col_rel_width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3.5</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.7</span>, <span class="fl">1.3</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>,
+    text_justification <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"l"</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"c"</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span>,
+    border_left <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"single"</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"single"</span>, <span class="st">""</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_footnote.html">rtf_footnote</a></span><span class="op">(</span><span class="st">"Every subject is counted a single time for each applicable row and column."</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/tlf_ae_summary.rtf"</span><span class="op">)</span></code></pre></div>
+<embed src="tlf/tlf_ae_summary.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In conclusion, the procedure to generate a AE summary table as shown in the above example is listed as follows:</p>
+<ul>
+<li>Step 1: Read data into R, i.e., <code>adae</code> and <code>adsl</code>.</li>
+<li>Step 2: Summarize participants in population by treatment group, and we name the dataset as <code>t_pop</code>.</li>
+<li>Step 3: Summarize participants in population by required AE criteria of interest, and we name the dataset as <code>t_ae</code>.</li>
+<li>Step 4: Rowly bind <code>t_pop</code> and <code>t_ae</code> and format it by <code>r2rtf</code>.</li>
+</ul>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="efficacy.html"><span class="header-section-number">6</span> Efficacy</a></div>
+<div class="next"><a href="specific-ae.html"><span class="header-section-number">8</span> Specific AE</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#aesummary"><span class="header-section-number">7</span> AE Summary</a></li></ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://stash.merck.com/projects/BARDS/repos/r4csr/browse/blob/master/tlf-ae-summary.Rmd">View source <i class="fab fa-gitlab"></i></a></li>
+          <li><a id="book-edit" href="https://stash.merck.com/projects/BARDS/repos/r4csr/browse/edit/master/tlf-ae-summary.Rmd">Edit this page <i class="fab fa-gitlab"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R for Clinical Study Reports and Submission</strong>" was written by Yilong Zhang, Nan Xiao, Keaven Anderson. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

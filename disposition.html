@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 3 Disposition | R for Clinical Study Reports and Submission</title>
+<meta name="author" content="Yilong Zhang">
+<meta name="author" content="Nan Xiao">
+<meta name="author" content="Keaven Anderson">
+<meta name="description" content="Following ICH E3 guidance, we need to summarize accounting of all patients who entered the study, in Section 10.1, Disposition of Patients. The disposition of patients reports the numbers of...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 3 Disposition | R for Clinical Study Reports and Submission">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Following ICH E3 guidance, we need to summarize accounting of all patients who entered the study, in Section 10.1, Disposition of Patients. The disposition of patients reports the numbers of...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 3 Disposition | R for Clinical Study Reports and Submission">
+<meta name="twitter:description" content="Following ICH E3 guidance, we need to summarize accounting of all patients who entered the study, in Section 10.1, Disposition of Patients. The disposition of patients reports the numbers of...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">R for Clinical Study Reports and Submission</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome!</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">1</span> Introduction</a></li>
+<li class="book-part">Delivering TLFs in CSR</li>
+<li><a class="" href="overview.html"><span class="header-section-number">2</span> Overview</a></li>
+<li><a class="active" href="disposition.html"><span class="header-section-number">3</span> Disposition</a></li>
+<li><a class="" href="population.html"><span class="header-section-number">4</span> Analysis Population</a></li>
+<li><a class="" href="baseline-characteristics.html"><span class="header-section-number">5</span> Baseline Characteristics</a></li>
+<li><a class="" href="efficacy.html"><span class="header-section-number">6</span> Efficacy</a></li>
+<li><a class="" href="aesummary.html"><span class="header-section-number">7</span> AE Summary</a></li>
+<li><a class="" href="specific-ae.html"><span class="header-section-number">8</span> Specific AE</a></li>
+<li class="book-part">Clinical Trial Project</li>
+<li><a class="" href="overview-1.html"><span class="header-section-number">9</span> Overview</a></li>
+<li><a class="" href="manage.html"><span class="header-section-number">10</span> Project Management</a></li>
+<li class="book-part">eCTD Submission</li>
+<li><a class="" href="ectd.html"><span class="header-section-number">11</span> eCTD</a></li>
+<li><a class="" href="submission-package.html"><span class="header-section-number">12</span> Submission Package</a></li>
+<li class="book-part">Appendix</li>
+<li><a class="" href="reference.html"><span class="header-section-number">13</span> Reference</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://stash.merck.com/projects/BARDS/repos/r4csr/browse">View book source <i class="fab fa-gitlab"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="disposition" class="section level1">
+<h1>
+<span class="header-section-number">3</span> Disposition<a class="anchor" aria-label="anchor" href="#disposition"><i class="fas fa-link"></i></a>
+</h1>
+<p>Following <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3 guidance</a>,
+we need to summarize accounting of all patients who entered the study, in Section 10.1, Disposition of Patients.
+The disposition of patients reports the numbers of patients who were randomized, and who entered and completed each phase of the study, as well as the reasons for all post-randomization discontinuations, grouped by treatment and by major reason (lost to follow-up, adverse event, poor compliance etc.).</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span> <span class="co"># Read SAS data</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://merck.github.io/r2rtf/">r2rtf</a></span><span class="op">)</span> <span class="co"># Reporting in RTF format</span></code></pre></div>
+<p>In this chapter, we illustrate how to create a disposition table as below.</p>
+<embed src="tlf/tbl_disp.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>The first step is to read relevant datasets into R.
+For disposition table, all the required information is saved in the ADSL dataset.
+We can use <code>haven</code> package to read the dataset.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"adam_data/adsl.sas7bdat"</span><span class="op">)</span></code></pre></div>
+<p>We illustrate how to prepare a report data for a simplified disposition
+of patients table using variables below:</p>
+<ul>
+<li>USUBJID: Unique subject identifier</li>
+<li>TRT01P: Planed treatment</li>
+<li>TRT01PN: Planned treatment encoding</li>
+<li>DISCONFL: Discontinued from study flag</li>
+<li>DCREASCD: Discontinued from study reason</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">adsl</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">USUBJID</span>, <span class="va">TRT01P</span>, <span class="va">TRT01PN</span>, <span class="va">DISCONFL</span>, <span class="va">DCREASCD</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 5
+##   USUBJID     TRT01P               TRT01PN DISCONFL DCREASCD        
+##   &lt;chr&gt;       &lt;chr&gt;                  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;           
+## 1 01-701-1015 Placebo                    0 ""       Completed       
+## 2 01-701-1023 Placebo                    0 "Y"      Adverse Event   
+## 3 01-701-1028 Xanomeline High Dose      81 ""       Completed       
+## 4 01-701-1033 Xanomeline Low Dose       54 "Y"      Sponsor Decision</code></pre>
+<p>In the code below, we calculated patients in the analysis population.</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">n_rand</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">TRT01PN</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>
+    names_from <span class="op">=</span> <span class="va">TRT01PN</span>,
+    names_prefix <span class="op">=</span> <span class="st">"n_"</span>,
+    values_from <span class="op">=</span> <span class="va">n</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>row <span class="op">=</span> <span class="st">"Patients in population"</span><span class="op">)</span>
+<span class="va">n_rand</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 4
+##     n_0  n_54  n_81 row                   
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;                 
+## 1    86    84    84 Patients in population</code></pre>
+<p>In the code below, we calculate number and percentage of patients who discontinued the study.</p>
+<p>Here we use <code><a href="https://rdrr.io/r/base/formatc.html">formatC()</a></code> to customize the numeric value to be 1 decimal with fixed width of 5.</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">n_disc</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">TRT01PN</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>
+    n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">DISCONFL</span> <span class="op">==</span> <span class="st">"Y"</span><span class="op">)</span>,
+    pct <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/formatc.html">formatC</a></span><span class="op">(</span><span class="va">n</span> <span class="op">/</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span>,
+      digits <span class="op">=</span> <span class="fl">1</span>, format <span class="op">=</span> <span class="st">"f"</span>, width <span class="op">=</span> <span class="fl">5</span>
+    <span class="op">)</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>
+    names_from <span class="op">=</span> <span class="va">TRT01PN</span>,
+    values_from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">pct</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>row <span class="op">=</span> <span class="st">"Discontinued"</span><span class="op">)</span>
+
+<span class="va">n_disc</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 7
+##     n_0  n_54  n_81 pct_0   pct_54  pct_81  row         
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;       
+## 1    28    59    57 " 32.6" " 70.2" " 67.9" Discontinued</code></pre>
+<p>In the code below, we calculate number and percentage of patients
+who completed/discontinued the study in different reasons.</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">n_reason</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">TRT01PN</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>n_total <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">TRT01PN</span>, <span class="va">DCREASCD</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>
+    n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,
+    pct <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/formatc.html">formatC</a></span><span class="op">(</span><span class="va">n</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">n_total</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span>,
+      digits <span class="op">=</span> <span class="fl">1</span>, format <span class="op">=</span> <span class="st">"f"</span>, width <span class="op">=</span> <span class="fl">5</span>
+    <span class="op">)</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>
+    id_cols <span class="op">=</span> <span class="va">DCREASCD</span>,
+    names_from <span class="op">=</span> <span class="va">TRT01PN</span>,
+    values_from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">pct</span><span class="op">)</span>,
+    values_fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">0</span>, pct <span class="op">=</span> <span class="st">"  0.0"</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>row <span class="op">=</span> <span class="va">DCREASCD</span><span class="op">)</span>
+
+<span class="va">n_reason</span></code></pre></div>
+<pre><code>## # A tibble: 10 × 7
+##    row                  n_0  n_54  n_81 pct_0   pct_54  pct_81 
+##    &lt;chr&gt;              &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  
+##  1 Adverse Event          8    44    40 "  9.3" " 52.4" " 47.6"
+##  2 Completed             58    25    27 " 67.4" " 29.8" " 32.1"
+##  3 Death                  2     1     0 "  2.3" "  1.2" "  0.0"
+##  4 I/E Not Met            1     0     2 "  1.2" "  0.0" "  2.4"
+##  5 Lack of Efficacy       3     0     1 "  3.5" "  0.0" "  1.2"
+##  6 Lost to Follow-up      1     1     0 "  1.2" "  1.2" "  0.0"
+##  7 Physician Decision     1     0     2 "  1.2" "  0.0" "  2.4"
+##  8 Protocol Violation     1     1     1 "  1.2" "  1.2" "  1.2"
+##  9 Sponsor Decision       2     2     3 "  2.3" "  2.4" "  3.6"
+## 10 Withdrew Consent       9    10     8 " 10.5" " 11.9" "  9.5"</code></pre>
+<p>In the code below, we calculate number and percentage of patients
+who complete the study. We split <code>n_reason</code> because we need to customize
+the row order of the table.</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">n_complete</span> <span class="op">&lt;-</span> <span class="va">n_reason</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">row</span> <span class="op">==</span> <span class="st">"Completed"</span><span class="op">)</span>
+
+<span class="va">n_complete</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 7
+##   row         n_0  n_54  n_81 pct_0   pct_54  pct_81 
+##   &lt;chr&gt;     &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  
+## 1 Completed    58    25    27 " 67.4" " 29.8" " 32.1"</code></pre>
+<p>In the code below, we calculate number and percentage of patients
+who discontinued the study in different reasons.
+Here we use <code><a href="https://rdrr.io/r/base/paste.html">paste0("    ", row)</a></code> to add some leading space for individual reasons for study discontinuation.</p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">n_reason</span> <span class="op">&lt;-</span> <span class="va">n_reason</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">row</span> <span class="op">!=</span> <span class="st">"Completed"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>row <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"    "</span>, <span class="va">row</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">n_reason</span></code></pre></div>
+<pre><code>## # A tibble: 9 × 7
+##   row                        n_0  n_54  n_81 pct_0   pct_54  pct_81 
+##   &lt;chr&gt;                    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  
+## 1 "    Adverse Event"          8    44    40 "  9.3" " 52.4" " 47.6"
+## 2 "    Death"                  2     1     0 "  2.3" "  1.2" "  0.0"
+## 3 "    I/E Not Met"            1     0     2 "  1.2" "  0.0" "  2.4"
+## 4 "    Lack of Efficacy"       3     0     1 "  3.5" "  0.0" "  1.2"
+## 5 "    Lost to Follow-up"      1     1     0 "  1.2" "  1.2" "  0.0"
+## 6 "    Physician Decision"     1     0     2 "  1.2" "  0.0" "  2.4"
+## 7 "    Protocol Violation"     1     1     1 "  1.2" "  1.2" "  1.2"
+## 8 "    Sponsor Decision"       2     2     3 "  2.3" "  2.4" "  3.6"
+## 9 "    Withdrew Consent"       9    10     8 " 10.5" " 11.9" "  9.5"</code></pre>
+<p>Now we combined individual rows into the whole table for reporting purpose.
+<code>tbl_disp</code> is used as input for <code>r2rtf</code> to create final report.</p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tbl_disp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">n_rand</span>, <span class="va">n_complete</span>, <span class="va">n_disc</span>, <span class="va">n_reason</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">row</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"_0"</span>, <span class="st">"_54"</span>, <span class="st">"_81"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">tbl_disp</span></code></pre></div>
+<pre><code>## # A tibble: 12 × 7
+##    row                        n_0 pct_0    n_54 pct_54   n_81 pct_81 
+##    &lt;chr&gt;                    &lt;int&gt; &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;  
+##  1 "Patients in population"    86  &lt;NA&gt;      84  &lt;NA&gt;      84  &lt;NA&gt;  
+##  2 "Completed"                 58 " 67.4"    25 " 29.8"    27 " 32.1"
+##  3 "Discontinued"              28 " 32.6"    59 " 70.2"    57 " 67.9"
+##  4 "    Adverse Event"          8 "  9.3"    44 " 52.4"    40 " 47.6"
+##  5 "    Death"                  2 "  2.3"     1 "  1.2"     0 "  0.0"
+##  6 "    I/E Not Met"            1 "  1.2"     0 "  0.0"     2 "  2.4"
+##  7 "    Lack of Efficacy"       3 "  3.5"     0 "  0.0"     1 "  1.2"
+##  8 "    Lost to Follow-up"      1 "  1.2"     1 "  1.2"     0 "  0.0"
+##  9 "    Physician Decision"     1 "  1.2"     0 "  0.0"     2 "  2.4"
+## 10 "    Protocol Violation"     1 "  1.2"     1 "  1.2"     1 "  1.2"
+## 11 "    Sponsor Decision"       2 "  2.3"     2 "  2.4"     3 "  3.6"
+## 12 "    Withdrew Consent"       9 " 10.5"    10 " 11.9"     8 "  9.5"</code></pre>
+<p>We start to define the format of the output. We highlighted items that
+is not discussed in previous discussion.</p>
+<p><code>rtf_title</code> define table title. We can provide a vector for the title argument.
+Each value is a separate line.
+The format can also be controlled by providing a vector input in text format.</p>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tbl_disp</span> <span class="op">%&gt;%</span>
+  
+  <span class="co"># Table title</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_title.html">rtf_title</a></span><span class="op">(</span><span class="st">"Disposition of Patients"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  
+  <span class="co"># First row of column header</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_colheader.html">rtf_colheader</a></span><span class="op">(</span><span class="st">" | Placebo | Xanomeline Low Dose| Xanomeline High Dose"</span>,
+    col_rel_width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  
+  <span class="co"># Second row of column header</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_colheader.html">rtf_colheader</a></span><span class="op">(</span><span class="st">" | n | (%) | n | (%) | n | (%)"</span>,
+    col_rel_width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.7</span>, <span class="fl">1.3</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>,
+    border_top <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"single"</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span>,
+    border_left <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"single"</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"single"</span>, <span class="st">""</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  
+  <span class="co"># Table body</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_body.html">rtf_body</a></span><span class="op">(</span>
+    col_rel_width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.7</span>, <span class="fl">1.3</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>,
+    text_justification <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"l"</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"c"</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span>,
+    border_left <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"single"</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"single"</span>, <span class="st">""</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  
+  <span class="co"># Encoding RTF syntax</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  
+  <span class="co"># Save to a file</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/tbl_disp.rtf"</span><span class="op">)</span></code></pre></div>
+<embed src="tlf/tbl_disp.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In conclusion, the procedure to generate a AE summary table as shown in the above example is listed as follows:</p>
+<ul>
+<li>Step 1: Read data into R, i.e. <code>adsl</code>.</li>
+<li>Step 2: Count patients in the analysis population and name the dataset as <code>n_rand</code>.</li>
+<li>Step 3: Count the number and percentage of patients who discontinued the study, and name the dataset as <code>n_disc</code>.</li>
+<li>Step 4: Count the number and percentage of of patients who discontinued the study in different reasons, and name the dataset as <code>n_reason</code>.
+format it by <code>r2rtf</code>.</li>
+<li>Step 5: Count the number and percentage of of patients who completed the study, and name the dataset as <code>n_complete</code>.</li>
+<li>Step 6: Rowly bind <code>n_rand</code>, <code>n_disc</code>, <code>n_reason</code> and <code>n_complete</code> and format it by <code>r2rtf</code>.</li>
+</ul>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="overview.html"><span class="header-section-number">2</span> Overview</a></div>
+<div class="next"><a href="population.html"><span class="header-section-number">4</span> Analysis Population</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#disposition"><span class="header-section-number">3</span> Disposition</a></li></ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://stash.merck.com/projects/BARDS/repos/r4csr/browse/blob/master/tlf-disposition.Rmd">View source <i class="fab fa-gitlab"></i></a></li>
+          <li><a id="book-edit" href="https://stash.merck.com/projects/BARDS/repos/r4csr/browse/edit/master/tlf-disposition.Rmd">Edit this page <i class="fab fa-gitlab"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R for Clinical Study Reports and Submission</strong>" was written by Yilong Zhang, Nan Xiao, Keaven Anderson. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

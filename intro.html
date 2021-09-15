@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 1 Introduction | R for Clinical Study Reports and Submission</title>
+<meta name="author" content="Yilong Zhang">
+<meta name="author" content="Nan Xiao">
+<meta name="author" content="Keaven Anderson">
+<meta name="description" content="1.1 Folder structure In clinical trial development, developers needs to organize source code to deliver Study Data Tabulation Model (SDTM) or Analysis Dataset Model (ADaM) datasets and tables,...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 1 Introduction | R for Clinical Study Reports and Submission">
+<meta property="og:type" content="book">
+<meta property="og:description" content="1.1 Folder structure In clinical trial development, developers needs to organize source code to deliver Study Data Tabulation Model (SDTM) or Analysis Dataset Model (ADaM) datasets and tables,...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 1 Introduction | R for Clinical Study Reports and Submission">
+<meta name="twitter:description" content="1.1 Folder structure In clinical trial development, developers needs to organize source code to deliver Study Data Tabulation Model (SDTM) or Analysis Dataset Model (ADaM) datasets and tables,...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">R for Clinical Study Reports and Submission</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome!</a></li>
+<li><a class="active" href="intro.html"><span class="header-section-number">1</span> Introduction</a></li>
+<li class="book-part">Delivering TLFs in CSR</li>
+<li><a class="" href="overview.html"><span class="header-section-number">2</span> Overview</a></li>
+<li><a class="" href="disposition.html"><span class="header-section-number">3</span> Disposition</a></li>
+<li><a class="" href="population.html"><span class="header-section-number">4</span> Analysis Population</a></li>
+<li><a class="" href="baseline-characteristics.html"><span class="header-section-number">5</span> Baseline Characteristics</a></li>
+<li><a class="" href="efficacy.html"><span class="header-section-number">6</span> Efficacy</a></li>
+<li><a class="" href="aesummary.html"><span class="header-section-number">7</span> AE Summary</a></li>
+<li><a class="" href="specific-ae.html"><span class="header-section-number">8</span> Specific AE</a></li>
+<li class="book-part">Clinical Trial Project</li>
+<li><a class="" href="overview-1.html"><span class="header-section-number">9</span> Overview</a></li>
+<li><a class="" href="manage.html"><span class="header-section-number">10</span> Project Management</a></li>
+<li class="book-part">eCTD Submission</li>
+<li><a class="" href="ectd.html"><span class="header-section-number">11</span> eCTD</a></li>
+<li><a class="" href="submission-package.html"><span class="header-section-number">12</span> Submission Package</a></li>
+<li class="book-part">Appendix</li>
+<li><a class="" href="reference.html"><span class="header-section-number">13</span> Reference</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://stash.merck.com/projects/BARDS/repos/r4csr/browse">View book source <i class="fab fa-gitlab"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="intro" class="section level1">
+<h1>
+<span class="header-section-number">1</span> Introduction<a class="anchor" aria-label="anchor" href="#intro"><i class="fas fa-link"></i></a>
+</h1>
+<div id="folder-structure" class="section level2">
+<h2>
+<span class="header-section-number">1.1</span> Folder structure<a class="anchor" aria-label="anchor" href="#folder-structure"><i class="fas fa-link"></i></a>
+</h2>
+<p>In clinical trial development, developers needs to organize source code to deliver Study Data Tabulation Model (SDTM) or Analysis Dataset Model (ADaM) datasets and tables, listings and figures (TLFs).
+For example, a Phase 3 clinical trial typically require hundreds of TLFs.
+A consistent and well-defined folder structure is crucial to manage a clinical trial analysis and reporting (A&amp;R) project.</p>
+<p>We recommend to use R package folder structure to organize all the A&amp;R related source code and documentation for a clinical trial A&amp;R project.
+By using the R package folder structure, you can follow the convention to organize your code as other contributors on CRAN.
+This consistent approach simplifies the communication for all developers within and across organizations.</p>
+<ul>
+<li><p>For a new R developer, it is an essential step to learn R package when you want to share your work with others.
+You will learn one folder structure that is widely used in R community with outstanding tutorial and tools for free.</p></li>
+<li><p>For an experienced R developer, there is minimal learning curve.</p></li>
+<li><p>For an organization, it simplifies process, tool, template, and training development, because a unified folder structure is used to develop and maintain standard tool and analysis project.</p></li>
+</ul>
+<p>The workflow around an R package can also improve the tractability and reproducibility for an analysis project <span class="citation">(Marwick, Boettiger, and Mullen <a href="reference.html#ref-marwick2018packaging" role="doc-biblioref">2018</a>)</span>.</p>
+<p>In addition, R package folder structure are also recommended to develop Shiny app as discussed in <a href="https://mastering-shiny.org/scaling-packaging.html">Chapter 20 of Master Shiny</a> book and <a href="https://engineering-shiny.org/golem.html">Engineering Production-Grade Shiny Apps</a> book.</p>
+</div>
+<div id="in-this-book" class="section level2">
+<h2>
+<span class="header-section-number">1.2</span> In this book<a class="anchor" aria-label="anchor" href="#in-this-book"><i class="fas fa-link"></i></a>
+</h2>
+<p>This book is an intermediate level book by assuming reader has equipped some R programming and clinical development knowledge.
+The assumption of each part is as below:</p>
+<ul>
+<li><p>Part 1, “Delivering TLFs in CSR” provides general information with examples to create tables, listings and figures.
+In this part, we assume readers are individual contributors of a clinical project with some experience in R programming.
+We expect readers are familiar with data manipulation in R. Some good reference includes <a href="https://rstudio-education.github.io/hopr/">Hands-On Programming with R</a>,
+<a href="https://r4ds.had.co.nz/">R for Data Science</a> and <a href="https://www.amazon.com/Data-Manipulation-R-Use/dp/0387747303">Data Manipulation with R</a>.</p></li>
+<li><p>Part 2, “Clinical Trial Project” provides general information with examples to manage a clinical trial A&amp;R
+project. In this part, we assume a reader is a project lead with experience in R package development.
+Some good reference includes <a href="https://r-pkgs.org/">R packages</a> and <a href="https://style.tidyverse.org/">The tidyverse style guide</a>.</p></li>
+<li><p>Part 3, “eCTD Submission package” (maybe provide the full spelling for “eCTD” here) provides general information in preparing
+submission package related to clinical study report (CSR) in
+electronic Common Technical Document (eCTD).
+In this part, we assume a reader is a project lead of a clinical project
+with experience in R package development as well.</p></li>
+</ul>
+</div>
+<div id="philosophy" class="section level2">
+<h2>
+<span class="header-section-number">1.3</span> Philosophy<a class="anchor" aria-label="anchor" href="#philosophy"><i class="fas fa-link"></i></a>
+</h2>
+<p>We share the same philosophy described in <a href="https://r-pkgs.org/intro.html?q=Marwick#intro-phil">Section 1.1 of R Packages book</a> and quote here.</p>
+<ul>
+<li>“Anything that can be automated, should be automated.”</li>
+<li>“Do as little as possible by hand. Do as much as possible with functions.”</li>
+<li>“The goal is to spend your time thinking about what you want to do
+rather than thinking about the minutiae of package structure.”</li>
+</ul>
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="index.html">Welcome!</a></div>
+<div class="next"><a href="overview.html"><span class="header-section-number">2</span> Overview</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#intro"><span class="header-section-number">1</span> Introduction</a></li>
+<li><a class="nav-link" href="#folder-structure"><span class="header-section-number">1.1</span> Folder structure</a></li>
+<li><a class="nav-link" href="#in-this-book"><span class="header-section-number">1.2</span> In this book</a></li>
+<li><a class="nav-link" href="#philosophy"><span class="header-section-number">1.3</span> Philosophy</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://stash.merck.com/projects/BARDS/repos/r4csr/browse/blob/master/intro.Rmd">View source <i class="fab fa-gitlab"></i></a></li>
+          <li><a id="book-edit" href="https://stash.merck.com/projects/BARDS/repos/r4csr/browse/edit/master/intro.Rmd">Edit this page <i class="fab fa-gitlab"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R for Clinical Study Reports and Submission</strong>" was written by Yilong Zhang, Nan Xiao, Keaven Anderson. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>
