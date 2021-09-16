@@ -2,19 +2,12 @@
 
 ## Folder structure 
 
-In clinical trial development, developers need to organize source code to deliver 
-Study Data Tabulation Model (SDTM) or Analysis Dataset Model (ADaM) datasets 
-and tables, listings, and figures (TLFs).
-For example, a Phase 3 clinical trial typically consists hundreds of TLFs. 
-A consistent and well-defined folder structure is crucial 
-to managing a clinical trial analysis and reporting (A&R) project. 
+In clinical trial development, source code needs to be developed and maintained to generate and deliver 
+Study Data Tabulation Model (SDTM), Analysis Dataset Model (ADaM) datasets and tables, listings, and figures (TLFs).
+A typical example is a Phase 3 clinical trial where hundreds of TLFs are required for submission. 
+Considering the amount of programs required for such an effort, a consistent and well-defined folder structure is crucial in managing a clinical trial analysis and reporting (A&R) project. 
 
-We recommend using R package folder structure to organize all the A&R related 
-source code and documentation for a clinical trial A&R project. 
-By using the R package folder structure, 
-you can follow the convention to organize your code as other contributors on CRAN.
-This consistent approach simplifies the communication for all developers 
-within and across organizations. 
+During the course of this book we will provide a recommended folder structure that is aligned with CRAN submissions of R packages.
 
 - For a new R developer, 
 it is an essential step to develop R packages 
@@ -32,7 +25,7 @@ The workflow around an R package can also improve
 the tractability and reproducibility for an analysis project [@marwick2018packaging].
 
 In addition, R package folder structure is also recommended 
-to develop Shiny app as discussed 
+to develop Shiny apps as discussed 
 in [Chapter 20 of Master Shiny](https://mastering-shiny.org/scaling-packaging.html) book 
 and [Engineering Production-Grade Shiny Apps](https://engineering-shiny.org/golem.html) book.   
 
@@ -47,7 +40,7 @@ to create tables, listings, and figures.
 In this part, we assume readers are individual contributors to a clinical project
 with some experience in R programming. 
 We expect readers are familiar with data manipulation in R. 
-Some good reference includes [Hands-On Programming with R](https://rstudio-education.github.io/hopr/),
+Some good references include [Hands-On Programming with R](https://rstudio-education.github.io/hopr/),
 [R for Data Science](https://r4ds.had.co.nz/) and 
 [Data Manipulation with R](https://www.amazon.com/Data-Manipulation-R-Use/dp/0387747303).
 
@@ -62,7 +55,7 @@ provides general information in preparing
 submission package related to clinical study report (CSR) in 
 electronic Common Technical Document (eCTD). 
 In this part, we assume a reader is a project lead of a clinical project 
-with experience in R package development as well.     
+with experience in R package development and submission.     
 
 ## Philosophy 
 
