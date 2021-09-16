@@ -1,8 +1,6 @@
 # AE Summary {#aesummary}
 
-Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
-we need to summarize which patients were included in each efficacy analysis 
-in Section 12.2, Adverse Events (AEs). 
+Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf), we need to summarize which patients were included in each efficacy analysis in Section 12.2, Adverse Events (AEs).
 
 ```{r}
 library(haven) # Read SAS data
@@ -17,7 +15,7 @@ In this chapter, we illustrate how to summarize AE information in a study.
 knitr::include_graphics("tlf/tlf_ae_summary.pdf")
 ```
 
-The data used to summarize AE information is in `adsl` and `adae` datasets. 
+The data used to summarize AE information is in `adsl` and `adae` datasets.
 
 ```{r}
 adsl <- read_sas("adam_data/adsl.sas7bdat")
@@ -37,11 +35,11 @@ pop
 
 We transform the data to simplify the analysis of each required AE criteria of interest.
 
-- With one or more adverse events
-- With drug-related adverse events
-- With serious adverse events
-- With serious drug-related adverse events
-- Who died"
+-   With one or more adverse events
+-   With drug-related adverse events
+-   With serious adverse events
+-   With serious drug-related adverse events
+-   Who "died"
 
 ```{r}
 tidy_ae <- adae %>%
@@ -57,7 +55,8 @@ tidy_ae <- adae %>%
 
 tidy_ae %>% head(4)
 ```
-We summarize the number and percentage of patients meet each AE criteria. 
+
+We summarize the number and percentage of patients who meet each AE criteria.
 
 ```{r}
 ana <- tidy_ae %>%
@@ -73,7 +72,8 @@ ana <- tidy_ae %>%
 
 ana %>% head(4)
 ```
-We prepare reporting ready dataset for each AE criteria. 
+
+We prepare reporting-ready dataset for each AE criteria.
 
 ```{r}
 t_ae <- ana %>%
@@ -102,7 +102,7 @@ t_ae <- t_ae %>%
   arrange(name)
 ```
 
-We prepare reporting ready dataset for analysis population. 
+We prepare reporting-ready dataset for the analysis population.
 
 ```{r}
 t_pop <- pop %>% 
@@ -115,7 +115,8 @@ t_pop <- pop %>%
 
 t_pop
 ```
-The final report data is saved in `tbl_ae_summary`
+
+The final report data is saved in `tbl_ae_summary`.
 
 ```{r}
 tbl_ae_summary <- bind_rows(t_pop, t_ae) %>%
@@ -124,7 +125,7 @@ tbl_ae_summary <- bind_rows(t_pop, t_ae) %>%
 tbl_ae_summary
 ```
 
-We start to define the format of the output. 
+We start to define the format of the output.
 
 ```{r}
 tbl_ae_summary %>% 
@@ -154,9 +155,9 @@ tbl_ae_summary %>%
 knitr::include_graphics("tlf/tlf_ae_summary.pdf")
 ```
 
-In conclusion, the procedure to generate a AE summary table as shown in the above example is listed as follows:
+The procedure to generate a AE summary table can be summarized as follow：
 
-- Step 1: Read data into R, i.e., `adae` and `adsl`.
-- Step 2: Summarize participants in population by treatment group, and we name the dataset as `t_pop`.
-- Step 3: Summarize participants in population by required AE criteria of interest, and we name the dataset as `t_ae`.
-- Step 4: Rowly bind `t_pop` and `t_ae` and format it by `r2rtf`.
+-   Step 1: Read data into R, i.e., `adae` and `adsl`.
+-   Step 2: Summarize participants in population by treatment group, and we name the dataset as `t_pop`.
+-   Step 3: Summarize participants in population by required AE criteria of interest, and we name the dataset as `t_ae`.
+-   Step 4: Rowly bind `t_pop` and `t_ae` and format it by `r2rtf`.
