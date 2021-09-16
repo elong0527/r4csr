@@ -1,4 +1,4 @@
-# R for Clinical Study Report and Submission
+# R for Clinical Study Reports and Submission
 
 The project is still under development. 
 

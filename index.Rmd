@@ -25,7 +25,6 @@ library(tidyr)
 library(r2rtf) 
 library(knitr)
 library(kableExtra)
-library(bookdown)
 ```
 
 ```{r setup, include=FALSE}
@@ -50,7 +49,7 @@ bookdown::render_book("index.Rmd", "bookdown::pdf_book")
 
 <img src="images/cover.jpg" width="100%" align="right" alt="" class="cover" /> 
 
-Welcome to R for clinical study report and submission. 
+Welcome to R for clinical study reports and submission. 
 Clinical study reports (CSR) are essential parts of clinical trials development. 
 a CSR is an "integrated" full scientific report of an individual clinical trial. 
 
