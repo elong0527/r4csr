@@ -66,7 +66,8 @@ In this book, you will learn how to use R to prepare CSR and submit to regulator
 contributors <- c(person("Yilong", "Zhang", email = "yilong.zhang@merck.com", role = "aut"), 
                   person("Nan", "Xiao", role = "aut"), 
                   person("Keaven", "Anderson", role = "aut"),
-                  person("Yujie", "Zhao", role = "ctr"))
+                  person("Yujie", "Zhao", role = "ctr"), 
+                  person("Aiming", "Yang", role = "ctr"))
 ```
 
 The document is maintained by a community. 
