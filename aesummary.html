@@ -72,9 +72,7 @@
 <h1>
 <span class="header-section-number">7</span> AE Summary<a class="anchor" aria-label="anchor" href="#aesummary"><i class="fas fa-link"></i></a>
 </h1>
-<p>Following <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3 guidance</a>,
-we need to summarize which patients were included in each efficacy analysis
-in Section 12.2, Adverse Events (AEs).</p>
+<p>Following <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3 guidance</a>, we need to summarize which patients were included in each efficacy analysis in Section 12.2, Adverse Events (AEs).</p>
 <div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span> <span class="co"># Read SAS data</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span>
@@ -105,7 +103,7 @@ in Section 12.2, Adverse Events (AEs).</p>
 <li>With drug-related adverse events</li>
 <li>With serious adverse events</li>
 <li>With serious drug-related adverse events</li>
-<li>Who died"</li>
+<li>Who “died”</li>
 </ul>
 <div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tidy_ae</span> <span class="op">&lt;-</span> <span class="va">adae</span> <span class="op">%&gt;%</span>
@@ -127,7 +125,7 @@ in Section 12.2, Adverse Events (AEs).</p>
 ## 2 01-701-1015     0 drug     TRUE 
 ## 3 01-701-1015     0 ser      FALSE
 ## 4 01-701-1015     0 drug_ser FALSE</code></pre>
-<p>We summarize the number and percentage of patients meet each AE criteria.</p>
+<p>We summarize the number and percentage of patients who meet each AE criteria.</p>
 <div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ana</span> <span class="op">&lt;-</span> <span class="va">tidy_ae</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">value</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -149,7 +147,7 @@ in Section 12.2, Adverse Events (AEs).</p>
 ## 2     0 die   "   2"    86 (  2.3)
 ## 3     0 drug  "  44"    86 ( 51.2)
 ## 4    54 all   "  77"    84 ( 91.7)</code></pre>
-<p>We prepare reporting ready dataset for each AE criteria.</p>
+<p>We prepare reporting-ready dataset for each AE criteria.</p>
 <div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t_ae</span> <span class="op">&lt;-</span> <span class="va">ana</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>
@@ -175,7 +173,7 @@ in Section 12.2, Adverse Events (AEs).</p>
     <span class="op">)</span>
   <span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span></code></pre></div>
-<p>We prepare reporting ready dataset for analysis population.</p>
+<p>We prepare reporting-ready dataset for the analysis population.</p>
 <div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t_pop</span> <span class="op">&lt;-</span> <span class="va">pop</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Participants in population"</span>, 
@@ -190,7 +188,7 @@ in Section 12.2, Adverse Events (AEs).</p>
 ##   name                       n_0    n_54   n_81  
 ##   &lt;chr&gt;                      &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; 
 ## 1 Participants in population "  86" "  84" "  84"</code></pre>
-<p>The final report data is saved in <code>tbl_ae_summary</code></p>
+<p>The final report data is saved in <code>tbl_ae_summary</code>.</p>
 <div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_ae_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">t_pop</span>, <span class="va">t_ae</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">name</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"_0"</span><span class="op">)</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"_54"</span><span class="op">)</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"_81"</span><span class="op">)</span><span class="op">)</span>
@@ -228,7 +226,7 @@ in Section 12.2, Adverse Events (AEs).</p>
   <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_footnote.html">rtf_footnote</a></span><span class="op">(</span><span class="st">"Every subject is counted a single time for each applicable row and column."</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/tlf_ae_summary.rtf"</span><span class="op">)</span></code></pre></div>
-<embed src="tlf/tlf_ae_summary.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In conclusion, the procedure to generate a AE summary table as shown in the above example is listed as follows:</p>
+<embed src="tlf/tlf_ae_summary.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>The procedure to generate a AE summary table can be summarized as follow：</p>
 <ul>
 <li>Step 1: Read data into R, i.e., <code>adae</code> and <code>adsl</code>.</li>
 <li>Step 2: Summarize participants in population by treatment group, and we name the dataset as <code>t_pop</code>.</li>
