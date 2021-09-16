@@ -1,3 +1,13 @@
 # R for Clinical Study Report and Submission
 
-The site of this book is now deployed to https://elong0527.github.io/r4csr
+The project is still under development. 
+
+The book is currently at https://elong0527.github.io/r4csr
+
+The document is maintained by a community. 
+While reading the document, you can be a contributor as well. 
+The quality of this document relies on you. 
+
+- Author: contribute majority content of at least one chapter. 
+- Contributor: contribute at least one commit to the source code. 
+- [List of authors and contributors](https://elong0527.github.io/r4csr/#list-of-authors-and-contributors)
