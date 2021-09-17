@@ -15,7 +15,7 @@ Within eCTD, clinical study reports (CSRs) are located at module 5.
 [ICH E3 guidance](https://www.ich.org/page/efficacy-guidelines) provides 
 compilation of structure and content of clinical study reports.
 
-A typical CSR contains full details on the methods and results of a individual clinical study.
+A typical CSR contains full details on the methods and results of an individual clinical study.
 In support of the statistical anlaysis, a large number of tables, listings and figures are
 incorporated into the main text and appendices.
 In CDISC pilot project, an 
