@@ -30,7 +30,9 @@ and training development, because a unified folder structure is used
 to develop and maintain standard tool and analysis projects.  
 
 The workflow around an R package can also improve 
-the tractability and reproducibility for an analysis project [@marwick2018packaging].
+the traceability and reproducibility for an analysis project [@marwick2018packaging].
+
+We will revisit folder structure when we discuss project management for a clinical trail project.  
 
 In addition, R package folder structure is also recommended 
 to develop Shiny apps as discussed 
