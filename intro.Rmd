@@ -9,7 +9,13 @@ Considering the amount of programs required for such an effort,
 a consistent and well-defined folder structure is crucial in 
 managing a clinical trial analysis and reporting (A&R) project. 
 
-During the course of this book we will provide a recommended folder structure that is aligned with CRAN submissions of R packages.
+We recommend using 
+[R package folder structure](https://github.com/rstudio/cheatsheets/raw/master/package-development.pdf) 
+to organize all the A&R related source code and documentation for a clinical trial A&R project. 
+The R package folder structure is well defined and widely used in R community through repositories (e.g. CRAN).
+
+The consistent approach of using R package folder structure 
+simplifies the communication for all developers within and across organizations.
 
 - For a new R developer, 
 it is an essential step to develop R packages 
