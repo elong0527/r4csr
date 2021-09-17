@@ -5,7 +5,9 @@
 In clinical trial development, source code needs to be developed and maintained to generate and deliver 
 Study Data Tabulation Model (SDTM), Analysis Dataset Model (ADaM) datasets and tables, listings, and figures (TLFs).
 A typical example is a Phase 3 clinical trial where hundreds of TLFs are required for submission. 
-Considering the amount of programs required for such an effort, a consistent and well-defined folder structure is crucial in managing a clinical trial analysis and reporting (A&R) project. 
+Considering the amount of programs required for such an effort, 
+a consistent and well-defined folder structure is crucial in 
+managing a clinical trial analysis and reporting (A&R) project. 
 
 During the course of this book we will provide a recommended folder structure that is aligned with CRAN submissions of R packages.
 
