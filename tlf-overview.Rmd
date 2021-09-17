@@ -4,20 +4,20 @@
 
 ## Background
 
-In clinical trial development, it is a critical step to 
-submit information on medical products to regulatory agencies. 
+In clinical trials, a critical step is
+submission to regulatory agencies. 
 [Electronic Common Technical Document (eCTD)](https://en.wikipedia.org/wiki/Electronic_common_technical_document) 
 has become a worldwide regulatory submission standard format. 
 For example, [the United States Food and Drug Administration (US FDA) required new drug applications, biologics license applications must be submitted using eCTD format](https://www.fda.gov/drugs/electronic-regulatory-submission-and-review/electronic-common-technical-document-ectd). Clinical Data Interchange Standards Consortium (CDISC) provided a 
 [pilot project following ICH E3 guidance](https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse).
 
-Within eCTD, clinical study reports (CSR) are located at module 5. 
+Within eCTD, clinical study reports (CSRs) are located at module 5. 
 [ICH E3 guidance](https://www.ich.org/page/efficacy-guidelines) provides 
 compilation of structure and content of clinical study reports.
 
-A typical CSR contain full details of an individual clinical study 
-including clinical and statistical description, presentations, and analyses. 
-A large number of tables and figures are incorporated into the main text and appendices of a CSR. 
+A typical CSR contains full details on the methods and results of an individual clinical study.
+In support of the statistical anlaysis, a large number of tables, listings and figures are
+incorporated into the main text and appendices.
 In CDISC pilot project, an 
 [example CSR](https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse/updated-pilot-submission-package/900172/m5/53-clin-stud-rep/535-rep-effic-safety-stud/5351-stud-rep-contr/cdiscpilot01/cdiscpilot01.pdf) 
 is also provided. If you are interested in more examples of clinical study reports, 
@@ -25,22 +25,21 @@ the European Medicines Agency (EMA) publishes clinical data including
 clinical study reports submitted by pharmaceutical companies 
 on [EMA clinical data website](https://clinicaldata.ema.europa.eu/web/cdp/home).  
 
-Building CSR is teamwork with clinicians, medical writers, statisticians, and statistical programmers. 
+Building CSRs is a teamwork between clinicians, medical writers, statisticians, statistical programmers
+and other relevant specialists such as experts on biomarkers. 
 Here, we focus on the work and deliverables completed by statisticians and statistical programmers. 
-In an organization, a group of statisticians and statistical programmers commonly work together to 
-define, develop, validate and deliver tables, listings, and figures (TLFs) required for a CSR.
+In an organization, they commonly work together to 
+define, develop, validate and deliver tables, listings, and figures (TLFs) required for a CSR to
+summarize the safety and/or safety of the pharmaceutical product.
 Microsoft Word is widely used to prepare CSR in the pharmaceutical industry. 
-Therefore, `rtf`, `doc`, `docx` are commonly used formats to deliver TLFs. 
+Therefore, `rtf`, `doc`, `docx` are commonly used formats in their deliverables. 
 
-In this chapter, our focus is to illustrate how to create tables, listings, and figures (TLFs) in the RTF format 
+In this chapter, our focus is to illustrate how to create tables, listings, and figures (TLFs) in RTF format
 that is commonly used in a CSR. The examples are in compliance of 
 [FDA's Portable Document Format (PDF) Specifications](https://www.fda.gov/media/76797/download)
 
 > FDA's PDF specification is a general reference, each organization can define 
 > more specific TLF format requirement that can be different from the examples in this book. 
-
-These TLFs are typically used to summarize efficacy and safety 
-statistical analysis results of a drug (or treatment).  
 
 ## Structure and Content
 
@@ -53,7 +52,7 @@ In a CSR, most of TLFs are located in
 - Section 10: Study patients 
 - Section 11: Efficacy evaluation
 - Section 12: Safety evaluation 
-- Section 14: ables, Figures, and Graphs referred to but not included in the text
+- Section 14: Tables, Listings and Figures referrals but not included in the text
 - Section 16: Appendices
 
 ## Datasets
@@ -113,7 +112,7 @@ Before creating an RTF table we need to:
 - Execute the program.
 
 We provided a brief introduction of `r2rtf` and show how to transfer 
-data frames into Table, Listing, and Figure (TLFs).
+data frames into Table, Listing, and Figures (TLFs).
 
 Other extended examples and features are covered in the 
 [`r2rtf` package website](https://merck.github.io/r2rtf/articles/index.html). 
