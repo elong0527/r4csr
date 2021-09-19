@@ -24,7 +24,8 @@ knitr::include_graphics("tlf/tbl_disp.pdf")
 
 The first step is to read in the relevant datasets into R.
 For a disposition table, all the required information is saved in a Subject-level Analysis Dataset (ADSL).
-The dataset is provided in SAS7bdat format, which is the current standard in current clinical trial reporting and analysis.The `haven` package is able to read in the dataset, while maintaining its attributes (eg. variable labels).
+The dataset is provided in `sas7bdat` format that is a SAS data format currently used in many clinical trial analysis and reporting.
+The `haven` package is able to read in the dataset, while maintaining its attributes (e.g. variable labels).
 
 ```{r}
 adsl <- read_sas("adam_data/adsl.sas7bdat")
@@ -36,7 +37,7 @@ Following variables are used in the preparation of a simplified disposition of p
 -   TRT01P: Planed treatment
 -   TRT01PN: Planned treatment numeric encoding
 -   DISCONFL: Discontinued from study flag
--   DCREASCD: Discontinued from Study reason coded
+-   DCREASCD: Discontinued from study reason coded
 
 ```{r}
 adsl %>%
@@ -46,17 +47,16 @@ adsl %>%
 
 In the code below, we calculated participants in the analysis population.
 
-
 ```{r}
 n_rand <- adsl %>%
   group_by(TRT01PN) %>%
   summarize(n = n()) %>%
   pivot_wider(
     names_from = TRT01PN,
-    names_prefix = "",
+    names_prefix = "n_",
     values_from = n
   ) %>%
-  mutate(row = "Participants Randomized")
+  mutate(row = "Participants in population")
 
 n_rand
 ```
@@ -74,12 +74,9 @@ n_disc <- adsl %>%
       digits = 1, format = "f", width = 5
     )
   ) %>%
-  mutate(npct = paste0(n, " (", pct, "%)")) %>%
-  select(-c(n,pct)) %>%
   pivot_wider(
     names_from = TRT01PN,
-    values_from = npct,
-    values_fill = list(npct = "0")
+    values_from = c(n, pct)
   ) %>%
   mutate(row = "Discontinued")
 
@@ -99,12 +96,11 @@ n_reason <- adsl %>%
       digits = 1, format = "f", width = 5
     )
   ) %>%
-  mutate(npct = paste0(n, " (", pct, "%)")) %>%
   pivot_wider(
     id_cols = DCREASCD,
     names_from = TRT01PN,
-    values_from = npct,
-    values_fill = list(npct = "0")
+    values_from = c(n, pct),
+    values_fill = list(n = 0, pct = "  0.0")
   ) %>%
   rename(row = DCREASCD)
 
@@ -136,7 +132,8 @@ n_reason
 In the final step, the individual rows are combined and used as input for `r2rtf.
 
 ```{r}
-tbl_disp <- rbind(n_rand, n_complete, n_disc, n_reason)
+tbl_disp <- bind_rows(n_rand, n_complete, n_disc, n_reason) %>%
+  select(row, ends_with(c("_0", "_54", "_81")))
 
 tbl_disp
 ```
@@ -147,7 +144,7 @@ In the below code, formatting of the final table is defined. Sections are highli
 tbl_disp %>%
   
   # Table title
-  rtf_title("Disposition of Participants") %>%
+  rtf_title("Disposition of Patients") %>%
   
   # First row of column header
   rtf_colheader(" | Placebo | Xanomeline Low Dose| Xanomeline High Dose",
