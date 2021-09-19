@@ -1,7 +1,7 @@
 # Disposition {#disposition}
 
-Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf), we need to summarize the accounting of all patients who entered the study, in Section 10.1, Disposition of Patients.
-The disposition of patients reports the numbers of patients who were randomized, and who entered and completed each phase of the study, as well as the reasons for all post-randomization discontinuations, grouped by treatment and by major reason (lost to follow-up, adverse event, poor compliance, etc.).
+Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf), a summary needs to be provided that accounts for all participants who entered the study within Section 10.1, Disposition of participants.
+This section summarizes the number of participants that were randomized, entered and completed each phase of the study. In addition, the reasons for all post-randomization discontinuations, grouped by treatment and by major reason of discontinuation are required (lost to follow-up, adverse event, ...).
 
 ```{r}
 library(haven) # Read SAS data
@@ -10,138 +10,135 @@ library(tidyr) # Manipulate data
 library(r2rtf) # Reporting in RTF format
 ```
 
-In this chapter, we illustrate how to create a disposition table as below.
+In this chapter, the creation of a typical disposition table is shown.
 
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tbl_disp.pdf")
 ```
 
-The first step is to read relevant datasets into R.
-For a disposition table, all the required information is saved in the ADSL dataset.
-We can use the `haven` package to read the dataset.
+The first step is to read in the relevant datasets into R.
+For a disposition table, all the required information is saved in a Subject-level Analysis Dataset (ADSL).
+The dataset is provided in SAS7bdat format, which is the current standard in current clinical trial reporting and analysis.The `haven` package is able to read in the dataset, while maintaining its attributes (eg. variable labels).
 
 ```{r}
-adsl <- read_sas("adam_data/adsl.sas7bdat")
+adsl <- haven::read_sas("adam_data/adsl.sas7bdat")
 ```
 
-We illustrate how to prepare a report data for a simplified disposition of patients table using variables below:
+Following variables are used in the preparation of the disposition report:
 
 -   USUBJID: Unique subject identifier
 -   TRT01P: Planed treatment
--   TRT01PN: Planned treatment encoding
+-   TRT01PN: Planned treatment numeric encoding
 -   DISCONFL: Discontinued from study flag
--   DCREASCD: Discontinued from study reason
+-   DCREASCD: Discontinued from Study reason coded
 
 ```{r}
 adsl %>%
-  select(USUBJID, TRT01P, TRT01PN, DISCONFL, DCREASCD) %>%
-  head(4)
+  dplyr::select(USUBJID, TRT01P, TRT01PN, DISCONFL, DCREASCD) %>%
+  utils::head(4)
 ```
 
-In the code below, we calculated patients in the analysis population.
+In the code below, the number of participants randomized is calculated.
 
 ```{r}
 n_rand <- adsl %>%
-  group_by(TRT01PN) %>%
-  summarize(n = n()) %>%
-  pivot_wider(
-    names_from = TRT01PN,
-    names_prefix = "n_",
+  dplyr::group_by(TRT01P) %>%
+  dplyr::summarize(n = n()) %>%
+  tidyr::pivot_wider(
+    names_from = TRT01P,
+    names_prefix = "",
     values_from = n
   ) %>%
-  mutate(row = "Patients in population")
+  dplyr::mutate(row = "participants Randomized")
+
 n_rand
 ```
 
-In the code below, we calculate the number and percentage of patients who discontinued the study.
+In the code below, the number of participants that discontinued the study is calculated.
 
 Here we use the `formatC()` function to customize the numeric value to be 1 decimal with fixed width of 5.
 
 ```{r}
 n_disc <- adsl %>%
-  group_by(TRT01PN) %>%
-  summarize(
-    n = sum(DISCONFL == "Y"),
-    pct = formatC(n / n() * 100,
+  dplyr::group_by(TRT01P) %>%
+  dplyr::summarize(
+    n = base::sum(DISCONFL == "Y"),
+    pct = base::formatC(n / n() * 100,
       digits = 1, format = "f", width = 5
     )
   ) %>%
-  pivot_wider(
-    names_from = TRT01PN,
-    values_from = c(n, pct)
+  dplyr:: mutate(npct = base::paste0(n, " (", pct, "%)")) %>%
+  dplyr::select(-c(n,pct)) %>%
+  tidyr::pivot_wider(
+    names_from = TRT01P,
+    values_from = npct,
+    values_fill = list(npct = "0")
   ) %>%
-  mutate(row = "Discontinued")
+  dplyr::mutate(row = "Discontinued")
 
 n_disc
 ```
 
-In the code below, we calculate the number and percentage of patients who completed/discontinued the study for different reasons.
+To calculate the number and percentage of participants that completed/discontinued the study for each discontinuation reason, below code can be used.
 
 ```{r}
 n_reason <- adsl %>%
-  group_by(TRT01PN) %>%
-  mutate(n_total = n()) %>%
-  group_by(TRT01PN, DCREASCD) %>%
-  summarize(
-    n = n(),
-    pct = formatC(n / unique(n_total) * 100,
+  dplyr::group_by(TRT01P) %>%
+  dplyr::mutate(n_total = dplyr::n()) %>%
+  dplyr::group_by(TRT01P, DCREASCD) %>%
+  dplyr::summarize(
+    n = dplyr::n(),
+    pct = base::formatC(n / unique(n_total) * 100,
       digits = 1, format = "f", width = 5
     )
   ) %>%
-  pivot_wider(
+  dplyr:: mutate(npct = base::paste0(n, " (", pct, "%)")) %>%
+  tidyr::pivot_wider(
     id_cols = DCREASCD,
-    names_from = TRT01PN,
-    values_from = c(n, pct),
-    values_fill = list(n = 0, pct = "  0.0")
+    names_from = TRT01P,
+    values_from = npct,
+    values_fill = list(npct = "0")
   ) %>%
-  rename(row = DCREASCD)
+  dplyr::rename(row = DCREASCD)
 
 n_reason
 ```
 
-In the code below, we calculate the number and percentage of patients who complete the study.
-We split `n_reason` because we need to customize the row order of the table.
+From the step above, the number and percentage of participants that completed the study can be isolated so change the
+roworder in the final table.
 
 ```{r}
-n_complete <- n_reason %>% filter(row == "Completed")
+n_complete <- n_reason %>% 
+  dplyr::filter(row == "Completed")
 
 n_complete
 ```
 
-In the code below, we calculate the number and percentage of patients who discontinued the study for different reasons.
-Here we use `paste0("    ", row)` to add some leading space for individual reasons for study discontinuation.
+For display purposes leading spaces are added to study discontinuation. This will mimick identation in the final report.
 
 ```{r}
 n_reason <- n_reason %>%
-  filter(row != "Completed") %>%
-  mutate(row = paste0("    ", row))
+  dplyr::filter(row != "Completed") %>%
+  dplyr::mutate(row = paste0("    ", row))
 
 n_reason
 ```
 
-Now we combined individual rows into the whole table for reporting purposes.
-`tbl_disp` is used as input for `r2rtf` to create the final report.
+In the final step, the individual rows are combined and used as input for `r2rtf.
 
 ```{r}
-tbl_disp <- bind_rows(n_rand, n_complete, n_disc, n_reason) %>%
-  select(row, ends_with(c("_0", "_54", "_81")))
+tbl_disp <- base::rbind(n_rand, n_complete, n_disc, n_reason)
 
 tbl_disp
 ```
 
-We start to define the format of the output.
-We highlighted items that is not discussed in the previous discussion.
-
-The `rtf_title` defines table title.
-We can provide a vector for the title argument.
-Each value is a separate line.
-The format can also be controlled by providing a vector input in text format.
+In the below code, formatting of the final table is defined. Sections are highlighted that were not discussed before.
 
 ```{r}
 tbl_disp %>%
   
   # Table title
-  rtf_title("Disposition of Patients") %>%
+  rtf_title("Disposition of participants") %>%
   
   # First row of column header
   rtf_colheader(" | Placebo | Xanomeline Low Dose| Xanomeline High Dose",
@@ -175,9 +172,10 @@ knitr::include_graphics("tlf/tbl_disp.pdf")
 
 The procedure to generate a disposition table can be summarized as follow:
 
--   Step 1: Read data into R, i.e. `adsl`.
--   Step 2: Count patients in the analysis population and name the dataset as `n_rand`.
--   Step 3: Count the number and percentage of patients who discontinued the study, and name the dataset as `n_disc`.
--   Step 4: Count the number and percentage of patients who discontinued the study in different reasons, and name the dataset as `n_reason`. Format it using `r2rtf`.
--   Step 5: Count the number and percentage of patients who completed the study, and name the dataset as `n_complete`.
--   Step 6: Bind `n_rand`, `n_disc`, `n_reason` and `n_complete` by row. Format it using `r2rtf`.
+-   Step 1: Read subject level data into R, i.e. `adsl`.
+-   Step 2: Count participants in the analysis population and name the dataset `n_rand`.
+-   Step 3: Count the number and percentage of participants that discontinued the study, and name the dataset `n_disc`.
+-   Step 4: Count the number and percentage of participants that discontinued the study for different reasons, and name the dataset `n_reason`.
+-   Step 5: Count the number and percentage of participants that completed the study, and name the dataset `n_complete`.
+-   Step 6: Bind `n_rand`, `n_disc`, `n_reason` and `n_complete` by row. 
+-   Step 7: Write the final table to RTF
