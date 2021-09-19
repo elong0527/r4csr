@@ -138,13 +138,19 @@ tbl_disp <- bind_rows(n_rand, n_complete, n_disc, n_reason) %>%
 tbl_disp
 ```
 
-In the below code, formatting of the final table is defined. Sections are highlighted that were not discussed before.
+In the below code, formatting of the final table is defined. 
+We highlighted items that is not discussed in the previous discussion.
+
+The `rtf_title` defines table title.
+We can provide a vector for the title argument.
+Each value is a separate line.
+The format can also be controlled by providing a vector input in text format.
 
 ```{r}
 tbl_disp %>%
   
   # Table title
-  rtf_title("Disposition of Patients") %>%
+  rtf_title("Disposition of Participants") %>%
   
   # First row of column header
   rtf_colheader(" | Placebo | Xanomeline Low Dose| Xanomeline High Dose",
