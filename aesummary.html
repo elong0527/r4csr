@@ -8,14 +8,14 @@
 <meta name="author" content="Yilong Zhang">
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
-<meta name="description" content="Following ICH E3 guidance, we need to summarize which patients were included in each efficacy analysis in Section 12.2, Adverse Events (AEs). library(haven) # Read SAS data library(dplyr) #...">
+<meta name="description" content="Following ICH E3 guidance, we need to summarize which participants were included in each efficacy analysis in Section 12.2, Adverse Events (AEs). library(haven) # Read SAS data library(dplyr) #...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 7 AE Summary | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Following ICH E3 guidance, we need to summarize which patients were included in each efficacy analysis in Section 12.2, Adverse Events (AEs). library(haven) # Read SAS data library(dplyr) #...">
+<meta property="og:description" content="Following ICH E3 guidance, we need to summarize which participants were included in each efficacy analysis in Section 12.2, Adverse Events (AEs). library(haven) # Read SAS data library(dplyr) #...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 7 AE Summary | R for Clinical Study Reports and Submission">
-<meta name="twitter:description" content="Following ICH E3 guidance, we need to summarize which patients were included in each efficacy analysis in Section 12.2, Adverse Events (AEs). library(haven) # Read SAS data library(dplyr) #...">
+<meta name="twitter:description" content="Following ICH E3 guidance, we need to summarize which participants were included in each efficacy analysis in Section 12.2, Adverse Events (AEs). library(haven) # Read SAS data library(dplyr) #...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -72,7 +72,8 @@
 <h1>
 <span class="header-section-number">7</span> AE Summary<a class="anchor" aria-label="anchor" href="#aesummary"><i class="fas fa-link"></i></a>
 </h1>
-<p>Following <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3 guidance</a>, we need to summarize which patients were included in each efficacy analysis in Section 12.2, Adverse Events (AEs).</p>
+<p>Following <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3 guidance</a>,
+we need to summarize which participants were included in each efficacy analysis in Section 12.2, Adverse Events (AEs).</p>
 <div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span> <span class="co"># Read SAS data</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span>
@@ -125,7 +126,7 @@
 ## 2 01-701-1015     0 drug     TRUE 
 ## 3 01-701-1015     0 ser      FALSE
 ## 4 01-701-1015     0 drug_ser FALSE</code></pre>
-<p>We summarize the number and percentage of patients who meet each AE criteria.</p>
+<p>We summarize the number and percentage of participants who meet each AE criteria.</p>
 <div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ana</span> <span class="op">&lt;-</span> <span class="va">tidy_ae</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">value</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>

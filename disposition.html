@@ -8,14 +8,14 @@
 <meta name="author" content="Yilong Zhang">
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
-<meta name="description" content="Following ICH E3 guidance, we need to summarize the accounting of all patients who entered the study, in Section 10.1, Disposition of Patients. The disposition of patients reports the numbers of...">
+<meta name="description" content="Following ICH E3 guidance, we need to summarize the accounting of all participants who entered the study, in Section 10.1, Disposition of Participants. The disposition of participant reports the...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 3 Disposition | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Following ICH E3 guidance, we need to summarize the accounting of all patients who entered the study, in Section 10.1, Disposition of Patients. The disposition of patients reports the numbers of...">
+<meta property="og:description" content="Following ICH E3 guidance, we need to summarize the accounting of all participants who entered the study, in Section 10.1, Disposition of Participants. The disposition of participant reports the...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 3 Disposition | R for Clinical Study Reports and Submission">
-<meta name="twitter:description" content="Following ICH E3 guidance, we need to summarize the accounting of all patients who entered the study, in Section 10.1, Disposition of Patients. The disposition of patients reports the numbers of...">
+<meta name="twitter:description" content="Following ICH E3 guidance, we need to summarize the accounting of all participants who entered the study, in Section 10.1, Disposition of Participants. The disposition of participant reports the...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -72,8 +72,13 @@
 <h1>
 <span class="header-section-number">3</span> Disposition<a class="anchor" aria-label="anchor" href="#disposition"><i class="fas fa-link"></i></a>
 </h1>
-<p>Following <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3 guidance</a>, we need to summarize the accounting of all patients who entered the study, in Section 10.1, Disposition of Patients.
-The disposition of patients reports the numbers of patients who were randomized, and who entered and completed each phase of the study, as well as the reasons for all post-randomization discontinuations, grouped by treatment and by major reason (lost to follow-up, adverse event, poor compliance, etc.).</p>
+<p>Following <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3 guidance</a>,
+we need to summarize the accounting of all participants who entered the study,
+in Section 10.1, Disposition of Participants.
+The disposition of participant reports the numbers of participants who were randomized,
+and who entered and completed each phase of the study,
+as well as the reasons for all post-randomization discontinuations,
+grouped by treatment and by major reason (lost to follow-up, adverse event, poor compliance, etc.).</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span> <span class="co"># Read SAS data</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span>
@@ -85,7 +90,7 @@ For a disposition table, all the required information is saved in the ADSL datas
 We can use the <code>haven</code> package to read the dataset.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"adam_data/adsl.sas7bdat"</span><span class="op">)</span></code></pre></div>
-<p>We illustrate how to prepare a report data for a simplified disposition of patients table using variables below:</p>
+<p>We illustrate how to prepare a report data for a simplified disposition of participants table using variables below:</p>
 <ul>
 <li>USUBJID: Unique subject identifier</li>
 <li>TRT01P: Planed treatment</li>
@@ -104,7 +109,7 @@ We can use the <code>haven</code> package to read the dataset.</p>
 ## 2 01-701-1023 Placebo                    0 "Y"      Adverse Event   
 ## 3 01-701-1028 Xanomeline High Dose      81 ""       Completed       
 ## 4 01-701-1033 Xanomeline Low Dose       54 "Y"      Sponsor Decision</code></pre>
-<p>In the code below, we calculated patients in the analysis population.</p>
+<p>In the code below, we calculated participants in the analysis population.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n_rand</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">TRT01PN</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -114,13 +119,13 @@ We can use the <code>haven</code> package to read the dataset.</p>
     names_prefix <span class="op">=</span> <span class="st">"n_"</span>,
     values_from <span class="op">=</span> <span class="va">n</span>
   <span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>row <span class="op">=</span> <span class="st">"Patients in population"</span><span class="op">)</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>row <span class="op">=</span> <span class="st">"Participants in population"</span><span class="op">)</span>
 <span class="va">n_rand</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 4
-##     n_0  n_54  n_81 row                   
-##   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;                 
-## 1    86    84    84 Patients in population</code></pre>
-<p>In the code below, we calculate the number and percentage of patients who discontinued the study.</p>
+##     n_0  n_54  n_81 row                       
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;                     
+## 1    86    84    84 Participants in population</code></pre>
+<p>In the code below, we calculate the number and percentage of participants who discontinued the study.</p>
 <p>Here we use the <code><a href="https://rdrr.io/r/base/formatc.html">formatC()</a></code> function to customize the numeric value to be 1 decimal with fixed width of 5.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n_disc</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op">%&gt;%</span>
@@ -142,7 +147,7 @@ We can use the <code>haven</code> package to read the dataset.</p>
 ##     n_0  n_54  n_81 pct_0   pct_54  pct_81  row         
 ##   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;       
 ## 1    28    59    57 " 32.6" " 70.2" " 67.9" Discontinued</code></pre>
-<p>In the code below, we calculate the number and percentage of patients who completed/discontinued the study for different reasons.</p>
+<p>In the code below, we calculate the number and percentage of participants who completed/discontinued the study for different reasons.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n_reason</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">TRT01PN</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -176,7 +181,7 @@ We can use the <code>haven</code> package to read the dataset.</p>
 ##  8 Protocol Violation     1     1     1 "  1.2" "  1.2" "  1.2"
 ##  9 Sponsor Decision       2     2     3 "  2.3" "  2.4" "  3.6"
 ## 10 Withdrew Consent       9    10     8 " 10.5" " 11.9" "  9.5"</code></pre>
-<p>In the code below, we calculate the number and percentage of patients who complete the study.
+<p>In the code below, we calculate the number and percentage of participants who complete the study.
 We split <code>n_reason</code> because we need to customize the row order of the table.</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n_complete</span> <span class="op">&lt;-</span> <span class="va">n_reason</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">row</span> <span class="op">==</span> <span class="st">"Completed"</span><span class="op">)</span>
@@ -186,7 +191,7 @@ We split <code>n_reason</code> because we need to customize the row order of the
 ##   row         n_0  n_54  n_81 pct_0   pct_54  pct_81 
 ##   &lt;chr&gt;     &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  
 ## 1 Completed    58    25    27 " 67.4" " 29.8" " 32.1"</code></pre>
-<p>In the code below, we calculate the number and percentage of patients who discontinued the study for different reasons.
+<p>In the code below, we calculate the number and percentage of participants who discontinued the study for different reasons.
 Here we use <code><a href="https://rdrr.io/r/base/paste.html">paste0("    ", row)</a></code> to add some leading space for individual reasons for study discontinuation.</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n_reason</span> <span class="op">&lt;-</span> <span class="va">n_reason</span> <span class="op">%&gt;%</span>
@@ -214,20 +219,20 @@ Here we use <code><a href="https://rdrr.io/r/base/paste.html">paste0("    ", row
 
 <span class="va">tbl_disp</span></code></pre></div>
 <pre><code>## # A tibble: 12 × 7
-##    row                        n_0 pct_0    n_54 pct_54   n_81 pct_81 
-##    &lt;chr&gt;                    &lt;int&gt; &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;  
-##  1 "Patients in population"    86  &lt;NA&gt;      84  &lt;NA&gt;      84  &lt;NA&gt;  
-##  2 "Completed"                 58 " 67.4"    25 " 29.8"    27 " 32.1"
-##  3 "Discontinued"              28 " 32.6"    59 " 70.2"    57 " 67.9"
-##  4 "    Adverse Event"          8 "  9.3"    44 " 52.4"    40 " 47.6"
-##  5 "    Death"                  2 "  2.3"     1 "  1.2"     0 "  0.0"
-##  6 "    I/E Not Met"            1 "  1.2"     0 "  0.0"     2 "  2.4"
-##  7 "    Lack of Efficacy"       3 "  3.5"     0 "  0.0"     1 "  1.2"
-##  8 "    Lost to Follow-up"      1 "  1.2"     1 "  1.2"     0 "  0.0"
-##  9 "    Physician Decision"     1 "  1.2"     0 "  0.0"     2 "  2.4"
-## 10 "    Protocol Violation"     1 "  1.2"     1 "  1.2"     1 "  1.2"
-## 11 "    Sponsor Decision"       2 "  2.3"     2 "  2.4"     3 "  3.6"
-## 12 "    Withdrew Consent"       9 " 10.5"    10 " 11.9"     8 "  9.5"</code></pre>
+##    row                            n_0 pct_0    n_54 pct_54   n_81 pct_81 
+##    &lt;chr&gt;                        &lt;int&gt; &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;  
+##  1 "Participants in population"    86  &lt;NA&gt;      84  &lt;NA&gt;      84  &lt;NA&gt;  
+##  2 "Completed"                     58 " 67.4"    25 " 29.8"    27 " 32.1"
+##  3 "Discontinued"                  28 " 32.6"    59 " 70.2"    57 " 67.9"
+##  4 "    Adverse Event"              8 "  9.3"    44 " 52.4"    40 " 47.6"
+##  5 "    Death"                      2 "  2.3"     1 "  1.2"     0 "  0.0"
+##  6 "    I/E Not Met"                1 "  1.2"     0 "  0.0"     2 "  2.4"
+##  7 "    Lack of Efficacy"           3 "  3.5"     0 "  0.0"     1 "  1.2"
+##  8 "    Lost to Follow-up"          1 "  1.2"     1 "  1.2"     0 "  0.0"
+##  9 "    Physician Decision"         1 "  1.2"     0 "  0.0"     2 "  2.4"
+## 10 "    Protocol Violation"         1 "  1.2"     1 "  1.2"     1 "  1.2"
+## 11 "    Sponsor Decision"           2 "  2.3"     2 "  2.4"     3 "  3.6"
+## 12 "    Withdrew Consent"           9 " 10.5"    10 " 11.9"     8 "  9.5"</code></pre>
 <p>We start to define the format of the output.
 We highlighted items that is not discussed in the previous discussion.</p>
 <p>The <code>rtf_title</code> defines table title.
@@ -238,7 +243,7 @@ The format can also be controlled by providing a vector input in text format.</p
 <code class="sourceCode R"><span class="va">tbl_disp</span> <span class="op">%&gt;%</span>
   
   <span class="co"># Table title</span>
-  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_title.html">rtf_title</a></span><span class="op">(</span><span class="st">"Disposition of Patients"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_title.html">rtf_title</a></span><span class="op">(</span><span class="st">"Disposition of Participants"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   
   <span class="co"># First row of column header</span>
   <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_colheader.html">rtf_colheader</a></span><span class="op">(</span><span class="st">" | Placebo | Xanomeline Low Dose| Xanomeline High Dose"</span>,
@@ -267,10 +272,10 @@ The format can also be controlled by providing a vector input in text format.</p
 <embed src="tlf/tbl_disp.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>The procedure to generate a disposition table can be summarized as follow:</p>
 <ul>
 <li>Step 1: Read data into R, i.e. <code>adsl</code>.</li>
-<li>Step 2: Count patients in the analysis population and name the dataset as <code>n_rand</code>.</li>
-<li>Step 3: Count the number and percentage of patients who discontinued the study, and name the dataset as <code>n_disc</code>.</li>
-<li>Step 4: Count the number and percentage of patients who discontinued the study in different reasons, and name the dataset as <code>n_reason</code>. Format it using <code>r2rtf</code>.</li>
-<li>Step 5: Count the number and percentage of patients who completed the study, and name the dataset as <code>n_complete</code>.</li>
+<li>Step 2: Count participants in the analysis population and name the dataset as <code>n_rand</code>.</li>
+<li>Step 3: Count the number and percentage of participants who discontinued the study, and name the dataset as <code>n_disc</code>.</li>
+<li>Step 4: Count the number and percentage of participants who discontinued the study in different reasons, and name the dataset as <code>n_reason</code>. Format it using <code>r2rtf</code>.</li>
+<li>Step 5: Count the number and percentage of participants who completed the study, and name the dataset as <code>n_complete</code>.</li>
 <li>Step 6: Bind <code>n_rand</code>, <code>n_disc</code>, <code>n_reason</code> and <code>n_complete</code> by row. Format it using <code>r2rtf</code>.</li>
 </ul>
 </div>

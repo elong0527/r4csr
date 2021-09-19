@@ -8,14 +8,14 @@
 <meta name="author" content="Yilong Zhang">
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
-<meta name="description" content="1.1 Folder structure In clinical trial development, developers need to organize source code to deliver Study Data Tabulation Model (SDTM) or Analysis Dataset Model (ADaM) datasets and tables,...">
+<meta name="description" content="1.1 Folder structure In clinical trial development, source code needs to be developed and maintained to generate and deliver Study Data Tabulation Model (SDTM), Analysis Dataset Model (ADaM)...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 1 Introduction | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
-<meta property="og:description" content="1.1 Folder structure In clinical trial development, developers need to organize source code to deliver Study Data Tabulation Model (SDTM) or Analysis Dataset Model (ADaM) datasets and tables,...">
+<meta property="og:description" content="1.1 Folder structure In clinical trial development, source code needs to be developed and maintained to generate and deliver Study Data Tabulation Model (SDTM), Analysis Dataset Model (ADaM)...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 1 Introduction | R for Clinical Study Reports and Submission">
-<meta name="twitter:description" content="1.1 Folder structure In clinical trial development, developers need to organize source code to deliver Study Data Tabulation Model (SDTM) or Analysis Dataset Model (ADaM) datasets and tables,...">
+<meta name="twitter:description" content="1.1 Folder structure In clinical trial development, source code needs to be developed and maintained to generate and deliver Study Data Tabulation Model (SDTM), Analysis Dataset Model (ADaM)...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -76,18 +76,18 @@
 <h2>
 <span class="header-section-number">1.1</span> Folder structure<a class="anchor" aria-label="anchor" href="#folder-structure"><i class="fas fa-link"></i></a>
 </h2>
-<p>In clinical trial development, developers need to organize source code to deliver
-Study Data Tabulation Model (SDTM) or Analysis Dataset Model (ADaM) datasets
-and tables, listings, and figures (TLFs).
-For example, a Phase 3 clinical trial typically consists hundreds of TLFs.
-A consistent and well-defined folder structure is crucial
-to managing a clinical trial analysis and reporting (A&amp;R) project.</p>
-<p>We recommend using R package folder structure to organize all the A&amp;R related
-source code and documentation for a clinical trial A&amp;R project.
-By using the R package folder structure,
-you can follow the convention to organize your code as other contributors on CRAN.
-This consistent approach simplifies the communication for all developers
-within and across organizations.</p>
+<p>In clinical trial development, source code needs to be developed and maintained to generate and deliver
+Study Data Tabulation Model (SDTM), Analysis Dataset Model (ADaM) datasets and tables, listings, and figures (TLFs).
+A typical example is a Phase 3 clinical trial where hundreds of TLFs are required for submission.
+Considering the amount of programs required for such an effort,
+a consistent and well-defined folder structure is crucial in
+managing a clinical trial analysis and reporting (A&amp;R) project.</p>
+<p>We recommend using
+<a href="https://github.com/rstudio/cheatsheets/raw/master/package-development.pdf">R package folder structure</a>
+to organize all the A&amp;R related source code and documentation for a clinical trial A&amp;R project.
+The R package folder structure is well defined and widely used in R community through repositories (e.g. CRAN).</p>
+<p>The consistent approach of using R package folder structure
+simplifies the communication for all developers within and across organizations.</p>
 <ul>
 <li><p>For a new R developer,
 it is an essential step to develop R packages
@@ -100,9 +100,10 @@ and training development, because a unified folder structure is used
 to develop and maintain standard tool and analysis projects.</p></li>
 </ul>
 <p>The workflow around an R package can also improve
-the tractability and reproducibility for an analysis project <span class="citation">(Marwick, Boettiger, and Mullen <a href="reference.html#ref-marwick2018packaging" role="doc-biblioref">2018</a>)</span>.</p>
+the traceability and reproducibility for an analysis project <span class="citation">(Marwick, Boettiger, and Mullen <a href="reference.html#ref-marwick2018packaging" role="doc-biblioref">2018</a>)</span>.</p>
+<p>We will revisit folder structure when we discuss project management for a clinical trail project.</p>
 <p>In addition, R package folder structure is also recommended
-to develop Shiny app as discussed
+to develop Shiny apps as discussed
 in <a href="https://mastering-shiny.org/scaling-packaging.html">Chapter 20 of Master Shiny</a> book
 and <a href="https://engineering-shiny.org/golem.html">Engineering Production-Grade Shiny Apps</a> book.</p>
 </div>
@@ -119,7 +120,7 @@ to create tables, listings, and figures.
 In this part, we assume readers are individual contributors to a clinical project
 with some experience in R programming.
 We expect readers are familiar with data manipulation in R.
-Some good reference includes <a href="https://rstudio-education.github.io/hopr/">Hands-On Programming with R</a>,
+Some good references include <a href="https://rstudio-education.github.io/hopr/">Hands-On Programming with R</a>,
 <a href="https://r4ds.had.co.nz/">R for Data Science</a> and
 <a href="https://www.amazon.com/Data-Manipulation-R-Use/dp/0387747303">Data Manipulation with R</a>.</p></li>
 <li><p>Part 2, “Clinical Trial Project” provides general information
@@ -132,7 +133,7 @@ provides general information in preparing
 submission package related to clinical study report (CSR) in
 electronic Common Technical Document (eCTD).
 In this part, we assume a reader is a project lead of a clinical project
-with experience in R package development as well.</p></li>
+with experience in R package development and submission.</p></li>
 </ul>
 </div>
 <div id="philosophy" class="section level2">
