@@ -49,10 +49,10 @@ In the code below, we calculated participants in the analysis population.
 
 ```{r}
 n_rand <- adsl %>%
-  group_by(TRT01P) %>%
+  group_by(TRT01PN) %>%
   summarize(n = n()) %>%
   pivot_wider(
-    names_from = TRT01P,
+    names_from = TRT01PN,
     names_prefix = "",
     values_from = n
   ) %>%
@@ -67,7 +67,7 @@ Here we use the `formatC()` function to customize the numeric value to be 1 deci
 
 ```{r}
 n_disc <- adsl %>%
-  group_by(TRT01P) %>%
+  group_by(TRT01PN) %>%
   summarize(
     n = sum(DISCONFL == "Y"),
     pct = formatC(n / n() * 100,
@@ -77,7 +77,7 @@ n_disc <- adsl %>%
   mutate(npct = paste0(n, " (", pct, "%)")) %>%
   select(-c(n,pct)) %>%
   pivot_wider(
-    names_from = TRT01P,
+    names_from = TRT01PN,
     values_from = npct,
     values_fill = list(npct = "0")
   ) %>%
@@ -90,9 +90,9 @@ In the code below, we calculate the number and percentage of participants who co
 
 ```{r}
 n_reason <- adsl %>%
-  group_by(TRT01P) %>%
+  group_by(TRT01PN) %>%
   mutate(n_total = n()) %>%
-  group_by(TRT01P, DCREASCD) %>%
+  group_by(TRT01PN, DCREASCD) %>%
   summarize(
     n = n(),
     pct = formatC(n / unique(n_total) * 100,
@@ -102,7 +102,7 @@ n_reason <- adsl %>%
   mutate(npct = paste0(n, " (", pct, "%)")) %>%
   pivot_wider(
     id_cols = DCREASCD,
-    names_from = TRT01P,
+    names_from = TRT01PN,
     values_from = npct,
     values_fill = list(npct = "0")
   ) %>%
