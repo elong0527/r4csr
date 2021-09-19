@@ -1,6 +1,7 @@
 # AE Summary {#aesummary}
 
-Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf), we need to summarize which patients were included in each efficacy analysis in Section 12.2, Adverse Events (AEs).
+Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf), 
+we need to summarize which participants were included in each efficacy analysis in Section 12.2, Adverse Events (AEs).
 
 ```{r}
 library(haven) # Read SAS data
@@ -56,7 +57,7 @@ tidy_ae <- adae %>%
 tidy_ae %>% head(4)
 ```
 
-We summarize the number and percentage of patients who meet each AE criteria.
+We summarize the number and percentage of participants who meet each AE criteria.
 
 ```{r}
 ana <- tidy_ae %>%

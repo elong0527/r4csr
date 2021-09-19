@@ -2,7 +2,7 @@
 
 Following [ICH E3
 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
-we need to summarize which patients were included in each efficacy
+we need to summarize which participants were included in each efficacy
 analysis in Section 12.2, Adverse Events (AEs).
 
 ```{r}

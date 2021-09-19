@@ -2,7 +2,7 @@
 
 Following [ICH E3
 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
-we need to summarize which patients were included in each efficacy
+we need to summarize which participants were included in each efficacy
 analysis in Section 11.1, Data Sets Analysed.
 
 ```{r}
@@ -88,7 +88,7 @@ formatC(n / n() * 100,
 fmt_num(n / n() * 100, digits = 1)
 ```
 
-To calculate the numbers and percentages of patients by groups, we
+To calculate the numbers and percentages of participants by groups, we
 provide a simple (but not robust) wrapper function, `count_by()` using
 the `dplyr` and `tidyr` package.
 

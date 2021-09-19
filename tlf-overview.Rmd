@@ -49,10 +49,10 @@ on structure and content of clinical study reports.
 
 In a CSR, most of TLFs are located in 
 
-- Section 10: Study patients 
+- Section 10: Study participants 
 - Section 11: Efficacy evaluation
 - Section 12: Safety evaluation 
-- Section 14: Tables, Listings and Figures referrals but not included in the text
+- Section 14: Tables, listings and figures referrals but not included in the text
 - Section 16: Appendices
 
 ## Datasets

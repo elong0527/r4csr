@@ -2,7 +2,7 @@
 
 Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
 we need to summarize primary and secondary efficacy endpoints,  
-in Section 11.4, Efficacy Results and Tabulations of Individual Patient. 
+in Section 11.4, Efficacy Results and Tabulations of Individual Participant. 
 
 ```{r}
 library(haven)   # Read SAS data
