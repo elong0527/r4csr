@@ -19,5 +19,7 @@ Imports:
   r2rtf, 
   knitr,
   kableExtra,
-  table1
+  table1,
+  gert,
+  servr
 Encoding: UTF-8
