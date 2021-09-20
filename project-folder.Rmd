@@ -126,7 +126,7 @@ More details can be found in [https://rstats.wtf/r-startup.html](https://rstats.
 
 In `esubdemo`, the `.Rprofile` contain two lines of R code. 
 
-```{r}
+```{r, eval = FALSE}
 source("inst/startup.R")
 source("renv/activate.R")
 ```
