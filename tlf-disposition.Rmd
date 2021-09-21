@@ -1,7 +1,7 @@
 # Disposition {#disposition}
 
 Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf), 
-we need to summarize the accounting of all participants who entered the study in Section 10.1, Disposition of Participants.
+A summary needs to be provided to account for of all participants who entered the study in Section 10.1, Disposition of Participants.
 
 The disposition of participant reports the numbers of participants who were randomized, 
 and who entered and completed each phase of the study. 
