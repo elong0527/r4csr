@@ -139,7 +139,7 @@ tbl_disp
 ```
 
 In the below code, formatting of the final table is defined. 
-We highlighted items that is not discussed in the previous discussion.
+Items that were not discussed in the previous sections, are highlighted below.
 
 The `rtf_title` defines table title.
 We can provide a vector for the title argument.
