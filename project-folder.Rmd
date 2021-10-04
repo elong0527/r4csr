@@ -177,7 +177,7 @@ The R package version is controlled in two layers.
 Firstly, we define a snapshot date in `.Rprofile`. 
 The snapshot date allows us to freeze the source code repository. 
 
-```{r}
+```{r, eval = FALSE}
 # set up snapshot date
 snapshot  <- "2021-08-06" 	
 
@@ -216,7 +216,7 @@ for a project specific R packages.
 An introduction of `renv` can be found in its 
 [package website](https://rstudio.github.io/renv/articles/renv.html).
 
-```{r}
+```{r, eval = FALSE}
 source("renv/activate.R")
 ```
 
