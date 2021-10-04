@@ -21,45 +21,45 @@ We recommend to follow an agile management approach to define, develop, validate
 
 A clearly defined clinical project folder structure can have many benefits to 
 clinical development teams in an organization. 
-Specifically a well defined project folder can achieve:
+Specifically, a well defined project folder can achieve:
 
-- Consistency: every team work on the same folder structure.
+- Consistency: everyone work on the same folder structure.
 - Reproducibility: analysis can be executed and reproduced by different team members months/years later.  
-- Automation: automatically check integration of a project.  
+- Automation: automatically check the integration of a project.  
 - Compliance: reduce compliance issue
 
-We illustrate the R package project folder for A&R project using a demo project called 
+We illustrate the R package project folder for the A&R project using a demo project called 
 [`esubdemo`](https://github.com/elong0527/esubdemo.git). 
 You can [clone](https://happygitwithr.com/rstudio-git-github.html#clone-the-new-github-repository-to-your-computer-via-rstudio) the project using RStudio. 
 
-For R user, you already benefit from a well defined and consistent folder structure. 
+For R users, you already benefit from a well-defined and consistent folder structure. 
 That is the [R package folder structure](https://github.com/rstudio/cheatsheets/raw/master/package-development.pdf). 
 Every R package developer is required to follow the same convention to organize their R
-functions, before the R package can be disseminated through the Comprehensive R Archive Network
+functions before the R package can be disseminated through the Comprehensive R Archive Network
 (CRAN). As a user, you can easily install and use those R packages after installing from CRAN. 
 There are many good resources to guide developers on R package development.
 For example, [Hadley Wickmans' R packages book](https://r-pkgs.org/)
 
 
-We recommend to use R package folder structure to organize analysis scripts 
+We recommend using the R package folder structure to organize analysis scripts 
 for clinical trial development. 
 Using the R package folder structure to streamline data analysis work has also been proposed before 
 (@marwick2018packaging, @wuanalysis). 
 
 ## Consistency 
 
-For consistency, a well defined folder structure with potential templates
+For consistency, a well-defined folder structure with potential templates
 ensures project teams organize A&R work consistently across multiple projects. 
-Consistent folder structure also reduce communication cost between study team members 
+Consistent folder structure also reduces communication cost between study team members 
 and enhances the transparency of projects.
 
-In this book, we refer an R package as **project specific R package** 
+In this book, we refer to an R package as **project specific R package** 
 if the purpose of an R package is to organize analysis scripts for a clinical project.
 
-We refer an R package as **standard R package** if the purpose of an R package is to 
-share commonly used R functions to be hosted in an code repository such as CRAN. 
+We refer to an R package as a **standard R package** if the purpose of an R package is to 
+share commonly used R functions to be hosted in a code repository such as CRAN. 
 
-Below is a minimal sufficient folders and files for a project specific R package
+Below is minimal sufficient folders and files for a project specific R package
 based on the R package folder structure.  
 
 - `*.Rproj`: RStudio project file used to open RStudio project.
@@ -75,10 +75,10 @@ We demonstrate the idea using the [`esubdemo`](https://github.com/elong0527/esub
 
 In `esubdemo` project, we saved all TLF generation scripts in previous chapters into the `vignettes/` folder. 
 
-> Here the `adam\` folder contain ADaM datasets. 
-> The `tlf` folder contain output TLFs in RTF format.
-> We put `adam\` and `tlf\` folder within `vignettes` folder only for illustration purpose. 
-> In a real A&R report, you may have different location to save your input and output.
+> Here the `adam\` folder contains ADaM datasets. 
+> The `tlf` folder contains output TLFs in RTF format.
+> We put `adam\` and `tlf\` folder within the `vignettes` folder only for illustration purposes. 
+> In a real A&R report, you may have a different location to save your input and output.
 
 ```
 vignettes
@@ -101,10 +101,10 @@ R/
 └── fmt.R
 ```
 
-With a formal project, it is also important to provide proper documentations for 
-those help functions. We used `Roxygen2` to document functions. 
-For example, the header below provide the definition of each variable in `fmt_est`. 
-More details can be found in [Chpater 10 of the R package book](https://r-pkgs.org/man.html)
+With a formal project, it is also important to provide proper documentation for those help functions. 
+We used Roxygen2 to document functions. 
+For example, the header below defines each variable in fmt_est. 
+More details can be found in [Chapter 10 of the R package book](https://r-pkgs.org/man.html)
 
 ```{r, eval = FALSE}
 #' Format point estimator
