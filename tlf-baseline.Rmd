@@ -3,7 +3,7 @@
 Following [ICH E3
 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
 we need to summarize critical demographic and baseline characteristics
-of the patients in Section 11.2, Demographic and Other Baseline
+of participants in Section 11.2, Demographic and Other Baseline
 Characteristics.
 
 In this chapter, we illustrate how to create a simplified baseline
