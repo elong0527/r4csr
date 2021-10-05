@@ -12,7 +12,6 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-
 ---
 
 ```{r, include = FALSE}
@@ -30,6 +29,7 @@ library(kableExtra)
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE)
 options(dplyr.summarise.inform = FALSE)
+file.copy("static/CNAME", "_book", overwrite = TRUE)
 ```
 
 ```{r, eval = FALSE, include=FALSE}
@@ -66,8 +66,8 @@ contributors <- c(person("Yilong", "Zhang", email = "yilong.zhang@merck.com", ro
                   person("Nan", "Xiao", role = "aut"), 
                   person("Keaven", "Anderson", role = "aut"),
                   person("Yujie", "Zhao", role = "ctr"), 
-                  person("Aiming", "Yang", role = "ctr",
-                  person("Steven", "Haesendonckx", role = "ctr")))
+                  person("Aiming", "Yang", role = "ctr"),
+                  person("Steven", "Haesendonckx", role = "ctr"))
 ```
 
 The document is maintained by a community. 
