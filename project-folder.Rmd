@@ -46,7 +46,7 @@ for clinical trial development.
 Using the R package folder structure to streamline data analysis work has also been proposed before 
 (@marwick2018packaging, @wuanalysis). 
 
-## Consistency 
+## Consistency {#consistency}
 
 For consistency, a well-defined folder structure with potential templates
 ensures project teams organize A&R work consistently across multiple projects. 

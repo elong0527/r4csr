@@ -4,15 +4,12 @@ For A&R deliverables in a clinical project development,
 a clearly defined process or system development lifecycle (SDLC) 
 is crucial to ensure regulatory compliant. 
 
-SDLC for A&R deliverables can be defined in stages: 
+SDLC for A&R deliverables can be defined in four stages: 
 
 - planning: a planning stage to define the scope of a project.  
 - development: a development stage to implement target deliverables. 
 - validation: a validation stage to verify target deliverables. 
 - operation: an operation stage to deliver work to stakeholders. 
-
-The define stage is an important stage in the SDLC lifecycle 
-as the requirements for all A&R deliverables are gathered and documented. 
 
 Importantly, we should not consider SDLC as a linear process. 
 For example, if study team identify new requirement in a development or validation stage, 
@@ -20,7 +17,7 @@ team shall return to planning stage to discuss and align the scope.
 An [agile project management](https://www.atlassian.com/agile/project-management) approach is suitable 
 and recommended to an A&R clinical development project.
 The goal is to embrace an iterative approach that continue improve target deliverables based on
-frequent customer feedback. 
+frequent stakeholder feedback. 
 
 There are many good tools to implement agile project management strategy, for example:
 
@@ -29,34 +26,37 @@ There are many good tools to implement agile project management strategy, for ex
 
 ## Planning 
 
+The planning stage is an important stage in the SDLC lifecycle 
+as the requirements for all A&R deliverables are gathered and documented. 
+
 In the planning stage, a project leader shall identifies all the deliverables, 
 e.g. a list of table, listing, and figures (TLFs). 
 For each TLFs, team shall prepare necessary specifications: 
 
-- mock-up
+- mock-up tables
 - validation level (e.g. independent review or double programming)
 - etc.
-
-ToDo: add a simplified mock-up and A&R grid. 
 
 project leader shall also align work assignment with team members.
 The purpose is to answer the question on "who is doing what?". 
 
-ToDo: add a simplified validation tracker 
+```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("images/validation_tracker.png")
+```
 
 Project lead shall also setup a project folder as discussed in Chapter \@ref(folder).
 The project initiation can be simplified by creating an 
 [RStudio project template](https://rstudio.github.io/rstudio-extensions/rstudio_project_templates.html).  
 
 To enable reproducibility, project leader shall also review the startup file 
-(i.e. `.Rprofile` discussed in Section \@ref(manage)) and define:
+(i.e. `.Rprofile` discussed in Section \@ref(reproduce)) and define:
 
 - R version 
 - Repository of R packages with a snapshot date 
 - Project package library path 
 - etc. 
 
-> After project initiate, modifying `.Rprofile` will be a risk of reproducibility 
+> After project initiation, modifying `.Rprofile` will be a risk of reproducibility 
 > and shall be handled carefully if necessary. 
 
 ## Development 
@@ -66,24 +66,89 @@ pre-defined mock-up tables assigned to each team member.
 
 The analysis code and relevant description can be saved in R markdown files 
 in the `vignettes` folder. 
+
 The use of R markdown allow developer to assemble narrative text, code and its
 comments in one place to simplify documentation. 
-It would be helpful to define a name convention for all TLFs deliverables. 
+It would be helpful to create a template and define a name convention for all TLFs deliverables. 
 For example, we can use `tlf_` prefix in the filename to indicate that the Rmarkdown is to deliver TLFs. 
-For example, `tlf_001_ds.Rmd` is an Rmarkdown file for disposition table. 
 Multiple TLFs with similar design can be included in one Rmarkdown file. 
 
-ToDo: add a file path for `esubdemo`
+For example, in `esubdemo` project, we have 6 Rmarkdown files to create TLFs. 
 
-To validate the results, 
-developer shall also save the last dataset before creating TLFs in RTF format to `.Rdata` files. 
+If there is any project specific R function that needs to be developed, 
+the R functions can be placed in the `R\` folder as discussed in Section \@ref(consistency).
 
 ## Validation 
 
+Validation is an important stage to ensure the deliverables are accurate and consistent. After the
+development stage is completed, the project team needs to validate the deliverables including Rmarkdown
+files for TLFs deliverables and project specific R functions. The level of validation is determined at the define
+stage. 
+
+In an R package development, the validation or testing is completed under the `test/` folder. 
+The testthat R package can be used to streamline the validation process. 
+More details of `testthat` package for R package validation can be found in Chapter 12 of the R package book. 
+
+It is recommended to have a name convention to indicate the type of validation. 
+For example, we can use `test-developer-test`, `test-independent-test`, `test-double-programming` 
+to classify the validation type. 
+
+It is recommended to follow the same organization
+for files in testthat folder as `R/` folder and `vignettes/` folder. 
+Every single file in the `R/` folder and `vignettes/` folder should have a testing file saved in 
+the `tests/testthat/` folder to validate the content.
+
+For example, in `esubdemo` project, we can have a list of testing files below. 
+
+```
+tests/testthat
+├── test-independent-test-tlf-01-disposition.Rmd
+├── test-independent-test-tlf-02-population.Rmd
+├── test-independent-test-tlf-03-baseline.Rmd
+├── test-independent-test-tlf-04-efficacy.Rmd
+├── test-independent-test-tlf-05-ae-summary.Rmd
+├── test-independent-test-tlf-06-ae-spec.Rmd
+└── test-independent-test-fmt.R
+```
+
+To validate the content of a Table, we can save the last datasets ready for table generation as a `.Rdata` file.
+A validator can reproduces the TLF and compares it with the original result saved in `.Rdata` file. 
+A test is passed when the results match. Customers can directly review the formatting of the TLFs by
+customers by comparing with the mock-up.
+
+To validate a Figure, we can use [snapshot testing](https://testthat.r-lib.org/articles/snapshotting.html) strategy
+
+After the validator completes the testing of project specific functions and Rmarkdown files, 
+the process to execute and report testing results is the same for a standard R package. 
+The `devtools::test()` function automatically executes all testing cases and summarizes the testing results in a report. 
+
+After completing the validation, the validator updates the status in a validation tracker. 
+The project lead reviews the tracking sheet to make sure all required activities in the SDLC are completed and
+the tracking sheet has been filled correctly. The deliverables are ready for customer review after all the
+validation steps are completed. Any changes to the output requested by customers are documented.
+
 ## Operation 
 
+After completion of development and required validation of all A&R deliverables, project lead runs compliance
+check for a project specific R package similar to other R packages. Using `devtools::check()` is a
+convenient way to run compliance check or R CMD checks. R CMD check is an automated check of the
+contents in the R package for frequently encountered issues, before submission to CRAN. Since project
+specific R package is not submitted to CRAN, some checks can be customized and skipped in
+`devtools::check()`. The project lead shall work with study team to ensure all reported errors, warnings and
+notes by `devtools::check()` are fixed. 
 
+The project lead can also use `pkgdown` R package to build a complete website for a project specific R
+package. The `pkgdown` website is a convenient way to run all analysis in batch and 
+integrate outputs in a website. 
 
+Project specific R functions, TLF generation programs, outputs and validation tracking information can all
+be explored from the website. 
 
+For example, in `esubdemo` project, we created the `pkgdown` website in https://elong0527.github.io/esubdemo/.
 
+Many of the tasks in SDLC can be completed automatically. 
+An organization can leverage CI/CD workflow to automatically enable those tasks 
+such as running testing cases and create a `pkgdown` website. 
 
+For example, in `esubdemo` project, we setup [github actions](https://github.com/elong0527/esubdemo/actions)
+for these work. It can be setup by using `usethis::use_github_action()` function.
