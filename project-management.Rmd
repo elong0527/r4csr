@@ -21,7 +21,7 @@ frequent stakeholder feedback.
 
 There are many good tools to implement agile project management strategy, for example:
 
-- [github project board](https://docs.github.com/en/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)
+- [GitHub project board](https://docs.github.com/en/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)
 - [Jira](https://www.atlassian.com/software/jira)
 
 ## Planning 
