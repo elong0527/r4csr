@@ -1,0 +1,177 @@
+---
+title: "R for Clinical Study Reports and Submission"
+subtitle: "R/Pharma Conference 2021"
+author: "Yilong Zhang, Nan Xiao, Keaven Anderson"
+date: "October, 2021"
+output:
+  mkdocs::mk_ioslides_presentation:
+    mk_logo: "invent"
+    mk_col_title: "white"
+    mk_col_section: "teal"
+    mk_class: "public"
+    widescreen: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r, eval = FALSE, include = FALSE}
+rmarkdown::render("slides/workshop-slides.Rmd")
+```
+
+# Welcome 
+
+## Outline
+
+In this workshop, we have three parts:
+
+- Delivering TLFs in CSR (Yilong Zhang)
+  + Session 1 (45 min)
+  + Break (10 min)
+  + Session 2 (45 min)
+  + Break (20 min) 
+- Clinical trial project (Nan Xiao)
+  + Session 3 (40 min)
+  + Break (10 min)
+- eCTD submission package (Nan Xiao)
+  + Session 4 (30 min)
+  + Q&A (10 min)
+
+## Disclaimer 
+
+- All opinions expressed are those of the presenter and not 
+  Merck Sharp & Dohme Corp., a subsidiary of Merck & Co., Inc., Kenilworth, NJ, USA.
+
+- Some slides need to be scrolled down to see the full content. 
+
+## Preparation 
+
+In this workshop, we assume you have 
+some R programming experience and clinical development knowledge. 
+
+- Data manipulation: `tidyverse`, `dplyr`, `tidyr`, `ggplot2` etc. 
+- ADaM data: `adsl`, `adae` etc. 
+
+```{r, echo = TRUE, eval = FALSE}
+install.packages(c(
+ "tidyverse",        # Data Manipulation 
+ "r2rtf",            # TLF generation
+ "pkglite"           # eCTD Submission 
+))
+```
+
+## Resource
+
+- Training Material: https://r4csr.org/
+- Demo project: https://github.com/elong0527/esubdemo
+- R Consortium FDA submission pilot: https://github.com/RConsortium/submissions-pilot1
+
+## Philosophy 
+
+We share the same philosophy described in [Section 1.1 of R Packages book](https://r-pkgs.org/intro.html?q=Marwick#intro-phil) and quote here.
+
+- "Anything that can be automated, should be automated." 
+- "Do as little as possible by hand. Do as much as possible with functions." 
+- "The goal is to spend your time thinking about what you want to do 
+rather than thinking about the minutiae of package structure."
+
+# Delivering TLFs in CSR 
+
+## ICH E3 guidance
+
+The [ICH E3: strcuture and content of clinical study reports](https://database.ich.org/sites/default/files/E3_Guideline.pdf) provide guidance to assist sponsors in the development of a CSR. 
+
+In a CSR, most of TLFs are located in
+
+- Section 10: Study patients
+- Section 11: Efficacy evaluation
+- Section 12: Safety evaluation
+- Section 14: Tables, Figures and Graphs referred to but not included in the text
+- Section 16: Appendices
+
+## Datasets
+
+- Public available CDISC pilot [study data located at CDISC Bitbucket repository](https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse/updated-pilot-submission-package/900172/m5/datasets/cdiscpilot01/analysis/adam/datasets).
+
+- The dataset structure is following [CDISC Analysis Data Model (ADaM)](https://www.cdisc.org/standards/foundational/adam). 
+
+- Source data: https://github.com/elong0527/r4csr/tree/master/adam_data
+
+## Tools
+
+- `tidyverse`: a collection of R packages to simplify the workflow to manipulate, 
+visualize and analyze data in R. 
+
+- `r2rtf`: an R package to create production ready tables and figures in RTF format.
+
+## r2rtf Motivation
+
+In the pharmaceutical industry, RTF/Microsoft Word play a central role 
+in preparing clinical study reports  
+
+Different organization can have different table standards
+
+- E.g., Table layout, Font size, Border type, Footnote, Data source
+
+`r2rtf` is designed to:
+
+- Generate highly customized tables
+- Limit package dependency
+- Target regulatory deliverables   
+- Support pipes (`%>%`) 
+
+- `r2rtf` Introduction: https://r4csr.org/overview.html#r2rtf
+
+## Disposition Table
+
+https://r4csr.org/disposition.html
+
+## Analysis Population
+
+https://r4csr.org/population.html
+
+# Break (10 min)
+
+## Baseline Characteristics
+
+https://r4csr.org/baseline-characteristics.html
+
+## Efficacy Table
+
+https://r4csr.org/efficacy.html
+
+## AE Summary Table
+
+https://r4csr.org/aesummary.html
+
+## Specific AE Table
+
+https://r4csr.org/specific-ae.html
+
+# Clinical Trial Project
+
+# Break (20 min)
+
+## Overview
+
+In a late-stage clinical trial, the number of A&R deliverables can easily be in the hundreds. 
+
+For an organization, it is also common to have multiple ongoing clinical trials in a clinical program.
+
+In this part, let’s consider how to organize a clinical trial project as an A&R leader.
+
+## Folder Structure 
+
+https://r4csr.org/folder.html
+
+## Project Management 
+
+https://r4csr.org/manage.html
+
+# Break (10 min)
+
+# eCTD Submission
+
+# Q&A 
+
