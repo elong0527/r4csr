@@ -38,6 +38,13 @@ In this workshop, we have three parts:
   + Session 4 (30 min)
   + Q&A (10 min)
 
+## Disclaimer 
+
+- All opinions expressed are those of the presenter and not 
+  Merck Sharp & Dohme Corp., a subsidiary of Merck & Co., Inc., Kenilworth, NJ, USA.
+
+- Some slides need to be scrolled down to see the full content. 
+
 ## Preparation 
 
 In this workshop, we assume you have 
@@ -97,8 +104,24 @@ In a CSR, most of TLFs are located in
 visualize and analyze data in R. 
 
 - `r2rtf`: an R package to create production ready tables and figures in RTF format.
-The R package is designed to 
-  + `r2rtf` Introduction: https://r4csr.org/overview.html#r2rtf
+
+## r2rtf Motivation
+
+In the pharmaceutical industry, RTF/Microsoft Word play a central role 
+in preparing clinical study reports  
+
+Different organization can have different table standards
+
+- E.g., Table layout, Font size, Border type, Footnote, Data source
+
+`r2rtf` is designed to:
+
+- Generate highly customized tables
+- Limit package dependency
+- Target regulatory deliverables   
+- Support pipes (`%>%`) 
+
+- `r2rtf` Introduction: https://r4csr.org/overview.html#r2rtf
 
 ## Disposition Table
 
