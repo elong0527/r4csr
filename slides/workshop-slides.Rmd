@@ -8,7 +8,7 @@ output:
     mk_logo: "invent"
     mk_col_title: "white"
     mk_col_section: "teal"
-    mk_class: "notclassified"
+    mk_class: "public"
     widescreen: true
 ---
 
