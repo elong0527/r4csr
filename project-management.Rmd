@@ -17,7 +17,7 @@ especially when managing clinical data analysis projects at scale.
 
 As a general principle, all the team members involved in a project
 should take basic training on project management and understand how to work as
-a software development team. @teamgeek provides some valuable tips on this topic.
+a development team. @teamgeek provides some valuable tips on this topic.
 As always, setting a clear goal and following a system development lifecycle
 (SDLC) are essential.
 
