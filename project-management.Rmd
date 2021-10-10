@@ -1,6 +1,6 @@
 # Project Management {#manage}
 
-## Setting up for success
+## Setting up for Success
 
 A clinical data analysis project is not unlike typical data analysis projects
 or software projects. Therefore, the conventional wisdom and tricks for
@@ -13,7 +13,7 @@ Although many factors could decide if a project could execute efficiently,
 we believe a few aspects are critical for the long-term success,
 especially when managing clinical data analysis projects at scale.
 
-### Work as a team
+### Work as a Team
 
 As a general principle, all the team members involved in a project
 should take basic training on project management and understand how to work as
@@ -21,7 +21,7 @@ a development team. @teamgeek provides some valuable tips on this topic.
 As always, setting a clear goal and following a system development lifecycle
 (SDLC) are essential.
 
-### Design clean code architecture
+### Design Clean Code Architecture
 
 Having a clean architecture design for your code improves the project's
 robustness and flexibility for future changes. For example,
@@ -30,7 +30,7 @@ know what should be created as reusable components and what should be
 written as one-off analysis scripts; write low coupling, high cohesion code,
 and so on. @cleanarch offers some helpful insights on this topic.
 
-### Set capability boundaries
+### Set Capability Boundaries
 
 Knowing what you can do is essential. Create a core capabilities list
 for your team.
@@ -41,7 +41,7 @@ or involving other programming languages can be prohibitively high.
 Remember, a simple, robust solution is almost always preferable to
 a complex solution that requires high maintenance and constant attention.
 
-### Contribute to the community
+### Contribute to the Community
 
 Every individual is limited in some way. The collective thinking
 from a community could benefit a project in the long term.
@@ -194,11 +194,11 @@ integrate outputs in a website.
 Project-specific R functions, TLF generation programs, outputs and validation tracking information can all
 be explored from the website. 
 
-For example, in the `esubdemo` project, we created the `pkgdown` website in https://elong0527.github.io/esubdemo/.
+For example, in the `esubdemo` project, we created the `pkgdown` website at <https://elong0527.github.io/esubdemo/>.
 
 Many of the tasks in SDLC can be completed automatically. 
 An organization can leverage CI/CD workflow to automatically enable those tasks 
 such as running testing cases and creating a `pkgdown` website. 
 
-For example, in `esubdemo` project, we setup [github actions](https://github.com/elong0527/esubdemo/actions)
+For example, in `esubdemo` project, we setup [GitHub Actions](https://github.com/elong0527/esubdemo/actions)
 for these work. It can be setup by using `usethis::use_github_action()` function.
