@@ -25,7 +25,9 @@ rmd_files: [
   "project-folder.Rmd",
   "project-management.Rmd",
   
-  "submission.Rmd",
-  
+  "submission-overview.Rmd",
+  "submission-package.Rmd",
+  "submission-environment.Rmd",
+
   "reference.Rmd"
 ]
