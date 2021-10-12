@@ -31,7 +31,8 @@ You can [clone](https://happygitwithr.com/rstudio-git-github.html#clone-the-new-
 
 For R users, you already benefit from a well-defined and consistent folder structure. 
 That is the [R package folder structure](https://github.com/rstudio/cheatsheets/raw/master/package-development.pdf). 
-Every R package developer is required to follow the same convention to organize their R functions before the R package can be disseminated through the Comprehensive R Archive Network (CRAN). 
+Every R package developer is required to follow the same convention to organize 
+their R functions before the R package can be disseminated through the Comprehensive R Archive Network (CRAN). 
 As a user, you can easily install and use those R packages after installing from CRAN. 
 There are many good resources to guide developers on R package development.
 For example, Hadley Wickham's [R Packages book](https://r-pkgs.org/).
