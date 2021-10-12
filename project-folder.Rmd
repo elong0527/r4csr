@@ -12,7 +12,8 @@ In this part, let's consider how to organize a clinical trial project as an A&R 
 In Chapter \@ref(folder), we will discuss how to organize source code, documents, deliverables in an A&R clinical project. 
 We recommend using the R package folder structure. 
 
-In Chapter \@ref(manage), we will discuss a process or system development lifecycle to manage the A&R of a clinical project. 
+In Chapter \@ref(manage), we will discuss a process or system development lifecycle 
+to manage the A&R of a clinical project. 
 We recommend following an agile management approach to define, develop, validate and deliver work.
 
 # Project Folder {#folder}
