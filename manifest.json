@@ -1204,36 +1204,6 @@
         "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-04-03 08:04:27 UTC; unix"
       }
     },
-    "mkdocs": {
-      "Source": "CRAN",
-      "Repository": null,
-      "description": {
-        "Package": "mkdocs",
-        "Type": "Package",
-        "Title": "Merck Themed R Markdown Templates",
-        "Version": "0.1.0",
-        "Authors@R": "c(\n    person(\"Nan\", \"Xiao\", email = \"nan.xiao1@merck.com\", role = c(\"aut\", \"cre\")),\n    person(\"Merck Sharp & Dohme Corp\", role = \"cph\")\n    )",
-        "Description": "Merck themed R Markdown document templates.",
-        "License": "file LICENSE",
-        "URL": "https://stash.merck.com/projects/BARDS/repos/mkdocs/browse,\nhttps://lctcvp7236.merck.com:3838/content/591/",
-        "Encoding": "UTF-8",
-        "LazyData": "true",
-        "VignetteBuilder": "knitr",
-        "Depends": "R (>= 3.5.0)",
-        "Imports": "htmltools, rmarkdown (>= 2.6), stringr, xfun",
-        "Suggests": "knitr",
-        "Roxygen": "list(markdown = TRUE)",
-        "RoxygenNote": "7.1.1",
-        "RemoteType": "git2r",
-        "RemoteUrl": "https://stash.merck.com/scm/bards/mkdocs.git",
-        "RemoteSha": "158ddc28328986da19a9850aaaa27f2ad2d3fc8a",
-        "NeedsCompilation": "no",
-        "Packaged": "2021-09-17 21:38:56 UTC; zhanyilo",
-        "Author": "Nan Xiao [aut, cre],\n  Merck Sharp & Dohme Corp [cph]",
-        "Maintainer": "Nan Xiao <nan.xiao1@merck.com>",
-        "Built": "R 4.0.1; ; 2021-09-17 21:38:57 UTC; unix"
-      }
-    },
     "munsell": {
       "Source": "CRAN",
       "Repository": "https://rspm.merck.com/unrestricted/latest",
@@ -2438,9 +2408,6 @@
     "_book/r4csr.pdf": {
       "checksum": "70001899aeeeddcf708c608f1d8b4547"
     },
-    "_book/reference-keys.txt": {
-      "checksum": "249775dac4faebb50c196610aaea7725"
-    },
     "_book/reference.html": {
       "checksum": "c56fa5a1ad08373fec708df879c2cfb0"
     },
@@ -2541,22 +2508,22 @@
       "checksum": "de2ace78c29a122929c9f1c9cefa5a94"
     },
     "aesummary.html": {
-      "checksum": "2d21ce1a1a7db53170b42caf9161c4f4"
+      "checksum": "d527a717c1038b1a480bcacbc6af9ac4"
     },
     "baseline-characteristics.html": {
-      "checksum": "9d5db29b4390d98ee5f25fffc8f991a6"
+      "checksum": "b9286ca16410e81da181b74366d9d218"
     },
     "book.bib": {
       "checksum": "3064689ab7f9304722e2fe2663228699"
     },
     "disposition.html": {
-      "checksum": "9ff49a0dcde617563ec6a04546268518"
+      "checksum": "d7f36310843c479f1a24866fb97b1aac"
     },
     "efficacy.html": {
-      "checksum": "06ab19c03969aff194b22f687465a3ef"
+      "checksum": "fbbcb04d685114d7635158d3ab56a995"
     },
     "folder.html": {
-      "checksum": "ede89a6153176388014930b00b00b75b"
+      "checksum": "a0c42fc8860cb258a2095ad6e538b34e"
     },
     "images/cleanslate-addin.png": {
       "checksum": "4257f73510b9be0ad9d0cf155e4865b4"
@@ -2577,7 +2544,7 @@
       "checksum": "e54a44cb1b8d75982bc69f329c3a819b"
     },
     "intro.html": {
-      "checksum": "c831a5f8dfb698f1ed383b7226ffd5b6"
+      "checksum": "ce43a018ceb9b15685567c873d60584b"
     },
     "intro.Rmd": {
       "checksum": "d012dac6e509a41f69393414912fea71"
@@ -2655,16 +2622,16 @@
       "checksum": "de877aa6d744cc160ff41c26a8e4811f"
     },
     "manage.html": {
-      "checksum": "675b523880ac3616a91a6216b277f66c"
+      "checksum": "eb8b1ba76953d7da94c080fc7dc15e3f"
     },
     "overview.html": {
-      "checksum": "058b4050559d9c54be4bfd0a7416ec47"
+      "checksum": "bdb350c22e51e5ba3dce11ab072e7c10"
     },
     "packages.bib": {
       "checksum": "0b8cf63fd6fa9bc564a69ea774a7684f"
     },
     "population.html": {
-      "checksum": "227ff0f7ca98deca01870135f87910cf"
+      "checksum": "86dfcbf01ee043b88457c5120227e99a"
     },
     "preamble.tex": {
       "checksum": "1fd1a3c59e951f9f95b6b39785d600ff"
@@ -2679,25 +2646,16 @@
       "checksum": "10789bdc7c7347beafd0e709e96eea5a"
     },
     "reference.html": {
-      "checksum": "a4a9e833f4167cc1011d91b2412c5ce9"
+      "checksum": "d26804f4b088744d74133ca4914577f9"
     },
     "reference.Rmd": {
       "checksum": "a7a7929587c58ed042e53d61ab67f28f"
     },
     "running-environment.html": {
-      "checksum": "430605e683a10907f0c425485eeaefc7"
-    },
-    "slides/.gitignore": {
-      "checksum": "daf8396d7fe00cb02c379ff1824fd557"
-    },
-    "slides/workshop-slides.html": {
-      "checksum": "b3085f8323fe845943434cd838683b8a"
-    },
-    "slides/workshop-slides.Rmd": {
-      "checksum": "25e3adb44379cbe778326ae1d8bc3a0d"
+      "checksum": "6bbd9801341babf153c577c824b71a12"
     },
     "specific-ae.html": {
-      "checksum": "4fe2d70563d39e7206384d50f2d9e987"
+      "checksum": "12f19501af19d074bb9edde3d4411813"
     },
     "style.css": {
       "checksum": "0d47cd4731c8a71e1c6e712d28285b6d"
@@ -2709,7 +2667,7 @@
       "checksum": "c00fca84b07e32f09269df8053d90127"
     },
     "submission-package.html": {
-      "checksum": "1cdbac939e9ecbe018a51b27eefd7c18"
+      "checksum": "b1ae97325705aceffaf91e841c670159"
     },
     "submission-package.Rmd": {
       "checksum": "55020f10e670c739f14ebbacb85d782a"
@@ -2739,82 +2697,82 @@
       "checksum": "a037e6597cce31982745a9212e6ff0c7"
     },
     "tlf/intro-ae1.rtf": {
-      "checksum": "6c0811ceba3001d06cc2c68a380184b8"
+      "checksum": "b07d4377bc8e373c2229cba7239de42f"
     },
     "tlf/intro-ae2.pdf": {
       "checksum": "448274a071a5fb509ab578b56ea3aad1"
     },
     "tlf/intro-ae2.rtf": {
-      "checksum": "84a58d064d86c63839a7d889bd372a82"
+      "checksum": "9f4a25637ebc0a7610ad293d0568797a"
     },
     "tlf/intro-ae3.pdf": {
       "checksum": "9710380bef89e48ceb89a68d41e60130"
     },
     "tlf/intro-ae3.rtf": {
-      "checksum": "be60542dfc5581cb59ec843236932d8d"
+      "checksum": "f9b747a87745ef91047cffaa89736c69"
     },
     "tlf/intro-ae5.pdf": {
       "checksum": "13f1fa924619e8e8a38f49411c891a78"
     },
     "tlf/intro-ae5.rtf": {
-      "checksum": "0d4508bca3e361297f410c509e3b0b25"
+      "checksum": "5a4855762ccdb407cf621156ae9ff5d9"
     },
     "tlf/intro-ae7.pdf": {
       "checksum": "6a34a2ed0e476e736ad9f0fa0b041fa8"
     },
     "tlf/intro-ae7.rtf": {
-      "checksum": "1f8afacfef6e1c4d94cdf792f61583d7"
+      "checksum": "68f8835537fa85c9cb716d4f04c37f64"
     },
     "tlf/tbl_disp.pdf": {
-      "checksum": "51d551e33212f25b323d487a405020b2"
+      "checksum": "95fa63e6053bad2f8ef8456500d4af7b"
     },
     "tlf/tbl_disp.rtf": {
-      "checksum": "f66d23bdd52b52303f5553b7057f2f55"
+      "checksum": "0de806b595ce635914dd86c6eb73879e"
     },
     "tlf/tbl_pop.pdf": {
-      "checksum": "b7e94c66ea2c7cd921026d954df48278"
+      "checksum": "36c65535ec0bbaf4976e992e713369aa"
     },
     "tlf/tbl_pop.rtf": {
       "checksum": "88ead21b6dec427f38846452ddaf2de5"
     },
     "tlf/tlf_ae_summary.pdf": {
-      "checksum": "d36734c98c3b0d94fb44e013f8cf5a59"
+      "checksum": "8821b99141cef5bd5e689b0e7937d8c4"
     },
     "tlf/tlf_ae_summary.rtf": {
-      "checksum": "6422a5b4033a74d88a4daa0cf8d38b03"
+      "checksum": "e3d9934ed06d576f6dc6e9598fe32ed3"
     },
     "tlf/tlf_base.pdf": {
-      "checksum": "3e2bdf4419adde8e87e9a86e21ec36ce"
+      "checksum": "ef2b96f9b70d203a8de813727293e94d"
     },
     "tlf/tlf_base.rtf": {
-      "checksum": "9d112ca61de10b77341cbf38be1ee4aa"
+      "checksum": "6d27afa9b278d00f32787f1182882f61"
     },
     "tlf/tlf_eff.pdf": {
       "checksum": "497ea478e4d4d171085a709a970e387f"
     },
     "tlf/tlf_eff.rtf": {
-      "checksum": "abb879175247df24af99ada5e1076cec"
+      "checksum": "ddb274c6d4b0cb556eb5738baa903a9f"
     },
     "tlf/tlf_eff1.pdf": {
       "checksum": "112d779e973a40d7771f9b8fc7cb407a"
     },
     "tlf/tlf_eff1.rtf": {
-      "checksum": "7da3e56345583887909e372d0f02419c"
+      "checksum": "acf022520967ca6cd4009a3fd08ce8cc"
     },
     "tlf/tlf_eff2.pdf": {
       "checksum": "6837174e605f24ac91de26d30377bc7a"
     },
     "tlf/tlf_eff2.rtf": {
-      "checksum": "2eed27b657e3d8167fd9d75684fb1a16"
+      "checksum": "2653046cc3fcc4a8974edc945277d4dd"
     },
     "tlf/tlf_spec_ae.pdf": {
-      "checksum": "c3ba78b4e83a2056c6d5ef18d9ae28ce"
+      "checksum": "ce22786080c8aa0146250a4974d75d60"
     },
     "tlf/tlf_spec_ae.rtf": {
-      "checksum": "094123e0020f254a4ff67367552be2f5"
+      "checksum": "34a6e4378ae250a654a0a01f02379ee6"
     },
     "welcome.html": {
-      "checksum": "7c74e166ca5a6d33302f83c998791c37"
+      "checksum": "a73fe0fd70e7ebc8929e85d120382802"
     }
   },
   "users": null
