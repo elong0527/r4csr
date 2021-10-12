@@ -237,7 +237,8 @@ If the project is initiated properly, you shall be able to see similar messages 
 ```
 
 Once R packages have been properly installed, 
-the system will use the R packages located in the search path defined based on the order of `.libPaths()`.
+the system will use the R packages located in the search path 
+defined based on the order of `.libPaths()`.
 The startup message also provided the R package search path. 
 
 ```
