@@ -90,7 +90,7 @@ While creating those analysis scripts, we also defined a few helper functions (e
 Those functions are saved in the `R/` folder. 
 
 ```
-R
+R/
 ├── count_by.R
 └── fmt.R
 ```
