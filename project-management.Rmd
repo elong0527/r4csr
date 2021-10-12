@@ -188,7 +188,8 @@ The project lead should work with the study team to ensure all reported errors, 
 
 The project lead can also use the R package `pkgdown` to build a complete website for a project-specific R package. 
 The `pkgdown` website is a convenient way to run all analyses in batch and 
-integrate outputs in a website, which comprehensively covers project-specific R functions, TLF generation programs, outputs and validation tracking information, etc... 
+integrate outputs in a website, which comprehensively covers 
+project-specific R functions, TLF generation programs, outputs and validation tracking information, etc... 
 For example, in the `esubdemo` project, we created the `pkgdown` website at <https://elong0527.github.io/esubdemo/>.
 
 Many of the tasks in SDLC can be completed automatically. 
