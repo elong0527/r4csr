@@ -66,7 +66,7 @@ We demonstrate the idea using the [`esubdemo`](https://github.com/elong0527/esub
 
 In the `esubdemo` project, we saved all TLF generation scripts in previous chapters into the `vignettes/` folder. 
 
-> Undeer the `vignettes/` folder, there are `adam/` folder and `tlf` folder.
+> Under the `vignettes/` folder, there are `adam/` folder and `tlf` folder.
 > The `adam/` folder contains ADaM datasets. 
 > The `tlf` folder contains output TLFs in RTF format.
 > We put `adam/` and `tlf/` folders within the `vignettes` folder only for illustration purposes. 
