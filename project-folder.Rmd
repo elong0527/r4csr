@@ -46,7 +46,8 @@ Using the R package folder structure to streamline data analysis work has also b
 
 For consistency, a well-defined folder structure with potential templates
 ensures project teams organize the A&R work consistently across multiple projects. 
-Consistent folder structure also reduces communication costs between study team members and enhances the transparency of projects.
+Consistent folder structure also reduces communication costs 
+between study team members and enhances the transparency of projects.
 
 In this book, we refer to an R package as **project-specific R package** 
 if the purpose of an R package is to organize analysis scripts for a clinical project.
