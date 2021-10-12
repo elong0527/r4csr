@@ -230,7 +230,8 @@ In summary, the R package version is controlled in two layers.
 - Define a snapshot date in `inst/startup.R`.
 - Using `renv` to lock R versions within a project. 
 
-If the project is initiated properly, you shall be able to see similar messages to inform how we control R package versions. 
+If the project is initiated properly, 
+you shall be able to see similar messages to inform how we control R package versions. 
 
 ```
 * Project '~/esubdemo' loaded. [renv 0.14.0]
