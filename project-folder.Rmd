@@ -139,7 +139,8 @@ More details can be found in [Chapter 10 of the R packages book](https://r-pkgs.
 ## Reproducibility {#reproduce}
 
 Reproducibility of analysis is one of the most important aspects of regulatory deliverables. 
-To ensure a successful reproduce, we need a controlled R environment, including the control of R version and control of R package version.  
+To ensure a successful reproduce, we need a controlled R environment, 
+including the control of R version and control of R package version.  
 By using the R package folder structure and proper tools (e.g. `renv`, `packrat`), 
 we illustrate how to achieve reproducibility for R and R package versions. 
 
