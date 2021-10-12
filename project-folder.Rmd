@@ -152,7 +152,8 @@ In the `esubdemo` project, a reproducible environment is created when you open t
 When we open the `esubdemo` project, RStudio will execute the R code in `.Rprofile` automatically.
 So we can use `.Rprofile` to set up a reproducible environment. 
 More details can be found in [https://rstats.wtf/r-startup.html](https://rstats.wtf/r-startup.html). 
-After we open the `esubdemo` project, the code in `.Rprofile` will automatically check the current R version is the same as we defined in `.Rprofile`.
+After we open the `esubdemo` project, the code in `.Rprofile` will 
+automatically check the current R version is the same as we defined in `.Rprofile`.
 ```{r, eval = FALSE}
 # set up project R version
 R_version <- "4.1.1"
