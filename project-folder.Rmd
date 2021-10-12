@@ -5,7 +5,8 @@
 In a late-stage clinical trial, the number of A&R deliverables can easily be in the hundreds. 
 For an organization, it is common to have multiple ongoing clinical trials in a clinical program. 
 
-To deliver the A&R results of a clinical trial project, it is teamwork that typically requires collaborations from both statisticians and programmers. 
+To deliver the A&R results of a clinical trial project, 
+it is a teamwork that typically requires collaborations from both statisticians and programmers. 
 In this part, let's consider how to organize a clinical trial project as an A&R leader. 
 
 In Chapter \@ref(folder), we will discuss how to organize source code, documents, deliverables in an A&R clinical project. 
