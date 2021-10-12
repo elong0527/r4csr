@@ -4,7 +4,9 @@
 
 A clinical data analysis project is not unlike typical data analysis projects or software projects. 
 Therefore, the conventional wisdom and tricks for managing a successful project are also applicable here.
-At the same time, clinical projects also have unique traits, such as high standards for planning, development, validation, and delivery under strict time constraints.
+At the same time, clinical projects also have unique traits, 
+such as high standards for planning, development, validation, and delivery 
+under strict time constraints.
 
 Although many factors could decide if a project could execute efficiently,
 we believe a few aspects are critical for the long-term success,
