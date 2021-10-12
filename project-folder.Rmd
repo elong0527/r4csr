@@ -51,7 +51,8 @@ Consistent folder structure also reduces communication costs between study team 
 In this book, we refer to an R package as **project-specific R package** 
 if the purpose of an R package is to organize analysis scripts for a clinical project.
 
-We refer to an R package as a **standard R package** if the purpose of an R package is to share commonly used R functions to be hosted in a code repository such as CRAN. 
+We refer to an R package as a **standard R package** if the purpose of an R package is 
+to share commonly used R functions to be hosted in a code repository such as CRAN. 
 
 Below is minimal sufficient folders and files for a project-specific R package
 based on the R package folder structure.  
