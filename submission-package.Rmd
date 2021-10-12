@@ -31,12 +31,18 @@ git clone https://github.com/elong0527/esubdemo.git
 
 ## The Whole Game
 
-The files in two directories within the eCTD folder structure
-are critical for documenting analysis using R: `datasets`
-and `programs`. We assume the eCTD folder is `esub`.
+In eCTD deliverable, the analysis dataset and source code are saved 
+under the module 5 folder `m5/datasets/<study>/analysis/adam`.
+
+For illustration and preparation purpose, we temporarily save
+the under the `vignettes/esub/` folder.
+
+The files in two directories within the `adam/` folder
+are critical for documenting analysis using R: `datasets/`
+and `programs/`. 
 
 ```
-/esub/analysis/adam/
+vignettes/esub/analysis/adam/
 ├── datasets
 │   ├── adrg.docx
 │   ├── analysis-results-metadata.docx
@@ -57,23 +63,23 @@ The special considerations for each component are listed below.
 
 ### `datasets`
 
-Folder path: `esub/analysis/adam/datasets/`.
+Folder path: `vignettes/esub/analysis/adam/datasets/`.
 
-- ADaM data in `.xpt` format: created by SAS
-- `define.xml`: created by Pinnacle 21
+- ADaM data in `.xpt` format: created by SAS or R.
+- `define.xml`: created by Pinnacle 21.
 - ADRG (ADaM Reviewer's Guide)
-  - "Macro Programs" section: provide R and R package versions with a snapshot date
+  - "Macro Programs" section: provide R and R package versions with a snapshot date.
   - Appendix: provide step-by-step instructions for reviewers to
-    reproduce the running environment and rerun analyses
+    reproduce the running environment and rerun analyses.
 - ARM (Analysis Results Metadata): provide the links between TLFs and
-  analysis programs in tables
+  analysis programs in tables.
 
 ### `programs`
 
-Folder path: `esub/analysis/adam/programs/`.
+Folder path: `vignettes/esub/analysis/adam/programs/`.
 
-- `r0pkgs.txt`: contains all internally developed R packages
-- Other `.txt` files: each contains R code for a specific analysis
+- `r0pkgs.txt`: contains all internally developed proprietary R packages.
+- Other `.txt` files: each contains R code for a specific analysis.
 
 ### Notes
 
@@ -132,8 +138,8 @@ then restore and install them in the order they are packed.
 ### R Version
 
 Always use a consistent version of R for developing the TLFs and for submission.
-For example, you could enforce a rule to only use R x.y.z where z = 1,
-such as R 4.0.1 or R 4.1.1.
+For example, you could enforce a rule to only use R `x.y.z` where `z = 1`,
+such as R `4.0.1` or R `4.1.1`.
 This can be automatically checked using a
 [startup script](https://github.com/elong0527/esubdemo/blob/master/inst/startup.R)
 when the R project is opened.
