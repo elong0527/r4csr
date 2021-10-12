@@ -182,7 +182,8 @@ Any changes to the output requested by customers are documented.
 
 After completion of development and required validation of all A&R deliverables, project lead runs compliance check for a project-specific R package similar to other R packages. 
 `devtools::check()` is a convenient way to run compliance checks or `R CMD check`. 
-`R CMD check` is an automated check of the contents in the R package for frequently encountered issues, before submission to CRAN. 
+`R CMD check` is an automated check of the contents in the R package 
+for frequently encountered issues, before submission to CRAN. 
 Since the project-specific R package is not submitted to CRAN, some checks can be customized and skipped in `devtools::check()`. 
 The project lead should work with the study team to ensure 
 all reported errors, warnings, and notes by `devtools::check()` are fixed. 
