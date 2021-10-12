@@ -62,7 +62,8 @@ based on the R package folder structure.
 - `vignettes/`: Analysis scripts using Rmarkdown.
 - `man/`: Manual of project-specific R functions.
 
-A general discussion of the R package folder structure can be found in Chapter 4 of the R package book (@wickham2015r).
+A general discussion of the R package folder structure can be found 
+in Chapter 4 of the R package book (@wickham2015r).
 
 We demonstrate the idea using the [`esubdemo`](https://github.com/elong0527/esubdemo) project.
 
