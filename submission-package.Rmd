@@ -18,7 +18,7 @@ into text files and back.
 install.packages("pkglite")
 ```
 
-The demo project (R package) we will prepare for submission is called [`esubdemo`](https://github.com/elong0527/esubdemo.git) available on GitHub.
+The demo project (R package) we will prepare for submission is called [`esubdemo`](https://github.com/elong0527/esubdemo) available on GitHub.
 You can download or clone it:
 
 ```bash
@@ -147,7 +147,7 @@ especially when involving compiled code (e.g., C, C++, Fortran).
 
 ## Prepare R Packages for Submission
 
-To prepare R packages for submission, one needs to pack the packages into a text files, and then verify if the file only contains ASSCII.
+To prepare R packages for submission, one needs to pack the packages into text files, and then verify if the file only contains ASSCII characters.
 With packed packages, one can unpack and install them from the text file, too.
 
 ### Pack

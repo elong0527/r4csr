@@ -23,7 +23,7 @@ datasets and **generate tables and figures associated with primary and
 secondary efficacy analyses**. Furthermore, sponsors should submit software
 programs used to generate additional information included in Section 14
 CLINICAL STUDIES of the Prescribing Information (PI)26 if applicable.
-**The specific software utilized should be specified in the ADaM Reviewer's Guide (ADRG)**.
+**The specific software utilized should be specified in the ADRG**.
 The main purpose of requesting the submission of these programs
 **is to understand the process by which the variables for the respective
 analyses were created and to confirm the analysis algorithms**.
