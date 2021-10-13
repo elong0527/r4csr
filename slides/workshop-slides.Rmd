@@ -32,10 +32,10 @@ In this workshop, we have three parts:
   + Session 2 (45 min)
   + Break (20 min) 
 - Clinical trial project (Nan Xiao)
-  + Session 3 (40 min)
+  + Session 3 (30 min)
   + Break (10 min)
 - eCTD submission package (Nan Xiao)
-  + Session 4 (30 min)
+  + Session 4 (40 min)
   + Q&A (10 min)
 
 ## Disclaimer 
