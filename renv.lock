@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.1.1",
+    "Version": "4.0.1",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -394,6 +394,13 @@
       "Repository": "CRAN",
       "Hash": "01f28d4278f15c76cddbea05899c5d6f"
     },
+    "pkglite": {
+      "Package": "pkglite",
+      "Version": "0.2.0",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Hash": "10103029c41084775f6f0a839302cdd4"
+    },
     "plyr": {
       "Package": "plyr",
       "Version": "1.8.6",
@@ -463,6 +470,13 @@
       "Source": "Repository",
       "Repository": "RSPM",
       "Hash": "34807ea4fb5900386ddef904eef8bdb8"
+    },
+    "remotes": {
+      "Package": "remotes",
+      "Version": "2.4.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "a85ebb35721573b196317b49ddd2dfe4"
     },
     "renv": {
       "Package": "renv",
