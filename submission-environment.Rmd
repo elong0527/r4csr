@@ -14,7 +14,7 @@ different environment settings with reproducible analysis results.
 create portable R environments.
 
 ::: {.rmdnote}
-As of Q4 2021, the cleanslate package used in this chapter
+As of Q4 2021, the `cleanslate` package used in this chapter
 is still under active development and validation.
 This chapter gives a preview of the planned APIs.
 They may change in the future.
@@ -67,7 +67,7 @@ cleanslate::use_cleanslate(
 This will
 
 - Create a project folder under `C:/temp/` with a `.Rproj` file;
-- Download R 4.1.1 installer from CRAN, install it into `C:/temp/R/`;
+- Download R `4.1.1` installer from CRAN, install it into `C:/temp/R/`;
 - Not install Rtools (by default, `rtools_version = NULL`);
 - Create a `.Rprofile` file under the project folder, set `options(repos)`
   to use the specified `repo` (an MRAN snapshot in this example),
@@ -113,7 +113,7 @@ besides generating and verifying the snapshot repo links.
 
 ## Update ADRG
 
-If using cleanslate, remember to update the ADRG instructions for
+If using `cleanslate`, remember to update the ADRG instructions for
 executing the analysis programs in R. Mostly, this would simplify
 the first three steps on creating a project, installing a specific
 version of R, and configuring the package repo location.
