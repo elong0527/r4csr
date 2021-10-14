@@ -3,11 +3,9 @@
 In this chapter, we will first give a high-level overview of what
 assets in the eCTD submission package we should focus on when
 submitting R code.
-
 Secondly, we will discuss how to prepare the proprietary R packages
 (if any), and make them part of the submission package.
-
-Lastly, we will provide reusable templates for updating ADRG and ARM,
+Lastly, we will provide reusable templates for updating ADaM Reviewer's Guide (ADRG) and Analysis Results Metadata (ARM),
 so that the reviewers receive proper instructions to reproduce the
 analysis results.
 
@@ -20,9 +18,7 @@ into text files and back.
 install.packages("pkglite")
 ```
 
-The demo project (R package) we will prepare for submission is
-available on GitHub at
-[elong0527/esubdemo](https://github.com/elong0527/esubdemo).
+The demo project (R package) we will prepare for submission is called [`esubdemo`](https://github.com/elong0527/esubdemo) available on GitHub.
 You can download or clone it:
 
 ```bash
@@ -95,8 +91,8 @@ This can be verified by `pkglite::verify_ascii()`
 - The `.docx` files will be converted to PDF files for formal submission.
 
 Now you have a general idea about the relevant components of the
-submission package. We will focus on preparing the internal
-R packages in the following sections.
+submission package. 
+We will focus on preparing the internal R packages in the following sections.
 
 ## Practical Considerations for R Package Submissions
 
@@ -128,7 +124,7 @@ before preparing your proprietary R package for submission.
 For dependencies available from CRAN or public Git repositories,
 you can declare them directly using the regular `Imports` and `Suggests`
 syntax or the
-[remotes dependency syntax](https://remotes.r-lib.org/articles/dependencies.html).
+[remotes dependency syntax](https://remotes.r-lib.org/articles/dependencies.html) in the `DESCRIPTION` file.
 
 For dependencies hosted in private Git repositories, you should pack them
 with the primary R package(s) you want to submit,
@@ -141,8 +137,7 @@ Always use a consistent version of R for developing the TLFs and for submission.
 For example, you could enforce a rule to only use R `x.y.z` where `z = 1`,
 such as R `4.0.1` or R `4.1.1`.
 This can be automatically checked using a
-[startup script](https://github.com/elong0527/esubdemo/blob/master/inst/startup.R)
-when the R project is opened.
+[startup script](https://github.com/elong0527/esubdemo/blob/master/inst/startup.R) when the R project is opened.
 
 ### Package Repo Version
 
@@ -159,6 +154,9 @@ Therefore, it is recommended to keep the dependency chain simple,
 especially when involving compiled code (e.g., C, C++, Fortran).
 
 ## Prepare R Packages for Submission
+
+To prepare R packages for submission, one needs to pack the packages into text files, and then verify if the file only contains ASSCII characters.
+With packed packages, one can unpack and install them from the text file, too.
 
 ### Pack
 
@@ -188,9 +186,8 @@ file.edit("r0pkgs.txt")
 knitr::include_graphics("images/preview-txt.png")
 ```
 
-What happened in the pipe? The function `pkglite::collate()`
-evaluates a specified scope of folders and files defined by
-a list of **file specifications**, and generate a **file collection** object.
+What happened in the pipe? 
+The function `pkglite::collate()` evaluates a specified scope of folders and files defined by a list of **file specifications**, and generate a **file collection** object.
 This file collection contains the metadata required to properly convert
 the files into text which is then used by `pkglite::pack()`.
 With this flow, you can define the scope of the R source package
@@ -276,8 +273,7 @@ the context and help the reviewers rerun the code. For example:
 
 After we converted the R packages and R Markdown files into the appropriate
 formats and verified that they can be restored and executed correctly,
-we should update the ADRG (ADaM Reviewer's Guide) to provide
-guidelines on how to use them.
+we should update the ADRG to provide guidelines on how to use them.
 
 Specifically, we need to update two sections.
 The first is the "Macro Programs" section, where
