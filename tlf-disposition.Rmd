@@ -61,10 +61,6 @@ n_rand <- adsl %>%
 n_rand
 ```
 
-In the code below, we calculate the number and percentage of participants who discontinued the study.
-
-Here we use the `formatC()` function to customize the numeric value to be 1 decimal with fixed width of 5.
-
 ```{r}
 n_disc <- adsl %>%
   group_by(TRT01PN) %>%
@@ -83,7 +79,8 @@ n_disc <- adsl %>%
 n_disc
 ```
 
-In the code below, we calculate the number and percentage of participants who completed/discontinued the study for different reasons.
+In the code below, we calculate the number and percentage of 
+participants who completed/discontinued the study for different reasons.
 
 ```{r}
 n_reason <- adsl %>%
@@ -129,7 +126,8 @@ n_reason <- n_reason %>%
 n_reason
 ```
 
-In the final step, the individual rows are combined and used as input for `r2rtf.
+Now we combined individual rows into the whole table for reporting purpose. 
+`tbl_disp` is used as input for `r2rtf` to create final report. 
 
 ```{r}
 tbl_disp <- bind_rows(n_rand, n_complete, n_disc, n_reason) %>%
@@ -187,7 +185,9 @@ The procedure to generate a disposition table can be summarized as follow:
 -   Step 1: Read subject level data into R, i.e. `adsl`.
 -   Step 2: Count participants in the analysis population and name the dataset `n_rand`.
 -   Step 3: Count the number and percentage of participants that discontinued the study, and name the dataset `n_disc`.
--   Step 4: Count the number and percentage of participants that discontinued the study for different reasons, and name the dataset `n_reason`.
+-   Step 4: Count the number and percentage of participants that discontinued the study for different reasons, 
+    and name the dataset `n_reason`.
 -   Step 5: Count the number and percentage of participants that completed the study, and name the dataset `n_complete`.
 -   Step 6: Bind `n_rand`, `n_disc`, `n_reason` and `n_complete` by row. 
 -   Step 7: Write the final table to RTF
+

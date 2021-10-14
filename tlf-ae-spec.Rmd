@@ -1,9 +1,9 @@
 # Specific AE
 
-Following [ICH E3
-guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
+Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
 we need to summarize which participants were included in each efficacy
 analysis in Section 12.2, Adverse Events (AEs).
+
 
 ```{r}
 library(haven) # Read SAS data
@@ -19,8 +19,7 @@ information in a study.
 knitr::include_graphics("tlf/tlf_spec_ae.pdf")
 ```
 
-The data used to summarize AE information is in `adsl` and `adae`
-datasets.
+The data used to summarize AE information is in `adsl` and `adae` datasets. 
 
 ```{r}
 adsl <- read_sas("adam_data/adsl.sas7bdat")
@@ -103,8 +102,8 @@ t_pop <- adsl %>%
 t_pop
 ```
 
-The final report data is saved in `tbl_ae_spec`. We also add a blank row
-between population and AE information in the reporting table.
+The final report data is saved in `tbl_ae_spec`.
+We also add a blank row between population and AE information in the reporting table.
 
 ```{r}
 tbl_ae_spec <- bind_rows(t_pop,
@@ -140,9 +139,9 @@ id <- ifelse(is.na(id), FALSE, id)
 text_format   <- ifelse(id, "b", "")
 ```
 
-More discussion on `page_by`, `group_by`, and `subline_by` features can
-be found in the [`r2rtf` package
-website](https://merck.github.io/r2rtf/articles/example-sublineby-pageby-groupby.html).
+More discussion on `page_by`, `group_by` and `subline_by` 
+features can be found in the 
+[`r2rtf` package website](https://merck.github.io/r2rtf/articles/example-sublineby-pageby-groupby.html.
 
 ```{r}
 tbl_ae_spec %>% 

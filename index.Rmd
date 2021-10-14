@@ -24,6 +24,7 @@ library(tidyr)
 library(r2rtf) 
 library(knitr)
 library(kableExtra)
+library(pkglite)
 ```
 
 ```{r setup, include=FALSE}
