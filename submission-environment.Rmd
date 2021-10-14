@@ -1,4 +1,4 @@
-# Running Environment {#running-environment}
+# Running environment {#running-environment}
 
 In the previous chapter, we have generated instructions to manually
 create the running environments for reproducing the A&R deliverables.
@@ -32,7 +32,7 @@ Or from GitHub (once available):
 remotes::install_github("Merck/cleanslate")
 ```
 
-## Practical Considerations
+## Practical considerations
 
 The `cleanslate` package supports:
 
@@ -50,7 +50,7 @@ As many of the A&R deliverables are currently created, validated, and delivered
 under Windows, the primary focus is Windows at the moment,
 while the support for other platforms might be added in future versions.
 
-## Create Canonical Environments
+## Create canonical environments
 
 One can create a running environment with "canonical" settings with a
 single function call to `use_cleanslate()`:
@@ -80,7 +80,7 @@ open the project.
 This will ensure some sanity checks in the `.Rprofile`, such as whether the
 R and library are located within the project folder.
 
-## Create Tailored Environments
+## Create tailored environments
 
 To create a more customized running environment, one can use the specific
 functions to tailor each aspect, for example:
@@ -118,7 +118,7 @@ executing the analysis programs in R. Mostly, this would simplify
 the first three steps on creating a project, installing a specific
 version of R, and configuring the package repo location.
 
-## RStudio Addin
+## RStudio addin
 
 To make it convenient to use `cleanslate` in experiments,
 one can also use its RStudio addin. After `cleanslate`

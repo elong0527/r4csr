@@ -1,4 +1,4 @@
-# (PART) Clinical Trial Project {-}
+# (PART) Clinical trial project {-}
 
 # Overview
 
@@ -16,7 +16,7 @@ In Chapter \@ref(manage), we will discuss a process or system development lifecy
 to manage the A&R of a clinical project. 
 We recommend following an agile management approach to define, develop, validate and deliver work.
 
-# Project Folder {#folder}
+# Project folder {#folder}
 
 A clearly defined clinical project folder structure can have many benefits to clinical development teams in an organization. 
 Specifically, a well-defined project structure can achieve:

@@ -1,6 +1,6 @@
-# Project Management {#manage}
+# Project management {#manage}
 
-## Setting up for Success
+## Setting up for success
 
 A clinical data analysis project is not unlike typical data analysis projects or software projects. 
 Therefore, the conventional wisdom and tricks for managing a successful project are also applicable here.
@@ -12,7 +12,7 @@ Although many factors could decide if a project could execute efficiently,
 we believe a few aspects are critical for the long-term success,
 especially when managing clinical data analysis projects at scale.
 
-### Work as a Team
+### Work as a team
 
 As a general principle, all the team members involved in a project
 should take basic training on project management and understand how to work as
@@ -21,7 +21,7 @@ a development team.
 As always, setting a clear goal and following a system development lifecycle
 (SDLC) are essential.
 
-### Design Clean Code Architecture
+### Design clean code architecture
 
 Having a clean architecture design for your code improves the project's
 robustness and flexibility for future changes. 
@@ -31,7 +31,7 @@ written as one-off analysis scripts; write low coupling, high cohesion code,
 and so on. 
 @cleanarch offers some helpful insights on this topic.
 
-### Set Capability Boundaries
+### Set capability boundaries
 
 Knowing what you can do is essential. 
 Create a core capabilities list for your team.
@@ -42,7 +42,7 @@ or involving other programming languages can be prohibitively high.
 Remember, a simple, robust solution is almost always preferable to
 a complex solution that requires high maintenance and constant attention.
 
-### Contribute to the Community
+### Contribute to the community
 
 Every individual is limited in some way. 
 The collective thinking from a community could benefit a project in the long term.

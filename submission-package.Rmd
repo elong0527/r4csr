@@ -1,4 +1,4 @@
-# Submission Package {#submission-package}
+# Submission package {#submission-package}
 
 In this chapter, we will first give a high-level overview of what
 assets in the eCTD submission package we should focus on when
@@ -25,7 +25,7 @@ You can download or clone it:
 git clone https://github.com/elong0527/esubdemo.git
 ```
 
-## The Whole Game
+## The whole game
 
 In eCTD deliverable, the analysis dataset and source code are saved 
 under the module 5 folder `m5/datasets/<study>/analysis/adam`.
@@ -94,12 +94,12 @@ Now you have a general idea about the relevant components of the
 submission package. 
 We will focus on preparing the internal R packages in the following sections.
 
-## Practical Considerations for R Package Submissions
+## Practical considerations for R package submissions
 
 Before we start, there are a few aspects to figure out,
 to accurately identify the R packages for submission.
 
-### Source Location
+### Source location
 
 There are a few common places to host R (source) packages:
 
@@ -116,7 +116,7 @@ For R packages hosted in private repositories, to avoid any complications
 in infrastructure, authentication, and communication, it is often
 recommended to submit them as part of the submission package.
 
-### Dependency Locations
+### Dependency locations
 
 R package dependencies is another major factor to consider
 before preparing your proprietary R package for submission.
@@ -131,7 +131,7 @@ with the primary R package(s) you want to submit,
 as `pkglite` supports packing multiple R packages into a single text file;
 then restore and install them in the order they are packed.
 
-### R Version
+### R version
 
 Always use a consistent version of R for developing the TLFs and for submission.
 For example, you could enforce a rule to only use R `x.y.z` where `z = 1`,
@@ -139,13 +139,13 @@ such as R `4.0.1` or R `4.1.1`.
 This can be automatically checked using a
 [startup script](https://github.com/elong0527/esubdemo/blob/master/inst/startup.R) when the R project is opened.
 
-### Package Repo Version
+### Package repo version
 
 Always use the same snapshot package repo for developing the TLFs and for submission.
 Again, this can be checked in the project startup script,
 discussed in section \@ref(reproduce).
 
-### System Environments
+### System environments
 
 Introducing any extra external dependencies will likely increase the cost
 of qualification, validation, and testing, and maintenance,
@@ -153,7 +153,7 @@ especially under Windows.
 Therefore, it is recommended to keep the dependency chain simple,
 especially when involving compiled code (e.g., C, C++, Fortran).
 
-## Prepare R Packages for Submission
+## Prepare R Packages for submission
 
 To prepare R packages for submission, one needs to pack the packages into text files, and then verify if the file only contains ASSCII characters.
 With packed packages, one can unpack and install them from the text file, too.
@@ -241,7 +241,7 @@ You can then proceed to save the file `r0pkgs.txt` to the folder
 `esub/analysis/adam/programs` (or specify the output text file
 path above directly).
 
-## Prepare Analysis Programs for Submission
+## Prepare analysis programs for submission
 
 Besides the R packages, we need to convert the R Markdown (`.Rmd`) files
 into `.txt` files and saved them in the `programs` folder.

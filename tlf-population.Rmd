@@ -1,4 +1,4 @@
-# Analysis Population {#population}
+# Analysis population {#population}
 
 Following [ICH E3
 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
@@ -41,7 +41,7 @@ adsl %>%
   head(4)
 ```
 
-## Helper Functions
+## Helper functions
 
 Before we write analysis code, let's discuss the possibility to reuse R
 code by writing some toy helper functions.
@@ -99,8 +99,8 @@ course](https://stat545.com/functions-part1.html).
 
 ```{r}
 count_by <- function(data, # Input data set
-                     grp,  # Group variable
-                     var,  # Analysis variable
+                     grp, # Group variable
+                     var, # Analysis variable
                      var_label = var, # Analysis variable label
                      id = "USUBJID") { # Subject ID variable
   data <- data %>% rename(grp = !!grp, var = !!var, id = !!id)
@@ -129,11 +129,11 @@ By using the `count_by()` function, we can simplify the analysis code as
 below.
 
 ```{r}
-count_by(adsl, "TRT01PN", "EFFFL") %>% 
-  select(- ends_with(c("_54", "_81")))
+count_by(adsl, "TRT01PN", "EFFFL") %>%
+  select(-ends_with(c("_54", "_81")))
 ```
 
-## Analysis Code
+## Analysis code
 
 With the helper functions `count_by`, we can easily prepare a report
 dataset as
@@ -142,8 +142,9 @@ dataset as
 # Derive a randomization flag
 adsl <- adsl %>% mutate(RANDFL = "Y")
 
-pop <- count_by(adsl, "TRT01PN", "RANDFL", 
-                var_label = "Participants in Population") %>%
+pop <- count_by(adsl, "TRT01PN", "RANDFL",
+  var_label = "Participants in Population"
+) %>%
   select(var_label, starts_with("n_"))
 ```
 
@@ -212,8 +213,8 @@ knitr::include_graphics("tlf/tbl_pop.pdf")
 The procedure to generate an analysis population table can be summarized
 as follow:
 
--   Step 1: Read data into R, i.e., `adsl`.
--   Step 2: Bind the counts/percentages of the ITT population, the
-    efficacy population and the safety population by row using the
-    `count_by()` function.
--   Step 3: Format the output in Step 2 by `r2rtf`.
+- Step 1: Read data into R, i.e., `adsl`.
+- Step 2: Bind the counts/percentages of the ITT population, the
+  efficacy population and the safety population by row using the
+  `count_by()` function.
+- Step 3: Format the output in Step 2 by `r2rtf`.

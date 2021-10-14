@@ -4,7 +4,6 @@ Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guid
 we need to summarize which participants were included in each efficacy
 analysis in Section 12.2, Adverse Events (AEs).
 
-
 ```{r}
 library(haven) # Read SAS data
 library(dplyr) # Manipulate data
@@ -46,13 +45,15 @@ as `0` for these counted numbers. The variable `order` will help with
 the data manipulation later.
 
 ```{r}
-ana <- adae %>% 
-  mutate(AESOC = toTitleCase(tolower(AESOC)), 
-         AEDECOD =  toTitleCase(tolower(AEDECOD)))
+ana <- adae %>%
+  mutate(
+    AESOC = toTitleCase(tolower(AESOC)),
+    AEDECOD = toTitleCase(tolower(AEDECOD))
+  )
 
-t1 <-ana %>% 
+t1 <- ana %>%
   group_by(TRTAN, AESOC) %>%
-  summarise(n = fmt_num(n_distinct(USUBJID), digits = 0)) %>% 
+  summarise(n = fmt_num(n_distinct(USUBJID), digits = 0)) %>%
   mutate(AEDECOD = AESOC, order = 0)
 
 t1 %>% head(4)
@@ -63,25 +64,27 @@ SOC, AE term, and treatment group. Here we also create a new variable
 `order` and set it as `1` for these counted numbers.
 
 ```{r}
-t2 <- ana %>% 
+t2 <- ana %>%
   group_by(TRTAN, AESOC, AEDECOD) %>%
   summarise(n = fmt_num(n_distinct(USUBJID), digits = 0)) %>%
   mutate(order = 1)
-  
+
 t2 %>% head(4)
 ```
 
 We prepare reporting data for AE information.
 
 ```{r}
-t_ae <- bind_rows(t1, t2) %>% 
-        pivot_wider(id_cols = c(AESOC, order, AEDECOD), 
-                    names_from = TRTAN, 
-                    names_prefix = "n_",
-                    values_from = n, 
-                    values_fill = fmt_num(0, digits = 0)) %>%
-        arrange(AESOC, order, AEDECOD) %>% 
-        select(AESOC, AEDECOD, starts_with("n"))
+t_ae <- bind_rows(t1, t2) %>%
+  pivot_wider(
+    id_cols = c(AESOC, order, AEDECOD),
+    names_from = TRTAN,
+    names_prefix = "n_",
+    values_from = n,
+    values_fill = fmt_num(0, digits = 0)
+  ) %>%
+  arrange(AESOC, order, AEDECOD) %>%
+  select(AESOC, AEDECOD, starts_with("n"))
 
 t_ae %>% head(4)
 ```
@@ -95,9 +98,10 @@ t_pop <- adsl %>%
     var_label = "Participants in population"
   ) %>%
   mutate(
-    AESOC = "pop", 
-    AEDECOD = var_label) %>%
-  select(AESOC,AEDECOD, starts_with("n_"))
+    AESOC = "pop",
+    AEDECOD = var_label
+  ) %>%
+  select(AESOC, AEDECOD, starts_with("n_"))
 
 t_pop
 ```
@@ -106,11 +110,14 @@ The final report data is saved in `tbl_ae_spec`.
 We also add a blank row between population and AE information in the reporting table.
 
 ```{r}
-tbl_ae_spec <- bind_rows(t_pop,
-                         data.frame(AESOC = "pop"), 
-                         t_ae) %>% 
-  mutate(AEDECOD = ifelse(AEDECOD == AESOC , 
-                          AEDECOD, paste0("  ", AEDECOD)))
+tbl_ae_spec <- bind_rows(
+  t_pop,
+  data.frame(AESOC = "pop"),
+  t_ae
+) %>%
+  mutate(AEDECOD = ifelse(AEDECOD == AESOC,
+    AEDECOD, paste0("  ", AEDECOD)
+  ))
 
 tbl_ae_spec %>% head(4)
 ```
@@ -136,7 +143,7 @@ n_col <- ncol(tbl_ae_spec)
 id <- tbl_ae_spec$AESOC == tbl_ae_spec$AEDECOD
 id <- ifelse(is.na(id), FALSE, id)
 
-text_format   <- ifelse(id, "b", "")
+text_format <- ifelse(id, "b", "")
 ```
 
 More discussion on `page_by`, `group_by` and `subline_by` 
@@ -144,11 +151,12 @@ features can be found in the
 [`r2rtf` package website](https://merck.github.io/r2rtf/articles/example-sublineby-pageby-groupby.html.
 
 ```{r}
-tbl_ae_spec %>% 
-  rtf_title("Analysis of Participants With Specific Adverse Events", 
-            "(Safty Analysis Population)") %>%
-  
-    rtf_colheader(" | Placebo | Xanomeline Low Dose| Xanomeline High Dose",
+tbl_ae_spec %>%
+  rtf_title(
+    "Analysis of Participants With Specific Adverse Events",
+    "(Safty Analysis Population)"
+  ) %>%
+  rtf_colheader(" | Placebo | Xanomeline Low Dose| Xanomeline High Dose",
     col_rel_width = c(3, rep(1, 3))
   ) %>%
   rtf_colheader(" | n |  n | n ",
@@ -156,20 +164,16 @@ tbl_ae_spec %>%
     border_bottom = "single",
     col_rel_width = c(3, rep(1, 3))
   ) %>%
-  
   rtf_body(
     col_rel_width = c(1, 3, rep(1, 3)),
     text_justification = c("l", "l", rep("c", 3)),
-    text_format = matrix(text_format, nrow = n_row, ncol = n_col), 
-    page_by = "AESOC", 
-    pageby_row = "first_row") %>% 
-  
+    text_format = matrix(text_format, nrow = n_row, ncol = n_col),
+    page_by = "AESOC",
+    pageby_row = "first_row"
+  ) %>%
   rtf_footnote("Every subject is counted a single time for each applicable row and column.") %>%
-  
   rtf_encode() %>%
-  
   write_rtf("tlf/tlf_spec_ae.rtf")
-
 ```
 
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
@@ -179,13 +183,12 @@ knitr::include_graphics("tlf/tlf_spec_ae.pdf")
 The procedure to generate a baseline characteristics table can be
 summarized as follow:
 
--   Step 1: Read data into R, i.e., `adae` and `adsl`.
--   Step 2: Count the number of subjects by SOC and treatment group
-    (rows with bold text) and save into `t1`.
--   Step 3: Count the number of subjects in each AE term by SOC, AE
-    term, and treatment group (rows without bold text) and save into
-    `t2`.
--   Step 4: Bind `t1` and `t2` by row into `t_ae`.
--   Step 5: Count the number of subjects in each arm as `t_pop`.
--   Step 6: Bind `t_pop` and `t_ae` by row into `tbl_ae_spec`.
--   Step 7: Format the output by `r2rtf`.
+- Step 1: Read data into R, i.e., `adae` and `adsl`.
+- Step 2: Count the number of subjects by SOC and treatment group
+  (rows with bold text) and save into `t1`.
+- Step 3: Count the number of subjects in each AE term by SOC, AE
+  term, and treatment group (rows without bold text) and save into `t2`.
+- Step 4: Bind `t1` and `t2` by row into `t_ae`.
+- Step 5: Count the number of subjects in each arm as `t_pop`.
+- Step 6: Bind `t_pop` and `t_ae` by row into `tbl_ae_spec`.
+- Step 7: Format the output by `r2rtf`.

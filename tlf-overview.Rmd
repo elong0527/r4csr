@@ -41,7 +41,7 @@ that is commonly used in a CSR. The examples are in compliance of
 > FDA's PDF specification is a general reference, each organization can define 
 > more specific TLF format requirement that can be different from the examples in this book. 
 
-## Structure and Content
+## Structure and content
 
 In the rest of this chapter, we are following the 
 [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf) 
@@ -106,9 +106,7 @@ The R package is designed to
 Before creating an RTF table we need to:
 
 - Figure out table layout. 
-
 - Split the layout into small tasks in the form of a computer program.
-
 - Execute the program.
 
 We provided a brief introduction of `r2rtf` and show how to transfer 
@@ -172,8 +170,8 @@ A minimal example below illustrates how to combine verbs using pipes to create a
 
 ```{r}
 head(tbl) %>%
-  rtf_body() %>%                 # Step 1 Add table  attributes
-  rtf_encode() %>%               # Step 2 Convert attributes to RTF encode
+  rtf_body() %>% # Step 1 Add table  attributes
+  rtf_encode() %>% # Step 2 Convert attributes to RTF encode
   write_rtf("tlf/intro-ae1.rtf") # Step 3 Write to a .rtf file
 ```
 
@@ -199,7 +197,6 @@ or `col_rel_width = c(1.5,1,1,1)`.
 ```{r}
 head(tbl) %>%
   rtf_body(col_rel_width = c(3, 2, 2, 2)) %>%
-  
   # define relative width
   rtf_encode() %>%
   write_rtf("tlf/intro-ae2.rtf")
@@ -208,7 +205,6 @@ head(tbl) %>%
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/intro-ae2.pdf")
 ```
-
 
 In the previous example, we found the issue of a misaligned column header. 
 We can fix the issue by using the `rtf_colheader` function.
@@ -221,16 +217,12 @@ define a column header with 4 columns.
 
 ```{r}
 head(tbl) %>%
-  
   rtf_colheader(
     colheader = "Adverse Events | Placebo | Xanomeline High Dose | Xanomeline Low Dose",
     col_rel_width = c(3, 2, 2, 2)
   ) %>%
-  
   rtf_body(col_rel_width = c(3, 2, 2, 2)) %>%
-  
   rtf_encode() %>%
-  
   write_rtf("tlf/intro-ae3.rtf")
 ```
 
@@ -254,11 +246,8 @@ Below is an example to make the first column left-aligned and center-aligned for
 
 ```{r}
 head(tbl) %>%
-  
   rtf_body(text_justification = c("l", "c", "c", "c")) %>%
-  
   rtf_encode() %>%
-  
   write_rtf("tlf/intro-ae5.rtf")
 ```
 
@@ -279,22 +268,17 @@ In this example, we also demonstrate the possibility to add multiple column head
 
 ```{r}
 head(tbl) %>%
-  
   rtf_colheader(
     colheader = " | Treatment",
     col_rel_width = c(3, 6)
   ) %>%
-  
   rtf_colheader(
     colheader = "Adverse Events | Placebo | Xanomeline High Dose | Xanomeline Low Dose",
     border_top = c("", "single", "single", "single"),
     col_rel_width = c(3, 2, 2, 2)
   ) %>%
-  
   rtf_body(col_rel_width = c(3, 2, 2, 2)) %>%
-  
   rtf_encode() %>%
-  
   write_rtf("tlf/intro-ae7.rtf")
 ```
 

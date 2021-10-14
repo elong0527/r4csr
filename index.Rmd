@@ -3,8 +3,9 @@ title: "R for Clinical Study Reports and Submission"
 author: ["Yilong Zhang", "Nan Xiao", "Keaven Anderson"]
 knit: "bookdown::render_book"
 description: >
-  This book will teach you how to prepare tables, listings and figures for clinical study report and submit to regulatory agency, 
-  the essential part of clinical trial development. 
+  This book will teach you how to prepare tables, listings, and figures for
+  clinical study report and submit to regulatory agencies, 
+  the essential part of clinical trial development.
 
 site: bookdown::bookdown_site
 
@@ -18,10 +19,10 @@ link-citations: yes
 library(bslib)
 library(xml2)
 library(downlit)
-library(haven) 
-library(dplyr) 
-library(tidyr) 
-library(r2rtf) 
+library(haven)
+library(dplyr)
+library(tidyr)
+library(r2rtf)
 library(knitr)
 library(kableExtra)
 library(pkglite)
@@ -34,8 +35,10 @@ file.copy("static/CNAME", "_book", overwrite = TRUE)
 ```
 
 ```{r, eval = FALSE, include=FALSE}
-r2rtf:::rtf_convert_format(list.files("tlf", pattern = ".rtf", full.names = TRUE), 
-                           output_dir = "tlf")
+r2rtf:::rtf_convert_format(
+  list.files("tlf", pattern = ".rtf", full.names = TRUE),
+  output_dir = "tlf"
+)
 ```
 
 ```{r, eval = FALSE, include=FALSE}
@@ -56,30 +59,33 @@ A CSR is an "integrated" full scientific report of an individual clinical trial.
 
 The [ICH E3: structure and content of clinical study reports](https://database.ich.org/sites/default/files/E3_Guideline.pdf) 
 provides guidance to assist sponsors in the development of a CSR. 
-In this book, you will learn how to use R to prepare a CSR and how to submit it to regulatory agencies. 
+In this book, you will learn how to use R to prepare a CSR and
+how to submit it to regulatory agencies.
 
 **This is the work-in-progress draft of the book.**
 
-## List of Authors and Contributors {-}
+## Authors and contributors {-}
 
 ```{r, echo = FALSE}
-contributors <- c(person("Yilong", "Zhang", email = "yilong.zhang@merck.com", role = "aut"), 
-                  person("Nan", "Xiao", role = "aut"), 
-                  person("Keaven", "Anderson", role = "aut"),
-                  person("Yujie", "Zhao", role = "ctr"), 
-                  person("Aiming", "Yang", role = "ctr"),
-                  person("Steven", "Haesendonckx", role = "ctr"))
+contributors <- c(
+  person("Yilong", "Zhang", email = "yilong.zhang@merck.com", role = "aut"),
+  person("Nan", "Xiao", role = "aut"),
+  person("Keaven", "Anderson", role = "aut"),
+  person("Yujie", "Zhao", role = "ctr"),
+  person("Aiming", "Yang", role = "ctr"),
+  person("Steven", "Haesendonckx", role = "ctr")
+)
 ```
 
-The document is maintained by a community. 
-While reading the document, you can be a contributor as well. 
-The quality of this document relies on you. 
+The document is maintained by a community.
+While reading the document, you can be a contributor as well.
+The quality of this document relies on you.
 
-- Author: contribute the majority content of at least one chapter. 
+- Author: contribute the majority content of at least one chapter.
 - Contributor: [contribute at least one commit to the source code](https://github.com/elong0527/r4csr)
 
 ```{r, echo = FALSE, eval = TRUE}
-data.frame(contributors = as.character(contributors)) %>%   
+data.frame(contributors = as.character(contributors)) %>%
   kable(format = "html") %>%
   kable_styling()
 ```

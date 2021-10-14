@@ -1,11 +1,10 @@
 Package: r4csr
 Title: R for Clinical Study Reports and Submission
-Version: 0.1
-Authors@R: 
-  c(
+Version: 0.1.0
+Authors@R: c(
     person("Yilong", "Zhang", email = "yilong.zhang@merck.com", role = c("aut", "cre")),
     person("Keaven", "Anderson", role = c("aut")),
-    person("Nan", "Xiao",role = "aut")
+    person("Nan", "Xiao", role = "aut")
     )
 URL: https://r4csr.org/
 Imports:

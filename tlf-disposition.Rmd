@@ -8,7 +8,6 @@ and who entered and completed each phase of the study.
 In addition, the reasons for all post-randomization discontinuations, 
 grouped by treatment and by major reason (lost to follow-up, adverse event, poor compliance, etc.).
 
-
 ```{r}
 library(haven) # Read SAS data
 library(dplyr) # Manipulate data
@@ -33,11 +32,11 @@ adsl <- read_sas("adam_data/adsl.sas7bdat")
 
 Following variables are used in the preparation of a simplified disposition of participants table:
 
--   USUBJID: Unique subject identifier
--   TRT01P: Planed treatment
--   TRT01PN: Planned treatment numeric encoding
--   DISCONFL: Discontinued from study flag
--   DCREASCD: Discontinued from study reason coded
+- USUBJID: Unique subject identifier
+- TRT01P: Planed treatment
+- TRT01PN: Planned treatment numeric encoding
+- DISCONFL: Discontinued from study flag
+- DCREASCD: Discontinued from study reason coded
 
 ```{r}
 adsl %>%
@@ -107,9 +106,8 @@ n_reason
 In the code below, we calculate the number and percentage of participants who complete the study.
 We split `n_reason` because we need to customize the row order of the table.
 
-
 ```{r}
-n_complete <- n_reason %>% 
+n_complete <- n_reason %>%
   filter(row == "Completed")
 
 n_complete
@@ -146,32 +144,26 @@ The format can also be controlled by providing a vector input in text format.
 
 ```{r}
 tbl_disp %>%
-  
   # Table title
   rtf_title("Disposition of Participants") %>%
-  
   # First row of column header
   rtf_colheader(" | Placebo | Xanomeline Low Dose| Xanomeline High Dose",
     col_rel_width = c(3, rep(2, 3))
   ) %>%
-  
   # Second row of column header
   rtf_colheader(" | n | (%) | n | (%) | n | (%)",
     col_rel_width = c(3, rep(c(0.7, 1.3), 3)),
     border_top = c("", rep("single", 6)),
     border_left = c("single", rep(c("single", ""), 3))
   ) %>%
-  
   # Table body
   rtf_body(
     col_rel_width = c(3, rep(c(0.7, 1.3), 3)),
     text_justification = c("l", rep("c", 6)),
     border_left = c("single", rep(c("single", ""), 3))
   ) %>%
-  
   # Encoding RTF syntax
   rtf_encode() %>%
-  
   # Save to a file
   write_rtf("tlf/tbl_disp.rtf")
 ```
@@ -182,12 +174,11 @@ knitr::include_graphics("tlf/tbl_disp.pdf")
 
 The procedure to generate a disposition table can be summarized as follow:
 
--   Step 1: Read subject level data into R, i.e. `adsl`.
--   Step 2: Count participants in the analysis population and name the dataset `n_rand`.
--   Step 3: Count the number and percentage of participants that discontinued the study, and name the dataset `n_disc`.
--   Step 4: Count the number and percentage of participants that discontinued the study for different reasons, 
-    and name the dataset `n_reason`.
--   Step 5: Count the number and percentage of participants that completed the study, and name the dataset `n_complete`.
--   Step 6: Bind `n_rand`, `n_disc`, `n_reason` and `n_complete` by row. 
--   Step 7: Write the final table to RTF
-
+- Step 1: Read subject level data into R, i.e. `adsl`.
+- Step 2: Count participants in the analysis population and name the dataset `n_rand`.
+- Step 3: Count the number and percentage of participants that discontinued the study, and name the dataset `n_disc`.
+- Step 4: Count the number and percentage of participants that discontinued the study for different reasons, 
+  and name the dataset `n_reason`.
+- Step 5: Count the number and percentage of participants that completed the study, and name the dataset `n_complete`.
+- Step 6: Bind `n_rand`, `n_disc`, `n_reason` and `n_complete` by row. 
+- Step 7: Write the final table to RTF

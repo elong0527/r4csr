@@ -1,6 +1,6 @@
 # Introduction {#intro}
 
-## Folder structure 
+## Folder structure
 
 In clinical trial development, source code needs to be developed and maintained to generate and deliver 
 Study Data Tabulation Model (SDTM), Analysis Dataset Model (ADaM) datasets and tables, listings, and figures (TLFs).
@@ -60,7 +60,7 @@ In this part, we assume a reader is a project lead with experience in R package 
 Some good reference includes [R packages](https://r-pkgs.org/) and 
 [The tidyverse style guide](https://style.tidyverse.org/). 
 
-- Part 3, "eCTD Submission package"
+- Part 3, "eCTD submission package"
 provides general information in preparing 
 submission package related to clinical study report (CSR) in 
 electronic Common Technical Document (eCTD). 
@@ -70,7 +70,7 @@ with experience in R package development and submission.
 ## Philosophy 
 
 We share the same philosophy described in 
-[Section 1.1 of R Packages book](https://r-pkgs.org/intro.html?q=Marwick#intro-phil) 
+[Section 1.1 of R Packages book](https://r-pkgs.org/intro.html#intro-phil) 
 and quote here.
 
 - "Anything that can be automated, should be automated." 

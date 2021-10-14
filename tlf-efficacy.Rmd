@@ -5,10 +5,10 @@ we need to summarize primary and secondary efficacy endpoints,
 in Section 11.4, Efficacy Results and Tabulations of Individual Participant. 
 
 ```{r}
-library(haven)   # Read SAS data
-library(dplyr)   # Manipulate data
-library(tidyr)   # Manipulate data
-library(r2rtf)   # Reporting in RTF format
+library(haven) # Read SAS data
+library(dplyr) # Manipulate data
+library(tidyr) # Manipulate data
+library(r2rtf) # Reporting in RTF format
 library(emmeans) # LS mean estimation
 ```
 
@@ -18,7 +18,7 @@ For efficacy analysis, we only analyze change from baseline glucose data at Week
 knitr::include_graphics("tlf/tlf_eff.pdf")
 ```
 
-## Analysis Dataset
+## Analysis dataset
 
 To prepare analysis dataset, 
 we need both `adsl` and `adlbc` datasets for this analysis.
@@ -40,9 +40,9 @@ We will discuss these missing values in Section 6.4.
 ```{r}
 gluc <- adlb %>%
   left_join(adsl %>% select(USUBJID, EFFFL), by = "USUBJID") %>%
-  # PARAMCD is parameter code and here we focus on Glucose (mg/dL) 
-  filter(EFFFL == "Y" & PARAMCD == "GLUC") %>% 
-  arrange(TRTPN) %>% 
+  # PARAMCD is parameter code and here we focus on Glucose (mg/dL)
+  filter(EFFFL == "Y" & PARAMCD == "GLUC") %>%
+  arrange(TRTPN) %>%
   mutate(TRTP = factor(TRTP, levels = unique(TRTP)))
 
 ana <- gluc %>%
@@ -59,10 +59,10 @@ Below is the first few records of the analysis dataset.
 
 ```{r}
 ana %>%
-  select(USUBJID, TRTPN, AVISIT, AVAL, BASE, CHG) %>%  
+  select(USUBJID, TRTPN, AVISIT, AVAL, BASE, CHG) %>%
   head(4)
 ```
-## Helper Functions
+## Helper functions
 
 To prepare report dataframe, we created a few helper functions 
 by using the `fmt_num` function defined in Chapter \@ref(population). 
@@ -104,7 +104,7 @@ fmt_pval <- function(.p, digits = 3) {
 }
 ```
 
-## Summary of Observed Data
+## Summary of observed data
 
 We first summarize observed data at Baseline and Week 24
 
@@ -142,7 +142,7 @@ t12 <- gluc %>%
 t12
 ```
 
-## Missing Data Imputation
+## Missing data imputation
 
 In clinical trials, missing data is inevitable. 
 In this study, there are also missing values in glucose data. 
@@ -236,7 +236,7 @@ Examples can be found in
 The `text_convert` argument in `r2rtf_xxx` functions control whether convert special characters.
 
 ```{r}
-t1_rtf <- t1 %>% 
+t1_rtf <- t1 %>%
   data.frame() %>%
   rtf_title(c(
     "ANCOVA of Change from Baseline Glucose (mmol/L) at Week 24",
@@ -253,8 +253,10 @@ t1_rtf <- t1 %>%
   ),
   col_rel_width = c(2.5, rep(c(0.5, 1.5), 3), 2)
   ) %>%
-  rtf_body(text_justification = c("l", rep("c", 7)), 
-           col_rel_width = c(2.5, rep(c(0.5, 1.5), 3), 2)) %>%
+  rtf_body(
+    text_justification = c("l", rep("c", 7)),
+    col_rel_width = c(2.5, rep(c(0.5, 1.5), 3), 2)
+  ) %>%
   rtf_footnote(c(
     "{^a}Based on an ANCOVA model after adjusting baseline value. LOCF approach is used to impute missing values.",
     "ANCOVA = Analysis of Covariance, LOCF = Last Observation Carried Forward",
@@ -273,13 +275,15 @@ knitr::include_graphics("tlf/tlf_eff1.pdf")
 we also use `r2rtf` to prepare the table format for `t2`
 
 ```{r}
-t2_rtf <- t2 %>% 
+t2_rtf <- t2 %>%
   data.frame() %>%
   rtf_colheader("Pairwise Comparison | Difference in LS Mean (95% CI){^a} | p-Value",
     col_rel_width = c(4.5, 4, 2)
   ) %>%
-  rtf_body(text_justification = c("l", "c", "c"), 
-           col_rel_width = c(4.5, 4, 2))
+  rtf_body(
+    text_justification = c("l", "c", "c"),
+    col_rel_width = c(4.5, 4, 2)
+  )
 
 t2_rtf %>%
   rtf_encode() %>%

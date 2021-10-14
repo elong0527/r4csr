@@ -1,4 +1,4 @@
-# Baseline Characteristics
+# Baseline characteristics
 
 Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
 we need to summarize critical demographic and baseline characteristics of the patients
@@ -39,9 +39,11 @@ be found in the package
 The `table1` R package directly creates an HTML report.
 
 ```{r}
-ana <- adsl %>% 
-  mutate(SEX = factor(SEX, c("F", "M"), c("Female", "Male")), 
-         RACE = toTitleCase(tolower(RACE))) 
+ana <- adsl %>%
+  mutate(
+    SEX = factor(SEX, c("F", "M"), c("Female", "Male")),
+    RACE = toTitleCase(tolower(RACE))
+  )
 
 tbl <- table1(~ SEX + AGE + RACE | TRT01P, data = ana)
 tbl
@@ -53,13 +55,14 @@ recommended by regulatory agencies.
 `tbl_base` is used as input for `r2rtf` to create final report. 
 
 ```{r}
-tbl_base <- tbl %>% 
-              as.data.frame() %>% 
-              as_tibble() %>%
-              mutate( across(everything(), 
-                      ~ str_replace_all(.x, intToUtf8(160), " ") ) 
-                    ) 
-              
+tbl_base <- tbl %>%
+  as.data.frame() %>%
+  as_tibble() %>%
+  mutate(across(
+    everything(),
+    ~ str_replace_all(.x, intToUtf8(160), " ")
+  ))
+
 
 names(tbl_base) <- str_replace_all(names(tbl_base), intToUtf8(160), " ")
 tbl_base
@@ -78,20 +81,26 @@ colheader1 <- paste(names(tbl_base), collapse = "|")
 colheader2 <- paste(tbl_base[1, ], collapse = "|")
 rel_width <- c(2.5, rep(1, 4))
 
-tbl_base[-1, ] %>% 
-      rtf_title("Participant Baseline Characteristics", 
-                "(All Participants Randomized)") %>%
-      rtf_colheader(colheader1, 
-                    col_rel_width = rel_width) %>% 
-      rtf_colheader(colheader2, 
-                    border_top = "",
-                    col_rel_width = rel_width) %>%
-      rtf_body(col_rel_width = rel_width,
-               text_justification = c("l", rep("c", 4)), 
-               text_indent_first = -240,
-               text_indent_left = 180) %>% 
-      rtf_encode() %>% 
-      write_rtf("tlf/tlf_base.rtf")
+tbl_base[-1, ] %>%
+  rtf_title(
+    "Participant Baseline Characteristics",
+    "(All Participants Randomized)"
+  ) %>%
+  rtf_colheader(colheader1,
+    col_rel_width = rel_width
+  ) %>%
+  rtf_colheader(colheader2,
+    border_top = "",
+    col_rel_width = rel_width
+  ) %>%
+  rtf_body(
+    col_rel_width = rel_width,
+    text_justification = c("l", rep("c", 4)),
+    text_indent_first = -240,
+    text_indent_left = 180
+  ) %>%
+  rtf_encode() %>%
+  write_rtf("tlf/tlf_base.rtf")
 ```
 
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
@@ -104,4 +113,3 @@ In conclusion, the procedure to generate demographic and baseline characteristic
 - Step 2: Use `table1::table1()` to get the baseline characteristics table.
 - Step 3: Transfer the output in Step 2 into a data frame that only contains ASCII character.
 - Step 4: Define the format of the rtf table by using R package `r2rtf`.
-
