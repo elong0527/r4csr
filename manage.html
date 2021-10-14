@@ -4,18 +4,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 10 Project Management | R for Clinical Study Reports and Submission</title>
+<title>Chapter 11 Project Management | R for Clinical Study Reports and Submission</title>
 <meta name="author" content="Yilong Zhang">
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
-<meta name="description" content="ToDo">
+<meta name="description" content="11.1 Setting up for Success A clinical data analysis project is not unlike typical data analysis projects or software projects. Therefore, the conventional wisdom and tricks for managing a...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="Chapter 10 Project Management | R for Clinical Study Reports and Submission">
+<meta property="og:title" content="Chapter 11 Project Management | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
-<meta property="og:description" content="ToDo">
+<meta property="og:description" content="11.1 Setting up for Success A clinical data analysis project is not unlike typical data analysis projects or software projects. Therefore, the conventional wisdom and tricks for managing a...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 10 Project Management | R for Clinical Study Reports and Submission">
-<meta name="twitter:description" content="ToDo">
+<meta name="twitter:title" content="Chapter 11 Project Management | R for Clinical Study Reports and Submission">
+<meta name="twitter:description" content="11.1 Setting up for Success A clinical data analysis project is not unlike typical data analysis projects or software projects. Therefore, the conventional wisdom and tricks for managing a...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -55,12 +55,14 @@
 <li><a class="" href="specific-ae.html"><span class="header-section-number">8</span> Specific AE</a></li>
 <li class="book-part">Clinical Trial Project</li>
 <li><a class="" href="overview-1.html"><span class="header-section-number">9</span> Overview</a></li>
-<li><a class="active" href="manage.html"><span class="header-section-number">10</span> Project Management</a></li>
+<li><a class="" href="folder.html"><span class="header-section-number">10</span> Project Folder</a></li>
+<li><a class="active" href="manage.html"><span class="header-section-number">11</span> Project Management</a></li>
 <li class="book-part">eCTD Submission</li>
-<li><a class="" href="ectd.html"><span class="header-section-number">11</span> eCTD</a></li>
-<li><a class="" href="submission-package.html"><span class="header-section-number">12</span> Submission Package</a></li>
+<li><a class="" href="overview-2.html"><span class="header-section-number">12</span> Overview</a></li>
+<li><a class="" href="submission-package.html"><span class="header-section-number">13</span> Submission Package</a></li>
+<li><a class="" href="running-environment.html"><span class="header-section-number">14</span> Running Environment</a></li>
 <li class="book-part">Appendix</li>
-<li><a class="" href="reference.html"><span class="header-section-number">13</span> Reference</a></li>
+<li><a class="" href="reference.html"><span class="header-section-number">15</span> Reference</a></li>
 </ul>
 
         <div class="book-extra">
@@ -70,20 +72,235 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="manage" class="section level1">
 <h1>
-<span class="header-section-number">10</span> Project Management<a class="anchor" aria-label="anchor" href="#manage"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11</span> Project Management<a class="anchor" aria-label="anchor" href="#manage"><i class="fas fa-link"></i></a>
 </h1>
-<p>ToDo</p>
+<div id="setting-up-for-success" class="section level2">
+<h2>
+<span class="header-section-number">11.1</span> Setting up for Success<a class="anchor" aria-label="anchor" href="#setting-up-for-success"><i class="fas fa-link"></i></a>
+</h2>
+<p>A clinical data analysis project is not unlike typical data analysis projects or software projects.
+Therefore, the conventional wisdom and tricks for managing a successful project are also applicable here.
+At the same time, clinical projects also have unique traits,
+such as high standards for planning, development, validation, and delivery
+under strict time constraints.</p>
+<p>Although many factors could decide if a project could execute efficiently,
+we believe a few aspects are critical for the long-term success,
+especially when managing clinical data analysis projects at scale.</p>
+<div id="work-as-a-team" class="section level3">
+<h3>
+<span class="header-section-number">11.1.1</span> Work as a Team<a class="anchor" aria-label="anchor" href="#work-as-a-team"><i class="fas fa-link"></i></a>
+</h3>
+<p>As a general principle, all the team members involved in a project
+should take basic training on project management and understand how to work as
+a development team.
+<span class="citation">Fitzpatrick and Collins-Sussman (<a href="reference.html#ref-teamgeek" role="doc-biblioref">2012</a>)</span> provides some valuable tips on this topic.
+As always, setting a clear goal and following a system development lifecycle
+(SDLC) are essential.</p>
+</div>
+<div id="design-clean-code-architecture" class="section level3">
+<h3>
+<span class="header-section-number">11.1.2</span> Design Clean Code Architecture<a class="anchor" aria-label="anchor" href="#design-clean-code-architecture"><i class="fas fa-link"></i></a>
+</h3>
+<p>Having a clean architecture design for your code improves the project’s
+robustness and flexibility for future changes.
+For example, we should understand how to separate business logic from other layers;
+know what should be created as reusable components and what should be
+written as one-off analysis scripts; write low coupling, high cohesion code,
+and so on.
+<span class="citation">Martin, Grenning, and Brown (<a href="reference.html#ref-cleanarch" role="doc-biblioref">2018</a>)</span> offers some helpful insights on this topic.</p>
+</div>
+<div id="set-capability-boundaries" class="section level3">
+<h3>
+<span class="header-section-number">11.1.3</span> Set Capability Boundaries<a class="anchor" aria-label="anchor" href="#set-capability-boundaries"><i class="fas fa-link"></i></a>
+</h3>
+<p>Knowing what you can do is essential.
+Create a core capabilities list for your team.</p>
+<p>Sometimes, it is also critical to understand <strong>what not to do</strong>.
+For example, the hidden cost of integrating with external systems
+or involving other programming languages can be prohibitively high.
+Remember, a simple, robust solution is almost always preferable to
+a complex solution that requires high maintenance and constant attention.</p>
+</div>
+<div id="contribute-to-the-community" class="section level3">
+<h3>
+<span class="header-section-number">11.1.4</span> Contribute to the Community<a class="anchor" aria-label="anchor" href="#contribute-to-the-community"><i class="fas fa-link"></i></a>
+</h3>
+<p>Every individual is limited in some way.
+The collective thinking from a community could benefit a project in the long term.
+When designing reusable components, make a plan to share with
+internal communities, or even better, with the open-source community.</p>
+</div>
+</div>
+<div id="the-sdlc" class="section level2">
+<h2>
+<span class="header-section-number">11.2</span> The SDLC<a class="anchor" aria-label="anchor" href="#the-sdlc"><i class="fas fa-link"></i></a>
+</h2>
+<p>For A&amp;R deliverables in clinical project development,
+a clearly defined process or system development lifecycle (SDLC)
+is crucial to ensure regulatory compliance.</p>
+<p>SDLC for the A&amp;R deliverables can be defined in four stages:</p>
+<ul>
+<li>planning: a planning stage to define the scope of a project.<br>
+</li>
+<li>development: a development stage to implement target deliverables.</li>
+<li>validation: a validation stage to verify target deliverables.</li>
+<li>operation: an operation stage to deliver work to stakeholders.</li>
+</ul>
+<p>Importantly, we should not consider SDLC as a linear process.
+For example, if the study team identifies new requirement in a development or validation stage,
+the team should return to the planning stage to discuss and align the scope.
+An <a href="https://www.atlassian.com/agile/project-management">agile project management</a> approach is suitable
+and recommended to an A&amp;R clinical development project.
+The goal is to embrace an iterative approach that continuously improves target deliverables based on
+frequent stakeholder feedback.</p>
+<p>There are many good tools to implement agile project management strategy, for example:</p>
+<ul>
+<li><a href="https://docs.github.com/en/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards">GitHub project board</a></li>
+<li><a href="https://www.atlassian.com/software/jira">Jira</a></li>
+</ul>
+</div>
+<div id="planning" class="section level2">
+<h2>
+<span class="header-section-number">11.3</span> Planning<a class="anchor" aria-label="anchor" href="#planning"><i class="fas fa-link"></i></a>
+</h2>
+<p>The planning stage is important in the SDLC lifecycle
+as the requirements for all A&amp;R deliverables are gathered and documented.</p>
+<p>In the planning stage, a project leader should identify all the deliverables,
+e.g., a list of tables, listings, and figures (TLFs).
+For each TLFs, the team should prepare the necessary specifications:</p>
+<ul>
+<li>mock-up tables</li>
+<li>validation level (e.g., independent review or double programming)</li>
+<li>etc.</li>
+</ul>
+<p>The project leader should also align work assignments with team members.
+The purpose is to answer the question of “who is doing what?”</p>
+<div class="inline-figure"><img src="images/validation_tracker.png" width="100%" height="400px" style="display: block; margin: auto;"></div>
+<p>The project lead should also set up a project folder as discussed in Chapter <a href="folder.html#folder">10</a>.
+The project initiation can be simplified by creating an
+<a href="https://rstudio.github.io/rstudio-extensions/rstudio_project_templates.html">RStudio project template</a>.</p>
+<p>To enable reproducibility, the project leader should also review the startup file
+(i.e. <code>.Rprofile</code> discussed in Section <a href="folder.html#reproduce">10.2</a>) and define:</p>
+<ul>
+<li>R version</li>
+<li>Repository of R packages with a snapshot date</li>
+<li>Project package library path</li>
+<li>etc.</li>
+</ul>
+<blockquote>
+<p>After project initiation, modifying <code>.Rprofile</code> will be a risk of reproducibility
+and should be handled carefully if necessary.</p>
+</blockquote>
+</div>
+<div id="development" class="section level2">
+<h2>
+<span class="header-section-number">11.4</span> Development<a class="anchor" aria-label="anchor" href="#development"><i class="fas fa-link"></i></a>
+</h2>
+<p>After a project is initiated, the study team start to develop TLFs based on
+pre-defined mock-up tables assigned to each team member.</p>
+<p>The analysis code and relevant description can be saved in R markdown files
+in the <code>vignettes</code> folder.</p>
+<p>The use of R markdown allows developers to assemble narrative text, code, and its
+comments in one place to simplify documentation.
+It would be helpful to create a template and define a name convention for all TLFs deliverables.
+For example, we can use <code>tlf_</code> prefix in the filename to indicate that the R Markdown is to deliver TLFs.
+Multiple TLFs with similar designs can be included in one R Markdown file.</p>
+<p>For example, in <code>esubdemo</code> project, we have 6 R Markdown files to create TLFs.</p>
+<p>If there is any project-specific R functions that need to be developed,
+the R functions can be placed in the <code>R/</code> folder as discussed in Section <a href="folder.html#consistency">10.1</a>.</p>
+</div>
+<div id="validation" class="section level2">
+<h2>
+<span class="header-section-number">11.5</span> Validation<a class="anchor" aria-label="anchor" href="#validation"><i class="fas fa-link"></i></a>
+</h2>
+<p>Validation is an crucial stage to ensure the deliverables are accurate and consistent.
+After the development stage is completed, the project team needs to validate the deliverables, including R Markdown
+files for TLFs deliverables and project-specific R functions.
+The level of validation is determined at the define stage.</p>
+<p>In an R package development, the validation or testing is completed under the <code>test/</code> folder.
+The testthat R package can be used to streamline the validation process.
+More details of the <code>testthat</code> package for R package validation can be found in <a href="https://r-pkgs.org/tests.html">Chapter 12 of the R package book</a>.</p>
+<p>It is recommended to have a name convention to indicate the type of validation.
+For example, we can use <code>test-developer-test</code>, <code>test-independent-test</code>, <code>test-double-programming</code>
+to classify the validation type.</p>
+<p>It is recommended to follow the same organization
+for files in testthat folder as <code>R/</code> folder and <code>vignettes/</code> folder.
+Every single file in the <code>R/</code> folder and <code>vignettes/</code> folder should have a testing file saved in
+the <code>tests/testthat/</code> folder to validate the content.</p>
+<p>For example, in <code>esubdemo</code> project, we can have a list of testing files below.</p>
+<pre><code>tests/testthat
+├── test-independent-test-tlf-01-disposition.R
+├── test-independent-test-tlf-02-population.R
+├── test-independent-test-tlf-03-baseline.R
+├── test-independent-test-tlf-04-efficacy.R
+├── test-independent-test-tlf-05-ae-summary.R
+├── test-independent-test-tlf-06-ae-spec.R
+└── test-independent-test-fmt.R</code></pre>
+<p>To validate the content of a table, we can save the last datasets ready for table generation as a <code>.Rdata</code> file.
+A validator can reproduce the TLF and compares it with the original result saved in <code>.Rdata</code> file.
+A test is passed when the results match.
+Customers can directly review the formatting of the TLFs by
+customers by comparing them with the mock-up.</p>
+<p>To validate a figure, we can use <a href="https://testthat.r-lib.org/articles/snapshotting.html">snapshot testing</a> strategy.</p>
+<p>After the validator completes the testing of project-specific functions and R Markdown files,
+the process to execute and report testing results is the same for a standard R package.
+The <code>devtools::test()</code> function automatically executes all testing cases and summarizes the testing results in a report.</p>
+<p>After completing the validation, the validator updates the status in a validation tracker.
+The project lead reviews the tracking sheet to make sure all required activities in the SDLC are completed and
+the tracking sheet has been filled correctly.
+The deliverables are ready for customer review after all the validation steps are completed.
+Any changes to the output requested by customers are documented.</p>
+</div>
+<div id="operation" class="section level2">
+<h2>
+<span class="header-section-number">11.6</span> Operation<a class="anchor" aria-label="anchor" href="#operation"><i class="fas fa-link"></i></a>
+</h2>
+<p>After completion of development and required validation of all A&amp;R deliverables,
+project lead runs compliance check for a project-specific R package similar to other R packages.
+<code>devtools::check()</code> is a convenient way to run compliance checks or <code>R CMD check</code>.
+<code>R CMD check</code> is an automated check of the contents in the R package
+for frequently encountered issues, before submission to CRAN.
+Since the project-specific R package is not submitted to CRAN, some checks can be customized and skipped in <code>devtools::check()</code>.
+The project lead should work with the study team to ensure
+all reported errors, warnings, and notes by <code>devtools::check()</code> are fixed.</p>
+<p>The project lead can also use the R package <code>pkgdown</code> to build a complete website for a project-specific R package.
+The <code>pkgdown</code> website is a convenient way to run all analyses in batch and
+integrate outputs in a website, which comprehensively covers
+project-specific R functions, TLF generation programs, outputs and validation tracking information, etc…
+For example, in the <code>esubdemo</code> project, we created the <code>pkgdown</code> website at <a href="https://elong0527.github.io/esubdemo/" class="uri">https://elong0527.github.io/esubdemo/</a>.</p>
+<p>Many of the tasks in SDLC can be completed automatically.
+An organization can leverage CI/CD workflow to automatically enable those tasks
+such as running testing cases and creating a <code>pkgdown</code> website.
+For example, in <code>esubdemo</code> project, we setup <a href="https://github.com/elong0527/esubdemo/actions">GitHub Actions</a>
+for these work.
+It can be setup by using <code>usethis::use_github_action()</code> function.</p>
 
+</div>
 </div>
 
 
 
   <div class="chapter-nav">
-<div class="prev"><a href="overview-1.html"><span class="header-section-number">9</span> Overview</a></div>
-<div class="next"><a href="ectd.html"><span class="header-section-number">11</span> eCTD</a></div>
+<div class="prev"><a href="folder.html"><span class="header-section-number">10</span> Project Folder</a></div>
+<div class="next"><a href="overview-2.html"><span class="header-section-number">12</span> Overview</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#manage"><span class="header-section-number">10</span> Project Management</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#manage"><span class="header-section-number">11</span> Project Management</a></li>
+<li>
+<a class="nav-link" href="#setting-up-for-success"><span class="header-section-number">11.1</span> Setting up for Success</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#work-as-a-team"><span class="header-section-number">11.1.1</span> Work as a Team</a></li>
+<li><a class="nav-link" href="#design-clean-code-architecture"><span class="header-section-number">11.1.2</span> Design Clean Code Architecture</a></li>
+<li><a class="nav-link" href="#set-capability-boundaries"><span class="header-section-number">11.1.3</span> Set Capability Boundaries</a></li>
+<li><a class="nav-link" href="#contribute-to-the-community"><span class="header-section-number">11.1.4</span> Contribute to the Community</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#the-sdlc"><span class="header-section-number">11.2</span> The SDLC</a></li>
+<li><a class="nav-link" href="#planning"><span class="header-section-number">11.3</span> Planning</a></li>
+<li><a class="nav-link" href="#development"><span class="header-section-number">11.4</span> Development</a></li>
+<li><a class="nav-link" href="#validation"><span class="header-section-number">11.5</span> Validation</a></li>
+<li><a class="nav-link" href="#operation"><span class="header-section-number">11.6</span> Operation</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">

@@ -55,12 +55,14 @@
 <li><a class="" href="specific-ae.html"><span class="header-section-number">8</span> Specific AE</a></li>
 <li class="book-part">Clinical Trial Project</li>
 <li><a class="" href="overview-1.html"><span class="header-section-number">9</span> Overview</a></li>
-<li><a class="" href="manage.html"><span class="header-section-number">10</span> Project Management</a></li>
+<li><a class="" href="folder.html"><span class="header-section-number">10</span> Project Folder</a></li>
+<li><a class="" href="manage.html"><span class="header-section-number">11</span> Project Management</a></li>
 <li class="book-part">eCTD Submission</li>
-<li><a class="" href="ectd.html"><span class="header-section-number">11</span> eCTD</a></li>
-<li><a class="" href="submission-package.html"><span class="header-section-number">12</span> Submission Package</a></li>
+<li><a class="" href="overview-2.html"><span class="header-section-number">12</span> Overview</a></li>
+<li><a class="" href="submission-package.html"><span class="header-section-number">13</span> Submission Package</a></li>
+<li><a class="" href="running-environment.html"><span class="header-section-number">14</span> Running Environment</a></li>
 <li class="book-part">Appendix</li>
-<li><a class="" href="reference.html"><span class="header-section-number">13</span> Reference</a></li>
+<li><a class="" href="reference.html"><span class="header-section-number">15</span> Reference</a></li>
 </ul>
 
         <div class="book-extra">
@@ -104,7 +106,7 @@ we need to summarize which participants were included in each efficacy analysis 
 <li>With drug-related adverse events</li>
 <li>With serious adverse events</li>
 <li>With serious drug-related adverse events</li>
-<li>Who “died”</li>
+<li>Who died"</li>
 </ul>
 <div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tidy_ae</span> <span class="op">&lt;-</span> <span class="va">adae</span> <span class="op">%&gt;%</span>
@@ -231,7 +233,8 @@ we need to summarize which participants were included in each efficacy analysis 
 <ul>
 <li>Step 1: Read data into R, i.e., <code>adae</code> and <code>adsl</code>.</li>
 <li>Step 2: Summarize participants in population by treatment group, and we name the dataset as <code>t_pop</code>.</li>
-<li>Step 3: Summarize participants in population by required AE criteria of interest, and we name the dataset as <code>t_ae</code>.</li>
+<li>Step 3: Summarize participants in population by required AE criteria of interest,
+and we name the dataset as <code>t_ae</code>.</li>
 <li>Step 4: Rowly bind <code>t_pop</code> and <code>t_ae</code> and format it by <code>r2rtf</code>.</li>
 </ul>
 </div>

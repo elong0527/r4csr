@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 14 Running Environment | R for Clinical Study Reports and Submission</title>
+<meta name="author" content="Yilong Zhang">
+<meta name="author" content="Nan Xiao">
+<meta name="author" content="Keaven Anderson">
+<meta name="description" content="In the previous chapter, we have generated instructions to manually create the running environments for reproducing the A&amp;R deliverables. In this chapter, we will focus on automating the creation...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 14 Running Environment | R for Clinical Study Reports and Submission">
+<meta property="og:type" content="book">
+<meta property="og:description" content="In the previous chapter, we have generated instructions to manually create the running environments for reproducing the A&amp;R deliverables. In this chapter, we will focus on automating the creation...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 14 Running Environment | R for Clinical Study Reports and Submission">
+<meta name="twitter:description" content="In the previous chapter, we have generated instructions to manually create the running environments for reproducing the A&amp;R deliverables. In this chapter, we will focus on automating the creation...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">R for Clinical Study Reports and Submission</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome!</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">1</span> Introduction</a></li>
+<li class="book-part">Delivering TLFs in CSR</li>
+<li><a class="" href="overview.html"><span class="header-section-number">2</span> Overview</a></li>
+<li><a class="" href="disposition.html"><span class="header-section-number">3</span> Disposition</a></li>
+<li><a class="" href="population.html"><span class="header-section-number">4</span> Analysis Population</a></li>
+<li><a class="" href="baseline-characteristics.html"><span class="header-section-number">5</span> Baseline Characteristics</a></li>
+<li><a class="" href="efficacy.html"><span class="header-section-number">6</span> Efficacy</a></li>
+<li><a class="" href="aesummary.html"><span class="header-section-number">7</span> AE Summary</a></li>
+<li><a class="" href="specific-ae.html"><span class="header-section-number">8</span> Specific AE</a></li>
+<li class="book-part">Clinical Trial Project</li>
+<li><a class="" href="overview-1.html"><span class="header-section-number">9</span> Overview</a></li>
+<li><a class="" href="folder.html"><span class="header-section-number">10</span> Project Folder</a></li>
+<li><a class="" href="manage.html"><span class="header-section-number">11</span> Project Management</a></li>
+<li class="book-part">eCTD Submission</li>
+<li><a class="" href="overview-2.html"><span class="header-section-number">12</span> Overview</a></li>
+<li><a class="" href="submission-package.html"><span class="header-section-number">13</span> Submission Package</a></li>
+<li><a class="active" href="running-environment.html"><span class="header-section-number">14</span> Running Environment</a></li>
+<li class="book-part">Appendix</li>
+<li><a class="" href="reference.html"><span class="header-section-number">15</span> Reference</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/elong0527/r4csr">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="running-environment" class="section level1">
+<h1>
+<span class="header-section-number">14</span> Running Environment<a class="anchor" aria-label="anchor" href="#running-environment"><i class="fas fa-link"></i></a>
+</h1>
+<p>In the previous chapter, we have generated instructions to manually
+create the running environments for reproducing the A&amp;R deliverables.</p>
+<p>In this chapter, we will focus on automating the creation of
+the R environments with R code, to accelerate the dry run testing process,
+simplify the ADRG instructions, and make it easy to recreate
+different environment settings with reproducible analysis results.</p>
+<div id="prerequisites-1" class="section level2">
+<h2>
+<span class="header-section-number">14.1</span> Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites-1"><i class="fas fa-link"></i></a>
+</h2>
+<p><code>cleanslate</code> is an R package that offers a solution to
+create portable R environments.</p>
+<div class="rmdnote">
+<p>As of Q4 2021, the <code>cleanslate</code> package used in this chapter
+is still under active development and validation.
+This chapter gives a preview of the planned APIs.
+They may change in the future.</p>
+</div>
+<p>Install <code>cleanslate</code> from CRAN (once available):</p>
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"cleanslate"</span><span class="op">)</span></code></pre></div>
+<p>Or from GitHub (once available):</p>
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"Merck/cleanslate"</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="practical-considerations" class="section level2">
+<h2>
+<span class="header-section-number">14.2</span> Practical Considerations<a class="anchor" aria-label="anchor" href="#practical-considerations"><i class="fas fa-link"></i></a>
+</h2>
+<p>The <code>cleanslate</code> package supports:</p>
+<ul>
+<li>Creating a project folder with project-specific context
+(<code>.Rproj</code>, <code>.Rprofile</code>, <code>.Renviron</code>)</li>
+<li>Installing a specific version of R into the project folder</li>
+<li>Installing a specific version of Rtools into the project folder</li>
+</ul>
+<p>An essential feature of <code>cleanslate</code> is that it does <strong>not</strong> require
+administrator privileges to run R and Rtools installers.
+This makes it easier to deploy under enterprise settings
+and avoids security and portability concerns.</p>
+<p>As many of the A&amp;R deliverables are currently created, validated, and delivered
+under Windows, the primary focus is Windows at the moment,
+while the support for other platforms might be added in future versions.</p>
+</div>
+<div id="create-canonical-environments" class="section level2">
+<h2>
+<span class="header-section-number">14.3</span> Create Canonical Environments<a class="anchor" aria-label="anchor" href="#create-canonical-environments"><i class="fas fa-link"></i></a>
+</h2>
+<p>One can create a running environment with “canonical” settings with a
+single function call to <code>use_cleanslate()</code>:</p>
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">cleanslate</span><span class="fu">::</span><span class="fu">use_cleanslate</span><span class="op">(</span>
+  <span class="st">"C:/temp/"</span>,
+  r_version <span class="op">=</span> <span class="st">"4.1.1"</span>,
+  from <span class="op">=</span> <span class="st">"https://cran.r-project.org/"</span>,
+  repo <span class="op">=</span> <span class="st">"https://mran.microsoft.com/snapshot/2021-08-06/"</span>
+<span class="op">)</span></code></pre></div>
+<p>This will</p>
+<ul>
+<li>Create a project folder under <code>C:/temp/</code> with a <code>.Rproj</code> file;</li>
+<li>Download R <code>4.1.1</code> installer from CRAN, install it into <code>C:/temp/R/</code>;</li>
+<li>Not install Rtools (by default, <code>rtools_version = NULL</code>);</li>
+<li>Create a <code>.Rprofile</code> file under the project folder, set <code><a href="https://rdrr.io/r/base/options.html">options(repos)</a></code>
+to use the specified <code>repo</code> (an MRAN snapshot in this example),
+and instructions to set the R binary path in RStudio;</li>
+<li>Create a <code>.Renviron</code> file under the project folder and set the
+library path to be the library of the project-specific R installation.</li>
+</ul>
+<p>As a principle, one should always double-click the <code>.Rproj</code> file to
+open the project.
+This will ensure some sanity checks in the <code>.Rprofile</code>, such as whether the
+R and library are located within the project folder.</p>
+</div>
+<div id="create-tailored-environments" class="section level2">
+<h2>
+<span class="header-section-number">14.4</span> Create Tailored Environments<a class="anchor" aria-label="anchor" href="#create-tailored-environments"><i class="fas fa-link"></i></a>
+</h2>
+<p>To create a more customized running environment, one can use the specific
+functions to tailor each aspect, for example:</p>
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st">"cleanslate"</span><span class="op">)</span>
+
+<span class="st">"C:/temp/"</span> <span class="op">%&gt;%</span>
+  <span class="fu">use_project</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">use_rprofile</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">use_renviron</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">use_r_version</span><span class="op">(</span>version <span class="op">=</span> <span class="st">"4.1.1"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">use_rtools</span><span class="op">(</span>version <span class="op">=</span> <span class="st">"rtools40"</span><span class="op">)</span></code></pre></div>
+<p>The project context functions
+(<code>use_project()</code>, <code>use_rprofile()</code>, <code>use_renviron</code>) support custom templates
+using <a href="https://cran.r-project.org/package=brew">brew</a>.</p>
+<p>The <code>use_r_*()</code> functions have variations that serve as shortcuts
+to use R versions defined by release lifecycles, for example,
+<code>use_r_release()</code>, <code>use_r_oldrel()</code>, and <code>use_r_devel()</code>.
+Note that to ensure better reproducibility, one should still use
+<code>use_r_version()</code> as the release, oldrel, and devel versions will
+shift as time goes by.</p>
+<p>The helper functions <code>version_*()</code> and <code>snapshot_*()</code> could assist you
+to determine specific versions of R and Rtools that are currently available,
+besides generating and verifying the snapshot repo links.</p>
+</div>
+<div id="update-adrg-1" class="section level2">
+<h2>
+<span class="header-section-number">14.5</span> Update ADRG<a class="anchor" aria-label="anchor" href="#update-adrg-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>If using <code>cleanslate</code>, remember to update the ADRG instructions for
+executing the analysis programs in R. Mostly, this would simplify
+the first three steps on creating a project, installing a specific
+version of R, and configuring the package repo location.</p>
+</div>
+<div id="rstudio-addin" class="section level2">
+<h2>
+<span class="header-section-number">14.6</span> RStudio Addin<a class="anchor" aria-label="anchor" href="#rstudio-addin"><i class="fas fa-link"></i></a>
+</h2>
+<p>To make it convenient to use <code>cleanslate</code> in experiments,
+one can also use its RStudio addin. After <code>cleanslate</code>
+is installed, click <code>Addins</code> -&gt; <code>cleanslate</code> -&gt; <code>Create portable R environment</code>
+in RStudio, or call <code>cleanslate:::create_env_addin()</code> to open it.</p>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-117"></span>
+<img src="images/cleanslate-addin.png" alt="cleanslate RStudio addin" width="65%"><p class="caption">
+FIGURE 14.1: cleanslate RStudio addin
+</p>
+</div>
+<p>The addin provides a wizard-like interface to help create the environment
+with the most important options, although with less flexibility compared
+to the functional API demonstrated above.</p>
+
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="submission-package.html"><span class="header-section-number">13</span> Submission Package</a></div>
+<div class="next"><a href="reference.html"><span class="header-section-number">15</span> Reference</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#running-environment"><span class="header-section-number">14</span> Running Environment</a></li>
+<li><a class="nav-link" href="#prerequisites-1"><span class="header-section-number">14.1</span> Prerequisites</a></li>
+<li><a class="nav-link" href="#practical-considerations"><span class="header-section-number">14.2</span> Practical Considerations</a></li>
+<li><a class="nav-link" href="#create-canonical-environments"><span class="header-section-number">14.3</span> Create Canonical Environments</a></li>
+<li><a class="nav-link" href="#create-tailored-environments"><span class="header-section-number">14.4</span> Create Tailored Environments</a></li>
+<li><a class="nav-link" href="#update-adrg-1"><span class="header-section-number">14.5</span> Update ADRG</a></li>
+<li><a class="nav-link" href="#rstudio-addin"><span class="header-section-number">14.6</span> RStudio Addin</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/elong0527/r4csr/blob/master/submission-environment.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/elong0527/r4csr/edit/master/submission-environment.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R for Clinical Study Reports and Submission</strong>" was written by Yilong Zhang, Nan Xiao, Keaven Anderson. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

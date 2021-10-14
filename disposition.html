@@ -55,12 +55,14 @@
 <li><a class="" href="specific-ae.html"><span class="header-section-number">8</span> Specific AE</a></li>
 <li class="book-part">Clinical Trial Project</li>
 <li><a class="" href="overview-1.html"><span class="header-section-number">9</span> Overview</a></li>
-<li><a class="" href="manage.html"><span class="header-section-number">10</span> Project Management</a></li>
+<li><a class="" href="folder.html"><span class="header-section-number">10</span> Project Folder</a></li>
+<li><a class="" href="manage.html"><span class="header-section-number">11</span> Project Management</a></li>
 <li class="book-part">eCTD Submission</li>
-<li><a class="" href="ectd.html"><span class="header-section-number">11</span> eCTD</a></li>
-<li><a class="" href="submission-package.html"><span class="header-section-number">12</span> Submission Package</a></li>
+<li><a class="" href="overview-2.html"><span class="header-section-number">12</span> Overview</a></li>
+<li><a class="" href="submission-package.html"><span class="header-section-number">13</span> Submission Package</a></li>
+<li><a class="" href="running-environment.html"><span class="header-section-number">14</span> Running Environment</a></li>
 <li class="book-part">Appendix</li>
-<li><a class="" href="reference.html"><span class="header-section-number">13</span> Reference</a></li>
+<li><a class="" href="reference.html"><span class="header-section-number">15</span> Reference</a></li>
 </ul>
 
         <div class="book-extra">
@@ -126,8 +128,6 @@ The <code>haven</code> package is able to read in the dataset, while maintaining
 ##     n_0  n_54  n_81 row                       
 ##   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;                     
 ## 1    86    84    84 Participants in population</code></pre>
-<p>In the code below, we calculate the number and percentage of participants who discontinued the study.</p>
-<p>Here we use the <code><a href="https://rdrr.io/r/base/formatc.html">formatC()</a></code> function to customize the numeric value to be 1 decimal with fixed width of 5.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n_disc</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">TRT01PN</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -148,7 +148,8 @@ The <code>haven</code> package is able to read in the dataset, while maintaining
 ##     n_0  n_54  n_81 pct_0   pct_54  pct_81  row         
 ##   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;       
 ## 1    28    59    57 " 32.6" " 70.2" " 67.9" Discontinued</code></pre>
-<p>In the code below, we calculate the number and percentage of participants who completed/discontinued the study for different reasons.</p>
+<p>In the code below, we calculate the number and percentage of
+participants who completed/discontinued the study for different reasons.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n_reason</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">TRT01PN</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -213,7 +214,8 @@ For display purposes, <code><a href="https://rdrr.io/r/base/paste.html">paste0("
 ## 7 "    Protocol Violation"     1     1     1 "  1.2" "  1.2" "  1.2"
 ## 8 "    Sponsor Decision"       2     2     3 "  2.3" "  2.4" "  3.6"
 ## 9 "    Withdrew Consent"       9    10     8 " 10.5" " 11.9" "  9.5"</code></pre>
-<p>In the final step, the individual rows are combined and used as input for `r2rtf.</p>
+<p>Now we combined individual rows into the whole table for reporting purpose.
+<code>tbl_disp</code> is used as input for <code>r2rtf</code> to create final report.</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_disp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">n_rand</span>, <span class="va">n_complete</span>, <span class="va">n_disc</span>, <span class="va">n_reason</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">row</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"_0"</span>, <span class="st">"_54"</span>, <span class="st">"_81"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
@@ -275,7 +277,8 @@ The format can also be controlled by providing a vector input in text format.</p
 <li>Step 1: Read subject level data into R, i.e. <code>adsl</code>.</li>
 <li>Step 2: Count participants in the analysis population and name the dataset <code>n_rand</code>.</li>
 <li>Step 3: Count the number and percentage of participants that discontinued the study, and name the dataset <code>n_disc</code>.</li>
-<li>Step 4: Count the number and percentage of participants that discontinued the study for different reasons, and name the dataset <code>n_reason</code>.</li>
+<li>Step 4: Count the number and percentage of participants that discontinued the study for different reasons,
+and name the dataset <code>n_reason</code>.</li>
 <li>Step 5: Count the number and percentage of participants that completed the study, and name the dataset <code>n_complete</code>.</li>
 <li>Step 6: Bind <code>n_rand</code>, <code>n_disc</code>, <code>n_reason</code> and <code>n_complete</code> by row.</li>
 <li>Step 7: Write the final table to RTF</li>

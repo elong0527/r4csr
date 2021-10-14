@@ -8,14 +8,14 @@
 <meta name="author" content="Yilong Zhang">
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
-<meta name="description" content="Following ICH E3 guidance, we need to summarize critical demographic and baseline characteristics of participants in Section 11.2, Demographic and Other Baseline Characteristics. In this chapter,...">
+<meta name="description" content="Following ICH E3 guidance, we need to summarize critical demographic and baseline characteristics of the patients in Section 11.2, Demographic and Other Baseline Characteristics. In this chapter,...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 5 Baseline Characteristics | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Following ICH E3 guidance, we need to summarize critical demographic and baseline characteristics of participants in Section 11.2, Demographic and Other Baseline Characteristics. In this chapter,...">
+<meta property="og:description" content="Following ICH E3 guidance, we need to summarize critical demographic and baseline characteristics of the patients in Section 11.2, Demographic and Other Baseline Characteristics. In this chapter,...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 5 Baseline Characteristics | R for Clinical Study Reports and Submission">
-<meta name="twitter:description" content="Following ICH E3 guidance, we need to summarize critical demographic and baseline characteristics of participants in Section 11.2, Demographic and Other Baseline Characteristics. In this chapter,...">
+<meta name="twitter:description" content="Following ICH E3 guidance, we need to summarize critical demographic and baseline characteristics of the patients in Section 11.2, Demographic and Other Baseline Characteristics. In this chapter,...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -55,12 +55,14 @@
 <li><a class="" href="specific-ae.html"><span class="header-section-number">8</span> Specific AE</a></li>
 <li class="book-part">Clinical Trial Project</li>
 <li><a class="" href="overview-1.html"><span class="header-section-number">9</span> Overview</a></li>
-<li><a class="" href="manage.html"><span class="header-section-number">10</span> Project Management</a></li>
+<li><a class="" href="folder.html"><span class="header-section-number">10</span> Project Folder</a></li>
+<li><a class="" href="manage.html"><span class="header-section-number">11</span> Project Management</a></li>
 <li class="book-part">eCTD Submission</li>
-<li><a class="" href="ectd.html"><span class="header-section-number">11</span> eCTD</a></li>
-<li><a class="" href="submission-package.html"><span class="header-section-number">12</span> Submission Package</a></li>
+<li><a class="" href="overview-2.html"><span class="header-section-number">12</span> Overview</a></li>
+<li><a class="" href="submission-package.html"><span class="header-section-number">13</span> Submission Package</a></li>
+<li><a class="" href="running-environment.html"><span class="header-section-number">14</span> Running Environment</a></li>
 <li class="book-part">Appendix</li>
-<li><a class="" href="reference.html"><span class="header-section-number">13</span> Reference</a></li>
+<li><a class="" href="reference.html"><span class="header-section-number">15</span> Reference</a></li>
 </ul>
 
         <div class="book-extra">
@@ -72,16 +74,13 @@
 <h1>
 <span class="header-section-number">5</span> Baseline Characteristics<a class="anchor" aria-label="anchor" href="#baseline-characteristics"><i class="fas fa-link"></i></a>
 </h1>
-<p>Following <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3
-guidance</a>,
-we need to summarize critical demographic and baseline characteristics
-of participants in Section 11.2, Demographic and Other Baseline
-Characteristics.</p>
-<p>In this chapter, we illustrate how to create a simplified baseline
-characteristics table in a study.</p>
-<embed src="tlf/tlf_base.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>There are many R packages that can efficiently summarize baseline
-information. The <a href="https://github.com/benjaminrich/table1"><code>table1</code></a> R
-package is one of them.</p>
+<p>Following <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3 guidance</a>,
+we need to summarize critical demographic and baseline characteristics of the patients
+in Section 11.2, Demographic and Other Baseline Characteristics.</p>
+<p>In this chapter, we illustrate how to create a simplified
+baseline characteristics table in a study.</p>
+<embed src="tlf/tlf_base.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>There is many R packages that can efficiently summarize baseline information.
+The <a href="https://github.com/benjaminrich/table1"><code>table1</code></a> R package is one of them.</p>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/benjaminrich/table1">table1</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://merck.github.io/r2rtf/">r2rtf</a></span><span class="op">)</span>
@@ -187,9 +186,10 @@ be found in the package
 </tr>
 </tbody>
 </table></div></div>
-<p>The code below transfer the output into a data frame that only contain
-ASCII character recommended by regulatory agencies. <code>tbl_base</code> is used
-as input for <code>r2rtf</code> to create a final report.</p>
+<p>The code below transfer the output into a dataframe
+that only contain ASCII character
+recommended by regulatory agencies.
+<code>tbl_base</code> is used as input for <code>r2rtf</code> to create final report.</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_base</span> <span class="op">&lt;-</span> <span class="va">tbl</span> <span class="op">%&gt;%</span> 
               <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -215,12 +215,12 @@ as input for <code>r2rtf</code> to create a final report.</p>
 ##  9 "  Black or Afr… "8 (9.3%)"  "9 (10.7%)"        "6 (7.1%)"        "23 (9.1%)"
 ## 10 "  White"        "78 (90.7%… "74 (88.1%)"       "78 (92.9%)"      "230 (90.6…
 ## 11 "  American Ind… "0 (0%)"    "1 (1.2%)"         "0 (0%)"          "1 (0.4%)"</code></pre>
-<p>We start to define the format of the output. We highlight items that are
-not discussed in the previous discussion.</p>
-<p>The <code>text_indent_first</code> and <code>test_indent_left</code> arguments are used to
-control the indent space of the text. They are helpful when you need to
-control the white space of a long sentence. For example, “AMERICAN
-INDIAN OR ALASKA NATIVE” in the table.</p>
+<p>We start to define the format of the output. We highlight items that
+are not discussed in previous discussion.</p>
+<p><code>text_indent_first</code> and <code>test_indent_left</code> are used to control the indent
+space of text. They are helpful when you need to control the white space
+of a long sentence. For example, “AMERICAN INDIAN OR ALASKA NATIVE”
+in the table.</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">colheader1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">tbl_base</span><span class="op">)</span>, collapse <span class="op">=</span> <span class="st">"|"</span><span class="op">)</span>
 <span class="va">colheader2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">tbl_base</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span>, collapse <span class="op">=</span> <span class="st">"|"</span><span class="op">)</span>
@@ -240,16 +240,12 @@ INDIAN OR ALASKA NATIVE” in the table.</p>
                text_indent_left <span class="op">=</span> <span class="fl">180</span><span class="op">)</span> <span class="op">%&gt;%</span> 
       <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
       <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/tlf_base.rtf"</span><span class="op">)</span></code></pre></div>
-<embed src="tlf/tlf_base.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>The procedure to generate a baseline characteristics table can be
-summarized as follow:</p>
+<embed src="tlf/tlf_base.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In conclusion, the procedure to generate demographic and baseline characteristics table is summarized as follows.</p>
 <ul>
 <li>Step 1: Read the data set.</li>
-<li>Step 2: Use <code><a href="https://rdrr.io/pkg/table1/man/table1.html">table1::table1()</a></code> to get the baseline characteristics
-table.</li>
-<li>Step 3: Transfer the output in Step 2 into a data frame that only
-contains ASCII characters.</li>
-<li>Step 4: Define the format of the rtf table by using R package
-<code>r2rtf</code>.</li>
+<li>Step 2: Use <code><a href="https://rdrr.io/pkg/table1/man/table1.html">table1::table1()</a></code> to get the baseline characteristics table.</li>
+<li>Step 3: Transfer the output in Step 2 into a data frame that only contains ASCII character.</li>
+<li>Step 4: Define the format of the rtf table by using R package <code>r2rtf</code>.</li>
 </ul>
 </div>
   <div class="chapter-nav">
