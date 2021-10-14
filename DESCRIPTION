@@ -21,5 +21,6 @@ Imports:
   kableExtra,
   table1,
   gert,
-  servr
+  servr,
+  pkglite
 Encoding: UTF-8

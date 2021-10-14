@@ -1388,6 +1388,33 @@
         "Built": "R 4.0.1; ; 2021-08-08 19:45:43 UTC; unix"
       }
     },
+    "pkglite": {
+      "Source": "CRAN",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
+      "description": {
+        "Package": "pkglite",
+        "Title": "Compact Package Representations",
+        "Version": "0.2.0",
+        "Authors@R": "c(\n    person(\"Nan\", \"Xiao\", email = \"nan.xiao1@merck.com\", role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"0000-0002-0250-5673\")),\n    person(\"Yilong\", \"Zhang\", email = \"yilong.zhang@merck.com\", role = c(\"aut\")),\n    person(\"Keaven\", \"Anderson\", email = \"keaven_anderson@merck.com\", role = c(\"aut\")),\n    person(\"Amin\", \"Shirazi\", email = \"amin.shirazi@merck.com\", role = c(\"ctb\")),\n    person(\"Jeff\", \"Cheng\", email = \"jeff.cheng@merck.com\", role = c(\"ctb\")),\n    person(\"Merck Sharp & Dohme Corp\", role = \"cph\")\n    )",
+        "Description": "A tool, grammar, and standard to represent and exchange\n    R package source code as text files. Converts one or more source\n    packages to a text file and restores the package structures from the file.",
+        "License": "GPL-3",
+        "URL": "https://merck.github.io/pkglite/, https://github.com/Merck/pkglite",
+        "BugReports": "https://github.com/Merck/pkglite/issues",
+        "Encoding": "UTF-8",
+        "VignetteBuilder": "knitr",
+        "Depends": "R (>= 3.5.0)",
+        "Imports": "cli, magrittr, remotes",
+        "Suggests": "knitr, rmarkdown, testthat, covr",
+        "RoxygenNote": "7.1.1",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-05-21 21:56:27 UTC; xiaonan4",
+        "Author": "Nan Xiao [aut, cre] (<https://orcid.org/0000-0002-0250-5673>),\n  Yilong Zhang [aut],\n  Keaven Anderson [aut],\n  Amin Shirazi [ctb],\n  Jeff Cheng [ctb],\n  Merck Sharp & Dohme Corp [cph]",
+        "Maintainer": "Nan Xiao <nan.xiao1@merck.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-05-22 04:10:03 UTC",
+        "Built": "R 4.0.1; ; 2021-10-14 19:15:55 UTC; unix"
+      }
+    },
     "prettyunits": {
       "Source": "CRAN",
       "Repository": "https://packagemanager.rstudio.com/cran/latest",
@@ -1636,6 +1663,34 @@
         "Repository": "RSPM",
         "Date/Publication": "2021-08-10 15:40:02 UTC",
         "Built": "R 4.0.1; x86_64-pc-linux-gnu; 2021-09-15 20:52:15 UTC; unix"
+      }
+    },
+    "remotes": {
+      "Source": "CRAN",
+      "Repository": "https://packagemanager.rstudio.com/cran/latest",
+      "description": {
+        "Package": "remotes",
+        "Title": "R Package Installation from Remote Repositories, Including\n'GitHub'",
+        "Version": "2.4.0",
+        "Authors@R": "c(\n    person(\"Jim\", \"Hester\", , \"jim.hester@rstudio.com\", role = c(\"aut\", \"cre\")),\n    person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = c(\"aut\")),\n    person(\"Hadley\", \"Wickham\", role = c(\"aut\")),\n    person(\"Winston\", \"Chang\", role = \"aut\"),\n    person(\"RStudio\", role = \"cph\"),\n    person(\"Martin\", \"Morgan\", role = \"aut\"),\n    person(\"Dan\", \"Tenenbaum\", role = \"aut\"),\n    person(\"Mango Solutions\", role = \"cph\")\n    )",
+        "Description": "Download and install R packages stored in 'GitHub', 'GitLab', \n    'Bitbucket', 'Bioconductor', or plain 'subversion' or 'git' repositories. \n    This package provides the 'install_*' functions in 'devtools'. Indeed most \n    of the code was copied over from 'devtools'.",
+        "License": "MIT + file LICENSE",
+        "URL": "https://remotes.r-lib.org, https://github.com/r-lib/remotes#readme",
+        "BugReports": "https://github.com/r-lib/remotes/issues",
+        "Imports": "methods, stats, tools, utils",
+        "Suggests": "brew, callr, codetools, curl, covr, git2r (>= 0.23.0), knitr,\nmockery, pkgbuild (>= 1.0.1), pingr, rmarkdown, rprojroot,\ntestthat, webfakes, withr",
+        "Depends": "R (>= 3.0.0)",
+        "VignetteBuilder": "knitr",
+        "RoxygenNote": "7.1.1",
+        "SystemRequirements": "Subversion for install_svn, git for install_git",
+        "Encoding": "UTF-8",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-06-02 17:31:17 UTC; jhester",
+        "Author": "Jim Hester [aut, cre],\n  Gábor Csárdi [aut],\n  Hadley Wickham [aut],\n  Winston Chang [aut],\n  RStudio [cph],\n  Martin Morgan [aut],\n  Dan Tenenbaum [aut],\n  Mango Solutions [cph]",
+        "Maintainer": "Jim Hester <jim.hester@rstudio.com>",
+        "Repository": "CRAN",
+        "Date/Publication": "2021-06-02 18:20:02 UTC",
+        "Built": "R 4.0.1; ; 2021-08-08 19:55:42 UTC; unix"
       }
     },
     "rlang": {
@@ -2633,7 +2688,7 @@
       "checksum": "5fbe3149ef78dd4ca4cdad8dfc1c425e"
     },
     ".Rprofile": {
-      "checksum": "b3451cb6aa2c08b9dfcca641bfc983a5"
+      "checksum": "8f7ebaf18c8aaae83fd7efbdfd9aff10"
     },
     "adam_data/adae.sas7bdat": {
       "checksum": "0f8b432f089a75aee71c980fcd7c8f9f"
@@ -2669,7 +2724,7 @@
       "checksum": "3064689ab7f9304722e2fe2663228699"
     },
     "DESCRIPTION": {
-      "checksum": "6aa7687ff8c1f5d2e1c2886f4ed2ffa7"
+      "checksum": "ac8d34fbe90437fed5aad584e21d7a4d"
     },
     "images/cleanslate-addin.png": {
       "checksum": "4257f73510b9be0ad9d0cf155e4865b4"
