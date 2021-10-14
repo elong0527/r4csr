@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 7 AE Summary | R for Clinical Study Reports and Submission</title>
+<title>Chapter 7 AE summary | R for Clinical Study Reports and Submission</title>
 <meta name="author" content="Yilong Zhang">
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
 <meta name="description" content="Following ICH E3 guidance, we need to summarize which participants were included in each efficacy analysis in Section 12.2, Adverse Events (AEs). library(haven) # Read SAS data library(dplyr) #...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="Chapter 7 AE Summary | R for Clinical Study Reports and Submission">
+<meta property="og:title" content="Chapter 7 AE summary | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Following ICH E3 guidance, we need to summarize which participants were included in each efficacy analysis in Section 12.2, Adverse Events (AEs). library(haven) # Read SAS data library(dplyr) #...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 7 AE Summary | R for Clinical Study Reports and Submission">
+<meta name="twitter:title" content="Chapter 7 AE summary | R for Clinical Study Reports and Submission">
 <meta name="twitter:description" content="Following ICH E3 guidance, we need to summarize which participants were included in each efficacy analysis in Section 12.2, Adverse Events (AEs). library(haven) # Read SAS data library(dplyr) #...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -48,19 +48,19 @@
 <li class="book-part">Delivering TLFs in CSR</li>
 <li><a class="" href="overview.html"><span class="header-section-number">2</span> Overview</a></li>
 <li><a class="" href="disposition.html"><span class="header-section-number">3</span> Disposition</a></li>
-<li><a class="" href="population.html"><span class="header-section-number">4</span> Analysis Population</a></li>
-<li><a class="" href="baseline-characteristics.html"><span class="header-section-number">5</span> Baseline Characteristics</a></li>
+<li><a class="" href="population.html"><span class="header-section-number">4</span> Analysis population</a></li>
+<li><a class="" href="baseline-characteristics.html"><span class="header-section-number">5</span> Baseline characteristics</a></li>
 <li><a class="" href="efficacy.html"><span class="header-section-number">6</span> Efficacy</a></li>
-<li><a class="active" href="aesummary.html"><span class="header-section-number">7</span> AE Summary</a></li>
+<li><a class="active" href="aesummary.html"><span class="header-section-number">7</span> AE summary</a></li>
 <li><a class="" href="specific-ae.html"><span class="header-section-number">8</span> Specific AE</a></li>
-<li class="book-part">Clinical Trial Project</li>
+<li class="book-part">Clinical trial project</li>
 <li><a class="" href="overview-1.html"><span class="header-section-number">9</span> Overview</a></li>
-<li><a class="" href="folder.html"><span class="header-section-number">10</span> Project Folder</a></li>
-<li><a class="" href="manage.html"><span class="header-section-number">11</span> Project Management</a></li>
-<li class="book-part">eCTD Submission</li>
+<li><a class="" href="folder.html"><span class="header-section-number">10</span> Project folder</a></li>
+<li><a class="" href="manage.html"><span class="header-section-number">11</span> Project management</a></li>
+<li class="book-part">eCTD submission</li>
 <li><a class="" href="overview-2.html"><span class="header-section-number">12</span> Overview</a></li>
-<li><a class="" href="submission-package.html"><span class="header-section-number">13</span> Submission Package</a></li>
-<li><a class="" href="running-environment.html"><span class="header-section-number">14</span> Running Environment</a></li>
+<li><a class="" href="submission-package.html"><span class="header-section-number">13</span> Submission package</a></li>
+<li><a class="" href="running-environment.html"><span class="header-section-number">14</span> Running environment</a></li>
 <li class="book-part">Appendix</li>
 <li><a class="" href="reference.html"><span class="header-section-number">15</span> Reference</a></li>
 </ul>
@@ -72,7 +72,7 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="aesummary" class="section level1">
 <h1>
-<span class="header-section-number">7</span> AE Summary<a class="anchor" aria-label="anchor" href="#aesummary"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7</span> AE summary<a class="anchor" aria-label="anchor" href="#aesummary"><i class="fas fa-link"></i></a>
 </h1>
 <p>Following <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3 guidance</a>,
 we need to summarize which participants were included in each efficacy analysis in Section 12.2, Adverse Events (AEs).</p>
@@ -178,13 +178,17 @@ we need to summarize which participants were included in each efficacy analysis 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span></code></pre></div>
 <p>We prepare reporting-ready dataset for the analysis population.</p>
 <div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">t_pop</span> <span class="op">&lt;-</span> <span class="va">pop</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Participants in population"</span>, 
-         tot <span class="op">=</span> <span class="fu">fmt_num</span><span class="op">(</span><span class="va">tot</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>id_cols <span class="op">=</span> <span class="va">name</span>, 
-              names_from <span class="op">=</span> <span class="va">TRTAN</span>, 
-              names_prefix <span class="op">=</span> <span class="st">"n_"</span>, 
-              values_from <span class="op">=</span> <span class="va">tot</span><span class="op">)</span> 
+<code class="sourceCode R"><span class="va">t_pop</span> <span class="op">&lt;-</span> <span class="va">pop</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    name <span class="op">=</span> <span class="st">"Participants in population"</span>,
+    tot <span class="op">=</span> <span class="fu">fmt_num</span><span class="op">(</span><span class="va">tot</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>
+    id_cols <span class="op">=</span> <span class="va">name</span>,
+    names_from <span class="op">=</span> <span class="va">TRTAN</span>,
+    names_prefix <span class="op">=</span> <span class="st">"n_"</span>,
+    values_from <span class="op">=</span> <span class="va">tot</span>
+  <span class="op">)</span>
 
 <span class="va">t_pop</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 4
@@ -208,7 +212,7 @@ we need to summarize which participants were included in each efficacy analysis 
 ## 6 Who died                                 "   2" (  2… "   … (  1.… "   … (  0.…</code></pre>
 <p>We start to define the format of the output.</p>
 <div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">tbl_ae_summary</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">tbl_ae_summary</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_title.html">rtf_title</a></span><span class="op">(</span>
     <span class="st">"Analysis of Adverse Event Summary"</span>,
     <span class="st">"(Safety Analysis Population)"</span>
@@ -243,7 +247,7 @@ and we name the dataset as <code>t_ae</code>.</li>
 <div class="next"><a href="specific-ae.html"><span class="header-section-number">8</span> Specific AE</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#aesummary"><span class="header-section-number">7</span> AE Summary</a></li></ul>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#aesummary"><span class="header-section-number">7</span> AE summary</a></li></ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">

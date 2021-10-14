@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 5 Baseline Characteristics | R for Clinical Study Reports and Submission</title>
+<title>Chapter 5 Baseline characteristics | R for Clinical Study Reports and Submission</title>
 <meta name="author" content="Yilong Zhang">
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
 <meta name="description" content="Following ICH E3 guidance, we need to summarize critical demographic and baseline characteristics of the patients in Section 11.2, Demographic and Other Baseline Characteristics. In this chapter,...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="Chapter 5 Baseline Characteristics | R for Clinical Study Reports and Submission">
+<meta property="og:title" content="Chapter 5 Baseline characteristics | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Following ICH E3 guidance, we need to summarize critical demographic and baseline characteristics of the patients in Section 11.2, Demographic and Other Baseline Characteristics. In this chapter,...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 5 Baseline Characteristics | R for Clinical Study Reports and Submission">
+<meta name="twitter:title" content="Chapter 5 Baseline characteristics | R for Clinical Study Reports and Submission">
 <meta name="twitter:description" content="Following ICH E3 guidance, we need to summarize critical demographic and baseline characteristics of the patients in Section 11.2, Demographic and Other Baseline Characteristics. In this chapter,...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -48,19 +48,19 @@
 <li class="book-part">Delivering TLFs in CSR</li>
 <li><a class="" href="overview.html"><span class="header-section-number">2</span> Overview</a></li>
 <li><a class="" href="disposition.html"><span class="header-section-number">3</span> Disposition</a></li>
-<li><a class="" href="population.html"><span class="header-section-number">4</span> Analysis Population</a></li>
-<li><a class="active" href="baseline-characteristics.html"><span class="header-section-number">5</span> Baseline Characteristics</a></li>
+<li><a class="" href="population.html"><span class="header-section-number">4</span> Analysis population</a></li>
+<li><a class="active" href="baseline-characteristics.html"><span class="header-section-number">5</span> Baseline characteristics</a></li>
 <li><a class="" href="efficacy.html"><span class="header-section-number">6</span> Efficacy</a></li>
-<li><a class="" href="aesummary.html"><span class="header-section-number">7</span> AE Summary</a></li>
+<li><a class="" href="aesummary.html"><span class="header-section-number">7</span> AE summary</a></li>
 <li><a class="" href="specific-ae.html"><span class="header-section-number">8</span> Specific AE</a></li>
-<li class="book-part">Clinical Trial Project</li>
+<li class="book-part">Clinical trial project</li>
 <li><a class="" href="overview-1.html"><span class="header-section-number">9</span> Overview</a></li>
-<li><a class="" href="folder.html"><span class="header-section-number">10</span> Project Folder</a></li>
-<li><a class="" href="manage.html"><span class="header-section-number">11</span> Project Management</a></li>
-<li class="book-part">eCTD Submission</li>
+<li><a class="" href="folder.html"><span class="header-section-number">10</span> Project folder</a></li>
+<li><a class="" href="manage.html"><span class="header-section-number">11</span> Project management</a></li>
+<li class="book-part">eCTD submission</li>
 <li><a class="" href="overview-2.html"><span class="header-section-number">12</span> Overview</a></li>
-<li><a class="" href="submission-package.html"><span class="header-section-number">13</span> Submission Package</a></li>
-<li><a class="" href="running-environment.html"><span class="header-section-number">14</span> Running Environment</a></li>
+<li><a class="" href="submission-package.html"><span class="header-section-number">13</span> Submission package</a></li>
+<li><a class="" href="running-environment.html"><span class="header-section-number">14</span> Running environment</a></li>
 <li class="book-part">Appendix</li>
 <li><a class="" href="reference.html"><span class="header-section-number">15</span> Reference</a></li>
 </ul>
@@ -72,7 +72,7 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="baseline-characteristics" class="section level1">
 <h1>
-<span class="header-section-number">5</span> Baseline Characteristics<a class="anchor" aria-label="anchor" href="#baseline-characteristics"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5</span> Baseline characteristics<a class="anchor" aria-label="anchor" href="#baseline-characteristics"><i class="fas fa-link"></i></a>
 </h1>
 <p>Following <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3 guidance</a>,
 we need to summarize critical demographic and baseline characteristics of the patients
@@ -99,9 +99,11 @@ be found in the package
 <a href="https://benjaminrich.github.io/table1/vignettes/table1-examples.html">vignettes</a>.</p>
 <p>The <code>table1</code> R package directly creates an HTML report.</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ana</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>SEX <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">SEX</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"F"</span>, <span class="st">"M"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Female"</span>, <span class="st">"Male"</span><span class="op">)</span><span class="op">)</span>, 
-         RACE <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/tools/toTitleCase.html">toTitleCase</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="va">RACE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> 
+<code class="sourceCode R"><span class="va">ana</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    SEX <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">SEX</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"F"</span>, <span class="st">"M"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Female"</span>, <span class="st">"Male"</span><span class="op">)</span><span class="op">)</span>,
+    RACE <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/tools/toTitleCase.html">toTitleCase</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="va">RACE</span><span class="op">)</span><span class="op">)</span>
+  <span class="op">)</span>
 
 <span class="va">tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/table1/man/table1.html">table1</a></span><span class="op">(</span><span class="op">~</span> <span class="va">SEX</span> <span class="op">+</span> <span class="va">AGE</span> <span class="op">+</span> <span class="va">RACE</span> <span class="op">|</span> <span class="va">TRT01P</span>, data <span class="op">=</span> <span class="va">ana</span><span class="op">)</span>
 <span class="va">tbl</span></code></pre></div>
@@ -191,13 +193,14 @@ that only contain ASCII character
 recommended by regulatory agencies.
 <code>tbl_base</code> is used as input for <code>r2rtf</code> to create final report.</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">tbl_base</span> <span class="op">&lt;-</span> <span class="va">tbl</span> <span class="op">%&gt;%</span> 
-              <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-              <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-              <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span>, 
-                      <span class="op">~</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fu"><a href="https://rdrr.io/r/base/utf8Conversion.html">intToUtf8</a></span><span class="op">(</span><span class="fl">160</span><span class="op">)</span>, <span class="st">" "</span><span class="op">)</span> <span class="op">)</span> 
-                    <span class="op">)</span> 
-              
+<code class="sourceCode R"><span class="va">tbl_base</span> <span class="op">&lt;-</span> <span class="va">tbl</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span>,
+    <span class="op">~</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fu"><a href="https://rdrr.io/r/base/utf8Conversion.html">intToUtf8</a></span><span class="op">(</span><span class="fl">160</span><span class="op">)</span>, <span class="st">" "</span><span class="op">)</span>
+  <span class="op">)</span><span class="op">)</span>
+
 
 <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">tbl_base</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">tbl_base</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/utf8Conversion.html">intToUtf8</a></span><span class="op">(</span><span class="fl">160</span><span class="op">)</span>, <span class="st">" "</span><span class="op">)</span>
 <span class="va">tbl_base</span></code></pre></div>
@@ -226,20 +229,26 @@ in the table.</p>
 <span class="va">colheader2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">tbl_base</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span>, collapse <span class="op">=</span> <span class="st">"|"</span><span class="op">)</span>
 <span class="va">rel_width</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2.5</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span>
 
-<span class="va">tbl_base</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span> <span class="op">%&gt;%</span> 
-      <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_title.html">rtf_title</a></span><span class="op">(</span><span class="st">"Participant Baseline Characteristics"</span>, 
-                <span class="st">"(All Participants Randomized)"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-      <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_colheader.html">rtf_colheader</a></span><span class="op">(</span><span class="va">colheader1</span>, 
-                    col_rel_width <span class="op">=</span> <span class="va">rel_width</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-      <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_colheader.html">rtf_colheader</a></span><span class="op">(</span><span class="va">colheader2</span>, 
-                    border_top <span class="op">=</span> <span class="st">""</span>,
-                    col_rel_width <span class="op">=</span> <span class="va">rel_width</span><span class="op">)</span> <span class="op">%&gt;%</span>
-      <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_body.html">rtf_body</a></span><span class="op">(</span>col_rel_width <span class="op">=</span> <span class="va">rel_width</span>,
-               text_justification <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"l"</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"c"</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span>, 
-               text_indent_first <span class="op">=</span> <span class="op">-</span><span class="fl">240</span>,
-               text_indent_left <span class="op">=</span> <span class="fl">180</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-      <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-      <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/tlf_base.rtf"</span><span class="op">)</span></code></pre></div>
+<span class="va">tbl_base</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_title.html">rtf_title</a></span><span class="op">(</span>
+    <span class="st">"Participant Baseline Characteristics"</span>,
+    <span class="st">"(All Participants Randomized)"</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_colheader.html">rtf_colheader</a></span><span class="op">(</span><span class="va">colheader1</span>,
+    col_rel_width <span class="op">=</span> <span class="va">rel_width</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_colheader.html">rtf_colheader</a></span><span class="op">(</span><span class="va">colheader2</span>,
+    border_top <span class="op">=</span> <span class="st">""</span>,
+    col_rel_width <span class="op">=</span> <span class="va">rel_width</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_body.html">rtf_body</a></span><span class="op">(</span>
+    col_rel_width <span class="op">=</span> <span class="va">rel_width</span>,
+    text_justification <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"l"</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"c"</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span>,
+    text_indent_first <span class="op">=</span> <span class="op">-</span><span class="fl">240</span>,
+    text_indent_left <span class="op">=</span> <span class="fl">180</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/tlf_base.rtf"</span><span class="op">)</span></code></pre></div>
 <embed src="tlf/tlf_base.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In conclusion, the procedure to generate demographic and baseline characteristics table is summarized as follows.</p>
 <ul>
 <li>Step 1: Read the data set.</li>
@@ -249,11 +258,11 @@ in the table.</p>
 </ul>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="population.html"><span class="header-section-number">4</span> Analysis Population</a></div>
+<div class="prev"><a href="population.html"><span class="header-section-number">4</span> Analysis population</a></div>
 <div class="next"><a href="efficacy.html"><span class="header-section-number">6</span> Efficacy</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#baseline-characteristics"><span class="header-section-number">5</span> Baseline Characteristics</a></li></ul>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#baseline-characteristics"><span class="header-section-number">5</span> Baseline characteristics</a></li></ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
