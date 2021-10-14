@@ -1,7 +1,7 @@
 {
   "version": 1,
   "locale": "en_US",
-  "platform": "4.0.1",
+  "platform": "4.1.1",
   "metadata": {
     "appmode": "rmd-static",
     "primary_rmd": "index.Rmd",
