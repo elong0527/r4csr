@@ -72,7 +72,7 @@ The dataset structure follows
 In this part, we mainly use the R packages below to illustrate 
 how to deliver TLFs in CSR. 
 
-- [tidyverse](https://www.tidyverse.org/): prepare reporting ready datasets. 
+- [tidyverse](https://www.tidyverse.org/): prepare datasets ready for reporting. 
 - [r2rtf](https://merck.github.io/r2rtf/): create RTF outputs
 
 ### tidyverse 
