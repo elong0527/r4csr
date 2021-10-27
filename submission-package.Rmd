@@ -25,41 +25,52 @@ You can download or clone it:
 git clone https://github.com/elong0527/esubdemo.git
 ```
 
+The demo submission package (not to be confused with the R package above)
+is [`ectddemo`](https://github.com/elong0527/ectddemo), also available on GitHub.
+You can download or clone it:
+
+```bash
+git clone https://github.com/elong0527/ectddemo.git
+```
+
+We will assume the paths to the two folders are `esubdemo/` and `ectddemo/` below.
+
 ## The whole game
 
 In eCTD deliverable, the analysis dataset and source code are saved 
-under the module 5 folder `m5/datasets/<study>/analysis/adam`.
-
-For illustration and preparation purpose, we temporarily save
-the under the `vignettes/esub/` folder.
-
-The files in two directories within the `adam/` folder
-are critical for documenting analysis using R: `datasets/`
-and `programs/`. 
+under the eCTD module 5 (clinical study reports) folder
 
 ```
-vignettes/esub/analysis/adam/
+ectddemo/m5/datasets/<study>/analysis/adam/
+```
+
+The files in two directories within the `adam/` folder
+are critical for documenting analysis using R: `datasets/` and `programs/`.
+
+```
+ectddemo/m5/datasets/ectddemo/analysis/adam/
 ├── datasets
-│   ├── adrg.docx
-│   ├── analysis-results-metadata.docx
-│   ├── define-v1-updated-html.xsl
-│   ├── define.pdf
-│   └── define.xml
+│   ├── adae.xpt
+│   ├── ...
+│   ├── adrg.pdf
+│   ├── analysis-results-metadata.pdf
+│   ├── define.xml
+│   └── define2-0-0.xsl
 └── programs
+    ├── r0pkgs.txt
     ├── tlf-01-disposition.txt
     ├── tlf-02-population.txt
     ├── tlf-03-baseline.txt
     ├── tlf-04-efficacy.txt
     ├── tlf-05-ae-summary.txt
-    ├── tlf-06-ae-spec.txt
-    └── r0pkgs.txt
+    └── tlf-06-ae-spec.txt
 ```
 
 The special considerations for each component are listed below.
 
 ### `datasets`
 
-Folder path: `vignettes/esub/analysis/adam/datasets/`.
+Folder path: `ectddemo/m5/datasets/ectddemo/analysis/adam/datasets/`.
 
 - ADaM data in `.xpt` format: created by SAS or R.
 - `define.xml`: created by Pinnacle 21.
@@ -72,7 +83,7 @@ Folder path: `vignettes/esub/analysis/adam/datasets/`.
 
 ### `programs`
 
-Folder path: `vignettes/esub/analysis/adam/programs/`.
+Folder path: `ectddemo/m5/datasets/ectddemo/analysis/adam/programs/`.
 
 - `r0pkgs.txt`: contains all internally developed proprietary R packages.
 - Other `.txt` files: each contains R code for a specific analysis.
@@ -84,15 +95,15 @@ instructions defined in ADRG.
 
 A few things to pay attention to for passing compliance checks:
 
-- The filenames under `programs` should all use lower case
+- The filenames under `programs/` should all use lower case
 (with no underscores or other special characters).
 - The `.txt` files should only contain ASCII characters.
 This can be verified by `pkglite::verify_ascii()`
-- The `.docx` files will be converted to PDF files for formal submission.
+- Any `.docx` files should be converted to PDF files for formal submission.
 
 Now you have a general idea about the relevant components of the
 submission package. 
-We will focus on preparing the internal R packages in the following sections.
+We will start preparing the proprietary R packages in the following sections.
 
 ## Practical considerations for R package submissions
 
@@ -161,13 +172,13 @@ With packed packages, one can unpack and install them from the text file, too.
 ### Pack
 
 Let's pack the `esubdemo` package into a text file.
-Assume the source package path is `~/esubdemo/`,
+Assume the source package path is `esubdemo/`,
 you should be able to pack the package with a single pipe:
 
 ```{r, eval=FALSE}
 library("pkglite")
 
-"~/esubdemo/" %>%
+"esubdemo/" %>%
   collate(file_ectd(), file_auto("inst")) %>%
   pack(output = "r0pkgs.txt")
 ```
@@ -186,14 +197,16 @@ file.edit("r0pkgs.txt")
 knitr::include_graphics("images/preview-txt.png")
 ```
 
-What happened in the pipe? 
-The function `pkglite::collate()` evaluates a specified scope of folders and files defined by a list of **file specifications**, and generate a **file collection** object.
+What happened in the pipe?
+The function `pkglite::collate()` evaluates a specified scope of
+folders and files defined by a list of **file specifications**,
+and generate a **file collection** object.
 This file collection contains the metadata required to properly convert
 the files into text which is then used by `pkglite::pack()`.
 With this flow, you can define the scope of the R source package
 to be packed for submission in a flexible yet principled way.
 
-To pack multiple R packages, simply feed multiple file collection as inputs:
+To pack multiple R packages, simply feed multiple file collections as inputs:
 
 ```{r, eval=FALSE}
 pack(
@@ -203,20 +216,20 @@ pack(
 )
 ```
 
-The packages are always packed in the specified order and are always
+The R packages are always packed in the specified order and are always
 unpacked and installed in the same order. Therefore, make sure to
 pack the low-level dependencies first.
 
 For more details on how to customize file specifications
 and operate on file collections,
 check out the vignette
-[Generate File Specifications](https://merck.github.io/pkglite/articles/filespec.html)
+[generate file specifications](https://merck.github.io/pkglite/articles/filespec.html)
 and
-[Curate File Collections](https://merck.github.io/pkglite/articles/filecollection.html).
+[curate file collections](https://merck.github.io/pkglite/articles/filecollection.html).
 
 ### Verify
 
-You should always verify if the file only contains ASCII characters:
+You should always verify if the text file only contains ASCII characters:
 
 ```{r, eval=FALSE}
 verify_ascii("r0pkgs.txt")
@@ -231,15 +244,15 @@ One can unpack and install the package from the text file, too.
 For example:
 
 ```{r, eval = FALSE}
-pkglite::unpack("r0pkgs.txt", output = "/tmp/", install = TRUE)
+unpack("r0pkgs.txt", output = "/tmp/", install = TRUE)
 ```
 
 If successfully tested, this command will be used in the ADRG instructions
 for restoring and installing the packed R package(s).
 
-You can then proceed to save the file `r0pkgs.txt` to the folder
-`esub/analysis/adam/programs` (or specify the output text file
-path above directly).
+You can then proceed to move the file `r0pkgs.txt` to the folder
+`ectddemo/m5/datasets/ectddemo/analysis/adam/programs`,
+or specify the output text file path above directly.
 
 ## Prepare analysis programs for submission
 
@@ -248,17 +261,23 @@ into `.txt` files and saved them in the `programs` folder.
 You can do this with `knitr::purl()`:
 
 ```{r, eval=FALSE}
-input_path <- "~/esubdemo/vignettes/"
-output_path <- "~/ectddemo/m5/datasets/ectddemo/analysis/adam/programs/"
-knitr::purl(file.path(input_path, "tlf-01-disposition.Rmd"), output = file.path(output_path, "tlf-01-disposition.txt"))
-knitr::purl(file.path(input_path, "tlf-02-population.Rmd"), output = file.path(output_path, "tlf-02-population.txt"))
-knitr::purl(file.path(input_path, "tlf-03-baseline.Rmd"), output = file.path(output_path, "tlf-03-baseline.txt"))
-knitr::purl(file.path(input_path, "tlf-04-efficacy.Rmd"), output = file.path(output_path, "tlf-04-efficacy.txt"))
-knitr::purl(file.path(input_path, "tlf-05-ae-summary.Rmd"), output = file.path(output_path, "tlf-05-ae-summary.txt"))
-knitr::purl(file.path(input_path, "tlf-06-ae-spec.Rmd"), output = file.path(output_path, "tlf-06-ae-spec.txt"))
-```
+input_path <- "esubdemo/vignettes/"
+output_path <- "ectddemo/m5/datasets/ectddemo/analysis/adam/programs/"
 
-Run this on all the R Markdown files under `vignettes/`.
+convert_rmd <- function(filename, input_dir, output_dir) {
+  knitr::purl(
+    file.path(input_dir, paste0(filename, ".Rmd")),
+    output = file.path(output_dir, paste0(filename, ".txt"))
+  )
+}
+
+"tlf-01-disposition" %>% convert_rmd(input_path, output_path)
+"tlf-02-population" %>% convert_rmd(input_path, output_path)
+"tlf-03-baseline" %>% convert_rmd(input_path, output_path)
+"tlf-04-efficacy" %>% convert_rmd(input_path, output_path)
+"tlf-05-ae-summary" %>% convert_rmd(input_path, output_path)
+"tlf-06-ae-spec" %>% convert_rmd(input_path, output_path)
+```
 
 Optionally, you can add a header to the individual `.txt` files to explain
 the context and help the reviewers rerun the code. For example:
@@ -284,19 +303,20 @@ header <- readLines(textConnection("# Note to Reviewer
 # path = list(adam = \"/path/to/esub/analysis/adam/datasets\") # Modify to use actual location
 # path$outtable = path$outgraph = \".\" # Outputs saved to the current folder"))
 
-append_header <- function(file, header) {
+append_header <- function(filename, output_dir, header) {
+  file <- file.path(output_dir, paste0(filename, ".txt"))
   x <- readLines(file)
-  y <- c(header, "\n", x)
+  y <- c(header, "", x)
   writeLines(y, con = file)
   invisible(file)
 }
 
-file.path(output_path, "tlf-01-disposition.txt") %>% append_header(header)
-file.path(output_path, "tlf-02-population.txt") %>% append_header(header)
-file.path(output_path, "tlf-03-baseline.txt") %>% append_header(header)
-file.path(output_path, "tlf-04-efficacy.txt") %>% append_header(header)
-file.path(output_path, "tlf-05-ae-summary.txt") %>% append_header(header)
-file.path(output_path, "tlf-06-ae-spec.txt") %>% append_header(header)
+"tlf-01-disposition" %>% append_header(output_path, header)
+"tlf-02-population" %>% append_header(output_path, header)
+"tlf-03-baseline" %>% append_header(output_path, header)
+"tlf-04-efficacy" %>% append_header(output_path, header)
+"tlf-05-ae-summary" %>% append_header(output_path, header)
+"tlf-06-ae-spec" %>% append_header(output_path, header)
 ```
 
 ## Update ADRG
@@ -305,11 +325,10 @@ After we converted the R packages and R Markdown files into the appropriate
 formats and verified that they can be restored and executed correctly,
 we should update the ADRG to provide guidelines on how to use them.
 
-Specifically, we need to update two sections.
-The first is the "Macro Programs" section, where
-R and R package versions with a snapshot date are provided.
+Specifically, we need to update two sections in ADRG.
 
-For example:
+The first section is "Macro Programs", where R and R package versions
+with a snapshot date are provided. For example:
 
 ```markdown
 7.x Macro Programs
@@ -317,7 +336,7 @@ For example:
 Submitted R programs have [specific patterns] in filenames.
 All internally developed R functions are saved in the r0pkgs.txt file.
 The recommended steps to unpack these R functions for analysis output
-programs are described in Appendix.
+programs are described in the Appendix.
 
 The table below contains the software version and instructions
 for executing the R analysis output programs:
@@ -399,12 +418,15 @@ To reproduce the analysis results, rerun the following programs:
 - tlf-06-ae-spec.txt
 ```
 
+An example ADRG following this template can be found in
+[ectddemo](https://github.com/elong0527/ectddemo/blob/master/m5/datasets/ectddemo/analysis/adam/datasets/adrg.pdf).
+
 ## Update ARM
 
 The ARM (Analysis Results Metadata) should provide specific information
 related to R in two sections:
 
-- Section 2: indicate the **Programming Language**
+- Section 2: indicate the **Programming Language**;
 - Section 3: document the details of the R programs listed in section 3.
 
 For example, in ARM section 2, "Analysis Results Metadata Summary":
