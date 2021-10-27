@@ -16,8 +16,14 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+```{r}
+library(dplyr)
+library(tidyr)
+library(r2rtf)
+```
+
 ```{r, eval = FALSE, include = FALSE}
-rmarkdown::render("slides/workshop-slides.Rmd")
+rmarkdown::render("workshop-slides.Rmd")
 ```
 
 # Welcome 
@@ -28,9 +34,9 @@ In this workshop, we have three parts:
 
 - Delivering TLFs in CSR (Yilong Zhang)
   + Session 1 (45 min)
-  + Break (10 min)
+  + Break and/or Exercise (20 min)
   + Session 2 (45 min)
-  + Break (20 min) 
+  + Break (10 min) 
 - Clinical trial project (Nan Xiao)
   + Session 3 (30 min)
   + Break (10 min)
@@ -45,6 +51,34 @@ In this workshop, we have three parts:
 
 - Some slides need to be scrolled down to see the full content. 
 
+## Training Objective 
+
+- Learning how to create tables for clinical study reports.
+- Learning how to organize a clinical development project.
+- Learning how to prepare eCTD submission package to FDA. 
+
+> The tool, process and format may be different in different organization/company.
+> We only provide a recommended way to address them.  
+
+## Acknowledgement 
+
+- Team members from Merck & Co. 
+  + [We are hiring!](https://jobs.merck.com/bards) 
+  + Contact us if interested. 
+
+- [Contributors](https://r4csr.org/) of the training materials.
+  + Please consider to submit issues or PR in the repo. 
+
+- [R consortium](https://www.r-consortium.org/projects/isc-working-groups)
+  + R validation hub
+  + Submission working group
+  + R Tables for Regulatory Submission (RTRS) working group
+  + Please consider to join and contribute to a working group. 
+
+- R / Pharma organizers
+  + It is a fun and productive annual gathering. 
+  + Please consider to share story and use cases to enlarge the community.
+  
 ## Preparation 
 
 In this workshop, we assume you have 
@@ -64,12 +98,21 @@ install.packages(c(
 ## Resource
 
 - Training Material: https://r4csr.org/
-- Demo project: https://github.com/elong0527/esubdemo
-- R Consortium FDA submission pilot: https://github.com/RConsortium/submissions-pilot1
+- Demo project: 
+  + Analysis project: https://github.com/elong0527/esubdemo
+  + eCTD submission package: https://github.com/elong0527/ectddemo
+- R Consortium FDA submission pilot: 
+  + https://github.com/RConsortium/submissions-pilot1
 
+- During the workshop, we will use `esubdemo` project.
+  + `esubdemo` is shared in RStudio Cloud (https://rstudio.cloud/) 
+  + Project link will be shared in chat
+  + Post questions in group chat. 
+  
 ## Philosophy 
 
-We share the same philosophy described in [Section 1.1 of R Packages book](https://r-pkgs.org/intro.html?q=Marwick#intro-phil) and quote here.
+We share the same philosophy described in 
+[Section 1.1 of R Packages book](https://r-pkgs.org/intro.html?q=Marwick#intro-phil) and quote here.
 
 - "Anything that can be automated, should be automated." 
 - "Do as little as possible by hand. Do as much as possible with functions." 
@@ -105,23 +148,93 @@ visualize and analyze data in R.
 
 - `r2rtf`: an R package to create production ready tables and figures in RTF format.
 
-## r2rtf Motivation
+# r2rtf Introduction 
+
+## Motivation
 
 In the pharmaceutical industry, RTF/Microsoft Word play a central role 
 in preparing clinical study reports  
+
+- [ICH E3 Structure and Content of Clinical Study Reports](https://database.ich.org/sites/default/files/E3_Guideline.pdf)
 
 Different organization can have different table standards
 
 - E.g., Table layout, Font size, Border type, Footnote, Data source
 
+- `r2rtf` is an R package to create production-ready tables and figures in RTF format.
+The R package is designed to 
+
 `r2rtf` is designed to:
 
-- Generate highly customized tables
-- Limit package dependency
-- Target regulatory deliverables   
-- Support pipes (`%>%`) 
+- provide simple "verb" functions that correspond to each component of a table, 
+  to help you translate a data frame to a table in RTF file.
+- enable pipes (`%>%`). 
+- only focus on the **table format**. 
+  Data manipulation and analysis shall be handled by other R packages. (e.g. `tidyverse`)
 
-- `r2rtf` Introduction: https://r4csr.org/overview.html#r2rtf
+## Workflow
+
+Before creating an RTF table we need to:
+
+- Figure out table layout. 
+
+- Split the layout into small tasks in the form of a computer program.
+
+- Execute the program.
+
+## Minimal Example 
+
+`r2rtf` is designed to enable pipes (`%>%`) 
+
+```{r, echo = TRUE, eval = FALSE}
+head(iris) %>%
+  rtf_body() %>%                     # Step 1 Add table attributes 
+  rtf_encode() %>%                   # Step 2 Convert attributes to RTF encode 
+  write_rtf("minimal.rtf")           # Step 3 Write to a .rtf file
+```
+
+```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("minimal.pdf")
+```
+
+## Package Overview
+
+`r2rtf` package provides the flexibility to customize table appearance for 
+
+- **Table component**: title, column header, footnote, etc.
+- **Table cell style**: size, border type, color, font size, text color, alignment, etc.
+- **Flexible control**: the specification of the cell style can be row or column vectorized.
+- **Complicated format**: pagination, section grouping, multiple table concatenations, etc.
+
+`r2rtf` package also provides the flexibility to convert figures in RTF format.
+
+## Simple Example - Adverse Events  
+
+`r2rtf` only focuses on **table format**. 
+Data manipulation and analysis shall be handled by other R packages. (e.g. `tidyverse`)
+  
+- Let's refer examples in the [Section 2.4.2](https://r4csr.org/overview.html#r2rtf) 
+
+## Function Summary 
+
+`r2rtf` provides simple "verb" functions that correspond to each component of a table, 
+  to help you translate data frame to table in RTF file.
+
+```{r, echo = FALSE}
+r2rtf_funs <- read.csv("r2rtf-functions.csv")
+names(r2rtf_funs)[3] <- "Optional/required"
+knitr::kable(r2rtf_funs)
+```
+
+## Function Illustration 
+
+```{r, out.width="80%", echo = FALSE}
+knitr::include_graphics("function_summary.PNG")
+```
+
+# Break and/or Exercise (20 min)
+
+# CSR Examples 
 
 ## Disposition Table
 
@@ -130,8 +243,6 @@ https://r4csr.org/disposition.html
 ## Analysis Population
 
 https://r4csr.org/population.html
-
-# Break (10 min)
 
 ## Baseline Characteristics
 
@@ -151,7 +262,7 @@ https://r4csr.org/specific-ae.html
 
 # Clinical Trial Project
 
-# Break (20 min)
+# Break (10 min)
 
 ## Overview
 
