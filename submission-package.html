@@ -330,11 +330,15 @@ path above directly).</p>
 into <code>.txt</code> files and saved them in the <code>programs</code> folder.
 You can do this with <code><a href="https://rdrr.io/pkg/knitr/man/knit.html">knitr::purl()</a></code>:</p>
 <div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit.html">purl</a></span><span class="op">(</span>
-  <span class="st">"tlf-01-disposition.Rmd"</span>,
-  output <span class="op">=</span> <span class="st">"esub/analysis/adam/programs/tlf-01-disposition.txt"</span>
-<span class="op">)</span></code></pre></div>
-<p>Repeat this for all the R Markdown files.</p>
+<code class="sourceCode R"><span class="va">input_path</span> <span class="op">&lt;-</span> <span class="st">"~/esubdemo/vignettes/"</span>
+<span class="va">output_path</span> <span class="op">&lt;-</span> <span class="st">"~/ectddemo/m5/datasets/ectddemo/analysis/adam/programs/"</span>
+<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit.html">purl</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">input_path</span>, <span class="st">"tlf-01-disposition.Rmd"</span><span class="op">)</span>, output <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">output_path</span>, <span class="st">"tlf-01-disposition.txt"</span><span class="op">)</span><span class="op">)</span>
+<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit.html">purl</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">input_path</span>, <span class="st">"tlf-02-population.Rmd"</span><span class="op">)</span>, output <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">output_path</span>, <span class="st">"tlf-02-population.txt"</span><span class="op">)</span><span class="op">)</span>
+<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit.html">purl</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">input_path</span>, <span class="st">"tlf-03-baseline.Rmd"</span><span class="op">)</span>, output <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">output_path</span>, <span class="st">"tlf-03-baseline.txt"</span><span class="op">)</span><span class="op">)</span>
+<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit.html">purl</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">input_path</span>, <span class="st">"tlf-04-efficacy.Rmd"</span><span class="op">)</span>, output <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">output_path</span>, <span class="st">"tlf-04-efficacy.txt"</span><span class="op">)</span><span class="op">)</span>
+<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit.html">purl</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">input_path</span>, <span class="st">"tlf-05-ae-summary.Rmd"</span><span class="op">)</span>, output <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">output_path</span>, <span class="st">"tlf-05-ae-summary.txt"</span><span class="op">)</span><span class="op">)</span>
+<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit.html">purl</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">input_path</span>, <span class="st">"tlf-06-ae-spec.Rmd"</span><span class="op">)</span>, output <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">output_path</span>, <span class="st">"tlf-06-ae-spec.txt"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>Run this on all the R Markdown files under <code>vignettes/</code>.</p>
 <p>Optionally, you can add a header to the individual <code>.txt</code> files to explain
 the context and help the reviewers rerun the code. For example:</p>
 <div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
@@ -345,6 +349,29 @@ the context and help the reviewers rerun the code. For example:</p>
 <span class="co">#</span>
 <span class="co"># path = list(adam = "/path/to/esub/analysis/adam/datasets") # Modify to use actual location</span>
 <span class="co"># path$outtable = path$outgraph = "." # Outputs saved to the current folder</span></code></pre></div>
+<p>To automate this process:</p>
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">header</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/textconnections.html">textConnection</a></span><span class="op">(</span><span class="st">"# Note to Reviewer
+# To rerun the code below, please refer to the ADRG appendix.
+# After the required packages are installed,
+# the path variable needs to be defined by using the example code below.
+#
+# path = list(adam = \"/path/to/esub/analysis/adam/datasets\") # Modify to use actual location
+# path$outtable = path$outgraph = \".\" # Outputs saved to the current folder"</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">append_header</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">file</span>, <span class="va">header</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span>
+  <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">header</span>, <span class="st">"\n"</span>, <span class="va">x</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/writeLines.html">writeLines</a></span><span class="op">(</span><span class="va">y</span>, con <span class="op">=</span> <span class="va">file</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/invisible.html">invisible</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">output_path</span>, <span class="st">"tlf-01-disposition.txt"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">append_header</span><span class="op">(</span><span class="va">header</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">output_path</span>, <span class="st">"tlf-02-population.txt"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">append_header</span><span class="op">(</span><span class="va">header</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">output_path</span>, <span class="st">"tlf-03-baseline.txt"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">append_header</span><span class="op">(</span><span class="va">header</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">output_path</span>, <span class="st">"tlf-04-efficacy.txt"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">append_header</span><span class="op">(</span><span class="va">header</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">output_path</span>, <span class="st">"tlf-05-ae-summary.txt"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">append_header</span><span class="op">(</span><span class="va">header</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">output_path</span>, <span class="st">"tlf-06-ae-spec.txt"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">append_header</span><span class="op">(</span><span class="va">header</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="update-adrg" class="section level2">
 <h2>
@@ -357,15 +384,15 @@ we should update the ADRG to provide guidelines on how to use them.</p>
 The first is the “Macro Programs” section, where
 R and R package versions with a snapshot date are provided.</p>
 <p>For example:</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb130-1"><a href="submission-package.html#cb130-1"></a>7.x Macro Programs</span>
-<span id="cb130-2"><a href="submission-package.html#cb130-2"></a></span>
-<span id="cb130-3"><a href="submission-package.html#cb130-3"></a>Submitted R programs have [specific patterns] in filenames.</span>
-<span id="cb130-4"><a href="submission-package.html#cb130-4"></a>All internally developed R functions are saved in the r0pkgs.txt file.</span>
-<span id="cb130-5"><a href="submission-package.html#cb130-5"></a>The recommended steps to unpack these R functions for analysis output</span>
-<span id="cb130-6"><a href="submission-package.html#cb130-6"></a>programs are described in Appendix.</span>
-<span id="cb130-7"><a href="submission-package.html#cb130-7"></a></span>
-<span id="cb130-8"><a href="submission-package.html#cb130-8"></a>The table below contains the software version and instructions</span>
-<span id="cb130-9"><a href="submission-package.html#cb130-9"></a>for executing the R analysis output programs:</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb131-1"><a href="submission-package.html#cb131-1"></a>7.x Macro Programs</span>
+<span id="cb131-2"><a href="submission-package.html#cb131-2"></a></span>
+<span id="cb131-3"><a href="submission-package.html#cb131-3"></a>Submitted R programs have [specific patterns] in filenames.</span>
+<span id="cb131-4"><a href="submission-package.html#cb131-4"></a>All internally developed R functions are saved in the r0pkgs.txt file.</span>
+<span id="cb131-5"><a href="submission-package.html#cb131-5"></a>The recommended steps to unpack these R functions for analysis output</span>
+<span id="cb131-6"><a href="submission-package.html#cb131-6"></a>programs are described in Appendix.</span>
+<span id="cb131-7"><a href="submission-package.html#cb131-7"></a></span>
+<span id="cb131-8"><a href="submission-package.html#cb131-8"></a>The table below contains the software version and instructions</span>
+<span id="cb131-9"><a href="submission-package.html#cb131-9"></a>for executing the R analysis output programs:</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr class="header">
 <th>Software or Package</th>
@@ -400,67 +427,67 @@ R and R package versions with a snapshot date are provided.</p>
 </table></div>
 <p>The second section (Appendix) should include step-by-step instructions
 to reproduce the running environment and rerun analyses. For example:</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb131-1"><a href="submission-package.html#cb131-1"></a>Appendix: Instructions to Execute Analysis Program in R</span>
-<span id="cb131-2"><a href="submission-package.html#cb131-2"></a></span>
-<span id="cb131-3"><a href="submission-package.html#cb131-3"></a>1. <span class="st">Install R</span></span>
-<span id="cb131-4"><a href="submission-package.html#cb131-4"></a></span>
-<span id="cb131-5"><a href="submission-package.html#cb131-5"></a>Download and install R 4.1.1 for Windows from</span>
-<span id="cb131-6"><a href="submission-package.html#cb131-6"></a>https://cran.r-project.org/bin/windows/base/old/4.1.1/R-4.1.1-win.exe</span>
-<span id="cb131-7"><a href="submission-package.html#cb131-7"></a></span>
-<span id="cb131-8"><a href="submission-package.html#cb131-8"></a>2. <span class="st">Define Working Directory</span></span>
-<span id="cb131-9"><a href="submission-package.html#cb131-9"></a></span>
-<span id="cb131-10"><a href="submission-package.html#cb131-10"></a>Create a temporary working directory, for example, "C:\tempwork".</span>
-<span id="cb131-11"><a href="submission-package.html#cb131-11"></a>Copy all submitted R programs into the temporary folder.</span>
-<span id="cb131-12"><a href="submission-package.html#cb131-12"></a>All steps below should be executed in this working directory</span>
-<span id="cb131-13"><a href="submission-package.html#cb131-13"></a>represented as "." in the example R code below.</span>
-<span id="cb131-14"><a href="submission-package.html#cb131-14"></a></span>
-<span id="cb131-15"><a href="submission-package.html#cb131-15"></a>3. <span class="st">Specify R Package Repository</span></span>
-<span id="cb131-16"><a href="submission-package.html#cb131-16"></a></span>
-<span id="cb131-17"><a href="submission-package.html#cb131-17"></a>The R packages are based on CRAN at 2021-08-06. To install the exact</span>
-<span id="cb131-18"><a href="submission-package.html#cb131-18"></a>R package versions used in this project, run the code below to set</span>
-<span id="cb131-19"><a href="submission-package.html#cb131-19"></a>the snapshot repository.</span>
-<span id="cb131-20"><a href="submission-package.html#cb131-20"></a></span>
-<span id="cb131-21"><a href="submission-package.html#cb131-21"></a>options(repos = "https://mran.microsoft.com/snapshot/2021-08-06/")</span>
-<span id="cb131-22"><a href="submission-package.html#cb131-22"></a></span>
-<span id="cb131-23"><a href="submission-package.html#cb131-23"></a>4. <span class="st">Install Open-Source R Packages</span></span>
-<span id="cb131-24"><a href="submission-package.html#cb131-24"></a></span>
-<span id="cb131-25"><a href="submission-package.html#cb131-25"></a>In the same R session, install the required packages by running the code below.</span>
-<span id="cb131-26"><a href="submission-package.html#cb131-26"></a></span>
-<span id="cb131-27"><a href="submission-package.html#cb131-27"></a>install.packages(c("pkglite", "publicpkg1", "publicpkg2"))</span>
-<span id="cb131-28"><a href="submission-package.html#cb131-28"></a></span>
-<span id="cb131-29"><a href="submission-package.html#cb131-29"></a>5. <span class="st">Install Proprietary R Packages</span></span>
-<span id="cb131-30"><a href="submission-package.html#cb131-30"></a></span>
-<span id="cb131-31"><a href="submission-package.html#cb131-31"></a>All internal R packages are packed in the file r0pkgs.txt. In the same R session,</span>
-<span id="cb131-32"><a href="submission-package.html#cb131-32"></a>restore the package structures and install them by running the code below.</span>
-<span id="cb131-33"><a href="submission-package.html#cb131-33"></a>Adjust the output path as needed to use a writable local directory.</span>
-<span id="cb131-34"><a href="submission-package.html#cb131-34"></a></span>
-<span id="cb131-35"><a href="submission-package.html#cb131-35"></a>pkglite::unpack("r0pkgs.txt", output = ".", install = TRUE)</span>
-<span id="cb131-36"><a href="submission-package.html#cb131-36"></a></span>
-<span id="cb131-37"><a href="submission-package.html#cb131-37"></a>6. <span class="st">Update path to dataset and TLFs</span></span>
-<span id="cb131-38"><a href="submission-package.html#cb131-38"></a></span>
-<span id="cb131-39"><a href="submission-package.html#cb131-39"></a>INPUT path: to rerun the analysis programs, define the path variable</span>
-<span id="cb131-40"><a href="submission-package.html#cb131-40"></a></span>
-<span id="cb131-41"><a href="submission-package.html#cb131-41"></a>- <span class="st">Path for ADaM data: path$adam</span></span>
-<span id="cb131-42"><a href="submission-package.html#cb131-42"></a></span>
-<span id="cb131-43"><a href="submission-package.html#cb131-43"></a>OUTPUT path: to save the analysis results, define the path variable</span>
-<span id="cb131-44"><a href="submission-package.html#cb131-44"></a></span>
-<span id="cb131-45"><a href="submission-package.html#cb131-45"></a>- <span class="st">Path for output TLFs: path$output</span></span>
-<span id="cb131-46"><a href="submission-package.html#cb131-46"></a></span>
-<span id="cb131-47"><a href="submission-package.html#cb131-47"></a>All these paths need to be defined before executing the analysis program. For example:</span>
-<span id="cb131-48"><a href="submission-package.html#cb131-48"></a></span>
-<span id="cb131-49"><a href="submission-package.html#cb131-49"></a>path = list(adam = "/path/to/esub/analysis/adam/datasets/") # Modify to use actual location</span>
-<span id="cb131-50"><a href="submission-package.html#cb131-50"></a>path$outtable = path$outgraph = "." # Outputs saved to the current folder</span>
-<span id="cb131-51"><a href="submission-package.html#cb131-51"></a></span>
-<span id="cb131-52"><a href="submission-package.html#cb131-52"></a>7. <span class="st">Execute Analysis Program</span></span>
-<span id="cb131-53"><a href="submission-package.html#cb131-53"></a></span>
-<span id="cb131-54"><a href="submission-package.html#cb131-54"></a>To reproduce the analysis results, rerun the following programs:</span>
-<span id="cb131-55"><a href="submission-package.html#cb131-55"></a></span>
-<span id="cb131-56"><a href="submission-package.html#cb131-56"></a>- <span class="st">tlf-01-disposition.txt</span></span>
-<span id="cb131-57"><a href="submission-package.html#cb131-57"></a><span class="st">- tlf-02-population.txt</span></span>
-<span id="cb131-58"><a href="submission-package.html#cb131-58"></a><span class="st">- tlf-03-baseline.txt</span></span>
-<span id="cb131-59"><a href="submission-package.html#cb131-59"></a><span class="st">- tlf-04-efficacy.txt</span></span>
-<span id="cb131-60"><a href="submission-package.html#cb131-60"></a><span class="st">- tlf-05-ae-summary.txt</span></span>
-<span id="cb131-61"><a href="submission-package.html#cb131-61"></a><span class="st">- tlf-06-ae-spec.txt</span></span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb132-1"><a href="submission-package.html#cb132-1"></a>Appendix: Instructions to Execute Analysis Program in R</span>
+<span id="cb132-2"><a href="submission-package.html#cb132-2"></a></span>
+<span id="cb132-3"><a href="submission-package.html#cb132-3"></a>1. <span class="st">Install R</span></span>
+<span id="cb132-4"><a href="submission-package.html#cb132-4"></a></span>
+<span id="cb132-5"><a href="submission-package.html#cb132-5"></a>Download and install R 4.1.1 for Windows from</span>
+<span id="cb132-6"><a href="submission-package.html#cb132-6"></a>https://cran.r-project.org/bin/windows/base/old/4.1.1/R-4.1.1-win.exe</span>
+<span id="cb132-7"><a href="submission-package.html#cb132-7"></a></span>
+<span id="cb132-8"><a href="submission-package.html#cb132-8"></a>2. <span class="st">Define working directory</span></span>
+<span id="cb132-9"><a href="submission-package.html#cb132-9"></a></span>
+<span id="cb132-10"><a href="submission-package.html#cb132-10"></a>Create a temporary working directory, for example, "C:\tempwork".</span>
+<span id="cb132-11"><a href="submission-package.html#cb132-11"></a>Copy all submitted R programs into the temporary folder.</span>
+<span id="cb132-12"><a href="submission-package.html#cb132-12"></a>All steps below should be executed in this working directory</span>
+<span id="cb132-13"><a href="submission-package.html#cb132-13"></a>represented as "." in the example R code below.</span>
+<span id="cb132-14"><a href="submission-package.html#cb132-14"></a></span>
+<span id="cb132-15"><a href="submission-package.html#cb132-15"></a>3. <span class="st">Specify R package repository</span></span>
+<span id="cb132-16"><a href="submission-package.html#cb132-16"></a></span>
+<span id="cb132-17"><a href="submission-package.html#cb132-17"></a>The R packages are based on CRAN at 2021-08-06. To install the exact</span>
+<span id="cb132-18"><a href="submission-package.html#cb132-18"></a>R package versions used in this project, run the code below to set</span>
+<span id="cb132-19"><a href="submission-package.html#cb132-19"></a>the snapshot repository.</span>
+<span id="cb132-20"><a href="submission-package.html#cb132-20"></a></span>
+<span id="cb132-21"><a href="submission-package.html#cb132-21"></a>options(repos = "https://mran.microsoft.com/snapshot/2021-08-06/")</span>
+<span id="cb132-22"><a href="submission-package.html#cb132-22"></a></span>
+<span id="cb132-23"><a href="submission-package.html#cb132-23"></a>4. <span class="st">Install open-source R packages</span></span>
+<span id="cb132-24"><a href="submission-package.html#cb132-24"></a></span>
+<span id="cb132-25"><a href="submission-package.html#cb132-25"></a>In the same R session, install the required packages by running the code below.</span>
+<span id="cb132-26"><a href="submission-package.html#cb132-26"></a></span>
+<span id="cb132-27"><a href="submission-package.html#cb132-27"></a>install.packages(c("pkglite", "publicpkg1", "publicpkg2"))</span>
+<span id="cb132-28"><a href="submission-package.html#cb132-28"></a></span>
+<span id="cb132-29"><a href="submission-package.html#cb132-29"></a>5. <span class="st">Install proprietary R packages</span></span>
+<span id="cb132-30"><a href="submission-package.html#cb132-30"></a></span>
+<span id="cb132-31"><a href="submission-package.html#cb132-31"></a>All internal R packages are packed in the file r0pkgs.txt. In the same R session,</span>
+<span id="cb132-32"><a href="submission-package.html#cb132-32"></a>restore the package structures and install them by running the code below.</span>
+<span id="cb132-33"><a href="submission-package.html#cb132-33"></a>Adjust the output path as needed to use a writable local directory.</span>
+<span id="cb132-34"><a href="submission-package.html#cb132-34"></a></span>
+<span id="cb132-35"><a href="submission-package.html#cb132-35"></a>pkglite::unpack("r0pkgs.txt", output = ".", install = TRUE)</span>
+<span id="cb132-36"><a href="submission-package.html#cb132-36"></a></span>
+<span id="cb132-37"><a href="submission-package.html#cb132-37"></a>6. <span class="st">Update path to dataset and TLFs</span></span>
+<span id="cb132-38"><a href="submission-package.html#cb132-38"></a></span>
+<span id="cb132-39"><a href="submission-package.html#cb132-39"></a>INPUT path: to rerun the analysis programs, define the path variable</span>
+<span id="cb132-40"><a href="submission-package.html#cb132-40"></a></span>
+<span id="cb132-41"><a href="submission-package.html#cb132-41"></a>- <span class="st">Path for ADaM data: path$adam</span></span>
+<span id="cb132-42"><a href="submission-package.html#cb132-42"></a></span>
+<span id="cb132-43"><a href="submission-package.html#cb132-43"></a>OUTPUT path: to save the analysis results, define the path variable</span>
+<span id="cb132-44"><a href="submission-package.html#cb132-44"></a></span>
+<span id="cb132-45"><a href="submission-package.html#cb132-45"></a>- <span class="st">Path for output TLFs: path$output</span></span>
+<span id="cb132-46"><a href="submission-package.html#cb132-46"></a></span>
+<span id="cb132-47"><a href="submission-package.html#cb132-47"></a>All these paths need to be defined before executing the analysis program. For example:</span>
+<span id="cb132-48"><a href="submission-package.html#cb132-48"></a></span>
+<span id="cb132-49"><a href="submission-package.html#cb132-49"></a>path = list(adam = "/path/to/esub/analysis/adam/datasets/") # Modify to use actual location</span>
+<span id="cb132-50"><a href="submission-package.html#cb132-50"></a>path$outtable = path$outgraph = "." # Outputs saved to the current folder</span>
+<span id="cb132-51"><a href="submission-package.html#cb132-51"></a></span>
+<span id="cb132-52"><a href="submission-package.html#cb132-52"></a>7. <span class="st">Execute analysis program</span></span>
+<span id="cb132-53"><a href="submission-package.html#cb132-53"></a></span>
+<span id="cb132-54"><a href="submission-package.html#cb132-54"></a>To reproduce the analysis results, rerun the following programs:</span>
+<span id="cb132-55"><a href="submission-package.html#cb132-55"></a></span>
+<span id="cb132-56"><a href="submission-package.html#cb132-56"></a>- <span class="st">tlf-01-disposition.txt</span></span>
+<span id="cb132-57"><a href="submission-package.html#cb132-57"></a><span class="st">- tlf-02-population.txt</span></span>
+<span id="cb132-58"><a href="submission-package.html#cb132-58"></a><span class="st">- tlf-03-baseline.txt</span></span>
+<span id="cb132-59"><a href="submission-package.html#cb132-59"></a><span class="st">- tlf-04-efficacy.txt</span></span>
+<span id="cb132-60"><a href="submission-package.html#cb132-60"></a><span class="st">- tlf-05-ae-summary.txt</span></span>
+<span id="cb132-61"><a href="submission-package.html#cb132-61"></a><span class="st">- tlf-06-ae-spec.txt</span></span></code></pre></div>
 </div>
 <div id="update-arm" class="section level2">
 <h2>
