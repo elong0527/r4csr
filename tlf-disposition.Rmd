@@ -1,7 +1,7 @@
 # Disposition {#disposition}
 
 Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf), 
-A summary needs to be provided to account for of all participants who entered the study in Section 10.1, Disposition of Participants.
+a summary needs to be provided to account for all participants who entered the study in Section 10.1, Disposition of Participants.
 
 The disposition of participant reports the numbers of participants who were randomized, 
 and who entered and completed each phase of the study. 
@@ -172,7 +172,7 @@ tbl_disp %>%
 knitr::include_graphics("tlf/tbl_disp.pdf")
 ```
 
-The procedure to generate a disposition table can be summarized as follow:
+The procedure to generate a disposition table can be summarized as follows:
 
 - Step 1: Read subject level data into R, i.e. `adsl`.
 - Step 2: Count participants in the analysis population and name the dataset `n_rand`.
