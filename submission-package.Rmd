@@ -248,13 +248,17 @@ into `.txt` files and saved them in the `programs` folder.
 You can do this with `knitr::purl()`:
 
 ```{r, eval=FALSE}
-knitr::purl(
-  "tlf-01-disposition.Rmd",
-  output = "esub/analysis/adam/programs/tlf-01-disposition.txt"
-)
+input_path <- "~/esubdemo/vignettes/"
+output_path <- "~/ectddemo/m5/datasets/ectddemo/analysis/adam/programs/"
+knitr::purl(file.path(input_path, "tlf-01-disposition.Rmd"), output = file.path(output_path, "tlf-01-disposition.txt"))
+knitr::purl(file.path(input_path, "tlf-02-population.Rmd"), output = file.path(output_path, "tlf-02-population.txt"))
+knitr::purl(file.path(input_path, "tlf-03-baseline.Rmd"), output = file.path(output_path, "tlf-03-baseline.txt"))
+knitr::purl(file.path(input_path, "tlf-04-efficacy.Rmd"), output = file.path(output_path, "tlf-04-efficacy.txt"))
+knitr::purl(file.path(input_path, "tlf-05-ae-summary.Rmd"), output = file.path(output_path, "tlf-05-ae-summary.txt"))
+knitr::purl(file.path(input_path, "tlf-06-ae-spec.Rmd"), output = file.path(output_path, "tlf-06-ae-spec.txt"))
 ```
 
-Repeat this for all the R Markdown files.
+Run this on all the R Markdown files under `vignettes/`.
 
 Optionally, you can add a header to the individual `.txt` files to explain
 the context and help the reviewers rerun the code. For example:
@@ -267,6 +271,32 @@ the context and help the reviewers rerun the code. For example:
 #
 # path = list(adam = "/path/to/esub/analysis/adam/datasets") # Modify to use actual location
 # path$outtable = path$outgraph = "." # Outputs saved to the current folder
+```
+
+To automate this process:
+
+```{r, eval=FALSE}
+header <- readLines(textConnection("# Note to Reviewer
+# To rerun the code below, please refer to the ADRG appendix.
+# After the required packages are installed,
+# the path variable needs to be defined by using the example code below.
+#
+# path = list(adam = \"/path/to/esub/analysis/adam/datasets\") # Modify to use actual location
+# path$outtable = path$outgraph = \".\" # Outputs saved to the current folder"))
+
+append_header <- function(file, header) {
+  x <- readLines(file)
+  y <- c(header, "\n", x)
+  writeLines(y, con = file)
+  invisible(file)
+}
+
+file.path(output_path, "tlf-01-disposition.txt") %>% append_header(header)
+file.path(output_path, "tlf-02-population.txt") %>% append_header(header)
+file.path(output_path, "tlf-03-baseline.txt") %>% append_header(header)
+file.path(output_path, "tlf-04-efficacy.txt") %>% append_header(header)
+file.path(output_path, "tlf-05-ae-summary.txt") %>% append_header(header)
+file.path(output_path, "tlf-06-ae-spec.txt") %>% append_header(header)
 ```
 
 ## Update ADRG
@@ -313,14 +343,14 @@ Appendix: Instructions to Execute Analysis Program in R
 Download and install R 4.1.1 for Windows from
 https://cran.r-project.org/bin/windows/base/old/4.1.1/R-4.1.1-win.exe
 
-2. Define Working Directory
+2. Define working directory
 
 Create a temporary working directory, for example, "C:\tempwork".
 Copy all submitted R programs into the temporary folder.
 All steps below should be executed in this working directory
 represented as "." in the example R code below.
 
-3. Specify R Package Repository
+3. Specify R package repository
 
 The R packages are based on CRAN at 2021-08-06. To install the exact
 R package versions used in this project, run the code below to set
@@ -328,13 +358,13 @@ the snapshot repository.
 
 options(repos = "https://mran.microsoft.com/snapshot/2021-08-06/")
 
-4. Install Open-Source R Packages
+4. Install open-source R packages
 
 In the same R session, install the required packages by running the code below.
 
 install.packages(c("pkglite", "publicpkg1", "publicpkg2"))
 
-5. Install Proprietary R Packages
+5. Install proprietary R packages
 
 All internal R packages are packed in the file r0pkgs.txt. In the same R session,
 restore the package structures and install them by running the code below.
@@ -357,7 +387,7 @@ All these paths need to be defined before executing the analysis program. For ex
 path = list(adam = "/path/to/esub/analysis/adam/datasets/") # Modify to use actual location
 path$outtable = path$outgraph = "." # Outputs saved to the current folder
 
-7. Execute Analysis Program
+7. Execute analysis program
 
 To reproduce the analysis results, rerun the following programs:
 
