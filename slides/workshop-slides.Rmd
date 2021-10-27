@@ -16,7 +16,7 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-```{r}
+```{r, message=FALSE}
 library(dplyr)
 library(tidyr)
 library(r2rtf)
