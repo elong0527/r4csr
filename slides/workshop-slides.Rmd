@@ -16,6 +16,12 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+```{r}
+library(dplyr)
+library(tidyr)
+library(r2rtf)
+```
+
 ```{r, eval = FALSE, include = FALSE}
 rmarkdown::render("workshop-slides.Rmd")
 ```
@@ -142,23 +148,93 @@ visualize and analyze data in R.
 
 - `r2rtf`: an R package to create production ready tables and figures in RTF format.
 
-## r2rtf Motivation
+# r2rtf Introduction 
+
+## Motivation
 
 In the pharmaceutical industry, RTF/Microsoft Word play a central role 
 in preparing clinical study reports  
+
+- [ICH E3 Structure and Content of Clinical Study Reports](https://database.ich.org/sites/default/files/E3_Guideline.pdf)
 
 Different organization can have different table standards
 
 - E.g., Table layout, Font size, Border type, Footnote, Data source
 
+- `r2rtf` is an R package to create production-ready tables and figures in RTF format.
+The R package is designed to 
+
 `r2rtf` is designed to:
 
-- Generate highly customized tables
-- Limit package dependency
-- Target regulatory deliverables   
-- Support pipes (`%>%`) 
+- provide simple "verb" functions that correspond to each component of a table, 
+  to help you translate a data frame to a table in RTF file.
+- enable pipes (`%>%`). 
+- only focus on the **table format**. 
+  Data manipulation and analysis shall be handled by other R packages. (e.g. `tidyverse`)
 
-- `r2rtf` Introduction: https://r4csr.org/overview.html#r2rtf
+## Workflow
+
+Before creating an RTF table we need to:
+
+- Figure out table layout. 
+
+- Split the layout into small tasks in the form of a computer program.
+
+- Execute the program.
+
+## Minimal Example 
+
+`r2rtf` is designed to enable pipes (`%>%`) 
+
+```{r, echo = TRUE, eval = FALSE}
+head(iris) %>%
+  rtf_body() %>%                     # Step 1 Add table attributes 
+  rtf_encode() %>%                   # Step 2 Convert attributes to RTF encode 
+  write_rtf("minimal.rtf")           # Step 3 Write to a .rtf file
+```
+
+```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("minimal.pdf")
+```
+
+## Package Overview
+
+`r2rtf` package provides the flexibility to customize table appearance for 
+
+- **Table component**: title, column header, footnote, etc.
+- **Table cell style**: size, border type, color, font size, text color, alignment, etc.
+- **Flexible control**: the specification of the cell style can be row or column vectorized.
+- **Complicated format**: pagination, section grouping, multiple table concatenations, etc.
+
+`r2rtf` package also provides the flexibility to convert figures in RTF format.
+
+## Simple Example - Adverse Events  
+
+`r2rtf` only focuses on **table format**. 
+Data manipulation and analysis shall be handled by other R packages. (e.g. `tidyverse`)
+  
+- Let's refer examples in the [Section 2.4.2](https://r4csr.org/overview.html#r2rtf) 
+
+## Function Summary 
+
+`r2rtf` provides simple "verb" functions that correspond to each component of a table, 
+  to help you translate data frame to table in RTF file.
+
+```{r, echo = FALSE}
+r2rtf_funs <- read.csv("r2rtf-functions.csv")
+names(r2rtf_funs)[3] <- "Optional/required"
+knitr::kable(r2rtf_funs)
+```
+
+## Function Illustration 
+
+```{r, out.width="80%", echo = FALSE}
+knitr::include_graphics("function_summary.PNG")
+```
+
+# Break (10 min)
+
+# CSR Examples 
 
 ## Disposition Table
 
@@ -167,8 +243,6 @@ https://r4csr.org/disposition.html
 ## Analysis Population
 
 https://r4csr.org/population.html
-
-# Break (10 min)
 
 ## Baseline Characteristics
 
