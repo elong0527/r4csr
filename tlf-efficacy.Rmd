@@ -241,7 +241,7 @@ t1_rtf <- t1 %>%
   rtf_title(c(
     "ANCOVA of Change from Baseline Glucose (mmol/L) at Week 24",
     "LOCF",
-    "Efficacly Analysis Population"
+    "Efficacy Analysis Population"
   )) %>%
   rtf_colheader("| Baseline | Week 24 | Change from Baseline",
     col_rel_width = c(2.5, 2, 2, 4)

@@ -154,7 +154,7 @@ features can be found in the
 tbl_ae_spec %>%
   rtf_title(
     "Analysis of Participants With Specific Adverse Events",
-    "(Safty Analysis Population)"
+    "(Safety Analysis Population)"
   ) %>%
   rtf_colheader(" | Placebo | Xanomeline Low Dose| Xanomeline High Dose",
     col_rel_width = c(3, rep(1, 3))
