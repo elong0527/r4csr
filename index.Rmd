@@ -73,7 +73,8 @@ contributors <- c(
   person("Keaven", "Anderson", role = "aut"),
   person("Yujie", "Zhao", role = "ctr"),
   person("Aiming", "Yang", role = "ctr"),
-  person("Steven", "Haesendonckx", role = "ctr")
+  person("Steven", "Haesendonckx", role = "ctr"),
+  person("Howard", "Baek", role = "ctr")
 )
 ```
 
