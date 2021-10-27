@@ -34,9 +34,9 @@ In this workshop, we have three parts:
 
 - Delivering TLFs in CSR (Yilong Zhang)
   + Session 1 (45 min)
-  + Break (10 min)
+  + Break and/or Exercise (20 min)
   + Session 2 (45 min)
-  + Break (20 min) 
+  + Break (10 min) 
 - Clinical trial project (Nan Xiao)
   + Session 3 (30 min)
   + Break (10 min)
@@ -232,7 +232,7 @@ knitr::kable(r2rtf_funs)
 knitr::include_graphics("function_summary.PNG")
 ```
 
-# Break (10 min)
+# Break and/or Exercise (20 min)
 
 # CSR Examples 
 
@@ -262,7 +262,7 @@ https://r4csr.org/specific-ae.html
 
 # Clinical Trial Project
 
-# Break (20 min)
+# Break (10 min)
 
 ## Overview
 
