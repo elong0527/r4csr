@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ```{r, eval = FALSE, include = FALSE}
-rmarkdown::render("slides/workshop-slides.Rmd")
+rmarkdown::render("workshop-slides.Rmd")
 ```
 
 # Welcome 
@@ -45,6 +45,34 @@ In this workshop, we have three parts:
 
 - Some slides need to be scrolled down to see the full content. 
 
+## Training Objective 
+
+- Learning how to create tables for clinical study reports.
+- Learning how to organize a clinical development project.
+- Learning how to prepare eCTD submission package to FDA. 
+
+> The tool, process and format may be different in different organization/company.
+> We only provide a recommended way to address them.  
+
+## Acknowledgement 
+
+- Team members from Merck & Co. 
+  + [We are hiring!](https://jobs.merck.com/bards) 
+  + Contact us if interested. 
+
+- [Contributors](https://r4csr.org/) of the training materials.
+  + Please consider to submit issues or PR in the repo. 
+
+- [R consortium](https://www.r-consortium.org/projects/isc-working-groups)
+  + R validation hub
+  + Submission working group
+  + R Tables for Regulatory Submission (RTRS) working group
+  + Please consider to join and contribute to a working group. 
+
+- R / Pharma organizers
+  + It is a fun and productive annual gathering. 
+  + Please consider to share story and use cases to enlarge the community.
+  
 ## Preparation 
 
 In this workshop, we assume you have 
@@ -64,12 +92,21 @@ install.packages(c(
 ## Resource
 
 - Training Material: https://r4csr.org/
-- Demo project: https://github.com/elong0527/esubdemo
-- R Consortium FDA submission pilot: https://github.com/RConsortium/submissions-pilot1
+- Demo project: 
+  + Analysis project: https://github.com/elong0527/esubdemo
+  + eCTD submission package: https://github.com/elong0527/ectddemo
+- R Consortium FDA submission pilot: 
+  + https://github.com/RConsortium/submissions-pilot1
 
+- During the workshop, we will use `esubdemo` project.
+  + `esubdemo` is shared in RStudio Cloud (https://rstudio.cloud/) 
+  + Project link will be shared in chat
+  + Post questions in group chat. 
+  
 ## Philosophy 
 
-We share the same philosophy described in [Section 1.1 of R Packages book](https://r-pkgs.org/intro.html?q=Marwick#intro-phil) and quote here.
+We share the same philosophy described in 
+[Section 1.1 of R Packages book](https://r-pkgs.org/intro.html?q=Marwick#intro-phil) and quote here.
 
 - "Anything that can be automated, should be automated." 
 - "Do as little as possible by hand. Do as much as possible with functions." 
