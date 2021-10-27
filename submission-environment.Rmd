@@ -117,6 +117,76 @@ If using `cleanslate`, remember to update the ADRG instructions for
 executing the analysis programs in R. Mostly, this would simplify
 the first three steps on creating a project, installing a specific
 version of R, and configuring the package repo location.
+For example:
+
+```markdown
+Appendix: Instructions to Execute Analysis Program in R
+
+1. Setup R environment
+
+Open the existing R, install the required packages by running the code below.
+
+install.packages("cleanslate")
+
+Create a temporary working directory, for example, "C:\tempwork".
+Copy all submitted R programs into the temporary folder.
+In the same R session, run the code below to create a project
+with a portable R environment.
+
+cleanslate::use_cleanslate(
+  "C:/temp/",
+  r_version = "4.1.1",
+  from = "https://cran.r-project.org/",
+  repo = "https://mran.microsoft.com/snapshot/2021-08-06/"
+)
+
+2. Open the project
+
+Go to the working directory created above, double click the .Rproj file
+to open the project in RStudio. Follow the instructions to select the
+project-specific R version then restart RStudio. If successful,
+the R version and package repo should be printed as defined above.
+
+3. Install open-source R packages
+
+In the new R session, install the required packages by running the code below.
+
+install.packages(c("pkglite", "publicpkg1", "publicpkg2"))
+
+4. Install proprietary R packages
+
+All internal R packages are packed in the file r0pkgs.txt. In the same R session,
+restore the package structures and install them by running the code below.
+Adjust the output path as needed to use a writable local directory.
+
+pkglite::unpack("r0pkgs.txt", output = ".", install = TRUE)
+
+5. Update path to dataset and TLFs
+
+INPUT path: to rerun the analysis programs, define the path variable
+
+- Path for ADaM data: path$adam
+
+OUTPUT path: to save the analysis results, define the path variable
+
+- Path for output TLFs: path$output
+
+All these paths need to be defined before executing the analysis program. For example:
+
+path = list(adam = "/path/to/esub/analysis/adam/datasets/") # Modify to use actual location
+path$outtable = path$outgraph = "." # Outputs saved to the current folder
+
+6. Execute analysis program
+
+To reproduce the analysis results, rerun the following programs:
+
+- tlf-01-disposition.txt
+- tlf-02-population.txt
+- tlf-03-baseline.txt
+- tlf-04-efficacy.txt
+- tlf-05-ae-summary.txt
+- tlf-06-ae-spec.txt
+```
 
 ## RStudio addin
 
