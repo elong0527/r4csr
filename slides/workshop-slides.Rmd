@@ -22,10 +22,6 @@ library(tidyr)
 library(r2rtf)
 ```
 
-```{r, eval = FALSE, include = FALSE}
-rmarkdown::render("workshop-slides.Rmd")
-```
-
 # Welcome 
 
 ## Outline
@@ -228,8 +224,8 @@ knitr::kable(r2rtf_funs)
 
 ## Function Illustration 
 
-```{r, out.width="80%", echo = FALSE}
-knitr::include_graphics("function_summary.PNG")
+```{r, out.width="80%", echo=FALSE, fig.align="center"}
+knitr::include_graphics("function-summary.png")
 ```
 
 # Break and/or Exercise (20 min)
