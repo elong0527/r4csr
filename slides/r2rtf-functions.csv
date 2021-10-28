@@ -1,0 +1,11 @@
+Functions,Purpose,Optional/required
+rtf_page_header(),add page header,optional
+rtf_title(),add title,optional
+rtf_subline(),add subject line ,optional
+rtf_colheader(),add column header,optional
+rtf_body(),add table body,required
+rtf_footnote(),add footnote,optional
+rtf_source(),add data source,optional
+rtf_page_footer(),add page footer,optional 
+rtf_encode(),convert table into rtf code,required
+write_rtf(),write rtf code into .rtf file,required
