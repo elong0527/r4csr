@@ -206,7 +206,7 @@ knitr::include_graphics("minimal.pdf")
 
 ## Simple Example - Adverse Events  
 
-`r2rtf` only focuses on **table format**. 
+`r2rtf` only focus on **table format**. 
 Data manipulation and analysis shall be handled by other R packages. (e.g. `tidyverse`)
   
 - Let's refer to examples in the [Section 2.4.2](https://r4csr.org/overview.html#r2rtf) 
