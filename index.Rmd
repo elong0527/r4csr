@@ -32,6 +32,7 @@ library(pkglite)
 knitr::opts_chunk$set(echo = TRUE, message = FALSE)
 options(dplyr.summarise.inform = FALSE)
 file.copy("static/CNAME", "_book", overwrite = TRUE)
+fs::dir_copy("slides/", "_book/slides", overwrite = TRUE)
 ```
 
 ```{r, eval = FALSE, include=FALSE}
