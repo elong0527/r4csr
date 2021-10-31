@@ -114,7 +114,7 @@ n_complete
 ```
 
 In the code below, we calculate the number and percentage of participants who discontinued the study for different reasons.
-For display purposes, `paste0("    ", row)` is used to add leading spaces to mimick identation in the final report.
+For display purposes, `paste0("    ", row)` is used to add leading spaces to mimick indentation in the final report.
 
 ```{r}
 n_reason <- n_reason %>%
