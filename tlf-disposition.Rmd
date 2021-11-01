@@ -1,11 +1,11 @@
 # Disposition {#disposition}
 
-Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf), 
+Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
 a summary needs to be provided to account for all participants who entered the study in Section 10.1, Disposition of Participants.
 
-The disposition of participant reports the numbers of participants who were randomized, 
-and who entered and completed each phase of the study. 
-In addition, the reasons for all post-randomization discontinuations, 
+The disposition of participant reports the numbers of participants who were randomized,
+and who entered and completed each phase of the study.
+In addition, the reasons for all post-randomization discontinuations,
 grouped by treatment and by major reason (lost to follow-up, adverse event, poor compliance, etc.).
 
 ```{r}
@@ -24,7 +24,7 @@ knitr::include_graphics("tlf/tbl_disp.pdf")
 The first step is to read in the relevant datasets into R.
 For a disposition table, all the required information is saved in a Subject-level Analysis Dataset (ADSL).
 The dataset is provided in `sas7bdat` format that is a SAS data format currently used in many clinical trial analysis and reporting.
-The `haven` package is able to read in the dataset, while maintaining its attributes (e.g. variable labels).
+The `haven` package is able to read in the dataset, while maintaining its attributes (e.g., variable labels).
 
 ```{r}
 adsl <- read_sas("adam_data/adsl.sas7bdat")
@@ -78,7 +78,7 @@ n_disc <- adsl %>%
 n_disc
 ```
 
-In the code below, we calculate the number and percentage of 
+In the code below, we calculate the number and percentage of
 participants who completed/discontinued the study for different reasons.
 
 ```{r}
@@ -124,8 +124,8 @@ n_reason <- n_reason %>%
 n_reason
 ```
 
-Now we combined individual rows into the whole table for reporting purpose. 
-`tbl_disp` is used as input for `r2rtf` to create final report. 
+Now we combined individual rows into the whole table for reporting purpose.
+`tbl_disp` is used as input for `r2rtf` to create final report.
 
 ```{r}
 tbl_disp <- bind_rows(n_rand, n_complete, n_disc, n_reason) %>%
@@ -134,7 +134,7 @@ tbl_disp <- bind_rows(n_rand, n_complete, n_disc, n_reason) %>%
 tbl_disp
 ```
 
-In the below code, formatting of the final table is defined. 
+In the below code, formatting of the final table is defined.
 Items that were not discussed in the previous sections, are highlighted below.
 
 The `rtf_title` defines table title.
@@ -174,11 +174,11 @@ knitr::include_graphics("tlf/tbl_disp.pdf")
 
 The procedure to generate a disposition table can be summarized as follows:
 
-- Step 1: Read subject level data into R, i.e. `adsl`.
+- Step 1: Read subject level data into R, i.e., `adsl`.
 - Step 2: Count participants in the analysis population and name the dataset `n_rand`.
 - Step 3: Count the number and percentage of participants that discontinued the study, and name the dataset `n_disc`.
-- Step 4: Count the number and percentage of participants that discontinued the study for different reasons, 
+- Step 4: Count the number and percentage of participants that discontinued the study for different reasons,
   and name the dataset `n_reason`.
 - Step 5: Count the number and percentage of participants that completed the study, and name the dataset `n_complete`.
-- Step 6: Bind `n_rand`, `n_disc`, `n_reason` and `n_complete` by row. 
+- Step 6: Bind `n_rand`, `n_disc`, `n_reason`, and `n_complete` by row.
 - Step 7: Write the final table to RTF

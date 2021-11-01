@@ -4,15 +4,15 @@ Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guid
 we need to summarize critical demographic and baseline characteristics of the patients
 in Section 11.2, Demographic and Other Baseline Characteristics.
 
-In this chapter, we illustrate how to create a simplified 
+In this chapter, we illustrate how to create a simplified
 baseline characteristics table in a study.
 
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tlf_base.pdf")
 ```
 
-There is many R packages that can efficiently summarize baseline information.
-The [`table1`](https://github.com/benjaminrich/table1) R package is one of them. 
+There are many R packages that can efficiently summarize baseline information.
+The [`table1`](https://github.com/benjaminrich/table1) R package is one of them.
 
 ```{r}
 library(table1)
@@ -24,8 +24,8 @@ library(stringr)
 library(tools)
 ```
 
-As in previous chapters, we first read `adsl` dataset that contain all 
-required information for baseline characteristics table. 
+As in previous chapters, we first read the `adsl` dataset that contains all
+the required information for the baseline characteristics table.
 
 ```{r}
 adsl <- read_sas("adam_data/adsl.sas7bdat")
@@ -49,10 +49,10 @@ tbl <- table1(~ SEX + AGE + RACE | TRT01P, data = ana)
 tbl
 ```
 
-The code below transfer the output into a dataframe 
-that only contain ASCII character 
-recommended by regulatory agencies. 
-`tbl_base` is used as input for `r2rtf` to create final report. 
+The code below transfer the output into a dataframe
+that only contain ASCII character
+recommended by regulatory agencies.
+`tbl_base` is used as input for `r2rtf` to create final report.
 
 ```{r}
 tbl_base <- tbl %>%
@@ -68,13 +68,13 @@ names(tbl_base) <- str_replace_all(names(tbl_base), intToUtf8(160), " ")
 tbl_base
 ```
 
-We start to define the format of the output. We highlight items that 
+We start to define the format of the output. We highlight items that
 are not discussed in previous discussion.
 
 `text_indent_first` and `test_indent_left` are used to control the indent
-space of text. They are helpful when you need to control the white space 
-of a long sentence. For example, "AMERICAN INDIAN OR ALASKA NATIVE" 
-in the table. 
+space of text. They are helpful when you need to control the white space
+of a long sentence. For example, "AMERICAN INDIAN OR ALASKA NATIVE"
+in the table.
 
 ```{r}
 colheader1 <- paste(names(tbl_base), collapse = "|")
@@ -111,5 +111,5 @@ In conclusion, the procedure to generate demographic and baseline characteristic
 
 - Step 1: Read the data set.
 - Step 2: Use `table1::table1()` to get the baseline characteristics table.
-- Step 3: Transfer the output in Step 2 into a data frame that only contains ASCII character.
-- Step 4: Define the format of the rtf table by using R package `r2rtf`.
+- Step 3: Transfer the output in Step 2 into a data frame that only contains ASCII characters.
+- Step 4: Define the format of the RTF table by using the R package `r2rtf`.
