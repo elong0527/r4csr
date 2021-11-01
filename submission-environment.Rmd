@@ -1,11 +1,11 @@
 # Running environment {#running-environment}
 
-In the previous chapter, we have generated instructions to manually
+In the previous chapter, we generated instructions to manually
 create the running environments for reproducing the A&R deliverables.
 
 In this chapter, we will focus on automating the creation of
-the R environments with R code, to accelerate the dry run testing process,
-simplify the ADRG instructions, and make it easy to recreate
+the R environments with R code to accelerate the dry run testing process,
+simplifying the ADRG instructions, and making it easy to recreate
 different environment settings with reproducible analysis results.
 
 ## Prerequisites
@@ -108,7 +108,7 @@ Note that to ensure better reproducibility, one should still use
 shift as time goes by.
 
 The helper functions `version_*()` and `snapshot_*()` could assist you
-to determine specific versions of R and Rtools that are currently available,
+in determining specific versions of R and Rtools that are currently available,
 besides generating and verifying the snapshot repo links.
 
 ## Update ADRG
@@ -144,7 +144,7 @@ cleanslate::use_cleanslate(
 
 Go to the working directory created above, double click the .Rproj file
 to open the project in RStudio. Follow the instructions to select the
-project-specific R version then restart RStudio. If successful,
+project-specific R version, then restart RStudio. If successful,
 the R version and package repo should be printed as defined above.
 
 3. Install open-source R packages
