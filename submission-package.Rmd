@@ -6,7 +6,7 @@ submitting R code.
 Secondly, we will discuss how to prepare the proprietary R packages
 (if any), and make them part of the submission package.
 Lastly, we will provide reusable templates for updating
-ADaM Reviewer's Guide (ADRG) and Analysis Results Metadata (ARM)
+Analysis Data Reviewer's Guide (ADRG) and Analysis Results Metadata (ARM)
 so that the reviewers receive proper instructions to reproduce the
 analysis results.
 
@@ -76,7 +76,7 @@ Folder path: `ectddemo/m5/datasets/ectddemo/analysis/adam/datasets/`.
 
 - ADaM data in `.xpt` format: created by SAS or R.
 - `define.xml`: created by Pinnacle 21.
-- ADRG (ADaM Reviewer's Guide)
+- ADRG (Analysis Data Reviewer's Guide)
   - "Macro Programs" section: provide R and R package versions with a snapshot date.
   - Appendix: provide step-by-step instructions for reviewers to
     reproduce the running environment and rerun analyses.
