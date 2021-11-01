@@ -46,7 +46,7 @@
 <li><a class="" href="index.html">Welcome!</a></li>
 <li><a class="" href="intro.html"><span class="header-section-number">1</span> Introduction</a></li>
 <li class="book-part">Delivering TLFs in CSR</li>
-<li><a class="" href="overview.html"><span class="header-section-number">2</span> Overview</a></li>
+<li><a class="" href="tlf-overview.html"><span class="header-section-number">2</span> Overview</a></li>
 <li><a class="" href="disposition.html"><span class="header-section-number">3</span> Disposition</a></li>
 <li><a class="" href="population.html"><span class="header-section-number">4</span> Analysis population</a></li>
 <li><a class="" href="baseline-characteristics.html"><span class="header-section-number">5</span> Baseline characteristics</a></li>
@@ -54,15 +54,15 @@
 <li><a class="" href="aesummary.html"><span class="header-section-number">7</span> AE summary</a></li>
 <li><a class="active" href="specific-ae.html"><span class="header-section-number">8</span> Specific AE</a></li>
 <li class="book-part">Clinical trial project</li>
-<li><a class="" href="overview-1.html"><span class="header-section-number">9</span> Overview</a></li>
+<li><a class="" href="project-overview.html"><span class="header-section-number">9</span> Overview</a></li>
 <li><a class="" href="folder.html"><span class="header-section-number">10</span> Project folder</a></li>
 <li><a class="" href="manage.html"><span class="header-section-number">11</span> Project management</a></li>
 <li class="book-part">eCTD submission</li>
-<li><a class="" href="overview-2.html"><span class="header-section-number">12</span> Overview</a></li>
+<li><a class="" href="submission-overview.html"><span class="header-section-number">12</span> Overview</a></li>
 <li><a class="" href="submission-package.html"><span class="header-section-number">13</span> Submission package</a></li>
 <li><a class="" href="running-environment.html"><span class="header-section-number">14</span> Running environment</a></li>
 <li class="book-part">Appendix</li>
-<li><a class="" href="reference.html"><span class="header-section-number">15</span> Reference</a></li>
+<li><a class="" href="references.html"><span class="header-section-number">15</span> References</a></li>
 </ul>
 
         <div class="book-extra">
@@ -77,7 +77,7 @@
 <p>Following <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3 guidance</a>,
 we need to summarize which participants were included in each efficacy
 analysis in Section 12.2, Adverse Events (AEs).</p>
-<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span> <span class="co"># Read SAS data</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span>
@@ -85,17 +85,17 @@ analysis in Section 12.2, Adverse Events (AEs).</p>
 <p>In this chapter, we illustrate how to summarize simplified specific AE
 information in a study.</p>
 <embed src="tlf/tlf_spec_ae.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>The data used to summarize AE information is in <code>adsl</code> and <code>adae</code> datasets.</p>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"adam_data/adsl.sas7bdat"</span><span class="op">)</span>
 <span class="va">adae</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"adam_data/adae.sas7bdat"</span><span class="op">)</span></code></pre></div>
 <p>For illustration purposes, we only provide count in the simplified
 table. The percentage of participants for each AE criteria can be
 calculated as in Chapter <a href="aesummary.html#aesummary">7</a>.</p>
 <p>In this way, let’s focus on the analysis script for two advanced
-features for table layout.</p>
+features for a table layout.</p>
 <ul>
-<li>group content: AE can be summarized in multiple nested layers. (e.g.
-by system organ class (SOC, <code>AESOC</code>) and specific AE term
+<li>group content: AE can be summarized in multiple nested layers.
+(e.g., by system organ class (SOC, <code>AESOC</code>) and specific AE term
 (<code>AEDECOD</code>))</li>
 <li>pagenization: there are many AE terms that can not be covered in one
 page. Column headers and SOC information need to be repeated on
@@ -105,7 +105,7 @@ every page.</li>
 SOC and treatment group, and we create a new variable <code>order</code> and set it
 as <code>0</code> for these counted numbers. The variable <code>order</code> will help with
 the data manipulation later.</p>
-<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ana</span> <span class="op">&lt;-</span> <span class="va">adae</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
     AESOC <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/tools/toTitleCase.html">toTitleCase</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="va">AESOC</span><span class="op">)</span><span class="op">)</span>,
@@ -129,7 +129,7 @@ the data manipulation later.</p>
 <p>In the code below, we count the number of subjects in each AE term by
 SOC, AE term, and treatment group. Here we also create a new variable
 <code>order</code> and set it as <code>1</code> for these counted numbers.</p>
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t2</span> <span class="op">&lt;-</span> <span class="va">ana</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">TRTAN</span>, <span class="va">AESOC</span>, <span class="va">AEDECOD</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu">fmt_num</span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span><span class="op">(</span><span class="va">USUBJID</span><span class="op">)</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -145,7 +145,7 @@ SOC, AE term, and treatment group. Here we also create a new variable
 ## 3     0 Cardiac Disorders Atrioventricular Block First Degree  "   1"     1
 ## 4     0 Cardiac Disorders Atrioventricular Block Second Degree "   2"     1</code></pre>
 <p>We prepare reporting data for AE information.</p>
-<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t_ae</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">t1</span>, <span class="va">t2</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>
     id_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">AESOC</span>, <span class="va">order</span>, <span class="va">AEDECOD</span><span class="op">)</span>,
@@ -166,7 +166,7 @@ SOC, AE term, and treatment group. Here we also create a new variable
 ## 3 Cardiac Disorders Atrial Flutter      "   0" "   1" "   1"
 ## 4 Cardiac Disorders Atrial Hypertrophy  "   1" "   0" "   0"</code></pre>
 <p>We prepare reporting data for analysis population.</p>
-<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t_pop</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">SAFFL</span> <span class="op">==</span> <span class="st">"Y"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">count_by</span><span class="op">(</span><span class="st">"TRT01AN"</span>, <span class="st">"SAFFL"</span>,
@@ -185,7 +185,7 @@ SOC, AE term, and treatment group. Here we also create a new variable
 ## 1 pop   Participants in population "  86" "  84" "  84"</code></pre>
 <p>The final report data is saved in <code>tbl_ae_spec</code>.
 We also add a blank row between population and AE information in the reporting table.</p>
-<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_ae_spec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span>
   <span class="va">t_pop</span>,
   <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>AESOC <span class="op">=</span> <span class="st">"pop"</span><span class="op">)</span>,
@@ -211,10 +211,10 @@ the variable as a group indicator.</p>
 group header. If a group of information is broken into multiple pages,
 the group header row is repeated on each page by default.</p>
 <p>We can also customize the text format by providing a matrix that has the
-same dimension as the input dataset (i.e. <code>tbl_ae_spec</code>). In the code
+same dimension as the input dataset (i.e., <code>tbl_ae_spec</code>). In the code
 below, we illustrate how to display <strong>bold</strong> text for group headers to
 highlight the nested structure of the table layout.</p>
-<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n_row</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">tbl_ae_spec</span><span class="op">)</span>
 <span class="va">n_col</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">tbl_ae_spec</span><span class="op">)</span>
 <span class="va">id</span> <span class="op">&lt;-</span> <span class="va">tbl_ae_spec</span><span class="op">$</span><span class="va">AESOC</span> <span class="op">==</span> <span class="va">tbl_ae_spec</span><span class="op">$</span><span class="va">AEDECOD</span>
@@ -224,7 +224,7 @@ highlight the nested structure of the table layout.</p>
 <p>More discussion on <code>page_by</code>, <code>group_by</code> and <code>subline_by</code>
 features can be found in the
 [<code>r2rtf</code> package website](<a href="https://merck.github.io/r2rtf/articles/example-sublineby-pageby-groupby.html" class="uri">https://merck.github.io/r2rtf/articles/example-sublineby-pageby-groupby.html</a>.</p>
-<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_ae_spec</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_title.html">rtf_title</a></span><span class="op">(</span>
     <span class="st">"Analysis of Participants With Specific Adverse Events"</span>,
@@ -267,7 +267,7 @@ term, and treatment group (rows without bold text) and save into <code>t2</code>
 
   <div class="chapter-nav">
 <div class="prev"><a href="aesummary.html"><span class="header-section-number">7</span> AE summary</a></div>
-<div class="next"><a href="overview-1.html"><span class="header-section-number">9</span> Overview</a></div>
+<div class="next"><a href="project-overview.html"><span class="header-section-number">9</span> Overview</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav"><li><a class="nav-link" href="#specific-ae"><span class="header-section-number">8</span> Specific AE</a></li></ul>

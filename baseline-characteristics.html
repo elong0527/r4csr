@@ -46,7 +46,7 @@
 <li><a class="" href="index.html">Welcome!</a></li>
 <li><a class="" href="intro.html"><span class="header-section-number">1</span> Introduction</a></li>
 <li class="book-part">Delivering TLFs in CSR</li>
-<li><a class="" href="overview.html"><span class="header-section-number">2</span> Overview</a></li>
+<li><a class="" href="tlf-overview.html"><span class="header-section-number">2</span> Overview</a></li>
 <li><a class="" href="disposition.html"><span class="header-section-number">3</span> Disposition</a></li>
 <li><a class="" href="population.html"><span class="header-section-number">4</span> Analysis population</a></li>
 <li><a class="active" href="baseline-characteristics.html"><span class="header-section-number">5</span> Baseline characteristics</a></li>
@@ -54,15 +54,15 @@
 <li><a class="" href="aesummary.html"><span class="header-section-number">7</span> AE summary</a></li>
 <li><a class="" href="specific-ae.html"><span class="header-section-number">8</span> Specific AE</a></li>
 <li class="book-part">Clinical trial project</li>
-<li><a class="" href="overview-1.html"><span class="header-section-number">9</span> Overview</a></li>
+<li><a class="" href="project-overview.html"><span class="header-section-number">9</span> Overview</a></li>
 <li><a class="" href="folder.html"><span class="header-section-number">10</span> Project folder</a></li>
 <li><a class="" href="manage.html"><span class="header-section-number">11</span> Project management</a></li>
 <li class="book-part">eCTD submission</li>
-<li><a class="" href="overview-2.html"><span class="header-section-number">12</span> Overview</a></li>
+<li><a class="" href="submission-overview.html"><span class="header-section-number">12</span> Overview</a></li>
 <li><a class="" href="submission-package.html"><span class="header-section-number">13</span> Submission package</a></li>
 <li><a class="" href="running-environment.html"><span class="header-section-number">14</span> Running environment</a></li>
 <li class="book-part">Appendix</li>
-<li><a class="" href="reference.html"><span class="header-section-number">15</span> Reference</a></li>
+<li><a class="" href="references.html"><span class="header-section-number">15</span> References</a></li>
 </ul>
 
         <div class="book-extra">
@@ -79,9 +79,9 @@ we need to summarize critical demographic and baseline characteristics of the pa
 in Section 11.2, Demographic and Other Baseline Characteristics.</p>
 <p>In this chapter, we illustrate how to create a simplified
 baseline characteristics table in a study.</p>
-<embed src="tlf/tlf_base.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>There is many R packages that can efficiently summarize baseline information.
+<embed src="tlf/tlf_base.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>There are many R packages that can efficiently summarize baseline information.
 The <a href="https://github.com/benjaminrich/table1"><code>table1</code></a> R package is one of them.</p>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/benjaminrich/table1">table1</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://merck.github.io/r2rtf/">r2rtf</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span>
@@ -89,16 +89,16 @@ The <a href="https://github.com/benjaminrich/table1"><code>table1</code></a> R p
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org">stringr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tools</span><span class="op">)</span></code></pre></div>
-<p>As in previous chapters, we first read <code>adsl</code> dataset that contain all
-required information for baseline characteristics table.</p>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<p>As in previous chapters, we first read the <code>adsl</code> dataset that contains all
+the required information for the baseline characteristics table.</p>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"adam_data/adsl.sas7bdat"</span><span class="op">)</span></code></pre></div>
 <p>For simplicity, we only analyze <code>SEX</code>, <code>AGE</code> and, <code>RACE</code> in this example
 using the <code>table1</code> R package. More details of the <code>table</code> R package can
 be found in the package
 <a href="https://benjaminrich.github.io/table1/vignettes/table1-examples.html">vignettes</a>.</p>
 <p>The <code>table1</code> R package directly creates an HTML report.</p>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ana</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
     SEX <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">SEX</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"F"</span>, <span class="st">"M"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Female"</span>, <span class="st">"Male"</span><span class="op">)</span><span class="op">)</span>,
@@ -192,7 +192,7 @@ be found in the package
 that only contain ASCII character
 recommended by regulatory agencies.
 <code>tbl_base</code> is used as input for <code>r2rtf</code> to create final report.</p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_base</span> <span class="op">&lt;-</span> <span class="va">tbl</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -224,7 +224,7 @@ are not discussed in previous discussion.</p>
 space of text. They are helpful when you need to control the white space
 of a long sentence. For example, “AMERICAN INDIAN OR ALASKA NATIVE”
 in the table.</p>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">colheader1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">tbl_base</span><span class="op">)</span>, collapse <span class="op">=</span> <span class="st">"|"</span><span class="op">)</span>
 <span class="va">colheader2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">tbl_base</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span>, collapse <span class="op">=</span> <span class="st">"|"</span><span class="op">)</span>
 <span class="va">rel_width</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2.5</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span>
@@ -253,8 +253,8 @@ in the table.</p>
 <ul>
 <li>Step 1: Read the data set.</li>
 <li>Step 2: Use <code><a href="https://rdrr.io/pkg/table1/man/table1.html">table1::table1()</a></code> to get the baseline characteristics table.</li>
-<li>Step 3: Transfer the output in Step 2 into a data frame that only contains ASCII character.</li>
-<li>Step 4: Define the format of the rtf table by using R package <code>r2rtf</code>.</li>
+<li>Step 3: Transfer the output in Step 2 into a data frame that only contains ASCII characters.</li>
+<li>Step 4: Define the format of the RTF table by using the R package <code>r2rtf</code>.</li>
 </ul>
 </div>
   <div class="chapter-nav">

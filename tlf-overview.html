@@ -46,7 +46,7 @@
 <li><a class="" href="index.html">Welcome!</a></li>
 <li><a class="" href="intro.html"><span class="header-section-number">1</span> Introduction</a></li>
 <li class="book-part">Delivering TLFs in CSR</li>
-<li><a class="active" href="overview.html"><span class="header-section-number">2</span> Overview</a></li>
+<li><a class="active" href="tlf-overview.html"><span class="header-section-number">2</span> Overview</a></li>
 <li><a class="" href="disposition.html"><span class="header-section-number">3</span> Disposition</a></li>
 <li><a class="" href="population.html"><span class="header-section-number">4</span> Analysis population</a></li>
 <li><a class="" href="baseline-characteristics.html"><span class="header-section-number">5</span> Baseline characteristics</a></li>
@@ -54,15 +54,15 @@
 <li><a class="" href="aesummary.html"><span class="header-section-number">7</span> AE summary</a></li>
 <li><a class="" href="specific-ae.html"><span class="header-section-number">8</span> Specific AE</a></li>
 <li class="book-part">Clinical trial project</li>
-<li><a class="" href="overview-1.html"><span class="header-section-number">9</span> Overview</a></li>
+<li><a class="" href="project-overview.html"><span class="header-section-number">9</span> Overview</a></li>
 <li><a class="" href="folder.html"><span class="header-section-number">10</span> Project folder</a></li>
 <li><a class="" href="manage.html"><span class="header-section-number">11</span> Project management</a></li>
 <li class="book-part">eCTD submission</li>
-<li><a class="" href="overview-2.html"><span class="header-section-number">12</span> Overview</a></li>
+<li><a class="" href="submission-overview.html"><span class="header-section-number">12</span> Overview</a></li>
 <li><a class="" href="submission-package.html"><span class="header-section-number">13</span> Submission package</a></li>
 <li><a class="" href="running-environment.html"><span class="header-section-number">14</span> Running environment</a></li>
 <li class="book-part">Appendix</li>
-<li><a class="" href="reference.html"><span class="header-section-number">15</span> Reference</a></li>
+<li><a class="" href="references.html"><span class="header-section-number">15</span> References</a></li>
 </ul>
 
         <div class="book-extra">
@@ -70,33 +70,35 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="overview" class="section level1">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="tlf-overview" class="section level1">
 <h1>
-<span class="header-section-number">2</span> Overview<a class="anchor" aria-label="anchor" href="#overview"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2</span> Overview<a class="anchor" aria-label="anchor" href="#tlf-overview"><i class="fas fa-link"></i></a>
 </h1>
 <div id="background" class="section level2">
 <h2>
 <span class="header-section-number">2.1</span> Background<a class="anchor" aria-label="anchor" href="#background"><i class="fas fa-link"></i></a>
 </h2>
-<p>In clinical trials, a critical step is
-submission to regulatory agencies.
+<p>In clinical trials, a critical step is submission to regulatory agencies.
 <a href="https://en.wikipedia.org/wiki/Electronic_common_technical_document">Electronic Common Technical Document (eCTD)</a>
 has become a worldwide regulatory submission standard format.
-For example, <a href="https://www.fda.gov/drugs/electronic-regulatory-submission-and-review/electronic-common-technical-document-ectd">the United States Food and Drug Administration (US FDA) required new drug applications, biologics license applications must be submitted using eCTD format</a>. Clinical Data Interchange Standards Consortium (CDISC) provided a
+For example, the United States Food and Drug Administration (US FDA) required
+new drug applications and biologics license applications
+<a href="https://www.fda.gov/drugs/electronic-regulatory-submission-and-review/electronic-common-technical-document-ectd">must be submitted using the eCTD format</a>.
+The Clinical Data Interchange Standards Consortium (CDISC) provided a
 <a href="https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse">pilot project following ICH E3 guidance</a>.</p>
 <p>Within eCTD, clinical study reports (CSRs) are located at module 5.
 <a href="https://www.ich.org/page/efficacy-guidelines">ICH E3 guidance</a> provides
-compilation of structure and content of clinical study reports.</p>
+a compilation of the structure and content of clinical study reports.</p>
 <p>A typical CSR contains full details on the methods and results of an individual clinical study.
-In support of the statistical anlaysis, a large number of tables, listings and figures are
+In support of the statistical analysis, a large number of tables, listings, and figures are
 incorporated into the main text and appendices.
-In CDISC pilot project, an
+In the CDISC pilot project, an
 <a href="https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse/updated-pilot-submission-package/900172/m5/53-clin-stud-rep/535-rep-effic-safety-stud/5351-stud-rep-contr/cdiscpilot01/cdiscpilot01.pdf">example CSR</a>
 is also provided. If you are interested in more examples of clinical study reports,
-the European Medicines Agency (EMA) publishes clinical data including
+the European Medicines Agency (EMA) publishes clinical data, including
 clinical study reports submitted by pharmaceutical companies
-on <a href="https://clinicaldata.ema.europa.eu/web/cdp/home">EMA clinical data website</a>.</p>
-<p>Building CSRs is a teamwork between clinicians, medical writers, statisticians, statistical programmers
+on the <a href="https://clinicaldata.ema.europa.eu/web/cdp/home">EMA clinical data website</a>.</p>
+<p>Building CSRs is teamwork between clinicians, medical writers, statisticians, statistical programmers,
 and other relevant specialists such as experts on biomarkers.
 Here, we focus on the work and deliverables completed by statisticians and statistical programmers.
 In an organization, they commonly work together to
@@ -105,11 +107,11 @@ summarize the safety and/or safety of the pharmaceutical product.
 Microsoft Word is widely used to prepare CSR in the pharmaceutical industry.
 Therefore, <code>rtf</code>, <code>doc</code>, <code>docx</code> are commonly used formats in their deliverables.</p>
 <p>In this chapter, our focus is to illustrate how to create tables, listings, and figures (TLFs) in RTF format
-that is commonly used in a CSR. The examples are in compliance of
-<a href="https://www.fda.gov/media/76797/download">FDA’s Portable Document Format (PDF) Specifications</a></p>
+that is commonly used in a CSR. The examples are in compliance with the
+<a href="https://www.fda.gov/media/76797/download">FDA’s Portable Document Format (PDF) Specifications</a>.</p>
 <blockquote>
-<p>FDA’s PDF specification is a general reference, each organization can define
-more specific TLF format requirement that can be different from the examples in this book.</p>
+<p>FDA’s PDF specification is a general reference. Each organization can define
+more specific TLF format requirements that can be different from the examples in this book.</p>
 </blockquote>
 </div>
 <div id="structure-and-content" class="section level2">
@@ -118,13 +120,13 @@ more specific TLF format requirement that can be different from the examples in 
 </h2>
 <p>In the rest of this chapter, we are following the
 <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3 guidance</a>
-on structure and content of clinical study reports.</p>
+on the structure and content of clinical study reports.</p>
 <p>In a CSR, most of TLFs are located in</p>
 <ul>
 <li>Section 10: Study participants</li>
 <li>Section 11: Efficacy evaluation</li>
 <li>Section 12: Safety evaluation</li>
-<li>Section 14: Tables, listings and figures referrals but not included in the text</li>
+<li>Section 14: Tables, listings, and figures referrals but not included in the text</li>
 <li>Section 16: Appendices</li>
 </ul>
 </div>
@@ -133,9 +135,9 @@ on structure and content of clinical study reports.</p>
 <span class="header-section-number">2.3</span> Datasets<a class="anchor" aria-label="anchor" href="#datasets"><i class="fas fa-link"></i></a>
 </h2>
 <p>We used publicly available CDISC pilot
-<a href="https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse/updated-pilot-submission-package/900172/m5/datasets/cdiscpilot01/analysis/adam/datasets">study data located at CDISC Bitbucket repository</a>.</p>
-<p>For simplicity, we have downloaded all these datasets into <code>adam_data</code> folder of
-this project and transfer them from <code>.xpt</code> format to <code>sas7bdat</code> format.</p>
+<a href="https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse/updated-pilot-submission-package/900172/m5/datasets/cdiscpilot01/analysis/adam/datasets">study data located in the CDISC Bitbucket repository</a>.</p>
+<p>For simplicity, we have downloaded all these datasets into the <code>adam_data</code> folder of
+this project and converted them from the <code>.xpt</code> format to the <code>.sas7bdat</code> format.</p>
 <p>The dataset structure follows
 <a href="https://www.cdisc.org/standards/foundational/adam">CDISC Analysis Data Model (ADaM)</a>.</p>
 </div>
@@ -160,10 +162,10 @@ visualize and analyze data in R.
 Those R packages share
 <a href="https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html">the tidy tools manifesto</a>
 and are easy to use for interactive data analysis.</p>
-<p>RStudio provided outstanding <a href="https://www.rstudio.com/resources/cheatsheets/">cheatsheets</a>,
+<p>RStudio provided outstanding <a href="https://www.rstudio.com/resources/cheatsheets/">cheatsheets</a>
 and <a href="https://github.com/rstudio-education/remaster-the-tidyverse">tutorials</a> for <code>tidyverse</code>.</p>
 <p>There are also books to introduce tidyverse.
-We assume reader to have experience in using <code>tidyverse</code> in this book.</p>
+We assume the reader to have experience in using <code>tidyverse</code> in this book.</p>
 <ul>
 <li><a href="https://rstudio-education.github.io/tidyverse-cookbook/">The tidyverse cookbook</a></li>
 <li><a href="https://r4ds.had.co.nz/">R for Data Science</a></li>
@@ -177,35 +179,40 @@ We assume reader to have experience in using <code>tidyverse</code> in this book
 The R package is designed to</p>
 <ul>
 <li>provide simple “verb” functions that correspond to each component of a table,
-to help you translate a data frame to a table in RTF file.</li>
-<li>enable pipes (<code>%&gt;%</code>).</li>
-<li>only focus on the <strong>table format</strong>.
-Data manipulation and analysis shall be handled by other R packages. (e.g. <code>tidyverse</code>)</li>
+to help you translate a data frame to a table in an RTF file;</li>
+<li>enable pipes (<code><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></code>);</li>
+<li>focus on the <strong>table format</strong> only.
+Data manipulation and analysis shall be handled by other R packages (e.g., <code>tidyverse</code>).</li>
 </ul>
-<p>Before creating an RTF table we need to:</p>
+<p>Before creating an RTF table, we need to</p>
 <ul>
-<li>Figure out table layout.</li>
-<li>Split the layout into small tasks in the form of a computer program.</li>
-<li>Execute the program.</li>
+<li>figure out the table layout;</li>
+<li>split the layout into small tasks in the form of a computer program;</li>
+<li>execute the program.</li>
 </ul>
-<p>We provided a brief introduction of <code>r2rtf</code> and show how to transfer
+<p>We provided a brief introduction of <code>r2rtf</code> and showed how to transfer
 data frames into Table, Listing, and Figures (TLFs).</p>
-<p>Other extended examples and features are covered in the
+<p>Other extended examples and features are covered on the
 <a href="https://merck.github.io/r2rtf/articles/index.html"><code>r2rtf</code> package website</a>.</p>
 <p>To explore the basic RTF generation verbs in <code>r2rtf</code>,
-we’ll use the dataset <code>r2rtf_adae</code> saved in the <code>r2rtf</code> package.
+we will use the dataset <code>r2rtf_adae</code> saved in the <code>r2rtf</code> package.
 This dataset contains adverse events (AE) information from a clinical trial.</p>
+<p>We will begin by loading the packages:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://merck.github.io/r2rtf/">r2rtf</a></span><span class="op">)</span> <span class="co"># Reporting in RTF format</span></code></pre></div>
 <p>Below is the meaning of relevant variables.
-More information can be found in the help page of the dataset (<code>?r2rtf_adae</code>)</p>
-<p>In this example we consider three variables:</p>
+More information can be found on the help page of the dataset (<code><a href="https://merck.github.io/r2rtf/reference/r2rtf_adae.html">?r2rtf_adae</a></code>)</p>
+<p>In this example, we consider three variables:</p>
 <ul>
 <li>USUBJID: Unique Subject Identifier</li>
 <li>TRTA: Actual Treatment</li>
 <li>AEDECOD: Dictionary-Derived Term</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">r2rtf_adae</span> <span class="op">%&gt;%</span>
-  <span class="fu">select</span><span class="op">(</span><span class="va">USUBJID</span>, <span class="va">TRTA</span>, <span class="va">AEDECOD</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">USUBJID</span>, <span class="va">TRTA</span>, <span class="va">AEDECOD</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
 <pre><code>##       USUBJID    TRTA                   AEDECOD
 ## 1 01-701-1015 Placebo APPLICATION SITE ERYTHEMA
@@ -215,10 +222,10 @@ More information can be found in the help page of the dataset (<code>?r2rtf_adae
 <p><code>dplyr</code> and <code>tidyr</code> packages within <code>tidyverse</code> are used
 for data manipulation to create a data frame
 that contains all the information we want to add in an RTF table.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl</span> <span class="op">&lt;-</span> <span class="va">r2rtf_adae</span> <span class="op">%&gt;%</span>
-  <span class="fu">count</span><span class="op">(</span><span class="va">TRTA</span>, <span class="va">AEDECOD</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">TRTA</span>, values_from <span class="op">=</span> <span class="va">n</span>, values_fill <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">TRTA</span>, <span class="va">AEDECOD</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">TRTA</span>, values_from <span class="op">=</span> <span class="va">n</span>, values_fill <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
 
 <span class="va">tbl</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 4
@@ -233,76 +240,76 @@ that contains all the information we want to add in an RTF table.</p>
 Commonly used verbs include:</p>
 <ul>
 <li>
-<code>rtf_page</code>: RTF page information</li>
+<code><a href="https://merck.github.io/r2rtf/reference/rtf_page.html">rtf_page()</a></code>: RTF page information</li>
 <li>
-<code>rtf_title</code>: RTF title information</li>
+<code><a href="https://merck.github.io/r2rtf/reference/rtf_title.html">rtf_title()</a></code>: RTF title information</li>
 <li>
-<code>rtf_colheader</code>: RTF column header information</li>
+<code><a href="https://merck.github.io/r2rtf/reference/rtf_colheader.html">rtf_colheader()</a></code>: RTF column header information</li>
 <li>
-<code>rtf_body</code>: RTF table body information</li>
+<code><a href="https://merck.github.io/r2rtf/reference/rtf_body.html">rtf_body()</a></code>: RTF table body information</li>
 <li>
-<code>rtf_footnote</code>: RTF footnote information</li>
+<code><a href="https://merck.github.io/r2rtf/reference/rtf_footnote.html">rtf_footnote()</a></code>: RTF footnote information</li>
 <li>
-<code>rtf_source</code>: RTF data source information</li>
+<code><a href="https://merck.github.io/r2rtf/reference/rtf_source.html">rtf_source()</a></code>: RTF data source information</li>
 </ul>
-<p>All these verbs are designed to enable the usage of pipes (<code>%&gt;%</code>).
+<p>All these verbs are designed to enable the usage of pipes (<code><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></code>).
 A full list of all functions can be found in the
-<a href="https://merck.github.io/r2rtf/reference/index.html">r2rtf package reference</a></p>
+<a href="https://merck.github.io/r2rtf/reference/index.html">r2rtf package function reference manual</a>.</p>
 <p>A minimal example below illustrates how to combine verbs using pipes to create an RTF table.</p>
 <ul>
 <li>
-<code>rtf_body</code> is used to define table body layout.</li>
+<code><a href="https://merck.github.io/r2rtf/reference/rtf_body.html">rtf_body()</a></code> is used to define table body layout.</li>
 <li>
-<code>rtf_encode</code> transfers table layout information into RTF syntax.</li>
+<code><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode()</a></code> transfers table layout information into RTF syntax.</li>
 <li>
-<code>write_rtf</code> save RTF encoding into a file with file extension <code>.rtf</code>
+<code><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf()</a></code> save RTF encoding into a file with file extension <code>.rtf</code>
 </li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">tbl</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">rtf_body</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Step 1 Add table  attributes</span>
-  <span class="fu">rtf_encode</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Step 2 Convert attributes to RTF encode</span>
-  <span class="fu">write_rtf</span><span class="op">(</span><span class="st">"tlf/intro-ae1.rtf"</span><span class="op">)</span> <span class="co"># Step 3 Write to a .rtf file</span></code></pre></div>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_body.html">rtf_body</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Step 1 Add table  attributes</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Step 2 Convert attributes to RTF encode</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/intro-ae1.rtf"</span><span class="op">)</span> <span class="co"># Step 3 Write to a .rtf file</span></code></pre></div>
 <embed src="tlf/intro-ae1.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>If we want to adjust the width of each column to
 provide more space to the first column,
 this can be achieved by updating the <code>col_rel_width</code> argument
-in the <code>rtf_body</code> function.</p>
+in the <code><a href="https://merck.github.io/r2rtf/reference/rtf_body.html">rtf_body()</a></code> function.</p>
 <p>In this example, the input of <code>col_rel_width</code> is a vector
 with the same length for the number of columns.
 This argument defines the relative width of each column
 within a pre-defined total column width.</p>
 <p>In this example, the defined relative width is <code>3:2:2:2</code>.
 Only the ratio of <code>col_rel_width</code> is used.
-Therefore it is equivalent to use <code>col_rel_width = c(6,4,4,4)</code>
-or <code>col_rel_width = c(1.5,1,1,1)</code>.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+Therefore it is equivalent to use <code>col_rel_width = c(6, 4, 4, 4)</code>
+or <code>col_rel_width = c(1.5, 1, 1, 1)</code>.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">tbl</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">rtf_body</span><span class="op">(</span>col_rel_width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_body.html">rtf_body</a></span><span class="op">(</span>col_rel_width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="co"># define relative width</span>
-  <span class="fu">rtf_encode</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">write_rtf</span><span class="op">(</span><span class="st">"tlf/intro-ae2.rtf"</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/intro-ae2.rtf"</span><span class="op">)</span></code></pre></div>
 <embed src="tlf/intro-ae2.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In the previous example, we found the issue of a misaligned column header.
-We can fix the issue by using the <code>rtf_colheader</code> function.</p>
-<p>In <code>rtf_colheader</code>, <code>colheader</code> argument is used to provide the content of the column header.
+We can fix the issue by using the <code><a href="https://merck.github.io/r2rtf/reference/rtf_colheader.html">rtf_colheader()</a></code> function.</p>
+<p>In <code><a href="https://merck.github.io/r2rtf/reference/rtf_colheader.html">rtf_colheader()</a></code>, the <code>colheader</code> argument is used to provide the content of the column header.
 We use <code>"|"</code> to separate the columns.</p>
 <p>In the example below, <code>"Adverse Events | Placebo | Xanomeline High Dose | Xanomeline Low Dose"</code>
 define a column header with 4 columns.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">tbl</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">rtf_colheader</span><span class="op">(</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_colheader.html">rtf_colheader</a></span><span class="op">(</span>
     colheader <span class="op">=</span> <span class="st">"Adverse Events | Placebo | Xanomeline High Dose | Xanomeline Low Dose"</span>,
     col_rel_width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span>
   <span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">rtf_body</span><span class="op">(</span>col_rel_width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">rtf_encode</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">write_rtf</span><span class="op">(</span><span class="st">"tlf/intro-ae3.rtf"</span><span class="op">)</span></code></pre></div>
-<embed src="tlf/intro-ae3.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In <code>rtf_*</code> functions such as <code>rtf_body</code>, <code>rtf_footnote</code>,
-<code>text_justification</code> argument is used to align text.
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_body.html">rtf_body</a></span><span class="op">(</span>col_rel_width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/intro-ae3.rtf"</span><span class="op">)</span></code></pre></div>
+<embed src="tlf/intro-ae3.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In <code>rtf_*()</code> functions such as <code><a href="https://merck.github.io/r2rtf/reference/rtf_body.html">rtf_body()</a></code>, <code><a href="https://merck.github.io/r2rtf/reference/rtf_footnote.html">rtf_footnote()</a></code>,
+the <code>text_justification</code> argument is used to align text.
 Default is <code>"c"</code> for center justification.
 To vary text justification by column, use character vector with length of vector equal to
-number of columns displayed (e.g., <code><a href="https://rdrr.io/r/base/c.html">c("c","l","r")</a></code>).</p>
+number of columns displayed (e.g., <code><a href="https://rdrr.io/r/base/c.html">c("c", "l", "r")</a></code>).</p>
 <p>All possible inputs can be found in the table below.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">r2rtf</span><span class="fu">:::</span><span class="fu"><a href="https://merck.github.io/r2rtf/reference/justification.html">justification</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>##   type      name rtf_code_text rtf_code_row
 ## 1    l      left          \\ql       \\trql
@@ -311,33 +318,33 @@ number of columns displayed (e.g., <code><a href="https://rdrr.io/r/base/c.html"
 ## 4    d   decimal          \\qj             
 ## 5    j justified          \\qj</code></pre>
 <p>Below is an example to make the first column left-aligned and center-aligned for the rest.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">tbl</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">rtf_body</span><span class="op">(</span>text_justification <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"l"</span>, <span class="st">"c"</span>, <span class="st">"c"</span>, <span class="st">"c"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">rtf_encode</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">write_rtf</span><span class="op">(</span><span class="st">"tlf/intro-ae5.rtf"</span><span class="op">)</span></code></pre></div>
-<embed src="tlf/intro-ae5.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In <code>rtf_*</code> functions such as <code>rtf_body</code>, <code>rtf_footnote</code>, etc.,
-<code>border_left</code>, <code>border_right</code>, <code>border_top</code>, and <code>border_bottom</code> control cell borders.</p>
-<p>If we want to remove the top border of <code>"Adverse Events"</code> in the header,
-we can change the default value <code>"single"</code> to <code>""</code> in the <code>border_top</code> argument as showed below.</p>
-<p><code>r2rtf</code> support 26 different border types. The details can be found on
-the <a href="https://merck.github.io/r2rtf/articles/rtf-row.html#border-type">r2rtf package website</a>.</p>
-<p>In this example, we also demonstrate the possibility to add multiple column headers.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">tbl</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">rtf_colheader</span><span class="op">(</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_body.html">rtf_body</a></span><span class="op">(</span>text_justification <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"l"</span>, <span class="st">"c"</span>, <span class="st">"c"</span>, <span class="st">"c"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/intro-ae5.rtf"</span><span class="op">)</span></code></pre></div>
+<embed src="tlf/intro-ae5.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In <code>rtf_*()</code> functions such as <code><a href="https://merck.github.io/r2rtf/reference/rtf_body.html">rtf_body()</a></code>, <code><a href="https://merck.github.io/r2rtf/reference/rtf_footnote.html">rtf_footnote()</a></code>, etc.,
+<code>border_left</code>, <code>border_right</code>, <code>border_top</code>, and <code>border_bottom</code> control cell borders.</p>
+<p>If we want to remove the top border of <code>"Adverse Events"</code> in the header,
+we can change the default value <code>"single"</code> to <code>""</code> in the <code>border_top</code> argument, as shown below.</p>
+<p><code>r2rtf</code> support 26 different border types. The details can be found on
+the <a href="https://merck.github.io/r2rtf/articles/rtf-row.html#border-type">r2rtf package website</a>.</p>
+<p>In this example, we also demonstrate the possibility of adding multiple column headers.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">tbl</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_colheader.html">rtf_colheader</a></span><span class="op">(</span>
     colheader <span class="op">=</span> <span class="st">" | Treatment"</span>,
     col_rel_width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">6</span><span class="op">)</span>
   <span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">rtf_colheader</span><span class="op">(</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_colheader.html">rtf_colheader</a></span><span class="op">(</span>
     colheader <span class="op">=</span> <span class="st">"Adverse Events | Placebo | Xanomeline High Dose | Xanomeline Low Dose"</span>,
     border_top <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"single"</span>, <span class="st">"single"</span>, <span class="st">"single"</span><span class="op">)</span>,
     col_rel_width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span>
   <span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">rtf_body</span><span class="op">(</span>col_rel_width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">rtf_encode</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">write_rtf</span><span class="op">(</span><span class="st">"tlf/intro-ae7.rtf"</span><span class="op">)</span></code></pre></div>
-<embed src="tlf/intro-ae7.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In the <code>r2rtf</code> R package <a href="https://merck.github.io/r2rtf/articles/r2rtf.html">get started</a> page
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_body.html">rtf_body</a></span><span class="op">(</span>col_rel_width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/intro-ae7.rtf"</span><span class="op">)</span></code></pre></div>
+<embed src="tlf/intro-ae7.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In the <code>r2rtf</code> R package <a href="https://merck.github.io/r2rtf/articles/r2rtf.html">get started</a> page,
 there are more examples to illustrate how to customize</p>
 <ul>
 <li>title, subtitle</li>
@@ -360,7 +367,7 @@ for an overview.</p>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#overview"><span class="header-section-number">2</span> Overview</a></li>
+<li><a class="nav-link" href="#tlf-overview"><span class="header-section-number">2</span> Overview</a></li>
 <li><a class="nav-link" href="#background"><span class="header-section-number">2.1</span> Background</a></li>
 <li><a class="nav-link" href="#structure-and-content"><span class="header-section-number">2.2</span> Structure and content</a></li>
 <li><a class="nav-link" href="#datasets"><span class="header-section-number">2.3</span> Datasets</a></li>

@@ -1,11 +1,11 @@
-fig:unnamed-chunk-106
-fig:unnamed-chunk-108
-fig:unnamed-chunk-118
+fig:unnamed-chunk-107
+fig:unnamed-chunk-109
+fig:unnamed-chunk-119
 intro
 folder-structure
 in-this-book
 philosophy
-overview
+tlf-overview
 background
 structure-and-content
 datasets
@@ -26,7 +26,7 @@ ancova-model
 reporting
 aesummary
 specific-ae
-overview-1
+project-overview
 folder
 consistency
 reproduce
@@ -43,7 +43,7 @@ planning
 development
 validation
 operation
-overview-2
+submission-overview
 submission-package
 prerequisites
 the-whole-game
@@ -70,4 +70,4 @@ create-canonical-environments
 create-tailored-environments
 update-adrg-1
 rstudio-addin
-reference
+references

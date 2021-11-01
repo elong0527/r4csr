@@ -46,7 +46,7 @@
 <li><a class="" href="index.html">Welcome!</a></li>
 <li><a class="" href="intro.html"><span class="header-section-number">1</span> Introduction</a></li>
 <li class="book-part">Delivering TLFs in CSR</li>
-<li><a class="" href="overview.html"><span class="header-section-number">2</span> Overview</a></li>
+<li><a class="" href="tlf-overview.html"><span class="header-section-number">2</span> Overview</a></li>
 <li><a class="" href="disposition.html"><span class="header-section-number">3</span> Disposition</a></li>
 <li><a class="" href="population.html"><span class="header-section-number">4</span> Analysis population</a></li>
 <li><a class="" href="baseline-characteristics.html"><span class="header-section-number">5</span> Baseline characteristics</a></li>
@@ -54,15 +54,15 @@
 <li><a class="" href="aesummary.html"><span class="header-section-number">7</span> AE summary</a></li>
 <li><a class="" href="specific-ae.html"><span class="header-section-number">8</span> Specific AE</a></li>
 <li class="book-part">Clinical trial project</li>
-<li><a class="" href="overview-1.html"><span class="header-section-number">9</span> Overview</a></li>
+<li><a class="" href="project-overview.html"><span class="header-section-number">9</span> Overview</a></li>
 <li><a class="" href="folder.html"><span class="header-section-number">10</span> Project folder</a></li>
 <li><a class="" href="manage.html"><span class="header-section-number">11</span> Project management</a></li>
 <li class="book-part">eCTD submission</li>
-<li><a class="" href="overview-2.html"><span class="header-section-number">12</span> Overview</a></li>
+<li><a class="" href="submission-overview.html"><span class="header-section-number">12</span> Overview</a></li>
 <li><a class="active" href="submission-package.html"><span class="header-section-number">13</span> Submission package</a></li>
 <li><a class="" href="running-environment.html"><span class="header-section-number">14</span> Running environment</a></li>
 <li class="book-part">Appendix</li>
-<li><a class="" href="reference.html"><span class="header-section-number">15</span> Reference</a></li>
+<li><a class="" href="references.html"><span class="header-section-number">15</span> References</a></li>
 </ul>
 
         <div class="book-extra">
@@ -79,7 +79,8 @@ assets in the eCTD submission package we should focus on when
 submitting R code.
 Secondly, we will discuss how to prepare the proprietary R packages
 (if any), and make them part of the submission package.
-Lastly, we will provide reusable templates for updating ADaM Reviewer’s Guide (ADRG) and Analysis Results Metadata (ARM),
+Lastly, we will provide reusable templates for updating
+ADaM Reviewer’s Guide (ADRG) and Analysis Results Metadata (ARM)
 so that the reviewers receive proper instructions to reproduce the
 analysis results.</p>
 <div id="prerequisites" class="section level2">
@@ -88,15 +89,16 @@ analysis results.</p>
 </h2>
 <p>This chapter uses <code>pkglite</code> to convert R source packages
 into text files and back.</p>
-<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"pkglite"</span><span class="op">)</span></code></pre></div>
-<p>The demo project (R package) we will prepare for submission is called <a href="https://github.com/elong0527/esubdemo"><code>esubdemo</code></a> available on GitHub.
+<p>The demo project (R package) we will prepare for submission is called
+<a href="https://github.com/elong0527/esubdemo"><code>esubdemo</code></a>, available on GitHub.
 You can download or clone it:</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb121-1"><a href="submission-package.html#cb121-1"></a><span class="fu">git</span> clone https://github.com/elong0527/esubdemo.git</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb122-1"><a href="submission-package.html#cb122-1"></a><span class="fu">git</span> clone https://github.com/elong0527/esubdemo.git</span></code></pre></div>
 <p>The demo submission package (not to be confused with the R package above)
 is <a href="https://github.com/elong0527/ectddemo"><code>ectddemo</code></a>, also available on GitHub.
 You can download or clone it:</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb122-1"><a href="submission-package.html#cb122-1"></a><span class="fu">git</span> clone https://github.com/elong0527/ectddemo.git</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb123-1"><a href="submission-package.html#cb123-1"></a><span class="fu">git</span> clone https://github.com/elong0527/ectddemo.git</span></code></pre></div>
 <p>We will assume the paths to the two folders are <code>esubdemo/</code> and <code>ectddemo/</code> below.</p>
 </div>
 <div id="the-whole-game" class="section level2">
@@ -204,7 +206,7 @@ recommended to submit them as part of the submission package.</p>
 <h3>
 <span class="header-section-number">13.3.2</span> Dependency locations<a class="anchor" aria-label="anchor" href="#dependency-locations"><i class="fas fa-link"></i></a>
 </h3>
-<p>R package dependencies is another major factor to consider
+<p>R package dependency is another major factor to consider
 before preparing your proprietary R package for submission.</p>
 <p>For dependencies available from CRAN or public Git repositories,
 you can declare them directly using the regular <code>Imports</code> and <code>Suggests</code>
@@ -248,32 +250,32 @@ especially when involving compiled code (e.g., C, C++, Fortran).</p>
 <h2>
 <span class="header-section-number">13.4</span> Prepare R Packages for submission<a class="anchor" aria-label="anchor" href="#prepare-r-packages-for-submission"><i class="fas fa-link"></i></a>
 </h2>
-<p>To prepare R packages for submission, one needs to pack the packages into text files, and then verify if the file only contains ASSCII characters.
+<p>To prepare R packages for submission, one needs to pack the packages into text files, and then verify if the file only contains ASCII characters.
 With packed packages, one can unpack and install them from the text file, too.</p>
 <div id="pack" class="section level3">
 <h3>
 <span class="header-section-number">13.4.1</span> Pack<a class="anchor" aria-label="anchor" href="#pack"><i class="fas fa-link"></i></a>
 </h3>
 <p>Let’s pack the <code>esubdemo</code> package into a text file.
-Assume the source package path is <code>esubdemo/</code>,
-you should be able to pack the package with a single pipe:</p>
-<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+Assume the source package path is <code>esubdemo/</code>.
+You should be able to pack the package with a single pipe:</p>
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://merck.github.io/pkglite/">"pkglite"</a></span><span class="op">)</span>
 
 <span class="st">"esubdemo/"</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://merck.github.io/pkglite/reference/collate.html">collate</a></span><span class="op">(</span><span class="fu"><a href="https://merck.github.io/pkglite/reference/file_ectd.html">file_ectd</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://merck.github.io/pkglite/reference/file_auto.html">file_auto</a></span><span class="op">(</span><span class="st">"inst"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://merck.github.io/pkglite/reference/pack.html">pack</a></span><span class="op">(</span>output <span class="op">=</span> <span class="st">"r0pkgs.txt"</span><span class="op">)</span></code></pre></div>
 <div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-106"></span>
+<span style="display:block;" id="fig:unnamed-chunk-107"></span>
 <img src="images/pack.png" alt="Output of pkglite::pack()" width="100%"><p class="caption">
 FIGURE 13.1: Output of pkglite::pack()
 </p>
 </div>
 <p>Let’s open the generated text file:</p>
-<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/file.edit.html">file.edit</a></span><span class="op">(</span><span class="st">"r0pkgs.txt"</span><span class="op">)</span></code></pre></div>
 <div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-108"></span>
+<span style="display:block;" id="fig:unnamed-chunk-109"></span>
 <img src="images/preview-txt.png" alt="Preview the generated text file" width="100%"><p class="caption">
 FIGURE 13.2: Preview the generated text file
 </p>
@@ -281,13 +283,13 @@ FIGURE 13.2: Preview the generated text file
 <p>What happened in the pipe?
 The function <code><a href="https://merck.github.io/pkglite/reference/collate.html">pkglite::collate()</a></code> evaluates a specified scope of
 folders and files defined by a list of <strong>file specifications</strong>,
-and generate a <strong>file collection</strong> object.
+and generates a <strong>file collection</strong> object.
 This file collection contains the metadata required to properly convert
 the files into text which is then used by <code><a href="https://merck.github.io/pkglite/reference/pack.html">pkglite::pack()</a></code>.
 With this flow, you can define the scope of the R source package
 to be packed for submission in a flexible yet principled way.</p>
 <p>To pack multiple R packages, simply feed multiple file collections as inputs:</p>
-<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://merck.github.io/pkglite/reference/pack.html">pack</a></span><span class="op">(</span>
   <span class="st">"/path/to/pkg1/"</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://merck.github.io/pkglite/reference/collate.html">collate</a></span><span class="op">(</span><span class="fu"><a href="https://merck.github.io/pkglite/reference/file_ectd.html">file_ectd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,
   <span class="st">"/path/to/pkg2/"</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://merck.github.io/pkglite/reference/collate.html">collate</a></span><span class="op">(</span><span class="fu"><a href="https://merck.github.io/pkglite/reference/file_ectd.html">file_ectd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,
@@ -308,7 +310,7 @@ and
 <span class="header-section-number">13.4.2</span> Verify<a class="anchor" aria-label="anchor" href="#verify"><i class="fas fa-link"></i></a>
 </h3>
 <p>You should always verify if the text file only contains ASCII characters:</p>
-<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://merck.github.io/pkglite/reference/verify_ascii.html">verify_ascii</a></span><span class="op">(</span><span class="st">"r0pkgs.txt"</span><span class="op">)</span></code></pre></div>
 <p>This should give <code>TRUE</code> if the file only contains ASCII characters,
 or <code>FALSE</code> with the affected lines otherwise.</p>
@@ -319,7 +321,7 @@ or <code>FALSE</code> with the affected lines otherwise.</p>
 </h3>
 <p>One can unpack and install the package from the text file, too.
 For example:</p>
-<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://merck.github.io/pkglite/reference/unpack.html">unpack</a></span><span class="op">(</span><span class="st">"r0pkgs.txt"</span>, output <span class="op">=</span> <span class="st">"/tmp/"</span>, install <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>If successfully tested, this command will be used in the ADRG instructions
 for restoring and installing the packed R package(s).</p>
@@ -335,7 +337,7 @@ or specify the output text file path above directly.</p>
 <p>Besides the R packages, we need to convert the R Markdown (<code>.Rmd</code>) files
 into <code>.txt</code> files and saved them in the <code>programs</code> folder.
 You can do this with <code><a href="https://rdrr.io/pkg/knitr/man/knit.html">knitr::purl()</a></code>:</p>
-<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">input_path</span> <span class="op">&lt;-</span> <span class="st">"esubdemo/vignettes/"</span>
 <span class="va">output_path</span> <span class="op">&lt;-</span> <span class="st">"ectddemo/m5/datasets/ectddemo/analysis/adam/programs/"</span>
 
@@ -354,7 +356,7 @@ You can do this with <code><a href="https://rdrr.io/pkg/knitr/man/knit.html">kni
 <span class="st">"tlf-06-ae-spec"</span> <span class="op">%&gt;%</span> <span class="fu">convert_rmd</span><span class="op">(</span><span class="va">input_path</span>, <span class="va">output_path</span><span class="op">)</span></code></pre></div>
 <p>Optionally, you can add a header to the individual <code>.txt</code> files to explain
 the context and help the reviewers rerun the code. For example:</p>
-<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Note to Reviewer</span>
 <span class="co"># To rerun the code below, please refer to the ADRG appendix.</span>
 <span class="co"># After the required packages are installed,</span>
@@ -363,7 +365,7 @@ the context and help the reviewers rerun the code. For example:</p>
 <span class="co"># path = list(adam = "/path/to/esub/analysis/adam/datasets") # Modify to use actual location</span>
 <span class="co"># path$outtable = path$outgraph = "." # Outputs saved to the current folder</span></code></pre></div>
 <p>To automate this process:</p>
-<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">header</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/textconnections.html">textConnection</a></span><span class="op">(</span><span class="st">"# Note to Reviewer
 # To rerun the code below, please refer to the ADRG appendix.
 # After the required packages are installed,
@@ -397,15 +399,15 @@ we should update the ADRG to provide guidelines on how to use them.</p>
 <p>Specifically, we need to update two sections in ADRG.</p>
 <p>The first section is “Macro Programs”, where R and R package versions
 with a snapshot date are provided. For example:</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb133-1"><a href="submission-package.html#cb133-1"></a>7.x Macro Programs</span>
-<span id="cb133-2"><a href="submission-package.html#cb133-2"></a></span>
-<span id="cb133-3"><a href="submission-package.html#cb133-3"></a>Submitted R programs have [specific patterns] in filenames.</span>
-<span id="cb133-4"><a href="submission-package.html#cb133-4"></a>All internally developed R functions are saved in the r0pkgs.txt file.</span>
-<span id="cb133-5"><a href="submission-package.html#cb133-5"></a>The recommended steps to unpack these R functions for analysis output</span>
-<span id="cb133-6"><a href="submission-package.html#cb133-6"></a>programs are described in the Appendix.</span>
-<span id="cb133-7"><a href="submission-package.html#cb133-7"></a></span>
-<span id="cb133-8"><a href="submission-package.html#cb133-8"></a>The table below contains the software version and instructions</span>
-<span id="cb133-9"><a href="submission-package.html#cb133-9"></a>for executing the R analysis output programs:</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb134-1"><a href="submission-package.html#cb134-1"></a>7.x Macro Programs</span>
+<span id="cb134-2"><a href="submission-package.html#cb134-2"></a></span>
+<span id="cb134-3"><a href="submission-package.html#cb134-3"></a>Submitted R programs have [specific patterns] in filenames.</span>
+<span id="cb134-4"><a href="submission-package.html#cb134-4"></a>All internally developed R functions are saved in the r0pkgs.txt file.</span>
+<span id="cb134-5"><a href="submission-package.html#cb134-5"></a>The recommended steps to unpack these R functions for analysis output</span>
+<span id="cb134-6"><a href="submission-package.html#cb134-6"></a>programs are described in the Appendix.</span>
+<span id="cb134-7"><a href="submission-package.html#cb134-7"></a></span>
+<span id="cb134-8"><a href="submission-package.html#cb134-8"></a>The table below contains the software version and instructions</span>
+<span id="cb134-9"><a href="submission-package.html#cb134-9"></a>for executing the R analysis output programs:</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr class="header">
 <th>Software or Package</th>
@@ -440,67 +442,67 @@ with a snapshot date are provided. For example:</p>
 </table></div>
 <p>The second section (Appendix) should include step-by-step instructions
 to reproduce the running environment and rerun analyses. For example:</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb134-1"><a href="submission-package.html#cb134-1"></a>Appendix: Instructions to Execute Analysis Program in R</span>
-<span id="cb134-2"><a href="submission-package.html#cb134-2"></a></span>
-<span id="cb134-3"><a href="submission-package.html#cb134-3"></a>1. <span class="st">Install R</span></span>
-<span id="cb134-4"><a href="submission-package.html#cb134-4"></a></span>
-<span id="cb134-5"><a href="submission-package.html#cb134-5"></a>Download and install R 4.1.1 for Windows from</span>
-<span id="cb134-6"><a href="submission-package.html#cb134-6"></a>https://cran.r-project.org/bin/windows/base/old/4.1.1/R-4.1.1-win.exe</span>
-<span id="cb134-7"><a href="submission-package.html#cb134-7"></a></span>
-<span id="cb134-8"><a href="submission-package.html#cb134-8"></a>2. <span class="st">Define working directory</span></span>
-<span id="cb134-9"><a href="submission-package.html#cb134-9"></a></span>
-<span id="cb134-10"><a href="submission-package.html#cb134-10"></a>Create a temporary working directory, for example, "C:\tempwork".</span>
-<span id="cb134-11"><a href="submission-package.html#cb134-11"></a>Copy all submitted R programs into the temporary folder.</span>
-<span id="cb134-12"><a href="submission-package.html#cb134-12"></a>All steps below should be executed in this working directory</span>
-<span id="cb134-13"><a href="submission-package.html#cb134-13"></a>represented as "." in the example R code below.</span>
-<span id="cb134-14"><a href="submission-package.html#cb134-14"></a></span>
-<span id="cb134-15"><a href="submission-package.html#cb134-15"></a>3. <span class="st">Specify R package repository</span></span>
-<span id="cb134-16"><a href="submission-package.html#cb134-16"></a></span>
-<span id="cb134-17"><a href="submission-package.html#cb134-17"></a>The R packages are based on CRAN at 2021-08-06. To install the exact</span>
-<span id="cb134-18"><a href="submission-package.html#cb134-18"></a>R package versions used in this project, run the code below to set</span>
-<span id="cb134-19"><a href="submission-package.html#cb134-19"></a>the snapshot repository.</span>
-<span id="cb134-20"><a href="submission-package.html#cb134-20"></a></span>
-<span id="cb134-21"><a href="submission-package.html#cb134-21"></a>options(repos = "https://mran.microsoft.com/snapshot/2021-08-06/")</span>
-<span id="cb134-22"><a href="submission-package.html#cb134-22"></a></span>
-<span id="cb134-23"><a href="submission-package.html#cb134-23"></a>4. <span class="st">Install open-source R packages</span></span>
-<span id="cb134-24"><a href="submission-package.html#cb134-24"></a></span>
-<span id="cb134-25"><a href="submission-package.html#cb134-25"></a>In the same R session, install the required packages by running the code below.</span>
-<span id="cb134-26"><a href="submission-package.html#cb134-26"></a></span>
-<span id="cb134-27"><a href="submission-package.html#cb134-27"></a>install.packages(c("pkglite", "publicpkg1", "publicpkg2"))</span>
-<span id="cb134-28"><a href="submission-package.html#cb134-28"></a></span>
-<span id="cb134-29"><a href="submission-package.html#cb134-29"></a>5. <span class="st">Install proprietary R packages</span></span>
-<span id="cb134-30"><a href="submission-package.html#cb134-30"></a></span>
-<span id="cb134-31"><a href="submission-package.html#cb134-31"></a>All internal R packages are packed in the file r0pkgs.txt. In the same R session,</span>
-<span id="cb134-32"><a href="submission-package.html#cb134-32"></a>restore the package structures and install them by running the code below.</span>
-<span id="cb134-33"><a href="submission-package.html#cb134-33"></a>Adjust the output path as needed to use a writable local directory.</span>
-<span id="cb134-34"><a href="submission-package.html#cb134-34"></a></span>
-<span id="cb134-35"><a href="submission-package.html#cb134-35"></a>pkglite::unpack("r0pkgs.txt", output = ".", install = TRUE)</span>
-<span id="cb134-36"><a href="submission-package.html#cb134-36"></a></span>
-<span id="cb134-37"><a href="submission-package.html#cb134-37"></a>6. <span class="st">Update path to dataset and TLFs</span></span>
-<span id="cb134-38"><a href="submission-package.html#cb134-38"></a></span>
-<span id="cb134-39"><a href="submission-package.html#cb134-39"></a>INPUT path: to rerun the analysis programs, define the path variable</span>
-<span id="cb134-40"><a href="submission-package.html#cb134-40"></a></span>
-<span id="cb134-41"><a href="submission-package.html#cb134-41"></a>- <span class="st">Path for ADaM data: path$adam</span></span>
-<span id="cb134-42"><a href="submission-package.html#cb134-42"></a></span>
-<span id="cb134-43"><a href="submission-package.html#cb134-43"></a>OUTPUT path: to save the analysis results, define the path variable</span>
-<span id="cb134-44"><a href="submission-package.html#cb134-44"></a></span>
-<span id="cb134-45"><a href="submission-package.html#cb134-45"></a>- <span class="st">Path for output TLFs: path$output</span></span>
-<span id="cb134-46"><a href="submission-package.html#cb134-46"></a></span>
-<span id="cb134-47"><a href="submission-package.html#cb134-47"></a>All these paths need to be defined before executing the analysis program. For example:</span>
-<span id="cb134-48"><a href="submission-package.html#cb134-48"></a></span>
-<span id="cb134-49"><a href="submission-package.html#cb134-49"></a>path = list(adam = "/path/to/esub/analysis/adam/datasets/") # Modify to use actual location</span>
-<span id="cb134-50"><a href="submission-package.html#cb134-50"></a>path$outtable = path$outgraph = "." # Outputs saved to the current folder</span>
-<span id="cb134-51"><a href="submission-package.html#cb134-51"></a></span>
-<span id="cb134-52"><a href="submission-package.html#cb134-52"></a>7. <span class="st">Execute analysis program</span></span>
-<span id="cb134-53"><a href="submission-package.html#cb134-53"></a></span>
-<span id="cb134-54"><a href="submission-package.html#cb134-54"></a>To reproduce the analysis results, rerun the following programs:</span>
-<span id="cb134-55"><a href="submission-package.html#cb134-55"></a></span>
-<span id="cb134-56"><a href="submission-package.html#cb134-56"></a>- <span class="st">tlf-01-disposition.txt</span></span>
-<span id="cb134-57"><a href="submission-package.html#cb134-57"></a><span class="st">- tlf-02-population.txt</span></span>
-<span id="cb134-58"><a href="submission-package.html#cb134-58"></a><span class="st">- tlf-03-baseline.txt</span></span>
-<span id="cb134-59"><a href="submission-package.html#cb134-59"></a><span class="st">- tlf-04-efficacy.txt</span></span>
-<span id="cb134-60"><a href="submission-package.html#cb134-60"></a><span class="st">- tlf-05-ae-summary.txt</span></span>
-<span id="cb134-61"><a href="submission-package.html#cb134-61"></a><span class="st">- tlf-06-ae-spec.txt</span></span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb135-1"><a href="submission-package.html#cb135-1"></a>Appendix: Instructions to Execute Analysis Program in R</span>
+<span id="cb135-2"><a href="submission-package.html#cb135-2"></a></span>
+<span id="cb135-3"><a href="submission-package.html#cb135-3"></a>1. <span class="st">Install R</span></span>
+<span id="cb135-4"><a href="submission-package.html#cb135-4"></a></span>
+<span id="cb135-5"><a href="submission-package.html#cb135-5"></a>Download and install R 4.1.1 for Windows from</span>
+<span id="cb135-6"><a href="submission-package.html#cb135-6"></a>https://cran.r-project.org/bin/windows/base/old/4.1.1/R-4.1.1-win.exe</span>
+<span id="cb135-7"><a href="submission-package.html#cb135-7"></a></span>
+<span id="cb135-8"><a href="submission-package.html#cb135-8"></a>2. <span class="st">Define working directory</span></span>
+<span id="cb135-9"><a href="submission-package.html#cb135-9"></a></span>
+<span id="cb135-10"><a href="submission-package.html#cb135-10"></a>Create a temporary working directory, for example, "C:\tempwork".</span>
+<span id="cb135-11"><a href="submission-package.html#cb135-11"></a>Copy all submitted R programs into the temporary folder.</span>
+<span id="cb135-12"><a href="submission-package.html#cb135-12"></a>All steps below should be executed in this working directory</span>
+<span id="cb135-13"><a href="submission-package.html#cb135-13"></a>represented as "." in the example R code below.</span>
+<span id="cb135-14"><a href="submission-package.html#cb135-14"></a></span>
+<span id="cb135-15"><a href="submission-package.html#cb135-15"></a>3. <span class="st">Specify R package repository</span></span>
+<span id="cb135-16"><a href="submission-package.html#cb135-16"></a></span>
+<span id="cb135-17"><a href="submission-package.html#cb135-17"></a>The R packages are based on CRAN at 2021-08-06. To install the exact</span>
+<span id="cb135-18"><a href="submission-package.html#cb135-18"></a>R package versions used in this project, run the code below to set</span>
+<span id="cb135-19"><a href="submission-package.html#cb135-19"></a>the snapshot repository.</span>
+<span id="cb135-20"><a href="submission-package.html#cb135-20"></a></span>
+<span id="cb135-21"><a href="submission-package.html#cb135-21"></a>options(repos = "https://mran.microsoft.com/snapshot/2021-08-06/")</span>
+<span id="cb135-22"><a href="submission-package.html#cb135-22"></a></span>
+<span id="cb135-23"><a href="submission-package.html#cb135-23"></a>4. <span class="st">Install open-source R packages</span></span>
+<span id="cb135-24"><a href="submission-package.html#cb135-24"></a></span>
+<span id="cb135-25"><a href="submission-package.html#cb135-25"></a>In the same R session, install the required packages by running the code below.</span>
+<span id="cb135-26"><a href="submission-package.html#cb135-26"></a></span>
+<span id="cb135-27"><a href="submission-package.html#cb135-27"></a>install.packages(c("pkglite", "publicpkg1", "publicpkg2"))</span>
+<span id="cb135-28"><a href="submission-package.html#cb135-28"></a></span>
+<span id="cb135-29"><a href="submission-package.html#cb135-29"></a>5. <span class="st">Install proprietary R packages</span></span>
+<span id="cb135-30"><a href="submission-package.html#cb135-30"></a></span>
+<span id="cb135-31"><a href="submission-package.html#cb135-31"></a>All internal R packages are packed in the file r0pkgs.txt. In the same R session,</span>
+<span id="cb135-32"><a href="submission-package.html#cb135-32"></a>restore the package structures and install them by running the code below.</span>
+<span id="cb135-33"><a href="submission-package.html#cb135-33"></a>Adjust the output path as needed to use a writable local directory.</span>
+<span id="cb135-34"><a href="submission-package.html#cb135-34"></a></span>
+<span id="cb135-35"><a href="submission-package.html#cb135-35"></a>pkglite::unpack("r0pkgs.txt", output = ".", install = TRUE)</span>
+<span id="cb135-36"><a href="submission-package.html#cb135-36"></a></span>
+<span id="cb135-37"><a href="submission-package.html#cb135-37"></a>6. <span class="st">Update path to dataset and TLFs</span></span>
+<span id="cb135-38"><a href="submission-package.html#cb135-38"></a></span>
+<span id="cb135-39"><a href="submission-package.html#cb135-39"></a>INPUT path: to rerun the analysis programs, define the path variable</span>
+<span id="cb135-40"><a href="submission-package.html#cb135-40"></a></span>
+<span id="cb135-41"><a href="submission-package.html#cb135-41"></a>- <span class="st">Path for ADaM data: path$adam</span></span>
+<span id="cb135-42"><a href="submission-package.html#cb135-42"></a></span>
+<span id="cb135-43"><a href="submission-package.html#cb135-43"></a>OUTPUT path: to save the analysis results, define the path variable</span>
+<span id="cb135-44"><a href="submission-package.html#cb135-44"></a></span>
+<span id="cb135-45"><a href="submission-package.html#cb135-45"></a>- <span class="st">Path for output TLFs: path$output</span></span>
+<span id="cb135-46"><a href="submission-package.html#cb135-46"></a></span>
+<span id="cb135-47"><a href="submission-package.html#cb135-47"></a>All these paths need to be defined before executing the analysis program. For example:</span>
+<span id="cb135-48"><a href="submission-package.html#cb135-48"></a></span>
+<span id="cb135-49"><a href="submission-package.html#cb135-49"></a>path = list(adam = "/path/to/esub/analysis/adam/datasets/") # Modify to use actual location</span>
+<span id="cb135-50"><a href="submission-package.html#cb135-50"></a>path$outtable = path$outgraph = "." # Outputs saved to the current folder</span>
+<span id="cb135-51"><a href="submission-package.html#cb135-51"></a></span>
+<span id="cb135-52"><a href="submission-package.html#cb135-52"></a>7. <span class="st">Execute analysis program</span></span>
+<span id="cb135-53"><a href="submission-package.html#cb135-53"></a></span>
+<span id="cb135-54"><a href="submission-package.html#cb135-54"></a>To reproduce the analysis results, rerun the following programs:</span>
+<span id="cb135-55"><a href="submission-package.html#cb135-55"></a></span>
+<span id="cb135-56"><a href="submission-package.html#cb135-56"></a>- <span class="st">tlf-01-disposition.txt</span></span>
+<span id="cb135-57"><a href="submission-package.html#cb135-57"></a><span class="st">- tlf-02-population.txt</span></span>
+<span id="cb135-58"><a href="submission-package.html#cb135-58"></a><span class="st">- tlf-03-baseline.txt</span></span>
+<span id="cb135-59"><a href="submission-package.html#cb135-59"></a><span class="st">- tlf-04-efficacy.txt</span></span>
+<span id="cb135-60"><a href="submission-package.html#cb135-60"></a><span class="st">- tlf-05-ae-summary.txt</span></span>
+<span id="cb135-61"><a href="submission-package.html#cb135-61"></a><span class="st">- tlf-06-ae-spec.txt</span></span></code></pre></div>
 <p>An example ADRG following this template can be found in
 <a href="https://github.com/elong0527/ectddemo/blob/master/m5/datasets/ectddemo/analysis/adam/datasets/adrg.pdf">ectddemo</a>.</p>
 </div>
@@ -587,7 +589,7 @@ related to R in two sections:</p>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="overview-2.html"><span class="header-section-number">12</span> Overview</a></div>
+<div class="prev"><a href="submission-overview.html"><span class="header-section-number">12</span> Overview</a></div>
 <div class="next"><a href="running-environment.html"><span class="header-section-number">14</span> Running environment</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
