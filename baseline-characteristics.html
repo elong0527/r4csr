@@ -94,7 +94,7 @@ the required information for the baseline characteristics table.</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"adam_data/adsl.sas7bdat"</span><span class="op">)</span></code></pre></div>
 <p>For simplicity, we only analyze <code>SEX</code>, <code>AGE</code> and, <code>RACE</code> in this example
-using the <code>table1</code> R package. More details of the <code>table</code> R package can
+using the <code>table1</code> R package. More details of the <code>table1</code> R package can
 be found in the package
 <a href="https://benjaminrich.github.io/table1/vignettes/table1-examples.html">vignettes</a>.</p>
 <p>The <code>table1</code> R package directly creates an HTML report.</p>
@@ -189,9 +189,9 @@ be found in the package
 </tbody>
 </table></div></div>
 <p>The code below transfer the output into a dataframe
-that only contain ASCII character
+that only contains ASCII characters
 recommended by regulatory agencies.
-<code>tbl_base</code> is used as input for <code>r2rtf</code> to create final report.</p>
+<code>tbl_base</code> is used as input for <code>r2rtf</code> to create the final report.</p>
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_base</span> <span class="op">&lt;-</span> <span class="va">tbl</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
