@@ -32,7 +32,7 @@ adsl <- read_sas("adam_data/adsl.sas7bdat")
 ```
 
 For simplicity, we only analyze `SEX`, `AGE` and, `RACE` in this example
-using the `table1` R package. More details of the `table` R package can
+using the `table1` R package. More details of the `table1` R package can
 be found in the package
 [vignettes](https://benjaminrich.github.io/table1/vignettes/table1-examples.html).
 
@@ -50,9 +50,9 @@ tbl
 ```
 
 The code below transfer the output into a dataframe
-that only contain ASCII character
+that only contains ASCII characters
 recommended by regulatory agencies.
-`tbl_base` is used as input for `r2rtf` to create final report.
+`tbl_base` is used as input for `r2rtf` to create the final report.
 
 ```{r}
 tbl_base <- tbl %>%
