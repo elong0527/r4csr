@@ -148,7 +148,7 @@ text_format <- ifelse(id, "b", "")
 
 More discussion on `page_by`, `group_by` and `subline_by`
 features can be found in the
-[`r2rtf` package website](https://merck.github.io/r2rtf/articles/example-sublineby-pageby-groupby.html.
+[`r2rtf` package website](https://merck.github.io/r2rtf/articles/example-sublineby-pageby-groupby.html).
 
 ```{r}
 tbl_ae_spec %>%
