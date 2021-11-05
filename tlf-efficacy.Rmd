@@ -1,7 +1,7 @@
 # Efficacy
 
 Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
-primary and secondary efficacy endpoints need to summarized
+primary and secondary efficacy endpoints need to be summarized
 in Section 11.4, Efficacy Results and Tabulations of Individual Participant.
 
 ```{r}
