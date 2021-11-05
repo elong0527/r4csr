@@ -1,7 +1,7 @@
 # Efficacy
 
 Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
-we need to summarize primary and secondary efficacy endpoints,
+primary and secondary efficacy endpoints need to summarized
 in Section 11.4, Efficacy Results and Tabulations of Individual Participant.
 
 ```{r}
@@ -12,7 +12,7 @@ library(r2rtf) # Reporting in RTF format
 library(emmeans) # LS mean estimation
 ```
 
-For efficacy analysis, we only analyze the change from baseline glucose data at week 24.
+For efficacy analysis, only the change from baseline glucose data at week 24 is analyzed.
 
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tlf_eff.pdf")
@@ -20,17 +20,16 @@ knitr::include_graphics("tlf/tlf_eff.pdf")
 
 ## Analysis dataset
 
-To prepare the analysis dataset,
-we need both `adsl` and `adlbc` datasets for this analysis.
+To prepare the analysis, both `adsl` and `adlbc` datasets are required.
 
 ```{r}
 adsl <- read_sas("adam_data/adsl.sas7bdat")
 adlb <- read_sas("adam_data/adlbc.sas7bdat")
 ```
 
-We first define the analysis dataset using
-efficacy population flag `EFFFL` and
-all records post baseline (`AVISITN > 1`) and on or before Week 24 (`AVISITN <= 24`).
+First, both the population and the data in scope are selected.
+The analysis is done on the efficacy population, identified by `EFFFL == "Y"`, and
+all records post baseline (`AVISITN >= 1`) and on or before Week 24 (`AVISITN <= 24`).
 Here the variable `AVISITN` is the numerical analysis visit.
 For example, if the analysis visit is recorded as "Baseline", i.e., `AVISIT = Baseline`, then `AVISITN = 0`;
 if the analysis visit is recorded as "Week 24", i.e., `AVISIT = Week 24`, then `AVISITN = 24`;
@@ -107,7 +106,7 @@ fmt_pval <- function(.p, digits = 3) {
 
 ## Summary of observed data
 
-We first summarize observed data at Baseline and Week 24
+First the observed data at Baseline and Week 24 is summarized:
 
 ```{r}
 t11 <- gluc %>%
@@ -126,7 +125,7 @@ t11 <- gluc %>%
 t11
 ```
 
-We also summarize observed change from baseline glucose at Week 24.
+Also the observed change from baseline glucose at Week 24 is summarized:
 
 ```{r}
 t12 <- gluc %>%
@@ -168,14 +167,14 @@ ana_locf <- ana %>%
 
 ## ANCOVA model
 
-We start to analyze the imputed data using the ANCOVA model with treatment and baseline glucose as covariates.
+The imputed data is analyzed using the ANCOVA model with treatment and baseline glucose as covariates.
 
 ```{r}
 fit <- lm(CHG ~ BASE + TRTP, data = ana_locf)
 summary(fit)
 ```
 
-Then we use the `emmeans` R package to obtain
+The `emmeans` R package is used to obtain
 within and between group least square mean (LS mean)
 
 ```{r}
@@ -215,7 +214,7 @@ t2
 
 ## Reporting
 
-We combine `t11`, `t12` and `t13` to get the first part of the report data
+`t11`, `t12` and `t13` are combined to get the first part of the report data
 
 ```{r}
 t1 <- cbind(
@@ -226,7 +225,7 @@ t1 <- cbind(
 t1
 ```
 
-Then we use `r2rtf` to prepare the table format for `t1`.
+Then `r2rtf` is used to prepare the table format for `t1`.
 We also highlight how to handle special characters in this example.
 
 Special characters `^` and `_` are used to define superscript and subscript of text. And `{}` is to define the part that will be impacted.
@@ -316,4 +315,4 @@ In conclusion, the procedure to generate the above efficacy results table is sum
 - Step 3: Impute the missing values. In our example, we name the `ana` dataset after imputation as `ana_locf`.
 - Step 4: Summarize `gluc`, i.e., calculate the mean and standard derivation, and then format it into an RTF table.
 - Step 5: Summarize `ana_locf`, i.e., calculate the pairwise comparison by ANCOVA model, and then format it into an RTF table.
-- Step 6: Rowly bind the output in Step 4 and Step 5.
+- Step 6: Set the results from Step 4 and Step 5 and output.
