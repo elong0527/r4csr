@@ -8,14 +8,14 @@
 <meta name="author" content="Yilong Zhang">
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
-<meta name="description" content="Following ICH E3 guidance, we need to summarize primary and secondary efficacy endpoints, in Section 11.4, Efficacy Results and Tabulations of Individual Participant. library(haven) # Read SAS...">
+<meta name="description" content="Following ICH E3 guidance, primary and secondary efficacy endpoints need to be summarized in Section 11.4, Efficacy Results and Tabulations of Individual Participant. library(haven) # Read SAS...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 6 Efficacy | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Following ICH E3 guidance, we need to summarize primary and secondary efficacy endpoints, in Section 11.4, Efficacy Results and Tabulations of Individual Participant. library(haven) # Read SAS...">
+<meta property="og:description" content="Following ICH E3 guidance, primary and secondary efficacy endpoints need to be summarized in Section 11.4, Efficacy Results and Tabulations of Individual Participant. library(haven) # Read SAS...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 6 Efficacy | R for Clinical Study Reports and Submission">
-<meta name="twitter:description" content="Following ICH E3 guidance, we need to summarize primary and secondary efficacy endpoints, in Section 11.4, Efficacy Results and Tabulations of Individual Participant. library(haven) # Read SAS...">
+<meta name="twitter:description" content="Following ICH E3 guidance, primary and secondary efficacy endpoints need to be summarized in Section 11.4, Efficacy Results and Tabulations of Individual Participant. library(haven) # Read SAS...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -75,7 +75,7 @@
 <span class="header-section-number">6</span> Efficacy<a class="anchor" aria-label="anchor" href="#efficacy"><i class="fas fa-link"></i></a>
 </h1>
 <p>Following <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3 guidance</a>,
-we need to summarize primary and secondary efficacy endpoints,
+primary and secondary efficacy endpoints need to be summarized
 in Section 11.4, Efficacy Results and Tabulations of Individual Participant.</p>
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span> <span class="co"># Read SAS data</span>
@@ -83,19 +83,18 @@ in Section 11.4, Efficacy Results and Tabulations of Individual Participant.</p>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://merck.github.io/r2rtf/">r2rtf</a></span><span class="op">)</span> <span class="co"># Reporting in RTF format</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rvlenth/emmeans">emmeans</a></span><span class="op">)</span> <span class="co"># LS mean estimation</span></code></pre></div>
-<p>For efficacy analysis, we only analyze the change from baseline glucose data at week 24.</p>
+<p>For efficacy analysis, only the change from baseline glucose data at week 24 is analyzed.</p>
 <embed src="tlf/tlf_eff.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><div id="analysis-dataset" class="section level2">
 <h2>
 <span class="header-section-number">6.1</span> Analysis dataset<a class="anchor" aria-label="anchor" href="#analysis-dataset"><i class="fas fa-link"></i></a>
 </h2>
-<p>To prepare the analysis dataset,
-we need both <code>adsl</code> and <code>adlbc</code> datasets for this analysis.</p>
+<p>To prepare the analysis, both <code>adsl</code> and <code>adlbc</code> datasets are required.</p>
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"adam_data/adsl.sas7bdat"</span><span class="op">)</span>
 <span class="va">adlb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"adam_data/adlbc.sas7bdat"</span><span class="op">)</span></code></pre></div>
-<p>We first define the analysis dataset using
-efficacy population flag <code>EFFFL</code> and
-all records post baseline (<code>AVISITN &gt; 1</code>) and on or before Week 24 (<code>AVISITN &lt;= 24</code>).
+<p>First, both the population and the data in scope are selected.
+The analysis is done on the efficacy population, identified by <code>EFFFL == "Y"</code>, and
+all records post baseline (<code>AVISITN &gt;= 1</code>) and on or before Week 24 (<code>AVISITN &lt;= 24</code>).
 Here the variable <code>AVISITN</code> is the numerical analysis visit.
 For example, if the analysis visit is recorded as “Baseline”, i.e., <code>AVISIT = Baseline</code>, then <code>AVISITN = 0</code>;
 if the analysis visit is recorded as “Week 24”, i.e., <code>AVISIT = Week 24</code>, then <code>AVISITN = 24</code>;
@@ -176,7 +175,7 @@ by using the <code>fmt_num()</code> function defined in Chapter <a href="populat
 <h2>
 <span class="header-section-number">6.3</span> Summary of observed data<a class="anchor" aria-label="anchor" href="#summary-of-observed-data"><i class="fas fa-link"></i></a>
 </h2>
-<p>We first summarize observed data at Baseline and Week 24</p>
+<p>First the observed data at Baseline and Week 24 is summarized:</p>
 <div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t11</span> <span class="op">&lt;-</span> <span class="va">gluc</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">AVISITN</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">24</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -199,7 +198,7 @@ by using the <code>fmt_num()</code> function defined in Chapter <a href="populat
 ## 1 Placebo                  0    79    57 "  5.7 ( 2.23)" "  5.7 ( 1.83)"
 ## 2 Xanomeline Low Dose     54    79    26 "  5.4 ( 0.95)" "  5.7 ( 1.26)"
 ## 3 Xanomeline High Dose    81    74    30 "  5.4 ( 1.37)" "  6.0 ( 1.92)"</code></pre>
-<p>We also summarize observed change from baseline glucose at Week 24.</p>
+<p>Also the observed change from baseline glucose at Week 24 is summarized:</p>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t12</span> <span class="op">&lt;-</span> <span class="va">gluc</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">AVISITN</span> <span class="op">%in%</span> <span class="fl">24</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -256,7 +255,7 @@ Interested readers can find more discussion on missing data approaches in the bo
 <h2>
 <span class="header-section-number">6.5</span> ANCOVA model<a class="anchor" aria-label="anchor" href="#ancova-model"><i class="fas fa-link"></i></a>
 </h2>
-<p>We start to analyze the imputed data using the ANCOVA model with treatment and baseline glucose as covariates.</p>
+<p>The imputed data is analyzed using the ANCOVA model with treatment and baseline glucose as covariates.</p>
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">CHG</span> <span class="op">~</span> <span class="va">BASE</span> <span class="op">+</span> <span class="va">TRTP</span>, data <span class="op">=</span> <span class="va">ana_locf</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></code></pre></div>
@@ -281,7 +280,7 @@ Interested readers can find more discussion on missing data approaches in the bo
 ##   (2 observations deleted due to missingness)
 ## Multiple R-squared:  0.2567, Adjusted R-squared:  0.2468 
 ## F-statistic: 26.01 on 3 and 226 DF,  p-value: 1.714e-14</code></pre>
-<p>Then we use the <code>emmeans</code> R package to obtain
+<p>The <code>emmeans</code> R package is used to obtain
 within and between group least square mean (LS mean)</p>
 <div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fit_within</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">fit</span>, <span class="st">"TRTP"</span><span class="op">)</span>
@@ -338,7 +337,7 @@ within and between group least square mean (LS mean)</p>
 <h2>
 <span class="header-section-number">6.6</span> Reporting<a class="anchor" aria-label="anchor" href="#reporting"><i class="fas fa-link"></i></a>
 </h2>
-<p>We combine <code>t11</code>, <code>t12</code> and <code>t13</code> to get the first part of the report data</p>
+<p><code>t11</code>, <code>t12</code> and <code>t13</code> are combined to get the first part of the report data</p>
 <div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span>
   <span class="va">t11</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">TRTP</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"0"</span><span class="op">)</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"24"</span><span class="op">)</span><span class="op">)</span>,
@@ -354,7 +353,7 @@ within and between group least square mean (LS mean)</p>
 ## 1  0.07 (-0.27, 0.41)
 ## 2 -0.11 (-0.45, 0.23)
 ## 3  0.40 ( 0.05, 0.75)</code></pre>
-<p>Then we use <code>r2rtf</code> to prepare the table format for <code>t1</code>.
+<p>Then <code>r2rtf</code> is used to prepare the table format for <code>t1</code>.
 We also highlight how to handle special characters in this example.</p>
 <p>Special characters <code><a href="https://rdrr.io/r/base/Arithmetic.html">^</a></code> and <code>_</code> are used to define superscript and subscript of text. And <code>{}</code> is to define the part that will be impacted.
 For example, <code>{^a}</code> provide a superscript <code>a</code> for footnote notation.
@@ -422,7 +421,7 @@ This is achieved by providing a list of <code>t1_rtf</code> and <code>t2_rtf</co
 <li>Step 3: Impute the missing values. In our example, we name the <code>ana</code> dataset after imputation as <code>ana_locf</code>.</li>
 <li>Step 4: Summarize <code>gluc</code>, i.e., calculate the mean and standard derivation, and then format it into an RTF table.</li>
 <li>Step 5: Summarize <code>ana_locf</code>, i.e., calculate the pairwise comparison by ANCOVA model, and then format it into an RTF table.</li>
-<li>Step 6: Rowly bind the output in Step 4 and Step 5.</li>
+<li>Step 6: Combine the outputs in step 4 and step 5 by rows.</li>
 </ul>
 </div>
 </div>
