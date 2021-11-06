@@ -13,7 +13,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(comment = "#>", echo = FALSE)
 ```
 
 ```{r, message=FALSE}
@@ -85,9 +85,9 @@ some R programming experience and clinical development knowledge.
 
 ```{r, echo = TRUE, eval = FALSE}
 install.packages(c(
-  "tidyverse",      # Data manipulation
-  "r2rtf",          # TLF generation
-  "pkglite"         # eCTD submission
+  "tidyverse", # Data manipulation
+  "r2rtf", # TLF generation
+  "pkglite" # eCTD submission
 ))
 ```
 
@@ -184,8 +184,8 @@ Before creating an RTF table, we need to:
 
 ```{r, echo = TRUE, eval = FALSE}
 head(iris) %>%
-  rtf_body() %>%           # Step 1 Add table attributes
-  rtf_encode() %>%         # Step 2 Convert attributes to RTF encode
+  rtf_body() %>% # Step 1 Add table attributes
+  rtf_encode() %>% # Step 2 Convert attributes to RTF encode
   write_rtf("minimal.rtf") # Step 3 Write to a .rtf file
 ```
 
