@@ -315,4 +315,4 @@ In conclusion, the procedure to generate the above efficacy results table is sum
 - Step 3: Impute the missing values. In our example, we name the `ana` dataset after imputation as `ana_locf`.
 - Step 4: Summarize `gluc`, i.e., calculate the mean and standard derivation, and then format it into an RTF table.
 - Step 5: Summarize `ana_locf`, i.e., calculate the pairwise comparison by ANCOVA model, and then format it into an RTF table.
-- Step 6: Set the results from Step 4 and Step 5 and output.
+- Step 6: Combine the outputs in step 4 and step 5 by rows.
