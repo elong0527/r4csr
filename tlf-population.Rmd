@@ -24,7 +24,7 @@ population table, all the required information is saved in the ADSL
 dataset. We can use the `haven` package to read the dataset.
 
 ```{r}
-adsl <- read_sas("adam_data/adsl.sas7bdat")
+adsl <- read_sas("data-adam/adsl.sas7bdat")
 ```
 
 We illustrate how to prepare a report data for a simplified analysis

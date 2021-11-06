@@ -19,8 +19,8 @@ knitr::include_graphics("tlf/tlf_ae_summary.pdf")
 The data used to summarize AE information is in `adsl` and `adae` datasets.
 
 ```{r}
-adsl <- read_sas("adam_data/adsl.sas7bdat")
-adae <- read_sas("adam_data/adae.sas7bdat")
+adsl <- read_sas("data-adam/adsl.sas7bdat")
+adae <- read_sas("data-adam/adae.sas7bdat")
 ```
 
 We first summarize participants in population by treatment group.

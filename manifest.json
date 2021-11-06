@@ -2690,34 +2690,34 @@
     ".Rprofile": {
       "checksum": "75e7f9e7dad1f910a64519196ea5a681"
     },
-    "adam_data/adae.sas7bdat": {
+    "data-adam/adae.sas7bdat": {
       "checksum": "0f8b432f089a75aee71c980fcd7c8f9f"
     },
-    "adam_data/adlbc.sas7bdat": {
+    "data-adam/adlbc.sas7bdat": {
       "checksum": "09fa39cedbcc3bcb3defeabdbbc99ed9"
     },
-    "adam_data/adlbh.sas7bdat": {
+    "data-adam/adlbh.sas7bdat": {
       "checksum": "d5a997cef8fe1a83e243fe508cbb6ebc"
     },
-    "adam_data/adlbhy.sas7bdat": {
+    "data-adam/adlbhy.sas7bdat": {
       "checksum": "7c17a249e2c7c0aacbd9d3778dd5c382"
     },
-    "adam_data/adqsadas.sas7bdat": {
+    "data-adam/adqsadas.sas7bdat": {
       "checksum": "8ce022663c0f4d17330b954d678a3a2e"
     },
-    "adam_data/adqscibc.sas7bdat": {
+    "data-adam/adqscibc.sas7bdat": {
       "checksum": "6762a4cc97b8503c309791c21427e5b2"
     },
-    "adam_data/adqsnpix.sas7bdat": {
+    "data-adam/adqsnpix.sas7bdat": {
       "checksum": "9ccac393db5dac59f9e4c08cd0d34080"
     },
-    "adam_data/adsl.sas7bdat": {
+    "data-adam/adsl.sas7bdat": {
       "checksum": "51abb0d68fd9f629f5c2a3685382da1b"
     },
-    "adam_data/adtte.sas7bdat": {
+    "data-adam/adtte.sas7bdat": {
       "checksum": "7a311cf74f1ddf70eca03fed7dbddaa9"
     },
-    "adam_data/advs.sas7bdat": {
+    "data-adam/advs.sas7bdat": {
       "checksum": "de2ace78c29a122929c9f1c9cefa5a94"
     },
     "book.bib": {

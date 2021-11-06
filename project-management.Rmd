@@ -116,7 +116,7 @@ After a project is initiated, the study team starts to develop TLFs based on
 pre-defined mock-up tables assigned to each team member.
 
 The analysis code and relevant description can be saved in R Markdown files
-in the `vignettes` folder.
+in the `vignettes/` folder.
 
 The use of R Markdown allows developers to assemble narrative text, code, and its
 comments in one place to simplify documentation.

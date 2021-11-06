@@ -23,8 +23,8 @@ knitr::include_graphics("tlf/tlf_eff.pdf")
 To prepare the analysis, both `adsl` and `adlbc` datasets are required.
 
 ```{r}
-adsl <- read_sas("adam_data/adsl.sas7bdat")
-adlb <- read_sas("adam_data/adlbc.sas7bdat")
+adsl <- read_sas("data-adam/adsl.sas7bdat")
+adlb <- read_sas("data-adam/adlbc.sas7bdat")
 ```
 
 First, both the population and the data in scope are selected.

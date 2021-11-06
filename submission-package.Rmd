@@ -253,13 +253,13 @@ If successfully tested, this command will be used in the ADRG instructions
 for restoring and installing the packed R package(s).
 
 You can then proceed to move the file `r0pkgs.txt` to the folder
-`ectddemo/m5/datasets/ectddemo/analysis/adam/programs`,
+`ectddemo/m5/datasets/ectddemo/analysis/adam/programs/`,
 or specify the output text file path above directly.
 
 ## Prepare analysis programs for submission
 
 Besides the R packages, we need to convert the R Markdown (`.Rmd`) files
-into `.txt` files and saved them in the `programs` folder.
+into `.txt` files and saved them in the `programs/` folder.
 You can do this with `knitr::purl()`:
 
 ```{r, eval=FALSE}
