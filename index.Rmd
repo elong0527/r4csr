@@ -29,7 +29,7 @@ library(pkglite)
 ```
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+knitr::opts_chunk$set(comment = "#>", echo = TRUE, message = FALSE)
 options(dplyr.summarise.inform = FALSE)
 file.copy("static/CNAME", "_book", overwrite = TRUE)
 fs::dir_copy("slides/", "_book/slides", overwrite = TRUE)
