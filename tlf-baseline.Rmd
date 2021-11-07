@@ -28,7 +28,7 @@ As in previous chapters, we first read the `adsl` dataset that contains all
 the required information for the baseline characteristics table.
 
 ```{r}
-adsl <- read_sas("adam_data/adsl.sas7bdat")
+adsl <- read_sas("data-adam/adsl.sas7bdat")
 ```
 
 For simplicity, we only analyze `SEX`, `AGE` and, `RACE` in this example

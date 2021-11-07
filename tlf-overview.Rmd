@@ -62,8 +62,9 @@ In a CSR, most of TLFs are located in
 We used publicly available CDISC pilot
 [study data located in the CDISC Bitbucket repository](https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse/updated-pilot-submission-package/900172/m5/datasets/cdiscpilot01/analysis/adam/datasets).
 
-For simplicity, we have downloaded all these datasets into the `adam_data` folder of
-this project and converted them from the `.xpt` format to the `.sas7bdat` format.
+For simplicity, we have downloaded all these datasets into the `data-adam/`
+folder of this project and converted them from the `.xpt` format to
+the `.sas7bdat` format.
 
 The dataset structure follows
 [CDISC Analysis Data Model (ADaM)](https://www.cdisc.org/standards/foundational/adam).

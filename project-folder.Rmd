@@ -63,7 +63,7 @@ In the `esubdemo` project, we saved all TLF generation scripts in previous chapt
 
 ```
 vignettes
-├── adam_data
+├── data-adam
 ├── tlf
 ├── tlf-01-disposition.Rmd
 ├── tlf-02-population.Rmd
@@ -209,7 +209,7 @@ to initialize, save and restore R packages used for the current analysis project
 In the analysis project, the `renv` package will
 
 - create a `renv.lock` file to save the state of package versions.
-- create a `renv` folder to manage R packages for a project.
+- create a `renv/` folder to manage R packages for a project.
 
 > The `renv.lock` file and `renv/` folder are only for project-specific R package.
 > A standard R package should not use `renv`.

@@ -27,7 +27,7 @@ The dataset is provided in `sas7bdat` format that is a SAS data format currently
 The `haven` package is able to read in the dataset, while maintaining its attributes (e.g., variable labels).
 
 ```{r}
-adsl <- read_sas("adam_data/adsl.sas7bdat")
+adsl <- read_sas("data-adam/adsl.sas7bdat")
 ```
 
 Following variables are used in the preparation of a simplified disposition of participants table:

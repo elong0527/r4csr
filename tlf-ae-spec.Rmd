@@ -21,8 +21,8 @@ knitr::include_graphics("tlf/tlf_spec_ae.pdf")
 The data used to summarize AE information is in `adsl` and `adae` datasets.
 
 ```{r}
-adsl <- read_sas("adam_data/adsl.sas7bdat")
-adae <- read_sas("adam_data/adae.sas7bdat")
+adsl <- read_sas("data-adam/adsl.sas7bdat")
+adae <- read_sas("data-adam/adae.sas7bdat")
 ```
 
 For illustration purposes, we only provide count in the simplified
