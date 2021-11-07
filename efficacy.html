@@ -90,8 +90,8 @@ in Section 11.4, Efficacy Results and Tabulations of Individual Participant.</p>
 </h2>
 <p>To prepare the analysis, both <code>adsl</code> and <code>adlbc</code> datasets are required.</p>
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"adam_data/adsl.sas7bdat"</span><span class="op">)</span>
-<span class="va">adlb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"adam_data/adlbc.sas7bdat"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"data-adam/adsl.sas7bdat"</span><span class="op">)</span>
+<span class="va">adlb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"data-adam/adlbc.sas7bdat"</span><span class="op">)</span></code></pre></div>
 <p>First, both the population and the data in scope are selected.
 The analysis is done on the efficacy population, identified by <code>EFFFL == "Y"</code>, and
 all records post baseline (<code>AVISITN &gt;= 1</code>) and on or before Week 24 (<code>AVISITN &lt;= 24</code>).

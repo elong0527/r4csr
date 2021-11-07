@@ -84,8 +84,8 @@ we need to summarize which participants were included in each efficacy analysis 
 <p>In this chapter, we illustrate how to summarize AE information in a study.</p>
 <embed src="tlf/tlf_ae_summary.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>The data used to summarize AE information is in <code>adsl</code> and <code>adae</code> datasets.</p>
 <div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"adam_data/adsl.sas7bdat"</span><span class="op">)</span>
-<span class="va">adae</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"adam_data/adae.sas7bdat"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"data-adam/adsl.sas7bdat"</span><span class="op">)</span>
+<span class="va">adae</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"data-adam/adae.sas7bdat"</span><span class="op">)</span></code></pre></div>
 <p>We first summarize participants in population by treatment group.</p>
 <div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pop</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op">%&gt;%</span>
