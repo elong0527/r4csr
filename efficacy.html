@@ -122,13 +122,13 @@ We will discuss these missing values in Section 6.4.</p>
 <code class="sourceCode R"><span class="va">ana</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">USUBJID</span>, <span class="va">TRTPN</span>, <span class="va">AVISIT</span>, <span class="va">AVAL</span>, <span class="va">BASE</span>, <span class="va">CHG</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 4 × 6
-##   USUBJID     TRTPN AVISIT              AVAL  BASE     CHG
-##   &lt;chr&gt;       &lt;dbl&gt; &lt;fct&gt;              &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
-## 1 01-701-1015     0 "          Week 2"  4.66  4.72 -0.0555
-## 2 01-701-1023     0 "          Week 2"  5.77  5.33  0.444 
-## 3 01-701-1047     0 "          Week 2"  5.55  5.55  0     
-## 4 01-701-1118     0 "          Week 2"  4.88  4.05  0.833</code></pre>
+<pre><code>#&gt; # A tibble: 4 × 6
+#&gt;   USUBJID     TRTPN AVISIT              AVAL  BASE     CHG
+#&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;fct&gt;              &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+#&gt; 1 01-701-1015     0 "          Week 2"  4.66  4.72 -0.0555
+#&gt; 2 01-701-1023     0 "          Week 2"  5.77  5.33  0.444 
+#&gt; 3 01-701-1047     0 "          Week 2"  5.55  5.55  0     
+#&gt; 4 01-701-1118     0 "          Week 2"  4.88  4.05  0.833</code></pre>
 </div>
 <div id="helper-functions-1" class="section level2">
 <h2>
@@ -191,13 +191,13 @@ by using the <code>fmt_num()</code> function defined in Chapter <a href="populat
   <span class="op">)</span>
 
 <span class="va">t11</span></code></pre></div>
-<pre><code>## # A tibble: 3 × 6
-## # Groups:   TRTPN, TRTP [3]
-##   TRTP                 TRTPN   n_0  n_24 mean_sd_0       mean_sd_24     
-##   &lt;fct&gt;                &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;           &lt;chr&gt;          
-## 1 Placebo                  0    79    57 "  5.7 ( 2.23)" "  5.7 ( 1.83)"
-## 2 Xanomeline Low Dose     54    79    26 "  5.4 ( 0.95)" "  5.7 ( 1.26)"
-## 3 Xanomeline High Dose    81    74    30 "  5.4 ( 1.37)" "  6.0 ( 1.92)"</code></pre>
+<pre><code>#&gt; # A tibble: 3 × 6
+#&gt; # Groups:   TRTPN, TRTP [3]
+#&gt;   TRTP                 TRTPN   n_0  n_24 mean_sd_0       mean_sd_24     
+#&gt;   &lt;fct&gt;                &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;           &lt;chr&gt;          
+#&gt; 1 Placebo                  0    79    57 "  5.7 ( 2.23)" "  5.7 ( 1.83)"
+#&gt; 2 Xanomeline Low Dose     54    79    26 "  5.4 ( 0.95)" "  5.7 ( 1.26)"
+#&gt; 3 Xanomeline High Dose    81    74    30 "  5.4 ( 1.37)" "  6.0 ( 1.92)"</code></pre>
 <p>Also the observed change from baseline glucose at Week 24 is summarized:</p>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t12</span> <span class="op">&lt;-</span> <span class="va">gluc</span> <span class="op">%&gt;%</span>
@@ -212,13 +212,13 @@ by using the <code>fmt_num()</code> function defined in Chapter <a href="populat
   <span class="op">)</span>
 
 <span class="va">t12</span></code></pre></div>
-<pre><code>## # A tibble: 3 × 4
-## # Groups:   TRTPN [3]
-##   TRTPN AVISITN n_chg mean_chg       
-##   &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;          
-## 1     0      24    57 " -0.1 ( 2.68)"
-## 2    54      24    26 "  0.2 ( 0.82)"
-## 3    81      24    30 "  0.5 ( 1.94)"</code></pre>
+<pre><code>#&gt; # A tibble: 3 × 4
+#&gt; # Groups:   TRTPN [3]
+#&gt;   TRTPN AVISITN n_chg mean_chg       
+#&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;          
+#&gt; 1     0      24    57 " -0.1 ( 2.68)"
+#&gt; 2    54      24    26 "  0.2 ( 0.82)"
+#&gt; 3    81      24    30 "  0.5 ( 1.94)"</code></pre>
 </div>
 <div id="missing-data-imputation" class="section level2">
 <h2>
@@ -228,17 +228,17 @@ by using the <code>fmt_num()</code> function defined in Chapter <a href="populat
 In this study, there are also missing values in glucose data.</p>
 <div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">ana</span>, <span class="va">AVISIT</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 8 × 2
-##   AVISIT                 n
-##   &lt;fct&gt;              &lt;int&gt;
-## 1 "          Week 2"   229
-## 2 "          Week 4"   211
-## 3 "          Week 6"   197
-## 4 "          Week 8"   187
-## 5 "         Week 12"   167
-## 6 "         Week 16"   147
-## 7 "         Week 20"   126
-## 8 "         Week 24"   113</code></pre>
+<pre><code>#&gt; # A tibble: 8 × 2
+#&gt;   AVISIT                 n
+#&gt;   &lt;fct&gt;              &lt;int&gt;
+#&gt; 1 "          Week 2"   229
+#&gt; 2 "          Week 4"   211
+#&gt; 3 "          Week 6"   197
+#&gt; 4 "          Week 8"   187
+#&gt; 5 "         Week 12"   167
+#&gt; 6 "         Week 16"   147
+#&gt; 7 "         Week 20"   126
+#&gt; 8 "         Week 24"   113</code></pre>
 <p>For simplicity and illustration purpose,
 we use the last observation carried forward (LOCF) approach to handle missing data.
 LOCF approach is a single imputation approach that is <strong>not recommended</strong>
@@ -259,59 +259,59 @@ Interested readers can find more discussion on missing data approaches in the bo
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">CHG</span> <span class="op">~</span> <span class="va">BASE</span> <span class="op">+</span> <span class="va">TRTP</span>, data <span class="op">=</span> <span class="va">ana_locf</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = CHG ~ BASE + TRTP, data = ana_locf)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -6.9907 -0.7195 -0.2367  0.2422  7.0754 
-## 
-## Coefficients:
-##                          Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)               3.00836    0.39392   7.637 6.23e-13 ***
-## BASE                     -0.53483    0.06267  -8.535 2.06e-15 ***
-## TRTPXanomeline Low Dose  -0.17367    0.24421  -0.711    0.478    
-## TRTPXanomeline High Dose  0.32983    0.24846   1.327    0.186    
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 1.527 on 226 degrees of freedom
-##   (2 observations deleted due to missingness)
-## Multiple R-squared:  0.2567, Adjusted R-squared:  0.2468 
-## F-statistic: 26.01 on 3 and 226 DF,  p-value: 1.714e-14</code></pre>
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = CHG ~ BASE + TRTP, data = ana_locf)
+#&gt; 
+#&gt; Residuals:
+#&gt;     Min      1Q  Median      3Q     Max 
+#&gt; -6.9907 -0.7195 -0.2367  0.2422  7.0754 
+#&gt; 
+#&gt; Coefficients:
+#&gt;                          Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)               3.00836    0.39392   7.637 6.23e-13 ***
+#&gt; BASE                     -0.53483    0.06267  -8.535 2.06e-15 ***
+#&gt; TRTPXanomeline Low Dose  -0.17367    0.24421  -0.711    0.478    
+#&gt; TRTPXanomeline High Dose  0.32983    0.24846   1.327    0.186    
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; Residual standard error: 1.527 on 226 degrees of freedom
+#&gt;   (2 observations deleted due to missingness)
+#&gt; Multiple R-squared:  0.2567, Adjusted R-squared:  0.2468 
+#&gt; F-statistic: 26.01 on 3 and 226 DF,  p-value: 1.714e-14</code></pre>
 <p>The <code>emmeans</code> R package is used to obtain
 within and between group least square mean (LS mean)</p>
 <div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fit_within</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">fit</span>, <span class="st">"TRTP"</span><span class="op">)</span>
 <span class="va">fit_within</span></code></pre></div>
-<pre><code>##  TRTP                  emmean    SE  df lower.CL upper.CL
-##  Placebo               0.0676 0.172 226   -0.272    0.407
-##  Xanomeline Low Dose  -0.1060 0.173 226   -0.447    0.235
-##  Xanomeline High Dose  0.3975 0.179 226    0.045    0.750
-## 
-## Confidence level used: 0.95</code></pre>
+<pre><code>#&gt;  TRTP                  emmean    SE  df lower.CL upper.CL
+#&gt;  Placebo               0.0676 0.172 226   -0.272    0.407
+#&gt;  Xanomeline Low Dose  -0.1060 0.173 226   -0.447    0.235
+#&gt;  Xanomeline High Dose  0.3975 0.179 226    0.045    0.750
+#&gt; 
+#&gt; Confidence level used: 0.95</code></pre>
 <div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t13</span> <span class="op">&lt;-</span> <span class="va">fit_within</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>ls <span class="op">=</span> <span class="fu">fmt_ci</span><span class="op">(</span><span class="va">emmean</span>, <span class="va">lower.CL</span>, <span class="va">upper.CL</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">TRTP</span>, <span class="va">ls</span><span class="op">)</span>
 <span class="va">t13</span></code></pre></div>
-<pre><code>## # A tibble: 3 × 2
-##   TRTP                 ls                   
-##   &lt;fct&gt;                &lt;chr&gt;                
-## 1 Placebo              " 0.07 (-0.27, 0.41)"
-## 2 Xanomeline Low Dose  "-0.11 (-0.45, 0.23)"
-## 3 Xanomeline High Dose " 0.40 ( 0.05, 0.75)"</code></pre>
+<pre><code>#&gt; # A tibble: 3 × 2
+#&gt;   TRTP                 ls                   
+#&gt;   &lt;fct&gt;                &lt;chr&gt;                
+#&gt; 1 Placebo              " 0.07 (-0.27, 0.41)"
+#&gt; 2 Xanomeline Low Dose  "-0.11 (-0.45, 0.23)"
+#&gt; 3 Xanomeline High Dose " 0.40 ( 0.05, 0.75)"</code></pre>
 <div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fit_between</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html">pairs</a></span><span class="op">(</span><span class="va">fit_within</span>, reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="va">fit_between</span></code></pre></div>
-<pre><code>##  contrast                                   estimate    SE  df t.ratio p.value
-##  Xanomeline Low Dose - Placebo                -0.174 0.244 226  -0.711  0.7571
-##  Xanomeline High Dose - Placebo                0.330 0.248 226   1.327  0.3814
-##  Xanomeline High Dose - Xanomeline Low Dose    0.504 0.249 226   2.024  0.1087
-## 
-## P value adjustment: tukey method for comparing a family of 3 estimates</code></pre>
+<pre><code>#&gt;  contrast                                   estimate    SE  df t.ratio p.value
+#&gt;  Xanomeline Low Dose - Placebo                -0.174 0.244 226  -0.711  0.7571
+#&gt;  Xanomeline High Dose - Placebo                0.330 0.248 226   1.327  0.3814
+#&gt;  Xanomeline High Dose - Xanomeline Low Dose    0.504 0.249 226   2.024  0.1087
+#&gt; 
+#&gt; P value adjustment: tukey method for comparing a family of 3 estimates</code></pre>
 <div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t2</span> <span class="op">&lt;-</span> <span class="va">fit_between</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -327,11 +327,11 @@ within and between group least square mean (LS mean)</p>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">contrast</span>, <span class="va">ls</span>, <span class="va">p</span><span class="op">)</span>
 
 <span class="va">t2</span></code></pre></div>
-<pre><code>## # A tibble: 2 × 3
-##   contrast                       ls                    p        
-##   &lt;chr&gt;                          &lt;chr&gt;                 &lt;chr&gt;    
-## 1 Xanomeline Low Dose - Placebo  "-0.17 (-0.65, 0.30)" "  0.757"
-## 2 Xanomeline High Dose - Placebo " 0.33 (-0.16, 0.82)" "  0.381"</code></pre>
+<pre><code>#&gt; # A tibble: 2 × 3
+#&gt;   contrast                       ls                    p        
+#&gt;   &lt;chr&gt;                          &lt;chr&gt;                 &lt;chr&gt;    
+#&gt; 1 Xanomeline Low Dose - Placebo  "-0.17 (-0.65, 0.30)" "  0.757"
+#&gt; 2 Xanomeline High Dose - Placebo " 0.33 (-0.16, 0.82)" "  0.381"</code></pre>
 </div>
 <div id="reporting" class="section level2">
 <h2>
@@ -345,14 +345,14 @@ within and between group least square mean (LS mean)</p>
   <span class="va">t13</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">ls</span><span class="op">)</span>
 <span class="op">)</span>
 <span class="va">t1</span></code></pre></div>
-<pre><code>##                   TRTP n_0     mean_sd_0 n_24    mean_sd_24 n_chg      mean_chg
-## 1              Placebo  79   5.7 ( 2.23)   57   5.7 ( 1.83)    57  -0.1 ( 2.68)
-## 2  Xanomeline Low Dose  79   5.4 ( 0.95)   26   5.7 ( 1.26)    26   0.2 ( 0.82)
-## 3 Xanomeline High Dose  74   5.4 ( 1.37)   30   6.0 ( 1.92)    30   0.5 ( 1.94)
-##                    ls
-## 1  0.07 (-0.27, 0.41)
-## 2 -0.11 (-0.45, 0.23)
-## 3  0.40 ( 0.05, 0.75)</code></pre>
+<pre><code>#&gt;                   TRTP n_0     mean_sd_0 n_24    mean_sd_24 n_chg      mean_chg
+#&gt; 1              Placebo  79   5.7 ( 2.23)   57   5.7 ( 1.83)    57  -0.1 ( 2.68)
+#&gt; 2  Xanomeline Low Dose  79   5.4 ( 0.95)   26   5.7 ( 1.26)    26   0.2 ( 0.82)
+#&gt; 3 Xanomeline High Dose  74   5.4 ( 1.37)   30   6.0 ( 1.92)    30   0.5 ( 1.94)
+#&gt;                    ls
+#&gt; 1  0.07 (-0.27, 0.41)
+#&gt; 2 -0.11 (-0.45, 0.23)
+#&gt; 3  0.40 ( 0.05, 0.75)</code></pre>
 <p>Then <code>r2rtf</code> is used to prepare the table format for <code>t1</code>.
 We also highlight how to handle special characters in this example.</p>
 <p>Special characters <code><a href="https://rdrr.io/r/base/Arithmetic.html">^</a></code> and <code>_</code> are used to define superscript and subscript of text. And <code>{}</code> is to define the part that will be impacted.

@@ -102,13 +102,13 @@ population table using variables below:</p>
 <code class="sourceCode R"><span class="va">adsl</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">USUBJID</span>, <span class="va">ITTFL</span>, <span class="va">EFFFL</span>, <span class="va">SAFFL</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 4 × 4
-##   USUBJID     ITTFL EFFFL SAFFL
-##   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
-## 1 01-701-1015 Y     Y     Y    
-## 2 01-701-1023 Y     Y     Y    
-## 3 01-701-1028 Y     Y     Y    
-## 4 01-701-1033 Y     Y     Y</code></pre>
+<pre><code>#&gt; # A tibble: 4 × 4
+#&gt;   USUBJID     ITTFL EFFFL SAFFL
+#&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+#&gt; 1 01-701-1015 Y     Y     Y    
+#&gt; 2 01-701-1023 Y     Y     Y    
+#&gt; 3 01-701-1028 Y     Y     Y    
+#&gt; 4 01-701-1033 Y     Y     Y</code></pre>
 <div id="helper-functions" class="section level2">
 <h2>
 <span class="header-section-number">4.1</span> Helper functions<a class="anchor" aria-label="anchor" href="#helper-functions"><i class="fas fa-link"></i></a>
@@ -184,11 +184,11 @@ below.</p>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">count_by</span><span class="op">(</span><span class="va">adsl</span>, <span class="st">"TRT01PN"</span>, <span class="st">"EFFFL"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"_54"</span>, <span class="st">"_81"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 2 × 5
-##   var   n_0    pct_0   npct_0         var_label
-##   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;    
-## 1 N     "   7" "  8.1" "   7 (  8.1)" EFFFL    
-## 2 Y     "  79" " 91.9" "  79 ( 91.9)" EFFFL</code></pre>
+<pre><code>#&gt; # A tibble: 2 × 5
+#&gt;   var   n_0    pct_0   npct_0         var_label
+#&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;    
+#&gt; 1 N     "   7" "  8.1" "   7 (  8.1)" EFFFL    
+#&gt; 2 Y     "  79" " 91.9" "  79 ( 91.9)" EFFFL</code></pre>
 </div>
 <div id="analysis-code" class="section level2">
 <h2>
@@ -226,13 +226,13 @@ report.</p>
 <span class="va">tbl_pop</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">pop</span>, <span class="va">pop1</span><span class="op">)</span>
 
 <span class="va">tbl_pop</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">var_label</span>, <span class="va">npct_0</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 4 × 2
-##   var_label                                    npct_0        
-##   &lt;chr&gt;                                        &lt;chr&gt;         
-## 1 Participants in Population                   "  86"        
-## 2 Participants included in ITT population      "  86 (100.0)"
-## 3 Participants included in efficacy population "  79 ( 91.9)"
-## 4 Participants included in safety population   "  86 (100.0)"</code></pre>
+<pre><code>#&gt; # A tibble: 4 × 2
+#&gt;   var_label                                    npct_0        
+#&gt;   &lt;chr&gt;                                        &lt;chr&gt;         
+#&gt; 1 Participants in Population                   "  86"        
+#&gt; 2 Participants included in ITT population      "  86 (100.0)"
+#&gt; 3 Participants included in efficacy population "  79 ( 91.9)"
+#&gt; 4 Participants included in safety population   "  86 (100.0)"</code></pre>
 <p>We start to define the format of the output.</p>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">rel_width</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>

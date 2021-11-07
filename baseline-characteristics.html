@@ -204,20 +204,20 @@ recommended by regulatory agencies.
 
 <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">tbl_base</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">tbl_base</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/utf8Conversion.html">intToUtf8</a></span><span class="op">(</span><span class="fl">160</span><span class="op">)</span>, <span class="st">" "</span><span class="op">)</span>
 <span class="va">tbl_base</span></code></pre></div>
-<pre><code>## # A tibble: 11 × 5
-##    ` `              Placebo     `Xanomeline High … `Xanomeline Low … Overall    
-##    &lt;chr&gt;            &lt;chr&gt;       &lt;chr&gt;              &lt;chr&gt;             &lt;chr&gt;      
-##  1 ""               "(N=86)"    "(N=84)"           "(N=84)"          "(N=254)"  
-##  2 "SEX"            ""          ""                 ""                ""         
-##  3 "  Female"       "53 (61.6%… "40 (47.6%)"       "50 (59.5%)"      "143 (56.3…
-##  4 "  Male"         "33 (38.4%… "44 (52.4%)"       "34 (40.5%)"      "111 (43.7…
-##  5 "Age"            ""          ""                 ""                ""         
-##  6 "  Mean (SD)"    "75.2 (8.5… "74.4 (7.89)"      "75.7 (8.29)"     "75.1 (8.2…
-##  7 "  Median [Min,… "76.0 [52.… "76.0 [56.0, 88.0… "77.5 [51.0, 88.… "77.0 [51.…
-##  8 "RACE"           ""          ""                 ""                ""         
-##  9 "  Black or Afr… "8 (9.3%)"  "9 (10.7%)"        "6 (7.1%)"        "23 (9.1%)"
-## 10 "  White"        "78 (90.7%… "74 (88.1%)"       "78 (92.9%)"      "230 (90.6…
-## 11 "  American Ind… "0 (0%)"    "1 (1.2%)"         "0 (0%)"          "1 (0.4%)"</code></pre>
+<pre><code>#&gt; # A tibble: 11 × 5
+#&gt;    ` `              Placebo     `Xanomeline High … `Xanomeline Low … Overall    
+#&gt;    &lt;chr&gt;            &lt;chr&gt;       &lt;chr&gt;              &lt;chr&gt;             &lt;chr&gt;      
+#&gt;  1 ""               "(N=86)"    "(N=84)"           "(N=84)"          "(N=254)"  
+#&gt;  2 "SEX"            ""          ""                 ""                ""         
+#&gt;  3 "  Female"       "53 (61.6%… "40 (47.6%)"       "50 (59.5%)"      "143 (56.3…
+#&gt;  4 "  Male"         "33 (38.4%… "44 (52.4%)"       "34 (40.5%)"      "111 (43.7…
+#&gt;  5 "Age"            ""          ""                 ""                ""         
+#&gt;  6 "  Mean (SD)"    "75.2 (8.5… "74.4 (7.89)"      "75.7 (8.29)"     "75.1 (8.2…
+#&gt;  7 "  Median [Min,… "76.0 [52.… "76.0 [56.0, 88.0… "77.5 [51.0, 88.… "77.0 [51.…
+#&gt;  8 "RACE"           ""          ""                 ""                ""         
+#&gt;  9 "  Black or Afr… "8 (9.3%)"  "9 (10.7%)"        "6 (7.1%)"        "23 (9.1%)"
+#&gt; 10 "  White"        "78 (90.7%… "74 (88.1%)"       "78 (92.9%)"      "230 (90.6…
+#&gt; 11 "  American Ind… "0 (0%)"    "1 (1.2%)"         "0 (0%)"          "1 (0.4%)"</code></pre>
 <p>We start to define the format of the output. We highlight items that
 are not discussed in previous discussion.</p>
 <p><code>text_indent_first</code> and <code>test_indent_left</code> are used to control the indent

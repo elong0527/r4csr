@@ -118,14 +118,14 @@ the data manipulation later.</p>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>AEDECOD <span class="op">=</span> <span class="va">AESOC</span>, order <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
 
 <span class="va">t1</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 4 × 5
-## # Groups:   TRTAN [1]
-##   TRTAN AESOC                       n      AEDECOD                     order
-##   &lt;dbl&gt; &lt;chr&gt;                       &lt;chr&gt;  &lt;chr&gt;                       &lt;dbl&gt;
-## 1     0 Cardiac Disorders           "  13" Cardiac Disorders               0
-## 2     0 Ear and Labyrinth Disorders "   1" Ear and Labyrinth Disorders     0
-## 3     0 Eye Disorders               "   4" Eye Disorders                   0
-## 4     0 Gastrointestinal Disorders  "  17" Gastrointestinal Disorders      0</code></pre>
+<pre><code>#&gt; # A tibble: 4 × 5
+#&gt; # Groups:   TRTAN [1]
+#&gt;   TRTAN AESOC                       n      AEDECOD                     order
+#&gt;   &lt;dbl&gt; &lt;chr&gt;                       &lt;chr&gt;  &lt;chr&gt;                       &lt;dbl&gt;
+#&gt; 1     0 Cardiac Disorders           "  13" Cardiac Disorders               0
+#&gt; 2     0 Ear and Labyrinth Disorders "   1" Ear and Labyrinth Disorders     0
+#&gt; 3     0 Eye Disorders               "   4" Eye Disorders                   0
+#&gt; 4     0 Gastrointestinal Disorders  "  17" Gastrointestinal Disorders      0</code></pre>
 <p>In the code below, we count the number of subjects in each AE term by
 SOC, AE term, and treatment group. Here we also create a new variable
 <code>order</code> and set it as <code>1</code> for these counted numbers.</p>
@@ -136,14 +136,14 @@ SOC, AE term, and treatment group. Here we also create a new variable
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>order <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
 
 <span class="va">t2</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 4 × 5
-## # Groups:   TRTAN, AESOC [1]
-##   TRTAN AESOC             AEDECOD                              n      order
-##   &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;                                &lt;chr&gt;  &lt;dbl&gt;
-## 1     0 Cardiac Disorders Atrial Fibrillation                  "   1"     1
-## 2     0 Cardiac Disorders Atrial Hypertrophy                   "   1"     1
-## 3     0 Cardiac Disorders Atrioventricular Block First Degree  "   1"     1
-## 4     0 Cardiac Disorders Atrioventricular Block Second Degree "   2"     1</code></pre>
+<pre><code>#&gt; # A tibble: 4 × 5
+#&gt; # Groups:   TRTAN, AESOC [1]
+#&gt;   TRTAN AESOC             AEDECOD                              n      order
+#&gt;   &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;                                &lt;chr&gt;  &lt;dbl&gt;
+#&gt; 1     0 Cardiac Disorders Atrial Fibrillation                  "   1"     1
+#&gt; 2     0 Cardiac Disorders Atrial Hypertrophy                   "   1"     1
+#&gt; 3     0 Cardiac Disorders Atrioventricular Block First Degree  "   1"     1
+#&gt; 4     0 Cardiac Disorders Atrioventricular Block Second Degree "   2"     1</code></pre>
 <p>We prepare reporting data for AE information.</p>
 <div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t_ae</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">t1</span>, <span class="va">t2</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -158,13 +158,13 @@ SOC, AE term, and treatment group. Here we also create a new variable
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">AESOC</span>, <span class="va">AEDECOD</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"n"</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">t_ae</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 4 × 5
-##   AESOC             AEDECOD             n_0    n_54   n_81  
-##   &lt;chr&gt;             &lt;chr&gt;               &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; 
-## 1 Cardiac Disorders Cardiac Disorders   "  13" "  13" "  18"
-## 2 Cardiac Disorders Atrial Fibrillation "   1" "   1" "   3"
-## 3 Cardiac Disorders Atrial Flutter      "   0" "   1" "   1"
-## 4 Cardiac Disorders Atrial Hypertrophy  "   1" "   0" "   0"</code></pre>
+<pre><code>#&gt; # A tibble: 4 × 5
+#&gt;   AESOC             AEDECOD             n_0    n_54   n_81  
+#&gt;   &lt;chr&gt;             &lt;chr&gt;               &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; 
+#&gt; 1 Cardiac Disorders Cardiac Disorders   "  13" "  13" "  18"
+#&gt; 2 Cardiac Disorders Atrial Fibrillation "   1" "   1" "   3"
+#&gt; 3 Cardiac Disorders Atrial Flutter      "   0" "   1" "   1"
+#&gt; 4 Cardiac Disorders Atrial Hypertrophy  "   1" "   0" "   0"</code></pre>
 <p>We prepare reporting data for analysis population.</p>
 <div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t_pop</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op">%&gt;%</span>
@@ -179,10 +179,10 @@ SOC, AE term, and treatment group. Here we also create a new variable
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">AESOC</span>, <span class="va">AEDECOD</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"n_"</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">t_pop</span></code></pre></div>
-<pre><code>## # A tibble: 1 × 5
-##   AESOC AEDECOD                    n_0    n_54   n_81  
-##   &lt;chr&gt; &lt;chr&gt;                      &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; 
-## 1 pop   Participants in population "  86" "  84" "  84"</code></pre>
+<pre><code>#&gt; # A tibble: 1 × 5
+#&gt;   AESOC AEDECOD                    n_0    n_54   n_81  
+#&gt;   &lt;chr&gt; &lt;chr&gt;                      &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; 
+#&gt; 1 pop   Participants in population "  86" "  84" "  84"</code></pre>
 <p>The final report data is saved in <code>tbl_ae_spec</code>.
 We also add a blank row between population and AE information in the reporting table.</p>
 <div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
@@ -196,13 +196,13 @@ We also add a blank row between population and AE information in the reporting t
   <span class="op">)</span><span class="op">)</span>
 
 <span class="va">tbl_ae_spec</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 4 × 5
-##   AESOC             AEDECOD                        n_0    n_54   n_81  
-##   &lt;chr&gt;             &lt;chr&gt;                          &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; 
-## 1 pop               "  Participants in population" "  86" "  84" "  84"
-## 2 pop                &lt;NA&gt;                           &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt; 
-## 3 Cardiac Disorders "Cardiac Disorders"            "  13" "  13" "  18"
-## 4 Cardiac Disorders "  Atrial Fibrillation"        "   1" "   1" "   3"</code></pre>
+<pre><code>#&gt; # A tibble: 4 × 5
+#&gt;   AESOC             AEDECOD                        n_0    n_54   n_81  
+#&gt;   &lt;chr&gt;             &lt;chr&gt;                          &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; 
+#&gt; 1 pop               "  Participants in population" "  86" "  84" "  84"
+#&gt; 2 pop                &lt;NA&gt;                           &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt; 
+#&gt; 3 Cardiac Disorders "Cardiac Disorders"            "  13" "  13" "  18"
+#&gt; 4 Cardiac Disorders "  Atrial Fibrillation"        "   1" "   1" "   3"</code></pre>
 <p>We start to define the format of the output.</p>
 <p>To obtain the nested layout, we use the <code>page_by</code> argument in the
 <code>rtf_body</code> function. By defining <code>page_by="AESOC"</code>, <code>r2rtf</code> recognize

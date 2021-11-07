@@ -214,11 +214,11 @@ More information can be found on the help page of the dataset (<code><a href="ht
 <code class="sourceCode R"><span class="va">r2rtf_adae</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">USUBJID</span>, <span class="va">TRTA</span>, <span class="va">AEDECOD</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>##       USUBJID    TRTA                   AEDECOD
-## 1 01-701-1015 Placebo APPLICATION SITE ERYTHEMA
-## 2 01-701-1015 Placebo APPLICATION SITE PRURITUS
-## 3 01-701-1015 Placebo                 DIARRHOEA
-## 4 01-701-1023 Placebo                  ERYTHEMA</code></pre>
+<pre><code>#&gt;       USUBJID    TRTA                   AEDECOD
+#&gt; 1 01-701-1015 Placebo APPLICATION SITE ERYTHEMA
+#&gt; 2 01-701-1015 Placebo APPLICATION SITE PRURITUS
+#&gt; 3 01-701-1015 Placebo                 DIARRHOEA
+#&gt; 4 01-701-1023 Placebo                  ERYTHEMA</code></pre>
 <p><code>dplyr</code> and <code>tidyr</code> packages within <code>tidyverse</code> are used
 for data manipulation to create a data frame
 that contains all the information we want to add in an RTF table.</p>
@@ -228,13 +228,13 @@ that contains all the information we want to add in an RTF table.</p>
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">TRTA</span>, values_from <span class="op">=</span> <span class="va">n</span>, values_fill <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
 
 <span class="va">tbl</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 4 × 4
-##   AEDECOD        Placebo `Xanomeline High Dose` `Xanomeline Low Dose`
-##   &lt;chr&gt;            &lt;int&gt;                  &lt;int&gt;                 &lt;int&gt;
-## 1 ABDOMINAL PAIN       1                      2                     3
-## 2 AGITATION            2                      1                     2
-## 3 ALOPECIA             1                      0                     0
-## 4 ANXIETY              2                      0                     4</code></pre>
+<pre><code>#&gt; # A tibble: 4 × 4
+#&gt;   AEDECOD        Placebo `Xanomeline High Dose` `Xanomeline Low Dose`
+#&gt;   &lt;chr&gt;            &lt;int&gt;                  &lt;int&gt;                 &lt;int&gt;
+#&gt; 1 ABDOMINAL PAIN       1                      2                     3
+#&gt; 2 AGITATION            2                      1                     2
+#&gt; 3 ALOPECIA             1                      0                     0
+#&gt; 4 ANXIETY              2                      0                     4</code></pre>
 <p>Now we have a dataset <code>tbl</code> in preparing the final RTF table.</p>
 <p><code>r2rtf</code> aims to provide one function for each type of table layout.
 Commonly used verbs include:</p>
@@ -311,12 +311,12 @@ number of columns displayed (e.g., <code><a href="https://rdrr.io/r/base/c.html"
 <p>All possible inputs can be found in the table below.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">r2rtf</span><span class="fu">:::</span><span class="fu"><a href="https://merck.github.io/r2rtf/reference/justification.html">justification</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>##   type      name rtf_code_text rtf_code_row
-## 1    l      left          \\ql       \\trql
-## 2    c    center          \\qc       \\trqc
-## 3    r     right          \\qr       \\trqr
-## 4    d   decimal          \\qj             
-## 5    j justified          \\qj</code></pre>
+<pre><code>#&gt;   type      name rtf_code_text rtf_code_row
+#&gt; 1    l      left          \\ql       \\trql
+#&gt; 2    c    center          \\qc       \\trqc
+#&gt; 3    r     right          \\qr       \\trqr
+#&gt; 4    d   decimal          \\qj             
+#&gt; 5    j justified          \\qj</code></pre>
 <p>Below is an example to make the first column left-aligned and center-aligned for the rest.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">tbl</span><span class="op">)</span> <span class="op">%&gt;%</span>
