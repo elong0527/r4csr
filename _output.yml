@@ -4,3 +4,5 @@ bookdown::bs4_book:
     fg: "#0C2340"
     bg: "#ffffff"
   repo: https://github.com/elong0527/r4csr
+  includes:
+    in_header: [ga_script.html]
