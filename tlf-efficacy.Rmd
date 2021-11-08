@@ -1,8 +1,8 @@
 # Efficacy
 
 Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
-we need to summarize primary and secondary efficacy endpoints,  
-in Section 11.4, Efficacy Results and Tabulations of Individual Participant. 
+primary and secondary efficacy endpoints need to be summarized
+in Section 11.4, Efficacy Results and Tabulations of Individual Participant.
 
 ```{r}
 library(haven) # Read SAS data
@@ -12,7 +12,7 @@ library(r2rtf) # Reporting in RTF format
 library(emmeans) # LS mean estimation
 ```
 
-For efficacy analysis, we only analyze change from baseline glucose data at Week 24. 
+For efficacy analysis, only the change from baseline glucose data at week 24 is analyzed.
 
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tlf_eff.pdf")
@@ -20,19 +20,18 @@ knitr::include_graphics("tlf/tlf_eff.pdf")
 
 ## Analysis dataset
 
-To prepare analysis dataset, 
-we need both `adsl` and `adlbc` datasets for this analysis.
+To prepare the analysis, both `adsl` and `adlbc` datasets are required.
 
 ```{r}
-adsl <- read_sas("adam_data/adsl.sas7bdat")
-adlb <- read_sas("adam_data/adlbc.sas7bdat")
+adsl <- read_sas("data-adam/adsl.sas7bdat")
+adlb <- read_sas("data-adam/adlbc.sas7bdat")
 ```
 
-We first define the analysis dataset using 
-efficacy population flag `EFFFL` and 
-all records post baseline (`AVISITN > 1`) and on or before Week 24 (`AVISITN <= 24`).
-Here the variable `AVISITN` is the numerical analysis visit. 
-For example, if the analysis visit is recorded as "Baseline", i.e., `AVISIT = Baseline`, then `AVISITN = 0`; 
+First, both the population and the data in scope are selected.
+The analysis is done on the efficacy population, identified by `EFFFL == "Y"`, and
+all records post baseline (`AVISITN >= 1`) and on or before Week 24 (`AVISITN <= 24`).
+Here the variable `AVISITN` is the numerical analysis visit.
+For example, if the analysis visit is recorded as "Baseline", i.e., `AVISIT = Baseline`, then `AVISITN = 0`;
 if the analysis visit is recorded as "Week 24", i.e., `AVISIT = Week 24`, then `AVISITN = 24`;
 if the analysis visit is blank, then `AVISITN` is also blank.
 We will discuss these missing values in Section 6.4.
@@ -51,7 +50,7 @@ ana <- gluc %>%
   mutate(AVISIT = factor(AVISIT, levels = unique(AVISIT)))
 ```
 
-Below is the first few records of the analysis dataset. 
+Below is the first few records of the analysis dataset.
 
 - AVAL: analysis value
 - BASE: baseline value
@@ -62,10 +61,11 @@ ana %>%
   select(USUBJID, TRTPN, AVISIT, AVAL, BASE, CHG) %>%
   head(4)
 ```
+
 ## Helper functions
 
-To prepare report dataframe, we created a few helper functions 
-by using the `fmt_num` function defined in Chapter \@ref(population). 
+To prepare the report data frame, we created a few helper functions
+by using the `fmt_num()` function defined in Chapter \@ref(population).
 
 - Format Estimators
 
@@ -106,7 +106,7 @@ fmt_pval <- function(.p, digits = 3) {
 
 ## Summary of observed data
 
-We first summarize observed data at Baseline and Week 24
+First the observed data at Baseline and Week 24 is summarized:
 
 ```{r}
 t11 <- gluc %>%
@@ -125,7 +125,7 @@ t11 <- gluc %>%
 t11
 ```
 
-We also summarize observed change from baseline glucose at Week 24.
+Also the observed change from baseline glucose at Week 24 is summarized:
 
 ```{r}
 t12 <- gluc %>%
@@ -144,17 +144,17 @@ t12
 
 ## Missing data imputation
 
-In clinical trials, missing data is inevitable. 
-In this study, there are also missing values in glucose data. 
+In clinical trials, missing data is inevitable.
+In this study, there are also missing values in glucose data.
 
 ```{r}
 count(ana, AVISIT)
 ```
 
-For simplicity and illustration purpose, 
+For simplicity and illustration purpose,
 we use the last observation carried forward (LOCF) approach to handle missing data.
-LOCF approach is a single imputation approach that is **not recommended** 
-in real studies. 
+LOCF approach is a single imputation approach that is **not recommended**
+in real studies.
 Interested readers can find more discussion on missing data approaches in the book:
 [The Prevention and Treatment of Missing Data in Clinical Trials](https://www.ncbi.nlm.nih.gov/books/NBK209904/pdf/Bookshelf_NBK209904.pdf).
 
@@ -165,16 +165,16 @@ ana_locf <- ana %>%
   filter(locf)
 ```
 
-## ANCOVA model 
+## ANCOVA model
 
-We start to analyze the imputed data using ANCOVA model with treatment and baseline glucose as covariates. 
+The imputed data is analyzed using the ANCOVA model with treatment and baseline glucose as covariates.
 
 ```{r}
 fit <- lm(CHG ~ BASE + TRTP, data = ana_locf)
 summary(fit)
 ```
 
-Then we use the `emmeans` R package to obtain 
+The `emmeans` R package is used to obtain
 within and between group least square mean (LS mean)
 
 ```{r}
@@ -212,9 +212,9 @@ t2 <- fit_between %>%
 t2
 ```
 
-## Reporting 
+## Reporting
 
-We combine `t11`, `t12` and `t13` to get the first part of the report data
+`t11`, `t12` and `t13` are combined to get the first part of the report data
 
 ```{r}
 t1 <- cbind(
@@ -225,15 +225,15 @@ t1 <- cbind(
 t1
 ```
 
-Then we use `r2rtf` to prepare the table format for `t1`.
-We also highlight how to handle special character in this example. 
+Then `r2rtf` is used to prepare the table format for `t1`.
+We also highlight how to handle special characters in this example.
 
-Special characters `^` and `_` are used to define superscript and subscript of text. And `{}` is to define the part that will be impacted. 
-For example, `{^a}` provide a superscript `a` for footnote notation.   
-`r2rtf` also support most LaTeX characters. 
-Examples can be found in
-[`r2rtf` Get Started Page](https://merck.github.io/r2rtf/articles/r2rtf.html#special-character). 
-The `text_convert` argument in `r2rtf_xxx` functions control whether convert special characters.
+Special characters `^` and `_` are used to define superscript and subscript of text. And `{}` is to define the part that will be impacted.
+For example, `{^a}` provide a superscript `a` for footnote notation.
+`r2rtf` also supports most LaTeX characters.
+Examples can be found on the
+[`r2rtf` get started page](https://merck.github.io/r2rtf/articles/r2rtf.html#special-character).
+The `text_convert` argument in `r2rtf_*()` functions controls whether convert special characters.
 
 ```{r}
 t1_rtf <- t1 %>%
@@ -296,7 +296,7 @@ knitr::include_graphics("tlf/tlf_eff2.pdf")
 
 Finally we combine the two parts to get the final table using `r2rtf`.
 This is achieved by providing a list of `t1_rtf` and `t2_rtf` as input for
-`rtf_encode`. 
+`rtf_encode`.
 
 ```{r}
 list(t1_rtf, t2_rtf) %>%
@@ -313,6 +313,6 @@ In conclusion, the procedure to generate the above efficacy results table is sum
 - Step 1: Read the data into R, i.e., `adsl` and `adlb`.
 - Step 2: Define the analysis dataset. In this example, we define two analysis datasets. The first dataset is the efficacy population (`gluc`). The second dataset is the collection of all records post baseline and on or before week 24 (`ana`).
 - Step 3: Impute the missing values. In our example, we name the `ana` dataset after imputation as `ana_locf`.
-- Step 4: Summarize `gluc`, i.e., calculate the mean and standard derivation, and then format it into a rtf table.
-- Step 5: Summarize `ana_locf`, i.e., calculate the pairwise comparison by ANCOVA model, and then format it into a rtf table.
-- Step 6: Rowly bind the output in Step 4 and Step 5.
+- Step 4: Summarize `gluc`, i.e., calculate the mean and standard derivation, and then format it into an RTF table.
+- Step 5: Summarize `ana_locf`, i.e., calculate the pairwise comparison by ANCOVA model, and then format it into an RTF table.
+- Step 6: Combine the outputs in step 4 and step 5 by rows.

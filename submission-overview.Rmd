@@ -1,6 +1,6 @@
 # (PART) eCTD submission {-}
 
-# Overview
+# Overview {#submission-overview}
 
 The electronic Common Technical Document (eCTD) is a standard format for
 the electronic submission of applications, amendments, supplements,
@@ -30,10 +30,10 @@ analyses were created and to confirm the analysis algorithms**.
 Sponsors should submit software programs in **ASCII text format**;
 however, executable file extensions should not be used."
 
-In Chapter \@ref(submission-package), we will focus on the approach
-to prepare proprietary R packages and analysis code into proper
+Chapter \@ref(submission-package) will focus on preparing
+proprietary R packages and analysis code into proper
 formats for submission.
 
-In Chapter \@ref(running-environment), we will discuss
+Chapter \@ref(running-environment) will discuss
 the recommendations to make the R code running environment
 reproducible for dry run tests and reviews.

@@ -13,7 +13,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(comment = "#>", echo = FALSE)
 ```
 
 ```{r, message=FALSE}
@@ -22,7 +22,7 @@ library(tidyr)
 library(r2rtf)
 ```
 
-# Welcome 
+# Welcome
 
 ## Outline
 
@@ -32,7 +32,7 @@ In this workshop, we have three parts:
   + Session 1 (45 min)
   + Break and/or Exercise (20 min)
   + Session 2 (45 min)
-  + Break (10 min) 
+  + Break (10 min)
 - Clinical trial project (Nan Xiao)
   + Session 3 (30 min)
   + Break (10 min)
@@ -40,27 +40,27 @@ In this workshop, we have three parts:
   + Session 4 (40 min)
   + Q&A (10 min)
 
-## Disclaimer 
+## Disclaimer
 
-- All opinions expressed are those of the presenter and not 
+- All opinions expressed are those of the presenter and not
   Merck Sharp & Dohme Corp., a subsidiary of Merck & Co., Inc., Kenilworth, NJ, USA.
 
-- Some slides need to be scrolled down to see the full content. 
+- Some slides need to be scrolled down to see the full content.
 
-## Training Objective 
+## Training Objective
 
 - Learning how to create tables for clinical study reports.
 - Learning how to organize a clinical development project.
-- Learning how to prepare eCTD submission package to FDA. 
+- Learning how to prepare eCTD submission package to FDA.
 
 > The toolchain, process, and formats may be different in different organizations.
-> We only provide a recommended way to address them.  
+> We only provide a recommended way to address them.
 
-## Acknowledgement 
+## Acknowledgement
 
-- Team members from Merck & Co. 
-  + [We are hiring!](https://jobs.merck.com/bards) 
-  + Contact us if interested. 
+- Team members from Merck & Co.
+  + [We are hiring!](https://jobs.merck.com/bards)
+  + Contact us if interested.
 
 - [Contributors](https://r4csr.org/) of the training materials.
   + Please consider submitting issues or PR in the repo.
@@ -69,35 +69,35 @@ In this workshop, we have three parts:
   + R validation hub
   + Submission working group
   + R Tables for Regulatory Submission (RTRS) working group
-  + Please consider to join and contribute to a working group. 
+  + Please consider to join and contribute to a working group.
 
 - R / Pharma organizers
   + It is a fun and productive annual gathering.
   + Please consider sharing stories and use cases to expand the community.
 
-## Preparation 
+## Preparation
 
-In this workshop, we assume you have 
-some R programming experience and clinical development knowledge. 
+In this workshop, we assume you have
+some R programming experience and clinical development knowledge.
 
-- Data manipulation: `tidyverse`, `dplyr`, `tidyr`, `ggplot2` etc. 
-- ADaM data: `adsl`, `adae` etc. 
+- Data manipulation: `tidyverse`, `dplyr`, `tidyr`, `ggplot2` etc.
+- ADaM data: `adsl`, `adae` etc.
 
 ```{r, echo = TRUE, eval = FALSE}
 install.packages(c(
-  "tidyverse",      # Data manipulation
-  "r2rtf",          # TLF generation
-  "pkglite"         # eCTD submission
+  "tidyverse", # Data manipulation
+  "r2rtf", # TLF generation
+  "pkglite" # eCTD submission
 ))
 ```
 
 ## Resource
 
 - Training Material: <https://r4csr.org/>
-- Demo project: 
+- Demo project:
   + Analysis project: <https://github.com/elong0527/esubdemo>
   + eCTD submission package: <https://github.com/elong0527/ectddemo>
-- R Consortium FDA submission pilot: 
+- R Consortium FDA submission pilot:
   + <https://github.com/RConsortium/submissions-pilot1>
 
 - During the workshop, we will use `esubdemo` project.
@@ -107,15 +107,15 @@ install.packages(c(
 
 ## Philosophy
 
-We share the same philosophy described in 
+We share the same philosophy described in
 [Section 1.1 of R Packages book](https://r-pkgs.org/intro.html?q=Marwick#intro-phil) and quote here.
 
-- "Anything that can be automated, should be automated." 
-- "Do as little as possible by hand. Do as much as possible with functions." 
-- "The goal is to spend your time thinking about what you want to do 
+- "Anything that can be automated, should be automated."
+- "Do as little as possible by hand. Do as much as possible with functions."
+- "The goal is to spend your time thinking about what you want to do
 rather than thinking about the minutiae of package structure."
 
-# Delivering TLFs in CSR 
+# Delivering TLFs in CSR
 
 ## ICH E3 Guidance
 
@@ -133,23 +133,23 @@ In a CSR, most of TLFs are located in
 
 - Public available CDISC pilot [study data located at CDISC Bitbucket repository](https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse/updated-pilot-submission-package/900172/m5/datasets/cdiscpilot01/analysis/adam/datasets).
 
-- The dataset structure follows the [CDISC Analysis Data Model (ADaM)](https://www.cdisc.org/standards/foundational/adam). 
+- The dataset structure follows the [CDISC Analysis Data Model (ADaM)](https://www.cdisc.org/standards/foundational/adam).
 
-- Source data: <https://github.com/elong0527/r4csr/tree/master/adam_data>
+- Source data: <https://github.com/elong0527/r4csr/tree/master/data-adam>
 
 ## Tools
 
-- `tidyverse`: a collection of R packages to simplify the workflow to manipulate, 
-visualize and analyze data in R. 
+- `tidyverse`: a collection of R packages to simplify the workflow to manipulate,
+visualize and analyze data in R.
 
 - `r2rtf`: an R package to create production-ready tables and figures in RTF format.
 
-# r2rtf Introduction 
+# r2rtf Introduction
 
 ## Motivation
 
-In the pharmaceutical industry, RTF/Microsoft Word play a central role 
-in preparing clinical study reports  
+In the pharmaceutical industry, RTF/Microsoft Word play a central role
+in preparing clinical study reports
 
 - [ICH E3 Structure and Content of Clinical Study Reports](https://database.ich.org/sites/default/files/E3_Guideline.pdf)
 
@@ -158,34 +158,34 @@ Different organizations can have different table standards
 - E.g., Table layout, Font size, Border type, Footnote, Data source
 
 - `r2rtf` is an R package to create production-ready tables and figures in RTF format.
-The R package is designed to 
+The R package is designed to
 
 `r2rtf` is designed to:
 
-- provide simple "verb" functions that correspond to each component of a table, 
+- provide simple "verb" functions that correspond to each component of a table,
   to help you translate a data frame to a table in RTF file.
-- enable pipes (`%>%`). 
-- only focus on the **table format**. 
+- enable pipes (`%>%`).
+- only focus on the **table format**.
   Data manipulation and analysis shall be handled by other R packages. (e.g. `tidyverse`)
 
 ## Workflow
 
 Before creating an RTF table, we need to:
 
-- Figure out table layout. 
+- Figure out table layout.
 
 - Split the layout into small tasks in the form of a computer program.
 
 - Execute the program.
 
-## Minimal Example 
+## Minimal Example
 
-`r2rtf` is designed to enable pipes (`%>%`) 
+`r2rtf` is designed to enable pipes (`%>%`)
 
 ```{r, echo = TRUE, eval = FALSE}
 head(iris) %>%
-  rtf_body() %>%           # Step 1 Add table attributes
-  rtf_encode() %>%         # Step 2 Convert attributes to RTF encode
+  rtf_body() %>% # Step 1 Add table attributes
+  rtf_encode() %>% # Step 2 Convert attributes to RTF encode
   write_rtf("minimal.rtf") # Step 3 Write to a .rtf file
 ```
 
@@ -195,7 +195,7 @@ knitr::include_graphics("minimal.pdf")
 
 ## Package Overview
 
-`r2rtf` package provides the flexibility to customize table appearance for 
+`r2rtf` package provides the flexibility to customize table appearance for
 
 - **Table component**: title, column header, footnote, etc.
 - **Table cell style**: size, border type, color, font size, text color, alignment, etc.
@@ -204,16 +204,16 @@ knitr::include_graphics("minimal.pdf")
 
 `r2rtf` package also provides the flexibility to convert figures in RTF format.
 
-## Simple Example - Adverse Events  
+## Simple Example - Adverse Events
 
-`r2rtf` only focus on **table format**. 
+`r2rtf` only focus on **table format**.
 Data manipulation and analysis shall be handled by other R packages. (e.g. `tidyverse`)
-  
-- Let's refer to examples in the [Section 2.4.2](https://r4csr.org/overview.html#r2rtf) 
 
-## Function Summary 
+- Let's refer to examples in the [Section 2.4.2](https://r4csr.org/overview.html#r2rtf)
 
-`r2rtf` provides simple "verb" functions that correspond to each component of a table, 
+## Function Summary
+
+`r2rtf` provides simple "verb" functions that correspond to each component of a table,
   to help you translate data frame to tables in RTF file.
 
 ```{r, echo = FALSE}
@@ -222,7 +222,7 @@ names(r2rtf_funs)[3] <- "Optional/required"
 knitr::kable(r2rtf_funs)
 ```
 
-## Function Illustration 
+## Function Illustration
 
 ```{r, out.width="80%", echo=FALSE, fig.align="center"}
 knitr::include_graphics("function-summary.png")
@@ -262,7 +262,7 @@ knitr::include_graphics("function-summary.png")
 
 ## Overview
 
-In a late-stage clinical trial, the number of A&R deliverables can easily be in the hundreds. 
+In a late-stage clinical trial, the number of A&R deliverables can easily be in the hundreds.
 
 For an organization, it is also common to have multiple ongoing clinical trials in a clinical program.
 

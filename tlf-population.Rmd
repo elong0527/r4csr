@@ -13,7 +13,7 @@ library(r2rtf) # Reporting in RTF format
 ```
 
 In this chapter, we illustrate how to create a summary table for
-analysis population in a study.
+the analysis population in a study.
 
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tbl_pop.pdf")
@@ -24,7 +24,7 @@ population table, all the required information is saved in the ADSL
 dataset. We can use the `haven` package to read the dataset.
 
 ```{r}
-adsl <- read_sas("adam_data/adsl.sas7bdat")
+adsl <- read_sas("data-adam/adsl.sas7bdat")
 ```
 
 We illustrate how to prepare a report data for a simplified analysis
@@ -43,7 +43,7 @@ adsl %>%
 
 ## Helper functions
 
-Before we write analysis code, let's discuss the possibility to reuse R
+Before we write the analysis code, let's discuss the possibility of reusing R
 code by writing some toy helper functions.
 
 As discussed in [R for data
@@ -51,7 +51,7 @@ science](https://r4ds.had.co.nz/functions.html#when-should-you-write-a-function)
 "You should consider writing a function whenever you've copied and
 pasted a block of code more than twice".
 
-In Chapter \@ref(disposition), there are few repeating steps to:
+In Chapter \@ref(disposition), there are a few repeating steps to:
 
 -   Format the percentages using the `formatC()` function.
 -   Calculate the numbers and percentages by groups.
@@ -89,7 +89,7 @@ fmt_num(n / n() * 100, digits = 1)
 ```
 
 To calculate the numbers and percentages of participants by groups, we
-provide a simple (but not robust) wrapper function, `count_by()` using
+provide a simple (but not robust) wrapper function, `count_by()`, using
 the `dplyr` and `tidyr` package.
 
 The function can be enhanced in multiple ways, but here we only focus on
@@ -215,6 +215,6 @@ as follow:
 
 - Step 1: Read data into R, i.e., `adsl`.
 - Step 2: Bind the counts/percentages of the ITT population, the
-  efficacy population and the safety population by row using the
+  efficacy population, and the safety population by row using the
   `count_by()` function.
 - Step 3: Format the output in Step 2 by `r2rtf`.

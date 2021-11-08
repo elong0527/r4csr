@@ -18,11 +18,11 @@ information in a study.
 knitr::include_graphics("tlf/tlf_spec_ae.pdf")
 ```
 
-The data used to summarize AE information is in `adsl` and `adae` datasets. 
+The data used to summarize AE information is in `adsl` and `adae` datasets.
 
 ```{r}
-adsl <- read_sas("adam_data/adsl.sas7bdat")
-adae <- read_sas("adam_data/adae.sas7bdat")
+adsl <- read_sas("data-adam/adsl.sas7bdat")
+adae <- read_sas("data-adam/adae.sas7bdat")
 ```
 
 For illustration purposes, we only provide count in the simplified
@@ -30,14 +30,14 @@ table. The percentage of participants for each AE criteria can be
 calculated as in Chapter \@ref(aesummary).
 
 In this way, let's focus on the analysis script for two advanced
-features for table layout.
+features for a table layout.
 
--   group content: AE can be summarized in multiple nested layers. (e.g.
-    by system organ class (SOC, `AESOC`) and specific AE term
-    (`AEDECOD`))
--   pagenization: there are many AE terms that can not be covered in one
-    page. Column headers and SOC information need to be repeated on
-    every page.
+- group content: AE can be summarized in multiple nested layers.
+  (e.g., by system organ class (SOC, `AESOC`) and specific AE term
+  (`AEDECOD`))
+- pagenization: there are many AE terms that can not be covered in one
+  page. Column headers and SOC information need to be repeated on
+  every page.
 
 In the code below, we count the number of subjects in each AE term by
 SOC and treatment group, and we create a new variable `order` and set it
@@ -133,7 +133,7 @@ group header. If a group of information is broken into multiple pages,
 the group header row is repeated on each page by default.
 
 We can also customize the text format by providing a matrix that has the
-same dimension as the input dataset (i.e. `tbl_ae_spec`). In the code
+same dimension as the input dataset (i.e., `tbl_ae_spec`). In the code
 below, we illustrate how to display **bold** text for group headers to
 highlight the nested structure of the table layout.
 
@@ -146,9 +146,9 @@ id <- ifelse(is.na(id), FALSE, id)
 text_format <- ifelse(id, "b", "")
 ```
 
-More discussion on `page_by`, `group_by` and `subline_by` 
-features can be found in the 
-[`r2rtf` package website](https://merck.github.io/r2rtf/articles/example-sublineby-pageby-groupby.html.
+More discussion on `page_by`, `group_by` and `subline_by`
+features can be found in the
+[`r2rtf` package website](https://merck.github.io/r2rtf/articles/example-sublineby-pageby-groupby.html).
 
 ```{r}
 tbl_ae_spec %>%

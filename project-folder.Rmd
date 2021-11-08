@@ -1,85 +1,69 @@
-# (PART) Clinical trial project {-}
-
-# Overview
-
-In a late-stage clinical trial, the number of A&R deliverables can easily be in the hundreds. 
-For an organization, it is common to have multiple ongoing clinical trials in a clinical program. 
-
-To deliver the A&R results of a clinical trial project, 
-it is a teamwork that typically requires collaborations from both statisticians and programmers. 
-In this part, let's consider how to organize a clinical trial project as an A&R leader. 
-
-In Chapter \@ref(folder), we will discuss how to organize source code, documents, deliverables in an A&R clinical project. 
-We recommend using the R package folder structure. 
-
-In Chapter \@ref(manage), we will discuss a process or system development lifecycle 
-to manage the A&R of a clinical project. 
-We recommend following an agile management approach to define, develop, validate and deliver work.
-
 # Project folder {#folder}
 
-A clearly defined clinical project folder structure can have many benefits to clinical development teams in an organization. 
+A clearly defined clinical project folder structure can have many benefits to clinical development teams in an organization.
 Specifically, a well-defined project structure can achieve:
 
 - Consistency: everyone works on the same folder structure.
-- Reproducibility: analysis can be executed and reproduced by different team members months/years later.  
-- Automation: automatically check the integration of a project.  
-- Compliance: reduce compliance issue
+- Reproducibility: analysis can be executed and reproduced by different team members months/years later.
+- Automation: automatically check the integration of a project.
+- Compliance: reduce compliance issues.
 
-We illustrate the R package project folder for the A&R project using a demo project called 
-[`esubdemo`](https://github.com/elong0527/esubdemo.git). 
-You can [clone](https://happygitwithr.com/rstudio-git-github.html#clone-the-new-github-repository-to-your-computer-via-rstudio) the project using RStudio. 
+We illustrate the R package project folder for the A&R project using a demo project called
+[`esubdemo`](https://github.com/elong0527/esubdemo.git).
+You can
+[clone](https://happygitwithr.com/rstudio-git-github.html#clone-the-new-github-repository-to-your-computer-via-rstudio)
+the project using RStudio.
 
-For R users, you already benefit from a well-defined and consistent folder structure. 
-That is the [R package folder structure](https://github.com/rstudio/cheatsheets/raw/master/package-development.pdf). 
-Every R package developer is required to follow the same convention to organize 
-their R functions before the R package can be disseminated through the Comprehensive R Archive Network (CRAN). 
-As a user, you can easily install and use those R packages after installing from CRAN. 
-There are many good resources to guide developers on R package development.
-For example, Hadley Wickham's [R Packages book](https://r-pkgs.org/).
+For R users, you already benefit from a well-defined and consistent folder structure.
+That is the [R package folder structure](https://github.com/rstudio/cheatsheets/raw/master/package-development.pdf).
+Every R package developer is required to follow the same convention to organize
+their R functions before the R package can be disseminated through the Comprehensive R Archive Network (CRAN).
+As a user, you can easily install and use those R packages after installing from CRAN.
+There are many good resources to guide developers on R package development,
+for example, the [R Packages book](https://r-pkgs.org/) by Hadley Wickham.
 
-We recommend using the R package folder structure to organize analysis scripts for clinical trial development. 
-Using the R package folder structure to streamline data analysis work has also been proposed before 
-(see @marwick2018packaging, @wuanalysis). 
+We recommend using the R package folder structure to organize analysis scripts for clinical trial development.
+Using the R package folder structure to streamline data analysis work has also been proposed before
+(see @marwick2018packaging, @wuanalysis).
 
 ## Consistency {#consistency}
 
 For consistency, a well-defined folder structure with potential templates
-ensures project teams organize the A&R work consistently across multiple projects. 
-Consistent folder structure also reduces communication costs 
+ensures project teams organize the A&R work consistently across multiple projects.
+Consistent folder structure also reduces communication costs
 between study team members and enhances the transparency of projects.
 
-In this book, we refer to an R package as **project-specific R package** 
+In this book, we refer to an R package as a **project-specific R package**
 if the purpose of an R package is to organize analysis scripts for a clinical project.
 
-We refer to an R package as a **standard R package** if the purpose of an R package is 
-to share commonly used R functions to be hosted in a code repository such as CRAN. 
+We refer to an R package as a **standard R package** if the purpose of an R package is
+to share commonly used R functions to be hosted in a code repository such as CRAN.
 
 Below is minimal sufficient folders and files for a project-specific R package
-based on the R package folder structure.  
+based on the R package folder structure.
 
 - `*.Rproj`: RStudio project file used to open RStudio project.
 - `DESCRIPTION`: Metadata for a package including authors, license, dependencies, etc.
 - `R/`: Project-specific R functions.
-- `vignettes/`: Analysis scripts using Rmarkdown.
+- `vignettes/`: Analysis scripts using R Markdown.
 - `man/`: Manual of project-specific R functions.
 
-A general discussion of the R package folder structure can be found 
-in Chapter 4 of the R package book (@wickham2015r).
+A general discussion of the R package folder structure can be found
+in Chapter 4 of the R Packages book (@wickham2015r).
 
 We demonstrate the idea using the [`esubdemo`](https://github.com/elong0527/esubdemo) project.
 
-In the `esubdemo` project, we saved all TLF generation scripts in previous chapters into the `vignettes/` folder. 
+In the `esubdemo` project, we saved all TLF generation scripts in previous chapters into the `vignettes/` folder.
 
 > Under the `vignettes/` folder, there are `adam/` folder and `tlf` folder.
-> The `adam/` folder contains ADaM datasets. 
+> The `adam/` folder contains ADaM datasets.
 > The `tlf` folder contains output TLFs in RTF format.
-> We put `adam/` and `tlf/` folders within the `vignettes` folder only for illustration purposes. 
+> We put `adam/` and `tlf/` folders within the `vignettes` folder only for illustration purposes.
 > In an actual A&R report, you may have a different location to save your input and output.
 
 ```
 vignettes
-├── adam_data
+├── data-adam
 ├── tlf
 ├── tlf-01-disposition.Rmd
 ├── tlf-02-population.Rmd
@@ -89,8 +73,8 @@ vignettes
 └── tlf-06-ae-spec.Rmd
 ```
 
-While creating those analysis scripts, we also defined a few helper functions (e.g. `fmt_num` and `count_by`). 
-Those functions are saved in the `R/` folder. 
+While creating those analysis scripts, we also defined a few helper functions (e.g., `fmt_num` and `count_by`).
+Those functions are saved in the `R/` folder.
 
 ```
 R/
@@ -98,10 +82,10 @@ R/
 └── fmt.R
 ```
 
-With a formal project, it is also important to provide proper documentation for those help functions. 
-We used Roxygen2 to document functions. 
-For example, the header below defines each variable in `fmt_est`. 
-More details can be found in [Chapter 10 of the R package book](https://r-pkgs.org/man.html)
+With a formal project, it is also important to provide proper documentation for those help functions.
+We used `roxygen2` to document functions.
+For example, the header below defines each variable in `fmt_est`.
+More details can be found in [Chapter 10 of the R Packages book](https://r-pkgs.org/man.html).
 
 ```{r, eval = FALSE}
 #' Format point estimator
@@ -120,9 +104,9 @@ fmt_est <- function(.mean,
 }
 ```
 
-Those `Roxygen2` documentation will be transferred to 
-standard R documentation `.Rd` files saved in the `man/` folder. 
-This step is automatically handled by `devtools::document()` function.
+The `roxygen2` documentation will be converted into
+standard R documentation format, saved as `.Rd` files in the `man/` folder.
+This step is automatically handled by `devtools::document()`.
 
 ```
 man
@@ -133,48 +117,48 @@ man
 └── fmt_pval.Rd
 ```
 
-The `man` folder is used to save documentation automatically generated by `roxygen2`.
-A typical workflow is to add `roxygen2` documentation at the header of each function in the `R/` folder. 
-Then `devtools::documents()` is used to generate all the documentation files in the `man/` folder. 
-More details can be found in [Chapter 10 of the R packages book](https://r-pkgs.org/man.html). 
-
+The `man/` folder is used to save documentation automatically generated by `roxygen2`.
+A typical workflow is to add `roxygen2` documentation before each function in the `R/` folder.
+Then `devtools::documents()` is used to generate all the documentation files in the `man/` folder.
+More details can be found in [Chapter 10 of the R Packages book](https://r-pkgs.org/man.html).
 
 ## Reproducibility {#reproduce}
 
-Reproducibility of analysis is one of the most important aspects of regulatory deliverables. 
-To ensure a successful reproduce, we need a controlled R environment, 
-including the control of R version and control of R package version.  
-By using the R package folder structure and proper tools (e.g. `renv`, `packrat`), 
-we illustrate how to achieve reproducibility for R and R package versions. 
+Reproducibility of analysis is one of the most important aspects of regulatory deliverables.
+To ensure a successful reproduce, we need a controlled R environment,
+including the control of the R version and the R package versions.
+By using the R package folder structure and proper tools (e.g., `renv`, `packrat`),
+we illustrate how to achieve reproducibility for R and R package versions.
 
 > This is the same level of reproducibility in most SAS environments.
 > https://support.sas.com/techsup/pcn/altopsys.html
 
-First, we introduce the control of R version. 
-In the `esubdemo` project, a reproducible environment is created when you open the 
-`esubdemo.Rproj` from RStudio. 
+First, we introduce the control of the R version.
+In the `esubdemo` project, a reproducible environment is created when you open
+the `esubdemo.Rproj` from RStudio.
 When we open the `esubdemo` project, RStudio will execute the R code in `.Rprofile` automatically.
-So we can use `.Rprofile` to set up a reproducible environment. 
-More details can be found in [https://rstats.wtf/r-startup.html](https://rstats.wtf/r-startup.html). 
-After we open the `esubdemo` project, the code in `.Rprofile` will 
+So we can use `.Rprofile` to set up a reproducible environment.
+More details can be found in <https://rstats.wtf/r-startup.html>.
+After we open the `esubdemo` project, the code in `.Rprofile` will
 automatically check the current R version is the same as we defined in `.Rprofile`.
+
 ```{r, eval = FALSE}
-# set up project R version
+# Set project R version
 R_version <- "4.1.1"
 ```
+
 If the R version mismatch, an error message is displayed as below.
 
 ```
 Error: The current R version is not the same as the current project in R4.1.1
 ```
 
-> `.Rprofile` is only for project-specific R package. 
-> A standard R package should not use `.Rprofile`.   
+> `.Rprofile` is only for project-specific R packages.
+> A standard R package should not use `.Rprofile`.
 
-
-Next, we introduce the control of R package version, which is controlled in two layers. 
-Firstly, we define a snapshot date in `.Rprofile`. 
-The snapshot date allows us to freeze the source code repository. 
+Next, we introduce the control of the R package version, which is controlled in two layers.
+Firstly, we define a snapshot date in `.Rprofile`.
+The snapshot date allows us to freeze the source code repository.
 
 ```{r, eval = FALSE}
 # set up snapshot date
@@ -188,119 +172,119 @@ options(repos = repos)
 ```
 
 We can also define the package repository to be a specific snapshot date.
-For example, we used Microsoft R Application Network (MRAN) to 
-define the snapshot date to be `2021-08-06`. 
-The snapshot date freezes the R package repository. 
+For example, we used Microsoft R Application Network (MRAN) to
+define the snapshot date to be `2021-08-06`.
+The snapshot date freezes the R package repository.
 
-In other words, all R packages installed in this RStudio project 
-are based on the frozen R version at the snapshot date. 
+In other words, all R packages installed in this RStudio project
+are based on the frozen R version at the snapshot date.
 Here it is `2021-08-06` by using the MRAN server.
 
-Below information will be displayed after a new R session is opened. 
+Below information will be displayed after a new R session is opened.
 
 ```
 Current project R package repository:
     https://mran.microsoft.com/snapshot/2021-08-06
 ```
 
-> RStudio Package Manager (RSPM) provided a solution to host both 
-> publicly available and internally developed R packages. 
-> However, the public RSPM server (https://packagemanager.rstudio.com/client/#/repos/2/overview) 
-> did not provide a daily snapshot as MRAN had. 
+> RStudio Package Manager (RSPM) provided a solution to host both
+> publicly available and internally developed R packages.
+> However, the public RSPM server (https://packagemanager.rstudio.com/client/#/repos/2/overview)
+> did not provide a daily snapshot as MRAN had.
 
 Secondly, we use `renv` to lock R package versions and save them in the `renv.lock` file.
-`renv` provides a robust and stable approach to managing R package versions 
+`renv` provides a robust and stable approach to managing R package versions
 for project-specific R packages.
-An introduction of `renv` can be found on its 
+An introduction of `renv` can be found on its
 [website](https://rstudio.github.io/renv/articles/renv.html).
 
 ```{r, eval = FALSE}
 source("renv/activate.R")
 ```
 
-The R code above in the `.Rprofile` initiates the `renv` running environment.  
-As a user, you can use `renv::init()`, `renv::snapshot()` and `renv::restore()` 
-to initialize, save and restore R packages used for the current analysis project. 
+The R code above in the `.Rprofile` initiates the `renv` running environment.
+As a user, you can use `renv::init()`, `renv::snapshot()`, and `renv::restore()`
+to initialize, save and restore R packages used for the current analysis project.
 
-In the analysis project, the `renv` package will 
+In the analysis project, the `renv` package will
 
 - create a `renv.lock` file to save the state of package versions.
-- create a `renv` folder to manage R packages for a project. 
+- create a `renv/` folder to manage R packages for a project.
 
-> `renv.lock` file and `renv/` folder are only for project-specific R package.
-> A standard R package should not use `renv`.  
+> The `renv.lock` file and `renv/` folder are only for project-specific R package.
+> A standard R package should not use `renv`.
 
-In summary, the R package version is controlled in two layers. 
+In summary, the R package version is controlled in two layers.
 
 - Define a snapshot date in `inst/startup.R`.
-- Using `renv` to lock R versions within a project. 
+- Using `renv` to lock R versions within a project.
 
-If the project is initiated properly, 
-you shall be able to see similar messages to inform how we control R package versions. 
+If the project is initiated properly,
+you shall be able to see similar messages to inform how we control R package versions.
 
 ```
 * Project '~/esubdemo' loaded. [renv 0.14.0]
 ```
 
-Once R packages have been properly installed, 
-the system will use the R packages located in the search path 
+Once R packages have been properly installed,
+the system will use the R packages located in the search path
 defined based on the order of `.libPaths()`.
-The startup message also provided the R package search path. 
+The startup message also provided the R package search path.
 
 ```
-Below R package path are searching in order to find installed R pacakges in this R session:
+Below R package path are searching in order to find installed R packages in this R session:
     "/home/zhanyilo/github-repo/esubdemo/renv/library/R-4.1/x86_64-pc-linux-gnu"
-    "/rtmp/RtmpT3ljoY/renv-system-library"   
+    "/rtmp/RtmpT3ljoY/renv-system-library"
 ```
 
 > A cloud-based R environment (e.g., RStudio Workbench)
 > can enhance the reproducibility within an organization
 > by using the same operating system, R version, and R package versions for an A&R project.
-> More details can be found in [https://environments.rstudio.com/](https://environments.rstudio.com/).
+> More details can be found at <https://environments.rstudio.com/>.
 
-> A container solution like [Docker](https://github.com/rstudio/r-docker) could further enhance 
-> the reproducibility across an organization at the operating system level, but beyond the scope of this book.
+> A container solution like [Docker](https://github.com/rstudio/r-docker) could further enhance
+> the reproducibility across an organization at the operating system level but beyond the scope of this book.
 
-In conclusion, to achieve reproducibility for a project-specific R package, 
-a clinical project team can work under a controlled R environment 
+In conclusion, to achieve reproducibility for a project-specific R package,
+a clinical project team can work under a controlled R environment
 in the same R version and R package versions defined by a repository snapshot date.
 
-## Automation 
+## Automation
 
-By using the R package folder structure, you will benefit from many outstanding tools to 
-simplify and streamline your workflow. 
+By using the R package folder structure, you will benefit from many outstanding tools to
+simplify and streamline your workflow.
 
 We have learned a few functions in `devtools` to generate content automatically.
-Here is a shortlist of tools that can enhance the workflow. 
+Here is a shortlist of tools that can enhance the workflow.
 
-- [`devtools`](https://devtools.r-lib.org/): make package development easier. 
-  + A good overview can be found in [Chapter 2 of the R packages](https://r-pkgs.org/whole-game.html) book  
-  + `devttols::load_all()`: load all functions in `R/` folder and running environment. 
+- [`devtools`](https://devtools.r-lib.org/): make package development easier.
+  + A good overview can be found in [Chapter 2 of the R Packages book](https://r-pkgs.org/whole-game.html).
+  + `devttols::load_all()`: load all functions in `R/` folder and running environment.
   + `devtools::document()`: automatically create documentation using `roxygen2`.
-  + `devttols::check()`: automatically perform compliance check as an R package. 
-  + `devtools::build_site()`: automatically run analysis scripts in batch and create a `pkgdown` website. 
+  + `devttols::check()`: automatically perform compliance check as an R package.
+  + `devtools::build_site()`: automatically run analysis scripts in batch and create a `pkgdown` website.
 - [`usethis`](https://usethis.r-lib.org/): automates repetitive tasks that arise during project setup and development.
 - [`testthat`](https://testthat.r-lib.org/): streamline testing code.
-  + A discussion of using the `testthat` for an A&R project can be found in (@madhutest).  
+  + A discussion of using the `testthat` for an A&R project can be found in (@madhutest).
 - [`pkgdown`](https://pkgdown.r-lib.org/): generate static HTML documentation website for an R package
-  + It also allows you to run all analysis code in batch. 
+  + It also allows you to run all analysis code in batch.
 
-You may further automatically execute routines by leveraging CI/CD workflow. 
+You may further automatically execute routines by leveraging CI/CD workflow.
 For example, the `esubdemo` project will rerun all required checks and build a pkgdown website
 by using [Github Actions](https://usethis.r-lib.org/reference/github_actions.html).
 
-As the consistent folder is defined, it also becomes easier to create specific tools 
-that fit for the analysis and reporting purpose. Below are few potential tools that can be helpful:
+As the consistent folder is defined, it also becomes easier to create specific tools
+that fit the analysis and reporting purpose. Below are a few potential tools that can be helpful:
 
 - Create project template using [RStudio Project Templates](https://rstudio.github.io/rstudio-extensions/rstudio_project_templates.html)
-- Add additional compliance checks for analysis and reporting. 
-- Save log files for running in batch. 
+- Add additional compliance checks for analysis and reporting.
+- Save log files for running in batch.
 
 ## Compliance
 
-For a regulatory deliverable, it is important to maintain compliance. 
-With a consistent folder structure, we can define specific criteria for compliance. 
-Some compliance criteria can be implemented within the automatically checking steps. 
+For a regulatory deliverable, it is important to maintain compliance.
+With a consistent folder structure, we can define specific criteria for compliance.
+Some compliance criteria can be implemented within the automatically checking steps.
 
-For an R package, there are already criteria to ensure R package integrity.  
-More details can be found in [Chapter 19 of the R package book](https://r-pkgs.org/r-cmd-check.html).
+For an R package, there are already criteria to ensure R package integrity.
+More details can be found in [Chapter 19 of the R Packages book](https://r-pkgs.org/r-cmd-check.html).

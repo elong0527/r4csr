@@ -1,10 +1,10 @@
---- 
+---
 title: "R for Clinical Study Reports and Submission"
 author: ["Yilong Zhang", "Nan Xiao", "Keaven Anderson"]
 knit: "bookdown::render_book"
 description: >
   This book will teach you how to prepare tables, listings, and figures for
-  clinical study report and submit to regulatory agencies, 
+  clinical study report and submit to regulatory agencies,
   the essential part of clinical trial development.
 
 site: bookdown::bookdown_site
@@ -29,7 +29,7 @@ library(pkglite)
 ```
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+knitr::opts_chunk$set(comment = "#>", echo = TRUE, message = FALSE)
 options(dplyr.summarise.inform = FALSE)
 file.copy("static/CNAME", "_book", overwrite = TRUE)
 fs::dir_copy("slides/", "_book/slides", overwrite = TRUE)
@@ -52,14 +52,14 @@ bookdown::render_book("index.Rmd", "bookdown::pdf_book")
 
 # Welcome! {-}
 
-<img src="images/cover.jpg" width="100%" align="right" alt="" class="cover" /> 
+<img src="images/cover.jpg" width="100%" align="right" alt="" class="cover" />
 
-Welcome to R for clinical study reports and submission. 
-Clinical study reports (CSR) are essential parts of clinical trial development. 
-A CSR is an "integrated" full scientific report of an individual clinical trial. 
+Welcome to R for clinical study reports and submission.
+Clinical study reports (CSR) are essential parts of clinical trial development.
+A CSR is an "integrated" full scientific report of an individual clinical trial.
 
-The [ICH E3: structure and content of clinical study reports](https://database.ich.org/sites/default/files/E3_Guideline.pdf) 
-provides guidance to assist sponsors in the development of a CSR. 
+The [ICH E3: structure and content of clinical study reports](https://database.ich.org/sites/default/files/E3_Guideline.pdf)
+provides guidance to assist sponsors in the development of a CSR.
 In this book, you will learn how to use R to prepare a CSR and
 how to submit it to regulatory agencies.
 

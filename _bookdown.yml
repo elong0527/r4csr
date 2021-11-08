@@ -11,23 +11,24 @@ language:
 
 rmd_files: [
   "index.Rmd",
-  
+
   "intro.Rmd",
-  
+
   "tlf-overview.Rmd",
   "tlf-disposition.Rmd",
   "tlf-population.Rmd",
   "tlf-baseline.Rmd",
-  "tlf-efficacy.Rmd", 
+  "tlf-efficacy.Rmd",
   "tlf-ae-summary.Rmd",
   "tlf-ae-spec.Rmd",
-  
+
+  "project-overview.Rmd",
   "project-folder.Rmd",
   "project-management.Rmd",
-  
+
   "submission-overview.Rmd",
   "submission-package.Rmd",
   "submission-environment.Rmd",
 
-  "reference.Rmd"
+  "references.Rmd"
 ]

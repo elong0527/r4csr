@@ -1,6 +1,6 @@
 # AE summary {#aesummary}
 
-Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf), 
+Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
 we need to summarize which participants were included in each efficacy analysis in Section 12.2, Adverse Events (AEs).
 
 ```{r}
@@ -19,8 +19,8 @@ knitr::include_graphics("tlf/tlf_ae_summary.pdf")
 The data used to summarize AE information is in `adsl` and `adae` datasets.
 
 ```{r}
-adsl <- read_sas("adam_data/adsl.sas7bdat")
-adae <- read_sas("adam_data/adae.sas7bdat")
+adsl <- read_sas("data-adam/adsl.sas7bdat")
+adae <- read_sas("data-adam/adae.sas7bdat")
 ```
 
 We first summarize participants in population by treatment group.
@@ -160,10 +160,10 @@ tbl_ae_summary %>%
 knitr::include_graphics("tlf/tlf_ae_summary.pdf")
 ```
 
-The procedure to generate a AE summary table can be summarized as follow：
+The procedure to generate an AE summary table can be summarized as follow:
 
 - Step 1: Read data into R, i.e., `adae` and `adsl`.
 - Step 2: Summarize participants in population by treatment group, and we name the dataset as `t_pop`.
-- Step 3: Summarize participants in population by required AE criteria of interest, 
+- Step 3: Summarize participants in population by required AE criteria of interest,
   and we name the dataset as `t_ae`.
 - Step 4: Rowly bind `t_pop` and `t_ae` and format it by `r2rtf`.

@@ -5,7 +5,8 @@ assets in the eCTD submission package we should focus on when
 submitting R code.
 Secondly, we will discuss how to prepare the proprietary R packages
 (if any), and make them part of the submission package.
-Lastly, we will provide reusable templates for updating ADaM Reviewer's Guide (ADRG) and Analysis Results Metadata (ARM),
+Lastly, we will provide reusable templates for updating
+Analysis Data Reviewer's Guide (ADRG) and Analysis Results Metadata (ARM)
 so that the reviewers receive proper instructions to reproduce the
 analysis results.
 
@@ -18,7 +19,8 @@ into text files and back.
 install.packages("pkglite")
 ```
 
-The demo project (R package) we will prepare for submission is called [`esubdemo`](https://github.com/elong0527/esubdemo) available on GitHub.
+The demo project (R package) we will prepare for submission is called
+[`esubdemo`](https://github.com/elong0527/esubdemo), available on GitHub.
 You can download or clone it:
 
 ```bash
@@ -37,7 +39,7 @@ We will assume the paths to the two folders are `esubdemo/` and `ectddemo/` belo
 
 ## The whole game
 
-In eCTD deliverable, the analysis dataset and source code are saved 
+In eCTD deliverable, the analysis dataset and source code are saved
 under the eCTD module 5 (clinical study reports) folder
 
 ```
@@ -74,7 +76,7 @@ Folder path: `ectddemo/m5/datasets/ectddemo/analysis/adam/datasets/`.
 
 - ADaM data in `.xpt` format: created by SAS or R.
 - `define.xml`: created by Pinnacle 21.
-- ADRG (ADaM Reviewer's Guide)
+- ADRG (Analysis Data Reviewer's Guide)
   - "Macro Programs" section: provide R and R package versions with a snapshot date.
   - Appendix: provide step-by-step instructions for reviewers to
     reproduce the running environment and rerun analyses.
@@ -102,7 +104,7 @@ This can be verified by `pkglite::verify_ascii()`
 - Any `.docx` files should be converted to PDF files for formal submission.
 
 Now you have a general idea about the relevant components of the
-submission package. 
+submission package.
 We will start preparing the proprietary R packages in the following sections.
 
 ## Practical considerations for R package submissions
@@ -129,7 +131,7 @@ recommended to submit them as part of the submission package.
 
 ### Dependency locations
 
-R package dependencies is another major factor to consider
+R package dependency is another major factor to consider
 before preparing your proprietary R package for submission.
 
 For dependencies available from CRAN or public Git repositories,
@@ -166,14 +168,14 @@ especially when involving compiled code (e.g., C, C++, Fortran).
 
 ## Prepare R Packages for submission
 
-To prepare R packages for submission, one needs to pack the packages into text files, and then verify if the file only contains ASSCII characters.
+To prepare R packages for submission, one needs to pack the packages into text files, and then verify if the file only contains ASCII characters.
 With packed packages, one can unpack and install them from the text file, too.
 
 ### Pack
 
 Let's pack the `esubdemo` package into a text file.
-Assume the source package path is `esubdemo/`,
-you should be able to pack the package with a single pipe:
+Assume the source package path is `esubdemo/`.
+You should be able to pack the package with a single pipe:
 
 ```{r, eval=FALSE}
 library("pkglite")
@@ -200,7 +202,7 @@ knitr::include_graphics("images/preview-txt.png")
 What happened in the pipe?
 The function `pkglite::collate()` evaluates a specified scope of
 folders and files defined by a list of **file specifications**,
-and generate a **file collection** object.
+and generates a **file collection** object.
 This file collection contains the metadata required to properly convert
 the files into text which is then used by `pkglite::pack()`.
 With this flow, you can define the scope of the R source package
@@ -251,13 +253,13 @@ If successfully tested, this command will be used in the ADRG instructions
 for restoring and installing the packed R package(s).
 
 You can then proceed to move the file `r0pkgs.txt` to the folder
-`ectddemo/m5/datasets/ectddemo/analysis/adam/programs`,
+`ectddemo/m5/datasets/ectddemo/analysis/adam/programs/`,
 or specify the output text file path above directly.
 
 ## Prepare analysis programs for submission
 
 Besides the R packages, we need to convert the R Markdown (`.Rmd`) files
-into `.txt` files and saved them in the `programs` folder.
+into `.txt` files and saved them in the `programs/` folder.
 You can do this with `knitr::purl()`:
 
 ```{r, eval=FALSE}
