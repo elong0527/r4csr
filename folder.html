@@ -80,19 +80,21 @@
 <h1>
 <span class="header-section-number">10</span> Project folder<a class="anchor" aria-label="anchor" href="#folder"><i class="fas fa-link"></i></a>
 </h1>
-<p>A clearly defined clinical project folder structure can have many benefits to clinical development teams in an organization.
+<p>A clearly defined clinical project folder structure can have many benefits
+to clinical development teams in an organization.
 Specifically, a well-defined project structure can achieve:</p>
 <ul>
 <li>Consistency: everyone works on the same folder structure.</li>
-<li>Reproducibility: analysis can be executed and reproduced by different team members months/years later.</li>
+<li>Reproducibility: analysis can be executed and reproduced by different
+team members months/years later.</li>
 <li>Automation: automatically check the integration of a project.</li>
 <li>Compliance: reduce compliance issues.</li>
 </ul>
-<p>We illustrate the R package project folder for the A&amp;R project using a demo project called
-<a href="https://github.com/elong0527/esubdemo.git"><code>esubdemo</code></a>.
-You can
+<p>We will use the <a href="https://github.com/elong0527/esubdemo"><code>esubdemo</code></a> R package to
+illustrate the project folder structure for the A&amp;R project. You can
 <a href="https://happygitwithr.com/rstudio-git-github.html#clone-the-new-github-repository-to-your-computer-via-rstudio">clone</a>
-the project using RStudio.</p>
+the project using RStudio with</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb109-1"><a href="folder.html#cb109-1"></a><span class="fu">git</span> clone https://github.com/elong0527/esubdemo.git</span></code></pre></div>
 <p>For R users, you already benefit from a well-defined and consistent folder structure.
 That is the <a href="https://github.com/rstudio/cheatsheets/raw/master/package-development.pdf">R package folder structure</a>.
 Every R package developer is required to follow the same convention to organize
@@ -133,13 +135,13 @@ based on the R package folder structure.</p>
 in Chapter 4 of the R Packages book (<span class="citation">Wickham (<a href="references.html#ref-wickham2015r" role="doc-biblioref">2015</a>)</span>).</p>
 <p>We demonstrate the idea using the <a href="https://github.com/elong0527/esubdemo"><code>esubdemo</code></a> project.</p>
 <p>In the <code>esubdemo</code> project, we saved all TLF generation scripts in previous chapters into the <code>vignettes/</code> folder.</p>
-<blockquote>
-<p>Under the <code>vignettes/</code> folder, there are <code>adam/</code> folder and <code>tlf</code> folder.
+<div class="rmdnote">
+<p>Under the <code>vignettes/</code> folder, there are two folders: <code>adam/</code> and <code>tlf/</code>.
 The <code>adam/</code> folder contains ADaM datasets.
-The <code>tlf</code> folder contains output TLFs in RTF format.
-We put <code>adam/</code> and <code>tlf/</code> folders within the <code>vignettes</code> folder only for illustration purposes.
+The <code>tlf/</code> folder contains output TLFs in RTF format.
+We put <code>adam/</code> and <code>tlf/</code> folders within the <code>vignettes/</code> folder only for illustration purposes.
 In an actual A&amp;R report, you may have a different location to save your input and output.</p>
-</blockquote>
+</div>
 <pre><code>vignettes
 ├── data-adam
 ├── tlf
@@ -158,7 +160,7 @@ Those functions are saved in the <code>R/</code> folder.</p>
 We used <code>roxygen2</code> to document functions.
 For example, the header below defines each variable in <code>fmt_est</code>.
 More details can be found in <a href="https://r-pkgs.org/man.html">Chapter 10 of the R Packages book</a>.</p>
-<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' Format point estimator</span>
 <span class="co">#'</span>
 <span class="co">#' @param .mean mean of an estimator.</span>
@@ -166,9 +168,7 @@ More details can be found in <a href="https://r-pkgs.org/man.html">Chapter 10 of
 <span class="co">#' @param digits number of digits for `.mean` and `.sd`.</span>
 <span class="co">#'</span>
 <span class="co">#' @export</span>
-<span class="va">fmt_est</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">.mean</span>,
-                    <span class="va">.sd</span>,
-                    <span class="va">digits</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+<span class="va">fmt_est</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">.mean</span>, <span class="va">.sd</span>, <span class="va">digits</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
   <span class="va">.mean</span> <span class="op">&lt;-</span> <span class="fu">fmt_num</span><span class="op">(</span><span class="va">.mean</span>, <span class="va">digits</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, width <span class="op">=</span> <span class="va">digits</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">+</span> <span class="fl">4</span><span class="op">)</span>
   <span class="va">.sd</span> <span class="op">&lt;-</span> <span class="fu">fmt_num</span><span class="op">(</span><span class="va">.sd</span>, <span class="va">digits</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, width <span class="op">=</span> <span class="va">digits</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">+</span> <span class="fl">3</span><span class="op">)</span>
   <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">.mean</span>, <span class="st">" ("</span>, <span class="va">.sd</span>, <span class="st">")"</span><span class="op">)</span>
@@ -184,7 +184,7 @@ This step is automatically handled by <code>devtools::document()</code>.</p>
 └── fmt_pval.Rd</code></pre>
 <p>The <code>man/</code> folder is used to save documentation automatically generated by <code>roxygen2</code>.
 A typical workflow is to add <code>roxygen2</code> documentation before each function in the <code>R/</code> folder.
-Then <code>devtools::documents()</code> is used to generate all the documentation files in the <code>man/</code> folder.
+Then <code>devtools::document()</code> is used to generate all the documentation files in the <code>man/</code> folder.
 More details can be found in <a href="https://r-pkgs.org/man.html">Chapter 10 of the R Packages book</a>.</p>
 </div>
 <div id="reproduce" class="section level2">
@@ -192,14 +192,18 @@ More details can be found in <a href="https://r-pkgs.org/man.html">Chapter 10 of
 <span class="header-section-number">10.2</span> Reproducibility<a class="anchor" aria-label="anchor" href="#reproduce"><i class="fas fa-link"></i></a>
 </h2>
 <p>Reproducibility of analysis is one of the most important aspects of regulatory deliverables.
-To ensure a successful reproduce, we need a controlled R environment,
+To ensure a successful reproduction, we need a controlled R environment,
 including the control of the R version and the R package versions.
 By using the R package folder structure and proper tools (e.g., <code>renv</code>, <code>packrat</code>),
 we illustrate how to achieve reproducibility for R and R package versions.</p>
-<blockquote>
-<p>This is the same level of reproducibility in most SAS environments.
+<div class="rmdnote">
+<p>This is the same level of reproducibility in most SAS environments:
 <a href="https://support.sas.com/techsup/pcn/altopsys.html" class="uri">https://support.sas.com/techsup/pcn/altopsys.html</a></p>
-</blockquote>
+</div>
+<div id="r-version" class="section level3">
+<h3>
+<span class="header-section-number">10.2.1</span> R version<a class="anchor" aria-label="anchor" href="#r-version"><i class="fas fa-link"></i></a>
+</h3>
 <p>First, we introduce the control of the R version.
 In the <code>esubdemo</code> project, a reproducible environment is created when you open
 the <code>esubdemo.Rproj</code> from RStudio.
@@ -208,21 +212,26 @@ So we can use <code>.Rprofile</code> to set up a reproducible environment.
 More details can be found in <a href="https://rstats.wtf/r-startup.html" class="uri">https://rstats.wtf/r-startup.html</a>.
 After we open the <code>esubdemo</code> project, the code in <code>.Rprofile</code> will
 automatically check the current R version is the same as we defined in <code>.Rprofile</code>.</p>
-<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Set project R version</span>
 <span class="va">R_version</span> <span class="op">&lt;-</span> <span class="st">"4.1.1"</span></code></pre></div>
-<p>If the R version mismatch, an error message is displayed as below.</p>
+<p>If there is an R version mismatch, an error message is displayed as below.</p>
 <pre><code>Error: The current R version is not the same as the current project in R4.1.1</code></pre>
-<blockquote>
+<div class="rmdnote">
 <p><code>.Rprofile</code> is only for project-specific R packages.
 A standard R package should not use <code>.Rprofile</code>.</p>
-</blockquote>
+</div>
+</div>
+<div id="r-package-version" class="section level3">
+<h3>
+<span class="header-section-number">10.2.2</span> R package version<a class="anchor" aria-label="anchor" href="#r-package-version"><i class="fas fa-link"></i></a>
+</h3>
 <p>Next, we introduce the control of the R package version, which is controlled in two layers.
 Firstly, we define a snapshot date in <code>.Rprofile</code>.
 The snapshot date allows us to freeze the source code repository.</p>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># set up snapshot date</span>
-<span class="va">snapshot</span>  <span class="op">&lt;-</span> <span class="st">"2021-08-06"</span>
+<span class="va">snapshot</span> <span class="op">&lt;-</span> <span class="st">"2021-08-06"</span>
 
 <span class="co"># set up repository based on the snapshot date</span>
 <span class="va">repos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"https://mran.microsoft.com/snapshot/"</span>, <span class="va">snapshot</span><span class="op">)</span>
@@ -239,18 +248,18 @@ Here it is <code>2021-08-06</code> by using the MRAN server.</p>
 <p>Below information will be displayed after a new R session is opened.</p>
 <pre><code>Current project R package repository:
     https://mran.microsoft.com/snapshot/2021-08-06</code></pre>
-<blockquote>
-<p>RStudio Package Manager (RSPM) provided a solution to host both
+<div class="rmdnote">
+<p>RStudio Package Manager (RSPM) provides a solution to host both
 publicly available and internally developed R packages.
-However, the public RSPM server (<a href="https://packagemanager.rstudio.com/client/#/repos/2/overview" class="uri">https://packagemanager.rstudio.com/client/#/repos/2/overview</a>)
-did not provide a daily snapshot as MRAN had.</p>
-</blockquote>
+However, the <a href="https://packagemanager.rstudio.com/client/#/repos/2/overview">public RSPM server</a>
+does not provide a daily snapshot as MRAN does.</p>
+</div>
 <p>Secondly, we use <code>renv</code> to lock R package versions and save them in the <code>renv.lock</code> file.
 <code>renv</code> provides a robust and stable approach to managing R package versions
 for project-specific R packages.
 An introduction of <code>renv</code> can be found on its
 <a href="https://rstudio.github.io/renv/articles/renv.html">website</a>.</p>
-<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"renv/activate.R"</span><span class="op">)</span></code></pre></div>
 <p>The R code above in the <code>.Rprofile</code> initiates the <code>renv</code> running environment.
 As a user, you can use <code><a href="https://rstudio.github.io/renv/reference/init.html">renv::init()</a></code>, <code><a href="https://rstudio.github.io/renv/reference/snapshot.html">renv::snapshot()</a></code>, and <code><a href="https://rstudio.github.io/renv/reference/restore.html">renv::restore()</a></code>
@@ -260,17 +269,17 @@ to initialize, save and restore R packages used for the current analysis project
 <li>create a <code>renv.lock</code> file to save the state of package versions.</li>
 <li>create a <code>renv/</code> folder to manage R packages for a project.</li>
 </ul>
-<blockquote>
+<div class="rmdnote">
 <p>The <code>renv.lock</code> file and <code>renv/</code> folder are only for project-specific R package.
 A standard R package should not use <code>renv</code>.</p>
-</blockquote>
+</div>
 <p>In summary, the R package version is controlled in two layers.</p>
 <ul>
 <li>Define a snapshot date in <code>inst/startup.R</code>.</li>
 <li>Using <code>renv</code> to lock R versions within a project.</li>
 </ul>
 <p>If the project is initiated properly,
-you shall be able to see similar messages to inform how we control R package versions.</p>
+you should be able to see similar messages to inform how we control R package versions.</p>
 <pre><code>* Project '~/esubdemo' loaded. [renv 0.14.0]</code></pre>
 <p>Once R packages have been properly installed,
 the system will use the R packages located in the search path
@@ -279,19 +288,21 @@ The startup message also provided the R package search path.</p>
 <pre><code>Below R package path are searching in order to find installed R packages in this R session:
     "/home/zhanyilo/github-repo/esubdemo/renv/library/R-4.1/x86_64-pc-linux-gnu"
     "/rtmp/RtmpT3ljoY/renv-system-library"</code></pre>
-<blockquote>
+<div class="rmdnote">
 <p>A cloud-based R environment (e.g., RStudio Workbench)
 can enhance the reproducibility within an organization
 by using the same operating system, R version, and R package versions for an A&amp;R project.
 More details can be found at <a href="https://environments.rstudio.com/" class="uri">https://environments.rstudio.com/</a>.</p>
-</blockquote>
-<blockquote>
-<p>A container solution like <a href="https://github.com/rstudio/r-docker">Docker</a> could further enhance
-the reproducibility across an organization at the operating system level but beyond the scope of this book.</p>
-</blockquote>
+</div>
+<div class="rmdnote">
+<p>A container solution like Docker <span class="citation">(Nüst et al. <a href="references.html#ref-RJ-2020-007" role="doc-biblioref">2020</a>)</span> could further enhance
+the reproducibility across an organization at the operating system level
+but beyond the scope of this book.</p>
+</div>
 <p>In conclusion, to achieve reproducibility for a project-specific R package,
 a clinical project team can work under a controlled R environment
 in the same R version and R package versions defined by a repository snapshot date.</p>
+</div>
 </div>
 <div id="automation" class="section level2">
 <h2>
@@ -307,11 +318,11 @@ Here is a shortlist of tools that can enhance the workflow.</p>
 <ul>
 <li>A good overview can be found in <a href="https://r-pkgs.org/whole-game.html">Chapter 2 of the R Packages book</a>.</li>
 <li>
-<code>devttols::load_all()</code>: load all functions in <code>R/</code> folder and running environment.</li>
+<code>devtools::load_all()</code>: load all functions in <code>R/</code> folder and running environment.</li>
 <li>
 <code>devtools::document()</code>: automatically create documentation using <code>roxygen2</code>.</li>
 <li>
-<code>devttols::check()</code>: automatically perform compliance check as an R package.</li>
+<code>devtools::check()</code>: automatically perform compliance check as an R package.</li>
 <li>
 <code>devtools::build_site()</code>: automatically run analysis scripts in batch and create a <code>pkgdown</code> website.</li>
 </ul>
@@ -337,9 +348,9 @@ by using <a href="https://usethis.r-lib.org/reference/github_actions.html">Githu
 <p>As the consistent folder is defined, it also becomes easier to create specific tools
 that fit the analysis and reporting purpose. Below are a few potential tools that can be helpful:</p>
 <ul>
-<li>Create project template using <a href="https://rstudio.github.io/rstudio-extensions/rstudio_project_templates.html">RStudio Project Templates</a>
-</li>
-<li>Add additional compliance checks for analysis and reporting.</li>
+<li>Create project template using
+<a href="https://rstudio.github.io/rstudio-extensions/rstudio_project_templates.html">RStudio project templates</a>;</li>
+<li>Add additional compliance checks for analysis and reporting;</li>
 <li>Save log files for running in batch.</li>
 </ul>
 </div>
@@ -363,7 +374,12 @@ More details can be found in <a href="https://r-pkgs.org/r-cmd-check.html">Chapt
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#folder"><span class="header-section-number">10</span> Project folder</a></li>
 <li><a class="nav-link" href="#consistency"><span class="header-section-number">10.1</span> Consistency</a></li>
-<li><a class="nav-link" href="#reproduce"><span class="header-section-number">10.2</span> Reproducibility</a></li>
+<li>
+<a class="nav-link" href="#reproduce"><span class="header-section-number">10.2</span> Reproducibility</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#r-version"><span class="header-section-number">10.2.1</span> R version</a></li>
+<li><a class="nav-link" href="#r-package-version"><span class="header-section-number">10.2.2</span> R package version</a></li>
+</ul>
+</li>
 <li><a class="nav-link" href="#automation"><span class="header-section-number">10.3</span> Automation</a></li>
 <li><a class="nav-link" href="#compliance"><span class="header-section-number">10.4</span> Compliance</a></li>
 </ul>

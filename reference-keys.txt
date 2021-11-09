@@ -30,6 +30,8 @@ project-overview
 folder
 consistency
 reproduce
+r-version
+r-package-version
 automation
 compliance
 manage
@@ -53,7 +55,7 @@ notes
 practical-considerations-for-r-package-submissions
 source-location
 dependency-locations
-r-version
+r-version-1
 package-repo-version
 system-environments
 prepare-r-packages-for-submission

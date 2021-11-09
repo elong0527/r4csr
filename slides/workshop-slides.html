@@ -270,9 +270,9 @@ slide:not(.current) .plotly.html-widget{
 </ul>
 
 <pre class = 'prettyprint lang-r'>install.packages(c(
-  &quot;tidyverse&quot;,      # Data manipulation
-  &quot;r2rtf&quot;,          # TLF generation
-  &quot;pkglite&quot;         # eCTD submission
+  &quot;tidyverse&quot;, # Data manipulation
+  &quot;r2rtf&quot;, # TLF generation
+  &quot;pkglite&quot; # eCTD submission
 ))</pre>
 
 </article></slide><slide class=""><hgroup><h2>Resource</h2></hgroup><article  id="resource">
@@ -301,7 +301,7 @@ slide:not(.current) .plotly.html-widget{
 
 </article></slide><slide class=""><hgroup><h2>Philosophy</h2></hgroup><article  id="philosophy">
 
-<p>We share the same philosophy described in <a href='https://r-pkgs.org/intro.html?q=Marwick#intro-phil' title=''>Section 1.1 of R Packages book</a> and quote here.</p>
+<p>We share the same philosophy described in <a href='https://r-pkgs.org/intro.html#intro-phil' title=''>Section 1.1 of R Packages book</a> and quote here.</p>
 
 <ul>
 <li>&ldquo;Anything that can be automated, should be automated.&rdquo;</li>
@@ -380,8 +380,8 @@ slide:not(.current) .plotly.html-widget{
 <p><code>r2rtf</code> is designed to enable pipes (<code>%&gt;%</code>)</p>
 
 <pre class = 'prettyprint lang-r'>head(iris) %&gt;%
-  rtf_body() %&gt;%           # Step 1 Add table attributes
-  rtf_encode() %&gt;%         # Step 2 Convert attributes to RTF encode
+  rtf_body() %&gt;% # Step 1 Add table attributes
+  rtf_encode() %&gt;% # Step 2 Convert attributes to RTF encode
   write_rtf(&quot;minimal.rtf&quot;) # Step 3 Write to a .rtf file</pre>
 
 <embed src="minimal.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf" />
@@ -404,7 +404,7 @@ slide:not(.current) .plotly.html-widget{
 <p><code>r2rtf</code> only focus on <strong>table format</strong>. Data manipulation and analysis shall be handled by other R packages. (e.g. <code>tidyverse</code>)</p>
 
 <ul>
-<li>Let’s refer to examples in the <a href='https://r4csr.org/overview.html#r2rtf' title=''>Section 2.4.2</a></li>
+<li>Let’s refer to examples in the <a href='https://r4csr.org/tlf-overview.html#r2rtf' title=''>Section 2.4.2</a></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Function Summary</h2></hgroup><article  id="function-summary">
@@ -555,7 +555,7 @@ slide:not(.current) .plotly.html-widget{
 
 </article></slide><slide class=""><hgroup><h2>Overview</h2></hgroup><article  id="overview-1">
 
-<p><a href='https://r4csr.org/overview-2.html' title=''>https://r4csr.org/overview-2.html</a></p>
+<p><a href='https://r4csr.org/submission-overview.html' title=''>https://r4csr.org/submission-overview.html</a></p>
 
 </article></slide><slide class=""><hgroup><h2>Submission Package</h2></hgroup><article  id="submission-package">
 
