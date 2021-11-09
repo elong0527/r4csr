@@ -108,7 +108,7 @@ install.packages(c(
 ## Philosophy
 
 We share the same philosophy described in
-[Section 1.1 of R Packages book](https://r-pkgs.org/intro.html?q=Marwick#intro-phil) and quote here.
+[Section 1.1 of R Packages book](https://r-pkgs.org/intro.html#intro-phil) and quote here.
 
 - "Anything that can be automated, should be automated."
 - "Do as little as possible by hand. Do as much as possible with functions."
@@ -209,7 +209,7 @@ knitr::include_graphics("minimal.pdf")
 `r2rtf` only focus on **table format**.
 Data manipulation and analysis shall be handled by other R packages. (e.g. `tidyverse`)
 
-- Let's refer to examples in the [Section 2.4.2](https://r4csr.org/overview.html#r2rtf)
+- Let's refer to examples in the [Section 2.4.2](https://r4csr.org/tlf-overview.html#r2rtf)
 
 ## Function Summary
 
@@ -302,7 +302,7 @@ project, with 4 goals in mind:
 
 ## Overview
 
-<https://r4csr.org/overview-2.html>
+<https://r4csr.org/submission-overview.html>
 
 ## Submission Package
 
