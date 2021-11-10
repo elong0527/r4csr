@@ -12,7 +12,7 @@ language:
 rmd_files: [
   "index.Rmd",
 
-  "intro.Rmd",
+  "preface.Rmd",
 
   "tlf-overview.Rmd",
   "tlf-disposition.Rmd",

@@ -1,4 +1,4 @@
-# Introduction {#intro}
+# Preface {-}
 
 ## Folder structure
 
@@ -33,7 +33,7 @@ We will revisit folder structure when we discuss project management for a clinic
 
 In addition, R package folder structure is also recommended
 to develop Shiny apps as discussed
-in [Chapter 20 of the Master Shiny book](https://mastering-shiny.org/scaling-packaging.html)
+in Chapter 20 of the [Mastering Shiny](https://mastering-shiny.org/scaling-packaging.html) book
 and the [Engineering Production-Grade Shiny Apps](https://engineering-shiny.org/golem.html) book.
 
 ## In this book
@@ -54,8 +54,8 @@ The assumption of each part is as below:
 - Part 2, "Clinical trial project" provides general information
   with examples to manage a clinical trial A&R project.
   In this part, we assume a reader is a project lead with experience in R package development.
-  Some good references include [R Packages](https://r-pkgs.org/) and
-  [The tidyverse style guide](https://style.tidyverse.org/).
+  Some good references include [R Packages](https://r-pkgs.org/) and the
+  [tidyverse style guide](https://style.tidyverse.org/).
 
 - Part 3, "eCTD submission package" provides general information in preparing
   submission packages related to clinical study report (CSR) in
@@ -66,10 +66,30 @@ The assumption of each part is as below:
 ## Philosophy
 
 We share the same philosophy described in
-[Section 1.1 of the R Packages book](https://r-pkgs.org/intro.html#intro-phil)
+Section 1.1 of the [R Packages](https://r-pkgs.org/intro.html#intro-phil) book
 and quote here.
 
 - "Anything that can be automated, should be automated."
 - "Do as little as possible by hand. Do as much as possible with functions."
 - "The goal is to spend your time thinking about what you want to do
 rather than thinking about the minutiae of the package structure."
+
+## Authors and contributors
+
+The document is maintained by a community.
+While reading the document, you can be a contributor as well.
+The quality of this document relies on you.
+
+- Authors: contributed the majority of content to at least one chapter.
+
+  Yilong Zhang <<yilong.zhang@merck.com>>, Nan Xiao, Keaven Anderson
+
+- Contributors: contributed at least one commit to the [source code](https://github.com/elong0527/r4csr).
+
+```{r, results = "asis", echo = FALSE, message = FALSE}
+contributors <- read.csv("contributors.csv", stringsAsFactors = FALSE, na.strings = "")
+contributors$desc <- with(contributors, ifelse(is.na(username), name, paste0(name, " (\\@", username, ")")))
+cat("  We are grateful for all the improvements brought by these contributors (in chronological order): ", sep = "")
+cat(paste0(contributors$desc, collapse = ", "))
+cat(".\n")
+```
