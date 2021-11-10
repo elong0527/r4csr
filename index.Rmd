@@ -24,7 +24,6 @@ library(dplyr)
 library(tidyr)
 library(r2rtf)
 library(knitr)
-library(kableExtra)
 library(pkglite)
 ```
 
@@ -63,31 +62,8 @@ provides guidance to assist sponsors in the development of a CSR.
 In this book, you will learn how to use R to prepare a CSR and
 how to submit it to regulatory agencies.
 
-**This is the work-in-progress draft of the book.**
+**This is a work-in-progress draft.**
 
-## Authors and contributors {-}
+## License {-}
 
-```{r, echo = FALSE}
-contributors <- c(
-  person("Yilong", "Zhang", email = "yilong.zhang@merck.com", role = "aut"),
-  person("Nan", "Xiao", role = "aut"),
-  person("Keaven", "Anderson", role = "aut"),
-  person("Yujie", "Zhao", role = "ctr"),
-  person("Aiming", "Yang", role = "ctr"),
-  person("Steven", "Haesendonckx", role = "ctr"),
-  person("Howard", "Baek", role = "ctr")
-)
-```
-
-The document is maintained by a community.
-While reading the document, you can be a contributor as well.
-The quality of this document relies on you.
-
-- Author: contribute the majority content of at least one chapter.
-- Contributor: [contribute at least one commit to the source code](https://github.com/elong0527/r4csr)
-
-```{r, echo = FALSE, eval = TRUE}
-data.frame(contributors = as.character(contributors)) %>%
-  kable(format = "html") %>%
-  kable_styling()
-```
+This book is licensed to you under [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/).
