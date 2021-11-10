@@ -1,10 +1,10 @@
-fig:unnamed-chunk-107
-fig:unnamed-chunk-109
-fig:unnamed-chunk-119
-intro
+fig:unnamed-chunk-106
+fig:unnamed-chunk-108
+fig:unnamed-chunk-118
 folder-structure
 in-this-book
 philosophy
+authors-and-contributors
 tlf-overview
 background
 structure-and-content
@@ -72,4 +72,3 @@ create-canonical-environments
 create-tailored-environments
 update-adrg-1
 rstudio-addin
-references

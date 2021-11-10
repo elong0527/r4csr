@@ -4,23 +4,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 13 Submission package | R for Clinical Study Reports and Submission</title>
+<title>Chapter 12 Submission package | R for Clinical Study Reports and Submission</title>
 <meta name="author" content="Yilong Zhang">
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
 <meta name="description" content="In this chapter, we will first give a high-level overview of what assets in the eCTD submission package we should focus on when submitting R code. Secondly, we will discuss how to prepare the...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="Chapter 13 Submission package | R for Clinical Study Reports and Submission">
+<meta property="og:title" content="Chapter 12 Submission package | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
 <meta property="og:description" content="In this chapter, we will first give a high-level overview of what assets in the eCTD submission package we should focus on when submitting R code. Secondly, we will discuss how to prepare the...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 13 Submission package | R for Clinical Study Reports and Submission">
+<meta name="twitter:title" content="Chapter 12 Submission package | R for Clinical Study Reports and Submission">
 <meta name="twitter:description" content="In this chapter, we will first give a high-level overview of what assets in the eCTD submission package we should focus on when submitting R code. Secondly, we will discuss how to prepare the...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet">
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-MKYDL3PNW1"></script><script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -50,25 +49,25 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Welcome!</a></li>
-<li><a class="" href="intro.html"><span class="header-section-number">1</span> Introduction</a></li>
+<li><a class="" href="preface.html">Preface</a></li>
 <li class="book-part">Delivering TLFs in CSR</li>
-<li><a class="" href="tlf-overview.html"><span class="header-section-number">2</span> Overview</a></li>
-<li><a class="" href="disposition.html"><span class="header-section-number">3</span> Disposition</a></li>
-<li><a class="" href="population.html"><span class="header-section-number">4</span> Analysis population</a></li>
-<li><a class="" href="baseline-characteristics.html"><span class="header-section-number">5</span> Baseline characteristics</a></li>
-<li><a class="" href="efficacy.html"><span class="header-section-number">6</span> Efficacy</a></li>
-<li><a class="" href="aesummary.html"><span class="header-section-number">7</span> AE summary</a></li>
-<li><a class="" href="specific-ae.html"><span class="header-section-number">8</span> Specific AE</a></li>
+<li><a class="" href="tlf-overview.html"><span class="header-section-number">1</span> Overview</a></li>
+<li><a class="" href="disposition.html"><span class="header-section-number">2</span> Disposition</a></li>
+<li><a class="" href="population.html"><span class="header-section-number">3</span> Analysis population</a></li>
+<li><a class="" href="baseline-characteristics.html"><span class="header-section-number">4</span> Baseline characteristics</a></li>
+<li><a class="" href="efficacy.html"><span class="header-section-number">5</span> Efficacy</a></li>
+<li><a class="" href="aesummary.html"><span class="header-section-number">6</span> AE summary</a></li>
+<li><a class="" href="specific-ae.html"><span class="header-section-number">7</span> Specific AE</a></li>
 <li class="book-part">Clinical trial project</li>
-<li><a class="" href="project-overview.html"><span class="header-section-number">9</span> Overview</a></li>
-<li><a class="" href="folder.html"><span class="header-section-number">10</span> Project folder</a></li>
-<li><a class="" href="manage.html"><span class="header-section-number">11</span> Project management</a></li>
+<li><a class="" href="project-overview.html"><span class="header-section-number">8</span> Overview</a></li>
+<li><a class="" href="folder.html"><span class="header-section-number">9</span> Project folder</a></li>
+<li><a class="" href="manage.html"><span class="header-section-number">10</span> Project management</a></li>
 <li class="book-part">eCTD submission</li>
-<li><a class="" href="submission-overview.html"><span class="header-section-number">12</span> Overview</a></li>
-<li><a class="active" href="submission-package.html"><span class="header-section-number">13</span> Submission package</a></li>
-<li><a class="" href="running-environment.html"><span class="header-section-number">14</span> Running environment</a></li>
+<li><a class="" href="submission-overview.html"><span class="header-section-number">11</span> Overview</a></li>
+<li><a class="active" href="submission-package.html"><span class="header-section-number">12</span> Submission package</a></li>
+<li><a class="" href="running-environment.html"><span class="header-section-number">13</span> Running environment</a></li>
 <li class="book-part">Appendix</li>
-<li><a class="" href="references.html"><span class="header-section-number">15</span> References</a></li>
+<li><a class="" href="references.html">References</a></li>
 </ul>
 
         <div class="book-extra">
@@ -78,7 +77,7 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="submission-package" class="section level1">
 <h1>
-<span class="header-section-number">13</span> Submission package<a class="anchor" aria-label="anchor" href="#submission-package"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12</span> Submission package<a class="anchor" aria-label="anchor" href="#submission-package"><i class="fas fa-link"></i></a>
 </h1>
 <p>In this chapter, we will first give a high-level overview of what
 assets in the eCTD submission package we should focus on when
@@ -91,7 +90,7 @@ so that the reviewers receive proper instructions to reproduce the
 analysis results.</p>
 <div id="prerequisites" class="section level2">
 <h2>
-<span class="header-section-number">13.1</span> Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.1</span> Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites"><i class="fas fa-link"></i></a>
 </h2>
 <p>This chapter uses <code>pkglite</code> to convert R source packages
 into text files and back.</p>
@@ -109,7 +108,7 @@ You can download or clone it:</p>
 </div>
 <div id="the-whole-game" class="section level2">
 <h2>
-<span class="header-section-number">13.2</span> The whole game<a class="anchor" aria-label="anchor" href="#the-whole-game"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.2</span> The whole game<a class="anchor" aria-label="anchor" href="#the-whole-game"><i class="fas fa-link"></i></a>
 </h2>
 <p>In eCTD deliverable, the analysis dataset and source code are saved
 under the eCTD module 5 (clinical study reports) folder</p>
@@ -135,7 +134,7 @@ are critical for documenting analysis using R: <code>datasets/</code> and <code>
 <p>The special considerations for each component are listed below.</p>
 <div id="datasets-1" class="section level3">
 <h3>
-<span class="header-section-number">13.2.1</span> <code>datasets</code><a class="anchor" aria-label="anchor" href="#datasets-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.2.1</span> <code>datasets</code><a class="anchor" aria-label="anchor" href="#datasets-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>Folder path: <code>ectddemo/m5/datasets/ectddemo/analysis/adam/datasets/</code>.</p>
 <ul>
@@ -155,7 +154,7 @@ analysis programs in tables.</li>
 </div>
 <div id="programs" class="section level3">
 <h3>
-<span class="header-section-number">13.2.2</span> <code>programs</code><a class="anchor" aria-label="anchor" href="#programs"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.2.2</span> <code>programs</code><a class="anchor" aria-label="anchor" href="#programs"><i class="fas fa-link"></i></a>
 </h3>
 <p>Folder path: <code>ectddemo/m5/datasets/ectddemo/analysis/adam/programs/</code>.</p>
 <ul>
@@ -166,7 +165,7 @@ analysis programs in tables.</li>
 </div>
 <div id="notes" class="section level3">
 <h3>
-<span class="header-section-number">13.2.3</span> Notes<a class="anchor" aria-label="anchor" href="#notes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.2.3</span> Notes<a class="anchor" aria-label="anchor" href="#notes"><i class="fas fa-link"></i></a>
 </h3>
 <p>To verify if the submission package works, rerun all analyses following the
 instructions defined in ADRG.</p>
@@ -186,13 +185,13 @@ We will start preparing the proprietary R packages in the following sections.</p
 </div>
 <div id="practical-considerations-for-r-package-submissions" class="section level2">
 <h2>
-<span class="header-section-number">13.3</span> Practical considerations for R package submissions<a class="anchor" aria-label="anchor" href="#practical-considerations-for-r-package-submissions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.3</span> Practical considerations for R package submissions<a class="anchor" aria-label="anchor" href="#practical-considerations-for-r-package-submissions"><i class="fas fa-link"></i></a>
 </h2>
 <p>Before we start, there are a few aspects to figure out,
 to accurately identify the R packages for submission.</p>
 <div id="source-location" class="section level3">
 <h3>
-<span class="header-section-number">13.3.1</span> Source location<a class="anchor" aria-label="anchor" href="#source-location"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.3.1</span> Source location<a class="anchor" aria-label="anchor" href="#source-location"><i class="fas fa-link"></i></a>
 </h3>
 <p>There are a few common places to host R (source) packages:</p>
 <ol style="list-style-type: decimal">
@@ -210,7 +209,7 @@ recommended to submit them as part of the submission package.</p>
 </div>
 <div id="dependency-locations" class="section level3">
 <h3>
-<span class="header-section-number">13.3.2</span> Dependency locations<a class="anchor" aria-label="anchor" href="#dependency-locations"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.3.2</span> Dependency locations<a class="anchor" aria-label="anchor" href="#dependency-locations"><i class="fas fa-link"></i></a>
 </h3>
 <p>R package dependency is another major factor to consider
 before preparing your proprietary R package for submission.</p>
@@ -225,7 +224,7 @@ then restore and install them in the order they are packed.</p>
 </div>
 <div id="r-version-1" class="section level3">
 <h3>
-<span class="header-section-number">13.3.3</span> R version<a class="anchor" aria-label="anchor" href="#r-version-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.3.3</span> R version<a class="anchor" aria-label="anchor" href="#r-version-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>Always use a consistent version of R for developing the TLFs and for submission.
 For example, you could enforce a rule to only use R <code>x.y.z</code> where <code>z = 1</code>,
@@ -235,15 +234,15 @@ This can be automatically checked using a
 </div>
 <div id="package-repo-version" class="section level3">
 <h3>
-<span class="header-section-number">13.3.4</span> Package repo version<a class="anchor" aria-label="anchor" href="#package-repo-version"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.3.4</span> Package repo version<a class="anchor" aria-label="anchor" href="#package-repo-version"><i class="fas fa-link"></i></a>
 </h3>
 <p>Always use the same snapshot package repo for developing the TLFs and for submission.
 Again, this can be checked in the project startup script,
-discussed in section <a href="folder.html#reproduce">10.2</a>.</p>
+discussed in section <a href="folder.html#reproduce">9.2</a>.</p>
 </div>
 <div id="system-environments" class="section level3">
 <h3>
-<span class="header-section-number">13.3.5</span> System environments<a class="anchor" aria-label="anchor" href="#system-environments"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.3.5</span> System environments<a class="anchor" aria-label="anchor" href="#system-environments"><i class="fas fa-link"></i></a>
 </h3>
 <p>Introducing any extra external dependencies will likely increase the cost
 of qualification, validation, and testing, and maintenance,
@@ -254,13 +253,13 @@ especially when involving compiled code (e.g., C, C++, Fortran).</p>
 </div>
 <div id="prepare-r-packages-for-submission" class="section level2">
 <h2>
-<span class="header-section-number">13.4</span> Prepare R Packages for submission<a class="anchor" aria-label="anchor" href="#prepare-r-packages-for-submission"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.4</span> Prepare R Packages for submission<a class="anchor" aria-label="anchor" href="#prepare-r-packages-for-submission"><i class="fas fa-link"></i></a>
 </h2>
 <p>To prepare R packages for submission, one needs to pack the packages into text files, and then verify if the file only contains ASCII characters.
 With packed packages, one can unpack and install them from the text file, too.</p>
 <div id="pack" class="section level3">
 <h3>
-<span class="header-section-number">13.4.1</span> Pack<a class="anchor" aria-label="anchor" href="#pack"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.4.1</span> Pack<a class="anchor" aria-label="anchor" href="#pack"><i class="fas fa-link"></i></a>
 </h3>
 <p>Let’s pack the <code>esubdemo</code> package into a text file.
 Assume the source package path is <code>esubdemo/</code>.
@@ -272,18 +271,18 @@ You should be able to pack the package with a single pipe:</p>
   <span class="fu"><a href="https://merck.github.io/pkglite/reference/collate.html">collate</a></span><span class="op">(</span><span class="fu"><a href="https://merck.github.io/pkglite/reference/file_ectd.html">file_ectd</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://merck.github.io/pkglite/reference/file_auto.html">file_auto</a></span><span class="op">(</span><span class="st">"inst"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://merck.github.io/pkglite/reference/pack.html">pack</a></span><span class="op">(</span>output <span class="op">=</span> <span class="st">"r0pkgs.txt"</span><span class="op">)</span></code></pre></div>
 <div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-107"></span>
+<span style="display:block;" id="fig:unnamed-chunk-106"></span>
 <img src="images/pack.png" alt="Output of pkglite::pack()" width="100%"><p class="caption">
-FIGURE 13.1: Output of pkglite::pack()
+FIGURE 12.1: Output of pkglite::pack()
 </p>
 </div>
 <p>Let’s open the generated text file:</p>
 <div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/file.edit.html">file.edit</a></span><span class="op">(</span><span class="st">"r0pkgs.txt"</span><span class="op">)</span></code></pre></div>
 <div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-109"></span>
+<span style="display:block;" id="fig:unnamed-chunk-108"></span>
 <img src="images/preview-txt.png" alt="Preview the generated text file" width="100%"><p class="caption">
-FIGURE 13.2: Preview the generated text file
+FIGURE 12.2: Preview the generated text file
 </p>
 </div>
 <p>What happened in the pipe?
@@ -313,7 +312,7 @@ and
 </div>
 <div id="verify" class="section level3">
 <h3>
-<span class="header-section-number">13.4.2</span> Verify<a class="anchor" aria-label="anchor" href="#verify"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.4.2</span> Verify<a class="anchor" aria-label="anchor" href="#verify"><i class="fas fa-link"></i></a>
 </h3>
 <p>You should always verify if the text file only contains ASCII characters:</p>
 <div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
@@ -323,7 +322,7 @@ or <code>FALSE</code> with the affected lines otherwise.</p>
 </div>
 <div id="unpack" class="section level3">
 <h3>
-<span class="header-section-number">13.4.3</span> Unpack<a class="anchor" aria-label="anchor" href="#unpack"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.4.3</span> Unpack<a class="anchor" aria-label="anchor" href="#unpack"><i class="fas fa-link"></i></a>
 </h3>
 <p>One can unpack and install the package from the text file, too.
 For example:</p>
@@ -338,7 +337,7 @@ or specify the output text file path above directly.</p>
 </div>
 <div id="prepare-analysis-programs-for-submission" class="section level2">
 <h2>
-<span class="header-section-number">13.5</span> Prepare analysis programs for submission<a class="anchor" aria-label="anchor" href="#prepare-analysis-programs-for-submission"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.5</span> Prepare analysis programs for submission<a class="anchor" aria-label="anchor" href="#prepare-analysis-programs-for-submission"><i class="fas fa-link"></i></a>
 </h2>
 <p>Besides the R packages, we need to convert the R Markdown (<code>.Rmd</code>) files
 into <code>.txt</code> files and saved them in the <code>programs/</code> folder.
@@ -397,7 +396,7 @@ the context and help the reviewers rerun the code. For example:</p>
 </div>
 <div id="update-adrg" class="section level2">
 <h2>
-<span class="header-section-number">13.6</span> Update ADRG<a class="anchor" aria-label="anchor" href="#update-adrg"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.6</span> Update ADRG<a class="anchor" aria-label="anchor" href="#update-adrg"><i class="fas fa-link"></i></a>
 </h2>
 <p>After we converted the R packages and R Markdown files into the appropriate
 formats and verified that they can be restored and executed correctly,
@@ -514,7 +513,7 @@ to reproduce the running environment and rerun analyses. For example:</p>
 </div>
 <div id="update-arm" class="section level2">
 <h2>
-<span class="header-section-number">13.7</span> Update ARM<a class="anchor" aria-label="anchor" href="#update-arm"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.7</span> Update ARM<a class="anchor" aria-label="anchor" href="#update-arm"><i class="fas fa-link"></i></a>
 </h2>
 <p>The ARM (Analysis Results Metadata) should provide specific information
 related to R in two sections:</p>
@@ -595,39 +594,39 @@ related to R in two sections:</p>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="submission-overview.html"><span class="header-section-number">12</span> Overview</a></div>
-<div class="next"><a href="running-environment.html"><span class="header-section-number">14</span> Running environment</a></div>
+<div class="prev"><a href="submission-overview.html"><span class="header-section-number">11</span> Overview</a></div>
+<div class="next"><a href="running-environment.html"><span class="header-section-number">13</span> Running environment</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#submission-package"><span class="header-section-number">13</span> Submission package</a></li>
-<li><a class="nav-link" href="#prerequisites"><span class="header-section-number">13.1</span> Prerequisites</a></li>
+<li><a class="nav-link" href="#submission-package"><span class="header-section-number">12</span> Submission package</a></li>
+<li><a class="nav-link" href="#prerequisites"><span class="header-section-number">12.1</span> Prerequisites</a></li>
 <li>
-<a class="nav-link" href="#the-whole-game"><span class="header-section-number">13.2</span> The whole game</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#datasets-1"><span class="header-section-number">13.2.1</span> datasets</a></li>
-<li><a class="nav-link" href="#programs"><span class="header-section-number">13.2.2</span> programs</a></li>
-<li><a class="nav-link" href="#notes"><span class="header-section-number">13.2.3</span> Notes</a></li>
+<a class="nav-link" href="#the-whole-game"><span class="header-section-number">12.2</span> The whole game</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#datasets-1"><span class="header-section-number">12.2.1</span> datasets</a></li>
+<li><a class="nav-link" href="#programs"><span class="header-section-number">12.2.2</span> programs</a></li>
+<li><a class="nav-link" href="#notes"><span class="header-section-number">12.2.3</span> Notes</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#practical-considerations-for-r-package-submissions"><span class="header-section-number">13.3</span> Practical considerations for R package submissions</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#source-location"><span class="header-section-number">13.3.1</span> Source location</a></li>
-<li><a class="nav-link" href="#dependency-locations"><span class="header-section-number">13.3.2</span> Dependency locations</a></li>
-<li><a class="nav-link" href="#r-version-1"><span class="header-section-number">13.3.3</span> R version</a></li>
-<li><a class="nav-link" href="#package-repo-version"><span class="header-section-number">13.3.4</span> Package repo version</a></li>
-<li><a class="nav-link" href="#system-environments"><span class="header-section-number">13.3.5</span> System environments</a></li>
+<a class="nav-link" href="#practical-considerations-for-r-package-submissions"><span class="header-section-number">12.3</span> Practical considerations for R package submissions</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#source-location"><span class="header-section-number">12.3.1</span> Source location</a></li>
+<li><a class="nav-link" href="#dependency-locations"><span class="header-section-number">12.3.2</span> Dependency locations</a></li>
+<li><a class="nav-link" href="#r-version-1"><span class="header-section-number">12.3.3</span> R version</a></li>
+<li><a class="nav-link" href="#package-repo-version"><span class="header-section-number">12.3.4</span> Package repo version</a></li>
+<li><a class="nav-link" href="#system-environments"><span class="header-section-number">12.3.5</span> System environments</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#prepare-r-packages-for-submission"><span class="header-section-number">13.4</span> Prepare R Packages for submission</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#pack"><span class="header-section-number">13.4.1</span> Pack</a></li>
-<li><a class="nav-link" href="#verify"><span class="header-section-number">13.4.2</span> Verify</a></li>
-<li><a class="nav-link" href="#unpack"><span class="header-section-number">13.4.3</span> Unpack</a></li>
+<a class="nav-link" href="#prepare-r-packages-for-submission"><span class="header-section-number">12.4</span> Prepare R Packages for submission</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#pack"><span class="header-section-number">12.4.1</span> Pack</a></li>
+<li><a class="nav-link" href="#verify"><span class="header-section-number">12.4.2</span> Verify</a></li>
+<li><a class="nav-link" href="#unpack"><span class="header-section-number">12.4.3</span> Unpack</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#prepare-analysis-programs-for-submission"><span class="header-section-number">13.5</span> Prepare analysis programs for submission</a></li>
-<li><a class="nav-link" href="#update-adrg"><span class="header-section-number">13.6</span> Update ADRG</a></li>
-<li><a class="nav-link" href="#update-arm"><span class="header-section-number">13.7</span> Update ARM</a></li>
+<li><a class="nav-link" href="#prepare-analysis-programs-for-submission"><span class="header-section-number">12.5</span> Prepare analysis programs for submission</a></li>
+<li><a class="nav-link" href="#update-adrg"><span class="header-section-number">12.6</span> Update ADRG</a></li>
+<li><a class="nav-link" href="#update-arm"><span class="header-section-number">12.7</span> Update ARM</a></li>
 </ul>
 
       <div class="book-extra">

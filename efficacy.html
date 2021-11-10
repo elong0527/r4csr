@@ -4,23 +4,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 6 Efficacy | R for Clinical Study Reports and Submission</title>
+<title>Chapter 5 Efficacy | R for Clinical Study Reports and Submission</title>
 <meta name="author" content="Yilong Zhang">
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
 <meta name="description" content="Following ICH E3 guidance, primary and secondary efficacy endpoints need to be summarized in Section 11.4, Efficacy Results and Tabulations of Individual Participant. library(haven) # Read SAS...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="Chapter 6 Efficacy | R for Clinical Study Reports and Submission">
+<meta property="og:title" content="Chapter 5 Efficacy | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Following ICH E3 guidance, primary and secondary efficacy endpoints need to be summarized in Section 11.4, Efficacy Results and Tabulations of Individual Participant. library(haven) # Read SAS...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 6 Efficacy | R for Clinical Study Reports and Submission">
+<meta name="twitter:title" content="Chapter 5 Efficacy | R for Clinical Study Reports and Submission">
 <meta name="twitter:description" content="Following ICH E3 guidance, primary and secondary efficacy endpoints need to be summarized in Section 11.4, Efficacy Results and Tabulations of Individual Participant. library(haven) # Read SAS...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet">
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-MKYDL3PNW1"></script><script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -50,25 +49,25 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Welcome!</a></li>
-<li><a class="" href="intro.html"><span class="header-section-number">1</span> Introduction</a></li>
+<li><a class="" href="preface.html">Preface</a></li>
 <li class="book-part">Delivering TLFs in CSR</li>
-<li><a class="" href="tlf-overview.html"><span class="header-section-number">2</span> Overview</a></li>
-<li><a class="" href="disposition.html"><span class="header-section-number">3</span> Disposition</a></li>
-<li><a class="" href="population.html"><span class="header-section-number">4</span> Analysis population</a></li>
-<li><a class="" href="baseline-characteristics.html"><span class="header-section-number">5</span> Baseline characteristics</a></li>
-<li><a class="active" href="efficacy.html"><span class="header-section-number">6</span> Efficacy</a></li>
-<li><a class="" href="aesummary.html"><span class="header-section-number">7</span> AE summary</a></li>
-<li><a class="" href="specific-ae.html"><span class="header-section-number">8</span> Specific AE</a></li>
+<li><a class="" href="tlf-overview.html"><span class="header-section-number">1</span> Overview</a></li>
+<li><a class="" href="disposition.html"><span class="header-section-number">2</span> Disposition</a></li>
+<li><a class="" href="population.html"><span class="header-section-number">3</span> Analysis population</a></li>
+<li><a class="" href="baseline-characteristics.html"><span class="header-section-number">4</span> Baseline characteristics</a></li>
+<li><a class="active" href="efficacy.html"><span class="header-section-number">5</span> Efficacy</a></li>
+<li><a class="" href="aesummary.html"><span class="header-section-number">6</span> AE summary</a></li>
+<li><a class="" href="specific-ae.html"><span class="header-section-number">7</span> Specific AE</a></li>
 <li class="book-part">Clinical trial project</li>
-<li><a class="" href="project-overview.html"><span class="header-section-number">9</span> Overview</a></li>
-<li><a class="" href="folder.html"><span class="header-section-number">10</span> Project folder</a></li>
-<li><a class="" href="manage.html"><span class="header-section-number">11</span> Project management</a></li>
+<li><a class="" href="project-overview.html"><span class="header-section-number">8</span> Overview</a></li>
+<li><a class="" href="folder.html"><span class="header-section-number">9</span> Project folder</a></li>
+<li><a class="" href="manage.html"><span class="header-section-number">10</span> Project management</a></li>
 <li class="book-part">eCTD submission</li>
-<li><a class="" href="submission-overview.html"><span class="header-section-number">12</span> Overview</a></li>
-<li><a class="" href="submission-package.html"><span class="header-section-number">13</span> Submission package</a></li>
-<li><a class="" href="running-environment.html"><span class="header-section-number">14</span> Running environment</a></li>
+<li><a class="" href="submission-overview.html"><span class="header-section-number">11</span> Overview</a></li>
+<li><a class="" href="submission-package.html"><span class="header-section-number">12</span> Submission package</a></li>
+<li><a class="" href="running-environment.html"><span class="header-section-number">13</span> Running environment</a></li>
 <li class="book-part">Appendix</li>
-<li><a class="" href="references.html"><span class="header-section-number">15</span> References</a></li>
+<li><a class="" href="references.html">References</a></li>
 </ul>
 
         <div class="book-extra">
@@ -78,7 +77,7 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="efficacy" class="section level1">
 <h1>
-<span class="header-section-number">6</span> Efficacy<a class="anchor" aria-label="anchor" href="#efficacy"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5</span> Efficacy<a class="anchor" aria-label="anchor" href="#efficacy"><i class="fas fa-link"></i></a>
 </h1>
 <p>Following <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3 guidance</a>,
 primary and secondary efficacy endpoints need to be summarized
@@ -92,7 +91,7 @@ in Section 11.4, Efficacy Results and Tabulations of Individual Participant.</p>
 <p>For efficacy analysis, only the change from baseline glucose data at week 24 is analyzed.</p>
 <embed src="tlf/tlf_eff.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><div id="analysis-dataset" class="section level2">
 <h2>
-<span class="header-section-number">6.1</span> Analysis dataset<a class="anchor" aria-label="anchor" href="#analysis-dataset"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.1</span> Analysis dataset<a class="anchor" aria-label="anchor" href="#analysis-dataset"><i class="fas fa-link"></i></a>
 </h2>
 <p>To prepare the analysis, both <code>adsl</code> and <code>adlbc</code> datasets are required.</p>
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
@@ -138,10 +137,10 @@ We will discuss these missing values in Section 6.4.</p>
 </div>
 <div id="helper-functions-1" class="section level2">
 <h2>
-<span class="header-section-number">6.2</span> Helper functions<a class="anchor" aria-label="anchor" href="#helper-functions-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.2</span> Helper functions<a class="anchor" aria-label="anchor" href="#helper-functions-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>To prepare the report data frame, we created a few helper functions
-by using the <code>fmt_num()</code> function defined in Chapter <a href="population.html#population">4</a>.</p>
+by using the <code>fmt_num()</code> function defined in Chapter <a href="population.html#population">3</a>.</p>
 <ul>
 <li>Format Estimators</li>
 </ul>
@@ -179,7 +178,7 @@ by using the <code>fmt_num()</code> function defined in Chapter <a href="populat
 </div>
 <div id="summary-of-observed-data" class="section level2">
 <h2>
-<span class="header-section-number">6.3</span> Summary of observed data<a class="anchor" aria-label="anchor" href="#summary-of-observed-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.3</span> Summary of observed data<a class="anchor" aria-label="anchor" href="#summary-of-observed-data"><i class="fas fa-link"></i></a>
 </h2>
 <p>First the observed data at Baseline and Week 24 is summarized:</p>
 <div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
@@ -228,7 +227,7 @@ by using the <code>fmt_num()</code> function defined in Chapter <a href="populat
 </div>
 <div id="missing-data-imputation" class="section level2">
 <h2>
-<span class="header-section-number">6.4</span> Missing data imputation<a class="anchor" aria-label="anchor" href="#missing-data-imputation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.4</span> Missing data imputation<a class="anchor" aria-label="anchor" href="#missing-data-imputation"><i class="fas fa-link"></i></a>
 </h2>
 <p>In clinical trials, missing data is inevitable.
 In this study, there are also missing values in glucose data.</p>
@@ -259,7 +258,7 @@ Interested readers can find more discussion on missing data approaches in the bo
 </div>
 <div id="ancova-model" class="section level2">
 <h2>
-<span class="header-section-number">6.5</span> ANCOVA model<a class="anchor" aria-label="anchor" href="#ancova-model"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.5</span> ANCOVA model<a class="anchor" aria-label="anchor" href="#ancova-model"><i class="fas fa-link"></i></a>
 </h2>
 <p>The imputed data is analyzed using the ANCOVA model with treatment and baseline glucose as covariates.</p>
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
@@ -341,7 +340,7 @@ within and between group least square mean (LS mean)</p>
 </div>
 <div id="reporting" class="section level2">
 <h2>
-<span class="header-section-number">6.6</span> Reporting<a class="anchor" aria-label="anchor" href="#reporting"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.6</span> Reporting<a class="anchor" aria-label="anchor" href="#reporting"><i class="fas fa-link"></i></a>
 </h2>
 <p><code>t11</code>, <code>t12</code> and <code>t13</code> are combined to get the first part of the report data</p>
 <div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
@@ -432,18 +431,18 @@ This is achieved by providing a list of <code>t1_rtf</code> and <code>t2_rtf</co
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="baseline-characteristics.html"><span class="header-section-number">5</span> Baseline characteristics</a></div>
-<div class="next"><a href="aesummary.html"><span class="header-section-number">7</span> AE summary</a></div>
+<div class="prev"><a href="baseline-characteristics.html"><span class="header-section-number">4</span> Baseline characteristics</a></div>
+<div class="next"><a href="aesummary.html"><span class="header-section-number">6</span> AE summary</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#efficacy"><span class="header-section-number">6</span> Efficacy</a></li>
-<li><a class="nav-link" href="#analysis-dataset"><span class="header-section-number">6.1</span> Analysis dataset</a></li>
-<li><a class="nav-link" href="#helper-functions-1"><span class="header-section-number">6.2</span> Helper functions</a></li>
-<li><a class="nav-link" href="#summary-of-observed-data"><span class="header-section-number">6.3</span> Summary of observed data</a></li>
-<li><a class="nav-link" href="#missing-data-imputation"><span class="header-section-number">6.4</span> Missing data imputation</a></li>
-<li><a class="nav-link" href="#ancova-model"><span class="header-section-number">6.5</span> ANCOVA model</a></li>
-<li><a class="nav-link" href="#reporting"><span class="header-section-number">6.6</span> Reporting</a></li>
+<li><a class="nav-link" href="#efficacy"><span class="header-section-number">5</span> Efficacy</a></li>
+<li><a class="nav-link" href="#analysis-dataset"><span class="header-section-number">5.1</span> Analysis dataset</a></li>
+<li><a class="nav-link" href="#helper-functions-1"><span class="header-section-number">5.2</span> Helper functions</a></li>
+<li><a class="nav-link" href="#summary-of-observed-data"><span class="header-section-number">5.3</span> Summary of observed data</a></li>
+<li><a class="nav-link" href="#missing-data-imputation"><span class="header-section-number">5.4</span> Missing data imputation</a></li>
+<li><a class="nav-link" href="#ancova-model"><span class="header-section-number">5.5</span> ANCOVA model</a></li>
+<li><a class="nav-link" href="#reporting"><span class="header-section-number">5.6</span> Reporting</a></li>
 </ul>
 
       <div class="book-extra">
