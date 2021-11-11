@@ -33,7 +33,7 @@ adsl <- read_sas("data-adam/adsl.sas7bdat")
 Following variables are used in the preparation of a simplified disposition of participants table:
 
 - USUBJID: Unique subject identifier
-- TRT01P: Planed treatment
+- TRT01P: Planned treatment
 - TRT01PN: Planned treatment numeric encoding
 - DISCONFL: Discontinued from study flag
 - DCREASCD: Discontinued from study reason coded

@@ -4,7 +4,7 @@
 
 ## Background
 
-In clinical trials, a critical step is submission to regulatory agencies.
+In clinical trials, a critical step is to submit trial results to regulatory agencies.
 [Electronic Common Technical Document (eCTD)](https://en.wikipedia.org/wiki/Electronic_common_technical_document)
 has become a worldwide regulatory submission standard format.
 For example, the United States Food and Drug Administration (US FDA) required
@@ -32,9 +32,9 @@ and other relevant specialists such as experts on biomarkers.
 Here, we focus on the work and deliverables completed by statisticians and statistical programmers.
 In an organization, they commonly work together to
 define, develop, validate and deliver tables, listings, and figures (TLFs) required for a CSR to
-summarize the safety and/or safety of the pharmaceutical product.
+summarize the efficacy and/or safety of the pharmaceutical product.
 Microsoft Word is widely used to prepare CSR in the pharmaceutical industry.
-Therefore, `rtf`, `doc`, `docx` are commonly used formats in their deliverables.
+Therefore, `.rtf`, `.doc`, `.docx` are commonly used formats in their deliverables.
 
 In this chapter, our focus is to illustrate how to create tables, listings, and figures (TLFs) in RTF format
 that is commonly used in a CSR. The examples are in compliance with the
@@ -111,8 +111,8 @@ Before creating an RTF table, we need to
 - split the layout into small tasks in the form of a computer program;
 - execute the program.
 
-We provided a brief introduction of `r2rtf` and showed how to transfer
-data frames into Table, Listing, and Figures (TLFs).
+We provide a brief introduction of `r2rtf` and showed how to transfer
+data frames into table, listing, and figures (TLFs).
 
 Other extended examples and features are covered on the
 [`r2rtf` package website](https://merck.github.io/r2rtf/articles/index.html).

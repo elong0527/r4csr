@@ -12,6 +12,7 @@ library(r2rtf) # Reporting in RTF format
 library(emmeans) # LS mean estimation
 ```
 
+In this chapter, we illustrate how to generate an efficacy table in a study.
 For efficacy analysis, only the change from baseline glucose data at week 24 is analyzed.
 
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
