@@ -8,14 +8,14 @@
 <meta name="author" content="Yilong Zhang">
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
-<meta name="description" content="1.1 Background In clinical trials, a critical step is submission to regulatory agencies. Electronic Common Technical Document (eCTD) has become a worldwide regulatory submission standard format....">
+<meta name="description" content="1.1 Background In clinical trials, a critical step is to submit trial results to regulatory agencies. Electronic Common Technical Document (eCTD) has become a worldwide regulatory submission...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 1 Overview | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
-<meta property="og:description" content="1.1 Background In clinical trials, a critical step is submission to regulatory agencies. Electronic Common Technical Document (eCTD) has become a worldwide regulatory submission standard format....">
+<meta property="og:description" content="1.1 Background In clinical trials, a critical step is to submit trial results to regulatory agencies. Electronic Common Technical Document (eCTD) has become a worldwide regulatory submission...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 1 Overview | R for Clinical Study Reports and Submission">
-<meta name="twitter:description" content="1.1 Background In clinical trials, a critical step is submission to regulatory agencies. Electronic Common Technical Document (eCTD) has become a worldwide regulatory submission standard format....">
+<meta name="twitter:description" content="1.1 Background In clinical trials, a critical step is to submit trial results to regulatory agencies. Electronic Common Technical Document (eCTD) has become a worldwide regulatory submission...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -83,7 +83,7 @@
 <h2>
 <span class="header-section-number">1.1</span> Background<a class="anchor" aria-label="anchor" href="#background"><i class="fas fa-link"></i></a>
 </h2>
-<p>In clinical trials, a critical step is submission to regulatory agencies.
+<p>In clinical trials, a critical step is to submit trial results to regulatory agencies.
 <a href="https://en.wikipedia.org/wiki/Electronic_common_technical_document">Electronic Common Technical Document (eCTD)</a>
 has become a worldwide regulatory submission standard format.
 For example, the United States Food and Drug Administration (US FDA) required
@@ -108,9 +108,9 @@ and other relevant specialists such as experts on biomarkers.
 Here, we focus on the work and deliverables completed by statisticians and statistical programmers.
 In an organization, they commonly work together to
 define, develop, validate and deliver tables, listings, and figures (TLFs) required for a CSR to
-summarize the safety and/or safety of the pharmaceutical product.
+summarize the efficacy and/or safety of the pharmaceutical product.
 Microsoft Word is widely used to prepare CSR in the pharmaceutical industry.
-Therefore, <code>rtf</code>, <code>doc</code>, <code>docx</code> are commonly used formats in their deliverables.</p>
+Therefore, <code>.rtf</code>, <code>.doc</code>, <code>.docx</code> are commonly used formats in their deliverables.</p>
 <p>In this chapter, our focus is to illustrate how to create tables, listings, and figures (TLFs) in RTF format
 that is commonly used in a CSR. The examples are in compliance with the
 <a href="https://www.fda.gov/media/76797/download">FDA’s Portable Document Format (PDF) Specifications</a>.</p>
@@ -196,8 +196,8 @@ Data manipulation and analysis shall be handled by other R packages (e.g., <code
 <li>split the layout into small tasks in the form of a computer program;</li>
 <li>execute the program.</li>
 </ul>
-<p>We provided a brief introduction of <code>r2rtf</code> and showed how to transfer
-data frames into Table, Listing, and Figures (TLFs).</p>
+<p>We provide a brief introduction of <code>r2rtf</code> and showed how to transfer
+data frames into table, listing, and figures (TLFs).</p>
 <p>Other extended examples and features are covered on the
 <a href="https://merck.github.io/r2rtf/articles/index.html"><code>r2rtf</code> package website</a>.</p>
 <p>To explore the basic RTF generation verbs in <code>r2rtf</code>,
