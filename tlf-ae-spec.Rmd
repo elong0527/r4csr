@@ -146,10 +146,6 @@ id <- ifelse(is.na(id), FALSE, id)
 text_format <- ifelse(id, "b", "")
 ```
 
-More discussion on `page_by`, `group_by` and `subline_by`
-features can be found in the
-[`r2rtf` package website](https://merck.github.io/r2rtf/articles/example-sublineby-pageby-groupby.html).
-
 ```{r}
 tbl_ae_spec %>%
   rtf_title(
@@ -179,6 +175,10 @@ tbl_ae_spec %>%
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tlf_spec_ae.pdf")
 ```
+
+More discussion on `page_by`, `group_by` and `subline_by`
+features can be found in the
+[`r2rtf` package website](https://merck.github.io/r2rtf/articles/example-sublineby-pageby-groupby.html).
 
 The procedure to generate a baseline characteristics table can be
 summarized as follow:
