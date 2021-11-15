@@ -2,7 +2,7 @@
 
 Following [ICH E3
 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
-we need to summarize which participants were included in each efficacy
+we need to summarize the number of participants included in each efficacy
 analysis in Section 11.1, Data Sets Analysed.
 
 ```{r}
@@ -13,7 +13,7 @@ library(r2rtf) # Reporting in RTF format
 ```
 
 In this chapter, we illustrate how to create a summary table for
-the analysis population in a study.
+the analysis population for a study.
 
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tbl_pop.pdf")
@@ -30,10 +30,10 @@ adsl <- read_sas("data-adam/adsl.sas7bdat")
 We illustrate how to prepare a report data for a simplified analysis
 population table using variables below:
 
--   USUBJID: Unique subject identifier
--   ITTFL: Intent-to-treat population flag
--   EFFFL: Efficacy population flag
--   SAFFL: Safty population flag
+-   USUBJID: unique subject identifier
+-   ITTFL: intent-to-treat population flag
+-   EFFFL: efficacy population flag
+-   SAFFL: safty population flag
 
 ```{r}
 adsl %>%
@@ -44,7 +44,7 @@ adsl %>%
 ## Helper functions
 
 Before we write the analysis code, let's discuss the possibility of reusing R
-code by writing some toy helper functions.
+code by writing helper functions.
 
 As discussed in [R for data
 science](https://r4ds.had.co.nz/functions.html#when-should-you-write-a-function),
@@ -54,12 +54,12 @@ pasted a block of code more than twice".
 In Chapter \@ref(disposition), there are a few repeating steps to:
 
 -   Format the percentages using the `formatC()` function.
--   Calculate the numbers and percentages by groups.
+-   Calculate the numbers and percentages by treatment arm.
 
-We create two ad-hoc functions and apply them to all the rest of the
-tables.
+We create two ad-hoc functions and use them to create the
+tables in the rest of this book.
 
-To format numbers and percentages, we created a function called
+To format numbers and percentages, we create a function called
 `fmt_num()`. It is a very simple function wrapping `formatC()`.
 
 ```{r}
@@ -76,7 +76,7 @@ The main reason to create the `fmt_num()` function is to enhance the
 readability of the analysis code.
 
 For example, we can compare the two versions of code to format the
-percentage used in \@ref(disposition) and `fmt_num`.
+percentage used in Chapter \@ref(disposition) and `fmt_num`.
 
 ```{r, eval = FALSE}
 formatC(n / n() * 100,
@@ -135,7 +135,7 @@ count_by(adsl, "TRT01PN", "EFFFL") %>%
 
 ## Analysis code
 
-With the helper functions `count_by`, we can easily prepare a report
+With the helper function `count_by`, we can easily prepare a report
 dataset as
 
 ```{r}
@@ -164,8 +164,8 @@ pop1 <- bind_rows(
   select(var_label, starts_with("npct_"))
 ```
 
-Now we combine individual rows into the whole table for reporting
-purposes. `tbl_pop` is used as input for `r2rtf` to create the final
+Now we combine individual rows into one table for reporting
+purpose. `tbl_pop` is used as input for `r2rtf` to create the final
 report.
 
 ```{r}
@@ -175,7 +175,7 @@ tbl_pop <- bind_rows(pop, pop1)
 tbl_pop %>% select(var_label, npct_0)
 ```
 
-We start to define the format of the output.
+We define the format of the output using code below.
 
 ```{r}
 rel_width <- c(2, rep(1, 3))
@@ -183,7 +183,7 @@ colheader <- " | Placebo | Xanomeline line Low Dose| Xanomeline line High Dose"
 tbl_pop %>%
   # Table title
   rtf_title(
-    "Participants Accounting in Analysis Population",
+    "Summary of Analysis Sets", ## "Participants Accounting in Analysis Population" is a weird title for me. Merck uses this table title for CSR? 
     "(All Participants Randomized)"
   ) %>%
   # First row of column header
@@ -211,10 +211,10 @@ knitr::include_graphics("tlf/tbl_pop.pdf")
 ```
 
 The procedure to generate an analysis population table can be summarized
-as follow:
+as follows:
 
-- Step 1: Read data into R, i.e., `adsl`.
+- Step 1: Read data (i.e., `adsl`) into R.
 - Step 2: Bind the counts/percentages of the ITT population, the
   efficacy population, and the safety population by row using the
   `count_by()` function.
-- Step 3: Format the output in Step 2 by `r2rtf`.
+- Step 3: Format the output from Step 2 using `r2rtf`.

@@ -12,7 +12,7 @@ library(r2rtf) # Reporting in RTF format
 library(emmeans) # LS mean estimation
 ```
 
-In this chapter, we illustrate how to generate an efficacy table in a study.
+In this chapter, we illustrate how to generate an efficacy table for a study.
 For efficacy analysis, only the change from baseline glucose data at week 24 is analyzed.
 
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
@@ -32,9 +32,10 @@ First, both the population and the data in scope are selected.
 The analysis is done on the efficacy population, identified by `EFFFL == "Y"`, and
 all records post baseline (`AVISITN >= 1`) and on or before Week 24 (`AVISITN <= 24`).
 Here the variable `AVISITN` is the numerical analysis visit.
-For example, if the analysis visit is recorded as "Baseline", i.e., `AVISIT = Baseline`, then `AVISITN = 0`;
-if the analysis visit is recorded as "Week 24", i.e., `AVISIT = Week 24`, then `AVISITN = 24`;
-if the analysis visit is blank, then `AVISITN` is also blank.
+For example, if the analysis visit is recorded as "Baseline" (i.e., `AVISIT = Baseline`), 
+`AVISITN = 0`;
+if the analysis visit is recorded as "Week 24" (i.e., `AVISIT = Week 24`), `AVISITN = 24`;
+if the analysis visit is blank, `AVISITN` is also blank.
 We will discuss these missing values in Section 6.4.
 
 ```{r}
@@ -65,10 +66,10 @@ ana %>%
 
 ## Helper functions
 
-To prepare the report data frame, we created a few helper functions
+To prepare the report, we create a few helper functions
 by using the `fmt_num()` function defined in Chapter \@ref(population).
 
-- Format Estimators
+- Format estimators
 
 ```{r}
 fmt_est <- function(.mean,
@@ -80,7 +81,7 @@ fmt_est <- function(.mean,
 }
 ```
 
-- Format Confidence Interval
+- Format confidence interval
 
 ```{r}
 fmt_ci <- function(.est,
@@ -95,7 +96,7 @@ fmt_ci <- function(.est,
 }
 ```
 
-- Format P-Value
+- Format p-value
 
 ```{r}
 fmt_pval <- function(.p, digits = 3) {
@@ -107,7 +108,7 @@ fmt_pval <- function(.p, digits = 3) {
 
 ## Summary of observed data
 
-First the observed data at Baseline and Week 24 is summarized:
+First the observed data at Baseline and Week 24 are summarized using code below:
 
 ```{r}
 t11 <- gluc %>%
@@ -126,7 +127,7 @@ t11 <- gluc %>%
 t11
 ```
 
-Also the observed change from baseline glucose at Week 24 is summarized:
+Also the observed change from baseline glucose at Week 24 is summarized using code below:
 
 ```{r}
 t12 <- gluc %>%
@@ -146,7 +147,7 @@ t12
 ## Missing data imputation
 
 In clinical trials, missing data is inevitable.
-In this study, there are also missing values in glucose data.
+In this study, there are missing values in glucose data.
 
 ```{r}
 count(ana, AVISIT)
@@ -155,7 +156,7 @@ count(ana, AVISIT)
 For simplicity and illustration purpose,
 we use the last observation carried forward (LOCF) approach to handle missing data.
 LOCF approach is a single imputation approach that is **not recommended**
-in real studies.
+in real application.
 Interested readers can find more discussion on missing data approaches in the book:
 [The Prevention and Treatment of Missing Data in Clinical Trials](https://www.ncbi.nlm.nih.gov/books/NBK209904/pdf/Bookshelf_NBK209904.pdf).
 
@@ -176,7 +177,7 @@ summary(fit)
 ```
 
 The `emmeans` R package is used to obtain
-within and between group least square mean (LS mean)
+within and between group least square (LS) mean
 
 ```{r}
 fit_within <- emmeans(fit, "TRTP")
@@ -215,7 +216,7 @@ t2
 
 ## Reporting
 
-`t11`, `t12` and `t13` are combined to get the first part of the report data
+`t11`, `t12` and `t13` are combined to get the first part of the report table
 
 ```{r}
 t1 <- cbind(
@@ -230,11 +231,11 @@ Then `r2rtf` is used to prepare the table format for `t1`.
 We also highlight how to handle special characters in this example.
 
 Special characters `^` and `_` are used to define superscript and subscript of text. And `{}` is to define the part that will be impacted.
-For example, `{^a}` provide a superscript `a` for footnote notation.
+For example, `{^a}` provides a superscript `a` for footnote notation.
 `r2rtf` also supports most LaTeX characters.
 Examples can be found on the
 [`r2rtf` get started page](https://merck.github.io/r2rtf/articles/r2rtf.html#special-character).
-The `text_convert` argument in `r2rtf_*()` functions controls whether convert special characters.
+The `text_convert` argument in `r2rtf_*()` functions controls whether to convert special characters.
 
 ```{r}
 t1_rtf <- t1 %>%
@@ -273,7 +274,7 @@ t1_rtf %>%
 knitr::include_graphics("tlf/tlf_eff1.pdf")
 ```
 
-we also use `r2rtf` to prepare the table format for `t2`
+We also use `r2rtf` to prepare the table format for `t2`
 
 ```{r}
 t2_rtf <- t2 %>%
@@ -295,7 +296,7 @@ t2_rtf %>%
 knitr::include_graphics("tlf/tlf_eff2.pdf")
 ```
 
-Finally we combine the two parts to get the final table using `r2rtf`.
+Finally, we combine the two parts to get the final table using `r2rtf`.
 This is achieved by providing a list of `t1_rtf` and `t2_rtf` as input for
 `rtf_encode`.
 
@@ -311,9 +312,9 @@ knitr::include_graphics("tlf/tlf_eff.pdf")
 
 In conclusion, the procedure to generate the above efficacy results table is summarized as follows.
 
-- Step 1: Read the data into R, i.e., `adsl` and `adlb`.
+- Step 1: Read the data (i.e., `adsl` and `adlb`) into R.
 - Step 2: Define the analysis dataset. In this example, we define two analysis datasets. The first dataset is the efficacy population (`gluc`). The second dataset is the collection of all records post baseline and on or before week 24 (`ana`).
-- Step 3: Impute the missing values. In our example, we name the `ana` dataset after imputation as `ana_locf`.
-- Step 4: Summarize `gluc`, i.e., calculate the mean and standard derivation, and then format it into an RTF table.
-- Step 5: Summarize `ana_locf`, i.e., calculate the pairwise comparison by ANCOVA model, and then format it into an RTF table.
-- Step 6: Combine the outputs in step 4 and step 5 by rows.
+- Step 3: Impute the missing values. In this example, we name the `ana` dataset after imputation as `ana_locf`.
+- Step 4: Calculate the mean and standard derivation of efficacy endpoint (i.e., `gluc`), and then format it into an RTF table.
+- Step 5: Calculate the pairwise comparison by ANCOVA model, and then format it into an RTF table.
+- Step 6: Combine the outputs from steps 4 and 5 by rows.
