@@ -8,14 +8,14 @@
 <meta name="author" content="Yilong Zhang">
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
-<meta name="description" content="Following ICH E3 guidance, we need to summarize which participants were included in each efficacy analysis in Section 11.1, Data Sets Analysed. library(haven) # Read SAS data library(dplyr) #...">
+<meta name="description" content="Following ICH E3 guidance, we need to summarize the number of participants included in each efficacy analysis in Section 11.1, Data Sets Analysed. library(haven) # Read SAS data library(dplyr) #...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 3 Analysis population | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Following ICH E3 guidance, we need to summarize which participants were included in each efficacy analysis in Section 11.1, Data Sets Analysed. library(haven) # Read SAS data library(dplyr) #...">
+<meta property="og:description" content="Following ICH E3 guidance, we need to summarize the number of participants included in each efficacy analysis in Section 11.1, Data Sets Analysed. library(haven) # Read SAS data library(dplyr) #...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 3 Analysis population | R for Clinical Study Reports and Submission">
-<meta name="twitter:description" content="Following ICH E3 guidance, we need to summarize which participants were included in each efficacy analysis in Section 11.1, Data Sets Analysed. library(haven) # Read SAS data library(dplyr) #...">
+<meta name="twitter:description" content="Following ICH E3 guidance, we need to summarize the number of participants included in each efficacy analysis in Section 11.1, Data Sets Analysed. library(haven) # Read SAS data library(dplyr) #...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -81,7 +81,7 @@
 </h1>
 <p>Following <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3
 guidance</a>,
-we need to summarize which participants were included in each efficacy
+we need to summarize the number of participants included in each efficacy
 analysis in Section 11.1, Data Sets Analysed.</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span> <span class="co"># Read SAS data</span>
@@ -89,7 +89,7 @@ analysis in Section 11.1, Data Sets Analysed.</p>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://merck.github.io/r2rtf/">r2rtf</a></span><span class="op">)</span> <span class="co"># Reporting in RTF format</span></code></pre></div>
 <p>In this chapter, we illustrate how to create a summary table for
-the analysis population in a study.</p>
+the analysis population for a study.</p>
 <embed src="tlf/tbl_pop.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>The first step is to read relevant datasets into R. For the analysis
 population table, all the required information is saved in the ADSL
 dataset. We can use the <code>haven</code> package to read the dataset.</p>
@@ -98,10 +98,10 @@ dataset. We can use the <code>haven</code> package to read the dataset.</p>
 <p>We illustrate how to prepare a report data for a simplified analysis
 population table using variables below:</p>
 <ul>
-<li>USUBJID: Unique subject identifier</li>
-<li>ITTFL: Intent-to-treat population flag</li>
-<li>EFFFL: Efficacy population flag</li>
-<li>SAFFL: Safty population flag</li>
+<li>USUBJID: unique subject identifier</li>
+<li>ITTFL: intent-to-treat population flag</li>
+<li>EFFFL: efficacy population flag</li>
+<li>SAFFL: safty population flag</li>
 </ul>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">adsl</span> <span class="op">%&gt;%</span>
@@ -119,7 +119,7 @@ population table using variables below:</p>
 <span class="header-section-number">3.1</span> Helper functions<a class="anchor" aria-label="anchor" href="#helper-functions"><i class="fas fa-link"></i></a>
 </h2>
 <p>Before we write the analysis code, let’s discuss the possibility of reusing R
-code by writing some toy helper functions.</p>
+code by writing helper functions.</p>
 <p>As discussed in <a href="https://r4ds.had.co.nz/functions.html#when-should-you-write-a-function">R for data
 science</a>,
 “You should consider writing a function whenever you’ve copied and
@@ -127,11 +127,11 @@ pasted a block of code more than twice”.</p>
 <p>In Chapter <a href="disposition.html#disposition">2</a>, there are a few repeating steps to:</p>
 <ul>
 <li>Format the percentages using the <code><a href="https://rdrr.io/r/base/formatc.html">formatC()</a></code> function.</li>
-<li>Calculate the numbers and percentages by groups.</li>
+<li>Calculate the numbers and percentages by treatment arm.</li>
 </ul>
-<p>We create two ad-hoc functions and apply them to all the rest of the
-tables.</p>
-<p>To format numbers and percentages, we created a function called
+<p>We create two ad-hoc functions and use them to create the
+tables in the rest of this book.</p>
+<p>To format numbers and percentages, we create a function called
 <code>fmt_num()</code>. It is a very simple function wrapping <code><a href="https://rdrr.io/r/base/formatc.html">formatC()</a></code>.</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fmt_num</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">digits</span>, <span class="va">width</span> <span class="op">=</span> <span class="va">digits</span> <span class="op">+</span> <span class="fl">4</span><span class="op">)</span> <span class="op">{</span>
@@ -144,7 +144,7 @@ tables.</p>
 <p>The main reason to create the <code>fmt_num()</code> function is to enhance the
 readability of the analysis code.</p>
 <p>For example, we can compare the two versions of code to format the
-percentage used in <a href="disposition.html#disposition">2</a> and <code>fmt_num</code>.</p>
+percentage used in Chapter <a href="disposition.html#disposition">2</a> and <code>fmt_num</code>.</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/formatc.html">formatC</a></span><span class="op">(</span><span class="va">n</span> <span class="op">/</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span>,
   digits <span class="op">=</span> <span class="fl">1</span>, format <span class="op">=</span> <span class="st">"f"</span>, width <span class="op">=</span> <span class="fl">5</span>
@@ -199,7 +199,7 @@ below.</p>
 <h2>
 <span class="header-section-number">3.2</span> Analysis code<a class="anchor" aria-label="anchor" href="#analysis-code"><i class="fas fa-link"></i></a>
 </h2>
-<p>With the helper functions <code>count_by</code>, we can easily prepare a report
+<p>With the helper function <code>count_by</code>, we can easily prepare a report
 dataset as</p>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Derive a randomization flag</span>
@@ -223,8 +223,8 @@ dataset as</p>
 <span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">var</span> <span class="op">==</span> <span class="st">"Y"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">var_label</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"npct_"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>Now we combine individual rows into the whole table for reporting
-purposes. <code>tbl_pop</code> is used as input for <code>r2rtf</code> to create the final
+<p>Now we combine individual rows into one table for reporting
+purpose. <code>tbl_pop</code> is used as input for <code>r2rtf</code> to create the final
 report.</p>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">pop</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">"n_"</span>, <span class="st">"npct_"</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">pop</span><span class="op">)</span><span class="op">)</span>
@@ -238,14 +238,14 @@ report.</p>
 #&gt; 2 Participants included in ITT population      "  86 (100.0)"
 #&gt; 3 Participants included in efficacy population "  79 ( 91.9)"
 #&gt; 4 Participants included in safety population   "  86 (100.0)"</code></pre>
-<p>We start to define the format of the output.</p>
+<p>We define the format of the output using code below.</p>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">rel_width</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
 <span class="va">colheader</span> <span class="op">&lt;-</span> <span class="st">" | Placebo | Xanomeline line Low Dose| Xanomeline line High Dose"</span>
 <span class="va">tbl_pop</span> <span class="op">%&gt;%</span>
   <span class="co"># Table title</span>
   <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_title.html">rtf_title</a></span><span class="op">(</span>
-    <span class="st">"Participants Accounting in Analysis Population"</span>,
+    <span class="st">"Summary of Analysis Sets"</span>, <span class="co">## "Participants Accounting in Analysis Population" is a weird title for me. Merck uses this table title for CSR? </span>
     <span class="st">"(All Participants Randomized)"</span>
   <span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="co"># First row of column header</span>
@@ -267,13 +267,13 @@ report.</p>
   <span class="co"># Save to a file</span>
   <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/tbl_pop.rtf"</span><span class="op">)</span></code></pre></div>
 <embed src="tlf/tbl_pop.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>The procedure to generate an analysis population table can be summarized
-as follow:</p>
+as follows:</p>
 <ul>
-<li>Step 1: Read data into R, i.e., <code>adsl</code>.</li>
+<li>Step 1: Read data (i.e., <code>adsl</code>) into R.</li>
 <li>Step 2: Bind the counts/percentages of the ITT population, the
 efficacy population, and the safety population by row using the
 <code>count_by()</code> function.</li>
-<li>Step 3: Format the output in Step 2 by <code>r2rtf</code>.</li>
+<li>Step 3: Format the output from Step 2 using <code>r2rtf</code>.</li>
 </ul>
 </div>
 </div>

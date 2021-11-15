@@ -8,14 +8,14 @@
 <meta name="author" content="Yilong Zhang">
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
-<meta name="description" content="Following ICH E3 guidance, we need to summarize which participants were included in each efficacy analysis in Section 12.2, Adverse Events (AEs). library(haven) # Read SAS data library(dplyr) #...">
+<meta name="description" content="Following ICH E3 guidance, we need to summarize number of participants for each specific AE in Section 12.2, Adverse Events (AEs). library(haven) # Read SAS data library(dplyr) # Manipulate data...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 7 Specific AE | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Following ICH E3 guidance, we need to summarize which participants were included in each efficacy analysis in Section 12.2, Adverse Events (AEs). library(haven) # Read SAS data library(dplyr) #...">
+<meta property="og:description" content="Following ICH E3 guidance, we need to summarize number of participants for each specific AE in Section 12.2, Adverse Events (AEs). library(haven) # Read SAS data library(dplyr) # Manipulate data...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 7 Specific AE | R for Clinical Study Reports and Submission">
-<meta name="twitter:description" content="Following ICH E3 guidance, we need to summarize which participants were included in each efficacy analysis in Section 12.2, Adverse Events (AEs). library(haven) # Read SAS data library(dplyr) #...">
+<meta name="twitter:description" content="Following ICH E3 guidance, we need to summarize number of participants for each specific AE in Section 12.2, Adverse Events (AEs). library(haven) # Read SAS data library(dplyr) # Manipulate data...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -80,23 +80,22 @@
 <span class="header-section-number">7</span> Specific AE<a class="anchor" aria-label="anchor" href="#specific-ae"><i class="fas fa-link"></i></a>
 </h1>
 <p>Following <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3 guidance</a>,
-we need to summarize which participants were included in each efficacy
-analysis in Section 12.2, Adverse Events (AEs).</p>
+we need to summarize number of participants for each specific AE in Section 12.2, Adverse Events (AEs).</p>
 <div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span> <span class="co"># Read SAS data</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://merck.github.io/r2rtf/">r2rtf</a></span><span class="op">)</span> <span class="co"># Reporting in RTF format</span></code></pre></div>
 <p>In this chapter, we illustrate how to summarize simplified specific AE
-information in a study.</p>
+information for a study.</p>
 <embed src="tlf/tlf_spec_ae.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>The data used to summarize AE information is in <code>adsl</code> and <code>adae</code> datasets.</p>
 <div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"data-adam/adsl.sas7bdat"</span><span class="op">)</span>
 <span class="va">adae</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"data-adam/adae.sas7bdat"</span><span class="op">)</span></code></pre></div>
-<p>For illustration purposes, we only provide count in the simplified
-table. The percentage of participants for each AE criteria can be
-calculated as in Chapter <a href="aesummary.html#aesummary">6</a>.</p>
-<p>In this way, let’s focus on the analysis script for two advanced
+<p>For illustration purpose, we only provide counts in the simplified
+table. The percentage of participants for each AE can be
+calculated as shown in Chapter <a href="aesummary.html#aesummary">6</a>.</p>
+<p>Here, we focus on the analysis script for two advanced
 features for a table layout.</p>
 <ul>
 <li>group content: AE can be summarized in multiple nested layers.
@@ -106,9 +105,9 @@ features for a table layout.</p>
 page. Column headers and SOC information need to be repeated on
 every page.</li>
 </ul>
-<p>In the code below, we count the number of subjects in each AE term by
-SOC and treatment group, and we create a new variable <code>order</code> and set it
-as <code>0</code> for these counted numbers. The variable <code>order</code> will help with
+<p>In the code below, we count the number of participants in each AE term by
+SOC and treatment arm, and we create a new variable <code>order</code> and set it
+as <code>0</code>. The variable <code>order</code> can help with
 the data manipulation later.</p>
 <div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ana</span> <span class="op">&lt;-</span> <span class="va">adae</span> <span class="op">%&gt;%</span>
@@ -132,8 +131,8 @@ the data manipulation later.</p>
 #&gt; 3     0 Eye Disorders               "   4" Eye Disorders                   0
 #&gt; 4     0 Gastrointestinal Disorders  "  17" Gastrointestinal Disorders      0</code></pre>
 <p>In the code below, we count the number of subjects in each AE term by
-SOC, AE term, and treatment group. Here we also create a new variable
-<code>order</code> and set it as <code>1</code> for these counted numbers.</p>
+SOC, AE term, and treatment arm. Here we also create a new variable
+<code>order</code> and set it as <code>1</code>.</p>
 <div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t2</span> <span class="op">&lt;-</span> <span class="va">ana</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">TRTAN</span>, <span class="va">AESOC</span>, <span class="va">AEDECOD</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -149,7 +148,7 @@ SOC, AE term, and treatment group. Here we also create a new variable
 #&gt; 2     0 Cardiac Disorders Atrial Hypertrophy                   "   1"     1
 #&gt; 3     0 Cardiac Disorders Atrioventricular Block First Degree  "   1"     1
 #&gt; 4     0 Cardiac Disorders Atrioventricular Block Second Degree "   2"     1</code></pre>
-<p>We prepare reporting data for AE information.</p>
+<p>We prepare reporting data for AE information using code below:</p>
 <div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t_ae</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">t1</span>, <span class="va">t2</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>
@@ -170,7 +169,7 @@ SOC, AE term, and treatment group. Here we also create a new variable
 #&gt; 2 Cardiac Disorders Atrial Fibrillation "   1" "   1" "   3"
 #&gt; 3 Cardiac Disorders Atrial Flutter      "   0" "   1" "   1"
 #&gt; 4 Cardiac Disorders Atrial Hypertrophy  "   1" "   0" "   0"</code></pre>
-<p>We prepare reporting data for analysis population.</p>
+<p>We prepare reporting data for analysis population using code below:</p>
 <div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t_pop</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">SAFFL</span> <span class="op">==</span> <span class="st">"Y"</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -208,9 +207,9 @@ We also add a blank row between population and AE information in the reporting t
 #&gt; 2 pop                &lt;NA&gt;                           &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt; 
 #&gt; 3 Cardiac Disorders "Cardiac Disorders"            "  13" "  13" "  18"
 #&gt; 4 Cardiac Disorders "  Atrial Fibrillation"        "   1" "   1" "   3"</code></pre>
-<p>We start to define the format of the output.</p>
+<p>We define the format of the output as below:</p>
 <p>To obtain the nested layout, we use the <code>page_by</code> argument in the
-<code>rtf_body</code> function. By defining <code>page_by="AESOC"</code>, <code>r2rtf</code> recognize
+<code>rtf_body</code> function. By defining <code>page_by="AESOC"</code>, <code>r2rtf</code> recognizes
 the variable as a group indicator.</p>
 <p>After setting <code>pageby_row = "first_row"</code>, the first row is displayed as
 group header. If a group of information is broken into multiple pages,
@@ -251,20 +250,20 @@ highlight the nested structure of the table layout.</p>
   <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/tlf_spec_ae.rtf"</span><span class="op">)</span></code></pre></div>
 <embed src="tlf/tlf_spec_ae.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>More discussion on <code>page_by</code>, <code>group_by</code> and <code>subline_by</code>
-features can be found in the
+features can be found on the
 <a href="https://merck.github.io/r2rtf/articles/example-sublineby-pageby-groupby.html"><code>r2rtf</code> package website</a>.</p>
 <p>The procedure to generate a baseline characteristics table can be
-summarized as follow:</p>
+summarized as follows:</p>
 <ul>
-<li>Step 1: Read data into R, i.e., <code>adae</code> and <code>adsl</code>.</li>
-<li>Step 2: Count the number of subjects by SOC and treatment group
+<li>Step 1: Read data (i.e., <code>adae</code> and <code>adsl</code>) into R.</li>
+<li>Step 2: Count the number of participants by SOC and treatment arm
 (rows with bold text) and save into <code>t1</code>.</li>
-<li>Step 3: Count the number of subjects in each AE term by SOC, AE
-term, and treatment group (rows without bold text) and save into <code>t2</code>.</li>
+<li>Step 3: Count the number of participants in each AE term by SOC, AE
+term, and treatment arm (rows without bold text) and save into <code>t2</code>.</li>
 <li>Step 4: Bind <code>t1</code> and <code>t2</code> by row into <code>t_ae</code>.</li>
-<li>Step 5: Count the number of subjects in each arm as <code>t_pop</code>.</li>
-<li>Step 6: Bind <code>t_pop</code> and <code>t_ae</code> by row into <code>tbl_ae_spec</code>.</li>
-<li>Step 7: Format the output by <code>r2rtf</code>.</li>
+<li>Step 5: Count the number of participants in each arm as <code>t_pop</code>.</li>
+<li>Step 6: Row-wise combine <code>t_pop</code> and <code>t_ae</code> into <code>tbl_ae_spec</code>.</li>
+<li>Step 7: Format the output by using <code>r2rtf</code>.</li>
 </ul>
 </div>
 
