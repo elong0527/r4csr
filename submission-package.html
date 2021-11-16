@@ -8,14 +8,14 @@
 <meta name="author" content="Yilong Zhang">
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
-<meta name="description" content="In this chapter, we will first give a high-level overview of what assets in the eCTD submission package we should focus on when submitting R code. Secondly, we will discuss how to prepare the...">
+<meta name="description" content="In this chapter, we will first give a high-level overview of what assets in the eCTD submission package we should focus on when submitting R code. Then, we will discuss how to prepare the...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 12 Submission package | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
-<meta property="og:description" content="In this chapter, we will first give a high-level overview of what assets in the eCTD submission package we should focus on when submitting R code. Secondly, we will discuss how to prepare the...">
+<meta property="og:description" content="In this chapter, we will first give a high-level overview of what assets in the eCTD submission package we should focus on when submitting R code. Then, we will discuss how to prepare the...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 12 Submission package | R for Clinical Study Reports and Submission">
-<meta name="twitter:description" content="In this chapter, we will first give a high-level overview of what assets in the eCTD submission package we should focus on when submitting R code. Secondly, we will discuss how to prepare the...">
+<meta name="twitter:description" content="In this chapter, we will first give a high-level overview of what assets in the eCTD submission package we should focus on when submitting R code. Then, we will discuss how to prepare the...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -82,9 +82,9 @@
 <p>In this chapter, we will first give a high-level overview of what
 assets in the eCTD submission package we should focus on when
 submitting R code.
-Secondly, we will discuss how to prepare the proprietary R packages
-(if any), and make them part of the submission package.
-Lastly, we will provide reusable templates for updating
+Then, we will discuss how to prepare the proprietary R packages
+(if any), and make them be part of the submission package.
+In the end, we will provide reusable templates for updating
 Analysis Data Reviewer’s Guide (ADRG) and Analysis Results Metadata (ARM)
 so that the reviewers receive proper instructions to reproduce the
 analysis results.</p>
@@ -97,14 +97,14 @@ into text files and back.</p>
 <div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"pkglite"</span><span class="op">)</span></code></pre></div>
 <p>The demo project (R package) we will prepare for submission is called
-<a href="https://github.com/elong0527/esubdemo"><code>esubdemo</code></a>, available on GitHub.
+<a href="https://github.com/elong0527/esubdemo"><code>esubdemo</code></a>, which is available on GitHub.
 You can download or clone it:</p>
 <div class="sourceCode" id="cb123"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb123-1"><a href="submission-package.html#cb123-1"></a><span class="fu">git</span> clone https://github.com/elong0527/esubdemo.git</span></code></pre></div>
 <p>The demo submission package (not to be confused with the R package above)
-is <a href="https://github.com/elong0527/ectddemo"><code>ectddemo</code></a>, also available on GitHub.
+is <a href="https://github.com/elong0527/ectddemo"><code>ectddemo</code></a>, which is also available on GitHub.
 You can download or clone it:</p>
 <div class="sourceCode" id="cb124"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb124-1"><a href="submission-package.html#cb124-1"></a><span class="fu">git</span> clone https://github.com/elong0527/ectddemo.git</span></code></pre></div>
-<p>We will assume the paths to the two folders are <code>esubdemo/</code> and <code>ectddemo/</code> below.</p>
+<p>We assume the paths to the two folders are <code>esubdemo/</code> and <code>ectddemo/</code> below.</p>
 </div>
 <div id="the-whole-game" class="section level2">
 <h2>
@@ -169,25 +169,25 @@ analysis programs in tables.</li>
 </h3>
 <p>To verify if the submission package works, rerun all analyses following the
 instructions defined in ADRG.</p>
-<p>A few things to pay attention to for passing compliance checks:</p>
+<p>A few things need to be paid attention to in order to pass compliance checks:</p>
 <ul>
-<li>The filenames under <code>programs/</code> should all use lower case
+<li>The file names under <code>programs/</code> should be in lower case letters
 (with no underscores or other special characters).</li>
 <li>The <code>.txt</code> files should only contain ASCII characters.
 This can be verified by <code><a href="https://merck.github.io/pkglite/reference/verify_ascii.html">pkglite::verify_ascii()</a></code>
 </li>
-<li>Any <code>.docx</code> files should be converted to PDF files for formal submission.</li>
+<li>All <code>.docx</code> files should be converted to PDF files for formal submission.</li>
 </ul>
 <p>Now you have a general idea about the relevant components of the
 submission package.
-We will start preparing the proprietary R packages in the following sections.</p>
+We will prepare the proprietary R packages in the following sections.</p>
 </div>
 </div>
 <div id="practical-considerations-for-r-package-submissions" class="section level2">
 <h2>
 <span class="header-section-number">12.3</span> Practical considerations for R package submissions<a class="anchor" aria-label="anchor" href="#practical-considerations-for-r-package-submissions"><i class="fas fa-link"></i></a>
 </h2>
-<p>Before we start, there are a few aspects to figure out,
+<p>Before we start, there are a few aspects to figure out in order
 to accurately identify the R packages for submission.</p>
 <div id="source-location" class="section level3">
 <h3>
@@ -238,14 +238,14 @@ This can be automatically checked using a
 </h3>
 <p>Always use the same snapshot package repo for developing the TLFs and for submission.
 Again, this can be checked in the project startup script,
-discussed in section <a href="folder.html#reproduce">9.2</a>.</p>
+as discussed in section <a href="folder.html#reproduce">9.2</a>.</p>
 </div>
 <div id="system-environments" class="section level3">
 <h3>
 <span class="header-section-number">12.3.5</span> System environments<a class="anchor" aria-label="anchor" href="#system-environments"><i class="fas fa-link"></i></a>
 </h3>
 <p>Introducing any extra external dependencies will likely increase the cost
-of qualification, validation, and testing, and maintenance,
+of qualification, validation, testing, and maintenance,
 especially under Windows.
 Therefore, it is recommended to keep the dependency chain simple,
 especially when involving compiled code (e.g., C, C++, Fortran).</p>
@@ -253,10 +253,10 @@ especially when involving compiled code (e.g., C, C++, Fortran).</p>
 </div>
 <div id="prepare-r-packages-for-submission" class="section level2">
 <h2>
-<span class="header-section-number">12.4</span> Prepare R Packages for submission<a class="anchor" aria-label="anchor" href="#prepare-r-packages-for-submission"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.4</span> Prepare R packages for submission<a class="anchor" aria-label="anchor" href="#prepare-r-packages-for-submission"><i class="fas fa-link"></i></a>
 </h2>
-<p>To prepare R packages for submission, one needs to pack the packages into text files, and then verify if the file only contains ASCII characters.
-With packed packages, one can unpack and install them from the text file, too.</p>
+<p>To prepare R packages for submission, one needs to pack the packages into text files, and then verify if the files only contain ASCII characters.
+With packed packages, one can unpack and install them from the text files, too.</p>
 <div id="pack" class="section level3">
 <h3>
 <span class="header-section-number">12.4.1</span> Pack<a class="anchor" aria-label="anchor" href="#pack"><i class="fas fa-link"></i></a>
@@ -328,7 +328,7 @@ or <code>FALSE</code> with the affected lines otherwise.</p>
 For example:</p>
 <div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://merck.github.io/pkglite/reference/unpack.html">unpack</a></span><span class="op">(</span><span class="st">"r0pkgs.txt"</span>, output <span class="op">=</span> <span class="st">"/tmp/"</span>, install <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<p>If successfully tested, this command will be used in the ADRG instructions
+<p>If the test is successful, this command can be used in the ADRG instructions
 for restoring and installing the packed R package(s).</p>
 <p>You can then proceed to move the file <code>r0pkgs.txt</code> to the folder
 <code>ectddemo/m5/datasets/ectddemo/analysis/adam/programs/</code>,
@@ -400,7 +400,7 @@ the context and help the reviewers rerun the code. For example:</p>
 </h2>
 <p>After we converted the R packages and R Markdown files into the appropriate
 formats and verified that they can be restored and executed correctly,
-we should update the ADRG to provide guidelines on how to use them.</p>
+we need update the ADRG to provide guidelines on how to use them.</p>
 <p>Specifically, we need to update two sections in ADRG.</p>
 <p>The first section is “Macro Programs”, where R and R package versions
 with a snapshot date are provided. For example:</p>
@@ -618,7 +618,7 @@ related to R in two sections:</p>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#prepare-r-packages-for-submission"><span class="header-section-number">12.4</span> Prepare R Packages for submission</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#prepare-r-packages-for-submission"><span class="header-section-number">12.4</span> Prepare R packages for submission</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#pack"><span class="header-section-number">12.4.1</span> Pack</a></li>
 <li><a class="nav-link" href="#verify"><span class="header-section-number">12.4.2</span> Verify</a></li>
 <li><a class="nav-link" href="#unpack"><span class="header-section-number">12.4.3</span> Unpack</a></li>

@@ -98,9 +98,9 @@ the project using RStudio with</p>
 That is the <a href="https://github.com/rstudio/cheatsheets/raw/master/package-development.pdf">R package folder structure</a>.
 Every R package developer is required to follow the same convention to organize
 their R functions before the R package can be disseminated through the Comprehensive R Archive Network (CRAN).
-As a user, you can easily install and use those R packages after installing from CRAN.
+As a user, you can easily install and use those R packages after downloading from CRAN.
 There are many good resources to guide developers on R package development,
-for example, the <a href="https://r-pkgs.org/">R Packages book</a> by Hadley Wickham.</p>
+such as, the <a href="https://r-pkgs.org/">R Packages book</a> by Hadley Wickham.</p>
 <p>We recommend using the R package folder structure to organize analysis scripts for clinical trial development.
 Using the R package folder structure to streamline data analysis work has also been proposed before
 (see <span class="citation">Marwick, Boettiger, and Mullen (<a href="references.html#ref-marwick2018packaging" role="doc-biblioref">2018</a>)</span>, <span class="citation">Wu et al. (<a href="references.html#ref-wuanalysis" role="doc-biblioref">2021</a>)</span>).</p>
@@ -155,8 +155,8 @@ Those functions are saved in the <code>R/</code> folder.</p>
 <pre><code>R/
 ├── count_by.R
 └── fmt.R</code></pre>
-<p>With a formal project, it is also important to provide proper documentation for those help functions.
-We used <code>roxygen2</code> to document functions.
+<p>For a clinical trial project, it is also important to provide proper documentation for those help functions.
+We use <code>roxygen2</code> to document functions.
 For example, the header below defines each variable in <code>fmt_est</code>.
 More details can be found in <a href="https://r-pkgs.org/man.html">Chapter 10 of the R Packages book</a>.</p>
 <div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
@@ -173,7 +173,7 @@ More details can be found in <a href="https://r-pkgs.org/man.html">Chapter 10 of
   <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">.mean</span>, <span class="st">" ("</span>, <span class="va">.sd</span>, <span class="st">")"</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p>The <code>roxygen2</code> documentation will be converted into
-standard R documentation format, saved as <code>.Rd</code> files in the <code>man/</code> folder.
+standard R documentation format, and saved as <code>.Rd</code> files in the <code>man/</code> folder.
 This step is automatically handled by <code>devtools::document()</code>.</p>
 <pre><code>man
 ├── count_by.Rd
@@ -310,7 +310,7 @@ in the same R version and R package versions defined by a repository snapshot da
 <p>By using the R package folder structure, you will benefit from many outstanding tools to
 simplify and streamline your workflow.</p>
 <p>We have learned a few functions in <code>devtools</code> to generate content automatically.
-Here is a shortlist of tools that can enhance the workflow.</p>
+Here is a list of tools that can enhance the workflow.</p>
 <ul>
 <li>
 <a href="https://devtools.r-lib.org/"><code>devtools</code></a>: make package development easier.

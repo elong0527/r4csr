@@ -8,14 +8,14 @@
 <meta name="author" content="Yilong Zhang">
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
-<meta name="description" content="In the previous chapter, we generated instructions to manually create the running environments for reproducing the A&amp;R deliverables. In this chapter, we will focus on automating the creation of...">
+<meta name="description" content="In the previous chapter, we generated instructions to manually create the running environments for reproducing the A&amp;R deliverables. In this chapter, we focus on automating the creation of the R...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 13 Running environment | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
-<meta property="og:description" content="In the previous chapter, we generated instructions to manually create the running environments for reproducing the A&amp;R deliverables. In this chapter, we will focus on automating the creation of...">
+<meta property="og:description" content="In the previous chapter, we generated instructions to manually create the running environments for reproducing the A&amp;R deliverables. In this chapter, we focus on automating the creation of the R...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 13 Running environment | R for Clinical Study Reports and Submission">
-<meta name="twitter:description" content="In the previous chapter, we generated instructions to manually create the running environments for reproducing the A&amp;R deliverables. In this chapter, we will focus on automating the creation of...">
+<meta name="twitter:description" content="In the previous chapter, we generated instructions to manually create the running environments for reproducing the A&amp;R deliverables. In this chapter, we focus on automating the creation of the R...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -81,7 +81,7 @@
 </h1>
 <p>In the previous chapter, we generated instructions to manually
 create the running environments for reproducing the A&amp;R deliverables.</p>
-<p>In this chapter, we will focus on automating the creation of
+<p>In this chapter, we focus on automating the creation of
 the R environments with R code to accelerate the dry run testing process,
 simplifying the ADRG instructions, and making it easy to recreate
 different environment settings with reproducible analysis results.</p>
@@ -139,11 +139,11 @@ single function call to <code>use_cleanslate()</code>:</p>
 <p>This will</p>
 <ul>
 <li>Create a project folder under <code>C:/temp/</code> with a <code>.Rproj</code> file;</li>
-<li>Download R <code>4.1.1</code> installer from CRAN, install it into <code>C:/temp/R/</code>;</li>
+<li>Download R <code>4.1.1</code> installer from CRAN, and install it into <code>C:/temp/R/</code>;</li>
 <li>Not install Rtools (by default, <code>rtools_version = NULL</code>);</li>
 <li>Create a <code>.Rprofile</code> file under the project folder, set <code><a href="https://rdrr.io/r/base/options.html">options(repos)</a></code>
 to use the specified <code>repo</code> (an MRAN snapshot in this example),
-and instructions to set the R binary path in RStudio;</li>
+and give instruction to set the R binary path in RStudio;</li>
 <li>Create a <code>.Renviron</code> file under the project folder and set the
 library path to be the library of the project-specific R installation.</li>
 </ul>
@@ -176,7 +176,7 @@ to use R versions defined by release lifecycles, for example,
 Note that to ensure better reproducibility, one should still use
 <code>use_r_version()</code> as the release, oldrel, and devel versions will
 shift as time goes by.</p>
-<p>The helper functions <code>version_*()</code> and <code>snapshot_*()</code> could assist you
+<p>The helper functions <code>version_*()</code> and <code>snapshot_*()</code> can assist you
 in determining specific versions of R and Rtools that are currently available,
 besides generating and verifying the snapshot repo links.</p>
 </div>
@@ -184,8 +184,8 @@ besides generating and verifying the snapshot repo links.</p>
 <h2>
 <span class="header-section-number">13.5</span> Update ADRG<a class="anchor" aria-label="anchor" href="#update-adrg-1"><i class="fas fa-link"></i></a>
 </h2>
-<p>If using <code>cleanslate</code>, remember to update the ADRG instructions for
-executing the analysis programs in R. Mostly, this would simplify
+<p>If you use <code>cleanslate</code>, remember to update the ADRG instructions for
+executing the analysis programs in R. Mostly, this can simplify
 the first three steps on creating a project, installing a specific
 version of R, and configuring the package repo location.
 For example:</p>
@@ -271,7 +271,7 @@ FIGURE 13.1: cleanslate RStudio addin
 </p>
 </div>
 <p>The addin provides a wizard-like interface to help create the environment
-with the most important options, although with less flexibility compared
+with the most important options, yet with less flexibility compared
 to the functional API demonstrated above.</p>
 
 </div>
