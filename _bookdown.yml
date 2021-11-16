@@ -19,6 +19,7 @@ rmd_files: [
   "tlf-population.Rmd",
   "tlf-baseline.Rmd",
   "tlf-efficacy.Rmd",
+  "tlf-efficacy-km.Rmd",
   "tlf-ae-summary.Rmd",
   "tlf-ae-spec.Rmd",
 
