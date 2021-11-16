@@ -7,10 +7,10 @@ in Section 11.4, Efficacy Results and Tabulations of Individual Participant.
 ```{r}
 library(haven) # Read SAS data
 library(dplyr) # Manipulate data
-library(tidyr) # Manipulate data
 library(r2rtf) # Reporting in RTF format
 library(survival) # fit survival model
 library(survminer) # plot nice KM plot with risk table
+library(forcats) # Reorder ordinal variable level based on preference 
 ```
 
 In this chapter, we illustrate how to create a Kaplan-Meier plot in a study.
