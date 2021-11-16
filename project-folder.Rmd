@@ -23,9 +23,9 @@ For R users, you already benefit from a well-defined and consistent folder struc
 That is the [R package folder structure](https://github.com/rstudio/cheatsheets/raw/master/package-development.pdf).
 Every R package developer is required to follow the same convention to organize
 their R functions before the R package can be disseminated through the Comprehensive R Archive Network (CRAN).
-As a user, you can easily install and use those R packages after installing from CRAN.
+As a user, you can easily install and use those R packages after downloading from CRAN.
 There are many good resources to guide developers on R package development,
-for example, the [R Packages book](https://r-pkgs.org/) by Hadley Wickham.
+such as, the [R Packages book](https://r-pkgs.org/) by Hadley Wickham.
 
 We recommend using the R package folder structure to organize analysis scripts for clinical trial development.
 Using the R package folder structure to streamline data analysis work has also been proposed before
@@ -89,8 +89,8 @@ R/
 └── fmt.R
 ```
 
-With a formal project, it is also important to provide proper documentation for those help functions.
-We used `roxygen2` to document functions.
+For a clinical trial project, it is also important to provide proper documentation for those help functions.
+We use `roxygen2` to document functions.
 For example, the header below defines each variable in `fmt_est`.
 More details can be found in [Chapter 10 of the R Packages book](https://r-pkgs.org/man.html).
 
@@ -110,7 +110,7 @@ fmt_est <- function(.mean, .sd, digits = c(1, 2)) {
 ```
 
 The `roxygen2` documentation will be converted into
-standard R documentation format, saved as `.Rd` files in the `man/` folder.
+standard R documentation format, and saved as `.Rd` files in the `man/` folder.
 This step is automatically handled by `devtools::document()`.
 
 ```
@@ -277,7 +277,7 @@ By using the R package folder structure, you will benefit from many outstanding 
 simplify and streamline your workflow.
 
 We have learned a few functions in `devtools` to generate content automatically.
-Here is a shortlist of tools that can enhance the workflow.
+Here is a list of tools that can enhance the workflow.
 
 - [`devtools`](https://devtools.r-lib.org/): make package development easier.
   + A good overview can be found in [Chapter 2 of the R Packages book](https://r-pkgs.org/whole-game.html).

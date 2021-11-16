@@ -3,7 +3,7 @@
 In the previous chapter, we generated instructions to manually
 create the running environments for reproducing the A&R deliverables.
 
-In this chapter, we will focus on automating the creation of
+In this chapter, we focus on automating the creation of
 the R environments with R code to accelerate the dry run testing process,
 simplifying the ADRG instructions, and making it easy to recreate
 different environment settings with reproducible analysis results.
@@ -67,11 +67,11 @@ cleanslate::use_cleanslate(
 This will
 
 - Create a project folder under `C:/temp/` with a `.Rproj` file;
-- Download R `4.1.1` installer from CRAN, install it into `C:/temp/R/`;
+- Download R `4.1.1` installer from CRAN, and install it into `C:/temp/R/`;
 - Not install Rtools (by default, `rtools_version = NULL`);
 - Create a `.Rprofile` file under the project folder, set `options(repos)`
   to use the specified `repo` (an MRAN snapshot in this example),
-  and instructions to set the R binary path in RStudio;
+  and give instruction to set the R binary path in RStudio;
 - Create a `.Renviron` file under the project folder and set the
   library path to be the library of the project-specific R installation.
 
@@ -107,14 +107,14 @@ Note that to ensure better reproducibility, one should still use
 `use_r_version()` as the release, oldrel, and devel versions will
 shift as time goes by.
 
-The helper functions `version_*()` and `snapshot_*()` could assist you
+The helper functions `version_*()` and `snapshot_*()` can assist you
 in determining specific versions of R and Rtools that are currently available,
 besides generating and verifying the snapshot repo links.
 
 ## Update ADRG
 
-If using `cleanslate`, remember to update the ADRG instructions for
-executing the analysis programs in R. Mostly, this would simplify
+If you use `cleanslate`, remember to update the ADRG instructions for
+executing the analysis programs in R. Mostly, this can simplify
 the first three steps on creating a project, installing a specific
 version of R, and configuring the package repo location.
 For example:
@@ -200,5 +200,5 @@ knitr::include_graphics("images/cleanslate-addin.png")
 ```
 
 The addin provides a wizard-like interface to help create the environment
-with the most important options, although with less flexibility compared
+with the most important options, yet with less flexibility compared
 to the functional API demonstrated above.
