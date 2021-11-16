@@ -3,9 +3,9 @@
 In this chapter, we will first give a high-level overview of what
 assets in the eCTD submission package we should focus on when
 submitting R code.
-Secondly, we will discuss how to prepare the proprietary R packages
-(if any), and make them part of the submission package.
-Lastly, we will provide reusable templates for updating
+Then, we will discuss how to prepare the proprietary R packages
+(if any), and make them be part of the submission package.
+In the end, we will provide reusable templates for updating
 Analysis Data Reviewer's Guide (ADRG) and Analysis Results Metadata (ARM)
 so that the reviewers receive proper instructions to reproduce the
 analysis results.
@@ -20,7 +20,7 @@ install.packages("pkglite")
 ```
 
 The demo project (R package) we will prepare for submission is called
-[`esubdemo`](https://github.com/elong0527/esubdemo), available on GitHub.
+[`esubdemo`](https://github.com/elong0527/esubdemo), which is available on GitHub.
 You can download or clone it:
 
 ```bash
@@ -28,14 +28,14 @@ git clone https://github.com/elong0527/esubdemo.git
 ```
 
 The demo submission package (not to be confused with the R package above)
-is [`ectddemo`](https://github.com/elong0527/ectddemo), also available on GitHub.
+is [`ectddemo`](https://github.com/elong0527/ectddemo), which is also available on GitHub.
 You can download or clone it:
 
 ```bash
 git clone https://github.com/elong0527/ectddemo.git
 ```
 
-We will assume the paths to the two folders are `esubdemo/` and `ectddemo/` below.
+We assume the paths to the two folders are `esubdemo/` and `ectddemo/` below.
 
 ## The whole game
 
@@ -95,21 +95,21 @@ Folder path: `ectddemo/m5/datasets/ectddemo/analysis/adam/programs/`.
 To verify if the submission package works, rerun all analyses following the
 instructions defined in ADRG.
 
-A few things to pay attention to for passing compliance checks:
+A few things need to be paid attention to in order to pass compliance checks:
 
-- The filenames under `programs/` should all use lower case
+- The file names under `programs/` should be in lower case letters
 (with no underscores or other special characters).
 - The `.txt` files should only contain ASCII characters.
 This can be verified by `pkglite::verify_ascii()`
-- Any `.docx` files should be converted to PDF files for formal submission.
+- All `.docx` files should be converted to PDF files for formal submission.
 
 Now you have a general idea about the relevant components of the
 submission package.
-We will start preparing the proprietary R packages in the following sections.
+We will prepare the proprietary R packages in the following sections.
 
 ## Practical considerations for R package submissions
 
-Before we start, there are a few aspects to figure out,
+Before we start, there are a few aspects to figure out in order
 to accurately identify the R packages for submission.
 
 ### Source location
@@ -156,20 +156,20 @@ This can be automatically checked using a
 
 Always use the same snapshot package repo for developing the TLFs and for submission.
 Again, this can be checked in the project startup script,
-discussed in section \@ref(reproduce).
+as discussed in section \@ref(reproduce).
 
 ### System environments
 
 Introducing any extra external dependencies will likely increase the cost
-of qualification, validation, and testing, and maintenance,
+of qualification, validation, testing, and maintenance,
 especially under Windows.
 Therefore, it is recommended to keep the dependency chain simple,
 especially when involving compiled code (e.g., C, C++, Fortran).
 
-## Prepare R Packages for submission
+## Prepare R packages for submission
 
-To prepare R packages for submission, one needs to pack the packages into text files, and then verify if the file only contains ASCII characters.
-With packed packages, one can unpack and install them from the text file, too.
+To prepare R packages for submission, one needs to pack the packages into text files, and then verify if the files only contain ASCII characters.
+With packed packages, one can unpack and install them from the text files, too.
 
 ### Pack
 
@@ -249,7 +249,7 @@ For example:
 unpack("r0pkgs.txt", output = "/tmp/", install = TRUE)
 ```
 
-If successfully tested, this command will be used in the ADRG instructions
+If the test is successful, this command can be used in the ADRG instructions
 for restoring and installing the packed R package(s).
 
 You can then proceed to move the file `r0pkgs.txt` to the folder
@@ -325,7 +325,7 @@ append_header <- function(filename, output_dir, header) {
 
 After we converted the R packages and R Markdown files into the appropriate
 formats and verified that they can be restored and executed correctly,
-we should update the ADRG to provide guidelines on how to use them.
+we need update the ADRG to provide guidelines on how to use them.
 
 Specifically, we need to update two sections in ADRG.
 
