@@ -17,7 +17,7 @@ population
 helper-functions
 analysis-code
 baseline-characteristics
-efficacy
+efficacy-table
 analysis-dataset
 helper-functions-1
 summary-of-observed-data
