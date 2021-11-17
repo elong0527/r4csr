@@ -28,7 +28,9 @@ To prepare the analysis, the `adtte` dataset is required.
 adtte <- read_sas("data-adam/adtte.sas7bdat")
 ```
 
-First, to prepare the analysis ready data, filter all records for the efficacy endpoint of TTDE using `PARAMCD` (or `PARAM`, `PRAMN`), then select the survival analysis related variables:
+First, to prepare the analysis ready data, 
+filter all records for the efficacy endpoint of time to event of interest (`TTDE`) 
+using `PARAMCD` (or `PARAM`, `PRAMN`), then select the survival analysis related variables:
 
 - `TRTP`: treatment arm: (using corresponding numeric code `TRTAN` to re-order the levels, "Placebo" will be the reference level)
 - `AVAL`: time-to-event analysis value
@@ -43,13 +45,26 @@ adtte_ttde <- adtte %>%
 
 ## Create Kaplan-Meier curve
 
-The `survival` package is used to create the curve data points, then `survminer` package can be used to plot the K-M curve with an elegant ggplot2 style. There are tons of customized options for users to create a K-M plot with risk table and testing result (nominal p-value). More details can be found in `?survminer::ggsurvplot`.
+The `survival` package is used to create the curve data points, 
+then `survminer` package can be used to plot the K-M curve with an elegant `ggplot2` style. 
+There are tons of customized options for users to create a K-M plot
+with risk table and testing result (nominal p-value). 
+More details can be found in `?survminer::ggsurvplot`.
 
-Users can use `Surv()` with formula directly, or use a fitted Cox model with the `coxph()` function if also want to obtain other information, i.e. hazard ratio, survival rates, etc. <!-- TODO: "Analysis of Survival Endpoint Table" Chapter -->
+Users can use `Surv()` with formula directly, 
+or use a fitted Cox model with the `coxph()` function 
+if we also want to obtain other information, i.e. hazard ratio, survival rates, etc. 
+<!-- TODO: "Analysis of Survival Endpoint Table" Chapter -->
 
 ```{r}
 fit <- survfit(Surv(AVAL, 1 - CNSR) ~ TRTP, data = adtte_ttde)
-# sum_fit <- summary(coxph(Surv(AVAL, 1-CNSR) ~ ARM  + strata(STRATAP), data = adtte_efs))
+```
+
+```{r}
+sum_fit <- summary(coxph(Surv(AVAL, 1-CNSR) ~ ARM  + strata(STRATAP), data = adtte_efs))
+```
+
+```{r}
 fig_km <- ggsurvplot(
   fit,
   xlab = "Time in Months",
