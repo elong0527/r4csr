@@ -3,8 +3,9 @@ Title: R for Clinical Study Reports and Submission
 Version: 0.1.0
 Authors@R: c(
     person("Yilong", "Zhang", email = "yilong.zhang@merck.com", role = c("aut", "cre")),
+    person("Nan", "Xiao", role = "aut"),
     person("Keaven", "Anderson", role = c("aut")),
-    person("Nan", "Xiao", role = "aut")
+    person("Yalin", "Zhu", role = "aut")
     )
 URL: https://r4csr.org/
 Imports:
