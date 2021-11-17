@@ -1,6 +1,6 @@
-fig:unnamed-chunk-106
-fig:unnamed-chunk-108
-fig:unnamed-chunk-118
+fig:unnamed-chunk-114
+fig:unnamed-chunk-116
+fig:unnamed-chunk-126
 folder-structure
 in-this-book
 philosophy
@@ -24,6 +24,9 @@ summary-of-observed-data
 missing-data-imputation
 ancova-model
 reporting
+efficacy-figure
+analysis-dataset-1
+create-kaplan-meier-curve
 aesummary
 specific-ae
 project-overview

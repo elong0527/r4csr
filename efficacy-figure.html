@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 6 Efficacy figure | R for Clinical Study Reports and Submission</title>
+<meta name="author" content="Yilong Zhang">
+<meta name="author" content="Nan Xiao">
+<meta name="author" content="Keaven Anderson">
+<meta name="description" content="Following the ICH E3 guidance, primary and secondary efficacy endpoints need to be summarized in Section 11.4, Efficacy Results and Tabulations of Individual Participant. library(haven) # Read SAS...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 6 Efficacy figure | R for Clinical Study Reports and Submission">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Following the ICH E3 guidance, primary and secondary efficacy endpoints need to be summarized in Section 11.4, Efficacy Results and Tabulations of Individual Participant. library(haven) # Read SAS...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 6 Efficacy figure | R for Clinical Study Reports and Submission">
+<meta name="twitter:description" content="Following the ICH E3 guidance, primary and secondary efficacy endpoints need to be summarized in Section 11.4, Efficacy Results and Tabulations of Individual Participant. library(haven) # Read SAS...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet">
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-MKYDL3PNW1"></script><script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-MKYDL3PNW1');
+  </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">R for Clinical Study Reports and Submission</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome!</a></li>
+<li><a class="" href="preface.html">Preface</a></li>
+<li class="book-part">Delivering TLFs in CSR</li>
+<li><a class="" href="tlf-overview.html"><span class="header-section-number">1</span> Overview</a></li>
+<li><a class="" href="disposition.html"><span class="header-section-number">2</span> Disposition</a></li>
+<li><a class="" href="population.html"><span class="header-section-number">3</span> Analysis population</a></li>
+<li><a class="" href="baseline-characteristics.html"><span class="header-section-number">4</span> Baseline characteristics</a></li>
+<li><a class="" href="efficacy.html"><span class="header-section-number">5</span> Efficacy</a></li>
+<li><a class="active" href="efficacy-figure.html"><span class="header-section-number">6</span> Efficacy figure</a></li>
+<li><a class="" href="aesummary.html"><span class="header-section-number">7</span> AE summary</a></li>
+<li><a class="" href="specific-ae.html"><span class="header-section-number">8</span> Specific AE</a></li>
+<li class="book-part">Clinical trial project</li>
+<li><a class="" href="project-overview.html"><span class="header-section-number">9</span> Overview</a></li>
+<li><a class="" href="folder.html"><span class="header-section-number">10</span> Project folder</a></li>
+<li><a class="" href="manage.html"><span class="header-section-number">11</span> Project management</a></li>
+<li class="book-part">eCTD submission</li>
+<li><a class="" href="submission-overview.html"><span class="header-section-number">12</span> Overview</a></li>
+<li><a class="" href="submission-package.html"><span class="header-section-number">13</span> Submission package</a></li>
+<li><a class="" href="running-environment.html"><span class="header-section-number">14</span> Running environment</a></li>
+<li class="book-part">Appendix</li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/elong0527/r4csr">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="efficacy-figure" class="section level1">
+<h1>
+<span class="header-section-number">6</span> Efficacy figure<a class="anchor" aria-label="anchor" href="#efficacy-figure"><i class="fas fa-link"></i></a>
+</h1>
+<p>Following the <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3 guidance</a>,
+primary and secondary efficacy endpoints need to be summarized
+in Section 11.4, Efficacy Results and Tabulations of Individual Participant.</p>
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span> <span class="co"># Read SAS data</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://merck.github.io/r2rtf/">r2rtf</a></span><span class="op">)</span> <span class="co"># Reporting in RTF format</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/therneau/survival">survival</a></span><span class="op">)</span> <span class="co"># Fit survival model</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rpkgs.datanovia.com/survminer/index.html">survminer</a></span><span class="op">)</span> <span class="co"># K-M plot with risk table</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://forcats.tidyverse.org">forcats</a></span><span class="op">)</span> <span class="co"># Reorder ordinal variable level based on preference</span></code></pre></div>
+<p>In this chapter, we illustrate how to create a Kaplan-Meier plot in a study.
+For the survival analysis in efficacy, time to dermatologic event (TTDE) will be analyzed.</p>
+<div class="inline-figure"><img src="tlf/fig_km.png" width="100%" height="450px" style="display: block; margin: auto;"></div>
+<div id="analysis-dataset-1" class="section level2">
+<h2>
+<span class="header-section-number">6.1</span> Analysis dataset<a class="anchor" aria-label="anchor" href="#analysis-dataset-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>To prepare the analysis, the <code>adtte</code> dataset is required.</p>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">adtte</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"data-adam/adtte.sas7bdat"</span><span class="op">)</span></code></pre></div>
+<p>First, to prepare the analysis ready data,
+filter all records for the efficacy endpoint of time to event of interest (<code>TTDE</code>)
+using <code>PARAMCD</code> (or <code>PARAM</code>, <code>PRAMN</code>), then select the survival analysis related variables:</p>
+<ul>
+<li>
+<code>TRTP</code>: treatment arm: (using corresponding numeric code <code>TRTAN</code> to re-order the levels, “Placebo” will be the reference level)</li>
+<li>
+<code>AVAL</code>: time-to-event analysis value</li>
+<li>
+<code>CNSR</code>: event (censoring) status</li>
+</ul>
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">adtte_ttde</span> <span class="op">&lt;-</span> <span class="va">adtte</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">PARAMCD</span> <span class="op">==</span> <span class="st">"TTDE"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">TRTP</span>, <span class="va">TRTAN</span>, <span class="va">AVAL</span>, <span class="va">CNSR</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>TRTP <span class="op">=</span> <span class="fu">forcats</span><span class="fu">::</span><span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder</a></span><span class="op">(</span><span class="va">TRTP</span>, <span class="va">TRTAN</span><span class="op">)</span><span class="op">)</span> <span class="co"># Recorder levels</span></code></pre></div>
+</div>
+<div id="create-kaplan-meier-curve" class="section level2">
+<h2>
+<span class="header-section-number">6.2</span> Create Kaplan-Meier curve<a class="anchor" aria-label="anchor" href="#create-kaplan-meier-curve"><i class="fas fa-link"></i></a>
+</h2>
+<p>The <code>survival</code> package is used to create the curve data points,
+then <code>survminer</code> package can be used to plot the K-M curve with an elegant <code>ggplot2</code> style.
+There are tons of customized options for users to create a K-M plot
+with risk table and testing result (nominal p-value).
+More details can be found in <code><a href="https://rdrr.io/pkg/survminer/man/ggsurvplot.html">?survminer::ggsurvplot</a></code>.</p>
+<p>Users can use <code><a href="https://rdrr.io/pkg/survival/man/Surv.html">Surv()</a></code> with formula directly,
+or use a fitted Cox model with the <code><a href="https://rdrr.io/pkg/survival/man/coxph.html">coxph()</a></code> function
+if we also want to obtain other information, i.e. hazard ratio, survival rates, etc.
+<!-- TODO: "Analysis of Survival Endpoint Table" Chapter --></p>
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/survival/man/survfit.html">survfit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html">Surv</a></span><span class="op">(</span><span class="va">AVAL</span>, <span class="fl">1</span> <span class="op">-</span> <span class="va">CNSR</span><span class="op">)</span> <span class="op">~</span> <span class="va">TRTP</span>, data <span class="op">=</span> <span class="va">adtte_ttde</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fig_km</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/survminer/man/ggsurvplot.html">ggsurvplot</a></span><span class="op">(</span>
+  <span class="va">fit</span>,
+  xlab <span class="op">=</span> <span class="st">"Time in Months"</span>,
+  ylab <span class="op">=</span> <span class="st">"Survival Probability"</span>,
+  break.time.by <span class="op">=</span> <span class="fl">30.4367</span>,
+  xscale <span class="op">=</span> <span class="st">"d_m"</span>,
+  xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">200</span><span class="op">)</span>,
+  linetype <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>,
+  risk.table <span class="op">=</span> <span class="cn">TRUE</span>,
+  risk.table.height <span class="op">=</span> <span class="fl">0.3</span>, <span class="co"># Useful when you have multiple groups</span>
+  legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.8</span>, <span class="fl">0.9</span><span class="op">)</span>, legend.title <span class="op">=</span> <span class="st">""</span>,
+  legend.labs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">adtte_ttde</span><span class="op">$</span><span class="va">TRTP</span><span class="op">)</span><span class="op">)</span>,
+  censor.size <span class="op">=</span> <span class="fl">4</span>,
+  size <span class="op">=</span> <span class="fl">0.8</span>,
+  title <span class="op">=</span> <span class="st">""</span>,
+  censor.shape <span class="op">=</span> <span class="st">"|"</span>,
+  pval <span class="op">=</span> <span class="cn">TRUE</span>,
+  pval.method <span class="op">=</span> <span class="cn">TRUE</span>,
+  pval.coord <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.1</span><span class="op">)</span>,
+  pval.method.coord <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.2</span><span class="op">)</span>,
+  pval.size <span class="op">=</span> <span class="fl">5</span>,
+  ggtheme <span class="op">=</span> <span class="fu">theme_classic2</span><span class="op">(</span>base_family <span class="op">=</span> <span class="st">"Times New Roman"</span>, base_size <span class="op">=</span> <span class="fl">18</span><span class="op">)</span>
+<span class="op">)</span></code></pre></div>
+<p>Then we can save the figure as a <code>.png</code> file,
+and use the <code>r2rtf</code> package to create a formatted RTF figure.
+More details can be found in <a href="https://merck.github.io/r2rtf/articles/example-figure.html" class="uri">https://merck.github.io/r2rtf/articles/example-figure.html</a>.</p>
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Save as PNG file</span>
+<span class="fu">ggsave</span><span class="op">(</span><span class="st">"tlf/fig_km.png"</span>, plot <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">fig_km</span>, newpage <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">10</span>, height <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="r4csr_files/figure-html/unnamed-chunk-83-1.png" width="672"></div>
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Create RTF figure</span>
+<span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_read_png.html">rtf_read_png</a></span><span class="op">(</span><span class="st">"tlf/fig_km.png"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Read PNG files from the file path</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_title.html">rtf_title</a></span><span class="op">(</span><span class="st">"Time to Dermatologic Event by Treatment Group"</span>, <span class="st">"All Participants"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Add title or subtitle</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_footnote.html">rtf_footnote</a></span><span class="op">(</span><span class="st">"footnote"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Add footnote</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_source.html">rtf_source</a></span><span class="op">(</span><span class="st">"[datasource: adam-adtte]"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Add data source</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_figure.html">rtf_figure</a></span><span class="op">(</span>fig_width <span class="op">=</span> <span class="fl">6</span>, fig_height <span class="op">=</span> <span class="fl">3.6</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Set proportional figure size to the original PNG figure size</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span>doc_type <span class="op">=</span> <span class="st">"figure"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Encode rtf as figure</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"tlf/fig_km.rtf"</span><span class="op">)</span></code></pre></div>
+<embed src="tlf/fig_km.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In conclusion, the procedure to generate the above efficacy K-M plot is summarized as follows.</p>
+<ul>
+<li>Step 1: Read the data <code>adtte</code> into R.</li>
+<li>Step 2: Define the analysis-ready dataset. In this example, we define the analysis dataset for the TTDE endpoint <code>adtte_ttde</code>.</li>
+<li>Step 3: Create the curve’s data points using the <code><a href="https://rdrr.io/pkg/survival/man/Surv.html">Surv()</a></code> formula directly
+or fitted survival models beforehand. Then plot and customize the K-M curve with risk table using the <code>survminer</code> package.</li>
+<li>Step 4: Save the output as a PNG file, then format it into an RTF table.</li>
+</ul>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="efficacy.html"><span class="header-section-number">5</span> Efficacy</a></div>
+<div class="next"><a href="aesummary.html"><span class="header-section-number">7</span> AE summary</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#efficacy-figure"><span class="header-section-number">6</span> Efficacy figure</a></li>
+<li><a class="nav-link" href="#analysis-dataset-1"><span class="header-section-number">6.1</span> Analysis dataset</a></li>
+<li><a class="nav-link" href="#create-kaplan-meier-curve"><span class="header-section-number">6.2</span> Create Kaplan-Meier curve</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/elong0527/r4csr/blob/master/tlf-efficacy-km.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/elong0527/r4csr/edit/master/tlf-efficacy-km.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R for Clinical Study Reports and Submission</strong>" was written by Yilong Zhang, Nan Xiao, Keaven Anderson. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

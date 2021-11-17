@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 9 Project folder | R for Clinical Study Reports and Submission</title>
+<title>Chapter 10 Project folder | R for Clinical Study Reports and Submission</title>
 <meta name="author" content="Yilong Zhang">
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
 <meta name="description" content="A clearly defined clinical project folder structure can have many benefits to clinical development teams in an organization. Specifically, a well-defined project structure can achieve:...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="Chapter 9 Project folder | R for Clinical Study Reports and Submission">
+<meta property="og:title" content="Chapter 10 Project folder | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
 <meta property="og:description" content="A clearly defined clinical project folder structure can have many benefits to clinical development teams in an organization. Specifically, a well-defined project structure can achieve:...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 9 Project folder | R for Clinical Study Reports and Submission">
+<meta name="twitter:title" content="Chapter 10 Project folder | R for Clinical Study Reports and Submission">
 <meta name="twitter:description" content="A clearly defined clinical project folder structure can have many benefits to clinical development teams in an organization. Specifically, a well-defined project structure can achieve:...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -56,16 +56,17 @@
 <li><a class="" href="population.html"><span class="header-section-number">3</span> Analysis population</a></li>
 <li><a class="" href="baseline-characteristics.html"><span class="header-section-number">4</span> Baseline characteristics</a></li>
 <li><a class="" href="efficacy.html"><span class="header-section-number">5</span> Efficacy</a></li>
-<li><a class="" href="aesummary.html"><span class="header-section-number">6</span> AE summary</a></li>
-<li><a class="" href="specific-ae.html"><span class="header-section-number">7</span> Specific AE</a></li>
+<li><a class="" href="efficacy-figure.html"><span class="header-section-number">6</span> Efficacy figure</a></li>
+<li><a class="" href="aesummary.html"><span class="header-section-number">7</span> AE summary</a></li>
+<li><a class="" href="specific-ae.html"><span class="header-section-number">8</span> Specific AE</a></li>
 <li class="book-part">Clinical trial project</li>
-<li><a class="" href="project-overview.html"><span class="header-section-number">8</span> Overview</a></li>
-<li><a class="active" href="folder.html"><span class="header-section-number">9</span> Project folder</a></li>
-<li><a class="" href="manage.html"><span class="header-section-number">10</span> Project management</a></li>
+<li><a class="" href="project-overview.html"><span class="header-section-number">9</span> Overview</a></li>
+<li><a class="active" href="folder.html"><span class="header-section-number">10</span> Project folder</a></li>
+<li><a class="" href="manage.html"><span class="header-section-number">11</span> Project management</a></li>
 <li class="book-part">eCTD submission</li>
-<li><a class="" href="submission-overview.html"><span class="header-section-number">11</span> Overview</a></li>
-<li><a class="" href="submission-package.html"><span class="header-section-number">12</span> Submission package</a></li>
-<li><a class="" href="running-environment.html"><span class="header-section-number">13</span> Running environment</a></li>
+<li><a class="" href="submission-overview.html"><span class="header-section-number">12</span> Overview</a></li>
+<li><a class="" href="submission-package.html"><span class="header-section-number">13</span> Submission package</a></li>
+<li><a class="" href="running-environment.html"><span class="header-section-number">14</span> Running environment</a></li>
 <li class="book-part">Appendix</li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
@@ -77,7 +78,7 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="folder" class="section level1">
 <h1>
-<span class="header-section-number">9</span> Project folder<a class="anchor" aria-label="anchor" href="#folder"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10</span> Project folder<a class="anchor" aria-label="anchor" href="#folder"><i class="fas fa-link"></i></a>
 </h1>
 <p>A clearly defined clinical project folder structure can have many benefits
 to clinical development teams in an organization.
@@ -93,7 +94,7 @@ team members months/years later.</li>
 illustrate the project folder structure for the A&amp;R project. You can
 <a href="https://happygitwithr.com/rstudio-git-github.html#clone-the-new-github-repository-to-your-computer-via-rstudio">clone</a>
 the project using RStudio with</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb109-1"><a href="folder.html#cb109-1"></a><span class="fu">git</span> clone https://github.com/elong0527/esubdemo.git</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb116-1"><a href="folder.html#cb116-1"></a><span class="fu">git</span> clone https://github.com/elong0527/esubdemo.git</span></code></pre></div>
 <p>For R users, you already benefit from a well-defined and consistent folder structure.
 That is the <a href="https://github.com/rstudio/cheatsheets/raw/master/package-development.pdf">R package folder structure</a>.
 Every R package developer is required to follow the same convention to organize
@@ -106,7 +107,7 @@ Using the R package folder structure to streamline data analysis work has also b
 (see <span class="citation">Marwick, Boettiger, and Mullen (<a href="references.html#ref-marwick2018packaging" role="doc-biblioref">2018</a>)</span>, <span class="citation">Wu et al. (<a href="references.html#ref-wuanalysis" role="doc-biblioref">2021</a>)</span>).</p>
 <div id="consistency" class="section level2">
 <h2>
-<span class="header-section-number">9.1</span> Consistency<a class="anchor" aria-label="anchor" href="#consistency"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.1</span> Consistency<a class="anchor" aria-label="anchor" href="#consistency"><i class="fas fa-link"></i></a>
 </h2>
 <p>For consistency, a well-defined folder structure with potential templates
 ensures project teams organize the A&amp;R work consistently across multiple projects.
@@ -159,7 +160,7 @@ Those functions are saved in the <code>R/</code> folder.</p>
 We use <code>roxygen2</code> to document functions.
 For example, the header below defines each variable in <code>fmt_est</code>.
 More details can be found in <a href="https://r-pkgs.org/man.html">Chapter 10 of the R Packages book</a>.</p>
-<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' Format point estimator</span>
 <span class="co">#'</span>
 <span class="co">#' @param .mean mean of an estimator.</span>
@@ -188,7 +189,7 @@ More details can be found in <a href="https://r-pkgs.org/man.html">Chapter 10 of
 </div>
 <div id="reproduce" class="section level2">
 <h2>
-<span class="header-section-number">9.2</span> Reproducibility<a class="anchor" aria-label="anchor" href="#reproduce"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.2</span> Reproducibility<a class="anchor" aria-label="anchor" href="#reproduce"><i class="fas fa-link"></i></a>
 </h2>
 <p>Reproducibility of analysis is one of the most important aspects of regulatory deliverables.
 To ensure a successful reproduction, we need a controlled R environment,
@@ -201,7 +202,7 @@ we illustrate how to achieve reproducibility for R and R package versions.</p>
 </div>
 <div id="r-version" class="section level3">
 <h3>
-<span class="header-section-number">9.2.1</span> R version<a class="anchor" aria-label="anchor" href="#r-version"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.2.1</span> R version<a class="anchor" aria-label="anchor" href="#r-version"><i class="fas fa-link"></i></a>
 </h3>
 <p>First, we introduce the control of the R version.
 In the <code>esubdemo</code> project, a reproducible environment is created when you open
@@ -211,7 +212,7 @@ So we can use <code>.Rprofile</code> to set up a reproducible environment.
 More details can be found in <a href="https://rstats.wtf/r-startup.html" class="uri">https://rstats.wtf/r-startup.html</a>.
 After we open the <code>esubdemo</code> project, the code in <code>.Rprofile</code> will
 automatically check the current R version is the same as we defined in <code>.Rprofile</code>.</p>
-<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Set project R version</span>
 <span class="va">R_version</span> <span class="op">&lt;-</span> <span class="st">"4.1.1"</span></code></pre></div>
 <p>If there is an R version mismatch, an error message is displayed as below.</p>
@@ -223,12 +224,12 @@ A standard R package should not use <code>.Rprofile</code>.</p>
 </div>
 <div id="r-package-version" class="section level3">
 <h3>
-<span class="header-section-number">9.2.2</span> R package version<a class="anchor" aria-label="anchor" href="#r-package-version"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.2.2</span> R package version<a class="anchor" aria-label="anchor" href="#r-package-version"><i class="fas fa-link"></i></a>
 </h3>
 <p>Next, we introduce the control of the R package version, which is controlled in two layers.
 Firstly, we define a snapshot date in <code>.Rprofile</code>.
 The snapshot date allows us to freeze the source code repository.</p>
-<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># set up snapshot date</span>
 <span class="va">snapshot</span> <span class="op">&lt;-</span> <span class="st">"2021-08-06"</span>
 
@@ -258,7 +259,7 @@ does not provide a daily snapshot as MRAN does.</p>
 for project-specific R packages.
 An introduction of <code>renv</code> can be found on its
 <a href="https://rstudio.github.io/renv/articles/renv.html">website</a>.</p>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"renv/activate.R"</span><span class="op">)</span></code></pre></div>
 <p>The R code above in the <code>.Rprofile</code> initiates the <code>renv</code> running environment.
 As a user, you can use <code><a href="https://rstudio.github.io/renv/reference/init.html">renv::init()</a></code>, <code><a href="https://rstudio.github.io/renv/reference/snapshot.html">renv::snapshot()</a></code>, and <code><a href="https://rstudio.github.io/renv/reference/restore.html">renv::restore()</a></code>
@@ -305,7 +306,7 @@ in the same R version and R package versions defined by a repository snapshot da
 </div>
 <div id="automation" class="section level2">
 <h2>
-<span class="header-section-number">9.3</span> Automation<a class="anchor" aria-label="anchor" href="#automation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.3</span> Automation<a class="anchor" aria-label="anchor" href="#automation"><i class="fas fa-link"></i></a>
 </h2>
 <p>By using the R package folder structure, you will benefit from many outstanding tools to
 simplify and streamline your workflow.</p>
@@ -355,7 +356,7 @@ that fit the analysis and reporting purpose. Below are a few potential tools tha
 </div>
 <div id="compliance" class="section level2">
 <h2>
-<span class="header-section-number">9.4</span> Compliance<a class="anchor" aria-label="anchor" href="#compliance"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.4</span> Compliance<a class="anchor" aria-label="anchor" href="#compliance"><i class="fas fa-link"></i></a>
 </h2>
 <p>For a regulatory deliverable, it is important to maintain compliance.
 With a consistent folder structure, we can define specific criteria for compliance.
@@ -366,21 +367,21 @@ More details can be found in <a href="https://r-pkgs.org/r-cmd-check.html">Chapt
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="project-overview.html"><span class="header-section-number">8</span> Overview</a></div>
-<div class="next"><a href="manage.html"><span class="header-section-number">10</span> Project management</a></div>
+<div class="prev"><a href="project-overview.html"><span class="header-section-number">9</span> Overview</a></div>
+<div class="next"><a href="manage.html"><span class="header-section-number">11</span> Project management</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#folder"><span class="header-section-number">9</span> Project folder</a></li>
-<li><a class="nav-link" href="#consistency"><span class="header-section-number">9.1</span> Consistency</a></li>
+<li><a class="nav-link" href="#folder"><span class="header-section-number">10</span> Project folder</a></li>
+<li><a class="nav-link" href="#consistency"><span class="header-section-number">10.1</span> Consistency</a></li>
 <li>
-<a class="nav-link" href="#reproduce"><span class="header-section-number">9.2</span> Reproducibility</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#r-version"><span class="header-section-number">9.2.1</span> R version</a></li>
-<li><a class="nav-link" href="#r-package-version"><span class="header-section-number">9.2.2</span> R package version</a></li>
+<a class="nav-link" href="#reproduce"><span class="header-section-number">10.2</span> Reproducibility</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#r-version"><span class="header-section-number">10.2.1</span> R version</a></li>
+<li><a class="nav-link" href="#r-package-version"><span class="header-section-number">10.2.2</span> R package version</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#automation"><span class="header-section-number">9.3</span> Automation</a></li>
-<li><a class="nav-link" href="#compliance"><span class="header-section-number">9.4</span> Compliance</a></li>
+<li><a class="nav-link" href="#automation"><span class="header-section-number">10.3</span> Automation</a></li>
+<li><a class="nav-link" href="#compliance"><span class="header-section-number">10.4</span> Compliance</a></li>
 </ul>
 
       <div class="book-extra">
