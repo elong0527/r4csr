@@ -91,10 +91,10 @@ grouped by treatment and by major reason (lost to follow-up, adverse event, poor
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://merck.github.io/r2rtf/">r2rtf</a></span><span class="op">)</span> <span class="co"># Reporting in RTF format</span></code></pre></div>
-<p>In this chapter, we show how to the create a typical disposition table.</p>
+<p>In this chapter, we show how to create a typical disposition table.</p>
 <embed src="tlf/tbl_disp.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>The first step is to read in the relevant datasets into R.
 For a disposition table, all the required information is saved in a Subject-level Analysis Dataset (ADSL).
-This dataset is provided in <code>sas7bdat</code> format, which is a SAS data format currently used in many clinical trial analysis and report.
+This dataset is provided in <code>sas7bdat</code> format, which is a SAS data format currently used in many clinical trial analysis and reporting.
 The <code>haven</code> package is able to read the dataset, while maintaining its attributes (e.g., variable labels).</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"data-adam/adsl.sas7bdat"</span><span class="op">)</span></code></pre></div>
