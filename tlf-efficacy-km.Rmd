@@ -61,10 +61,6 @@ fit <- survfit(Surv(AVAL, 1 - CNSR) ~ TRTP, data = adtte_ttde)
 ```
 
 ```{r}
-sum_fit <- summary(coxph(Surv(AVAL, 1-CNSR) ~ ARM  + strata(STRATAP), data = adtte_efs))
-```
-
-```{r}
 fig_km <- ggsurvplot(
   fit,
   xlab = "Time in Months",
@@ -90,7 +86,9 @@ fig_km <- ggsurvplot(
 )
 ```
 
-Then we can save the figure as a `.png` file, and use the `r2rtf` package to create a formatted RTF figure. More details can be found in <https://merck.github.io/r2rtf/articles/example-figure.html>.
+Then we can save the figure as a `.png` file, 
+and use the `r2rtf` package to create a formatted RTF figure. 
+More details can be found in <https://merck.github.io/r2rtf/articles/example-figure.html>.
 
 ```{r}
 # Save as PNG file
@@ -114,5 +112,6 @@ In conclusion, the procedure to generate the above efficacy K-M plot is summariz
 
 - Step 1: Read the data `adtte` into R.
 - Step 2: Define the analysis-ready dataset. In this example, we define the analysis dataset for the TTDE endpoint `adtte_ttde`.
-- Step 3: Create the curve's data points using the `Surv()` formula directly or fitted survival models beforehand. Then plot and customize the K-M curve with risk table using the `survminer` package.
+- Step 3: Create the curve's data points using the `Surv()` formula directly 
+or fitted survival models beforehand. Then plot and customize the K-M curve with risk table using the `survminer` package.
 - Step 4: Save the output as a PNG file, then format it into an RTF table.
