@@ -113,10 +113,10 @@ Therefore, <code>.rtf</code>, <code>.doc</code>, <code>.docx</code> are commonly
 <p>In this chapter, our focus is to illustrate how to create tables, listings, and figures (TLFs) in RTF format
 that is commonly used in a CSR. The examples are in compliance with the
 <a href="https://www.fda.gov/media/76797/download">FDA’s Portable Document Format (PDF) Specifications</a>.</p>
-<blockquote>
+<div class="rmdnote">
 <p>FDA’s PDF specification is a general reference. Each organization can define
 more specific TLF format requirements that can be different from the examples in this book.</p>
-</blockquote>
+</div>
 </div>
 <div id="structure-and-content" class="section level2">
 <h2>
@@ -158,6 +158,12 @@ how to deliver TLFs in a CSR.</p>
 <li>
 <a href="https://merck.github.io/r2rtf/">r2rtf</a>: create RTF outputs</li>
 </ul>
+<div class="rmdnote">
+<p>There are other R packages to create TLFs in ASCIII, RTF and Word format.
+For example, <code>rtables</code>, <code>huxtable</code>, <code>pharmaRTF</code>, <code>gt</code>, <code>officer</code>, <code>flextable</code> etc.
+Here we focus on <code>r2rtf</code> to illustrate the concept.<br>
+Reader is encourage to explore other R packages to find the proper tools to fit your purpose.</p>
+</div>
 <div id="tidyverse" class="section level3">
 <h3>
 <span class="header-section-number">1.4.1</span> tidyverse<a class="anchor" aria-label="anchor" href="#tidyverse"><i class="fas fa-link"></i></a>
@@ -358,10 +364,6 @@ there are more examples to illustrate how to customize</p>
 <li>etc.</li>
 </ul>
 <p>Those features will be introduced when we first use them in the rest of the chapters.</p>
-<p>There are other R packages that can create TLFs in <code>.rtf</code> or <code>.docx</code> format.
-Interested readers can refer “Microsoft/LibreOffice Formats” section in
-<a href="https://cran.r-project.org/web/views/ReproducibleResearch.html">CRAN Task View: Reproducible Research</a>
-for an overview.</p>
 
 </div>
 </div>
