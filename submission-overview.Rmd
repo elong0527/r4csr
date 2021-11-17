@@ -18,7 +18,8 @@ The goal of the following two chapters is to provide guidance to follow
 Section 4.1.2.10 of the
 [FDA Study Data Technical Conformance Guide](https://www.fda.gov/media/88173/download):
 
-> "Sponsors should provide the software programs used to create all ADaM
+::: {.rmdnote}
+"Sponsors should provide the software programs used to create all ADaM
 datasets and **generate tables and figures associated with primary and
 secondary efficacy analyses**. Furthermore, sponsors should submit software
 programs used to generate additional information included in Section 14
@@ -29,6 +30,7 @@ The main purpose of requesting the submission of these programs
 analyses were created and to confirm the analysis algorithms**.
 Sponsors should submit software programs in **ASCII text format**;
 however, executable file extensions should not be used."
+::: 
 
 Chapter \@ref(submission-package) will focus on preparing
 proprietary R packages and analysis code into proper
