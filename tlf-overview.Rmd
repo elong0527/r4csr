@@ -7,10 +7,10 @@
 In clinical trials, a critical step is to submit trial results to regulatory agencies.
 [Electronic Common Technical Document (eCTD)](https://en.wikipedia.org/wiki/Electronic_common_technical_document)
 has become a worldwide regulatory submission standard format.
-For example, the United States Food and Drug Administration (US FDA) required
+For example, the United States Food and Drug Administration (US FDA) requires
 new drug applications and biologics license applications
 [must be submitted using the eCTD format](https://www.fda.gov/drugs/electronic-regulatory-submission-and-review/electronic-common-technical-document-ectd).
-The Clinical Data Interchange Standards Consortium (CDISC) provided a
+The Clinical Data Interchange Standards Consortium (CDISC) provides a
 [pilot project following ICH E3 guidance](https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse).
 
 Within eCTD, clinical study reports (CSRs) are located at module 5.
@@ -23,9 +23,7 @@ incorporated into the main text and appendices.
 In the CDISC pilot project, an
 [example CSR](https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse/updated-pilot-submission-package/900172/m5/53-clin-stud-rep/535-rep-effic-safety-stud/5351-stud-rep-contr/cdiscpilot01/cdiscpilot01.pdf)
 is also provided. If you are interested in more examples of clinical study reports,
-the European Medicines Agency (EMA) publishes clinical data, including
-clinical study reports submitted by pharmaceutical companies
-on the [EMA clinical data website](https://clinicaldata.ema.europa.eu/web/cdp/home).
+you can go to the [European Medicines Agency (EMA) clinical data website](https://clinicaldata.ema.europa.eu/web/cdp/home).
 
 Building CSRs is teamwork between clinicians, medical writers, statisticians, statistical programmers,
 and other relevant specialists such as experts on biomarkers.
@@ -72,7 +70,7 @@ The dataset structure follows
 ## Tools
 
 In this part, we mainly use the R packages below to illustrate
-how to deliver TLFs in CSR.
+how to deliver TLFs in a CSR.
 
 - [tidyverse](https://www.tidyverse.org/): prepare datasets ready for reporting.
 - [r2rtf](https://merck.github.io/r2rtf/): create RTF outputs
@@ -97,7 +95,7 @@ We assume the reader to have experience in using `tidyverse` in this book.
 ### r2rtf
 
 `r2rtf` is an R package to create production-ready tables and figures in RTF format.
-The R package is designed to
+This R package is designed to
 
 - provide simple "verb" functions that correspond to each component of a table,
   to help you translate a data frame to a table in an RTF file;
@@ -111,7 +109,7 @@ Before creating an RTF table, we need to
 - split the layout into small tasks in the form of a computer program;
 - execute the program.
 
-We provide a brief introduction of `r2rtf` and showed how to transfer
+We provide a brief introduction of `r2rtf` and showe how to transfer
 data frames into table, listing, and figures (TLFs).
 
 Other extended examples and features are covered on the
@@ -119,7 +117,7 @@ Other extended examples and features are covered on the
 
 To explore the basic RTF generation verbs in `r2rtf`,
 we will use the dataset `r2rtf_adae` saved in the `r2rtf` package.
-This dataset contains adverse events (AE) information from a clinical trial.
+This dataset contains adverse events (AEs) information from a clinical trial.
 
 We will begin by loading the packages:
 

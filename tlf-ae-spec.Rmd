@@ -1,8 +1,7 @@
 # Specific AE
 
 Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
-we need to summarize which participants were included in each efficacy
-analysis in Section 12.2, Adverse Events (AEs).
+we need to summarize number of participants for each specific AE in Section 12.2, Adverse Events (AEs).
 
 ```{r}
 library(haven) # Read SAS data
@@ -12,7 +11,7 @@ library(r2rtf) # Reporting in RTF format
 ```
 
 In this chapter, we illustrate how to summarize simplified specific AE
-information in a study.
+information for a study.
 
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tlf_spec_ae.pdf")
@@ -25,11 +24,11 @@ adsl <- read_sas("data-adam/adsl.sas7bdat")
 adae <- read_sas("data-adam/adae.sas7bdat")
 ```
 
-For illustration purposes, we only provide count in the simplified
-table. The percentage of participants for each AE criteria can be
-calculated as in Chapter \@ref(aesummary).
+For illustration purpose, we only provide counts in the simplified
+table. The percentage of participants for each AE can be
+calculated as shown in Chapter \@ref(aesummary).
 
-In this way, let's focus on the analysis script for two advanced
+Here, we focus on the analysis script for two advanced
 features for a table layout.
 
 - group content: AE can be summarized in multiple nested layers.
@@ -39,9 +38,9 @@ features for a table layout.
   page. Column headers and SOC information need to be repeated on
   every page.
 
-In the code below, we count the number of subjects in each AE term by
-SOC and treatment group, and we create a new variable `order` and set it
-as `0` for these counted numbers. The variable `order` will help with
+In the code below, we count the number of participants in each AE term by
+SOC and treatment arm, and we create a new variable `order` and set it
+as `0`. The variable `order` can help with
 the data manipulation later.
 
 ```{r}
@@ -60,8 +59,8 @@ t1 %>% head(4)
 ```
 
 In the code below, we count the number of subjects in each AE term by
-SOC, AE term, and treatment group. Here we also create a new variable
-`order` and set it as `1` for these counted numbers.
+SOC, AE term, and treatment arm. Here we also create a new variable
+`order` and set it as `1`.
 
 ```{r}
 t2 <- ana %>%
@@ -72,7 +71,7 @@ t2 <- ana %>%
 t2 %>% head(4)
 ```
 
-We prepare reporting data for AE information.
+We prepare reporting data for AE information using code below:
 
 ```{r}
 t_ae <- bind_rows(t1, t2) %>%
@@ -89,7 +88,7 @@ t_ae <- bind_rows(t1, t2) %>%
 t_ae %>% head(4)
 ```
 
-We prepare reporting data for analysis population.
+We prepare reporting data for analysis population using code below:
 
 ```{r}
 t_pop <- adsl %>%
@@ -122,10 +121,10 @@ tbl_ae_spec <- bind_rows(
 tbl_ae_spec %>% head(4)
 ```
 
-We start to define the format of the output.
+We define the format of the output as below:
 
 To obtain the nested layout, we use the `page_by` argument in the
-`rtf_body` function. By defining `page_by="AESOC"`, `r2rtf` recognize
+`rtf_body` function. By defining `page_by="AESOC"`, `r2rtf` recognizes
 the variable as a group indicator.
 
 After setting `pageby_row = "first_row"`, the first row is displayed as
@@ -177,18 +176,18 @@ knitr::include_graphics("tlf/tlf_spec_ae.pdf")
 ```
 
 More discussion on `page_by`, `group_by` and `subline_by`
-features can be found in the
+features can be found on the
 [`r2rtf` package website](https://merck.github.io/r2rtf/articles/example-sublineby-pageby-groupby.html).
 
 The procedure to generate a baseline characteristics table can be
-summarized as follow:
+summarized as follows:
 
-- Step 1: Read data into R, i.e., `adae` and `adsl`.
-- Step 2: Count the number of subjects by SOC and treatment group
+- Step 1: Read data (i.e., `adae` and `adsl`) into R.
+- Step 2: Count the number of participants by SOC and treatment arm
   (rows with bold text) and save into `t1`.
-- Step 3: Count the number of subjects in each AE term by SOC, AE
-  term, and treatment group (rows without bold text) and save into `t2`.
+- Step 3: Count the number of participants in each AE term by SOC, AE
+  term, and treatment arm (rows without bold text) and save into `t2`.
 - Step 4: Bind `t1` and `t2` by row into `t_ae`.
-- Step 5: Count the number of subjects in each arm as `t_pop`.
-- Step 6: Bind `t_pop` and `t_ae` by row into `tbl_ae_spec`.
-- Step 7: Format the output by `r2rtf`.
+- Step 5: Count the number of participants in each arm as `t_pop`.
+- Step 6: Row-wise combine `t_pop` and `t_ae` into `tbl_ae_spec`.
+- Step 7: Format the output by using `r2rtf`.
