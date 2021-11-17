@@ -21,5 +21,6 @@ Imports:
   table1,
   gert,
   servr,
-  pkglite
+  pkglite,
+  survminer
 Encoding: UTF-8
