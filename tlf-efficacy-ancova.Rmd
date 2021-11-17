@@ -1,4 +1,4 @@
-# Efficacy
+# Efficacy table
 
 Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
 primary and secondary efficacy endpoints need to be summarized
