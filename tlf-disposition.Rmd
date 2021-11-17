@@ -15,7 +15,7 @@ library(tidyr) # Manipulate data
 library(r2rtf) # Reporting in RTF format
 ```
 
-In this chapter, we show how to the create a typical disposition table.
+In this chapter, we show how to create a typical disposition table.
 
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tbl_disp.pdf")
@@ -23,7 +23,7 @@ knitr::include_graphics("tlf/tbl_disp.pdf")
 
 The first step is to read in the relevant datasets into R.
 For a disposition table, all the required information is saved in a Subject-level Analysis Dataset (ADSL).
-This dataset is provided in `sas7bdat` format, which is a SAS data format currently used in many clinical trial analysis and report.
+This dataset is provided in `sas7bdat` format, which is a SAS data format currently used in many clinical trial analysis and reporting.
 The `haven` package is able to read the dataset, while maintaining its attributes (e.g., variable labels).
 
 ```{r}

@@ -87,7 +87,7 @@ RStudio provided outstanding [cheatsheets](https://www.rstudio.com/resources/che
 and [tutorials](https://github.com/rstudio-education/remaster-the-tidyverse) for `tidyverse`.
 
 There are also books to introduce tidyverse.
-We assume the reader to have experience in using `tidyverse` in this book.
+We assume the reader have experience in using `tidyverse` in this book.
 
 - [The tidyverse cookbook](https://rstudio-education.github.io/tidyverse-cookbook/)
 - [R for Data Science](https://r4ds.had.co.nz/)
@@ -109,7 +109,7 @@ Before creating an RTF table, we need to
 - split the layout into small tasks in the form of a computer program;
 - execute the program.
 
-We provide a brief introduction of `r2rtf` and showe how to transfer
+We provide a brief introduction of `r2rtf` and show how to transfer
 data frames into table, listing, and figures (TLFs).
 
 Other extended examples and features are covered on the
@@ -269,7 +269,7 @@ In `rtf_*()` functions such as `rtf_body()`, `rtf_footnote()`, etc.,
 If we want to remove the top border of `"Adverse Events"` in the header,
 we can change the default value `"single"` to `""` in the `border_top` argument, as shown below.
 
-`r2rtf` support 26 different border types. The details can be found on
+`r2rtf` supports 26 different border types. The details can be found on
 the [r2rtf package website](https://merck.github.io/r2rtf/articles/rtf-row.html#border-type).
 
 In this example, we also demonstrate the possibility of adding multiple column headers.
