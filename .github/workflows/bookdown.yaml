@@ -12,6 +12,11 @@ jobs:
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
+      - name: Install ttf-mscorefonts-installer
+        run: |
+          echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
+          sudo apt-get install ttf-mscorefonts-installer
+
       - uses: actions/checkout@v2
 
       - uses: r-lib/actions/setup-pandoc@v1
