@@ -92,8 +92,7 @@ in Section 11.4, Efficacy Results and Tabulations of Individual Participant.</p>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://forcats.tidyverse.org">forcats</a></span><span class="op">)</span> <span class="co"># Reorder ordinal variable level based on preference</span></code></pre></div>
 <p>In this chapter, we illustrate how to create a Kaplan-Meier plot in a study.
 For the survival analysis in efficacy, time to dermatologic event (TTDE) will be analyzed.</p>
-<div class="inline-figure"><img src="tlf/fig_km.png" width="100%" height="450px" style="display: block; margin: auto;"></div>
-<div id="analysis-dataset-1" class="section level2">
+<embed src="tlf/fig_km.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><div id="analysis-dataset-1" class="section level2">
 <h2>
 <span class="header-section-number">6.1</span> Analysis dataset<a class="anchor" aria-label="anchor" href="#analysis-dataset-1"><i class="fas fa-link"></i></a>
 </h2>
@@ -154,6 +153,7 @@ if we also want to obtain other information, i.e. hazard ratio, survival rates,
   pval.coord <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.1</span><span class="op">)</span>,
   pval.method.coord <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.2</span><span class="op">)</span>,
   pval.size <span class="op">=</span> <span class="fl">5</span>,
+  font.family <span class="op">=</span> <span class="st">"Times New Roman"</span>,
   ggtheme <span class="op">=</span> <span class="fu">theme_classic2</span><span class="op">(</span>base_family <span class="op">=</span> <span class="st">"Times New Roman"</span>, base_size <span class="op">=</span> <span class="fl">18</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 <p>Then we can save the figure as a <code>.png</code> file,
@@ -161,10 +161,10 @@ and use the <code>r2rtf</code> package to create a formatted RTF figure.
 More details can be found in <a href="https://merck.github.io/r2rtf/articles/example-figure.html" class="uri">https://merck.github.io/r2rtf/articles/example-figure.html</a>.</p>
 <div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Save as PNG file</span>
-<span class="fu">ggsave</span><span class="op">(</span><span class="st">"tlf/fig_km.png"</span>, plot <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">fig_km</span>, newpage <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">10</span>, height <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="r4csr_files/figure-html/unnamed-chunk-95-1.png" width="672"></div>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Create RTF figure</span>
+<span class="va">grid.draw.ggsurvplot</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">survminer</span><span class="fu">:::</span><span class="fu"><a href="https://rdrr.io/pkg/survminer/man/ggsurvplot.html">print.ggsurvplot</a></span><span class="op">(</span><span class="va">x</span>, newpage <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="fu">ggsave</span><span class="op">(</span><span class="st">"tlf/fig_km.png"</span>, plot <span class="op">=</span> <span class="va">fig_km</span>, width <span class="op">=</span> <span class="fl">10</span>, height <span class="op">=</span> <span class="fl">6</span><span class="op">)</span>
+
+<span class="co"># Create RTF figure</span>
 <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_read_png.html">rtf_read_png</a></span><span class="op">(</span><span class="st">"tlf/fig_km.png"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Read PNG files from the file path</span>
   <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_title.html">rtf_title</a></span><span class="op">(</span><span class="st">"Time to Dermatologic Event by Treatment Group"</span>, <span class="st">"All Participants"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Add title or subtitle</span>
   <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_footnote.html">rtf_footnote</a></span><span class="op">(</span><span class="st">"footnote"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Add footnote</span>
