@@ -4,6 +4,10 @@ Following the [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_
 primary and secondary efficacy endpoints need to be summarized
 in Section 11.4, Efficacy Results and Tabulations of Individual Participant.
 
+```{r, include=FALSE}
+source("common.R")
+```
+
 ```{r}
 library(haven) # Read SAS data
 library(dplyr) # Manipulate data
@@ -16,8 +20,8 @@ library(forcats) # Reorder ordinal variable level based on preference
 In this chapter, we illustrate how to create a Kaplan-Meier plot in a study.
 For the survival analysis in efficacy, time to dermatologic event (TTDE) will be analyzed.
 
-```{r, out.width = "100%", out.height = "450px", echo = FALSE, fig.align = "center"}
-knitr::include_graphics("tlf/fig_km.png")
+```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("tlf/fig_km.pdf")
 ```
 
 ## Analysis dataset
@@ -82,6 +86,7 @@ fig_km <- ggsurvplot(
   pval.coord = c(0, 0.1),
   pval.method.coord = c(0, 0.2),
   pval.size = 5,
+  font.family = "Times New Roman",
   ggtheme = theme_classic2(base_family = "Times New Roman", base_size = 18)
 )
 ```
@@ -92,7 +97,8 @@ More details can be found in <https://merck.github.io/r2rtf/articles/example-fig
 
 ```{r}
 # Save as PNG file
-ggsave("tlf/fig_km.png", plot = print(fig_km, newpage = FALSE), width = 10, height = 6)
+grid.draw.ggsurvplot <- function(x) survminer:::print.ggsurvplot(x, newpage = FALSE)
+ggsave("tlf/fig_km.png", plot = fig_km, width = 10, height = 6)
 
 # Create RTF figure
 rtf_read_png("tlf/fig_km.png") %>% # Read PNG files from the file path
