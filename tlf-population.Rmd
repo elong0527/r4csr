@@ -206,6 +206,10 @@ tbl_pop %>%
   write_rtf("tlf/tbl_pop.rtf")
 ```
 
+```{r, include=FALSE}
+rtf2pdf("tlf/tbl_pop.rtf")
+```
+
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tbl_pop.pdf")
 ```

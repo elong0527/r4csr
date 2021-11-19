@@ -270,6 +270,10 @@ t1_rtf %>%
   write_rtf("tlf/tlf_eff1.rtf")
 ```
 
+```{r, include=FALSE}
+rtf2pdf("tlf/tlf_eff1.rtf")
+```
+
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tlf_eff1.pdf")
 ```
@@ -292,6 +296,10 @@ t2_rtf %>%
   write_rtf("tlf/tlf_eff2.rtf")
 ```
 
+```{r, include=FALSE}
+rtf2pdf("tlf/tlf_eff2.rtf")
+```
+
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tlf_eff2.pdf")
 ```
@@ -304,6 +312,10 @@ This is achieved by providing a list of `t1_rtf` and `t2_rtf` as input for
 list(t1_rtf, t2_rtf) %>%
   rtf_encode() %>%
   write_rtf("tlf/tlf_eff.rtf")
+```
+
+```{r, include=FALSE}
+rtf2pdf("tlf/tlf_eff.rtf")
 ```
 
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
