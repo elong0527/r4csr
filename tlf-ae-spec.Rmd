@@ -171,6 +171,10 @@ tbl_ae_spec %>%
   write_rtf("tlf/tlf_spec_ae.rtf")
 ```
 
+```{r, include=FALSE}
+rtf2pdf("tlf/tlf_spec_ae.rtf")
+```
+
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tlf_spec_ae.pdf")
 ```

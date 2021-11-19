@@ -192,6 +192,10 @@ head(tbl) %>%
   write_rtf("tlf/intro-ae1.rtf") # Step 3 Write to a .rtf file
 ```
 
+```{r, include=FALSE}
+rtf2pdf("tlf/intro-ae1.rtf")
+```
+
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/intro-ae1.pdf")
 ```
@@ -219,6 +223,10 @@ head(tbl) %>%
   write_rtf("tlf/intro-ae2.rtf")
 ```
 
+```{r, include=FALSE}
+rtf2pdf("tlf/intro-ae2.rtf")
+```
+
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/intro-ae2.pdf")
 ```
@@ -241,6 +249,10 @@ head(tbl) %>%
   rtf_body(col_rel_width = c(3, 2, 2, 2)) %>%
   rtf_encode() %>%
   write_rtf("tlf/intro-ae3.rtf")
+```
+
+```{r, include=FALSE}
+rtf2pdf("tlf/intro-ae3.rtf")
 ```
 
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
@@ -266,6 +278,10 @@ head(tbl) %>%
   rtf_body(text_justification = c("l", "c", "c", "c")) %>%
   rtf_encode() %>%
   write_rtf("tlf/intro-ae5.rtf")
+```
+
+```{r, include=FALSE}
+rtf2pdf("tlf/intro-ae5.rtf")
 ```
 
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
@@ -297,6 +313,10 @@ head(tbl) %>%
   rtf_body(col_rel_width = c(3, 2, 2, 2)) %>%
   rtf_encode() %>%
   write_rtf("tlf/intro-ae7.rtf")
+```
+
+```{r, include=FALSE}
+rtf2pdf("tlf/intro-ae7.rtf")
 ```
 
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}

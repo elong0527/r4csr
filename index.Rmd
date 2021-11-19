@@ -30,8 +30,6 @@ library(pkglite)
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(comment = "#>", echo = TRUE, message = FALSE)
 options(dplyr.summarise.inform = FALSE)
-file.copy("static/CNAME", "_book", overwrite = TRUE)
-fs::dir_copy("slides/", "_book/slides", overwrite = TRUE)
 ```
 
 ```{r, eval = FALSE, include=FALSE}
@@ -39,6 +37,10 @@ r2rtf:::rtf_convert_format(
   list.files("tlf", pattern = ".rtf", full.names = TRUE),
   output_dir = "tlf"
 )
+```
+
+```{r, include=FALSE}
+source("common.R")
 ```
 
 ```{r, eval = FALSE, include=FALSE}

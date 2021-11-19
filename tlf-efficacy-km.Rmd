@@ -104,6 +104,10 @@ rtf_read_png("tlf/fig_km.png") %>% # Read PNG files from the file path
   write_rtf(file = "tlf/fig_km.rtf")
 ```
 
+```{r, include=FALSE}
+rtf2pdf("tlf/fig_km.rtf")
+```
+
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/fig_km.pdf")
 ```
