@@ -39,10 +39,6 @@ r2rtf:::rtf_convert_format(
 )
 ```
 
-```{r, include=FALSE}
-source("common.R")
-```
-
 ```{r, eval = FALSE, include=FALSE}
 rsconnect::writeManifest(appPrimaryDoc = "index.Rmd", contentCategory = "site")
 ```

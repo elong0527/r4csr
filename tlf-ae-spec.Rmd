@@ -3,6 +3,10 @@
 Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
 we need to summarize number of participants for each specific AE in Section 12.2, Adverse Events (AEs).
 
+```{r, include=FALSE}
+source("common.R")
+```
+
 ```{r}
 library(haven) # Read SAS data
 library(dplyr) # Manipulate data

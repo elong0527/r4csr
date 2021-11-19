@@ -8,6 +8,10 @@ and who entered and completed each phase of the study.
 In addition, the reasons for all post-randomization discontinuations,
 grouped by treatment and by major reason (lost to follow-up, adverse event, poor compliance, etc.) are reported.
 
+```{r, include=FALSE}
+source("common.R")
+```
+
 ```{r}
 library(haven) # Read SAS data
 library(dplyr) # Manipulate data

@@ -4,6 +4,10 @@ Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guid
 primary and secondary efficacy endpoints need to be summarized
 in Section 11.4, Efficacy Results and Tabulations of Individual Participant.
 
+```{r, include=FALSE}
+source("common.R")
+```
+
 ```{r}
 library(haven) # Read SAS data
 library(dplyr) # Manipulate data

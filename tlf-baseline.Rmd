@@ -7,6 +7,10 @@ in Section 11.2, Demographic and Other Baseline Characteristics.
 In this chapter, we illustrate how to create a simplified
 baseline characteristics table for a study.
 
+```{r, include=FALSE}
+source("common.R")
+```
+
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tlf_base.pdf")
 ```
