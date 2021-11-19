@@ -2,6 +2,10 @@
 
 # Overview {#tlf-overview}
 
+```{r, include=FALSE}
+source("common.R")
+```
+
 ## Background
 
 In clinical trials, a critical step is to submit trial results to regulatory agencies.

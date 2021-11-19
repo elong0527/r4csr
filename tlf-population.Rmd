@@ -5,6 +5,10 @@ guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
 we need to summarize the number of participants included in each efficacy
 analysis in Section 11.1, Data Sets Analysed.
 
+```{r, include=FALSE}
+source("common.R")
+```
+
 ```{r}
 library(haven) # Read SAS data
 library(dplyr) # Manipulate data
