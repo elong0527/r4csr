@@ -4,5 +4,6 @@ bookdown::bs4_book:
     fg: "#0C2340"
     bg: "#ffffff"
   repo: https://github.com/elong0527/r4csr
+  css: style.css
   includes:
     in_header: [ga_script.html]
