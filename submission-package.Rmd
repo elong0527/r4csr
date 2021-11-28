@@ -340,18 +340,99 @@ All internally developed R functions are saved in the r0pkgs.txt file.
 The recommended steps to unpack these R functions for analysis output
 programs are described in the Appendix.
 
-The table below contains the software version and instructions
+The tables below contain the software version and instructions
 for executing the R analysis output programs:
 ```
 
-| Software or Package                            | Version |
-|------------------------------------------------|---------|
-| R                                              | 4.1.1   |
-| dplyr                                          | 1.0.7   |
-| r2rtf                                          | 0.3.0   |
-| pkglite                                        | 0.2.0   |
-| ...                                            | ...     |
-| R package versions based on CRAN at 2021-08-06 |         |
+```{r, echo=FALSE}
+library("kableExtra")
+
+df1 <- data.frame(
+  program = c(
+    "tlf-01-disposition.txt",
+    "tlf-02-population.txt",
+    "tlf-03-baseline.txt",
+    "tlf-04-efficacy.txt",
+    "tlf-05-ae-summary.txt",
+    "tlf-06-ae-spec.txt"
+  ),
+  table = c(
+    "Table x.y.z"
+  ),
+  desc = c(
+    "Disposition of Patients",
+    "Participants Accounting in Analysis Population (All Participants Randomized)",
+    "Participant Baseline Characteristics (All Participants Randomized)",
+    "ANCOVA of Change from Baseline Glucose (mmol/L) at Week 24 <br> LOCF <br> Efficacy Analysis Population",
+    "Analysis of Adverse Event Summary (Safety Analysis Population)",
+    "Analysis of Participants With Specific Adverse Events (Safety Analysis Population)"
+  ),
+  stringsAsFactors = FALSE
+)
+
+names(df1) <- c("Program Name", "Output Table", "Title")
+
+df1 %>%
+  kbl(escape = FALSE) %>%
+  kable_classic(full_width = FALSE, html_font = "'Times New Roman', Times, serif", font_size = 18) %>%
+  column_spec(1, extra_css = "border: 1px solid #000; text-align: center;", width = "18rem") %>%
+  column_spec(2, extra_css = "border: 1px solid #000; text-align: center;", width = "16rem") %>%
+  column_spec(3, extra_css = "border: 1px solid #000;", width = "28rem") %>%
+  row_spec(0, background = "#DFDFDF", bold = TRUE, extra_css = "border: 1px solid #000; text-align: center;")
+
+df2 <- data.frame(
+  package = c("pkglite", "haven", "dplyr", "tidyr", "emmeans", "r2rtf"),
+  version = NA,
+  description = c(
+    "Prepare submission package",
+    "Read SAS datasets",
+    "Manipulate datasets",
+    "Manipulate datasets",
+    "Least-squares means estimation",
+    "Create RTF tables"
+  ),
+  stringsAsFactors = FALSE
+)
+
+x <- available.packages(contriburl = contrib.url("https://mran.microsoft.com/snapshot/2021-08-06/"))
+df2$version <- x[match(df2$package, x[, "Package"]), "Version"]
+
+names(df2) <- c(
+  "Open-Source R Analysis Package",
+  "Package Version",
+  "Analysis Package Description"
+)
+
+df2 %>%
+  kbl() %>%
+  kable_classic(full_width = FALSE, html_font = "'Times New Roman', Times, serif", font_size = 18) %>%
+  column_spec(1, extra_css = "border: 1px solid #000; text-align: center;", width = "18rem") %>%
+  column_spec(2, extra_css = "border: 1px solid #000; text-align: center;", width = "16rem") %>%
+  column_spec(3, extra_css = "border: 1px solid #000;", width = "28rem") %>%
+  row_spec(0, background = "#DFDFDF", bold = TRUE, extra_css = "border: 1px solid #000; text-align: center;") %>%
+  footnote(general = "R package versions based on CRAN on 2021-08-06", general_title = "")
+
+df3 <- data.frame(
+  package = "esubdemo",
+  version = "0.1.0",
+  description = "A demo package for analysis and reporting of clinical trials",
+  stringsAsFactors = FALSE
+)
+
+names(df3) <- c(
+  "Proprietary R Analysis Package",
+  "Package Version",
+  "Analysis Package Description"
+)
+
+df3 %>%
+  kbl() %>%
+  kable_classic(full_width = FALSE, html_font = "'Times New Roman', Times, serif", font_size = 18) %>%
+  column_spec(1, extra_css = "border: 1px solid #000; text-align: center;", width = "18rem") %>%
+  column_spec(2, extra_css = "border: 1px solid #000; text-align: center;", width = "16rem") %>%
+  column_spec(3, extra_css = "border: 1px solid #000;", width = "28rem") %>%
+  row_spec(0, background = "#DFDFDF", bold = TRUE, extra_css = "border: 1px solid #000; text-align: center;")
+```
 
 The second section (Appendix) should include step-by-step instructions
 to reproduce the running environment and rerun analyses. For example:
@@ -433,22 +514,65 @@ related to R in two sections:
 
 For example, in ARM section 2, "Analysis Results Metadata Summary":
 
-+--------------------------------------+-------------+----------------------+-------------------------+---------------------------------------+
-| Table Reference                      | Table Title | Programming Language | Program Name (programs) | Input File Name / Analysis (datasets) |
-+======================================+=============+======================+=========================+=======================================+
-| [Ref. x.y.z: P001ZZZ9999: Table 1-1] | ...         | R                    | tlf-01-disposition.txt  | adsl.xpt                              |
-+--------------------------------------+-------------+----------------------+-------------------------+---------------------------------------+
-| ...                                  | ...         | ...                  | ...                     | ...                                   |
-+--------------------------------------+-------------+----------------------+-------------------------+---------------------------------------+
+```{r, echo=FALSE}
+df4 <- data.frame(
+  "ref" = c("[Ref. x.y.z: P001ZZZ9999: Table 1-1]", "..."),
+  "title" = c("Disposition of Patients", "..."),
+  "pl" = c("R", "..."),
+  "pn" = c("tlf-01-disposition.txt", "..."),
+  "input" = c("adsl.xpt", "..."),
+  stringsAsFactors = FALSE
+)
+
+names(df4) <- c(
+  "Table Reference",
+  "Table Title",
+  "Programming Language",
+  "Program Name (programs)",
+  "Input File Name / Analysis (datasets)"
+)
+
+df4 %>%
+  kbl() %>%
+  kable_classic(full_width = FALSE, html_font = "'Times New Roman', Times, serif", font_size = 18) %>%
+  column_spec(1, extra_css = "border: 1px solid #000; text-align: center;") %>%
+  column_spec(2, extra_css = "border: 1px solid #000; text-align: center;") %>%
+  column_spec(3, extra_css = "border: 1px solid #000; text-align: center;") %>%
+  column_spec(4, extra_css = "border: 1px solid #000; text-align: center;") %>%
+  column_spec(5, extra_css = "border: 1px solid #000; text-align: center;") %>%
+  row_spec(0, background = "#DFDFDF", bold = TRUE, extra_css = "border: 1px solid #000; text-align: center;")
+```
 
 In ARM section 3, "Analysis Results Metadata Details":
 
-|                                                       |                                                               |
-|-------------------------------------------------------|---------------------------------------------------------------|
-| Table Reference: [Ref. x.y.z: P001ZZZ9999: Table 1-1] | ...                                                           |
-| Analysis Result                                       | ...                                                           |
-| Analysis Parameters (s)                               | ...                                                           |
-| Analysis Reason                                       | ...                                                           |
-| Analysis Purpose                                      | ...                                                           |
-| ...                                                   | ...                                                           |
-| Programming Statements                                | (R version 4.1.1), [P001ZZZ9999: programs-tlf-01-disposition] |
+```{r, echo=FALSE}
+df5 <- data.frame(
+  "x1" = c(
+    "Table Reference: [Ref. x.y.z: P001ZZZ9999: Table 1-1]",
+    "Analysis Result",
+    "Analysis Parameters (s)",
+    "Analysis Reason",
+    "Analysis Purpose",
+    "...",
+    "Programming Statements"
+  ),
+  "x2" = c(
+    "...",
+    "...",
+    "...",
+    "...",
+    "...",
+    "...",
+    "(R version 4.1.1), [P001ZZZ9999: programs-tlf-01-disposition]"
+  ),
+  stringsAsFactors = FALSE
+)
+
+df5 %>%
+  kbl(format = "html") %>%
+  kable_classic(full_width = FALSE, html_font = "'Times New Roman', Times, serif", font_size = 18) %>%
+  column_spec(1, extra_css = "border: 1px solid #000;", bold = TRUE) %>%
+  column_spec(2, extra_css = "border: 1px solid #000;") %>%
+  row_spec(0, background = "#DFDFDF", bold = TRUE, extra_css = "border: 1px solid #000;") %>%
+  gsub("<thead>.*</thead>", "", .)
+```
