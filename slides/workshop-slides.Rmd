@@ -1,8 +1,8 @@
 ---
 title: "R for Clinical Study Reports and Submission"
-subtitle: "ASA Princeton-Trenton Chapter, 2021"
+subtitle: "ASA Princeton-Trenton Chapter"
 author: "Yilong Zhang, Nan Xiao"
-date: "October 2021"
+date: "December 2021"
 output:
   mkdocs::mk_ioslides_presentation:
     mk_logo: "invent"
