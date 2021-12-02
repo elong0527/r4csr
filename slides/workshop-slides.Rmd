@@ -71,9 +71,16 @@ In this workshop, we have three parts:
   + R Tables for Regulatory Submission (RTRS) working group
   + Please consider to join and contribute to a working group.
 
+- [ASA Princeton-Trenton Chapter](https://community.amstat.org/princetontrenton/home)
+  + Please consider to be a member of our chapter. 
+  
+<!--
+
 - R / Pharma organizers
   + It is a fun and productive annual gathering.
   + Please consider sharing stories and use cases to expand the community.
+
+-->
 
 ## Preparation
 
@@ -158,15 +165,14 @@ Different organizations can have different table standards
 - E.g., Table layout, Font size, Border type, Footnote, Data source
 
 - `r2rtf` is an R package to create production-ready tables and figures in RTF format.
-The R package is designed to
 
 `r2rtf` is designed to:
 
 - provide simple "verb" functions that correspond to each component of a table,
-  to help you translate a data frame to a table in RTF file.
+  to help you translate a data frame to a table in RTF format.
 - enable pipes (`%>%`).
 - only focus on the **table format**.
-  Data manipulation and analysis shall be handled by other R packages. (e.g. `tidyverse`)
+  + Data manipulation and analysis shall be handled by other R packages. (e.g. `tidyverse`)
 
 ## Workflow
 
@@ -209,7 +215,7 @@ knitr::include_graphics("minimal.pdf")
 `r2rtf` only focus on **table format**.
 Data manipulation and analysis shall be handled by other R packages. (e.g. `tidyverse`)
 
-- Let's refer to examples in the [Section 2.4.2](https://r4csr.org/tlf-overview.html#r2rtf)
+- Let's refer to examples in the [Section 1.4.2](https://r4csr.org/tlf-overview.html#r2rtf)
 
 ## Function Summary
 
