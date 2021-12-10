@@ -42,7 +42,7 @@ adtte_ttde <- adtte %>%
   filter(PARAMCD == "TTDE") %>%
   select(TRTP, TRTAN, AVAL, CNSR) %>%
   mutate(TRTP = forcats::fct_reorder(TRTP, TRTAN), # Recorder levels
-         AVAL_m = AVAL/30.4367) # convert Day to Month
+         AVAL_m = AVAL / 30.4367) # convert Day to Month
 ```
 
 ## Create Kaplan-Meier curve
@@ -67,7 +67,7 @@ Firstly, create a function `risk_tab()` to count cumulative number at risk, then
 ```{r}
 risk_tab <- function(tlim, time) {
   n_risk <- NULL
-  for (i in tlim){
+  for (i in tlim) {
     n_risk <- c(n_risk, sum(time >= i))
   }
   return(n_risk)
@@ -78,18 +78,63 @@ Then create the KM plot and save as a `.png` file.
 
 ```{r}
 # Save as a PNG file
-png(file = "tlf/fig_km1.png", width = 3000, height = 2000, res = 400)
+png(
+  file = "tlf/fig_km1.png",
+  width = 3000,
+  height = 2000,
+  res = 400
+)
 
-par(mfrow = c(1, 1), mar = c(9, 11, 1, 1), family = "Times") # Set plot margins
+par(mfrow = c(1, 1),
+    mar = c(9, 11, 1, 1),
+    family = "Times") # Set plot margins and font style
 
-
-plot(fit, xlab = "Time in Months", ylab = "Survival probability", lwd = 2, mark.time = T, col = c(2, 3, 4), lty = c(1, 2, 3))
-legend("topright", lwd = 2, cex = 0.9, col = c(2, 3, 4), lty = c(1, 2, 3), legend = levels(adtte_ttde$TRTP), bty = "n")
-mtext("Number at risk", side = 1, line = 4, at = 0)
+plot(
+  fit,
+  xlab = "Time in Months",
+  ylab = "Survival probability",
+  lwd = 2,
+  mark.time = T,
+  col = c(2, 3, 4),
+  lty = c(1, 2, 3)
+)
+legend(
+  "topright",
+  lwd = 2,
+  cex = 0.9,
+  col = c(2, 3, 4),
+  lty = c(1, 2, 3),
+  legend = levels(adtte_ttde$TRTP),
+  bty = "n"
+)
+mtext("Number at risk",
+      side = 1,
+      line = 4,
+      at = 0)
 grid <- 0:6
-mtext(c("Placebo", risk_tab(grid,adtte_ttde$AVAL[adtte_ttde$TRTP=="Placebo"]/30.4367)), side = 1, adj = c(1, rep(NA, length(grid))), line = 5, at = c(-0.8, grid))
-mtext(c("Xanomeline Low Dose", risk_tab(grid,adtte_ttde$AVAL[adtte_ttde$TRTP=="Xanomeline Low Dose"]/30.4367)), side = 1, adj = c(1, rep(NA, length(grid))), line = 6, at = c(-0.8, grid))
-mtext(c("Xanomeline High Dose", risk_tab(grid,adtte_ttde$AVAL[adtte_ttde$TRTP=="Xanomeline High Dose"]/30.4367)), side = 1, adj = c(1, rep(NA, length(grid))), line = 7, at = c(-0.8, grid))
+mtext(
+  c("Placebo", risk_tab(grid, adtte_ttde$AVAL_m[adtte_ttde$TRTP == "Placebo"])),
+  side = 1,
+  adj = c(1, rep(NA, length(grid))),
+  line = 5,
+  at = c(-0.8, grid)
+)
+mtext(
+  c("Xanomeline Low Dose",
+    risk_tab(grid, adtte_ttde$AVAL_m[adtte_ttde$TRTP == "Xanomeline Low Dose"])),
+  side = 1,
+  adj = c(1, rep(NA, length(grid))),
+  line = 6,
+  at = c(-0.8, grid)
+)
+mtext(
+  c("Xanomeline High Dose",
+    risk_tab(grid, adtte_ttde$AVAL_m[adtte_ttde$TRTP == "Xanomeline High Dose"])),
+  side = 1,
+  adj = c(1, rep(NA, length(grid))),
+  line = 7,
+  at = c(-0.8, grid)
+)
 
 dev.off()
 ```
@@ -100,7 +145,10 @@ More details can be found in <https://merck.github.io/r2rtf/articles/example-fig
 ```{r}
 # Create RTF figure
 rtf_read_png("tlf/fig_km1.png") %>% # Read the PNG file from the file path
-  rtf_title("Kaplan-Meier Plot for Time to First Dermatologic Event by Treatment Group", "All Participants") %>% # Add title or subtitle
+  rtf_title(
+    "Kaplan-Meier Plot for Time to First Dermatologic Event by Treatment Group",
+    "All Participants"
+  ) %>% # Add title or subtitle
   rtf_footnote("footnote") %>% # Add footnote
   rtf_source("[datasource: adam-adtte]") %>% # Add data source
   rtf_figure(fig_width = 6, fig_height = 4) %>% # Set proportional figure size to the original PNG figure size
@@ -127,12 +175,14 @@ fig_km2 <- ggsurvplot(
   xlab = "Time in Months",
   ylab = "Survival Probability",
   break.time.by = 1,
-#  xscale = "d_m",
-#  xlim = c(0, 200),
+  #  xscale = "d_m",
+  #  xlim = c(0, 200),
   linetype = c(1, 2, 3),
   risk.table = TRUE,
-  risk.table.height = 0.3, # Useful when you have multiple groups
-  legend = c(0.8, 0.9), legend.title = "",
+  risk.table.height = 0.3,
+  # Useful when you have multiple groups
+  legend = c(0.8, 0.9),
+  legend.title = "",
   legend.labs = sort(unique(adtte_ttde$TRTP)),
   censor.size = 4,
   size = 0.8,
@@ -154,12 +204,18 @@ More details can be found in <https://merck.github.io/r2rtf/articles/example-fig
 
 ```{r}
 # Save as PNG file
-grid.draw.ggsurvplot <- function(x) survminer:::print.ggsurvplot(x, newpage = FALSE)
-ggsave("tlf/fig_km2.png", plot = fig_km2, width = 10, height = 6)
+# grid.draw.ggsurvplot <- function(x) survminer:::print.ggsurvplot(x, newpage = FALSE)
+ggsave("tlf/fig_km2.png",
+       plot = fig_km2,
+       width = 10,
+       height = 6)
 
 # Create RTF figure
 rtf_read_png("tlf/fig_km2.png") %>% # Read PNG files from the file path
-  rtf_title("Kaplan-Meier Plot for Time to First Dermatologic Event by Treatment Group", "All Participants") %>% # Add title or subtitle
+  rtf_title(
+    "Kaplan-Meier Plot for Time to First Dermatologic Event by Treatment Group",
+    "All Participants"
+  ) %>% # Add title or subtitle
   rtf_footnote("footnote") %>% # Add footnote
   rtf_source("[datasource: adam-adtte]") %>% # Add data source
   rtf_figure(fig_width = 6, fig_height = 3.6) %>% # Set proportional figure size to the original PNG figure size
@@ -177,23 +233,30 @@ knitr::include_graphics("tlf/fig_km2.pdf")
 Equivalently, the `visR` package can be also used to plot the KM curve fitting CDISC ADaM standard. In the following we will illustrate how to create KM plot in RTF format using `visR`. Firstly, similar to the previous sections, create a png file.
 
 ```{r}
-# Estimate KM
-surv_mod <- visR::estimate_KM(data = adtte_ttde, strata = "TRTP", AVAL = "AVAL_m")
-# save plot
+# Estimate KM data point
+surv_mod <-
+  visR::estimate_KM(data = adtte_ttde,
+                    strata = "TRTP",
+                    AVAL = "AVAL_m")
+# save plot with white background and Times New Roman font
 ggplot2::theme_set(theme_bw() + theme(text = element_text(family = 'serif')))
 
-png("tlf/fig_km3.png", width = 3000, height = 2000, res = 400)
-KM <- visR::visr(surv_mod,
-           y_label = "Survival Probability\n",
-           x_label = "Time in Months",
-           x_ticks = 0:6,
-           y_ticks = seq(0,1,0.1),
-           legend_position = "bottom") %>%
-    add_CNSR() 
+png("tlf/fig_km3.png",
+    width = 3000,
+    height = 2000,
+    res = 400)
+KM <- visR::visr(
+  surv_mod,
+  y_label = "Survival Probability\n",
+  x_label = "Time in Months",
+  x_ticks = 0:6,
+  y_ticks = seq(0, 1, 0.1),
+  legend_position = "bottom"
+) %>%
+  add_CNSR()
 
 KM %>%
-    visR::add_risktable(group = "statlist")  # seemingly current visR::add_risktable() does not support different fonts, will open an issue in the `visR` Github 
-
+  visR::add_risktable(group = "statlist")  # seemingly current visR::add_risktable() does not support different fonts, will open an issue in the `visR` Github
 
 dev.off()
 ```
@@ -203,7 +266,10 @@ Then create RTF file
 ```{r}
 # Create RTF figure
 rtf_read_png("tlf/fig_km3.png") %>% # Read the PNG file from the file path
-  rtf_title("Kaplan-Meier Plot for Time to First Dermatologic Event by Treatment Group", "All Participants") %>% # Add title or subtitle
+  rtf_title(
+    "Kaplan-Meier Plot for Time to First Dermatologic Event by Treatment Group",
+    "All Participants"
+  ) %>% # Add title or subtitle
   rtf_footnote("footnote") %>% # Add footnote
   rtf_source("[datasource: adam-adtte]") %>% # Add data source
   rtf_figure(fig_width = 6, fig_height = 4) %>% # Set proportional figure size to the original PNG figure size
@@ -217,36 +283,44 @@ Alternatively, we can also directly generate PDF file for KM plot with title and
 # save plot as PDF file
 pdf.options(reset = TRUE, onefile = FALSE)
 pdf("tlf/fig_km3.pdf", width = 12, height = 6)
-KM <- visR::visr(surv_mod,
-           y_label = "Survival Probability\n",
-           x_label = "Time in Months",
-           x_ticks = 0:6,
-           y_ticks = seq(0,1,0.1)) %>%
-    add_CNSR() 
+
+KM <- visR::visr(
+  surv_mod,
+  y_label = "Survival Probability\n",
+  x_label = "Time in Months",
+  x_ticks = 0:6,
+  y_ticks = seq(0, 1, 0.1)
+) %>%
+  add_CNSR()
 
 KM1 <- KM %>%
-    visR::add_risktable(group = "statlist")  # seemingly current visR::add_risktable() does not support different fonts, will open an issue in the `visR` Github 
+  visR::add_risktable(group = "statlist")  # seemingly current visR::add_risktable() does not support different fonts, will open an issue in the `visR` Github
 
-title <- cowplot::ggdraw() + 
+title <- cowplot::ggdraw() +
   cowplot::draw_label(
     "Kaplan-Meier Plot for Time to First Dermatologic Event by Treatment Group\nAll Participants",
     fontfamily = "serif",
-    size=12
-  ) 
-caption <- cowplot::ggdraw() + 
+    size = 12
+  )
+caption <- cowplot::ggdraw() +
   cowplot::draw_label(
-    paste0("\nProgram: tlf-efficacy-km.Rmd [", Sys.time(), "]\n[Datasource: adam-adtte]"),
+    paste0(
+      "\nProgram: tlf-efficacy-km.Rmd [",
+      Sys.time(),
+      "]\n[Datasource: adam-adtte]"
+    ),
     fontfamily = "serif",
-    size=12
-  ) 
+    size = 12
+  )
 
-KM2 <- cowplot::plot_grid(
-  title, KM1, caption,
-  ncol = 1,
-  rel_heights = c(0.1,0.8,0.1)
-) #%>%
- # visR::apply_theme(theme_times)
+KM2 <- cowplot::plot_grid(title,
+                          KM1,
+                          caption,
+                          ncol = 1,
+                          rel_heights = c(0.1, 0.8, 0.1)) #%>%
+# visR::apply_theme(theme_times)
 print(KM2)
+
 dev.off()
 ```
 
