@@ -158,7 +158,7 @@ grid.draw.ggsurvplot <- function(x) survminer:::print.ggsurvplot(x, newpage = FA
 ggsave("tlf/fig_km2.png", plot = fig_km2, width = 10, height = 6)
 
 # Create RTF figure
-rtf_read_png("tlf/fig_km.png") %>% # Read PNG files from the file path
+rtf_read_png("tlf/fig_km2.png") %>% # Read PNG files from the file path
   rtf_title("Kaplan-Meier Plot for Time to First Dermatologic Event by Treatment Group", "All Participants") %>% # Add title or subtitle
   rtf_footnote("footnote") %>% # Add footnote
   rtf_source("[datasource: adam-adtte]") %>% # Add data source
@@ -251,7 +251,7 @@ dev.off()
 ```
 
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
-knitr::include_graphics("pdf/fig_km3.pdf")
+knitr::include_graphics("tlf/fig_km3.pdf")
 ```
 
 
