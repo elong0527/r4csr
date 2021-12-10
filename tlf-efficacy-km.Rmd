@@ -13,16 +13,13 @@ library(haven) # Read SAS data
 library(dplyr) # Manipulate data
 library(r2rtf) # Reporting in RTF format
 library(survival) # Fit survival model
-library(survminer) # K-M plot with risk table
+library(survminer) # K-M plot with risk table; optional for user's preference
+library(visR) # K-M plot with risk table; optional for user's preference
 library(forcats) # Reorder ordinal variable level based on preference
 ```
 
 In this chapter, we illustrate how to create a Kaplan-Meier plot in a study.
 For the survival analysis in efficacy, time to dermatologic event (TTDE) will be analyzed.
-
-```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
-knitr::include_graphics("tlf/fig_km.pdf")
-```
 
 ## Analysis dataset
 
@@ -44,34 +41,94 @@ using `PARAMCD` (or `PARAM`, `PRAMN`), then select the survival analysis related
 adtte_ttde <- adtte %>%
   filter(PARAMCD == "TTDE") %>%
   select(TRTP, TRTAN, AVAL, CNSR) %>%
-  mutate(TRTP = forcats::fct_reorder(TRTP, TRTAN)) # Recorder levels
+  mutate(TRTP = forcats::fct_reorder(TRTP, TRTAN), # Recorder levels
+         AVAL_m = AVAL/30.4367) # convert Day to Month
 ```
 
 ## Create Kaplan-Meier curve
 
-The `survival` package is used to create the curve data points, 
-then `survminer` package can be used to plot the K-M curve with an elegant `ggplot2` style. 
-There are tons of customized options for users to create a K-M plot
-with risk table and testing result (nominal p-value). 
-More details can be found in `?survminer::ggsurvplot`.
-
-Users can use `Surv()` with formula directly, 
+The `survival` package is used to create the curve data points, users can use `Surv()` with formula directly, 
 or use a fitted Cox model with the `coxph()` function 
 if we also want to obtain other information, i.e. hazard ratio, survival rates, etc. 
 <!-- TODO: "Analysis of Survival Endpoint Table" Chapter -->
 
 ```{r}
-fit <- survfit(Surv(AVAL, 1 - CNSR) ~ TRTP, data = adtte_ttde)
+# Fit survival model, convert the time value from Days to Month
+fit <- survfit(Surv(AVAL_m, 1 - CNSR) ~ TRTP, data = adtte_ttde)
 ```
 
+
+There are various ways to create a KM plot. In the following, we will illustrate how to use `survival`, `survminer` or `visR` to generate a KM plot with a risk table, respectively. There are pro and con for using these package. Compared with the basic `survival` package, `survminer` or `visR` package can be easily used to customize a nice-look KM plot. However, the `survminer` or `visR` package has relative heavy dependencies (Ref: https://github.com/elong0527/r4csr/issues/50#issuecomment-985109643), which may increase risk of reproducibility (Section 4.2 of the [White Paper](https://www.pharmar.org/white-paper/)).
+
+### Plot with `survival`
+
+Firstly, create a function `risk_tab()` to count cumulative number at risk, then display them as the risk table.
+
 ```{r}
-fig_km <- ggsurvplot(
+risk_tab <- function(tlim, time) {
+  n_risk <- NULL
+  for (i in tlim){
+    n_risk <- c(n_risk, sum(time >= i))
+  }
+  return(n_risk)
+}
+```
+
+Then create the KM plot and save as a `.png` file.
+
+```{r}
+# Save as a PNG file
+png(file = "tlf/fig_km1.png", width = 3000, height = 2000, res = 400)
+
+par(mfrow = c(1, 1), mar = c(9, 11, 1, 1), family = "Times") # Set plot margins
+
+
+plot(fit, xlab = "Time in Months", ylab = "Survival probability", lwd = 2, mark.time = T, col = c(2, 3, 4), lty = c(1, 2, 3))
+legend("topright", lwd = 2, cex = 0.9, col = c(2, 3, 4), lty = c(1, 2, 3), legend = levels(adtte_ttde$TRTP), bty = "n")
+mtext("Number at risk", side = 1, line = 4, at = 0)
+grid <- 0:6
+mtext(c("Placebo", risk_tab(grid,adtte_ttde$AVAL[adtte_ttde$TRTP=="Placebo"]/30.4367)), side = 1, adj = c(1, rep(NA, length(grid))), line = 5, at = c(-0.8, grid))
+mtext(c("Xanomeline Low Dose", risk_tab(grid,adtte_ttde$AVAL[adtte_ttde$TRTP=="Xanomeline Low Dose"]/30.4367)), side = 1, adj = c(1, rep(NA, length(grid))), line = 6, at = c(-0.8, grid))
+mtext(c("Xanomeline High Dose", risk_tab(grid,adtte_ttde$AVAL[adtte_ttde$TRTP=="Xanomeline High Dose"]/30.4367)), side = 1, adj = c(1, rep(NA, length(grid))), line = 7, at = c(-0.8, grid))
+
+dev.off()
+```
+
+Then we can use the `r2rtf` package to create a formatted RTF figure. 
+More details can be found in <https://merck.github.io/r2rtf/articles/example-figure.html>.
+
+```{r}
+# Create RTF figure
+rtf_read_png("tlf/fig_km1.png") %>% # Read the PNG file from the file path
+  rtf_title("Kaplan-Meier Plot for Time to First Dermatologic Event by Treatment Group", "All Participants") %>% # Add title or subtitle
+  rtf_footnote("footnote") %>% # Add footnote
+  rtf_source("[datasource: adam-adtte]") %>% # Add data source
+  rtf_figure(fig_width = 6, fig_height = 4) %>% # Set proportional figure size to the original PNG figure size
+  rtf_encode(doc_type = "figure") %>% # Encode rtf as figure
+  write_rtf(file = "tlf/fig_km1.rtf")
+```
+
+
+```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("tlf/fig_km1.pdf")
+```
+
+### Plot with `survminer`
+
+Alternatively, the `survminer` package can be also used to plot the KM curve with an elegant `ggplot2` style. 
+There are tons of customized options for users to create a K-M plot
+with risk table and testing result (nominal p-value). 
+More details can be found in `?survminer::ggsurvplot`.
+
+
+```{r}
+fig_km2 <- ggsurvplot(
   fit,
   xlab = "Time in Months",
   ylab = "Survival Probability",
-  break.time.by = 30.4367,
-  xscale = "d_m",
-  xlim = c(0, 200),
+  break.time.by = 1,
+#  xscale = "d_m",
+#  xlim = c(0, 200),
   linetype = c(1, 2, 3),
   risk.table = TRUE,
   risk.table.height = 0.3, # Useful when you have multiple groups
@@ -98,30 +155,111 @@ More details can be found in <https://merck.github.io/r2rtf/articles/example-fig
 ```{r}
 # Save as PNG file
 grid.draw.ggsurvplot <- function(x) survminer:::print.ggsurvplot(x, newpage = FALSE)
-ggsave("tlf/fig_km.png", plot = fig_km, width = 10, height = 6)
+ggsave("tlf/fig_km2.png", plot = fig_km2, width = 10, height = 6)
 
 # Create RTF figure
 rtf_read_png("tlf/fig_km.png") %>% # Read PNG files from the file path
-  rtf_title("Time to Dermatologic Event by Treatment Group", "All Participants") %>% # Add title or subtitle
+  rtf_title("Kaplan-Meier Plot for Time to First Dermatologic Event by Treatment Group", "All Participants") %>% # Add title or subtitle
   rtf_footnote("footnote") %>% # Add footnote
   rtf_source("[datasource: adam-adtte]") %>% # Add data source
   rtf_figure(fig_width = 6, fig_height = 3.6) %>% # Set proportional figure size to the original PNG figure size
   rtf_encode(doc_type = "figure") %>% # Encode rtf as figure
-  write_rtf(file = "tlf/fig_km.rtf")
+  write_rtf(file = "tlf/fig_km2.rtf")
 ```
 
-```{r, include=FALSE}
-rtf2pdf("tlf/fig_km.rtf")
+
+```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("tlf/fig_km2.pdf")
+```
+
+### Plot with `visR`
+
+Equivalently, the `visR` package can be also used to plot the KM curve fitting CDISC ADaM standard. In the following we will illustrate how to create KM plot in RTF format using `visR`. Firstly, similar to the previous sections, create a png file.
+
+```{r}
+# Estimate KM
+surv_mod <- visR::estimate_KM(data = adtte_ttde, strata = "TRTP", AVAL = "AVAL_m")
+# save plot
+ggplot2::theme_set(theme_bw() + theme(text = element_text(family = 'serif')))
+
+png("tlf/fig_km3.png", width = 3000, height = 2000, res = 400)
+KM <- visR::visr(surv_mod,
+           y_label = "Survival Probability\n",
+           x_label = "Time in Months",
+           x_ticks = 0:6,
+           y_ticks = seq(0,1,0.1),
+           legend_position = "bottom") %>%
+    add_CNSR() 
+
+KM %>%
+    visR::add_risktable(group = "statlist")  # seemingly current visR::add_risktable() does not support different fonts, will open an issue in the `visR` Github 
+
+
+dev.off()
+```
+
+Then create RTF file
+
+```{r}
+# Create RTF figure
+rtf_read_png("tlf/fig_km3.png") %>% # Read the PNG file from the file path
+  rtf_title("Kaplan-Meier Plot for Time to First Dermatologic Event by Treatment Group", "All Participants") %>% # Add title or subtitle
+  rtf_footnote("footnote") %>% # Add footnote
+  rtf_source("[datasource: adam-adtte]") %>% # Add data source
+  rtf_figure(fig_width = 6, fig_height = 4) %>% # Set proportional figure size to the original PNG figure size
+  rtf_encode(doc_type = "figure") %>% # Encode rtf as figure
+  write_rtf(file = "tlf/fig_km3.rtf")
+```
+
+Alternatively, we can also directly generate PDF file for KM plot with title and footnote (Ref: https://github.com/RConsortium/submissions-pilot1/blob/main/vignettes/tlf-kmplot.Rmd).
+
+```{r}
+# save plot as PDF file
+pdf.options(reset = TRUE, onefile = FALSE)
+pdf("tlf/fig_km3.pdf", width = 12, height = 6)
+KM <- visR::visr(surv_mod,
+           y_label = "Survival Probability\n",
+           x_label = "Time in Months",
+           x_ticks = 0:6,
+           y_ticks = seq(0,1,0.1)) %>%
+    add_CNSR() 
+
+KM1 <- KM %>%
+    visR::add_risktable(group = "statlist")  # seemingly current visR::add_risktable() does not support different fonts, will open an issue in the `visR` Github 
+
+title <- cowplot::ggdraw() + 
+  cowplot::draw_label(
+    "Kaplan-Meier Plot for Time to First Dermatologic Event by Treatment Group\nAll Participants",
+    fontfamily = "serif",
+    size=12
+  ) 
+caption <- cowplot::ggdraw() + 
+  cowplot::draw_label(
+    paste0("\nProgram: tlf-efficacy-km.Rmd [", Sys.time(), "]\n[Datasource: adam-adtte]"),
+    fontfamily = "serif",
+    size=12
+  ) 
+
+KM2 <- cowplot::plot_grid(
+  title, KM1, caption,
+  ncol = 1,
+  rel_heights = c(0.1,0.8,0.1)
+) #%>%
+ # visR::apply_theme(theme_times)
+print(KM2)
+dev.off()
 ```
 
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
-knitr::include_graphics("tlf/fig_km.pdf")
+knitr::include_graphics("pdf/fig_km3.pdf")
 ```
+
+
 
 In conclusion, the procedure to generate the above efficacy K-M plot is summarized as follows.
 
 - Step 1: Read the data `adtte` into R.
 - Step 2: Define the analysis-ready dataset. In this example, we define the analysis dataset for the TTDE endpoint `adtte_ttde`.
 - Step 3: Create the curve's data points using the `Surv()` formula directly 
-or fitted survival models beforehand. Then plot and customize the K-M curve with risk table using the `survminer` package.
-- Step 4: Save the output as a PNG file, then format it into an RTF table.
+or fitted survival models beforehand. Then plot and customize the K-M curve with risk table using `survival`, `survminer` or `visR` package.
+- Step 4: Save the output as a PNG file, then format it into an RTF table. (The output format is based on user's preference)
