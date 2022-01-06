@@ -19,7 +19,7 @@ In this chapter, we illustrate how to create a simplified Kaplan-Meier plot in a
 For the survival analysis in efficacy, time to dermatologic event (TTDE) will be analyzed.
 
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
-knitr::include_graphics("tlf/fig_km.pdf")
+# knitr::include_graphics("tlf/tlf_km.pdf")
 ```
 
 ::: {.rmdnote}
@@ -98,15 +98,15 @@ rtf_read_figure("tlf/fig_km.png") %>% # Read the PNG file from the file path
   rtf_source("[datasource: adam-adtte]") %>% # Add data source
   rtf_figure(fig_width = 6, fig_height = 4) %>% # Set proportional figure size to the original PNG figure size
   rtf_encode(doc_type = "figure") %>% # Encode rtf as figure
-  write_rtf(file = "tlf/fig_km.rtf")
+  write_rtf(file = "tlf/tlf_km.rtf")
 ```
 
 ```{r, include=FALSE}
-rtf2pdf("tlf/tlf_eff.rtf")
+rtf2pdf("tlf/tlf_km.rtf")
 ```
 
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
-knitr::include_graphics("tlf/fig_km.pdf")
+knitr::include_graphics("tlf/tlf_km.pdf")
 ```
 
 In conclusion, the steps to create a K-M plot are as follows.
