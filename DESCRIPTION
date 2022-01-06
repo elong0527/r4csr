@@ -8,6 +8,7 @@ Authors@R: c(
     person("Yalin", "Zhu", role = "aut")
     )
 URL: https://r4csr.org/
+Encoding: UTF-8
 Imports:
   bslib,
   bookdown,
@@ -22,6 +23,4 @@ Imports:
   table1,
   gert,
   servr,
-  pkglite,
-  survminer
-Encoding: UTF-8
+  pkglite
