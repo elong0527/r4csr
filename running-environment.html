@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="In the previous chapter, we generated instructions to manually create the running environments for reproducing the A&amp;R deliverables. In this chapter, we focus on automating the creation of the R...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet">
 <script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-MKYDL3PNW1"></script><script>
@@ -143,7 +143,7 @@ single function call to <code>use_cleanslate()</code>:</p>
 <li>Create a project folder under <code>C:/temp/</code> with a <code>.Rproj</code> file;</li>
 <li>Download R <code>4.1.1</code> installer from CRAN, and install it into <code>C:/temp/R/</code>;</li>
 <li>Not install Rtools (by default, <code>rtools_version = NULL</code>);</li>
-<li>Create a <code>.Rprofile</code> file under the project folder, set <code><a href="https://rdrr.io/r/base/options.html">options(repos)</a></code>
+<li>Create a <code>.Rprofile</code> file under the project folder, set <code>options(repos)</code>
 to use the specified <code>repo</code> (an MRAN snapshot in this example),
 and give instruction to set the R binary path in RStudio;</li>
 <li>Create a <code>.Renviron</code> file under the project folder and set the
@@ -163,11 +163,11 @@ functions to tailor each aspect, for example:</p>
 <div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st">"cleanslate"</span><span class="op">)</span>
 
-<span class="st">"C:/temp/"</span> <span class="op">%&gt;%</span>
-  <span class="fu">use_project</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">use_rprofile</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">use_renviron</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">use_r_version</span><span class="op">(</span>version <span class="op">=</span> <span class="st">"4.1.1"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<span class="st">"C:/temp/"</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">use_project</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">use_rprofile</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">use_renviron</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">use_r_version</span><span class="op">(</span>version <span class="op">=</span> <span class="st">"4.1.1"</span><span class="op">)</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span>
   <span class="fu">use_rtools</span><span class="op">(</span>version <span class="op">=</span> <span class="st">"rtools40"</span><span class="op">)</span></code></pre></div>
 <p>The project context functions
 (<code>use_project()</code>, <code>use_rprofile()</code>, <code>use_renviron</code>) support custom templates
@@ -267,7 +267,7 @@ one can also use its RStudio addin. After <code>cleanslate</code>
 is installed, click <code>Addins</code> -&gt; <code>cleanslate</code> -&gt; <code>Create portable R environment</code>
 in RStudio, or call <code>cleanslate:::create_env_addin()</code> to open it.</p>
 <div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-151"></span>
+<span style="display:block;" id="fig:unnamed-chunk-150"></span>
 <img src="images/cleanslate-addin.png" alt="cleanslate RStudio addin" width="65%"><p class="caption">
 FIGURE 14.1: cleanslate RStudio addin
 </p>

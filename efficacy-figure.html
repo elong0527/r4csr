@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Following the ICH E3 guidance, primary and secondary efficacy endpoints need to be summarized in Section 11.4, Efficacy Results and Tabulations of Individual Participant. library(haven) # Read SAS...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet">
 <script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-MKYDL3PNW1"></script><script>
@@ -88,12 +88,17 @@ in Section 11.4, Efficacy Results and Tabulations of Individual Participant.</p>
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span> <span class="co"># Read SAS data</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://merck.github.io/r2rtf/">r2rtf</a></span><span class="op">)</span> <span class="co"># Reporting in RTF format</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/therneau/survival">survival</a></span><span class="op">)</span> <span class="co"># Fit survival model</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rpkgs.datanovia.com/survminer/index.html">survminer</a></span><span class="op">)</span> <span class="co"># K-M plot with risk table</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://forcats.tidyverse.org">forcats</a></span><span class="op">)</span> <span class="co"># Reorder ordinal variable level based on preference</span></code></pre></div>
-<p>In this chapter, we illustrate how to create a Kaplan-Meier plot in a study.
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/therneau/survival">survival</a></span><span class="op">)</span> <span class="co"># Fit survival model</span></code></pre></div>
+<p>In this chapter, we illustrate how to create a simplified Kaplan-Meier plot in a study.
 For the survival analysis in efficacy, time to dermatologic event (TTDE) will be analyzed.</p>
-<embed src="tlf/fig_km.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><div id="analysis-dataset-1" class="section level2">
+<div class="rmdnote">
+<p>R packages such as
+<a href="https://cran.r-project.org/package=visR">visR</a> and
+<a href="https://cran.r-project.org/package=survminer">survminer</a>
+can create more informative Kaplan-Meier plots.
+Interested readers can find examples on their websites.</p>
+</div>
+<div id="analysis-dataset-1" class="section level2">
 <h2>
 <span class="header-section-number">6.1</span> Analysis dataset<a class="anchor" aria-label="anchor" href="#analysis-dataset-1"><i class="fas fa-link"></i></a>
 </h2>
@@ -105,81 +110,70 @@ filter all records for the efficacy endpoint of time to event of interest (<code
 using <code>PARAMCD</code> (or <code>PARAM</code>, <code>PRAMN</code>), then select the survival analysis related variables:</p>
 <ul>
 <li>
-<code>TRTP</code>: treatment arm: (using corresponding numeric code <code>TRTAN</code> to re-order the levels, “Placebo” will be the reference level)</li>
+<code>TRTP</code>: treatment arm (using corresponding numeric code <code>TRTAN</code> to re-order the levels, “Placebo” will be the reference level)</li>
 <li>
 <code>AVAL</code>: time-to-event analysis value</li>
 <li>
 <code>CNSR</code>: event (censoring) status</li>
 </ul>
 <div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">adtte_ttde</span> <span class="op">&lt;-</span> <span class="va">adtte</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">PARAMCD</span> <span class="op">==</span> <span class="st">"TTDE"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">TRTP</span>, <span class="va">TRTAN</span>, <span class="va">AVAL</span>, <span class="va">CNSR</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>TRTP <span class="op">=</span> <span class="fu">forcats</span><span class="fu">::</span><span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder</a></span><span class="op">(</span><span class="va">TRTP</span>, <span class="va">TRTAN</span><span class="op">)</span><span class="op">)</span> <span class="co"># Recorder levels</span></code></pre></div>
+<code class="sourceCode R"><span class="va">adtte_ttde</span> <span class="op">&lt;-</span> <span class="va">adtte</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">PARAMCD</span> <span class="op">==</span> <span class="st">"TTDE"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">TRTP</span>, <span class="va">TRTAN</span>, <span class="va">AVAL</span>, <span class="va">CNSR</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    TRTP <span class="op">=</span> <span class="fu">forcats</span><span class="fu">::</span><span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder</a></span><span class="op">(</span><span class="va">TRTP</span>, <span class="va">TRTAN</span><span class="op">)</span>, <span class="co"># Recorder levels</span>
+    AVAL_m <span class="op">=</span> <span class="va">AVAL</span> <span class="op">/</span> <span class="fl">30.4367</span> <span class="co"># Convert Day to Month</span>
+  <span class="op">)</span></code></pre></div>
 </div>
 <div id="create-kaplan-meier-curve" class="section level2">
 <h2>
 <span class="header-section-number">6.2</span> Create Kaplan-Meier curve<a class="anchor" aria-label="anchor" href="#create-kaplan-meier-curve"><i class="fas fa-link"></i></a>
 </h2>
-<p>The <code>survival</code> package is used to create the curve data points,
-then <code>survminer</code> package can be used to plot the K-M curve with an elegant <code>ggplot2</code> style.
-There are tons of customized options for users to create a K-M plot
-with risk table and testing result (nominal p-value).
-More details can be found in <code><a href="https://rdrr.io/pkg/survminer/man/ggsurvplot.html">?survminer::ggsurvplot</a></code>.</p>
-<p>Users can use <code><a href="https://rdrr.io/pkg/survival/man/Surv.html">Surv()</a></code> with formula directly,
-or use a fitted Cox model with the <code><a href="https://rdrr.io/pkg/survival/man/coxph.html">coxph()</a></code> function
-if we also want to obtain other information, i.e. hazard ratio, survival rates, etc.
-<!-- TODO: "Analysis of Survival Endpoint Table" Chapter --></p>
+<p>The <code>survival</code> package is used to obtain the K-M estimate.</p>
 <div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/survival/man/survfit.html">survfit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html">Surv</a></span><span class="op">(</span><span class="va">AVAL</span>, <span class="fl">1</span> <span class="op">-</span> <span class="va">CNSR</span><span class="op">)</span> <span class="op">~</span> <span class="va">TRTP</span>, data <span class="op">=</span> <span class="va">adtte_ttde</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="co"># Fit survival model, convert the time value from Days to Month</span>
+<span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/survival/man/survfit.html">survfit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html">Surv</a></span><span class="op">(</span><span class="va">AVAL_m</span>, <span class="fl">1</span> <span class="op">-</span> <span class="va">CNSR</span><span class="op">)</span> <span class="op">~</span> <span class="va">TRTP</span>, data <span class="op">=</span> <span class="va">adtte_ttde</span><span class="op">)</span></code></pre></div>
+<p>We save the simplified K-M plot into a <code>.png</code> file using code below.</p>
 <div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">fig_km</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/survminer/man/ggsurvplot.html">ggsurvplot</a></span><span class="op">(</span>
+<code class="sourceCode R"><span class="co"># Save as a PNG file</span>
+<span class="fu"><a href="https://rdrr.io/r/grDevices/png.html">png</a></span><span class="op">(</span>
+  file <span class="op">=</span> <span class="st">"tlf/fig_km.png"</span>,
+  width <span class="op">=</span> <span class="fl">3000</span>,
+  height <span class="op">=</span> <span class="fl">2000</span>,
+  res <span class="op">=</span> <span class="fl">300</span>
+<span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>
   <span class="va">fit</span>,
   xlab <span class="op">=</span> <span class="st">"Time in Months"</span>,
-  ylab <span class="op">=</span> <span class="st">"Survival Probability"</span>,
-  break.time.by <span class="op">=</span> <span class="fl">30.4367</span>,
-  xscale <span class="op">=</span> <span class="st">"d_m"</span>,
-  xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">200</span><span class="op">)</span>,
-  linetype <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>,
-  risk.table <span class="op">=</span> <span class="cn">TRUE</span>,
-  risk.table.height <span class="op">=</span> <span class="fl">0.3</span>, <span class="co"># Useful when you have multiple groups</span>
-  legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.8</span>, <span class="fl">0.9</span><span class="op">)</span>, legend.title <span class="op">=</span> <span class="st">""</span>,
-  legend.labs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">adtte_ttde</span><span class="op">$</span><span class="va">TRTP</span><span class="op">)</span><span class="op">)</span>,
-  censor.size <span class="op">=</span> <span class="fl">4</span>,
-  size <span class="op">=</span> <span class="fl">0.8</span>,
-  title <span class="op">=</span> <span class="st">""</span>,
-  censor.shape <span class="op">=</span> <span class="st">"|"</span>,
-  pval <span class="op">=</span> <span class="cn">TRUE</span>,
-  pval.method <span class="op">=</span> <span class="cn">TRUE</span>,
-  pval.coord <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.1</span><span class="op">)</span>,
-  pval.method.coord <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.2</span><span class="op">)</span>,
-  pval.size <span class="op">=</span> <span class="fl">5</span>,
-  font.family <span class="op">=</span> <span class="st">"Times New Roman"</span>,
-  ggtheme <span class="op">=</span> <span class="fu">theme_classic2</span><span class="op">(</span>base_family <span class="op">=</span> <span class="st">"Times New Roman"</span>, base_size <span class="op">=</span> <span class="fl">18</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
-<p>Then we can save the figure as a <code>.png</code> file,
-and use the <code>r2rtf</code> package to create a formatted RTF figure.
-More details can be found in <a href="https://merck.github.io/r2rtf/articles/example-figure.html" class="uri">https://merck.github.io/r2rtf/articles/example-figure.html</a>.</p>
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Save as PNG file</span>
-<span class="va">grid.draw.ggsurvplot</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">survminer</span><span class="fu">:::</span><span class="fu"><a href="https://rdrr.io/pkg/survminer/man/ggsurvplot.html">print.ggsurvplot</a></span><span class="op">(</span><span class="va">x</span>, newpage <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="fu">ggsave</span><span class="op">(</span><span class="st">"tlf/fig_km.png"</span>, plot <span class="op">=</span> <span class="va">fig_km</span>, width <span class="op">=</span> <span class="fl">10</span>, height <span class="op">=</span> <span class="fl">6</span><span class="op">)</span>
+  ylab <span class="op">=</span> <span class="st">"Survival probability"</span>,
+  mark.time <span class="op">=</span> <span class="cn">TRUE</span>,
+  lwd <span class="op">=</span> <span class="fl">2</span>,
+  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span>,
+  lty <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>
+<span class="op">)</span>
 
-<span class="co"># Create RTF figure</span>
-<span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_read_png.html">rtf_read_png</a></span><span class="op">(</span><span class="st">"tlf/fig_km.png"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Read PNG files from the file path</span>
-  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_title.html">rtf_title</a></span><span class="op">(</span><span class="st">"Time to Dermatologic Event by Treatment Group"</span>, <span class="st">"All Participants"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Add title or subtitle</span>
-  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_footnote.html">rtf_footnote</a></span><span class="op">(</span><span class="st">"footnote"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Add footnote</span>
-  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_source.html">rtf_source</a></span><span class="op">(</span><span class="st">"[datasource: adam-adtte]"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Add data source</span>
-  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_figure.html">rtf_figure</a></span><span class="op">(</span>fig_width <span class="op">=</span> <span class="fl">6</span>, fig_height <span class="op">=</span> <span class="fl">3.6</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Set proportional figure size to the original PNG figure size</span>
-  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span>doc_type <span class="op">=</span> <span class="st">"figure"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Encode rtf as figure</span>
-  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"tlf/fig_km.rtf"</span><span class="op">)</span></code></pre></div>
-<embed src="tlf/fig_km.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In conclusion, the procedure to generate the above efficacy K-M plot is summarized as follows.</p>
+<span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>Now, we can use the <code>r2rtf</code> package to create a formatted RTF figure.
+More details can be found on the <a href="https://merck.github.io/r2rtf/articles/example-figure.html">r2rtf website</a>.</p>
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Create RTF figure</span>
+<span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_read_figure.html">rtf_read_figure</a></span><span class="op">(</span><span class="st">"tlf/fig_km.png"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># Read the PNG file from the file path</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_title.html">rtf_title</a></span><span class="op">(</span>
+    <span class="st">"Kaplan-Meier Plot for Time to First Dermatologic Event by Treatment Group"</span>,
+    <span class="st">"All Participants"</span>
+  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># Add title or subtitle</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_footnote.html">rtf_footnote</a></span><span class="op">(</span><span class="st">"footnote"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># Add footnote</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_source.html">rtf_source</a></span><span class="op">(</span><span class="st">"[datasource: adam-adtte]"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># Add data source</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_figure.html">rtf_figure</a></span><span class="op">(</span>fig_width <span class="op">=</span> <span class="fl">6</span>, fig_height <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># Set proportional figure size to the original PNG figure size</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span>doc_type <span class="op">=</span> <span class="st">"figure"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># Encode figure as rtf</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"tlf/tlf_km.rtf"</span><span class="op">)</span></code></pre></div>
+<embed src="tlf/tlf_km.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In conclusion, the steps to create a K-M plot are as follows.</p>
 <ul>
 <li>Step 1: Read the data <code>adtte</code> into R.</li>
 <li>Step 2: Define the analysis-ready dataset. In this example, we define the analysis dataset for the TTDE endpoint <code>adtte_ttde</code>.</li>
-<li>Step 3: Create the curve’s data points using the <code><a href="https://rdrr.io/pkg/survival/man/Surv.html">Surv()</a></code> formula directly
-or fitted survival models beforehand. Then plot and customize the K-M curve with risk table using the <code>survminer</code> package.</li>
-<li>Step 4: Save the output as a PNG file, then format it into an RTF table.</li>
+<li>Step 3: Save figures into <code>png</code> files based on required analysis specification.</li>
+<li>Step 4: Create RTF output using the <code>r2rtf</code> package.</li>
 </ul>
 </div>
 </div>

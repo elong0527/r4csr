@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="In this chapter, we will first give a high-level overview of what assets in the eCTD submission package we should focus on when submitting R code. Then, we will discuss how to prepare the...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet">
 <script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-MKYDL3PNW1"></script><script>
@@ -269,11 +269,11 @@ You should be able to pack the package with a single pipe:</p>
 <div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://merck.github.io/pkglite/">"pkglite"</a></span><span class="op">)</span>
 
-<span class="st">"esubdemo/"</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://merck.github.io/pkglite/reference/collate.html">collate</a></span><span class="op">(</span><span class="fu"><a href="https://merck.github.io/pkglite/reference/file_ectd.html">file_ectd</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://merck.github.io/pkglite/reference/file_auto.html">file_auto</a></span><span class="op">(</span><span class="st">"inst"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<span class="st">"esubdemo/"</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://merck.github.io/pkglite/reference/collate.html">collate</a></span><span class="op">(</span><span class="fu"><a href="https://merck.github.io/pkglite/reference/file_ectd.html">file_ectd</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://merck.github.io/pkglite/reference/file_auto.html">file_auto</a></span><span class="op">(</span><span class="st">"inst"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://merck.github.io/pkglite/reference/pack.html">pack</a></span><span class="op">(</span>output <span class="op">=</span> <span class="st">"r0pkgs.txt"</span><span class="op">)</span></code></pre></div>
 <div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-136"></span>
+<span style="display:block;" id="fig:unnamed-chunk-135"></span>
 <img src="images/pack.png" alt="Output of pkglite::pack()" width="100%"><p class="caption">
 FIGURE 13.1: Output of pkglite::pack()
 </p>
@@ -282,7 +282,7 @@ FIGURE 13.1: Output of pkglite::pack()
 <div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/file.edit.html">file.edit</a></span><span class="op">(</span><span class="st">"r0pkgs.txt"</span><span class="op">)</span></code></pre></div>
 <div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-138"></span>
+<span style="display:block;" id="fig:unnamed-chunk-137"></span>
 <img src="images/preview-txt.png" alt="Preview the generated text file" width="100%"><p class="caption">
 FIGURE 13.2: Preview the generated text file
 </p>
@@ -298,8 +298,8 @@ to be packed for submission in a flexible yet principled way.</p>
 <p>To pack multiple R packages, simply feed multiple file collections as inputs:</p>
 <div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://merck.github.io/pkglite/reference/pack.html">pack</a></span><span class="op">(</span>
-  <span class="st">"/path/to/pkg1/"</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://merck.github.io/pkglite/reference/collate.html">collate</a></span><span class="op">(</span><span class="fu"><a href="https://merck.github.io/pkglite/reference/file_ectd.html">file_ectd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,
-  <span class="st">"/path/to/pkg2/"</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://merck.github.io/pkglite/reference/collate.html">collate</a></span><span class="op">(</span><span class="fu"><a href="https://merck.github.io/pkglite/reference/file_ectd.html">file_ectd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,
+  <span class="st">"/path/to/pkg1/"</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://merck.github.io/pkglite/reference/collate.html">collate</a></span><span class="op">(</span><span class="fu"><a href="https://merck.github.io/pkglite/reference/file_ectd.html">file_ectd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,
+  <span class="st">"/path/to/pkg2/"</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://merck.github.io/pkglite/reference/collate.html">collate</a></span><span class="op">(</span><span class="fu"><a href="https://merck.github.io/pkglite/reference/file_ectd.html">file_ectd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,
   output <span class="op">=</span> <span class="st">"r0pkgs.txt"</span>
 <span class="op">)</span></code></pre></div>
 <p>The R packages are always packed in the specified order and are always
@@ -355,12 +355,12 @@ You can do this with <code><a href="https://rdrr.io/pkg/knitr/man/knit.html">kni
   <span class="op">)</span>
 <span class="op">}</span>
 
-<span class="st">"tlf-01-disposition"</span> <span class="op">%&gt;%</span> <span class="fu">convert_rmd</span><span class="op">(</span><span class="va">input_path</span>, <span class="va">output_path</span><span class="op">)</span>
-<span class="st">"tlf-02-population"</span> <span class="op">%&gt;%</span> <span class="fu">convert_rmd</span><span class="op">(</span><span class="va">input_path</span>, <span class="va">output_path</span><span class="op">)</span>
-<span class="st">"tlf-03-baseline"</span> <span class="op">%&gt;%</span> <span class="fu">convert_rmd</span><span class="op">(</span><span class="va">input_path</span>, <span class="va">output_path</span><span class="op">)</span>
-<span class="st">"tlf-04-efficacy"</span> <span class="op">%&gt;%</span> <span class="fu">convert_rmd</span><span class="op">(</span><span class="va">input_path</span>, <span class="va">output_path</span><span class="op">)</span>
-<span class="st">"tlf-05-ae-summary"</span> <span class="op">%&gt;%</span> <span class="fu">convert_rmd</span><span class="op">(</span><span class="va">input_path</span>, <span class="va">output_path</span><span class="op">)</span>
-<span class="st">"tlf-06-ae-spec"</span> <span class="op">%&gt;%</span> <span class="fu">convert_rmd</span><span class="op">(</span><span class="va">input_path</span>, <span class="va">output_path</span><span class="op">)</span></code></pre></div>
+<span class="st">"tlf-01-disposition"</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span> <span class="fu">convert_rmd</span><span class="op">(</span><span class="va">input_path</span>, <span class="va">output_path</span><span class="op">)</span>
+<span class="st">"tlf-02-population"</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span> <span class="fu">convert_rmd</span><span class="op">(</span><span class="va">input_path</span>, <span class="va">output_path</span><span class="op">)</span>
+<span class="st">"tlf-03-baseline"</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span> <span class="fu">convert_rmd</span><span class="op">(</span><span class="va">input_path</span>, <span class="va">output_path</span><span class="op">)</span>
+<span class="st">"tlf-04-efficacy"</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span> <span class="fu">convert_rmd</span><span class="op">(</span><span class="va">input_path</span>, <span class="va">output_path</span><span class="op">)</span>
+<span class="st">"tlf-05-ae-summary"</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span> <span class="fu">convert_rmd</span><span class="op">(</span><span class="va">input_path</span>, <span class="va">output_path</span><span class="op">)</span>
+<span class="st">"tlf-06-ae-spec"</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span> <span class="fu">convert_rmd</span><span class="op">(</span><span class="va">input_path</span>, <span class="va">output_path</span><span class="op">)</span></code></pre></div>
 <p>Optionally, you can add a header to the individual <code>.txt</code> files to explain
 the context and help the reviewers rerun the code. For example:</p>
 <div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
@@ -389,12 +389,12 @@ the context and help the reviewers rerun the code. For example:</p>
   <span class="fu"><a href="https://rdrr.io/r/base/invisible.html">invisible</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span>
 <span class="op">}</span>
 
-<span class="st">"tlf-01-disposition"</span> <span class="op">%&gt;%</span> <span class="fu">append_header</span><span class="op">(</span><span class="va">output_path</span>, <span class="va">header</span><span class="op">)</span>
-<span class="st">"tlf-02-population"</span> <span class="op">%&gt;%</span> <span class="fu">append_header</span><span class="op">(</span><span class="va">output_path</span>, <span class="va">header</span><span class="op">)</span>
-<span class="st">"tlf-03-baseline"</span> <span class="op">%&gt;%</span> <span class="fu">append_header</span><span class="op">(</span><span class="va">output_path</span>, <span class="va">header</span><span class="op">)</span>
-<span class="st">"tlf-04-efficacy"</span> <span class="op">%&gt;%</span> <span class="fu">append_header</span><span class="op">(</span><span class="va">output_path</span>, <span class="va">header</span><span class="op">)</span>
-<span class="st">"tlf-05-ae-summary"</span> <span class="op">%&gt;%</span> <span class="fu">append_header</span><span class="op">(</span><span class="va">output_path</span>, <span class="va">header</span><span class="op">)</span>
-<span class="st">"tlf-06-ae-spec"</span> <span class="op">%&gt;%</span> <span class="fu">append_header</span><span class="op">(</span><span class="va">output_path</span>, <span class="va">header</span><span class="op">)</span></code></pre></div>
+<span class="st">"tlf-01-disposition"</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span> <span class="fu">append_header</span><span class="op">(</span><span class="va">output_path</span>, <span class="va">header</span><span class="op">)</span>
+<span class="st">"tlf-02-population"</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span> <span class="fu">append_header</span><span class="op">(</span><span class="va">output_path</span>, <span class="va">header</span><span class="op">)</span>
+<span class="st">"tlf-03-baseline"</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span> <span class="fu">append_header</span><span class="op">(</span><span class="va">output_path</span>, <span class="va">header</span><span class="op">)</span>
+<span class="st">"tlf-04-efficacy"</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span> <span class="fu">append_header</span><span class="op">(</span><span class="va">output_path</span>, <span class="va">header</span><span class="op">)</span>
+<span class="st">"tlf-05-ae-summary"</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span> <span class="fu">append_header</span><span class="op">(</span><span class="va">output_path</span>, <span class="va">header</span><span class="op">)</span>
+<span class="st">"tlf-06-ae-spec"</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span> <span class="fu">append_header</span><span class="op">(</span><span class="va">output_path</span>, <span class="va">header</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="update-adrg" class="section level2">
 <h2>
