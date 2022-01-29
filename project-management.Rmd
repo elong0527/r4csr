@@ -91,9 +91,39 @@ For each TLFs, the team should prepare the necessary specifications:
 The project leader should also align work assignments with team members.
 The purpose is to answer the question of "who is doing what?"
 
-```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
-knitr::include_graphics("images/validation_tracker.png")
+```{r, echo=FALSE}
+library("kableExtra")
+
+df <- read.table("validation-tracker.tsv", stringsAsFactors = FALSE, header = FALSE, sep = "\t")
+
+df %>%
+  kbl(col.names = NULL) %>%
+  kable_classic(full_width = FALSE, html_font = "'Times New Roman', Times, serif", font_size = 16) %>%
+  add_header_above(
+    c(
+      "Program Name" = 1, "Program Validation Category" = 1,
+      "Who" = 1, "Status" = 1, "Who" = 1, "Status" = 1, "Who" = 1, "Status" = 1
+    ),
+    line = FALSE,
+    extra_css = "border: 1px solid #000;"
+  ) %>%
+  add_header_above(
+    c(
+      "<span></span>" = 2, "Requirement/Specification" = 2,
+      "Developer Testing" = 2, "Independent Testing" = 2
+    ),
+    escape = FALSE,
+    line = FALSE,
+    extra_css = "border: 1px solid #000;"
+  ) %>%
+  column_spec(4, background = ifelse(df$V4 == "C", "#00ff00", "#ffff00")) %>%
+  column_spec(6, background = ifelse(df$V6 == "C", "#00ff00", "#ffff00")) %>%
+  column_spec(8, background = ifelse(df$V8 == "C", "#00ff00", "#ffff00")) %>%
+  column_spec(1, extra_css = "border: 1px solid #000; text-align: left;") %>%
+  column_spec(2:8, extra_css = "border: 1px solid #000; text-align: center;")
 ```
+
+<p></p>
 
 The project lead should also set up a project folder, as discussed in Chapter \@ref(folder).
 The project initiation can be simplified by creating an

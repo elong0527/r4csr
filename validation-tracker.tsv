@@ -1,0 +1,11 @@
+count_by	3	Alice	C	Alice	C	Bob	C
+fmt_ci	3	Alice	C	Alice	C	Carol	C
+fmt_est	3	Alice	C	Alice	C	Bob	C
+fmt_num	3	Alice	C	Alice	C	Carol	C
+fmt_pval	3	Alice	C	Alice	C	Dave	C
+tlf-01-disposition.Rmd	3	Bob	C	Bob	C	Carol	I
+tlf-02-population.Rmd	3	Carol	C	Carol	C	Dave	I
+tlf-03-baseline.Rmd	3	Dave	C	Dave	C	Bob	C
+tlf-04-efficacy.Rmd	3	Alice	C	Alice	C	Carol	C
+tlf-05-ae-summary.Rmd	3	Bob	C	Bob	C	Dave	I
+tlf-06-ae-spec.Rmd	3	Carol	C	Carol	C	Bob	C
