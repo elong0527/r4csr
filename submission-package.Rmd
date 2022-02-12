@@ -39,7 +39,7 @@ We assume the paths to the two folders are `esubdemo/` and `ectddemo/` below.
 
 ## The whole game
 
-In eCTD deliverable, the analysis dataset and source code are saved
+In eCTD deliverable, the analysis datasets and source codes are saved
 under the eCTD module 5 (clinical study reports) folder
 
 ```

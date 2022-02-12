@@ -98,7 +98,7 @@ the `dplyr` and `tidyr` package.
 
 The function can be enhanced in multiple ways, but here we only focus on
 simplicity and readability. More details about writing R functions can
-be found in the [Stat454
+be found in the [Stat545
 course](https://stat545.com/functions-part1.html).
 
 ```{r}
