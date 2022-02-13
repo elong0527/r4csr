@@ -77,7 +77,7 @@ are not discussed in previous discussion.
 
 `text_indent_first` and `text_indent_left` are used to control the indent
 space of text. They are helpful when you need to control the white space
-of a long phrase "AMERICAN INDIAN OR ALASKA NATIVE"
+of a long phrase, "AMERICAN INDIAN OR ALASKA NATIVE"
 in the table provides an example.
 
 ```{r}

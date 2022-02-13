@@ -85,7 +85,7 @@ how to deliver TLFs in a CSR.
 There are other R packages to create TLFs in ASCII, RTF and Word format.
 For example, `rtables`, `huxtable`, `pharmaRTF`, `gt`, `officer`, `flextable` etc.
 Here we focus on `r2rtf` to illustrate the concept.  
-Reader is encouraged to explore other R packages to find the proper tools to fit your purpose. 
+Readers are encouraged to explore other R packages to find the proper tools to fit your purpose. 
 :::
 
 ### tidyverse
