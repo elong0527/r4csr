@@ -227,10 +227,10 @@ recommended by regulatory agencies.
 #&gt; 11 "  American Ind… "0 (0%)"    "1 (1.2%)"         "0 (0%)"          "1 (0.4%)"</code></pre>
 <p>We define the format of the output. We highlight items that
 are not discussed in previous discussion.</p>
-<p><code>text_indent_first</code> and <code>test_indent_left</code> are used to control the indent
+<p><code>text_indent_first</code> and <code>text_indent_left</code> are used to control the indent
 space of text. They are helpful when you need to control the white space
-of a long phrase “AMERICAN INDIAN OR ALASKA NATIVE”
-in the table provide an example.</p>
+of a long phrase, “AMERICAN INDIAN OR ALASKA NATIVE”
+in the table provides an example.</p>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">colheader1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">tbl_base</span><span class="op">)</span>, collapse <span class="op">=</span> <span class="st">"|"</span><span class="op">)</span>
 <span class="va">colheader2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">tbl_base</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span>, collapse <span class="op">=</span> <span class="st">"|"</span><span class="op">)</span>

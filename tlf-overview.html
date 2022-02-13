@@ -160,10 +160,10 @@ how to deliver TLFs in a CSR.</p>
 <a href="https://merck.github.io/r2rtf/">r2rtf</a>: create RTF outputs</li>
 </ul>
 <div class="rmdnote">
-<p>There are other R packages to create TLFs in ASCIII, RTF and Word format.
+<p>There are other R packages to create TLFs in ASCII, RTF and Word format.
 For example, <code>rtables</code>, <code>huxtable</code>, <code>pharmaRTF</code>, <code>gt</code>, <code>officer</code>, <code>flextable</code> etc.
 Here we focus on <code>r2rtf</code> to illustrate the concept.<br>
-Reader is encourage to explore other R packages to find the proper tools to fit your purpose.</p>
+Readers are encouraged to explore other R packages to find the proper tools to fit your purpose.</p>
 </div>
 <div id="tidyverse" class="section level3">
 <h3>
@@ -176,7 +176,7 @@ Those R packages share
 and are easy to use for interactive data analysis.</p>
 <p>RStudio provided outstanding <a href="https://www.rstudio.com/resources/cheatsheets/">cheatsheets</a>
 and <a href="https://github.com/rstudio-education/remaster-the-tidyverse">tutorials</a> for <code>tidyverse</code>.</p>
-<p>There are also books to introduce tidyverse.
+<p>There are also books to introduce <code>tidyverse</code>.
 We assume the reader have experience in using <code>tidyverse</code> in this book.</p>
 <ul>
 <li><a href="https://rstudio-education.github.io/tidyverse-cookbook/">The tidyverse cookbook</a></li>
@@ -279,7 +279,7 @@ A full list of all functions can be found in the
 </ul>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">tbl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_body.html">rtf_body</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># Step 1 Add table  attributes</span>
+  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_body.html">rtf_body</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># Step 1 Add table attributes</span>
   <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># Step 2 Convert attributes to RTF encode</span>
   <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/intro-ae1.rtf"</span><span class="op">)</span> <span class="co"># Step 3 Write to a .rtf file</span></code></pre></div>
 <embed src="tlf/intro-ae1.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>If we want to adjust the width of each column to
@@ -318,7 +318,7 @@ define a column header with 4 columns.</p>
 <embed src="tlf/intro-ae3.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In <code>rtf_*()</code> functions such as <code><a href="https://merck.github.io/r2rtf/reference/rtf_body.html">rtf_body()</a></code>, <code><a href="https://merck.github.io/r2rtf/reference/rtf_footnote.html">rtf_footnote()</a></code>,
 the <code>text_justification</code> argument is used to align text.
 Default is <code>"c"</code> for center justification.
-To vary text justification by column, use character vector with length of vector equal to
+To vary text justification by column, use character vector with length of vector equals to
 number of columns displayed (e.g., <code>c("c", "l", "r")</code>).</p>
 <p>All possible inputs can be found in the table below.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
