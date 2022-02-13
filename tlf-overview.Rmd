@@ -82,10 +82,10 @@ how to deliver TLFs in a CSR.
 - [r2rtf](https://merck.github.io/r2rtf/): create RTF outputs
 
 ::: {.rmdnote}
-There are other R packages to create TLFs in ASCIII, RTF and Word format.
+There are other R packages to create TLFs in ASCII, RTF and Word format.
 For example, `rtables`, `huxtable`, `pharmaRTF`, `gt`, `officer`, `flextable` etc.
 Here we focus on `r2rtf` to illustrate the concept.  
-Reader is encourage to explore other R packages to find the proper tools to fit your purpose. 
+Readers are encouraged to explore other R packages to find the proper tools to fit your purpose. 
 :::
 
 ### tidyverse
@@ -99,7 +99,7 @@ and are easy to use for interactive data analysis.
 RStudio provided outstanding [cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
 and [tutorials](https://github.com/rstudio-education/remaster-the-tidyverse) for `tidyverse`.
 
-There are also books to introduce tidyverse.
+There are also books to introduce `tidyverse`.
 We assume the reader have experience in using `tidyverse` in this book.
 
 - [The tidyverse cookbook](https://rstudio-education.github.io/tidyverse-cookbook/)
@@ -191,7 +191,7 @@ A minimal example below illustrates how to combine verbs using pipes to create a
 
 ```{r}
 head(tbl) %>%
-  rtf_body() %>% # Step 1 Add table  attributes
+  rtf_body() %>% # Step 1 Add table attributes
   rtf_encode() %>% # Step 2 Convert attributes to RTF encode
   write_rtf("tlf/intro-ae1.rtf") # Step 3 Write to a .rtf file
 ```
@@ -266,7 +266,7 @@ knitr::include_graphics("tlf/intro-ae3.pdf")
 In `rtf_*()` functions such as `rtf_body()`, `rtf_footnote()`,
 the `text_justification` argument is used to align text.
 Default is `"c"` for center justification.
-To vary text justification by column, use character vector with length of vector equal to
+To vary text justification by column, use character vector with length of vector equals to
 number of columns displayed (e.g., `c("c", "l", "r")`).
 
 All possible inputs can be found in the table below.
