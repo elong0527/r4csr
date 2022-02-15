@@ -88,7 +88,7 @@ The quality of this document relies on you.
 
 ```{r, results = "asis", echo = FALSE, message = FALSE}
 contributors <- read.csv("contributors.csv", stringsAsFactors = FALSE, na.strings = "")
-contributors$desc <- with(contributors, ifelse(is.na(username), name, paste0(name, " (\\@", username, ")")))
+contributors$desc <- with(contributors, ifelse(is.na(username), trimws(name), paste0(trimws(name), " (\\@", trimws(username), ")")))
 cat("  We are grateful for all the improvements brought by these contributors (in chronological order): ", sep = "")
 cat(paste0(contributors$desc, collapse = ", "))
 cat(".\n")
