@@ -62,6 +62,12 @@ how to submit it to regulatory agencies.
 
 **This is a work-in-progress draft.**
 
+## Events {-}
+
+```{r, echo=FALSE}
+knitr::kable(read.table("events.tsv", stringsAsFactors = FALSE, header = TRUE, sep = "\t"))
+```
+
 ## License {-}
 
 This book is licensed to you under [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/).
