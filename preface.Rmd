@@ -1,6 +1,6 @@
 # Preface {-}
 
-## Folder structure
+## Folder structure {.unnumbered}
 
 In clinical trial development, source code needs to be developed and maintained to generate and deliver
 Study Data Tabulation Model (SDTM), Analysis Dataset Model (ADaM) datasets and tables, listings, and figures (TLFs).
@@ -36,7 +36,7 @@ to develop Shiny apps as discussed
 in Chapter 20 of the [Mastering Shiny](https://mastering-shiny.org/scaling-packaging.html) book
 and the [Engineering Production-Grade Shiny Apps](https://engineering-shiny.org/golem.html) book.
 
-## In this book
+## In this book {.unnumbered}
 
 This book is an intermediate-level book by
 assuming readers have R programming and clinical development knowledge.
@@ -63,7 +63,7 @@ The assumption of each part is as below:
   In this part, we assume a reader is a project lead of a clinical project
   with experience in R package development and submission.
 
-## Philosophy
+## Philosophy {.unnumbered}
 
 We share the same philosophy described in
 Section 1.1 of the [R Packages](https://r-pkgs.org/intro.html#intro-phil) book
@@ -74,7 +74,7 @@ and quote here.
 - "The goal is to spend your time thinking about what you want to do
 rather than thinking about the minutiae of the package structure."
 
-## Authors and contributors
+## Authors and contributors {.unnumbered}
 
 The document is maintained by a community.
 While reading the document, you can be a contributor as well.
