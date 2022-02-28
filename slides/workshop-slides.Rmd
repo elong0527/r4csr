@@ -16,7 +16,7 @@ output:
 knitr::opts_chunk$set(comment = "#>", echo = FALSE)
 ```
 
-```{r, message=FALSE}
+```{r, include=FALSE}
 library(dplyr)
 library(tidyr)
 library(r2rtf)
@@ -29,16 +29,16 @@ library(r2rtf)
 In this workshop, we have three parts:
 
 - Delivering TLFs in CSR (Yilong Zhang)
-  + Session 1 (45 min)
-  + Break and/or Exercise (20 min)
-  + Session 2 (45 min)
-  + Break (10 min)
+  - Session 1 (45 min)
+  - Break and/or Exercise (20 min)
+  - Session 2 (45 min)
+  - Break (10 min)
 - Clinical trial project (Nan Xiao)
-  + Session 3 (30 min)
-  + Break (10 min)
+  - Session 3 (30 min)
+  - Break (10 min)
 - eCTD submission package (Nan Xiao)
-  + Session 4 (40 min)
-  + Q&A (10 min)
+  - Session 4 (40 min)
+  - Q&A (10 min)
 
 ## Disclaimer
 
@@ -47,7 +47,7 @@ In this workshop, we have three parts:
 
 - Some slides need to be scrolled down to see the full content.
 
-## Training Objective
+## Training objective
 
 - Learning how to create tables for clinical study reports.
 - Learning how to organize a clinical development project.
@@ -59,21 +59,21 @@ In this workshop, we have three parts:
 ## Acknowledgement
 
 - Team members from Merck & Co.
-  + [We are hiring!](https://jobs.merck.com/bards)
-  + Contact us if interested.
+  - [We are hiring!](https://jobs.merck.com/bards)
+  - Contact us if interested.
 
 - [Contributors](https://r4csr.org/) of the training materials.
-  + Please consider submitting issues or PR in the repo.
+  - Please consider submitting issues or PR in the repo.
 
 - [R Consortium](https://www.r-consortium.org/projects/isc-working-groups)
-  + R validation hub
-  + Submission working group
-  + R Tables for Regulatory Submission (RTRS) working group
-  + Please consider to join and contribute to a working group.
+  - R validation hub
+  - Submission working group
+  - R Tables for Regulatory Submission (RTRS) working group
+  - Please consider to join and contribute to a working group.
 
 - [ASA Princeton-Trenton Chapter](https://community.amstat.org/princetontrenton/home)
-  + Please consider to be a member of our chapter. 
-  
+  - Please consider to be a member of our chapter.
+
 <!--
 
 - R / Pharma organizers
@@ -93,8 +93,8 @@ some R programming experience and clinical development knowledge.
 ```{r, echo = TRUE, eval = FALSE}
 install.packages(c(
   "tidyverse", # Data manipulation
-  "r2rtf", # TLF generation
-  "pkglite" # eCTD submission
+  "r2rtf",     # TLF generation
+  "pkglite"    # eCTD submission
 ))
 ```
 
@@ -102,15 +102,15 @@ install.packages(c(
 
 - Training Material: <https://r4csr.org/>
 - Demo project:
-  + Analysis project: <https://github.com/elong0527/esubdemo>
-  + eCTD submission package: <https://github.com/elong0527/ectddemo>
+  - Analysis project: <https://github.com/elong0527/esubdemo>
+  - eCTD submission package: <https://github.com/elong0527/ectddemo>
 - R Consortium FDA submission pilot:
-  + <https://github.com/RConsortium/submissions-pilot1>
+  - <https://github.com/RConsortium/submissions-pilot1>
 
 - During the workshop, we will use `esubdemo` project.
-  + `esubdemo` is shared in RStudio Cloud (<https://rstudio.cloud/>)
-  + Project link will be shared in chat
-  + Post questions in group chat.
+  - `esubdemo` is shared in RStudio Cloud (<https://rstudio.cloud/>)
+  - Project link will be shared in chat
+  - Post questions in group chat.
 
 ## Philosophy
 
@@ -124,7 +124,7 @@ rather than thinking about the minutiae of package structure."
 
 # Delivering TLFs in CSR
 
-## ICH E3 Guidance
+## ICH E3 guidance
 
 The [ICH E3: structure and content of clinical study reports](https://database.ich.org/sites/default/files/E3_Guideline.pdf) provide guidance to assist sponsors in the development of a CSR.
 
@@ -151,7 +151,7 @@ visualize and analyze data in R.
 
 - `r2rtf`: an R package to create production-ready tables and figures in RTF format.
 
-# r2rtf Introduction
+# r2rtf introduction
 
 ## Motivation
 
@@ -169,10 +169,10 @@ Different organizations can have different table standards
 `r2rtf` is designed to:
 
 - provide simple "verb" functions that correspond to each component of a table,
-  to help you translate a data frame to a table in RTF format.
-- enable pipes (`%>%`).
+  to help you translate a data frame to a table in RTF format;
+- enable pipes (`%>%`);
 - only focus on the **table format**.
-  + Data manipulation and analysis shall be handled by other R packages. (e.g. `tidyverse`)
+  - Data manipulation and analysis should be handled by other R packages. (e.g., `tidyverse`)
 
 ## Workflow
 
@@ -184,14 +184,14 @@ Before creating an RTF table, we need to:
 
 - Execute the program.
 
-## Minimal Example
+## Minimal example
 
-`r2rtf` is designed to enable pipes (`%>%`)
+`r2rtf` is designed to enable pipes (`%>%`).
 
 ```{r, echo = TRUE, eval = FALSE}
 head(iris) %>%
-  rtf_body() %>% # Step 1 Add table attributes
-  rtf_encode() %>% # Step 2 Convert attributes to RTF encode
+  rtf_body() %>%           # Step 1 Add table attributes
+  rtf_encode() %>%         # Step 2 Convert attributes to RTF encode
   write_rtf("minimal.rtf") # Step 3 Write to a .rtf file
 ```
 
@@ -199,7 +199,7 @@ head(iris) %>%
 knitr::include_graphics("minimal.pdf")
 ```
 
-## Package Overview
+## Package overview
 
 `r2rtf` package provides the flexibility to customize table appearance for
 
@@ -210,14 +210,14 @@ knitr::include_graphics("minimal.pdf")
 
 `r2rtf` package also provides the flexibility to convert figures in RTF format.
 
-## Simple Example - Adverse Events
+## Simple example: adverse events
 
 `r2rtf` only focus on **table format**.
-Data manipulation and analysis shall be handled by other R packages. (e.g. `tidyverse`)
+Data manipulation and analysis should be handled by other R packages. (e.g., `tidyverse`)
 
 - Let's refer to examples in the [Section 1.4.2](https://r4csr.org/tlf-overview.html#r2rtf)
 
-## Function Summary
+## Function summary
 
 `r2rtf` provides simple "verb" functions that correspond to each component of a table,
   to help you translate data frame to tables in RTF file.
@@ -228,43 +228,43 @@ names(r2rtf_funs)[3] <- "Optional/required"
 knitr::kable(r2rtf_funs)
 ```
 
-## Function Illustration
+## Function illustration
 
-```{r, out.width="80%", echo=FALSE, fig.align="center"}
+```{r, out.width="100%", echo=FALSE, fig.align="center"}
 knitr::include_graphics("function-summary.png")
 ```
 
-# Break and/or Exercise (20 min)
+# Break and/or exercise (20 min)
 
-# CSR Examples
+# CSR examples
 
-## Disposition Table
+## Disposition table
 
 <https://r4csr.org/disposition.html>
 
-## Analysis Population
+## Analysis population
 
 <https://r4csr.org/population.html>
 
-## Baseline Characteristics
+## Baseline characteristics
 
 <https://r4csr.org/baseline-characteristics.html>
 
-## Efficacy Table
+## Efficacy table
 
 <https://r4csr.org/efficacy.html>
 
-## AE Summary Table
+## AE Summary table
 
 <https://r4csr.org/aesummary.html>
 
-## Specific AE Table
+## Specific AE table
 
 <https://r4csr.org/specific-ae.html>
 
 # Break (10 min)
 
-# Clinical Trial Project
+# Clinical trial project
 
 ## Overview
 
@@ -274,7 +274,7 @@ For an organization, it is also common to have multiple ongoing clinical trials 
 
 In this part, let's consider how to organize a clinical trial project as an A&R lead.
 
-## Folder Structure
+## Folder structure
 
 Our primary focus is creating a standard R package structure to organize the
 project, with 4 goals in mind:
@@ -286,7 +286,7 @@ project, with 4 goals in mind:
 
 <https://r4csr.org/folder.html>
 
-## Project Management
+## Project management
 
 - Setting up for success
   - Teamwork
@@ -304,13 +304,13 @@ project, with 4 goals in mind:
 
 # Break (10 min)
 
-# eCTD Submission
+# eCTD submission
 
 ## Overview
 
 <https://r4csr.org/submission-overview.html>
 
-## Submission Package
+## Submission package
 
 We will discuss strategies to prepare proprietary R packages and analysis code
 into proper formats for submission:
@@ -323,7 +323,7 @@ into proper formats for submission:
 
 <https://r4csr.org/submission-package.html>
 
-## Running Environment
+## Running environment
 
 We will also give recommendations to make the R code
 running environment reproducible for dry run tests and reviews
@@ -333,7 +333,7 @@ using `cleanslate`.
 
 # pkglite
 
-## pkglite: Compact Package Representations
+## pkglite: compact package representations
 
 - To provide a **tool** for packing and restoring R packages as plaintext
 assets that are easy to store, transfer, and review.
@@ -342,7 +342,7 @@ functional, precise, and extendable.
 - To provide a **standard** for exchanging the packed asset that is
 unambiguous, human-friendly, and machine-readable.
 
-## Pipe-Friendly Workflow
+## Pipe-friendly workflow
 
 ```{r, eval=FALSE, echo=TRUE}
 library("pkglite")
@@ -361,7 +361,7 @@ pack(
   unpack(output = "/path/to/output/")
 ```
 
-## File Specifications + File Collections
+## File specifications + file collections
 
 File specifications offer flexibility and brevity in specifying the files to include.
 
@@ -388,7 +388,7 @@ library("pkglite")
 pkglite.txt follows the standard Debian Control File (DCF) format used by
 Debian, R, and RStudio IDE, to be both machine-readable and human-readable.
 
-```
+```text
 # Generated by pkglite: do not edit by hand
 # Use pkglite::unpack() to restore the packages
 

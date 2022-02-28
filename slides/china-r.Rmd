@@ -31,15 +31,15 @@ data("r2rtf_adae")
 ## Background
 
 - Clinical study report is a key deliverable for clinical trials to regulatory agencies. (e.g., FDA, CFDA)
-  + [ICH E3 Structure and Content of Clinical Study Reports](https://database.ich.org/sites/default/files/E3_Guideline.pdf)
+  - [ICH E3 Structure and Content of Clinical Study Reports](https://database.ich.org/sites/default/files/E3_Guideline.pdf)
 
 - We try to fill in gaps to streamline workflow using R:
-  + To develop, validate, deliver analysis results.
-  + To submit analysis results to regulatory agencies in [eCTD format](https://en.wikipedia.org/wiki/Electronic_common_technical_document).
+  - To develop, validate, deliver analysis results.
+  - To submit analysis results to regulatory agencies in [eCTD format](https://en.wikipedia.org/wiki/Electronic_common_technical_document).
 
 - Focus on table, listing, figure (TLFs) delivered in RTF/Microsoft Word format
-  + In the pharmaceutical industry, RTF/Microsoft Word play a central role in preparing clinical study reports.
-  + Different organization can have different table standards
+  - In the pharmaceutical industry, RTF/Microsoft Word play a central role in preparing clinical study reports.
+  - Different organization can have different table standards
 
 ## Clarification from FDA
 
@@ -130,7 +130,7 @@ knitr::include_graphics("minimal.pdf")
 
 ## r2rtf: function illustration
 
-```{r, out.width="80%", echo=FALSE, fig.align="center"}
+```{r, out.width="100%", echo=FALSE, fig.align="center"}
 knitr::include_graphics("function-summary.png")
 ```
 
@@ -186,7 +186,7 @@ library("cleanslate")
 Within a regulatory R environment:
 
 - As a statistician, I use `tidyverse`, `r2rtf`, and internal tools to define the mock-up table, listing and figure (TLFs) for statistical analysis of a clinical trial.
-  + More than 100 TLFs for efficacy and safety of a drug or vaccine.
+  - More than 100 TLFs for efficacy and safety of a drug or vaccine.
 
 - As a programmer, I use `tidyverse`, `r2rtf`, and internal tools to develop and/or validate analysis results based on mock-up TLFs.
 
@@ -228,37 +228,37 @@ More details: <https://r4csr.org/manage.html>
 ## Cross-industry collaborations
 
 - R Validation Hub: <https://www.pharmar.org/>
-  + Focus on designing a framework that assesses the quality of an R package
-  + Presentations: <https://www.pharmar.org/present/>
+  - Focus on designing a framework that assesses the quality of an R package
+  - Presentations: <https://www.pharmar.org/present/>
 
 - R-based submission pilots to FDA:
-  + <https://rconsortium.github.io/r-submission-site/>
-  + Focus on improving practices of R-based clinical trial regulatory submission.
+  - <https://rconsortium.github.io/r-submission-site/>
+  - Focus on improving practices of R-based clinical trial regulatory submission.
 
 - R/Pharma: <https://rinpharma.com/>
-  + Annual conference focus on the use of R in the development of pharmaceuticals.
+  - Annual conference focus on the use of R in the development of pharmaceuticals.
 
 - R Consortium R Adoption Seminar Series
-  + <https://www.r-consortium.org/webinars>
+  - <https://www.r-consortium.org/webinars>
 
 ## Future directions
 
 - Enhance compliance, reproducibility, traceability, and automation
-  + Automation of analysis, documentation, review, and testing
-  + Linkage among data, TLFs, and final reports
-  + R package qualification
+  - Automation of analysis, documentation, review, and testing
+  - Linkage among data, TLFs, and final reports
+  - R package qualification
 - Enable advanced study design and statistical methods
 - Introduce interactive visualization and reporting (with/without backend server)
 
 ## Join us
 
 - Contact us for R developer or Methodology Research Positions:
-  + Yilong Zhang: <https://elong0527.github.io/>
-  + Nan Xiao: <https://nanx.me/>
-  + Keaven Anderson: <https://www.linkedin.com/in/keaven-anderson-09aa7538/>
+  - Yilong Zhang: <https://elong0527.github.io/>
+  - Nan Xiao: <https://nanx.me/>
+  - Keaven Anderson: <https://www.linkedin.com/in/keaven-anderson-09aa7538/>
 
 - Multiple open positions (statisticians/programmers) in China, EU, and US
-  + US: <https://jobs.merck.com/bards>
-  + China/EU: <https://jobs.msd.com/cn/zh>
+  - US: <https://jobs.merck.com/bards>
+  - China/EU: <https://jobs.msd.com/cn/zh>
 
 # Thank you {.thank-you}
