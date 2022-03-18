@@ -1,0 +1,29 @@
+---
+title: "Generate an asciicast SVG for pkglite::pack() output"
+output: rmarkdown::html_document
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = FALSE,
+  comment = "#>",
+  fig.path = "images/"
+)
+```
+
+```{r echo=FALSE, results="hide"}
+asciicast::init_knitr_engine(echo_input = FALSE)
+```
+
+```{r, include=FALSE}
+options(asciicast_knitr_svg = TRUE)
+```
+
+```{asciicast, pack}
+#' At: end
+library("pkglite")
+
+"esubdemo/" %>%
+  collate(file_ectd(), file_auto("inst")) %>%
+  pack(output = "r0pkgs.txt")
+```
