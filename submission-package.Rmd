@@ -196,6 +196,8 @@ file.edit("r0pkgs.txt")
 ```
 
 ```{r, fig.cap="Preview the generated text file", out.width="100%", echo=FALSE}
+# Web browser DevTools -> Remove irrelevant elements ->
+# Print as PDF -> Edit PDF if necessary -> pdfcrop -> convert to PNG
 knitr::include_graphics("images/preview-txt.png")
 ```
 

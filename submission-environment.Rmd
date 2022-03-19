@@ -196,6 +196,8 @@ is installed, click `Addins` -> `cleanslate` -> `Create portable R environment`
 in RStudio, or call `cleanslate:::create_env_addin()` to open it.
 
 ```{r, out.width="65%", echo=FALSE, fig.cap="cleanslate RStudio addin"}
+# Web browser DevTools -> Print as PDF ->
+# Edit PDF if necessary -> pdfcrop -> convert to PNG
 knitr::include_graphics("images/cleanslate-addin.png")
 ```
 
