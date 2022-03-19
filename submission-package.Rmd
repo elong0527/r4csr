@@ -185,6 +185,29 @@ library("pkglite")
   pack(output = "r0pkgs.txt")
 ```
 
+```{r, echo=FALSE, eval=FALSE}
+# Generated this asciicast SVG by running
+rmarkdown::render("images/pack.Rmd")
+
+patch_asciicast_theme <- function(x) {
+  x <- gsub("rgb\\(40,45,53\\)", replacement = "rgb\\(255,255,255\\)", x = x)
+  x <- gsub("rgb\\(185,192,203\\)", replacement = "rgb\\(0,0,0\\)", x = x)
+  x <- gsub("rgb\\(113,190,242\\)", replacement = "rgb\\(52,101,164\\)", x = x)
+  x <- gsub("rgb\\(168,204,140\\)", replacement = "rgb\\(78,154,6\\)", x = x)
+  x <- gsub("rgb\\(102,194,205\\)", replacement = "rgb\\(6,152,154\\)", x = x)
+  x
+}
+
+readLines("images/images/pack.svg", warn = FALSE) |>
+  patch_asciicast_theme() |>
+  writeLines(con = "images/images/pack.svg")
+
+# For best web browser compatibility:
+# Open pack.svg in web browser, print as PDF
+# pdfcrop pack.pdf
+# convert -density 300 pack-crop.pdf pack.png
+```
+
 ```{r, fig.cap="Output of pkglite::pack()", out.width="100%", echo=FALSE}
 knitr::include_graphics("images/pack.png")
 ```
