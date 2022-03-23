@@ -64,6 +64,13 @@ how to submit it to regulatory agencies.
 
 ## Events {-}
 
+```{css, echo=FALSE}
+table.table td:nth-child(1) { min-width: 27ch; }
+table.table td:nth-child(2) { min-width: 12ch; }
+table.table td:nth-child(3) { min-width: 10ch; }
+table.table tbody { border-bottom: 1px solid #B6BDC6; }
+```
+
 ```{r, echo=FALSE}
 knitr::kable(read.table("events.tsv", stringsAsFactors = FALSE, header = TRUE, sep = "\t"))
 ```
