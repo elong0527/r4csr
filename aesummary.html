@@ -83,18 +83,18 @@
 </h1>
 <p>Following <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3 guidance</a>,
 we summarize number of participants that were included in each safety analysis in Section 12.2, Adverse Events (AEs).</p>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span> <span class="co"># Read SAS data</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://merck.github.io/r2rtf/">r2rtf</a></span><span class="op">)</span> <span class="co"># Reporting in RTF format</span></code></pre></div>
 <p>In this chapter, we illustrate how to summarize AEs information for a study.</p>
 <embed src="tlf/tlf_ae_summary.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>The data used to summarize AE information is in <code>adsl</code> and <code>adae</code> datasets.</p>
-<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"data-adam/adsl.sas7bdat"</span><span class="op">)</span>
 <span class="va">adae</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"data-adam/adae.sas7bdat"</span><span class="op">)</span></code></pre></div>
 <p>We first summarize participants in population by treatment arm.</p>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pop</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">SAFFL</span> <span class="op">==</span> <span class="st">"Y"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>TRTAN <span class="op">=</span> <span class="va">TRT01AN</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
@@ -115,7 +115,7 @@ we summarize number of participants that were included in each safety analysis i
 <li>With serious drug-related adverse events</li>
 <li>Who died</li>
 </ul>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tidy_ae</span> <span class="op">&lt;-</span> <span class="va">adae</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
     all <span class="op">=</span> <span class="va">SAFFL</span> <span class="op">==</span> <span class="st">"Y"</span>,
@@ -136,7 +136,7 @@ we summarize number of participants that were included in each safety analysis i
 #&gt; 3 01-701-1015     0 ser      FALSE
 #&gt; 4 01-701-1015     0 drug_ser FALSE</code></pre>
 <p>We summarize the number and percentage of participants who meet each AE criteria.</p>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ana</span> <span class="op">&lt;-</span> <span class="va">tidy_ae</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">value</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">TRTAN</span>, <span class="va">name</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
@@ -158,7 +158,7 @@ we summarize number of participants that were included in each safety analysis i
 #&gt; 3     0 drug  "  44"    86 ( 51.2)
 #&gt; 4    54 all   "  77"    84 ( 91.7)</code></pre>
 <p>We prepare reporting-ready dataset for each AE group.</p>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t_ae</span> <span class="op">&lt;-</span> <span class="va">ana</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>
     id_cols <span class="op">=</span> <span class="st">"name"</span>,
@@ -184,7 +184,7 @@ we summarize number of participants that were included in each safety analysis i
   <span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span></code></pre></div>
 <p>We prepare reporting-ready dataset for the analysis population.</p>
-<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t_pop</span> <span class="op">&lt;-</span> <span class="va">pop</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
     name <span class="op">=</span> <span class="st">"Participants in population"</span>,
@@ -203,7 +203,7 @@ we summarize number of participants that were included in each safety analysis i
 #&gt;   &lt;chr&gt;                      &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; 
 #&gt; 1 Participants in population "  86" "  84" "  84"</code></pre>
 <p>The final report data is saved in <code>tbl_ae_summary</code>.</p>
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_ae_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">t_pop</span>, <span class="va">t_ae</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">name</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"_0"</span><span class="op">)</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"_54"</span><span class="op">)</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"_81"</span><span class="op">)</span><span class="op">)</span>
 
@@ -218,7 +218,7 @@ we summarize number of participants that were included in each safety analysis i
 #&gt; 5 With serious drug-related adverse events "   … (  0… "   … (  1.… "   … (  1.…
 #&gt; 6 Who died                                 "   … (  2… "   … (  1.… "   … (  0.…</code></pre>
 <p>We define the format of the output using code below:</p>
-<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_ae_summary</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_title.html">rtf_title</a></span><span class="op">(</span>
     <span class="st">"Analysis of Adverse Event Summary"</span>,

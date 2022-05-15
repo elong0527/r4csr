@@ -401,8 +401,19 @@ The <code>text_convert</code> argument in <code>r2rtf_*()</code> functions contr
 <span class="va">t1_rtf</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/tlf_eff1.rtf"</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; Warning in matrix(text_rtf, nrow = nrow(text), ncol = ncol(text)): data length
+#&gt; differs from size of matrix: [3 != 1 x 1]
+
+#&gt; Warning in matrix(text_rtf, nrow = nrow(text), ncol = ncol(text)): data length
+#&gt; differs from size of matrix: [3 != 1 x 1]
+
+#&gt; Warning in matrix(text_rtf, nrow = nrow(text), ncol = ncol(text)): data length
+#&gt; differs from size of matrix: [3 != 1 x 1]
+
+#&gt; Warning in matrix(text_rtf, nrow = nrow(text), ncol = ncol(text)): data length
+#&gt; differs from size of matrix: [3 != 1 x 1]</code></pre>
 <embed src="tlf/tlf_eff1.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>We also use <code>r2rtf</code> to prepare the table format for <code>t2</code></p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t2_rtf</span> <span class="op">&lt;-</span> <span class="va">t2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_colheader.html">rtf_colheader</a></span><span class="op">(</span><span class="st">"Pairwise Comparison | Difference in LS Mean (95% CI){^a} | p-Value"</span>,
@@ -419,10 +430,21 @@ The <code>text_convert</code> argument in <code>r2rtf_*()</code> functions contr
 <embed src="tlf/tlf_eff2.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>Finally, we combine the two parts to get the final table using <code>r2rtf</code>.
 This is achieved by providing a list of <code>t1_rtf</code> and <code>t2_rtf</code> as input for
 <code>rtf_encode</code>.</p>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">t1_rtf</span>, <span class="va">t2_rtf</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/tlf_eff.rtf"</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; Warning in matrix(text_rtf, nrow = nrow(text), ncol = ncol(text)): data length
+#&gt; differs from size of matrix: [3 != 1 x 1]
+
+#&gt; Warning in matrix(text_rtf, nrow = nrow(text), ncol = ncol(text)): data length
+#&gt; differs from size of matrix: [3 != 1 x 1]
+
+#&gt; Warning in matrix(text_rtf, nrow = nrow(text), ncol = ncol(text)): data length
+#&gt; differs from size of matrix: [3 != 1 x 1]
+
+#&gt; Warning in matrix(text_rtf, nrow = nrow(text), ncol = ncol(text)): data length
+#&gt; differs from size of matrix: [3 != 1 x 1]</code></pre>
 <embed src="tlf/tlf_eff.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In conclusion, the procedure to generate the above efficacy results table is summarized as follows.</p>
 <ul>
 <li>Step 1: Read the data (i.e., <code>adsl</code> and <code>adlb</code>) into R.</li>
