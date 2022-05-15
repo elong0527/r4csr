@@ -101,7 +101,7 @@ slides > slide:not(.segue) > hgroup > h2 {
 
 ## Disclaimer
 
-- All opinions expressed are those of the presenter and not represent any organization.
+- All opinions expressed are those of the presenter and do not represent any organization.
 
 - Some slides need to be scrolled down to see the full content.
 
@@ -126,7 +126,7 @@ As an organization, we need to ensure compliance and reduce the risk of using R 
   [`gsdmvn`](https://github.com/Merck/gsdmvn): experimental R packages for group sequential design under non-proportional hazards
   - Bookdown: <https://keaven.github.io/gsd-deming/>
 
-- R is flexible for handling novel missing data approaches following estimand framework in ICH E9 (R1)
+- R is flexible for handling novel missing data approaches following the estimand framework in ICH E9 (R1)
   - Recurrent event data: @gao2017control @diao2020efficient
   - Robustness: @liu2021multiply
 
@@ -148,13 +148,13 @@ As an organization, we need to ensure compliance and reduce the risk of using R 
 
 - Focus on table, listing, figure (TLFs) delivered in RTF/Microsoft Word format.
   - In the pharmaceutical industry, RTF/Microsoft Word play a central role in preparing clinical study reports.
-  - Different organization can have different table standards.
+  - Different organizations can have different table standards.
 
 # R Consortium pilot submission
 
 ## Working group 
 
-- The R submission working group is a cross industry pharma working group focusing on improving practices of R-based clinical trial regulatory submission.
+- The R submission working group is a cross-industry pharma working group focusing on improving practices of R-based clinical trial regulatory submission.
   - [members and affiliations](https://rconsortium.github.io/submissions-wg/)
 - Mission: Easier R-based clinical trial regulatory submissions
 - [pilot 1 - common analyses](https://rconsortium.github.io/submissions-wg/pilot-overall.html#pilot-1---common-analyses)
@@ -167,7 +167,7 @@ As an organization, we need to ensure compliance and reduce the risk of using R 
 
 ### Challenges
 
-- How to submit internal developed (proprietary) R packages?
+- How to submit internally developed (proprietary) R packages?
 - How to follow [ICH and/or FDA guidances](https://www.fda.gov/drugs/electronic-regulatory-submission-and-review/electronic-common-technical-document-ectd)
 in preparing eCTD package?
 - How to enhance reproducibility from FDA reviewer's perspective?
@@ -327,7 +327,7 @@ and internal tools to define the mock-up table, listing and figure (TLFs) for st
 
 - As programmers, we use `tidyverse`, `r2rtf`, and internal tools to develop and/or validate analysis results based on mock-up TLFs.
 
-- As statisticans/programmers, we use `pkglite` and internal tools to prepare proprietary R packages and analysis R scripts for eCTD submission package.
+- As statisticians/programmers, we use `pkglite` and internal tools to prepare proprietary R packages and analysis R scripts for eCTD submission packages.
 
 - As an internal/external reviewers, we use `cleanslate` to re-construct a portable environment (if required) to reproduce analysis results.
 
@@ -373,7 +373,7 @@ More details: <https://r4csr.org/manage.html>
   - Focus on improving practices of R-based clinical trial regulatory submission.
 
 - R/Pharma: <https://rinpharma.com/>
-  - Annual conference focus on the use of R in the development of pharmaceuticals.
+  - The annual conference focus on the use of R in the development of pharmaceuticals.
 
 - R Consortium R Adoption Seminar Series
   - <https://www.r-consortium.org/webinars>
