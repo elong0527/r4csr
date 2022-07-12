@@ -170,7 +170,7 @@ The level of validation is determined at the define stage.
 
 In an R package development, the validation or testing is completed under the `test/` folder.
 The testthat R package can be used to streamline the validation process.
-More details of the `testthat` package for R package validation can be found in [Chapter 12 of the R package book](https://r-pkgs.org/tests.html).
+More details of the `testthat` package for R package validation can be found in [Chapter 12 of the R package book](https://r-pkgs.org/testing-basics.html).
 
 It is recommended to have a name convention to indicate the type of validation.
 For example, we can use `test-developer-test`, `test-independent-test`, `test-double-programming`

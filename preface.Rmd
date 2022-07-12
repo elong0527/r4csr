@@ -66,7 +66,7 @@ The assumption of each part is as below:
 ## Philosophy {.unnumbered}
 
 We share the same philosophy described in
-Section 1.1 of the [R Packages](https://r-pkgs.org/intro.html#intro-phil) book
+Section 1.1 of the [R Packages](https://r-pkgs.org/Introduction.html#intro-phil) book
 and quote here.
 
 - "Anything that can be automated, should be automated."
