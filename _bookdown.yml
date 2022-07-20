@@ -22,6 +22,7 @@ rmd_files: [
   "tlf-efficacy-km.Rmd",
   "tlf-ae-summary.Rmd",
   "tlf-ae-spec.Rmd",
+  "tlf-assemble.Rmd",
 
   "project-overview.Rmd",
   "project-folder.Rmd",
