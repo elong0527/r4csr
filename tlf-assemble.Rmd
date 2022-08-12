@@ -23,15 +23,45 @@ Here, we assume files are saved in the `tlf` folder.
 
 ```{r}
 tlf_path <- c(
-  "tlf/tlf_disp.rtf",  # Disposition Table 
+  "tlf/tbl_disp.rtf",  # Disposition Table 
   "tlf/tlf_eff.rtf",   # Efficacy Table
   "tlf/tlf_km.rtf"     # KM Plot 
 )
 ```
 
+```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("tlf/tlf-combine.pdf")
+```
+
 ## Combine RTF Source Code
 
-The `r2rtf::rtf_assemble()` function allow you to combine RTF 
+```{r, include=FALSE}
+#' Assemble RTF files into one single RTF file 
+#' 
+#' @param path a vector of RTF file path
+#' 
+#' @export
+rtf_assemble <- function(path){
+  
+  rtf <- lapply(path, readLines)
+  
+  n <- length(rtf)
+  start <- c(1, rep(2, n - 1))
+  end <- vapply(rtf, length, numeric(1))
+  end[-n] <- end[-n] - 1
+  
+  for(i in 1:n){
+    rtf[[i]] <- rtf[[i]][start[i]:end[i]]
+    if(i < n) rtf[[i]] <- c(rtf[[i]], r2rtf:::as_rtf_new_page())
+  }
+  rtf <- do.call(c, rtf)
+  
+  rtf
+  
+}
+```
+
+The `rtf_assemble()` function allow you to combine RTF 
 source code in individual files into one larger RTF file. 
 
 ::: {.rmdnote}
@@ -40,7 +70,10 @@ we are not able to specify page orientation of each TLF
 in the combined document. 
 :::
 
-
+```{r}
+rtf_assemble(tlf_path) |> 
+  r2rtf::write_rtf("tlf/rtf-combine.rtf")
+```
 
 ## Using Toggle Fields
 
