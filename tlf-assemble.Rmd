@@ -1,9 +1,4 @@
-# Assemble RTF TLFs {#assemble}
-
-## Assemble TLFs to an RTF File
-
-After TLFs are created, we may need to assemble them to one file to simplify review and delivery.
-You can use `r2rtf::rtf_assemble()` to achieve the goal.
+# Assemble TLFs {#assemble}
 
 ```{r, include=FALSE}
 source("common.R")
@@ -13,142 +8,103 @@ source("common.R")
 library(r2rtf)
 ```
 
-We use the TLFs generated in the previous chapters as an example to illustrate the workflow.
+A CSR needs to include many TLFs. 
+After TLFs are created and saved into individual files, 
+we need to assemble them into one files in a pre-specified order. 
 
-### List RTF files to assemble
+There are two general approach to achieve the goal. 
 
-List all RTF files in the `outtable/` directory and/or the `outgraph/` directory.
+1. Combine RTF source code in individual files into one large RTF file. 
+1. Leverage Microsoft Word `Toggle Fields` feature to embed RTF files using 
+hyperlinks. 
 
-The R code below lists all `.rtf` files in the output tables in the
-`outtable/` directory and the output graphs in the `outgraph/` directory.
-
-<!-- Note to authors: please modify the code below to find a better way to present this -->
-
-```{r, eval=FALSE, echo=TRUE}
-path <- list(
-  outtable = "tlf/",
-  outgraph = "tlf/"
-)
-
-# For a project the path has been pre-defined
-rtf_table_path <- list.files(path$outtable, pattern = ".rtf")
-rtf_graph_path <- list.files(path$outgraph, pattern = ".rtf")
-
-dput(rtf_table_path)
-#> c("intro-ae1.rtf", "intro-ae2.rtf", "intro-ae3.rtf", "intro-ae5.rtf",
-#> "intro-ae7.rtf", "tbl_disp.rtf", "tbl_pop.rtf", "tlf_ae_summary.rtf",
-#> "tlf_base.rtf", "tlf_eff.rtf", "tlf_eff1.rtf", "tlf_eff2.rtf",
-#> "tlf_km.rtf", "tlf_spec_ae.rtf")
-
-dput(rtf_graph_path)
-#> c("intro-ae1.rtf", "intro-ae2.rtf", "intro-ae3.rtf", "intro-ae5.rtf",
-#> "intro-ae7.rtf", "tbl_disp.rtf", "tbl_pop.rtf", "tlf_ae_summary.rtf",
-#> "tlf_base.rtf", "tlf_eff.rtf", "tlf_eff1.rtf", "tlf_eff2.rtf",
-#> "tlf_km.rtf", "tlf_spec_ae.rtf")
-```
-
-The complete list of `.rtf` files are printed in the Console.
-You can then use this list as a starting point to arrange the order of all files.
-
-An alternative way to get the RTF file list is to read from a spreadsheet
-(e.g., using A&R grid) and work from there.
-
-### Define file order and identify page orientation
-
-Next, we should properly define the order of all TLF files,
-and identify each TLF's page orientation (horizontal or vertical).
-
-The R code below constructs an intermediate data frame `db` with three columns.
-Each TLF file has its respective row to indicate
-
-- `table`: Whether it is table or a plot, `TRUE` or `FALSE`
-- `file`: File name
-- `landscape`: Page orientation, `TRUE` or `FALSE`
-
-<!-- Note to authors: please modify the code below following the last chunk, this is just a placeholder -->
+Let's illustrate the idea by using selected TLFs generated from previous chapters. 
+Here, we assume files are saved in the `tlf` folder. 
 
 ```{r}
-db <- data.frame(
-  file = c(
-    "intro-ae1.rtf",
-    "intro-ae2.rtf",
-    "intro-ae3.rtf",
-    "intro-ae5.rtf",
-    "intro-ae7.rtf",
-    "tbl_disp.rtf",
-    "tbl_pop.rtf",
-    "tlf_ae_summary.rtf",
-    "tlf_base.rtf",
-    "tlf_eff.rtf",
-    "tlf_eff1.rtf",
-    "tlf_eff2.rtf",
-    "tlf_km.rtf",
-    "tlf_spec_ae.rtf"
-  ),
-  table = c(rep(TRUE, 3), FALSE, rep(TRUE, 6), FALSE, rep(TRUE, 2), FALSE),
-  landscape = c(rep(FALSE, 13), rep(TRUE, 1)),
-  stringsAsFactors = FALSE
-)
-
-db
-```
-
-<!-- Note to authors: the next section can probably be avoided if you capture both the file name and the full path in different columns in the data frame above, and consequently avoid the manual copy & paste. I guess one reason you did this is you had to convert the paths from Linux to Windows in the original Rmd, although that is not a generic flow. -->
-
-### Construct full paths to RTF files
-
-The R code below constructs file paths from two directories: `outtable` and `outgraph`.
-You can extend the code to more than two directories.
-
-```{r, eval=FALSE, echo=TRUE}
-full_path <- ifelse(
-  db$table,
-  file.path(path$outtable, db$file),
-  file.path(path$outgraph, db$file)
+tlf_path <- c(
+  "tlf/tlf_disp.rtf",  # Disposition Table 
+  "tlf/tlf_eff.rtf",   # Efficacy Table
+  "tlf/tlf_km.rtf"     # KM Plot 
 )
 ```
 
-### Combine RTF files into one file
+## Combine RTF Source Code
 
-Combine RTF files into one file and saved in the `path$document` directory.
+The `r2rtf::rtf_assemble()` function allow you to combine RTF 
+source code in individual files into one larger RTF file. 
 
-```{r, eval=FALSE, echo=TRUE}
-r2rtf::rtf_assemble(
-  input = full_path,
-  output = file.path(path$document, "output.docx"),
-  landscape = db$landscape
-)
-```
+::: {.rmdnote}
+One limitation of combining RTF source code is that 
+we are not able to specify page orientation of each TLF 
+in the combined document. 
+:::
 
-## Using toggle fields
 
-The files are assembled using toggle fields.
 
-- Use `Alt` + `F9` to **display** and **hide fields**.
+## Using Toggle Fields
+
+Microsoft Words uses toggle fields to embed files into one Word document. 
+The approach is a dynamic link between files by providing the file absolute path. 
+
+::: {.rmdnote}
+There is a small learning curve to learn how toggle fields work 
+in Microsoft Words. 
+After you become familiar with the workflow, 
+toggle fields can extend your capability to manage large amount of TLFs
+in RTF format.
+::: 
+
+The `rtf_assemble()` function 
+allow you to create a word file with toggle fields as below.
+
+After open the generated `.docx` file, 
+you will see a blank file, because the file only contain fields
+with hyperlinks. 
+
+By using `Alt` + `F9` to **display** the fields and you will 
+see information similar to the screenshot below.
 
 ```{r, echo=FALSE, out.width="99%", fig.cap="Using Alt + F9 to display fields", fig.align="center"}
 knitr::include_graphics("images/rtf-alt-f9.png")
 ```
 
-- To [update TLFs](https://support.microsoft.com/en-us/office/update-fields-7339a049-cb0d-4d5a-8679-97c20c643d4e), select field → right click → Update Field.
+::: {.rmdnote}
+A typical error message is that system can not find the file 
+if you only provide relative path. 
+Please double check the correct absolute file path is in `INCLUDETEXT` field. 
+:::
 
-Below is how the file link looks like after the field got updated.
+To test the toggle field, you can right click one `INCLUDETEXT` filed and 
+click `Update Field`. 
 
-```{r, echo=FALSE, out.width="99%", fig.cap="Update fields", fig.align="center"}
-knitr::include_graphics("images/rtf-update-field.png")
-```
-
-- Use `Alt` + `F9` to **display the tables**.
-- Save the files.
-
-Below is a snapshot of the final Word document output.
+If it works, you can see a table similar to the snapshot below
+by using `Alt + F9`. 
+It is a shortcut to change between results and field display mode. 
 
 ```{r, echo=FALSE, out.width="99%", fig.cap="Update fields", fig.align="center"}
 knitr::include_graphics("images/rtf-after-update.png")
 ```
 
-- We suggest to test one toggle field before updating all of them.
-- If you modified content within a toggle field, remove all
-  `\* MERGEFORMAT ` before updating toggle fields.
-- If a document is ready for delivery to stakeholders, please
-  [unlink toggle fields](https://success.powerdms.com/s/article/Removing-Fields-from-Word-Documents?language=en_US).
+Now you can update all toggle fields to display all TLFs by 
+selecting all fields (`Ctrl + A`), then type `F9`. 
+We suggest to test one toggle field before updating all of them.
+
+As the `docx` file contain dynamic links, 
+you can keep updating the TLFs if you need to refresh content in 
+individual RTF files by selecting all fields (`Ctrl + A`), then type `F9`. 
+
+::: {.rmdnote}
+If you modify table content in the combined `.docx` file, 
+you may get weird table layout if you update all fields within a toggle field. 
+To resolve the issue, please remove all `\* MERGEFORMAT` in the filed mode using `Alt + F9` before updating all toggle fields.
+::: 
+
+
+After the combined TLF is ready for delivery, 
+you can also unlink toggle fields to save table contents, 
+because the absolute path may not work by others.  
+To unlink toggle fields, you can select all fields (`Ctrl + A`), 
+then type `Ctrl + Shift + F9`. 
+
+
