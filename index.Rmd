@@ -25,6 +25,7 @@ library(tidyr)
 library(r2rtf)
 library(knitr)
 library(pkglite)
+library(officer)
 ```
 
 ```{r setup, include=FALSE}
