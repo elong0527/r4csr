@@ -35,13 +35,15 @@ knitr::include_graphics("tlf/tlf-combine.pdf")
 
 ## Combine RTF Source Code
 
-```{r, include=FALSE}
+<details>
+<summary>`rtf_assemble1()` source code</summary>
+```{r}
 #' Assemble RTF files into one single RTF file 
 #' 
 #' @param path a vector of RTF file path
 #' 
 #' @export
-rtf_assemble <- function(path){
+rtf_assemble1 <- function(path){
   
   rtf <- lapply(path, readLines)
   
@@ -60,8 +62,9 @@ rtf_assemble <- function(path){
   
 }
 ```
+</details>
 
-The `rtf_assemble()` function allow you to combine RTF 
+The `rtf_assemble1()` function allow you to combine RTF 
 source code in individual files into one larger RTF file. 
 
 ::: {.rmdnote}
@@ -71,7 +74,7 @@ in the combined document.
 :::
 
 ```{r}
-rtf_assemble(tlf_path) |> 
+rtf_assemble1(tlf_path) |> 
   r2rtf::write_rtf("tlf/rtf-combine.rtf")
 ```
 
@@ -88,8 +91,73 @@ toggle fields can extend your capability to manage large amount of TLFs
 in RTF format.
 ::: 
 
-The `rtf_assemble()` function 
+<details>
+<summary>`rtf_assemble2()` source code</summary>
+```{r}
+#' Assemble RTF TLFs
+#'
+#' Add a set of RTF/TEXT fields into an rdocx object.
+#'
+#' @param input Character vector of file path.
+#' @param output Character string to the output file path.
+#' @param landscape Logical vector to determine whether to
+#' display files as portrait or landscape.
+#'
+#' @export
+rtf_assemble2 <- function(input, output, landscape = FALSE) {
+  
+  input <- normalizePath(input)
+
+  if (!all(file.exists(input))) {
+    warning("Some files do not exist")
+  }
+
+  field <- ifelse(grepl("/", input),
+    paste0("INCLUDETEXT \"", gsub("/", "\\\\\\\\", input), "\""),
+    paste0("INCLUDETEXT \"", gsub("\\", "\\\\", input, fixed = "TRUE"), "\"")
+  )
+
+  if (length(landscape) == 1) {
+    landscape <- rep(landscape, length(field))
+  }
+
+  docx <- officer::read_docx()
+
+  for (i in seq_along(input)) {
+    docx <-
+      docx %>%
+      officer::body_add_fpar(
+        officer::fpar(
+          officer::ftext("Table "),
+          officer::run_word_field("SEQ Table \\* ARABIC"),
+          officer::run_linebreak(),
+          officer::run_word_field(field[i]),
+          officer::run_pagebreak()
+        )
+      )
+    if (landscape[i]) {
+      docx <- officer::body_end_section_landscape(docx)
+    } else {
+      docx <- officer::body_end_section_portrait(docx)
+    }
+  }
+
+  print(docx, target = output)
+
+  invisible(output)
+}
+```
+</details>
+
+The `rtf_assemble2()` function 
 allow you to create a word file with toggle fields as below.
+One benefit is to control the page direction of each TLF as below. 
+
+```{r}
+rtf_assemble2(tlf_path, 
+              output = "tlf/rtf-combine-toggle.docx", 
+              landscape = c(FALSE, FALSE, TRUE))
+```
 
 After open the generated `.docx` file, 
 you will see a blank file, because the file only contain fields
