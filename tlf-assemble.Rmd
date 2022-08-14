@@ -81,7 +81,7 @@ Microsoft Words uses toggle fields to embed files into one Word document.
 The approach is a dynamic link between files by providing the absolute file path. 
 
 ::: {.rmdnote}
-There is a slight learning curve to learning how toggle fields work 
+There is a slight learning curve on how toggle fields work 
 in Microsoft Words. 
 After you become familiar with the workflow, 
 toggle fields can extend your capability to manage a large amount of TLFs
