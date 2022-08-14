@@ -26,8 +26,8 @@ jobs:
       - name: Install LibreOffice
         run: sudo apt-get update && sudo apt-get install libreoffice --no-install-recommends
 
-      - name: Install dependencies for {curl} and {magick}
-        run: sudo apt-get update && sudo apt-get install libcurl4-openssl-dev libmagick++-dev --no-install-recommends
+      - name: Install dependencies for curl, magick, and pdftools
+        run: sudo apt-get update && sudo apt-get install libcurl4-openssl-dev libmagick++-dev libpoppler-cpp-dev --no-install-recommends
 
       - uses: actions/checkout@v2
 
