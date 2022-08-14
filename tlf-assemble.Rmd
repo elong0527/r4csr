@@ -22,14 +22,14 @@ Here, we assume files are saved in the `tlf/` folder.
 
 ```{r}
 tlf_path <- c(
-  "tlf/tbl_disp.rtf",  # Disposition Table 
-  "tlf/tlf_eff.rtf",   # Efficacy Table
-  "tlf/tlf_km.rtf"     # KM Plot 
+  "tlf/tbl_disp.rtf", # Disposition table
+  "tlf/tlf_eff.rtf",  # Efficacy table
+  "tlf/tlf_km.rtf"    # K-M plot
 )
 ```
 
 ```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
-knitr::include_graphics("tlf/tlf-combine.pdf")
+knitr::include_graphics("tlf/rtf-combine.pdf")
 ```
 
 ## Combine RTF Source Code
@@ -37,28 +37,26 @@ knitr::include_graphics("tlf/tlf-combine.pdf")
 <details>
 <summary>`rtf_assemble1()` source code</summary>
 ```{r}
-#' Assemble RTF files into one single RTF file 
-#' 
+#' Assemble RTF files into one single RTF file
+#'
 #' @param path a vector of RTF file path
-#' 
+#'
 #' @export
-rtf_assemble1 <- function(path){
-  
+rtf_assemble1 <- function(path) {
   rtf <- lapply(path, readLines)
-  
+
   n <- length(rtf)
   start <- c(1, rep(2, n - 1))
   end <- vapply(rtf, length, numeric(1))
   end[-n] <- end[-n] - 1
-  
-  for(i in 1:n){
+
+  for (i in 1:n) {
     rtf[[i]] <- rtf[[i]][start[i]:end[i]]
-    if(i < n) rtf[[i]] <- c(rtf[[i]], r2rtf:::as_rtf_new_page())
+    if (i < n) rtf[[i]] <- c(rtf[[i]], r2rtf:::as_rtf_new_page())
   }
   rtf <- do.call(c, rtf)
-  
+
   rtf
-  
 }
 ```
 </details>
@@ -73,7 +71,7 @@ in the combined document.
 :::
 
 ```{r}
-rtf_assemble1(tlf_path) |> 
+rtf_assemble1(tlf_path) |>
   r2rtf::write_rtf("tlf/rtf-combine.rtf")
 ```
 
@@ -104,7 +102,6 @@ in RTF format.
 #'
 #' @export
 rtf_assemble2 <- function(input, output, landscape = FALSE) {
-  
   input <- normalizePath(input)
 
   if (!all(file.exists(input))) {
@@ -153,9 +150,11 @@ allows you to create a word file with toggle fields as below.
 One benefit is to control the page direction of each TLF as below. 
 
 ```{r}
-rtf_assemble2(tlf_path, 
-              output = "tlf/rtf-combine-toggle.docx", 
-              landscape = c(FALSE, FALSE, TRUE))
+rtf_assemble2(
+  tlf_path,
+  output = "tlf/rtf-combine-toggle.docx",
+  landscape = c(FALSE, FALSE, TRUE)
+)
 ```
 
 After opening the generated `.docx` file, 
@@ -206,5 +205,3 @@ you can also unlink toggle fields to save table contents,
 because the absolute path may not work for others.  
 To unlink toggle fields, you can select all fields (`Ctrl + A`), 
 then type `Ctrl + Shift + F9`. 
-
-
