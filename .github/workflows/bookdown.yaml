@@ -26,6 +26,9 @@ jobs:
       - name: Install LibreOffice
         run: sudo apt-get update && sudo apt-get install libreoffice --no-install-recommends
 
+      - name: Install libcurl for {curl}
+        run: sudo apt-get update && sudo apt-get install libcurl4-openssl-dev --no-install-recommends
+
       - uses: actions/checkout@v2
 
       - uses: r-lib/actions/setup-pandoc@v2
