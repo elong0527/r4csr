@@ -1,6 +1,8 @@
 fig:unnamed-chunk-138
-fig:unnamed-chunk-140
-fig:unnamed-chunk-153
+fig:unnamed-chunk-139
+fig:unnamed-chunk-148
+fig:unnamed-chunk-150
+fig:unnamed-chunk-163
 tlf-overview
 background
 structure-and-content
@@ -25,6 +27,9 @@ analysis-dataset-1
 create-kaplan-meier-curve
 aesummary
 specific-ae
+assemble
+combine-rtf-source-code
+using-toggle-fields
 project-overview
 folder
 consistency

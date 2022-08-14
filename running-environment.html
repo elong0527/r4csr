@@ -4,30 +4,56 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 14 Running environment | R for Clinical Study Reports and Submission</title>
+<title>Chapter 15 Running environment | R for Clinical Study Reports and Submission</title>
 <meta name="author" content="Yilong Zhang">
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
 <meta name="description" content="In the previous chapter, we generated instructions to manually create the running environments for reproducing the A&amp;R deliverables. In this chapter, we focus on automating the creation of the R...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="Chapter 14 Running environment | R for Clinical Study Reports and Submission">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta property="og:title" content="Chapter 15 Running environment | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
 <meta property="og:description" content="In the previous chapter, we generated instructions to manually create the running environments for reproducing the A&amp;R deliverables. In this chapter, we focus on automating the creation of the R...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 14 Running environment | R for Clinical Study Reports and Submission">
+<meta name="twitter:title" content="Chapter 15 Running environment | R for Clinical Study Reports and Submission">
 <meta name="twitter:description" content="In the previous chapter, we generated instructions to manually create the running environments for reproducing the A&amp;R deliverables. In this chapter, we focus on automating the creation of the R...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet">
 <script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-MKYDL3PNW1"></script><script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  
-    gtag('config', 'G-MKYDL3PNW1');
-  </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="style.css">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-MKYDL3PNW1');
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -60,14 +86,15 @@
 <li><a class="" href="efficacy-figure.html"><span class="header-section-number">6</span> Efficacy figure</a></li>
 <li><a class="" href="aesummary.html"><span class="header-section-number">7</span> AE summary</a></li>
 <li><a class="" href="specific-ae.html"><span class="header-section-number">8</span> Specific AE</a></li>
+<li><a class="" href="assemble.html"><span class="header-section-number">9</span> Assemble TLFs</a></li>
 <li class="book-part">Clinical trial project</li>
-<li><a class="" href="project-overview.html"><span class="header-section-number">9</span> Overview</a></li>
-<li><a class="" href="folder.html"><span class="header-section-number">10</span> Project folder</a></li>
-<li><a class="" href="manage.html"><span class="header-section-number">11</span> Project management</a></li>
+<li><a class="" href="project-overview.html"><span class="header-section-number">10</span> Overview</a></li>
+<li><a class="" href="folder.html"><span class="header-section-number">11</span> Project folder</a></li>
+<li><a class="" href="manage.html"><span class="header-section-number">12</span> Project management</a></li>
 <li class="book-part">eCTD submission</li>
-<li><a class="" href="submission-overview.html"><span class="header-section-number">12</span> Overview</a></li>
-<li><a class="" href="submission-package.html"><span class="header-section-number">13</span> Submission package</a></li>
-<li><a class="active" href="running-environment.html"><span class="header-section-number">14</span> Running environment</a></li>
+<li><a class="" href="submission-overview.html"><span class="header-section-number">13</span> Overview</a></li>
+<li><a class="" href="submission-package.html"><span class="header-section-number">14</span> Submission package</a></li>
+<li><a class="active" href="running-environment.html"><span class="header-section-number">15</span> Running environment</a></li>
 <li class="book-part">Appendix</li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
@@ -77,9 +104,9 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="running-environment" class="section level1">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="running-environment" class="section level1" number="15">
 <h1>
-<span class="header-section-number">14</span> Running environment<a class="anchor" aria-label="anchor" href="#running-environment"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15</span> Running environment<a class="anchor" aria-label="anchor" href="#running-environment"><i class="fas fa-link"></i></a>
 </h1>
 <p>In the previous chapter, we generated instructions to manually
 create the running environments for reproducing the A&amp;R deliverables.</p>
@@ -87,9 +114,9 @@ create the running environments for reproducing the A&amp;R deliverables.</p>
 the R environments with R code to accelerate the dry run testing process,
 simplifying the ADRG instructions, and making it easy to recreate
 different environment settings with reproducible analysis results.</p>
-<div id="prerequisites-1" class="section level2">
+<div id="prerequisites-1" class="section level2" number="15.1">
 <h2>
-<span class="header-section-number">14.1</span> Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.1</span> Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites-1"><i class="fas fa-link"></i></a>
 </h2>
 <p><code>cleanslate</code> is an R package that offers a solution to
 create portable R environments.</p>
@@ -100,15 +127,15 @@ This chapter gives a preview of the planned APIs.
 They may change in the future.</p>
 </div>
 <p>Install <code>cleanslate</code> from CRAN (once available):</p>
-<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"cleanslate"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"cleanslate"</span><span class="op">)</span></span></code></pre></div>
 <p>Or from GitHub (once available):</p>
-<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"Merck/cleanslate"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"Merck/cleanslate"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="practical-considerations" class="section level2">
+<div id="practical-considerations" class="section level2" number="15.2">
 <h2>
-<span class="header-section-number">14.2</span> Practical considerations<a class="anchor" aria-label="anchor" href="#practical-considerations"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.2</span> Practical considerations<a class="anchor" aria-label="anchor" href="#practical-considerations"><i class="fas fa-link"></i></a>
 </h2>
 <p>The <code>cleanslate</code> package supports:</p>
 <ul>
@@ -125,19 +152,19 @@ and avoids security and portability concerns.</p>
 under Windows, the primary focus is Windows at the moment,
 while the support for other platforms might be added in future versions.</p>
 </div>
-<div id="create-canonical-environments" class="section level2">
+<div id="create-canonical-environments" class="section level2" number="15.3">
 <h2>
-<span class="header-section-number">14.3</span> Create canonical environments<a class="anchor" aria-label="anchor" href="#create-canonical-environments"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.3</span> Create canonical environments<a class="anchor" aria-label="anchor" href="#create-canonical-environments"><i class="fas fa-link"></i></a>
 </h2>
 <p>One can create a running environment with “canonical” settings with a
 single function call to <code>use_cleanslate()</code>:</p>
-<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">cleanslate</span><span class="fu">::</span><span class="fu">use_cleanslate</span><span class="op">(</span>
-  <span class="st">"C:/temp/"</span>,
-  r_version <span class="op">=</span> <span class="st">"4.1.1"</span>,
-  from <span class="op">=</span> <span class="st">"https://cran.r-project.org/"</span>,
-  repo <span class="op">=</span> <span class="st">"https://mran.microsoft.com/snapshot/2021-08-06/"</span>
-<span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">cleanslate</span><span class="fu">::</span><span class="fu">use_cleanslate</span><span class="op">(</span></span>
+<span>  <span class="st">"C:/temp/"</span>,</span>
+<span>  r_version <span class="op">=</span> <span class="st">"4.1.1"</span>,</span>
+<span>  from <span class="op">=</span> <span class="st">"https://cran.r-project.org/"</span>,</span>
+<span>  repo <span class="op">=</span> <span class="st">"https://mran.microsoft.com/snapshot/2021-08-06/"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p>This will</p>
 <ul>
 <li>Create a project folder under <code>C:/temp/</code> with a <code>.Rproj</code> file;</li>
@@ -154,21 +181,21 @@ open the project.
 This will ensure some sanity checks in the <code>.Rprofile</code>, such as whether the
 R and library are located within the project folder.</p>
 </div>
-<div id="create-tailored-environments" class="section level2">
+<div id="create-tailored-environments" class="section level2" number="15.4">
 <h2>
-<span class="header-section-number">14.4</span> Create tailored environments<a class="anchor" aria-label="anchor" href="#create-tailored-environments"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.4</span> Create tailored environments<a class="anchor" aria-label="anchor" href="#create-tailored-environments"><i class="fas fa-link"></i></a>
 </h2>
 <p>To create a more customized running environment, one can use the specific
 functions to tailor each aspect, for example:</p>
-<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st">"cleanslate"</span><span class="op">)</span>
-
-<span class="st">"C:/temp/"</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu">use_project</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu">use_rprofile</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu">use_renviron</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu">use_r_version</span><span class="op">(</span>version <span class="op">=</span> <span class="st">"4.1.1"</span><span class="op">)</span> <span class="op"><a href="https://merck.github.io/pkglite/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu">use_rtools</span><span class="op">(</span>version <span class="op">=</span> <span class="st">"rtools40"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st">"cleanslate"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="st">"C:/temp/"</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">use_project</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">use_rprofile</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">use_renviron</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">use_r_version</span><span class="op">(</span>version <span class="op">=</span> <span class="st">"4.1.1"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">use_rtools</span><span class="op">(</span>version <span class="op">=</span> <span class="st">"rtools40"</span><span class="op">)</span></span></code></pre></div>
 <p>The project context functions
 (<code>use_project()</code>, <code>use_rprofile()</code>, <code>use_renviron</code>) support custom templates
 using <a href="https://cran.r-project.org/package=brew">brew</a>.</p>
@@ -182,94 +209,94 @@ shift as time goes by.</p>
 in determining specific versions of R and Rtools that are currently available,
 besides generating and verifying the snapshot repo links.</p>
 </div>
-<div id="update-adrg-1" class="section level2">
+<div id="update-adrg-1" class="section level2" number="15.5">
 <h2>
-<span class="header-section-number">14.5</span> Update ADRG<a class="anchor" aria-label="anchor" href="#update-adrg-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.5</span> Update ADRG<a class="anchor" aria-label="anchor" href="#update-adrg-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>If you use <code>cleanslate</code>, remember to update the ADRG instructions for
 executing the analysis programs in R. Mostly, this can simplify
 the first three steps on creating a project, installing a specific
 version of R, and configuring the package repo location.
 For example:</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb149-1"><a href="running-environment.html#cb149-1"></a>Appendix: Instructions to Execute Analysis Program in R</span>
-<span id="cb149-2"><a href="running-environment.html#cb149-2"></a></span>
-<span id="cb149-3"><a href="running-environment.html#cb149-3"></a>1. <span class="st">Setup R environment</span></span>
-<span id="cb149-4"><a href="running-environment.html#cb149-4"></a></span>
-<span id="cb149-5"><a href="running-environment.html#cb149-5"></a>Open the existing R, install the required packages by running the code below.</span>
-<span id="cb149-6"><a href="running-environment.html#cb149-6"></a></span>
-<span id="cb149-7"><a href="running-environment.html#cb149-7"></a>install.packages("cleanslate")</span>
-<span id="cb149-8"><a href="running-environment.html#cb149-8"></a></span>
-<span id="cb149-9"><a href="running-environment.html#cb149-9"></a>Create a temporary working directory, for example, "C:\tempwork".</span>
-<span id="cb149-10"><a href="running-environment.html#cb149-10"></a>Copy all submitted R programs into the temporary folder.</span>
-<span id="cb149-11"><a href="running-environment.html#cb149-11"></a>In the same R session, run the code below to create a project</span>
-<span id="cb149-12"><a href="running-environment.html#cb149-12"></a>with a portable R environment.</span>
-<span id="cb149-13"><a href="running-environment.html#cb149-13"></a></span>
-<span id="cb149-14"><a href="running-environment.html#cb149-14"></a>cleanslate::use_cleanslate(</span>
-<span id="cb149-15"><a href="running-environment.html#cb149-15"></a>  "C:/temp/",</span>
-<span id="cb149-16"><a href="running-environment.html#cb149-16"></a>  r_version = "4.1.1",</span>
-<span id="cb149-17"><a href="running-environment.html#cb149-17"></a>  from = "https://cran.r-project.org/",</span>
-<span id="cb149-18"><a href="running-environment.html#cb149-18"></a>  repo = "https://mran.microsoft.com/snapshot/2021-08-06/"</span>
-<span id="cb149-19"><a href="running-environment.html#cb149-19"></a>)</span>
-<span id="cb149-20"><a href="running-environment.html#cb149-20"></a></span>
-<span id="cb149-21"><a href="running-environment.html#cb149-21"></a>2. <span class="st">Open the project</span></span>
-<span id="cb149-22"><a href="running-environment.html#cb149-22"></a></span>
-<span id="cb149-23"><a href="running-environment.html#cb149-23"></a>Go to the working directory created above, double click the .Rproj file</span>
-<span id="cb149-24"><a href="running-environment.html#cb149-24"></a>to open the project in RStudio. Follow the instructions to select the</span>
-<span id="cb149-25"><a href="running-environment.html#cb149-25"></a>project-specific R version, then restart RStudio. If successful,</span>
-<span id="cb149-26"><a href="running-environment.html#cb149-26"></a>the R version and package repo should be printed as defined above.</span>
-<span id="cb149-27"><a href="running-environment.html#cb149-27"></a></span>
-<span id="cb149-28"><a href="running-environment.html#cb149-28"></a>3. <span class="st">Install open-source R packages</span></span>
-<span id="cb149-29"><a href="running-environment.html#cb149-29"></a></span>
-<span id="cb149-30"><a href="running-environment.html#cb149-30"></a>In the new R session, install the required packages by running the code below.</span>
-<span id="cb149-31"><a href="running-environment.html#cb149-31"></a></span>
-<span id="cb149-32"><a href="running-environment.html#cb149-32"></a>install.packages(c("pkglite", "publicpkg1", "publicpkg2"))</span>
-<span id="cb149-33"><a href="running-environment.html#cb149-33"></a></span>
-<span id="cb149-34"><a href="running-environment.html#cb149-34"></a>4. <span class="st">Install proprietary R packages</span></span>
-<span id="cb149-35"><a href="running-environment.html#cb149-35"></a></span>
-<span id="cb149-36"><a href="running-environment.html#cb149-36"></a>All internal R packages are packed in the file r0pkgs.txt. In the same R session,</span>
-<span id="cb149-37"><a href="running-environment.html#cb149-37"></a>restore the package structures and install them by running the code below.</span>
-<span id="cb149-38"><a href="running-environment.html#cb149-38"></a>Adjust the output path as needed to use a writable local directory.</span>
-<span id="cb149-39"><a href="running-environment.html#cb149-39"></a></span>
-<span id="cb149-40"><a href="running-environment.html#cb149-40"></a>pkglite::unpack("r0pkgs.txt", output = ".", install = TRUE)</span>
-<span id="cb149-41"><a href="running-environment.html#cb149-41"></a></span>
-<span id="cb149-42"><a href="running-environment.html#cb149-42"></a>5. <span class="st">Update path to dataset and TLFs</span></span>
-<span id="cb149-43"><a href="running-environment.html#cb149-43"></a></span>
-<span id="cb149-44"><a href="running-environment.html#cb149-44"></a>INPUT path: to rerun the analysis programs, define the path variable</span>
-<span id="cb149-45"><a href="running-environment.html#cb149-45"></a></span>
-<span id="cb149-46"><a href="running-environment.html#cb149-46"></a>- <span class="st">Path for ADaM data: path$adam</span></span>
-<span id="cb149-47"><a href="running-environment.html#cb149-47"></a></span>
-<span id="cb149-48"><a href="running-environment.html#cb149-48"></a>OUTPUT path: to save the analysis results, define the path variable</span>
-<span id="cb149-49"><a href="running-environment.html#cb149-49"></a></span>
-<span id="cb149-50"><a href="running-environment.html#cb149-50"></a>- <span class="st">Path for output TLFs: path$output</span></span>
-<span id="cb149-51"><a href="running-environment.html#cb149-51"></a></span>
-<span id="cb149-52"><a href="running-environment.html#cb149-52"></a>All these paths need to be defined before executing the analysis program. For example:</span>
-<span id="cb149-53"><a href="running-environment.html#cb149-53"></a></span>
-<span id="cb149-54"><a href="running-environment.html#cb149-54"></a>path = list(adam = "/path/to/esub/analysis/adam/datasets/") # Modify to use actual location</span>
-<span id="cb149-55"><a href="running-environment.html#cb149-55"></a>path$outtable = path$outgraph = "." # Outputs saved to the current folder</span>
-<span id="cb149-56"><a href="running-environment.html#cb149-56"></a></span>
-<span id="cb149-57"><a href="running-environment.html#cb149-57"></a>6. <span class="st">Execute analysis program</span></span>
-<span id="cb149-58"><a href="running-environment.html#cb149-58"></a></span>
-<span id="cb149-59"><a href="running-environment.html#cb149-59"></a>To reproduce the analysis results, rerun the following programs:</span>
-<span id="cb149-60"><a href="running-environment.html#cb149-60"></a></span>
-<span id="cb149-61"><a href="running-environment.html#cb149-61"></a>- <span class="st">tlf-01-disposition.txt</span></span>
-<span id="cb149-62"><a href="running-environment.html#cb149-62"></a><span class="st">- tlf-02-population.txt</span></span>
-<span id="cb149-63"><a href="running-environment.html#cb149-63"></a><span class="st">- tlf-03-baseline.txt</span></span>
-<span id="cb149-64"><a href="running-environment.html#cb149-64"></a><span class="st">- tlf-04-efficacy.txt</span></span>
-<span id="cb149-65"><a href="running-environment.html#cb149-65"></a><span class="st">- tlf-05-ae-summary.txt</span></span>
-<span id="cb149-66"><a href="running-environment.html#cb149-66"></a><span class="st">- tlf-06-ae-spec.txt</span></span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb153-1"><a href="running-environment.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="an">Appendix:</span><span class="co"> Instructions to Execute Analysis Program in R</span></span>
+<span id="cb153-2"><a href="running-environment.html#cb153-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-3"><a href="running-environment.html#cb153-3" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Setup R environment</span>
+<span id="cb153-4"><a href="running-environment.html#cb153-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-5"><a href="running-environment.html#cb153-5" aria-hidden="true" tabindex="-1"></a>Open the existing R, install the required packages by running the code below.</span>
+<span id="cb153-6"><a href="running-environment.html#cb153-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-7"><a href="running-environment.html#cb153-7" aria-hidden="true" tabindex="-1"></a>install.packages("cleanslate")</span>
+<span id="cb153-8"><a href="running-environment.html#cb153-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-9"><a href="running-environment.html#cb153-9" aria-hidden="true" tabindex="-1"></a>Create a temporary working directory, for example, "C:\tempwork".</span>
+<span id="cb153-10"><a href="running-environment.html#cb153-10" aria-hidden="true" tabindex="-1"></a>Copy all submitted R programs into the temporary folder.</span>
+<span id="cb153-11"><a href="running-environment.html#cb153-11" aria-hidden="true" tabindex="-1"></a>In the same R session, run the code below to create a project</span>
+<span id="cb153-12"><a href="running-environment.html#cb153-12" aria-hidden="true" tabindex="-1"></a>with a portable R environment.</span>
+<span id="cb153-13"><a href="running-environment.html#cb153-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-14"><a href="running-environment.html#cb153-14" aria-hidden="true" tabindex="-1"></a>cleanslate::use_cleanslate(</span>
+<span id="cb153-15"><a href="running-environment.html#cb153-15" aria-hidden="true" tabindex="-1"></a>  "C:/temp/",</span>
+<span id="cb153-16"><a href="running-environment.html#cb153-16" aria-hidden="true" tabindex="-1"></a>  r_version = "4.1.1",</span>
+<span id="cb153-17"><a href="running-environment.html#cb153-17" aria-hidden="true" tabindex="-1"></a>  from = "https://cran.r-project.org/",</span>
+<span id="cb153-18"><a href="running-environment.html#cb153-18" aria-hidden="true" tabindex="-1"></a>  repo = "https://mran.microsoft.com/snapshot/2021-08-06/"</span>
+<span id="cb153-19"><a href="running-environment.html#cb153-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb153-20"><a href="running-environment.html#cb153-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-21"><a href="running-environment.html#cb153-21" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Open the project</span>
+<span id="cb153-22"><a href="running-environment.html#cb153-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-23"><a href="running-environment.html#cb153-23" aria-hidden="true" tabindex="-1"></a>Go to the working directory created above, double click the .Rproj file</span>
+<span id="cb153-24"><a href="running-environment.html#cb153-24" aria-hidden="true" tabindex="-1"></a>to open the project in RStudio. Follow the instructions to select the</span>
+<span id="cb153-25"><a href="running-environment.html#cb153-25" aria-hidden="true" tabindex="-1"></a>project-specific R version, then restart RStudio. If successful,</span>
+<span id="cb153-26"><a href="running-environment.html#cb153-26" aria-hidden="true" tabindex="-1"></a>the R version and package repo should be printed as defined above.</span>
+<span id="cb153-27"><a href="running-environment.html#cb153-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-28"><a href="running-environment.html#cb153-28" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Install open-source R packages</span>
+<span id="cb153-29"><a href="running-environment.html#cb153-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-30"><a href="running-environment.html#cb153-30" aria-hidden="true" tabindex="-1"></a>In the new R session, install the required packages by running the code below.</span>
+<span id="cb153-31"><a href="running-environment.html#cb153-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-32"><a href="running-environment.html#cb153-32" aria-hidden="true" tabindex="-1"></a>install.packages(c("pkglite", "publicpkg1", "publicpkg2"))</span>
+<span id="cb153-33"><a href="running-environment.html#cb153-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-34"><a href="running-environment.html#cb153-34" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Install proprietary R packages</span>
+<span id="cb153-35"><a href="running-environment.html#cb153-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-36"><a href="running-environment.html#cb153-36" aria-hidden="true" tabindex="-1"></a>All internal R packages are packed in the file r0pkgs.txt. In the same R session,</span>
+<span id="cb153-37"><a href="running-environment.html#cb153-37" aria-hidden="true" tabindex="-1"></a>restore the package structures and install them by running the code below.</span>
+<span id="cb153-38"><a href="running-environment.html#cb153-38" aria-hidden="true" tabindex="-1"></a>Adjust the output path as needed to use a writable local directory.</span>
+<span id="cb153-39"><a href="running-environment.html#cb153-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-40"><a href="running-environment.html#cb153-40" aria-hidden="true" tabindex="-1"></a>pkglite::unpack("r0pkgs.txt", output = ".", install = TRUE)</span>
+<span id="cb153-41"><a href="running-environment.html#cb153-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-42"><a href="running-environment.html#cb153-42" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Update path to dataset and TLFs</span>
+<span id="cb153-43"><a href="running-environment.html#cb153-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-44"><a href="running-environment.html#cb153-44" aria-hidden="true" tabindex="-1"></a>INPUT path: to rerun the analysis programs, define the path variable</span>
+<span id="cb153-45"><a href="running-environment.html#cb153-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-46"><a href="running-environment.html#cb153-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Path for ADaM data: path$adam</span>
+<span id="cb153-47"><a href="running-environment.html#cb153-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-48"><a href="running-environment.html#cb153-48" aria-hidden="true" tabindex="-1"></a>OUTPUT path: to save the analysis results, define the path variable</span>
+<span id="cb153-49"><a href="running-environment.html#cb153-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-50"><a href="running-environment.html#cb153-50" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Path for output TLFs: path$output</span>
+<span id="cb153-51"><a href="running-environment.html#cb153-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-52"><a href="running-environment.html#cb153-52" aria-hidden="true" tabindex="-1"></a>All these paths need to be defined before executing the analysis program. For example:</span>
+<span id="cb153-53"><a href="running-environment.html#cb153-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-54"><a href="running-environment.html#cb153-54" aria-hidden="true" tabindex="-1"></a>path = list(adam = "/path/to/esub/analysis/adam/datasets/") # Modify to use actual location</span>
+<span id="cb153-55"><a href="running-environment.html#cb153-55" aria-hidden="true" tabindex="-1"></a>path$outtable = path$outgraph = "." # Outputs saved to the current folder</span>
+<span id="cb153-56"><a href="running-environment.html#cb153-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-57"><a href="running-environment.html#cb153-57" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>Execute analysis program</span>
+<span id="cb153-58"><a href="running-environment.html#cb153-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-59"><a href="running-environment.html#cb153-59" aria-hidden="true" tabindex="-1"></a>To reproduce the analysis results, rerun the following programs:</span>
+<span id="cb153-60"><a href="running-environment.html#cb153-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-61"><a href="running-environment.html#cb153-61" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>tlf-01-disposition.txt</span>
+<span id="cb153-62"><a href="running-environment.html#cb153-62" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>tlf-02-population.txt</span>
+<span id="cb153-63"><a href="running-environment.html#cb153-63" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>tlf-03-baseline.txt</span>
+<span id="cb153-64"><a href="running-environment.html#cb153-64" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>tlf-04-efficacy.txt</span>
+<span id="cb153-65"><a href="running-environment.html#cb153-65" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>tlf-05-ae-summary.txt</span>
+<span id="cb153-66"><a href="running-environment.html#cb153-66" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>tlf-06-ae-spec.txt</span></code></pre></div>
 </div>
-<div id="rstudio-addin" class="section level2">
+<div id="rstudio-addin" class="section level2" number="15.6">
 <h2>
-<span class="header-section-number">14.6</span> RStudio addin<a class="anchor" aria-label="anchor" href="#rstudio-addin"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.6</span> RStudio addin<a class="anchor" aria-label="anchor" href="#rstudio-addin"><i class="fas fa-link"></i></a>
 </h2>
 <p>To make it convenient to use <code>cleanslate</code> in experiments,
 one can also use its RStudio addin. After <code>cleanslate</code>
 is installed, click <code>Addins</code> -&gt; <code>cleanslate</code> -&gt; <code>Create portable R environment</code>
 in RStudio, or call <code>cleanslate:::create_env_addin()</code> to open it.</p>
 <div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-153"></span>
+<span style="display:block;" id="fig:unnamed-chunk-163"></span>
 <img src="images/cleanslate-addin.png" alt="cleanslate RStudio addin" width="65%"><p class="caption">
-FIGURE 14.1: cleanslate RStudio addin
+FIGURE 15.1: cleanslate RStudio addin
 </p>
 </div>
 <p>The addin provides a wizard-like interface to help create the environment
@@ -282,18 +309,18 @@ to the functional API demonstrated above.</p>
 
 
   <div class="chapter-nav">
-<div class="prev"><a href="submission-package.html"><span class="header-section-number">13</span> Submission package</a></div>
+<div class="prev"><a href="submission-package.html"><span class="header-section-number">14</span> Submission package</a></div>
 <div class="next"><a href="references.html">References</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#running-environment"><span class="header-section-number">14</span> Running environment</a></li>
-<li><a class="nav-link" href="#prerequisites-1"><span class="header-section-number">14.1</span> Prerequisites</a></li>
-<li><a class="nav-link" href="#practical-considerations"><span class="header-section-number">14.2</span> Practical considerations</a></li>
-<li><a class="nav-link" href="#create-canonical-environments"><span class="header-section-number">14.3</span> Create canonical environments</a></li>
-<li><a class="nav-link" href="#create-tailored-environments"><span class="header-section-number">14.4</span> Create tailored environments</a></li>
-<li><a class="nav-link" href="#update-adrg-1"><span class="header-section-number">14.5</span> Update ADRG</a></li>
-<li><a class="nav-link" href="#rstudio-addin"><span class="header-section-number">14.6</span> RStudio addin</a></li>
+<li><a class="nav-link" href="#running-environment"><span class="header-section-number">15</span> Running environment</a></li>
+<li><a class="nav-link" href="#prerequisites-1"><span class="header-section-number">15.1</span> Prerequisites</a></li>
+<li><a class="nav-link" href="#practical-considerations"><span class="header-section-number">15.2</span> Practical considerations</a></li>
+<li><a class="nav-link" href="#create-canonical-environments"><span class="header-section-number">15.3</span> Create canonical environments</a></li>
+<li><a class="nav-link" href="#create-tailored-environments"><span class="header-section-number">15.4</span> Create tailored environments</a></li>
+<li><a class="nav-link" href="#update-adrg-1"><span class="header-section-number">15.5</span> Update ADRG</a></li>
+<li><a class="nav-link" href="#rstudio-addin"><span class="header-section-number">15.6</span> RStudio addin</a></li>
 </ul>
 
       <div class="book-extra">

@@ -9,7 +9,7 @@
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
 <meta name="description" content="Following ICH E3 guidance, we need to summarize the number of participants included in each efficacy analysis in Section 11.1, Data Sets Analysed. library(haven) # Read SAS data library(dplyr) #...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
 <meta property="og:title" content="Chapter 3 Analysis population | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Following ICH E3 guidance, we need to summarize the number of participants included in each efficacy analysis in Section 11.1, Data Sets Analysed. library(haven) # Read SAS data library(dplyr) #...">
@@ -19,15 +19,41 @@
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet">
 <script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-MKYDL3PNW1"></script><script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  
-    gtag('config', 'G-MKYDL3PNW1');
-  </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="style.css">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-MKYDL3PNW1');
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -60,14 +86,15 @@
 <li><a class="" href="efficacy-figure.html"><span class="header-section-number">6</span> Efficacy figure</a></li>
 <li><a class="" href="aesummary.html"><span class="header-section-number">7</span> AE summary</a></li>
 <li><a class="" href="specific-ae.html"><span class="header-section-number">8</span> Specific AE</a></li>
+<li><a class="" href="assemble.html"><span class="header-section-number">9</span> Assemble TLFs</a></li>
 <li class="book-part">Clinical trial project</li>
-<li><a class="" href="project-overview.html"><span class="header-section-number">9</span> Overview</a></li>
-<li><a class="" href="folder.html"><span class="header-section-number">10</span> Project folder</a></li>
-<li><a class="" href="manage.html"><span class="header-section-number">11</span> Project management</a></li>
+<li><a class="" href="project-overview.html"><span class="header-section-number">10</span> Overview</a></li>
+<li><a class="" href="folder.html"><span class="header-section-number">11</span> Project folder</a></li>
+<li><a class="" href="manage.html"><span class="header-section-number">12</span> Project management</a></li>
 <li class="book-part">eCTD submission</li>
-<li><a class="" href="submission-overview.html"><span class="header-section-number">12</span> Overview</a></li>
-<li><a class="" href="submission-package.html"><span class="header-section-number">13</span> Submission package</a></li>
-<li><a class="" href="running-environment.html"><span class="header-section-number">14</span> Running environment</a></li>
+<li><a class="" href="submission-overview.html"><span class="header-section-number">13</span> Overview</a></li>
+<li><a class="" href="submission-package.html"><span class="header-section-number">14</span> Submission package</a></li>
+<li><a class="" href="running-environment.html"><span class="header-section-number">15</span> Running environment</a></li>
 <li class="book-part">Appendix</li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
@@ -77,7 +104,7 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="population" class="section level1">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="population" class="section level1" number="3">
 <h1>
 <span class="header-section-number">3</span> Analysis population<a class="anchor" aria-label="anchor" href="#population"><i class="fas fa-link"></i></a>
 </h1>
@@ -86,17 +113,17 @@ guidance</a>,
 we need to summarize the number of participants included in each efficacy
 analysis in Section 11.1, Data Sets Analysed.</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span> <span class="co"># Read SAS data</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://merck.github.io/r2rtf/">r2rtf</a></span><span class="op">)</span> <span class="co"># Reporting in RTF format</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span> <span class="co"># Read SAS data</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://merck.github.io/r2rtf/">r2rtf</a></span><span class="op">)</span> <span class="co"># Reporting in RTF format</span></span></code></pre></div>
 <p>In this chapter, we illustrate how to create a summary table for
 the analysis population for a study.</p>
 <embed src="tlf/tbl_pop.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>The first step is to read relevant datasets into R. For the analysis
 population table, all the required information is saved in the ADSL
 dataset. We can use the <code>haven</code> package to read the dataset.</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"data-adam/adsl.sas7bdat"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"data-adam/adsl.sas7bdat"</span><span class="op">)</span></span></code></pre></div>
 <p>We illustrate how to prepare a report data for a simplified analysis
 population table using variables below:</p>
 <ul>
@@ -106,9 +133,9 @@ population table using variables below:</p>
 <li>SAFFL: safty population flag</li>
 </ul>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">adsl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">USUBJID</span>, <span class="va">ITTFL</span>, <span class="va">EFFFL</span>, <span class="va">SAFFL</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">adsl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">USUBJID</span>, <span class="va">ITTFL</span>, <span class="va">EFFFL</span>, <span class="va">SAFFL</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt; # A tibble: 4 × 4
 #&gt;   USUBJID     ITTFL EFFFL SAFFL
 #&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
@@ -116,7 +143,7 @@ population table using variables below:</p>
 #&gt; 2 01-701-1023 Y     Y     Y    
 #&gt; 3 01-701-1028 Y     Y     Y    
 #&gt; 4 01-701-1033 Y     Y     Y</code></pre>
-<div id="helper-functions" class="section level2">
+<div id="helper-functions" class="section level2" number="3.1">
 <h2>
 <span class="header-section-number">3.1</span> Helper functions<a class="anchor" aria-label="anchor" href="#helper-functions"><i class="fas fa-link"></i></a>
 </h2>
@@ -136,23 +163,23 @@ tables in the rest of this book.</p>
 <p>To format numbers and percentages, we create a function called
 <code>fmt_num()</code>. It is a very simple function wrapping <code><a href="https://rdrr.io/r/base/formatc.html">formatC()</a></code>.</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">fmt_num</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">digits</span>, <span class="va">width</span> <span class="op">=</span> <span class="va">digits</span> <span class="op">+</span> <span class="fl">4</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/formatc.html">formatC</a></span><span class="op">(</span><span class="va">x</span>,
-    digits <span class="op">=</span> <span class="va">digits</span>,
-    format <span class="op">=</span> <span class="st">"f"</span>,
-    width <span class="op">=</span> <span class="va">width</span>
-  <span class="op">)</span>
-<span class="op">}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">fmt_num</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">digits</span>, <span class="va">width</span> <span class="op">=</span> <span class="va">digits</span> <span class="op">+</span> <span class="fl">4</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/formatc.html">formatC</a></span><span class="op">(</span><span class="va">x</span>,</span>
+<span>    digits <span class="op">=</span> <span class="va">digits</span>,</span>
+<span>    format <span class="op">=</span> <span class="st">"f"</span>,</span>
+<span>    width <span class="op">=</span> <span class="va">width</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 <p>The main reason to create the <code>fmt_num()</code> function is to enhance the
 readability of the analysis code.</p>
 <p>For example, we can compare the two versions of code to format the
 percentage used in Chapter <a href="disposition.html#disposition">2</a> and <code>fmt_num</code>.</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/formatc.html">formatC</a></span><span class="op">(</span><span class="va">n</span> <span class="op">/</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span>,
-  digits <span class="op">=</span> <span class="fl">1</span>, format <span class="op">=</span> <span class="st">"f"</span>, width <span class="op">=</span> <span class="fl">5</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/formatc.html">formatC</a></span><span class="op">(</span><span class="va">n</span> <span class="op">/</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span>,</span>
+<span>  digits <span class="op">=</span> <span class="fl">1</span>, format <span class="op">=</span> <span class="st">"f"</span>, width <span class="op">=</span> <span class="fl">5</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">fmt_num</span><span class="op">(</span><span class="va">n</span> <span class="op">/</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span>, digits <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">fmt_num</span><span class="op">(</span><span class="va">n</span> <span class="op">/</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span>, digits <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p>To calculate the numbers and percentages of participants by groups, we
 provide a simple (but not robust) wrapper function, <code>count_by()</code>, using
 the <code>dplyr</code> and <code>tidyr</code> package.</p>
@@ -161,78 +188,78 @@ simplicity and readability. More details about writing R functions can
 be found in the <a href="https://stat545.com/functions-part1.html">STAT 545
 course</a>.</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">count_by</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="co"># Input data set</span>
-                     <span class="va">grp</span>, <span class="co"># Group variable</span>
-                     <span class="va">var</span>, <span class="co"># Analysis variable</span>
-                     <span class="va">var_label</span> <span class="op">=</span> <span class="va">var</span>, <span class="co"># Analysis variable label</span>
-                     <span class="va">id</span> <span class="op">=</span> <span class="st">"USUBJID"</span><span class="op">)</span> <span class="op">{</span> <span class="co"># Subject ID variable</span>
-  <span class="va">data</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>grp <span class="op">=</span> <span class="op">!</span><span class="op">!</span><span class="va">grp</span>, var <span class="op">=</span> <span class="op">!</span><span class="op">!</span><span class="va">var</span>, id <span class="op">=</span> <span class="op">!</span><span class="op">!</span><span class="va">id</span><span class="op">)</span>
-
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">grp</span>, <span class="va">var</span><span class="op">)</span>,
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">grp</span>, name <span class="op">=</span> <span class="st">"tot"</span><span class="op">)</span>,
-    by <span class="op">=</span> <span class="st">"grp"</span>,
-  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
-      pct <span class="op">=</span> <span class="fu">fmt_num</span><span class="op">(</span><span class="fl">100</span> <span class="op">*</span> <span class="va">n</span> <span class="op">/</span> <span class="va">tot</span>, digits <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
-      n <span class="op">=</span> <span class="fu">fmt_num</span><span class="op">(</span><span class="va">n</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>,
-      npct <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">n</span>, <span class="st">" ("</span>, <span class="va">pct</span>, <span class="st">")"</span><span class="op">)</span>
-    <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>
-      id_cols <span class="op">=</span> <span class="va">var</span>,
-      names_from <span class="op">=</span> <span class="va">grp</span>,
-      values_from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">pct</span>, <span class="va">npct</span><span class="op">)</span>,
-      values_fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>n <span class="op">=</span> <span class="st">"0"</span>, pct <span class="op">=</span> <span class="fu">fmt_num</span><span class="op">(</span><span class="fl">0</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span>
-    <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>var_label <span class="op">=</span> <span class="va">var_label</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">count_by</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="co"># Input data set</span></span>
+<span>                     <span class="va">grp</span>, <span class="co"># Group variable</span></span>
+<span>                     <span class="va">var</span>, <span class="co"># Analysis variable</span></span>
+<span>                     <span class="va">var_label</span> <span class="op">=</span> <span class="va">var</span>, <span class="co"># Analysis variable label</span></span>
+<span>                     <span class="va">id</span> <span class="op">=</span> <span class="st">"USUBJID"</span><span class="op">)</span> <span class="op">{</span> <span class="co"># Subject ID variable</span></span>
+<span>  <span class="va">data</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>grp <span class="op">=</span> <span class="op">!</span><span class="op">!</span><span class="va">grp</span>, var <span class="op">=</span> <span class="op">!</span><span class="op">!</span><span class="va">var</span>, id <span class="op">=</span> <span class="op">!</span><span class="op">!</span><span class="va">id</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">grp</span>, <span class="va">var</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">grp</span>, name <span class="op">=</span> <span class="st">"tot"</span><span class="op">)</span>,</span>
+<span>    by <span class="op">=</span> <span class="st">"grp"</span>,</span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>      pct <span class="op">=</span> <span class="fu">fmt_num</span><span class="op">(</span><span class="fl">100</span> <span class="op">*</span> <span class="va">n</span> <span class="op">/</span> <span class="va">tot</span>, digits <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>      n <span class="op">=</span> <span class="fu">fmt_num</span><span class="op">(</span><span class="va">n</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>,</span>
+<span>      npct <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">n</span>, <span class="st">" ("</span>, <span class="va">pct</span>, <span class="st">")"</span><span class="op">)</span></span>
+<span>    <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span></span>
+<span>      id_cols <span class="op">=</span> <span class="va">var</span>,</span>
+<span>      names_from <span class="op">=</span> <span class="va">grp</span>,</span>
+<span>      values_from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">pct</span>, <span class="va">npct</span><span class="op">)</span>,</span>
+<span>      values_fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>n <span class="op">=</span> <span class="st">"0"</span>, pct <span class="op">=</span> <span class="fu">fmt_num</span><span class="op">(</span><span class="fl">0</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>var_label <span class="op">=</span> <span class="va">var_label</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 <p>By using the <code>count_by()</code> function, we can simplify the analysis code as
 below.</p>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">count_by</span><span class="op">(</span><span class="va">adsl</span>, <span class="st">"TRT01PN"</span>, <span class="st">"EFFFL"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"_54"</span>, <span class="st">"_81"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">count_by</span><span class="op">(</span><span class="va">adsl</span>, <span class="st">"TRT01PN"</span>, <span class="st">"EFFFL"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"_54"</span>, <span class="st">"_81"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt; # A tibble: 2 × 5
 #&gt;   var   n_0    pct_0   npct_0         var_label
 #&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;    
 #&gt; 1 N     "   7" "  8.1" "   7 (  8.1)" EFFFL    
 #&gt; 2 Y     "  79" " 91.9" "  79 ( 91.9)" EFFFL</code></pre>
 </div>
-<div id="analysis-code" class="section level2">
+<div id="analysis-code" class="section level2" number="3.2">
 <h2>
 <span class="header-section-number">3.2</span> Analysis code<a class="anchor" aria-label="anchor" href="#analysis-code"><i class="fas fa-link"></i></a>
 </h2>
 <p>With the helper function <code>count_by</code>, we can easily prepare a report
 dataset as</p>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Derive a randomization flag</span>
-<span class="va">adsl</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>RANDFL <span class="op">=</span> <span class="st">"Y"</span><span class="op">)</span>
-
-<span class="va">pop</span> <span class="op">&lt;-</span> <span class="fu">count_by</span><span class="op">(</span><span class="va">adsl</span>, <span class="st">"TRT01PN"</span>, <span class="st">"RANDFL"</span>,
-  var_label <span class="op">=</span> <span class="st">"Participants in Population"</span>
-<span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">var_label</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"n_"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Derive a randomization flag</span></span>
+<span><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>RANDFL <span class="op">=</span> <span class="st">"Y"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">pop</span> <span class="op">&lt;-</span> <span class="fu">count_by</span><span class="op">(</span><span class="va">adsl</span>, <span class="st">"TRT01PN"</span>, <span class="st">"RANDFL"</span>,</span>
+<span>  var_label <span class="op">=</span> <span class="st">"Participants in Population"</span></span>
+<span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">var_label</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"n_"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">pop1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span>
-  <span class="fu">count_by</span><span class="op">(</span><span class="va">adsl</span>, <span class="st">"TRT01PN"</span>, <span class="st">"ITTFL"</span>,
-    var_label <span class="op">=</span> <span class="st">"Participants included in ITT population"</span>
-  <span class="op">)</span>,
-  <span class="fu">count_by</span><span class="op">(</span><span class="va">adsl</span>, <span class="st">"TRT01PN"</span>, <span class="st">"EFFFL"</span>,
-    var_label <span class="op">=</span> <span class="st">"Participants included in efficacy population"</span>
-  <span class="op">)</span>,
-  <span class="fu">count_by</span><span class="op">(</span><span class="va">adsl</span>, <span class="st">"TRT01PN"</span>, <span class="st">"SAFFL"</span>,
-    var_label <span class="op">=</span> <span class="st">"Participants included in safety population"</span>
-  <span class="op">)</span>
-<span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">var</span> <span class="op">==</span> <span class="st">"Y"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">var_label</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"npct_"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">pop1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span></span>
+<span>  <span class="fu">count_by</span><span class="op">(</span><span class="va">adsl</span>, <span class="st">"TRT01PN"</span>, <span class="st">"ITTFL"</span>,</span>
+<span>    var_label <span class="op">=</span> <span class="st">"Participants included in ITT population"</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  <span class="fu">count_by</span><span class="op">(</span><span class="va">adsl</span>, <span class="st">"TRT01PN"</span>, <span class="st">"EFFFL"</span>,</span>
+<span>    var_label <span class="op">=</span> <span class="st">"Participants included in efficacy population"</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  <span class="fu">count_by</span><span class="op">(</span><span class="va">adsl</span>, <span class="st">"TRT01PN"</span>, <span class="st">"SAFFL"</span>,</span>
+<span>    var_label <span class="op">=</span> <span class="st">"Participants included in safety population"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">var</span> <span class="op">==</span> <span class="st">"Y"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">var_label</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"npct_"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Now we combine individual rows into one table for reporting
 purpose. <code>tbl_pop</code> is used as input for <code>r2rtf</code> to create the final
 report.</p>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">pop</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">"n_"</span>, <span class="st">"npct_"</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">pop</span><span class="op">)</span><span class="op">)</span>
-<span class="va">tbl_pop</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">pop</span>, <span class="va">pop1</span><span class="op">)</span>
-
-<span class="va">tbl_pop</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">var_label</span>, <span class="va">npct_0</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">pop</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">"n_"</span>, <span class="st">"npct_"</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">pop</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">tbl_pop</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">pop</span>, <span class="va">pop1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">tbl_pop</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">var_label</span>, <span class="va">npct_0</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt; # A tibble: 4 × 2
 #&gt;   var_label                                    npct_0        
 #&gt;   &lt;chr&gt;                                        &lt;chr&gt;         
@@ -242,32 +269,32 @@ report.</p>
 #&gt; 4 Participants included in safety population   "  86 (100.0)"</code></pre>
 <p>We define the format of the output using code below.</p>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">rel_width</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
-<span class="va">colheader</span> <span class="op">&lt;-</span> <span class="st">" | Placebo | Xanomeline line Low Dose| Xanomeline line High Dose"</span>
-<span class="va">tbl_pop</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="co"># Table title</span>
-  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_title.html">rtf_title</a></span><span class="op">(</span>
-    <span class="st">"Summary of Analysis Sets"</span>, <span class="co">## "Participants Accounting in Analysis Population" is a weird title for me. Merck uses this table title for CSR? </span>
-    <span class="st">"(All Participants Randomized)"</span>
-  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="co"># First row of column header</span>
-  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_colheader.html">rtf_colheader</a></span><span class="op">(</span><span class="va">colheader</span>,
-    col_rel_width <span class="op">=</span> <span class="va">rel_width</span>
-  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="co"># Second row of column header</span>
-  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_colheader.html">rtf_colheader</a></span><span class="op">(</span><span class="st">" | n (%) | n (%) | n (%)"</span>,
-    border_top <span class="op">=</span> <span class="st">""</span>,
-    col_rel_width <span class="op">=</span> <span class="va">rel_width</span>
-  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="co"># Table body</span>
-  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_body.html">rtf_body</a></span><span class="op">(</span>
-    col_rel_width <span class="op">=</span> <span class="va">rel_width</span>,
-    text_justification <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"l"</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"c"</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
-  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="co"># Encoding RTF syntax</span>
-  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="co"># Save to a file</span>
-  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/tbl_pop.rtf"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">rel_width</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">colheader</span> <span class="op">&lt;-</span> <span class="st">" | Placebo | Xanomeline line Low Dose| Xanomeline line High Dose"</span></span>
+<span><span class="va">tbl_pop</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="co"># Table title</span></span>
+<span>  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_title.html">rtf_title</a></span><span class="op">(</span></span>
+<span>    <span class="st">"Summary of Analysis Sets"</span>, <span class="co">## "Participants Accounting in Analysis Population" is a weird title for me. Merck uses this table title for CSR? </span></span>
+<span>    <span class="st">"(All Participants Randomized)"</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="co"># First row of column header</span></span>
+<span>  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_colheader.html">rtf_colheader</a></span><span class="op">(</span><span class="va">colheader</span>,</span>
+<span>    col_rel_width <span class="op">=</span> <span class="va">rel_width</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="co"># Second row of column header</span></span>
+<span>  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_colheader.html">rtf_colheader</a></span><span class="op">(</span><span class="st">" | n (%) | n (%) | n (%)"</span>,</span>
+<span>    border_top <span class="op">=</span> <span class="st">""</span>,</span>
+<span>    col_rel_width <span class="op">=</span> <span class="va">rel_width</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="co"># Table body</span></span>
+<span>  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_body.html">rtf_body</a></span><span class="op">(</span></span>
+<span>    col_rel_width <span class="op">=</span> <span class="va">rel_width</span>,</span>
+<span>    text_justification <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"l"</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"c"</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="co"># Encoding RTF syntax</span></span>
+<span>  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="co"># Save to a file</span></span>
+<span>  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/tbl_pop.rtf"</span><span class="op">)</span></span></code></pre></div>
 <embed src="tlf/tbl_pop.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>The procedure to generate an analysis population table can be summarized
 as follows:</p>
 <ul>

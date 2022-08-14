@@ -3,3 +3,9 @@ img.cover {
   margin: 0;
   box-shadow: none;
 }
+
+details>summary {
+  margin: 1rem calc(-2px - 0.5em);
+  padding: 1rem;
+  border: 2px solid #eee;
+}
