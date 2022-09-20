@@ -171,7 +171,7 @@ install.packages(c(
 
 - During the workshop, we will use `esubdemo` project.
   - `esubdemo` is shared in RStudio Cloud (<https://rstudio.cloud/>)
-  - [Project link](https://rstudio.cloud/spaces/183786/join?access_code=FsVLtAUPS9s8uSc38ybNDTr3LYgFWWVq2OQjl8L4). 
+  - You can also clone the `esubdemo` project to your local RStudio.  
 
 ## Motivation
 
