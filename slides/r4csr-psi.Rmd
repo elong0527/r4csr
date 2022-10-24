@@ -121,9 +121,7 @@ As an organization, we need to ensure compliance and reduce the risk of using R 
 - R is widely used in clinical trial study design.
   - Following @lachin1986evaluation
   - [`gsDesign`](https://github.com/keaven/gsDesign): an R package for group sequential design under proportional hazards.
-  - [`simtrial`](https://github.com/Merck/simtrial),
-  [`gsDesign2`](https://github.com/Merck/gsDesign2), and
-  [`gsdmvn`](https://github.com/Merck/gsdmvn): experimental R packages for group sequential design under non-proportional hazards
+  - [`gsDesign2`](https://github.com/Merck/gsDesign2): experimental R packages for group sequential design under non-proportional hazards
   - Bookdown: <https://keaven.github.io/gsd-deming/>
 
 - R is flexible for handling novel missing data approaches following the estimand framework in ICH E9 (R1)
