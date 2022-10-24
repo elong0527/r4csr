@@ -114,7 +114,7 @@ a summary table needs to be provided to include all participants who entered the
 and who entered and completed each phase of the study.
 In addition, the reasons for all post-randomization discontinuations,
 grouped by treatment and by major reason (lost to follow-up, adverse event, poor compliance, etc.) are reported.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span> <span class="co"># Read SAS data</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span></span>
@@ -124,7 +124,7 @@ grouped by treatment and by major reason (lost to follow-up, adverse event, poor
 For a disposition table, all the required information is saved in a Subject-level Analysis Dataset (ADSL).
 This dataset is provided in <code>sas7bdat</code> format, which is a SAS data format currently used in many clinical trial analysis and reporting.
 The <code>haven</code> package is able to read the dataset, while maintaining its attributes (e.g., variable labels).</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"data-adam/adsl.sas7bdat"</span><span class="op">)</span></span></code></pre></div>
 <p>The following variables are used in the preparation of a simplified disposition of participants table:</p>
 <ul>
@@ -134,7 +134,7 @@ The <code>haven</code> package is able to read the dataset, while maintaining it
 <li>DISCONFL: discontinued from study flag</li>
 <li>DCREASCD: discontinued from study reason coded</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">adsl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">USUBJID</span>, <span class="va">TRT01P</span>, <span class="va">TRT01PN</span>, <span class="va">DISCONFL</span>, <span class="va">DCREASCD</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></span></code></pre></div>
@@ -146,7 +146,7 @@ The <code>haven</code> package is able to read the dataset, while maintaining it
 #&gt; 3 01-701-1028 Xanomeline High Dose      81 ""       Completed       
 #&gt; 4 01-701-1033 Xanomeline Low Dose       54 "Y"      Sponsor Decision</code></pre>
 <p>In the code below, we calculate the number of participants in the analysis population by treatment arms.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n_rand</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">TRT01PN</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -162,7 +162,7 @@ The <code>haven</code> package is able to read the dataset, while maintaining it
 #&gt;     n_0  n_54  n_81 row                       
 #&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;                     
 #&gt; 1    86    84    84 Participants in population</code></pre>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n_disc</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">TRT01PN</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
@@ -184,7 +184,7 @@ The <code>haven</code> package is able to read the dataset, while maintaining it
 #&gt; 1    28    59    57 " 32.6" " 70.2" " 67.9" Discontinued</code></pre>
 <p>In the code below, we calculate the number and percentage of
 participants who completed/discontinued the study for different reasons by treatment arms.</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n_reason</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">TRT01PN</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>n_total <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -219,7 +219,7 @@ participants who completed/discontinued the study for different reasons by treat
 #&gt; 10 Withdrew Consent       9    10     8 " 10.5" " 11.9" "  9.5"</code></pre>
 <p>In the code below, we calculate the number and percentage of participants who complete the study by treatment arms.
 We split <code>n_reason</code> because we want to customize the row order of the table.</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n_complete</span> <span class="op">&lt;-</span> <span class="va">n_reason</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">row</span> <span class="op">==</span> <span class="st">"Completed"</span><span class="op">)</span></span>
 <span></span>
@@ -230,7 +230,7 @@ We split <code>n_reason</code> because we want to customize the row order of the
 #&gt; 1 Completed    58    25    27 " 67.4" " 29.8" " 32.1"</code></pre>
 <p>In the code below, we calculate the numbers and percentages of participants who discontinued the study for different reasons by treatment arms.
 For display purpose, <code>paste0("    ", row)</code> is used to add leading spaces to produce indentation in the final report.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n_reason</span> <span class="op">&lt;-</span> <span class="va">n_reason</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">row</span> <span class="op">!=</span> <span class="st">"Completed"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>row <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"    "</span>, <span class="va">row</span><span class="op">)</span><span class="op">)</span></span>
@@ -250,7 +250,7 @@ For display purpose, <code>paste0("    ", row)</code> is used to add leading spa
 #&gt; 9 "    Withdrew Consent"       9    10     8 " 10.5" " 11.9" "  9.5"</code></pre>
 <p>Now we combine individual rows into one table for reporting purpose.
 <code>tbl_disp</code> is used as input for <code>r2rtf</code> to create final report.</p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tbl_disp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">n_rand</span>, <span class="va">n_complete</span>, <span class="va">n_disc</span>, <span class="va">n_reason</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">row</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"_0"</span>, <span class="st">"_54"</span>, <span class="st">"_81"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -276,7 +276,7 @@ Items that were not discussed in the previous sections, are highlighted below.</
 We can provide a vector for the title argument.
 Each value is a separate line.
 The format can also be controlled by providing a vector input in text format.</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tbl_disp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="co"># Table title</span></span>
 <span>  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_title.html">rtf_title</a></span><span class="op">(</span><span class="st">"Disposition of Participants"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>

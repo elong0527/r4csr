@@ -111,7 +111,7 @@
 <p>Following <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3 guidance</a>,
 primary and secondary efficacy endpoints need to be summarized
 in Section 11.4, Efficacy Results and Tabulations of Individual Participant.</p>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span> <span class="co"># Read SAS data</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span></span>
@@ -124,7 +124,7 @@ For efficacy analysis, only the change from baseline glucose data at week 24 is 
 <span class="header-section-number">5.1</span> Analysis dataset<a class="anchor" aria-label="anchor" href="#analysis-dataset"><i class="fas fa-link"></i></a>
 </h2>
 <p>To prepare the analysis, both <code>adsl</code> and <code>adlbc</code> datasets are required.</p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"data-adam/adsl.sas7bdat"</span><span class="op">)</span></span>
 <span><span class="va">adlb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"data-adam/adlbc.sas7bdat"</span><span class="op">)</span></span></code></pre></div>
 <p>First, both the population and the data in scope are selected.
@@ -136,7 +136,7 @@ For example, if the analysis visit is recorded as “Baseline” (i.e., <code>AV
 if the analysis visit is recorded as “Week 24” (i.e., <code>AVISIT = Week 24</code>), <code>AVISITN = 24</code>;
 if the analysis visit is blank, <code>AVISITN</code> is also blank.
 We will discuss these missing values in Section 6.4.</p>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gluc</span> <span class="op">&lt;-</span> <span class="va">adlb</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">adsl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">USUBJID</span>, <span class="va">EFFFL</span><span class="op">)</span>, by <span class="op">=</span> <span class="st">"USUBJID"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="co"># PARAMCD is parameter code and here we focus on Glucose (mg/dL)</span></span>
@@ -154,7 +154,7 @@ We will discuss these missing values in Section 6.4.</p>
 <li>BASE: baseline value</li>
 <li>CHG: change from baseline</li>
 </ul>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ana</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">USUBJID</span>, <span class="va">TRTPN</span>, <span class="va">AVISIT</span>, <span class="va">AVAL</span>, <span class="va">BASE</span>, <span class="va">CHG</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></span></code></pre></div>
@@ -175,7 +175,7 @@ by using the <code>fmt_num()</code> function defined in Chapter <a href="populat
 <ul>
 <li>Format estimators</li>
 </ul>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fmt_est</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">.mean</span>,</span>
 <span>                    <span class="va">.sd</span>,</span>
 <span>                    <span class="va">digits</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
@@ -186,7 +186,7 @@ by using the <code>fmt_num()</code> function defined in Chapter <a href="populat
 <ul>
 <li>Format confidence interval</li>
 </ul>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fmt_ci</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">.est</span>,</span>
 <span>                   <span class="va">.lower</span>,</span>
 <span>                   <span class="va">.upper</span>,</span>
@@ -200,7 +200,7 @@ by using the <code>fmt_num()</code> function defined in Chapter <a href="populat
 <ul>
 <li>Format p-value</li>
 </ul>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fmt_pval</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">.p</span>, <span class="va">digits</span> <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">scale</span> <span class="op">&lt;-</span> <span class="fl">10</span><span class="op">^</span><span class="op">(</span><span class="op">-</span><span class="fl">1</span> <span class="op">*</span> <span class="va">digits</span><span class="op">)</span></span>
 <span>  <span class="va">p_scale</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"&lt;"</span>, <span class="va">digits</span><span class="op">)</span></span>
@@ -212,7 +212,7 @@ by using the <code>fmt_num()</code> function defined in Chapter <a href="populat
 <span class="header-section-number">5.3</span> Summary of observed data<a class="anchor" aria-label="anchor" href="#summary-of-observed-data"><i class="fas fa-link"></i></a>
 </h2>
 <p>First the observed data at Baseline and Week 24 are summarized using code below:</p>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t11</span> <span class="op">&lt;-</span> <span class="va">gluc</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">AVISITN</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">24</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">TRTPN</span>, <span class="va">TRTP</span>, <span class="va">AVISITN</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -235,7 +235,7 @@ by using the <code>fmt_num()</code> function defined in Chapter <a href="populat
 #&gt; 2 Xanomeline Low Dose     54    79    26 "  5.4 ( 0.95)" "  5.7 ( 1.26)"
 #&gt; 3 Xanomeline High Dose    81    74    30 "  5.4 ( 1.37)" "  6.0 ( 1.92)"</code></pre>
 <p>Also the observed change from baseline glucose at Week 24 is summarized using code below:</p>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t12</span> <span class="op">&lt;-</span> <span class="va">gluc</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">AVISITN</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">24</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">TRTPN</span>, <span class="va">AVISITN</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -262,7 +262,7 @@ by using the <code>fmt_num()</code> function defined in Chapter <a href="populat
 </h2>
 <p>In clinical trials, missing data is inevitable.
 In this study, there are missing values in glucose data.</p>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">ana</span>, <span class="va">AVISIT</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt; # A tibble: 8 × 2
 #&gt;   AVISIT                 n
@@ -281,7 +281,7 @@ LOCF approach is a single imputation approach that is <strong>not recommended</s
 in real application.
 Interested readers can find more discussion on missing data approaches in the book:
 <a href="https://www.ncbi.nlm.nih.gov/books/NBK209904/pdf/Bookshelf_NBK209904.pdf">The Prevention and Treatment of Missing Data in Clinical Trials</a>.</p>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ana_locf</span> <span class="op">&lt;-</span> <span class="va">ana</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">USUBJID</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>locf <span class="op">=</span> <span class="va">AVISITN</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">AVISITN</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -292,7 +292,7 @@ Interested readers can find more discussion on missing data approaches in the bo
 <span class="header-section-number">5.5</span> ANCOVA model<a class="anchor" aria-label="anchor" href="#ancova-model"><i class="fas fa-link"></i></a>
 </h2>
 <p>The imputed data is analyzed using the ANCOVA model with treatment and baseline glucose as covariates.</p>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">CHG</span> <span class="op">~</span> <span class="va">BASE</span> <span class="op">+</span> <span class="va">TRTP</span>, data <span class="op">=</span> <span class="va">ana_locf</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt; 
@@ -318,7 +318,7 @@ Interested readers can find more discussion on missing data approaches in the bo
 #&gt; F-statistic: 26.01 on 3 and 226 DF,  p-value: 1.714e-14</code></pre>
 <p>The <code>emmeans</code> R package is used to obtain
 within and between group least square (LS) mean</p>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit_within</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">fit</span>, <span class="st">"TRTP"</span><span class="op">)</span></span>
 <span><span class="va">fit_within</span></span></code></pre></div>
 <pre><code>#&gt;  TRTP                  emmean    SE  df lower.CL upper.CL
@@ -327,7 +327,7 @@ within and between group least square (LS) mean</p>
 #&gt;  Xanomeline High Dose  0.3975 0.179 226    0.045    0.750
 #&gt; 
 #&gt; Confidence level used: 0.95</code></pre>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t13</span> <span class="op">&lt;-</span> <span class="va">fit_within</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>ls <span class="op">=</span> <span class="fu">fmt_ci</span><span class="op">(</span><span class="va">emmean</span>, <span class="va">lower.CL</span>, <span class="va">upper.CL</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -339,7 +339,7 @@ within and between group least square (LS) mean</p>
 #&gt; 1 Placebo              " 0.07 (-0.27, 0.41)"
 #&gt; 2 Xanomeline Low Dose  "-0.11 (-0.45, 0.23)"
 #&gt; 3 Xanomeline High Dose " 0.40 ( 0.05, 0.75)"</code></pre>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit_between</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html">pairs</a></span><span class="op">(</span><span class="va">fit_within</span>, reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">fit_between</span></span></code></pre></div>
 <pre><code>#&gt;  contrast                                   estimate    SE  df t.ratio p.value
@@ -348,7 +348,7 @@ within and between group least square (LS) mean</p>
 #&gt;  Xanomeline High Dose - Xanomeline Low Dose    0.504 0.249 226   2.024  0.1087
 #&gt; 
 #&gt; P value adjustment: tukey method for comparing a family of 3 estimates</code></pre>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t2</span> <span class="op">&lt;-</span> <span class="va">fit_between</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
@@ -374,7 +374,7 @@ within and between group least square (LS) mean</p>
 <span class="header-section-number">5.6</span> Reporting<a class="anchor" aria-label="anchor" href="#reporting"><i class="fas fa-link"></i></a>
 </h2>
 <p><code>t11</code>, <code>t12</code> and <code>t13</code> are combined to get the first part of the report table</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span></span>
 <span>  <span class="va">t11</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">TRTP</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"0"</span><span class="op">)</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"24"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  <span class="va">t12</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"chg"</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -397,7 +397,7 @@ For example, <code>{^a}</code> provides a superscript <code>a</code> for footnot
 Examples can be found on the
 <a href="https://merck.github.io/r2rtf/articles/r2rtf.html#special-character"><code>r2rtf</code> get started page</a>.
 The <code>text_convert</code> argument in <code>r2rtf_*()</code> functions controls whether to convert special characters.</p>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t1_rtf</span> <span class="op">&lt;-</span> <span class="va">t1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_title.html">rtf_title</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
@@ -429,7 +429,7 @@ The <code>text_convert</code> argument in <code>r2rtf_*()</code> functions contr
 <span>  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/tlf_eff1.rtf"</span><span class="op">)</span></span></code></pre></div>
 <embed src="tlf/tlf_eff1.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>We also use <code>r2rtf</code> to prepare the table format for <code>t2</code></p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t2_rtf</span> <span class="op">&lt;-</span> <span class="va">t2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_colheader.html">rtf_colheader</a></span><span class="op">(</span><span class="st">"Pairwise Comparison | Difference in LS Mean (95% CI){^a} | p-Value"</span>,</span>
@@ -446,7 +446,7 @@ The <code>text_convert</code> argument in <code>r2rtf_*()</code> functions contr
 <embed src="tlf/tlf_eff2.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>Finally, we combine the two parts to get the final table using <code>r2rtf</code>.
 This is achieved by providing a list of <code>t1_rtf</code> and <code>t2_rtf</code> as input for
 <code>rtf_encode</code>.</p>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">t1_rtf</span>, <span class="va">t2_rtf</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/tlf_eff.rtf"</span><span class="op">)</span></span></code></pre></div>

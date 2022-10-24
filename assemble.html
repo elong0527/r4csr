@@ -108,7 +108,7 @@
 <h1>
 <span class="header-section-number">9</span> Assemble TLFs<a class="anchor" aria-label="anchor" href="#assemble"><i class="fas fa-link"></i></a>
 </h1>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://merck.github.io/r2rtf/">r2rtf</a></span><span class="op">)</span></span></code></pre></div>
 <p>After TLFs are created and saved into individual files,
 we need to assemble them into one file in a pre-specified order.</p>
@@ -120,7 +120,7 @@ hyperlinks.</li>
 </ol>
 <p>Let’s illustrate the idea by using selected TLFs generated from previous chapters.
 Here, we assume files are saved in the <code>tlf/</code> folder.</p>
-<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tlf_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
 <span>  <span class="st">"tlf/tbl_disp.rtf"</span>, <span class="co"># Disposition table</span></span>
 <span>  <span class="st">"tlf/tlf_eff.rtf"</span>,  <span class="co"># Efficacy table</span></span>
@@ -131,7 +131,7 @@ Here, we assume files are saved in the <code>tlf/</code> folder.</p>
 <span class="header-section-number">9.1</span> Combine RTF Source Code<a class="anchor" aria-label="anchor" href="#combine-rtf-source-code"><i class="fas fa-link"></i></a>
 </h2>
 <details><summary><code>rtf_assemble1()</code> source code
-</summary><div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' Assemble RTF files into one single RTF file</span></span>
 <span><span class="co">#'</span></span>
 <span><span class="co">#' @param path a vector of RTF file path</span></span>
@@ -160,7 +160,7 @@ source code in individual files into one larger RTF file.</p>
 we are not able to specify page orientation of each TLF
 in the combined document.</p>
 </div>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">rtf_assemble1</span><span class="op">(</span><span class="va">tlf_path</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">r2rtf</span><span class="fu">::</span><span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/rtf-combine.rtf"</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -178,7 +178,7 @@ toggle fields can extend your capability to manage a large amount of TLFs
 in RTF format.</p>
 </div>
 <details><summary><code>rtf_assemble2()</code> source code
-</summary><div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' Assemble RTF TLFs</span></span>
 <span><span class="co">#'</span></span>
 <span><span class="co">#' Add a set of RTF/TEXT fields into an rdocx object.</span></span>
@@ -233,7 +233,7 @@ in RTF format.</p>
 </details><p>The <code>rtf_assemble2()</code> function
 allows you to create a word file with toggle fields as below.
 One benefit is to control the page direction of each TLF as below.</p>
-<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">rtf_assemble2</span><span class="op">(</span></span>
 <span>  <span class="va">tlf_path</span>,</span>
 <span>  output <span class="op">=</span> <span class="st">"tlf/rtf-combine-toggle.docx"</span>,</span>

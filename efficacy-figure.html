@@ -111,7 +111,7 @@
 <p>Following the <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3 guidance</a>,
 primary and secondary efficacy endpoints need to be summarized
 in Section 11.4, Efficacy Results and Tabulations of Individual Participant.</p>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span> <span class="co"># Read SAS data</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> <span class="co"># Manipulate data</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://merck.github.io/r2rtf/">r2rtf</a></span><span class="op">)</span> <span class="co"># Reporting in RTF format</span></span>
@@ -130,7 +130,7 @@ Interested readers can find examples on their websites.</p>
 <span class="header-section-number">6.1</span> Analysis dataset<a class="anchor" aria-label="anchor" href="#analysis-dataset-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>To prepare the analysis, the <code>adtte</code> dataset is required.</p>
-<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">adtte</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"data-adam/adtte.sas7bdat"</span><span class="op">)</span></span></code></pre></div>
 <p>First, to prepare the analysis ready data,
 filter all records for the efficacy endpoint of time to event of interest (<code>TTDE</code>)
@@ -143,7 +143,7 @@ using <code>PARAMCD</code> (or <code>PARAM</code>, <code>PRAMN</code>), then sel
 <li>
 <code>CNSR</code>: event (censoring) status</li>
 </ul>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">adtte_ttde</span> <span class="op">&lt;-</span> <span class="va">adtte</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">PARAMCD</span> <span class="op">==</span> <span class="st">"TTDE"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">TRTP</span>, <span class="va">TRTAN</span>, <span class="va">AVAL</span>, <span class="va">CNSR</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -157,11 +157,11 @@ using <code>PARAMCD</code> (or <code>PARAM</code>, <code>PRAMN</code>), then sel
 <span class="header-section-number">6.2</span> Create Kaplan-Meier curve<a class="anchor" aria-label="anchor" href="#create-kaplan-meier-curve"><i class="fas fa-link"></i></a>
 </h2>
 <p>The <code>survival</code> package is used to obtain the K-M estimate.</p>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Fit survival model, convert the time value from Days to Month</span></span>
 <span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/survival/man/survfit.html">survfit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html">Surv</a></span><span class="op">(</span><span class="va">AVAL_m</span>, <span class="fl">1</span> <span class="op">-</span> <span class="va">CNSR</span><span class="op">)</span> <span class="op">~</span> <span class="va">TRTP</span>, data <span class="op">=</span> <span class="va">adtte_ttde</span><span class="op">)</span></span></code></pre></div>
 <p>We save the simplified K-M plot into a <code>.png</code> file using code below.</p>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Save as a PNG file</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/grDevices/png.html">png</a></span><span class="op">(</span></span>
 <span>  file <span class="op">=</span> <span class="st">"tlf/fig_km.png"</span>,</span>
@@ -183,7 +183,7 @@ using <code>PARAMCD</code> (or <code>PARAM</code>, <code>PRAMN</code>), then sel
 <span><span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Now, we can use the <code>r2rtf</code> package to create a formatted RTF figure.
 More details can be found on the <a href="https://merck.github.io/r2rtf/articles/example-figure.html">r2rtf website</a>.</p>
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create RTF figure</span></span>
 <span><span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_read_figure.html">rtf_read_figure</a></span><span class="op">(</span><span class="st">"tlf/fig_km.png"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># Read the PNG file from the file path</span></span>
 <span>  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_title.html">rtf_title</a></span><span class="op">(</span></span>
