@@ -122,7 +122,7 @@ team members months/years later.</li>
 illustrate the project folder structure for the A&amp;R project. You can
 <a href="https://happygitwithr.com/rstudio-git-github.html#clone-the-new-github-repository-to-your-computer-via-rstudio">clone</a>
 the project using RStudio with</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb122-1"><a href="folder.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/elong0527/esubdemo.git</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb121-1"><a href="folder.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/elong0527/esubdemo.git</span></code></pre></div>
 <p>For R users, you already benefit from a well-defined and consistent folder structure.
 That is the <a href="https://github.com/rstudio/cheatsheets/raw/master/package-development.pdf">R package folder structure</a>.
 Every R package developer is required to follow the same convention to organize
@@ -188,7 +188,7 @@ Those functions are saved in the <code>R/</code> folder.</p>
 We use <code>roxygen2</code> to document functions.
 For example, the header below defines each variable in <code>fmt_est</code>.
 More details can be found in <a href="https://r-pkgs.org/man.html">Chapter 16 of the R Packages book</a>.</p>
-<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' Format point estimator</span></span>
 <span><span class="co">#'</span></span>
 <span><span class="co">#' @param .mean mean of an estimator.</span></span>
@@ -240,7 +240,7 @@ So we can use <code>.Rprofile</code> to set up a reproducible environment.
 More details can be found in <a href="https://rstats.wtf/r-startup.html" class="uri">https://rstats.wtf/r-startup.html</a>.
 After we open the <code>esubdemo</code> project, the code in <code>.Rprofile</code> will
 automatically check the current R version is the same as we defined in <code>.Rprofile</code>.</p>
-<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Set project R version</span></span>
 <span><span class="va">R_version</span> <span class="op">&lt;-</span> <span class="st">"4.1.1"</span></span></code></pre></div>
 <p>If there is an R version mismatch, an error message is displayed as below.</p>
@@ -257,7 +257,7 @@ A standard R package should not use <code>.Rprofile</code>.</p>
 <p>Next, we introduce the control of the R package version, which is controlled in two layers.
 Firstly, we define a snapshot date in <code>.Rprofile</code>.
 The snapshot date allows us to freeze the source code repository.</p>
-<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># set up snapshot date</span></span>
 <span><span class="va">snapshot</span> <span class="op">&lt;-</span> <span class="st">"2021-08-06"</span></span>
 <span></span>
@@ -287,7 +287,7 @@ does not provide a daily snapshot as MRAN does.</p>
 for project-specific R packages.
 An introduction of <code>renv</code> can be found on its
 <a href="https://rstudio.github.io/renv/articles/renv.html">website</a>.</p>
-<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"renv/activate.R"</span><span class="op">)</span></span></code></pre></div>
 <p>The R code above in the <code>.Rprofile</code> initiates the <code>renv</code> running environment.
 As a user, you can use <code><a href="https://rstudio.github.io/renv/reference/init.html">renv::init()</a></code>, <code><a href="https://rstudio.github.io/renv/reference/snapshot.html">renv::snapshot()</a></code>, and <code><a href="https://rstudio.github.io/renv/reference/restore.html">renv::restore()</a></code>

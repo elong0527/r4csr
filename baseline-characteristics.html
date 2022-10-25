@@ -115,7 +115,7 @@ in Section 11.2, Demographic and Other Baseline Characteristics.</p>
 baseline characteristics table for a study.</p>
 <embed src="tlf/tlf_base.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>There are many R packages that can efficiently summarize baseline information.
 The <a href="https://github.com/benjaminrich/table1"><code>table1</code></a> R package is one of them.</p>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/benjaminrich/table1">table1</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://merck.github.io/r2rtf/">r2rtf</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span></span>
@@ -125,14 +125,14 @@ The <a href="https://github.com/benjaminrich/table1"><code>table1</code></a> R p
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tools</span><span class="op">)</span></span></code></pre></div>
 <p>As in previous chapters, we first read the <code>adsl</code> dataset that contains all
 the required information for the baseline characteristics table.</p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_sas.html">read_sas</a></span><span class="op">(</span><span class="st">"data-adam/adsl.sas7bdat"</span><span class="op">)</span></span></code></pre></div>
 <p>For simplicity, we only analyze <code>SEX</code>, <code>AGE</code> and, <code>RACE</code> in this example
 using the <code>table1</code> R package. More details of the <code>table1</code> R package can
 be found in the package
 <a href="https://benjaminrich.github.io/table1/vignettes/table1-examples.html">vignettes</a>.</p>
 <p>The <code>table1</code> R package directly creates an HTML report.</p>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ana</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    SEX <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">SEX</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"F"</span>, <span class="st">"M"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Female"</span>, <span class="st">"Male"</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -226,7 +226,7 @@ be found in the package
 that only contains ASCII characters
 recommended by regulatory agencies.
 <code>tbl_base</code> is used as input for <code>r2rtf</code> to create the final report.</p>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tbl_base</span> <span class="op">&lt;-</span> <span class="va">tbl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -260,7 +260,7 @@ are not discussed in previous discussion.</p>
 space of text. They are helpful when you need to control the white space
 of a long phrase, “AMERICAN INDIAN OR ALASKA NATIVE”
 in the table provides an example.</p>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">colheader1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">tbl_base</span><span class="op">)</span>, collapse <span class="op">=</span> <span class="st">"|"</span><span class="op">)</span></span>
 <span><span class="va">colheader2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">tbl_base</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span>, collapse <span class="op">=</span> <span class="st">"|"</span><span class="op">)</span></span>
 <span><span class="va">rel_width</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2.5</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>

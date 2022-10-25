@@ -127,10 +127,10 @@ This chapter gives a preview of the planned APIs.
 They may change in the future.</p>
 </div>
 <p>Install <code>cleanslate</code> from CRAN (once available):</p>
-<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"cleanslate"</span><span class="op">)</span></span></code></pre></div>
 <p>Or from GitHub (once available):</p>
-<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"Merck/cleanslate"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="practical-considerations" class="section level2" number="15.2">
@@ -158,7 +158,7 @@ while the support for other platforms might be added in future versions.</p>
 </h2>
 <p>One can create a running environment with “canonical” settings with a
 single function call to <code>use_cleanslate()</code>:</p>
-<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">cleanslate</span><span class="fu">::</span><span class="fu">use_cleanslate</span><span class="op">(</span></span>
 <span>  <span class="st">"C:/temp/"</span>,</span>
 <span>  r_version <span class="op">=</span> <span class="st">"4.1.1"</span>,</span>
@@ -187,7 +187,7 @@ R and library are located within the project folder.</p>
 </h2>
 <p>To create a more customized running environment, one can use the specific
 functions to tailor each aspect, for example:</p>
-<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st">"cleanslate"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="st">"C:/temp/"</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -218,72 +218,72 @@ executing the analysis programs in R. Mostly, this can simplify
 the first three steps on creating a project, installing a specific
 version of R, and configuring the package repo location.
 For example:</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb154-1"><a href="running-environment.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="an">Appendix:</span><span class="co"> Instructions to Execute Analysis Program in R</span></span>
-<span id="cb154-2"><a href="running-environment.html#cb154-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-3"><a href="running-environment.html#cb154-3" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Setup R environment</span>
-<span id="cb154-4"><a href="running-environment.html#cb154-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-5"><a href="running-environment.html#cb154-5" aria-hidden="true" tabindex="-1"></a>Open the existing R, install the required packages by running the code below.</span>
-<span id="cb154-6"><a href="running-environment.html#cb154-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-7"><a href="running-environment.html#cb154-7" aria-hidden="true" tabindex="-1"></a>install.packages("cleanslate")</span>
-<span id="cb154-8"><a href="running-environment.html#cb154-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-9"><a href="running-environment.html#cb154-9" aria-hidden="true" tabindex="-1"></a>Create a temporary working directory, for example, "C:\tempwork".</span>
-<span id="cb154-10"><a href="running-environment.html#cb154-10" aria-hidden="true" tabindex="-1"></a>Copy all submitted R programs into the temporary folder.</span>
-<span id="cb154-11"><a href="running-environment.html#cb154-11" aria-hidden="true" tabindex="-1"></a>In the same R session, run the code below to create a project</span>
-<span id="cb154-12"><a href="running-environment.html#cb154-12" aria-hidden="true" tabindex="-1"></a>with a portable R environment.</span>
-<span id="cb154-13"><a href="running-environment.html#cb154-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-14"><a href="running-environment.html#cb154-14" aria-hidden="true" tabindex="-1"></a>cleanslate::use_cleanslate(</span>
-<span id="cb154-15"><a href="running-environment.html#cb154-15" aria-hidden="true" tabindex="-1"></a>  "C:/temp/",</span>
-<span id="cb154-16"><a href="running-environment.html#cb154-16" aria-hidden="true" tabindex="-1"></a>  r_version = "4.1.1",</span>
-<span id="cb154-17"><a href="running-environment.html#cb154-17" aria-hidden="true" tabindex="-1"></a>  from = "https://cran.r-project.org/",</span>
-<span id="cb154-18"><a href="running-environment.html#cb154-18" aria-hidden="true" tabindex="-1"></a>  repo = "https://mran.microsoft.com/snapshot/2021-08-06/"</span>
-<span id="cb154-19"><a href="running-environment.html#cb154-19" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb154-20"><a href="running-environment.html#cb154-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-21"><a href="running-environment.html#cb154-21" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Open the project</span>
-<span id="cb154-22"><a href="running-environment.html#cb154-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-23"><a href="running-environment.html#cb154-23" aria-hidden="true" tabindex="-1"></a>Go to the working directory created above, double click the .Rproj file</span>
-<span id="cb154-24"><a href="running-environment.html#cb154-24" aria-hidden="true" tabindex="-1"></a>to open the project in RStudio. Follow the instructions to select the</span>
-<span id="cb154-25"><a href="running-environment.html#cb154-25" aria-hidden="true" tabindex="-1"></a>project-specific R version, then restart RStudio. If successful,</span>
-<span id="cb154-26"><a href="running-environment.html#cb154-26" aria-hidden="true" tabindex="-1"></a>the R version and package repo should be printed as defined above.</span>
-<span id="cb154-27"><a href="running-environment.html#cb154-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-28"><a href="running-environment.html#cb154-28" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Install open-source R packages</span>
-<span id="cb154-29"><a href="running-environment.html#cb154-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-30"><a href="running-environment.html#cb154-30" aria-hidden="true" tabindex="-1"></a>In the new R session, install the required packages by running the code below.</span>
-<span id="cb154-31"><a href="running-environment.html#cb154-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-32"><a href="running-environment.html#cb154-32" aria-hidden="true" tabindex="-1"></a>install.packages(c("pkglite", "publicpkg1", "publicpkg2"))</span>
-<span id="cb154-33"><a href="running-environment.html#cb154-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-34"><a href="running-environment.html#cb154-34" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Install proprietary R packages</span>
-<span id="cb154-35"><a href="running-environment.html#cb154-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-36"><a href="running-environment.html#cb154-36" aria-hidden="true" tabindex="-1"></a>All internal R packages are packed in the file r0pkgs.txt. In the same R session,</span>
-<span id="cb154-37"><a href="running-environment.html#cb154-37" aria-hidden="true" tabindex="-1"></a>restore the package structures and install them by running the code below.</span>
-<span id="cb154-38"><a href="running-environment.html#cb154-38" aria-hidden="true" tabindex="-1"></a>Adjust the output path as needed to use a writable local directory.</span>
-<span id="cb154-39"><a href="running-environment.html#cb154-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-40"><a href="running-environment.html#cb154-40" aria-hidden="true" tabindex="-1"></a>pkglite::unpack("r0pkgs.txt", output = ".", install = TRUE)</span>
-<span id="cb154-41"><a href="running-environment.html#cb154-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-42"><a href="running-environment.html#cb154-42" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Update path to dataset and TLFs</span>
-<span id="cb154-43"><a href="running-environment.html#cb154-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-44"><a href="running-environment.html#cb154-44" aria-hidden="true" tabindex="-1"></a>INPUT path: to rerun the analysis programs, define the path variable</span>
-<span id="cb154-45"><a href="running-environment.html#cb154-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-46"><a href="running-environment.html#cb154-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Path for ADaM data: path$adam</span>
-<span id="cb154-47"><a href="running-environment.html#cb154-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-48"><a href="running-environment.html#cb154-48" aria-hidden="true" tabindex="-1"></a>OUTPUT path: to save the analysis results, define the path variable</span>
-<span id="cb154-49"><a href="running-environment.html#cb154-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-50"><a href="running-environment.html#cb154-50" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Path for output TLFs: path$output</span>
-<span id="cb154-51"><a href="running-environment.html#cb154-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-52"><a href="running-environment.html#cb154-52" aria-hidden="true" tabindex="-1"></a>All these paths need to be defined before executing the analysis program. For example:</span>
-<span id="cb154-53"><a href="running-environment.html#cb154-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-54"><a href="running-environment.html#cb154-54" aria-hidden="true" tabindex="-1"></a>path = list(adam = "/path/to/esub/analysis/adam/datasets/") # Modify to use actual location</span>
-<span id="cb154-55"><a href="running-environment.html#cb154-55" aria-hidden="true" tabindex="-1"></a>path$outtable = path$outgraph = "." # Outputs saved to the current folder</span>
-<span id="cb154-56"><a href="running-environment.html#cb154-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-57"><a href="running-environment.html#cb154-57" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>Execute analysis program</span>
-<span id="cb154-58"><a href="running-environment.html#cb154-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-59"><a href="running-environment.html#cb154-59" aria-hidden="true" tabindex="-1"></a>To reproduce the analysis results, rerun the following programs:</span>
-<span id="cb154-60"><a href="running-environment.html#cb154-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-61"><a href="running-environment.html#cb154-61" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>tlf-01-disposition.txt</span>
-<span id="cb154-62"><a href="running-environment.html#cb154-62" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>tlf-02-population.txt</span>
-<span id="cb154-63"><a href="running-environment.html#cb154-63" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>tlf-03-baseline.txt</span>
-<span id="cb154-64"><a href="running-environment.html#cb154-64" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>tlf-04-efficacy.txt</span>
-<span id="cb154-65"><a href="running-environment.html#cb154-65" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>tlf-05-ae-summary.txt</span>
-<span id="cb154-66"><a href="running-environment.html#cb154-66" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>tlf-06-ae-spec.txt</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb153-1"><a href="running-environment.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="an">Appendix:</span><span class="co"> Instructions to Execute Analysis Program in R</span></span>
+<span id="cb153-2"><a href="running-environment.html#cb153-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-3"><a href="running-environment.html#cb153-3" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Setup R environment</span>
+<span id="cb153-4"><a href="running-environment.html#cb153-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-5"><a href="running-environment.html#cb153-5" aria-hidden="true" tabindex="-1"></a>Open the existing R, install the required packages by running the code below.</span>
+<span id="cb153-6"><a href="running-environment.html#cb153-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-7"><a href="running-environment.html#cb153-7" aria-hidden="true" tabindex="-1"></a>install.packages("cleanslate")</span>
+<span id="cb153-8"><a href="running-environment.html#cb153-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-9"><a href="running-environment.html#cb153-9" aria-hidden="true" tabindex="-1"></a>Create a temporary working directory, for example, "C:\tempwork".</span>
+<span id="cb153-10"><a href="running-environment.html#cb153-10" aria-hidden="true" tabindex="-1"></a>Copy all submitted R programs into the temporary folder.</span>
+<span id="cb153-11"><a href="running-environment.html#cb153-11" aria-hidden="true" tabindex="-1"></a>In the same R session, run the code below to create a project</span>
+<span id="cb153-12"><a href="running-environment.html#cb153-12" aria-hidden="true" tabindex="-1"></a>with a portable R environment.</span>
+<span id="cb153-13"><a href="running-environment.html#cb153-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-14"><a href="running-environment.html#cb153-14" aria-hidden="true" tabindex="-1"></a>cleanslate::use_cleanslate(</span>
+<span id="cb153-15"><a href="running-environment.html#cb153-15" aria-hidden="true" tabindex="-1"></a>  "C:/temp/",</span>
+<span id="cb153-16"><a href="running-environment.html#cb153-16" aria-hidden="true" tabindex="-1"></a>  r_version = "4.1.1",</span>
+<span id="cb153-17"><a href="running-environment.html#cb153-17" aria-hidden="true" tabindex="-1"></a>  from = "https://cran.r-project.org/",</span>
+<span id="cb153-18"><a href="running-environment.html#cb153-18" aria-hidden="true" tabindex="-1"></a>  repo = "https://mran.microsoft.com/snapshot/2021-08-06/"</span>
+<span id="cb153-19"><a href="running-environment.html#cb153-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb153-20"><a href="running-environment.html#cb153-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-21"><a href="running-environment.html#cb153-21" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Open the project</span>
+<span id="cb153-22"><a href="running-environment.html#cb153-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-23"><a href="running-environment.html#cb153-23" aria-hidden="true" tabindex="-1"></a>Go to the working directory created above, double click the .Rproj file</span>
+<span id="cb153-24"><a href="running-environment.html#cb153-24" aria-hidden="true" tabindex="-1"></a>to open the project in RStudio. Follow the instructions to select the</span>
+<span id="cb153-25"><a href="running-environment.html#cb153-25" aria-hidden="true" tabindex="-1"></a>project-specific R version, then restart RStudio. If successful,</span>
+<span id="cb153-26"><a href="running-environment.html#cb153-26" aria-hidden="true" tabindex="-1"></a>the R version and package repo should be printed as defined above.</span>
+<span id="cb153-27"><a href="running-environment.html#cb153-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-28"><a href="running-environment.html#cb153-28" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Install open-source R packages</span>
+<span id="cb153-29"><a href="running-environment.html#cb153-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-30"><a href="running-environment.html#cb153-30" aria-hidden="true" tabindex="-1"></a>In the new R session, install the required packages by running the code below.</span>
+<span id="cb153-31"><a href="running-environment.html#cb153-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-32"><a href="running-environment.html#cb153-32" aria-hidden="true" tabindex="-1"></a>install.packages(c("pkglite", "publicpkg1", "publicpkg2"))</span>
+<span id="cb153-33"><a href="running-environment.html#cb153-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-34"><a href="running-environment.html#cb153-34" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Install proprietary R packages</span>
+<span id="cb153-35"><a href="running-environment.html#cb153-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-36"><a href="running-environment.html#cb153-36" aria-hidden="true" tabindex="-1"></a>All internal R packages are packed in the file r0pkgs.txt. In the same R session,</span>
+<span id="cb153-37"><a href="running-environment.html#cb153-37" aria-hidden="true" tabindex="-1"></a>restore the package structures and install them by running the code below.</span>
+<span id="cb153-38"><a href="running-environment.html#cb153-38" aria-hidden="true" tabindex="-1"></a>Adjust the output path as needed to use a writable local directory.</span>
+<span id="cb153-39"><a href="running-environment.html#cb153-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-40"><a href="running-environment.html#cb153-40" aria-hidden="true" tabindex="-1"></a>pkglite::unpack("r0pkgs.txt", output = ".", install = TRUE)</span>
+<span id="cb153-41"><a href="running-environment.html#cb153-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-42"><a href="running-environment.html#cb153-42" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Update path to dataset and TLFs</span>
+<span id="cb153-43"><a href="running-environment.html#cb153-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-44"><a href="running-environment.html#cb153-44" aria-hidden="true" tabindex="-1"></a>INPUT path: to rerun the analysis programs, define the path variable</span>
+<span id="cb153-45"><a href="running-environment.html#cb153-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-46"><a href="running-environment.html#cb153-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Path for ADaM data: path$adam</span>
+<span id="cb153-47"><a href="running-environment.html#cb153-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-48"><a href="running-environment.html#cb153-48" aria-hidden="true" tabindex="-1"></a>OUTPUT path: to save the analysis results, define the path variable</span>
+<span id="cb153-49"><a href="running-environment.html#cb153-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-50"><a href="running-environment.html#cb153-50" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Path for output TLFs: path$output</span>
+<span id="cb153-51"><a href="running-environment.html#cb153-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-52"><a href="running-environment.html#cb153-52" aria-hidden="true" tabindex="-1"></a>All these paths need to be defined before executing the analysis program. For example:</span>
+<span id="cb153-53"><a href="running-environment.html#cb153-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-54"><a href="running-environment.html#cb153-54" aria-hidden="true" tabindex="-1"></a>path = list(adam = "/path/to/esub/analysis/adam/datasets/") # Modify to use actual location</span>
+<span id="cb153-55"><a href="running-environment.html#cb153-55" aria-hidden="true" tabindex="-1"></a>path$outtable = path$outgraph = "." # Outputs saved to the current folder</span>
+<span id="cb153-56"><a href="running-environment.html#cb153-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-57"><a href="running-environment.html#cb153-57" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>Execute analysis program</span>
+<span id="cb153-58"><a href="running-environment.html#cb153-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-59"><a href="running-environment.html#cb153-59" aria-hidden="true" tabindex="-1"></a>To reproduce the analysis results, rerun the following programs:</span>
+<span id="cb153-60"><a href="running-environment.html#cb153-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-61"><a href="running-environment.html#cb153-61" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>tlf-01-disposition.txt</span>
+<span id="cb153-62"><a href="running-environment.html#cb153-62" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>tlf-02-population.txt</span>
+<span id="cb153-63"><a href="running-environment.html#cb153-63" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>tlf-03-baseline.txt</span>
+<span id="cb153-64"><a href="running-environment.html#cb153-64" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>tlf-04-efficacy.txt</span>
+<span id="cb153-65"><a href="running-environment.html#cb153-65" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>tlf-05-ae-summary.txt</span>
+<span id="cb153-66"><a href="running-environment.html#cb153-66" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>tlf-06-ae-spec.txt</span></code></pre></div>
 </div>
 <div id="rstudio-addin" class="section level2" number="15.6">
 <h2>
