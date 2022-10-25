@@ -132,7 +132,7 @@ As an organization, we need to ensure compliance and reduce the risk of using R 
   - [stan](https://mc-stan.org/users/interfaces/rstan) and network meta-analysis for drug reimbursement analysis
 
 - R is widely used in visualization
-  - [SafetyGraphics](https://github.com/SafetyGraphics/safetyGraphics)
+  - [metalite.table1](https://elong0527.github.io/metalite.table1/articles/metalite-table1.html): Interactive demographic table.
   - [forestly](https://elong0527.github.io/forestly/articles/example.html#construct-interactive-forest-plot-1): [Interactive forest plot for DMC safety monitoring in clinical trials](https://rinpharma.com/publication/rinpharma_194/)
 
 ## Background
