@@ -1,6 +1,9 @@
+`r if (knitr::is_html_output()) '
 # (PART) Appendix {-}
 
 # References {-}
+
+'`
 
 ```{r, include=FALSE}
 source("post-processing.R")
