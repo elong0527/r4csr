@@ -19,7 +19,7 @@ library(emmeans) # LS mean estimation
 In this chapter, we illustrate how to generate an efficacy table for a study.
 For efficacy analysis, only the change from baseline glucose data at week 24 is analyzed.
 
-```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tlf_eff.pdf")
 ```
 
@@ -278,7 +278,7 @@ t1_rtf %>%
 rtf2pdf("tlf/tlf_eff1.rtf")
 ```
 
-```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tlf_eff1.pdf")
 ```
 
@@ -304,7 +304,7 @@ t2_rtf %>%
 rtf2pdf("tlf/tlf_eff2.rtf")
 ```
 
-```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tlf_eff2.pdf")
 ```
 
@@ -322,7 +322,7 @@ list(t1_rtf, t2_rtf) %>%
 rtf2pdf("tlf/tlf_eff.rtf")
 ```
 
-```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tlf_eff.pdf")
 ```
 

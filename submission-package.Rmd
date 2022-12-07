@@ -369,9 +369,11 @@ The tables below contain the software version and instructions
 for executing the R analysis output programs:
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library("kableExtra")
+```
 
+```{r, echo=FALSE}
 df1 <- data.frame(
   program = c(
     "tlf-01-disposition.txt",
@@ -396,15 +398,25 @@ df1 <- data.frame(
 )
 
 names(df1) <- c("Program Name", "Output Table", "Title")
+```
 
-df1 %>%
-  kbl(escape = FALSE) %>%
-  kable_classic(full_width = FALSE, html_font = "'Times New Roman', Times, serif", font_size = 18) %>%
-  column_spec(1, extra_css = "border: 1px solid #000; text-align: center;", width = "18rem") %>%
-  column_spec(2, extra_css = "border: 1px solid #000; text-align: center;", width = "16rem") %>%
-  column_spec(3, extra_css = "border: 1px solid #000;", width = "28rem") %>%
-  row_spec(0, background = "#DFDFDF", bold = TRUE, extra_css = "border: 1px solid #000; text-align: center;")
+```{r, echo=FALSE}
+if (knitr::is_latex_output()) {
+  df1 %>% kbl(format = "latex")
+}
 
+if (knitr::is_html_output()) {
+  df1 %>%
+    kbl(format = "html", escape = FALSE) %>%
+    kable_classic(full_width = FALSE, html_font = "'Times New Roman', Times, serif", font_size = 18) %>%
+    column_spec(1, extra_css = "border: 1px solid #000; text-align: center;", width = "18rem") %>%
+    column_spec(2, extra_css = "border: 1px solid #000; text-align: center;", width = "16rem") %>%
+    column_spec(3, extra_css = "border: 1px solid #000;", width = "28rem") %>%
+    row_spec(0, background = "#DFDFDF", bold = TRUE, extra_css = "border: 1px solid #000; text-align: center;")
+}
+```
+
+```{r, echo=FALSE}
 df2 <- data.frame(
   package = c("pkglite", "haven", "dplyr", "tidyr", "emmeans", "r2rtf"),
   version = NA,
@@ -429,16 +441,26 @@ names(df2) <- c(
   "Package Version",
   "Analysis Package Description"
 )
+```
 
-df2 %>%
-  kbl() %>%
-  kable_classic(full_width = FALSE, html_font = "'Times New Roman', Times, serif", font_size = 18) %>%
-  column_spec(1, extra_css = "border: 1px solid #000; text-align: center;", width = "18rem") %>%
-  column_spec(2, extra_css = "border: 1px solid #000; text-align: center;", width = "16rem") %>%
-  column_spec(3, extra_css = "border: 1px solid #000;", width = "28rem") %>%
-  row_spec(0, background = "#DFDFDF", bold = TRUE, extra_css = "border: 1px solid #000; text-align: center;") %>%
-  footnote(general = "R package versions based on CRAN on 2021-08-06", general_title = "")
+```{r, echo=FALSE}
+if (knitr::is_latex_output()) {
+  df2 %>% kbl(format = "latex")
+}
 
+if (knitr::is_html_output()) {
+  df2 %>%
+    kbl(format = "html") %>%
+    kable_classic(full_width = FALSE, html_font = "'Times New Roman', Times, serif", font_size = 18) %>%
+    column_spec(1, extra_css = "border: 1px solid #000; text-align: center;", width = "18rem") %>%
+    column_spec(2, extra_css = "border: 1px solid #000; text-align: center;", width = "16rem") %>%
+    column_spec(3, extra_css = "border: 1px solid #000;", width = "28rem") %>%
+    row_spec(0, background = "#DFDFDF", bold = TRUE, extra_css = "border: 1px solid #000; text-align: center;") %>%
+    footnote(general = "R package versions based on CRAN on 2021-08-06", general_title = "")
+}
+```
+
+```{r, echo=FALSE}
 df3 <- data.frame(
   package = "esubdemo",
   version = "0.1.0",
@@ -451,14 +473,22 @@ names(df3) <- c(
   "Package Version",
   "Analysis Package Description"
 )
+```
 
-df3 %>%
-  kbl() %>%
-  kable_classic(full_width = FALSE, html_font = "'Times New Roman', Times, serif", font_size = 18) %>%
-  column_spec(1, extra_css = "border: 1px solid #000; text-align: center;", width = "18rem") %>%
-  column_spec(2, extra_css = "border: 1px solid #000; text-align: center;", width = "16rem") %>%
-  column_spec(3, extra_css = "border: 1px solid #000;", width = "28rem") %>%
-  row_spec(0, background = "#DFDFDF", bold = TRUE, extra_css = "border: 1px solid #000; text-align: center;")
+```{r, echo=FALSE}
+if (knitr::is_latex_output()) {
+  df3 %>% kbl(format = "latex")
+}
+
+if (knitr::is_html_output()) {
+  df3 %>%
+    kbl(format = "html") %>%
+    kable_classic(full_width = FALSE, html_font = "'Times New Roman', Times, serif", font_size = 18) %>%
+    column_spec(1, extra_css = "border: 1px solid #000; text-align: center;", width = "18rem") %>%
+    column_spec(2, extra_css = "border: 1px solid #000; text-align: center;", width = "16rem") %>%
+    column_spec(3, extra_css = "border: 1px solid #000;", width = "28rem") %>%
+    row_spec(0, background = "#DFDFDF", bold = TRUE, extra_css = "border: 1px solid #000; text-align: center;")
+}
 ```
 
 The second section (Appendix) should include step-by-step instructions
@@ -558,16 +588,24 @@ names(df4) <- c(
   "Program Name (programs)",
   "Input File Name / Analysis (datasets)"
 )
+```
 
-df4 %>%
-  kbl() %>%
-  kable_classic(full_width = FALSE, html_font = "'Times New Roman', Times, serif", font_size = 18) %>%
-  column_spec(1, extra_css = "border: 1px solid #000; text-align: center;") %>%
-  column_spec(2, extra_css = "border: 1px solid #000; text-align: center;") %>%
-  column_spec(3, extra_css = "border: 1px solid #000; text-align: center;") %>%
-  column_spec(4, extra_css = "border: 1px solid #000; text-align: center;") %>%
-  column_spec(5, extra_css = "border: 1px solid #000; text-align: center;") %>%
-  row_spec(0, background = "#DFDFDF", bold = TRUE, extra_css = "border: 1px solid #000; text-align: center;")
+```{r}
+if (knitr::is_latex_output()) {
+  df4 %>% kbl(format = "latex")
+}
+
+if (knitr::is_html_output()) {
+  df4 %>%
+    kbl(format = "html") %>%
+    kable_classic(full_width = FALSE, html_font = "'Times New Roman', Times, serif", font_size = 18) %>%
+    column_spec(1, extra_css = "border: 1px solid #000; text-align: center;") %>%
+    column_spec(2, extra_css = "border: 1px solid #000; text-align: center;") %>%
+    column_spec(3, extra_css = "border: 1px solid #000; text-align: center;") %>%
+    column_spec(4, extra_css = "border: 1px solid #000; text-align: center;") %>%
+    column_spec(5, extra_css = "border: 1px solid #000; text-align: center;") %>%
+    row_spec(0, background = "#DFDFDF", bold = TRUE, extra_css = "border: 1px solid #000; text-align: center;")
+}
 ```
 
 In ARM section 3, "Analysis Results Metadata Details":
@@ -594,12 +632,20 @@ df5 <- data.frame(
   ),
   stringsAsFactors = FALSE
 )
+```
 
-df5 %>%
-  kbl(format = "html") %>%
-  kable_classic(full_width = FALSE, html_font = "'Times New Roman', Times, serif", font_size = 18) %>%
-  column_spec(1, extra_css = "border: 1px solid #000;", bold = TRUE) %>%
-  column_spec(2, extra_css = "border: 1px solid #000;") %>%
-  row_spec(0, background = "#DFDFDF", bold = TRUE, extra_css = "border: 1px solid #000;") %>%
-  gsub("<thead>.*</thead>", "", .)
+```{r, echo=FALSE}
+if (knitr::is_latex_output()) {
+  df5 %>% kbl(format = "latex")
+}
+
+if (knitr::is_html_output()) {
+  df5 %>%
+    kbl(format = "html") %>%
+    kable_classic(full_width = FALSE, html_font = "'Times New Roman', Times, serif", font_size = 18) %>%
+    column_spec(1, extra_css = "border: 1px solid #000;", bold = TRUE) %>%
+    column_spec(2, extra_css = "border: 1px solid #000;") %>%
+    row_spec(0, background = "#DFDFDF", bold = TRUE, extra_css = "border: 1px solid #000;") %>%
+    gsub("<thead>.*</thead>", "", .)
+}
 ```

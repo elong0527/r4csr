@@ -21,7 +21,7 @@ library(r2rtf) # Reporting in RTF format
 
 In this chapter, we show how to create a typical disposition table.
 
-```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tbl_disp.pdf")
 ```
 
@@ -176,7 +176,7 @@ tbl_disp %>%
 rtf2pdf("tlf/tbl_disp.rtf")
 ```
 
-```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tbl_disp.pdf")
 ```
 

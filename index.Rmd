@@ -9,9 +9,12 @@ description: >
 
 site: bookdown::bookdown_site
 
-documentclass: book
+documentclass: svmono
+monofont: "Source Code Pro"
+monofontoptions: "Scale=0.7"
+
 bibliography: [book.bib, packages.bib]
-biblio-style: apalike
+csl: chicago-fullnote-bibliography.csl
 link-citations: yes
 ---
 
@@ -48,6 +51,8 @@ rsconnect::writeManifest(appPrimaryDoc = "index.Rmd", contentCategory = "site")
 bookdown::render_book("index.Rmd", "bookdown::pdf_book")
 ```
 
+`r if (knitr::is_latex_output()) '<!--'`
+
 # Welcome! {-}
 
 <img src="images/cover.jpg" width="100%" align="right" alt="" class="cover" />
@@ -80,3 +85,5 @@ knitr::kable(read.table("events.tsv", stringsAsFactors = FALSE, header = TRUE, s
 ## License {-}
 
 This book is licensed to you under [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+
+`r if (knitr::is_latex_output()) '-->'`
