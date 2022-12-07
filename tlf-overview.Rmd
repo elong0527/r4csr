@@ -1,3 +1,5 @@
+\mainmatter
+
 # (PART) Delivering TLFs in CSR {-}
 
 # Overview {#tlf-overview}
@@ -200,7 +202,7 @@ head(tbl) %>%
 rtf2pdf("tlf/intro-ae1.rtf")
 ```
 
-```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/intro-ae1.pdf")
 ```
 
@@ -231,7 +233,7 @@ head(tbl) %>%
 rtf2pdf("tlf/intro-ae2.rtf")
 ```
 
-```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/intro-ae2.pdf")
 ```
 
@@ -259,7 +261,7 @@ head(tbl) %>%
 rtf2pdf("tlf/intro-ae3.rtf")
 ```
 
-```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/intro-ae3.pdf")
 ```
 
@@ -288,7 +290,7 @@ head(tbl) %>%
 rtf2pdf("tlf/intro-ae5.rtf")
 ```
 
-```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/intro-ae5.pdf")
 ```
 
@@ -323,7 +325,7 @@ head(tbl) %>%
 rtf2pdf("tlf/intro-ae7.rtf")
 ```
 
-```{r, out.width = "100%", out.height = "400px", echo = FALSE, fig.align = "center"}
+```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/intro-ae7.pdf")
 ```
 
