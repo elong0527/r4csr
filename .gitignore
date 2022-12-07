@@ -2,10 +2,16 @@
 .Rhistory
 .RData
 .Ruserdata
+
+.Rprofile
 renv
 _book
-.Rprofile
+
 r4csr.html
 r4csr.Rcheck/
 r4csr*.tar.gz
 r4csr*.tgz
+
+r4csr.adx
+r4csr.log
+r4csr.thm
