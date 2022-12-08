@@ -64,7 +64,7 @@ rtf_assemble1 <- function(path) {
 The `rtf_assemble1()` function allows user to combine RTF 
 source code in individual files into one larger RTF file. 
 
-::: {.rmdnote}
+::: {.rmdnote data-latex=""}
 One limitation of combining RTF source code is that 
 we are not able to specify page orientation of each TLF 
 in the combined document. 
@@ -80,7 +80,7 @@ rtf_assemble1(tlf_path) |>
 Microsoft Words uses toggle fields to embed files into one Word document. 
 The approach is a dynamic link between files by providing the absolute file path. 
 
-::: {.rmdnote}
+::: {.rmdnote data-latex=""}
 There is a slight learning curve on how toggle fields work 
 in Microsoft Words. 
 After you become familiar with the workflow, 
@@ -168,7 +168,7 @@ see information similar to the screenshot below.
 knitr::include_graphics("images/rtf-alt-f9.png")
 ```
 
-::: {.rmdnote}
+::: {.rmdnote data-latex=""}
 A typical error message is that system can not find the file 
 if you only provide a relative path. 
 Please double-check that the correct absolute file path is in the `INCLUDETEXT` field. 
@@ -193,7 +193,7 @@ As the `docx` file contain dynamic links,
 you can keep updating the TLFs if you need to refresh content in 
 individual RTF files by selecting all fields (`Ctrl + A`), then type `F9`. 
 
-::: {.rmdnote}
+::: {.rmdnote data-latex=""}
 If you modify table content in the combined `.docx` file, 
 you may get a weird table layout if you update all fields within a toggle field. 
 To resolve the issue, please remove all `\* MERGEFORMAT` in the filed mode using `Alt + F9` before updating all toggle fields.

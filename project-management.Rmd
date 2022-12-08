@@ -137,7 +137,7 @@ To enable reproducibility, the project leader should also review the startup fil
 - Project package library path
 - etc.
 
-::: {.rmdnote}
+::: {.rmdnote data-latex=""}
 After project initiation, modifying `.Rprofile` will be a risk of reproducibility
 and should be handled carefully if necessary.
 :::

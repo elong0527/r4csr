@@ -18,7 +18,7 @@ library(survival) # Fit survival model
 In this chapter, we illustrate how to create a simplified Kaplan-Meier plot in a study.
 For the survival analysis in efficacy, time to dermatologic event (TTDE) will be analyzed.
 
-::: {.rmdnote}
+::: {.rmdnote data-latex=""}
 R packages such as
 [visR](https://cran.r-project.org/package=visR) and
 [survminer](https://cran.r-project.org/package=survminer)

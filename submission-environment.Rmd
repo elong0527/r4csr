@@ -13,7 +13,7 @@ different environment settings with reproducible analysis results.
 `cleanslate` is an R package that offers a solution to
 create portable R environments.
 
-::: {.rmdnote}
+::: {.rmdnote data-latex=""}
 As of Q4 2021, the `cleanslate` package used in this chapter
 is still under active development and validation.
 This chapter gives a preview of the planned APIs.
