@@ -60,7 +60,7 @@ We demonstrate the idea using the [`esubdemo`](https://github.com/elong0527/esub
 
 In the `esubdemo` project, we saved all TLF generation scripts in previous chapters into the `vignettes/` folder.
 
-::: {.rmdnote}
+::: {.rmdnote data-latex=""}
 Under the `vignettes/` folder, there are two folders: `adam/` and `tlf/`.
 The `adam/` folder contains ADaM datasets.
 The `tlf/` folder contains output TLFs in RTF format.
@@ -135,7 +135,7 @@ including the control of the R version and the R package versions.
 By using the R package folder structure and proper tools (e.g., `renv`, `packrat`),
 we illustrate how to achieve reproducibility for R and R package versions.
 
-::: {.rmdnote}
+::: {.rmdnote data-latex=""}
 This is the same level of reproducibility in most SAS environments:
 <https://support.sas.com/techsup/pcn/altopsys.html>
 :::
@@ -162,7 +162,7 @@ If there is an R version mismatch, an error message is displayed as below.
 Error: The current R version is not the same as the current project in R4.1.1
 ```
 
-::: {.rmdnote}
+::: {.rmdnote data-latex=""}
 `.Rprofile` is only for project-specific R packages.
 A standard R package should not use `.Rprofile`.
 :::
@@ -200,7 +200,7 @@ Current project R package repository:
     https://mran.microsoft.com/snapshot/2021-08-06
 ```
 
-::: {.rmdnote}
+::: {.rmdnote data-latex=""}
 RStudio Package Manager (RSPM) provides a solution to host both
 publicly available and internally developed R packages.
 However, the [public RSPM server](https://packagemanager.rstudio.com/client/#/repos/2/overview)
@@ -226,7 +226,7 @@ In the analysis project, the `renv` package will
 - create a `renv.lock` file to save the state of package versions.
 - create a `renv/` folder to manage R packages for a project.
 
-::: {.rmdnote}
+::: {.rmdnote data-latex=""}
 The `renv.lock` file and `renv/` folder are only for project-specific R package.
 A standard R package should not use `renv`.
 :::
@@ -254,14 +254,14 @@ Below R package path are searching in order to find installed R packages in this
     "/rtmp/RtmpT3ljoY/renv-system-library"
 ```
 
-::: {.rmdnote}
+::: {.rmdnote data-latex=""}
 A cloud-based R environment (e.g., RStudio Workbench)
 can enhance the reproducibility within an organization
 by using the same operating system, R version, and R package versions for an A&R project.
 More details can be found at <https://environments.rstudio.com/>.
 :::
 
-::: {.rmdnote}
+::: {.rmdnote data-latex=""}
 A container solution like Docker [@RJ-2020-007] could further enhance
 the reproducibility across an organization at the operating system level
 but beyond the scope of this book.
