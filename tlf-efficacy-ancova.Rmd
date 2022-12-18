@@ -180,7 +180,7 @@ fit <- lm(CHG ~ BASE + TRTP, data = ana_locf)
 summary(fit)
 ```
 
-The `emmeans` R package is used to obtain
+The emmeans R package is used to obtain
 within and between group least square (LS) mean
 
 ```{r}
@@ -231,14 +231,14 @@ t1 <- cbind(
 t1
 ```
 
-Then `r2rtf` is used to prepare the table format for `t1`.
+Then r2rtf is used to prepare the table format for `t1`.
 We also highlight how to handle special characters in this example.
 
 Special characters `^` and `_` are used to define superscript and subscript of text. And `{}` is to define the part that will be impacted.
 For example, `{^a}` provides a superscript `a` for footnote notation.
-`r2rtf` also supports most LaTeX characters.
+r2rtf also supports most LaTeX characters.
 Examples can be found on the
-[`r2rtf` get started page](https://merck.github.io/r2rtf/articles/r2rtf.html#special-character).
+[r2rtf get started page](https://merck.github.io/r2rtf/articles/r2rtf.html#special-character).
 The `text_convert` argument in `r2rtf_*()` functions controls whether to convert special characters.
 
 ```{r}
@@ -282,7 +282,7 @@ rtf2pdf("tlf/tlf_eff1.rtf")
 knitr::include_graphics("tlf/tlf_eff1.pdf")
 ```
 
-We also use `r2rtf` to prepare the table format for `t2`
+We also use r2rtf to prepare the table format for `t2`
 
 ```{r}
 t2_rtf <- t2 %>%
@@ -308,7 +308,7 @@ rtf2pdf("tlf/tlf_eff2.rtf")
 knitr::include_graphics("tlf/tlf_eff2.pdf")
 ```
 
-Finally, we combine the two parts to get the final table using `r2rtf`.
+Finally, we combine the two parts to get the final table using r2rtf.
 This is achieved by providing a list of `t1_rtf` and `t2_rtf` as input for
 `rtf_encode`.
 

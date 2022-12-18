@@ -54,7 +54,7 @@ adtte_ttde <- adtte %>%
 
 ## Create Kaplan-Meier curve
 
-The `survival` package is used to obtain the K-M estimate.
+The survival package is used to obtain the K-M estimate.
 
 ```{r}
 # Fit survival model, convert the time value from Days to Month
@@ -85,7 +85,7 @@ plot(
 dev.off()
 ```
 
-Now, we can use the `r2rtf` package to create a formatted RTF figure.
+Now, we can use the r2rtf package to create a formatted RTF figure.
 More details can be found on the [r2rtf website](https://merck.github.io/r2rtf/articles/example-figure.html).
 
 ```{r}
@@ -115,4 +115,4 @@ In conclusion, the steps to create a K-M plot are as follows.
 - Step 1: Read the data `adtte` into R.
 - Step 2: Define the analysis-ready dataset. In this example, we define the analysis dataset for the TTDE endpoint `adtte_ttde`.
 - Step 3: Save figures into `png` files based on required analysis specification.
-- Step 4: Create RTF output using the `r2rtf` package.
+- Step 4: Create RTF output using the r2rtf package.

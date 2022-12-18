@@ -174,4 +174,4 @@ The procedure to generate an AE summary table can be summarized as follows:
 - Step 2: Summarize participants in population by treatment arm, and name the dataset as `t_pop`.
 - Step 3: Summarize participants in population by required AE criteria of interest,
   and name the dataset as `t_ae`.
-- Step 4: Row-wise combine `t_pop` and `t_ae` and format it by using `r2rtf`.
+- Step 4: Row-wise combine `t_pop` and `t_ae` and format it by using r2rtf.
