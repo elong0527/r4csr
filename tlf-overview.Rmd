@@ -85,38 +85,38 @@ how to deliver TLFs in a CSR.
 
 ::: {.rmdnote data-latex=""}
 There are other R packages to create TLFs in ASCII, RTF and Word format.
-For example, `rtables`, `huxtable`, `pharmaRTF`, `gt`, `officer`, `flextable` etc.
-Here we focus on `r2rtf` to illustrate the concept.  
+For example, rtables, huxtable, pharmaRTF, gt, officer, flextable etc.
+Here we focus on r2rtf to illustrate the concept.  
 Readers are encouraged to explore other R packages to find the proper tools to fit your purpose. 
 :::
 
 ### tidyverse
 
-`tidyverse` is a collection of R packages to simplify the workflow to manipulate,
+tidyverse is a collection of R packages to simplify the workflow to manipulate,
 visualize and analyze data in R.
 Those R packages share
 [the tidy tools manifesto](https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html)
 and are easy to use for interactive data analysis.
 
 RStudio provided outstanding [cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
-and [tutorials](https://github.com/rstudio-education/remaster-the-tidyverse) for `tidyverse`.
+and [tutorials](https://github.com/rstudio-education/remaster-the-tidyverse) for tidyverse.
 
-There are also books to introduce `tidyverse`.
-We assume the reader have experience in using `tidyverse` in this book.
+There are also books to introduce tidyverse.
+We assume the reader have experience in using tidyverse in this book.
 
 - [The tidyverse cookbook](https://rstudio-education.github.io/tidyverse-cookbook/)
 - [R for Data Science](https://r4ds.had.co.nz/)
 
 ### r2rtf
 
-`r2rtf` is an R package to create production-ready tables and figures in RTF format.
+r2rtf is an R package to create production-ready tables and figures in RTF format.
 This R package is designed to
 
 - provide simple "verb" functions that correspond to each component of a table,
   to help you translate a data frame to a table in an RTF file;
 - enable pipes (`%>%`);
 - focus on the **table format** only.
-  Data manipulation and analysis shall be handled by other R packages (e.g., `tidyverse`).
+  Data manipulation and analysis shall be handled by other R packages (e.g., tidyverse).
 
 Before creating an RTF table, we need to
 
@@ -124,14 +124,14 @@ Before creating an RTF table, we need to
 - split the layout into small tasks in the form of a computer program;
 - execute the program.
 
-We provide a brief introduction of `r2rtf` and show how to transfer
+We provide a brief introduction of r2rtf and show how to transfer
 data frames into table, listing, and figures (TLFs).
 
 Other extended examples and features are covered on the
-[`r2rtf` package website](https://merck.github.io/r2rtf/articles/index.html).
+[r2rtf package website](https://merck.github.io/r2rtf/articles/index.html).
 
-To explore the basic RTF generation verbs in `r2rtf`,
-we will use the dataset `r2rtf_adae` saved in the `r2rtf` package.
+To explore the basic RTF generation verbs in r2rtf,
+we will use the dataset `r2rtf_adae` saved in the r2rtf package.
 This dataset contains adverse events (AEs) information from a clinical trial.
 
 We will begin by loading the packages:
@@ -157,7 +157,7 @@ r2rtf_adae %>%
   head(4)
 ```
 
-`dplyr` and `tidyr` packages within `tidyverse` are used
+dplyr and tidyr packages within tidyverse are used
 for data manipulation to create a data frame
 that contains all the information we want to add in an RTF table.
 
@@ -171,7 +171,7 @@ tbl %>% head(4)
 
 Now we have a dataset `tbl` in preparing the final RTF table.
 
-`r2rtf` aims to provide one function for each type of table layout.
+r2rtf aims to provide one function for each type of table layout.
 Commonly used verbs include:
 
 - `rtf_page()`: RTF page information
@@ -300,7 +300,7 @@ In `rtf_*()` functions such as `rtf_body()`, `rtf_footnote()`, etc.,
 If we want to remove the top border of `"Adverse Events"` in the header,
 we can change the default value `"single"` to `""` in the `border_top` argument, as shown below.
 
-`r2rtf` supports 26 different border types. The details can be found on
+r2rtf supports 26 different border types. The details can be found on
 the [r2rtf package website](https://merck.github.io/r2rtf/articles/rtf-row.html#border-type).
 
 In this example, we also demonstrate the possibility of adding multiple column headers.
@@ -329,7 +329,7 @@ rtf2pdf("tlf/intro-ae7.rtf")
 knitr::include_graphics("tlf/intro-ae7.pdf")
 ```
 
-In the `r2rtf` R package [get started](https://merck.github.io/r2rtf/articles/r2rtf.html) page,
+In the r2rtf R package [get started](https://merck.github.io/r2rtf/articles/r2rtf.html) page,
 there are more examples to illustrate how to customize
 
 - title, subtitle

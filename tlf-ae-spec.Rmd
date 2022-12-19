@@ -128,7 +128,7 @@ tbl_ae_spec %>% head(4)
 We define the format of the output as below:
 
 To obtain the nested layout, we use the `page_by` argument in the
-`rtf_body` function. By defining `page_by="AESOC"`, `r2rtf` recognizes
+`rtf_body` function. By defining `page_by="AESOC"`, r2rtf recognizes
 the variable as a group indicator.
 
 After setting `pageby_row = "first_row"`, the first row is displayed as
@@ -185,7 +185,7 @@ knitr::include_graphics("tlf/tlf_spec_ae.pdf")
 
 More discussion on `page_by`, `group_by` and `subline_by`
 features can be found on the
-[`r2rtf` package website](https://merck.github.io/r2rtf/articles/example-sublineby-pageby-groupby.html).
+[r2rtf package website](https://merck.github.io/r2rtf/articles/example-sublineby-pageby-groupby.html).
 
 The procedure to generate a baseline characteristics table can be
 summarized as follows:
@@ -198,4 +198,4 @@ summarized as follows:
 - Step 4: Bind `t1` and `t2` by row into `t_ae`.
 - Step 5: Count the number of participants in each arm as `t_pop`.
 - Step 6: Row-wise combine `t_pop` and `t_ae` into `tbl_ae_spec`.
-- Step 7: Format the output by using `r2rtf`.
+- Step 7: Format the output by using r2rtf.

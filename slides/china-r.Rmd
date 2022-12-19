@@ -96,7 +96,7 @@ Training: [December 6th, Deming Conference 2021](https://demingconference.org/pr
 
 Tools:
 
-- [`r2rtf`](https://merck.github.io/r2rtf/): create production-ready tables and figures in RTF format.
+- [r2rtf](https://merck.github.io/r2rtf/): create production-ready tables and figures in RTF format.
 - [`pkglite`](https://merck.github.io/pkglite/): represent and exchange R package source code as text files.
 - `cleanslate` (under internal validation): create portable R environments.
 
@@ -106,7 +106,7 @@ Training: [December 2nd, Short course for ASA Princeton-Trenton Chapter](https:/
 
 ## r2rtf: design
 
-`r2rtf` is designed to:
+r2rtf is designed to:
 
 - Generate highly customized tables
 - Limit package dependency
@@ -115,7 +115,7 @@ Training: [December 2nd, Short course for ASA Princeton-Trenton Chapter](https:/
 
 ## r2rtf: minimal example
 
-`r2rtf` is designed to be pipe-friendly (`%>%`)
+r2rtf is designed to be pipe-friendly (`%>%`)
 
 ```{r, echo = TRUE, eval = FALSE}
 head(iris) %>%
@@ -185,10 +185,10 @@ library("cleanslate")
 
 Within a regulatory R environment:
 
-- As a statistician, I use `tidyverse`, `r2rtf`, and internal tools to define the mock-up table, listing and figure (TLFs) for statistical analysis of a clinical trial.
+- As a statistician, I use tidyverse, r2rtf, and internal tools to define the mock-up table, listing and figure (TLFs) for statistical analysis of a clinical trial.
   - More than 100 TLFs for efficacy and safety of a drug or vaccine.
 
-- As a programmer, I use `tidyverse`, `r2rtf`, and internal tools to develop and/or validate analysis results based on mock-up TLFs.
+- As a programmer, I use tidyverse, r2rtf, and internal tools to develop and/or validate analysis results based on mock-up TLFs.
 
 - As a statistican/programmer, I use `pkglite` and internal tools to prepare proprietary R packages and analysis R scripts for eCTD submission package.
 

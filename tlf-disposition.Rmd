@@ -129,7 +129,7 @@ n_reason
 ```
 
 Now we combine individual rows into one table for reporting purpose.
-`tbl_disp` is used as input for `r2rtf` to create final report.
+`tbl_disp` is used as input for r2rtf to create final report.
 
 ```{r}
 tbl_disp <- bind_rows(n_rand, n_complete, n_disc, n_reason) %>%

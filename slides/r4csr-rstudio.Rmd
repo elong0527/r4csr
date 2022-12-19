@@ -260,7 +260,7 @@ rather than thinking about the minutiae of package structure."
 
 Tools:
 
-- [`r2rtf`](https://merck.github.io/r2rtf/): create production-ready tables and figures in RTF format.
+- [r2rtf](https://merck.github.io/r2rtf/): create production-ready tables and figures in RTF format.
 - [`pkglite`](https://merck.github.io/pkglite/): represent and exchange R package source code as text files.
 - `cleanslate` (under internal validation): create portable R environments.
 
@@ -321,11 +321,11 @@ library("cleanslate")
 
 Within a regulatory R environment:
 
-- As statisticians, we use `tidyverse`, `r2rtf`,
+- As statisticians, we use tidyverse, r2rtf,
 and internal tools to define the mock-up table, listing and figure (TLFs) for statistical analysis of a clinical trial.
   - More than 100 TLFs for efficacy and safety of a drug or vaccine.
 
-- As programmers, we use `tidyverse`, `r2rtf`, and internal tools to develop and/or validate analysis results based on mock-up TLFs.
+- As programmers, we use tidyverse, r2rtf, and internal tools to develop and/or validate analysis results based on mock-up TLFs.
 
 - As statisticians/programmers, we use `pkglite` and internal tools to prepare proprietary R packages and analysis R scripts for eCTD submission packages.
 
