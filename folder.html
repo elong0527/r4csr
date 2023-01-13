@@ -9,7 +9,7 @@
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
 <meta name="description" content="A clearly defined clinical project folder structure can have many benefits to clinical development teams in an organization. Specifically, a well-defined project structure can achieve:...">
-<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta name="generator" content="bookdown 0.31 with bs4_book()">
 <meta property="og:title" content="Chapter 11 Project folder | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
 <meta property="og:description" content="A clearly defined clinical project folder structure can have many benefits to clinical development teams in an organization. Specifically, a well-defined project structure can achieve:...">
@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="A clearly defined clinical project folder structure can have many benefits to clinical development teams in an organization. Specifically, a well-defined project structure can achieve:...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet">
 <script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-MKYDL3PNW1"></script><script>
@@ -122,7 +122,7 @@ team members months/years later.</li>
 illustrate the project folder structure for the A&amp;R project. You can
 <a href="https://happygitwithr.com/rstudio-git-github.html#clone-the-new-github-repository-to-your-computer-via-rstudio">clone</a>
 the project using RStudio with</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb121-1"><a href="folder.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/elong0527/esubdemo.git</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb119-1"><a href="folder.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/elong0527/esubdemo.git</span></code></pre></div>
 <p>For R users, you already benefit from a well-defined and consistent folder structure.
 That is the <a href="https://github.com/rstudio/cheatsheets/raw/master/package-development.pdf">R package folder structure</a>.
 Every R package developer is required to follow the same convention to organize
@@ -185,10 +185,10 @@ Those functions are saved in the <code>R/</code> folder.</p>
 ├── count_by.R
 └── fmt.R</code></pre>
 <p>For a clinical trial project, it is also important to provide proper documentation for those help functions.
-We use <code>roxygen2</code> to document functions.
+We use roxygen2 package to document functions.
 For example, the header below defines each variable in <code>fmt_est</code>.
 More details can be found in <a href="https://r-pkgs.org/man.html">Chapter 16 of the R Packages book</a>.</p>
-<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' Format point estimator</span></span>
 <span><span class="co">#'</span></span>
 <span><span class="co">#' @param .mean mean of an estimator.</span></span>
@@ -201,7 +201,7 @@ More details can be found in <a href="https://r-pkgs.org/man.html">Chapter 16 of
 <span>  <span class="va">.sd</span> <span class="op">&lt;-</span> <span class="fu">fmt_num</span><span class="op">(</span><span class="va">.sd</span>, <span class="va">digits</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, width <span class="op">=</span> <span class="va">digits</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">+</span> <span class="fl">3</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">.mean</span>, <span class="st">" ("</span>, <span class="va">.sd</span>, <span class="st">")"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<p>The <code>roxygen2</code> documentation will be converted into
+<p>The roxygen2 documentation will be converted into
 standard R documentation format, and saved as <code>.Rd</code> files in the <code>man/</code> folder.
 This step is automatically handled by <code>devtools::document()</code>.</p>
 <pre><code>man
@@ -210,8 +210,8 @@ This step is automatically handled by <code>devtools::document()</code>.</p>
 ├── fmt_est.Rd
 ├── fmt_num.Rd
 └── fmt_pval.Rd</code></pre>
-<p>The <code>man/</code> folder is used to save documentation automatically generated by <code>roxygen2</code>.
-A typical workflow is to add <code>roxygen2</code> documentation before each function in the <code>R/</code> folder.
+<p>The <code>man/</code> folder is used to save documentation automatically generated by roxygen2.
+A typical workflow is to add roxygen2 documentation before each function in the <code>R/</code> folder.
 Then <code>devtools::document()</code> is used to generate all the documentation files in the <code>man/</code> folder.
 More details can be found in <a href="https://r-pkgs.org/man.html">Chapter 16 of the R Packages book</a>.</p>
 </div>
@@ -222,7 +222,7 @@ More details can be found in <a href="https://r-pkgs.org/man.html">Chapter 16 of
 <p>Reproducibility of analysis is one of the most important aspects of regulatory deliverables.
 To ensure a successful reproduction, we need a controlled R environment,
 including the control of the R version and the R package versions.
-By using the R package folder structure and proper tools (e.g., <code>renv</code>, <code>packrat</code>),
+By using the R package folder structure and proper tools (e.g., renv, packrat),
 we illustrate how to achieve reproducibility for R and R package versions.</p>
 <div class="rmdnote">
 <p>This is the same level of reproducibility in most SAS environments:
@@ -233,14 +233,14 @@ we illustrate how to achieve reproducibility for R and R package versions.</p>
 <span class="header-section-number">11.2.1</span> R version<a class="anchor" aria-label="anchor" href="#r-version"><i class="fas fa-link"></i></a>
 </h3>
 <p>First, we introduce the control of the R version.
-In the <code>esubdemo</code> project, a reproducible environment is created when you open
+In the esubdemo project, a reproducible environment is created when you open
 the <code>esubdemo.Rproj</code> from RStudio.
 When we open the <code>esubdemo</code> project, RStudio will execute the R code in <code>.Rprofile</code> automatically.
 So we can use <code>.Rprofile</code> to set up a reproducible environment.
 More details can be found in <a href="https://rstats.wtf/r-startup.html" class="uri">https://rstats.wtf/r-startup.html</a>.
 After we open the <code>esubdemo</code> project, the code in <code>.Rprofile</code> will
 automatically check the current R version is the same as we defined in <code>.Rprofile</code>.</p>
-<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Set project R version</span></span>
 <span><span class="va">R_version</span> <span class="op">&lt;-</span> <span class="st">"4.1.1"</span></span></code></pre></div>
 <p>If there is an R version mismatch, an error message is displayed as below.</p>
@@ -257,7 +257,7 @@ A standard R package should not use <code>.Rprofile</code>.</p>
 <p>Next, we introduce the control of the R package version, which is controlled in two layers.
 Firstly, we define a snapshot date in <code>.Rprofile</code>.
 The snapshot date allows us to freeze the source code repository.</p>
-<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># set up snapshot date</span></span>
 <span><span class="va">snapshot</span> <span class="op">&lt;-</span> <span class="st">"2021-08-06"</span></span>
 <span></span>
@@ -282,29 +282,29 @@ publicly available and internally developed R packages.
 However, the <a href="https://packagemanager.rstudio.com/client/#/repos/2/overview">public RSPM server</a>
 does not provide a daily snapshot as MRAN does.</p>
 </div>
-<p>Secondly, we use <code>renv</code> to lock R package versions and save them in the <code>renv.lock</code> file.
-<code>renv</code> provides a robust and stable approach to managing R package versions
+<p>Secondly, we use renv to lock R package versions and save them in the <code>renv.lock</code> file.
+renv provides a robust and stable approach to managing R package versions
 for project-specific R packages.
-An introduction of <code>renv</code> can be found on its
+An introduction of renv can be found on its
 <a href="https://rstudio.github.io/renv/articles/renv.html">website</a>.</p>
-<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"renv/activate.R"</span><span class="op">)</span></span></code></pre></div>
-<p>The R code above in the <code>.Rprofile</code> initiates the <code>renv</code> running environment.
+<p>The R code above in the <code>.Rprofile</code> initiates the renv running environment.
 As a user, you can use <code><a href="https://rstudio.github.io/renv/reference/init.html">renv::init()</a></code>, <code><a href="https://rstudio.github.io/renv/reference/snapshot.html">renv::snapshot()</a></code>, and <code><a href="https://rstudio.github.io/renv/reference/restore.html">renv::restore()</a></code>
 to initialize, save and restore R packages used for the current analysis project.</p>
-<p>In the analysis project, the <code>renv</code> package will</p>
+<p>In the analysis project, the renv package will</p>
 <ul>
 <li>create a <code>renv.lock</code> file to save the state of package versions.</li>
 <li>create a <code>renv/</code> folder to manage R packages for a project.</li>
 </ul>
 <div class="rmdnote">
 <p>The <code>renv.lock</code> file and <code>renv/</code> folder are only for project-specific R package.
-A standard R package should not use <code>renv</code>.</p>
+A standard R package should not use renv.</p>
 </div>
 <p>In summary, the R package version is controlled in two layers.</p>
 <ul>
 <li>Define a snapshot date in <code>inst/startup.R</code>.</li>
-<li>Using <code>renv</code> to lock R versions within a project.</li>
+<li>Using renv to lock R versions within a project.</li>
 </ul>
 <p>If the project is initiated properly,
 you should be able to see similar messages to inform how we control R package versions.</p>
@@ -342,29 +342,29 @@ simplify and streamline your workflow.</p>
 Here is a list of tools that can enhance the workflow.</p>
 <ul>
 <li>
-<a href="https://devtools.r-lib.org/"><code>devtools</code></a>: make package development easier.
+<a href="https://devtools.r-lib.org/">devtools</a>: make package development easier.
 <ul>
 <li>A good overview can be found in <a href="https://r-pkgs.org/Whole-game.html">Chapter 2 of the R Packages book</a>.</li>
 <li>
 <code>devtools::load_all()</code>: load all functions in <code>R/</code> folder and running environment.</li>
 <li>
-<code>devtools::document()</code>: automatically create documentation using <code>roxygen2</code>.</li>
+<code>devtools::document()</code>: automatically create documentation using roxygen2.</li>
 <li>
 <code>devtools::check()</code>: automatically perform compliance check as an R package.</li>
 <li>
-<code>devtools::build_site()</code>: automatically run analysis scripts in batch and create a <code>pkgdown</code> website.</li>
+<code>devtools::build_site()</code>: automatically run analysis scripts in batch and create a pkgdown website.</li>
 </ul>
 </li>
 <li>
-<a href="https://usethis.r-lib.org/"><code>usethis</code></a>: automates repetitive tasks that arise during project setup and development.</li>
+<a href="https://usethis.r-lib.org/">usethis</a>: automates repetitive tasks that arise during project setup and development.</li>
 <li>
-<a href="https://testthat.r-lib.org/"><code>testthat</code></a>: streamline testing code.
+<a href="https://testthat.r-lib.org/">testthat</a>: streamline testing code.
 <ul>
-<li>A discussion of using the <code>testthat</code> for an A&amp;R project can be found in (<span class="citation">Madhusudhan Ginnaram et al.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="references.html#ref-madhutest" role="doc-biblioref"&gt;&lt;span&gt;“A Process to Validate Internal Developed &lt;span&gt;R&lt;/span&gt; Package Under Regulatory Environment”&lt;/span&gt; (PharmaSUG, 2021)&lt;/a&gt;.&lt;/p&gt;'><sup>6</sup></a></span>).</li>
+<li>A discussion of using the testthat for an A&amp;R project can be found in (<span class="citation">Madhusudhan Ginnaram et al.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="references.html#ref-madhutest" role="doc-biblioref"&gt;&lt;span&gt;“A Process to Validate Internal Developed &lt;span&gt;R&lt;/span&gt; Package Under Regulatory Environment”&lt;/span&gt; (PharmaSUG, 2021)&lt;/a&gt;.&lt;/p&gt;'><sup>6</sup></a></span>).</li>
 </ul>
 </li>
 <li>
-<a href="https://pkgdown.r-lib.org/"><code>pkgdown</code></a>: generate static HTML documentation website for an R package
+<a href="https://pkgdown.r-lib.org/">pkgdown</a>: generate static HTML documentation website for an R package
 <ul>
 <li>It also allows you to run all analysis code in batch.</li>
 </ul>

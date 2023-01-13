@@ -9,7 +9,7 @@
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
 <meta name="description" content="Following ICH E3 guidance, primary and secondary efficacy endpoints need to be summarized in Section 11.4, Efficacy Results and Tabulations of Individual Participant. library(haven) # Read SAS...">
-<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta name="generator" content="bookdown 0.31 with bs4_book()">
 <meta property="og:title" content="Chapter 5 Efficacy table | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Following ICH E3 guidance, primary and secondary efficacy endpoints need to be summarized in Section 11.4, Efficacy Results and Tabulations of Individual Participant. library(haven) # Read SAS...">
@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Following ICH E3 guidance, primary and secondary efficacy endpoints need to be summarized in Section 11.4, Efficacy Results and Tabulations of Individual Participant. library(haven) # Read SAS...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet">
 <script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-MKYDL3PNW1"></script><script>
@@ -316,7 +316,7 @@ Interested readers can find more discussion on missing data approaches in the bo
 #&gt;   (2 observations deleted due to missingness)
 #&gt; Multiple R-squared:  0.2567, Adjusted R-squared:  0.2468 
 #&gt; F-statistic: 26.01 on 3 and 226 DF,  p-value: 1.714e-14</code></pre>
-<p>The <code>emmeans</code> R package is used to obtain
+<p>The emmeans R package is used to obtain
 within and between group least square (LS) mean</p>
 <div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit_within</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">fit</span>, <span class="st">"TRTP"</span><span class="op">)</span></span>
@@ -389,13 +389,13 @@ within and between group least square (LS) mean</p>
 #&gt; 1  0.07 (-0.27, 0.41)
 #&gt; 2 -0.11 (-0.45, 0.23)
 #&gt; 3  0.40 ( 0.05, 0.75)</code></pre>
-<p>Then <code>r2rtf</code> is used to prepare the table format for <code>t1</code>.
+<p>Then r2rtf is used to prepare the table format for <code>t1</code>.
 We also highlight how to handle special characters in this example.</p>
 <p>Special characters <code>^</code> and <code>_</code> are used to define superscript and subscript of text. And <code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code> is to define the part that will be impacted.
 For example, <code>{^a}</code> provides a superscript <code>a</code> for footnote notation.
-<code>r2rtf</code> also supports most LaTeX characters.
+r2rtf also supports most LaTeX characters.
 Examples can be found on the
-<a href="https://merck.github.io/r2rtf/articles/r2rtf.html#special-character"><code>r2rtf</code> get started page</a>.
+<a href="https://merck.github.io/r2rtf/articles/r2rtf.html#special-character">r2rtf get started page</a>.
 The <code>text_convert</code> argument in <code>r2rtf_*()</code> functions controls whether to convert special characters.</p>
 <div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t1_rtf</span> <span class="op">&lt;-</span> <span class="va">t1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -428,7 +428,7 @@ The <code>text_convert</code> argument in <code>r2rtf_*()</code> functions contr
 <span><span class="va">t1_rtf</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/tlf_eff1.rtf"</span><span class="op">)</span></span></code></pre></div>
-<embed src="tlf/tlf_eff1.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>We also use <code>r2rtf</code> to prepare the table format for <code>t2</code></p>
+<embed src="tlf/tlf_eff1.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>We also use r2rtf to prepare the table format for <code>t2</code></p>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t2_rtf</span> <span class="op">&lt;-</span> <span class="va">t2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -443,7 +443,7 @@ The <code>text_convert</code> argument in <code>r2rtf_*()</code> functions contr
 <span><span class="va">t2_rtf</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/tlf_eff2.rtf"</span><span class="op">)</span></span></code></pre></div>
-<embed src="tlf/tlf_eff2.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>Finally, we combine the two parts to get the final table using <code>r2rtf</code>.
+<embed src="tlf/tlf_eff2.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>Finally, we combine the two parts to get the final table using r2rtf.
 This is achieved by providing a list of <code>t1_rtf</code> and <code>t2_rtf</code> as input for
 <code>rtf_encode</code>.</p>
 <div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">

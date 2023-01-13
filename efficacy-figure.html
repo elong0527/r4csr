@@ -9,7 +9,7 @@
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
 <meta name="description" content="Following the ICH E3 guidance, primary and secondary efficacy endpoints need to be summarized in Section 11.4, Efficacy Results and Tabulations of Individual Participant. library(haven) # Read SAS...">
-<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta name="generator" content="bookdown 0.31 with bs4_book()">
 <meta property="og:title" content="Chapter 6 Efficacy figure | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Following the ICH E3 guidance, primary and secondary efficacy endpoints need to be summarized in Section 11.4, Efficacy Results and Tabulations of Individual Participant. library(haven) # Read SAS...">
@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Following the ICH E3 guidance, primary and secondary efficacy endpoints need to be summarized in Section 11.4, Efficacy Results and Tabulations of Individual Participant. library(haven) # Read SAS...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet">
 <script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-MKYDL3PNW1"></script><script>
@@ -156,7 +156,7 @@ using <code>PARAMCD</code> (or <code>PARAM</code>, <code>PRAMN</code>), then sel
 <h2>
 <span class="header-section-number">6.2</span> Create Kaplan-Meier curve<a class="anchor" aria-label="anchor" href="#create-kaplan-meier-curve"><i class="fas fa-link"></i></a>
 </h2>
-<p>The <code>survival</code> package is used to obtain the K-M estimate.</p>
+<p>The survival package is used to obtain the K-M estimate.</p>
 <div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Fit survival model, convert the time value from Days to Month</span></span>
 <span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/survival/man/survfit.html">survfit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html">Surv</a></span><span class="op">(</span><span class="va">AVAL_m</span>, <span class="fl">1</span> <span class="op">-</span> <span class="va">CNSR</span><span class="op">)</span> <span class="op">~</span> <span class="va">TRTP</span>, data <span class="op">=</span> <span class="va">adtte_ttde</span><span class="op">)</span></span></code></pre></div>
@@ -181,7 +181,7 @@ using <code>PARAMCD</code> (or <code>PARAM</code>, <code>PRAMN</code>), then sel
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>Now, we can use the <code>r2rtf</code> package to create a formatted RTF figure.
+<p>Now, we can use the r2rtf package to create a formatted RTF figure.
 More details can be found on the <a href="https://merck.github.io/r2rtf/articles/example-figure.html">r2rtf website</a>.</p>
 <div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create RTF figure</span></span>
@@ -200,7 +200,7 @@ More details can be found on the <a href="https://merck.github.io/r2rtf/articles
 <li>Step 1: Read the data <code>adtte</code> into R.</li>
 <li>Step 2: Define the analysis-ready dataset. In this example, we define the analysis dataset for the TTDE endpoint <code>adtte_ttde</code>.</li>
 <li>Step 3: Save figures into <code>png</code> files based on required analysis specification.</li>
-<li>Step 4: Create RTF output using the <code>r2rtf</code> package.</li>
+<li>Step 4: Create RTF output using the r2rtf package.</li>
 </ul>
 </div>
 </div>

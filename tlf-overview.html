@@ -9,7 +9,7 @@
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
 <meta name="description" content="1.1 Background In clinical trials, a critical step is to submit trial results to regulatory agencies. Electronic Common Technical Document (eCTD) has become a worldwide regulatory submission...">
-<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta name="generator" content="bookdown 0.31 with bs4_book()">
 <meta property="og:title" content="Chapter 1 Overview | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
 <meta property="og:description" content="1.1 Background In clinical trials, a critical step is to submit trial results to regulatory agencies. Electronic Common Technical Document (eCTD) has become a worldwide regulatory submission...">
@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="1.1 Background In clinical trials, a critical step is to submit trial results to regulatory agencies. Electronic Common Technical Document (eCTD) has become a worldwide regulatory submission...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet">
 <script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-MKYDL3PNW1"></script><script>
@@ -188,23 +188,23 @@ how to deliver TLFs in a CSR.</p>
 </ul>
 <div class="rmdnote">
 <p>There are other R packages to create TLFs in ASCII, RTF and Word format.
-For example, <code>rtables</code>, <code>huxtable</code>, <code>pharmaRTF</code>, <code>gt</code>, <code>officer</code>, <code>flextable</code> etc.
-Here we focus on <code>r2rtf</code> to illustrate the concept.<br>
+For example, rtables, huxtable, pharmaRTF, gt, officer, flextable etc.
+Here we focus on r2rtf to illustrate the concept.<br>
 Readers are encouraged to explore other R packages to find the proper tools to fit your purpose.</p>
 </div>
 <div id="tidyverse" class="section level3" number="1.4.1">
 <h3>
 <span class="header-section-number">1.4.1</span> tidyverse<a class="anchor" aria-label="anchor" href="#tidyverse"><i class="fas fa-link"></i></a>
 </h3>
-<p><code>tidyverse</code> is a collection of R packages to simplify the workflow to manipulate,
+<p>tidyverse is a collection of R packages to simplify the workflow to manipulate,
 visualize and analyze data in R.
 Those R packages share
 <a href="https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html">the tidy tools manifesto</a>
 and are easy to use for interactive data analysis.</p>
 <p>RStudio provided outstanding <a href="https://www.rstudio.com/resources/cheatsheets/">cheatsheets</a>
-and <a href="https://github.com/rstudio-education/remaster-the-tidyverse">tutorials</a> for <code>tidyverse</code>.</p>
-<p>There are also books to introduce <code>tidyverse</code>.
-We assume the reader have experience in using <code>tidyverse</code> in this book.</p>
+and <a href="https://github.com/rstudio-education/remaster-the-tidyverse">tutorials</a> for tidyverse.</p>
+<p>There are also books to introduce tidyverse.
+We assume the reader have experience in using tidyverse in this book.</p>
 <ul>
 <li><a href="https://rstudio-education.github.io/tidyverse-cookbook/">The tidyverse cookbook</a></li>
 <li><a href="https://r4ds.had.co.nz/">R for Data Science</a></li>
@@ -214,14 +214,14 @@ We assume the reader have experience in using <code>tidyverse</code> in this boo
 <h3>
 <span class="header-section-number">1.4.2</span> r2rtf<a class="anchor" aria-label="anchor" href="#r2rtf"><i class="fas fa-link"></i></a>
 </h3>
-<p><code>r2rtf</code> is an R package to create production-ready tables and figures in RTF format.
+<p>r2rtf is an R package to create production-ready tables and figures in RTF format.
 This R package is designed to</p>
 <ul>
 <li>provide simple “verb” functions that correspond to each component of a table,
 to help you translate a data frame to a table in an RTF file;</li>
 <li>enable pipes (<code>%&gt;%</code>);</li>
 <li>focus on the <strong>table format</strong> only.
-Data manipulation and analysis shall be handled by other R packages (e.g., <code>tidyverse</code>).</li>
+Data manipulation and analysis shall be handled by other R packages (e.g., tidyverse).</li>
 </ul>
 <p>Before creating an RTF table, we need to</p>
 <ul>
@@ -229,12 +229,12 @@ Data manipulation and analysis shall be handled by other R packages (e.g., <code
 <li>split the layout into small tasks in the form of a computer program;</li>
 <li>execute the program.</li>
 </ul>
-<p>We provide a brief introduction of <code>r2rtf</code> and show how to transfer
+<p>We provide a brief introduction of r2rtf and show how to transfer
 data frames into table, listing, and figures (TLFs).</p>
 <p>Other extended examples and features are covered on the
-<a href="https://merck.github.io/r2rtf/articles/index.html"><code>r2rtf</code> package website</a>.</p>
-<p>To explore the basic RTF generation verbs in <code>r2rtf</code>,
-we will use the dataset <code>r2rtf_adae</code> saved in the <code>r2rtf</code> package.
+<a href="https://merck.github.io/r2rtf/articles/index.html">r2rtf package website</a>.</p>
+<p>To explore the basic RTF generation verbs in r2rtf,
+we will use the dataset <code>r2rtf_adae</code> saved in the r2rtf package.
 This dataset contains adverse events (AEs) information from a clinical trial.</p>
 <p>We will begin by loading the packages:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
@@ -258,7 +258,7 @@ More information can be found on the help page of the dataset (<code><a href="ht
 #&gt; 2 01-701-1015 Placebo APPLICATION SITE PRURITUS
 #&gt; 3 01-701-1015 Placebo                 DIARRHOEA
 #&gt; 4 01-701-1023 Placebo                  ERYTHEMA</code></pre>
-<p><code>dplyr</code> and <code>tidyr</code> packages within <code>tidyverse</code> are used
+<p>dplyr and tidyr packages within tidyverse are used
 for data manipulation to create a data frame
 that contains all the information we want to add in an RTF table.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -275,7 +275,7 @@ that contains all the information we want to add in an RTF table.</p>
 #&gt; 3 ALOPECIA             1                      0                     0
 #&gt; 4 ANXIETY              2                      0                     4</code></pre>
 <p>Now we have a dataset <code>tbl</code> in preparing the final RTF table.</p>
-<p><code>r2rtf</code> aims to provide one function for each type of table layout.
+<p>r2rtf aims to provide one function for each type of table layout.
 Commonly used verbs include:</p>
 <ul>
 <li>
@@ -366,7 +366,7 @@ number of columns displayed (e.g., <code>c("c", "l", "r")</code>).</p>
 <code>border_left</code>, <code>border_right</code>, <code>border_top</code>, and <code>border_bottom</code> control cell borders.</p>
 <p>If we want to remove the top border of <code>"Adverse Events"</code> in the header,
 we can change the default value <code>"single"</code> to <code>""</code> in the <code>border_top</code> argument, as shown below.</p>
-<p><code>r2rtf</code> supports 26 different border types. The details can be found on
+<p>r2rtf supports 26 different border types. The details can be found on
 the <a href="https://merck.github.io/r2rtf/articles/rtf-row.html#border-type">r2rtf package website</a>.</p>
 <p>In this example, we also demonstrate the possibility of adding multiple column headers.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
@@ -383,7 +383,7 @@ the <a href="https://merck.github.io/r2rtf/articles/rtf-row.html#border-type">r2
 <span>  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_body.html">rtf_body</a></span><span class="op">(</span>col_rel_width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/rtf_encode.html">rtf_encode</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/intro-ae7.rtf"</span><span class="op">)</span></span></code></pre></div>
-<embed src="tlf/intro-ae7.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In the <code>r2rtf</code> R package <a href="https://merck.github.io/r2rtf/articles/r2rtf.html">get started</a> page,
+<embed src="tlf/intro-ae7.pdf" width="100%" height="400px" style="display: block; margin: auto;" type="application/pdf"></embed><p>In the r2rtf R package <a href="https://merck.github.io/r2rtf/articles/r2rtf.html">get started</a> page,
 there are more examples to illustrate how to customize</p>
 <ul>
 <li>title, subtitle</li>

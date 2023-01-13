@@ -9,7 +9,7 @@
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
 <meta name="description" content="12.1 Setting up for success A clinical data analysis project is not unlike typical data analysis projects or software projects. Therefore, the conventional wisdom and tricks for managing a...">
-<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta name="generator" content="bookdown 0.31 with bs4_book()">
 <meta property="og:title" content="Chapter 12 Project management | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
 <meta property="og:description" content="12.1 Setting up for success A clinical data analysis project is not unlike typical data analysis projects or software projects. Therefore, the conventional wisdom and tricks for managing a...">
@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="12.1 Setting up for success A clinical data analysis project is not unlike typical data analysis projects or software projects. Therefore, the conventional wisdom and tricks for managing a...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet">
 <script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-MKYDL3PNW1"></script><script>
@@ -609,7 +609,7 @@ files for TLFs deliverables and project-specific R functions.
 The level of validation is determined at the define stage.</p>
 <p>In an R package development, the validation or testing is completed under the <code>test/</code> folder.
 The testthat R package can be used to streamline the validation process.
-More details of the <code>testthat</code> package for R package validation can be found in <a href="https://r-pkgs.org/testing-basics.html">Chapter 12 of the R package book</a>.</p>
+More details of the testthat package for R package validation can be found in <a href="https://r-pkgs.org/testing-basics.html">Chapter 12 of the R package book</a>.</p>
 <p>It is recommended to have a name convention to indicate the type of validation.
 For example, we can use <code>test-developer-test</code>, <code>test-independent-test</code>, <code>test-double-programming</code>
 to classify the validation type.</p>
@@ -652,14 +652,14 @@ for frequently encountered issues before submission to CRAN.
 Since the project-specific R package is not submitted to CRAN, some checks can be customized and skipped in <code>devtools::check()</code>.
 The project lead should work with the study team to ensure
 all reported errors, warnings, and notes by <code>devtools::check()</code> are fixed.</p>
-<p>The project lead can also use the R package <code>pkgdown</code> to build a complete website for a project-specific R package.
-The <code>pkgdown</code> website is a convenient way to run all analyses in batch and
+<p>The project lead can also use the R package pkgdown to build a complete website for a project-specific R package.
+The pkgdown website is a convenient way to run all analyses in batch and
 integrate outputs in a website, which comprehensively covers
 project-specific R functions, TLF generation programs, outputs and validation tracking information, etc.
-For example, in the <code>esubdemo</code> project, we created the <code>pkgdown</code> website at <a href="https://elong0527.github.io/esubdemo/" class="uri">https://elong0527.github.io/esubdemo/</a>.</p>
+For example, in the <code>esubdemo</code> project, we created the pkgdown website at <a href="https://elong0527.github.io/esubdemo/" class="uri">https://elong0527.github.io/esubdemo/</a>.</p>
 <p>Many of the tasks in SDLC can be completed automatically.
 An organization can leverage CI/CD workflow to automatically enable those tasks,
-such as running testing cases and creating a <code>pkgdown</code> website.
+such as running testing cases and creating a pkgdown website.
 For example, in the <code>esubdemo</code> project, we set up
 <a href="https://github.com/elong0527/esubdemo/actions">GitHub Actions</a>
 for it. This can be done by using <code>usethis::use_github_action()</code>.</p>

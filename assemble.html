@@ -9,7 +9,7 @@
 <meta name="author" content="Nan Xiao">
 <meta name="author" content="Keaven Anderson">
 <meta name="description" content="library(r2rtf) After TLFs are created and saved into individual files, we need to assemble them into one file in a pre-specified order. There are two general approaches to achieving the goal....">
-<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta name="generator" content="bookdown 0.31 with bs4_book()">
 <meta property="og:title" content="Chapter 9 Assemble TLFs | R for Clinical Study Reports and Submission">
 <meta property="og:type" content="book">
 <meta property="og:description" content="library(r2rtf) After TLFs are created and saved into individual files, we need to assemble them into one file in a pre-specified order. There are two general approaches to achieving the goal....">
@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="library(r2rtf) After TLFs are created and saved into individual files, we need to assemble them into one file in a pre-specified order. There are two general approaches to achieving the goal....">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet">
 <script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-MKYDL3PNW1"></script><script>
@@ -130,39 +130,21 @@ Here, we assume files are saved in the <code>tlf/</code> folder.</p>
 <h2>
 <span class="header-section-number">9.1</span> Combine RTF Source Code<a class="anchor" aria-label="anchor" href="#combine-rtf-source-code"><i class="fas fa-link"></i></a>
 </h2>
-<details><summary><code>rtf_assemble1()</code> source code
-</summary><div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#' Assemble RTF files into one single RTF file</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' @param path a vector of RTF file path</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' @export</span></span>
-<span><span class="va">rtf_assemble1</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">path</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">rtf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">path</span>, <span class="va">readLines</span><span class="op">)</span></span>
-<span></span>
-<span>  <span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">rtf</span><span class="op">)</span></span>
-<span>  <span class="va">start</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">2</span>, <span class="va">n</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">vapply</a></span><span class="op">(</span><span class="va">rtf</span>, <span class="va">length</span>, <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="va">end</span><span class="op">[</span><span class="op">-</span><span class="va">n</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">end</span><span class="op">[</span><span class="op">-</span><span class="va">n</span><span class="op">]</span> <span class="op">-</span> <span class="fl">1</span></span>
-<span></span>
-<span>  <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">rtf</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">rtf</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="va">start</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">:</span><span class="va">end</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span></span>
-<span>    <span class="kw">if</span> <span class="op">(</span><span class="va">i</span> <span class="op">&lt;</span> <span class="va">n</span><span class="op">)</span> <span class="va">rtf</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">rtf</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, <span class="fu">r2rtf</span><span class="fu">:::</span><span class="fu"><a href="https://merck.github.io/r2rtf/reference/as_rtf_new_page.html">as_rtf_new_page</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="op">}</span></span>
-<span>  <span class="va">rtf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html">do.call</a></span><span class="op">(</span><span class="va">c</span>, <span class="va">rtf</span><span class="op">)</span></span>
-<span></span>
-<span>  <span class="va">rtf</span></span>
-<span><span class="op">}</span></span></code></pre></div>
-</details><p>The <code>rtf_assemble1()</code> function allows user to combine RTF
+<blockquote>
+<p>The code below requires r2rtf version &gt;= 0.4.0.</p>
+</blockquote>
+<p>The <code><a href="https://merck.github.io/r2rtf/reference/assemble_rtf.html">r2rtf::assemble_rtf()</a></code> function allows user to combine RTF
 source code in individual files into one larger RTF file.</p>
 <div class="rmdnote">
 <p>One limitation of combining RTF source code is that
 we are not able to specify page orientation of each TLF
 in the combined document.</p>
 </div>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">rtf_assemble1</span><span class="op">(</span><span class="va">tlf_path</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">r2rtf</span><span class="fu">::</span><span class="fu"><a href="https://merck.github.io/r2rtf/reference/write_rtf.html">write_rtf</a></span><span class="op">(</span><span class="st">"tlf/rtf-combine.rtf"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">r2rtf</span><span class="fu">::</span><span class="fu"><a href="https://merck.github.io/r2rtf/reference/assemble_rtf.html">assemble_rtf</a></span><span class="op">(</span></span>
+<span>  input <span class="op">=</span> <span class="va">tlf_path</span>, </span>
+<span>  output <span class="op">=</span> <span class="st">"tlf/rtf-combine.rtf"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="using-toggle-fields" class="section level2" number="9.2">
 <h2>
@@ -177,64 +159,11 @@ After you become familiar with the workflow,
 toggle fields can extend your capability to manage a large amount of TLFs
 in RTF format.</p>
 </div>
-<details><summary><code>rtf_assemble2()</code> source code
-</summary><div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#' Assemble RTF TLFs</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' Add a set of RTF/TEXT fields into an rdocx object.</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' @param input Character vector of file path.</span></span>
-<span><span class="co">#' @param output Character string to the output file path.</span></span>
-<span><span class="co">#' @param landscape Logical vector to determine whether to</span></span>
-<span><span class="co">#' display files as portrait or landscape.</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' @export</span></span>
-<span><span class="va">rtf_assemble2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">landscape</span> <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">input</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/normalizePath.html">normalizePath</a></span><span class="op">(</span><span class="va">input</span><span class="op">)</span></span>
-<span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/files.html">file.exists</a></span><span class="op">(</span><span class="va">input</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/warning.html">warning</a></span><span class="op">(</span><span class="st">"Some files do not exist"</span><span class="op">)</span></span>
-<span>  <span class="op">}</span></span>
-<span></span>
-<span>  <span class="va">field</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="st">"/"</span>, <span class="va">input</span><span class="op">)</span>,</span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"INCLUDETEXT \""</span>, <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">"/"</span>, <span class="st">"\\\\\\\\"</span>, <span class="va">input</span><span class="op">)</span>, <span class="st">"\""</span><span class="op">)</span>,</span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"INCLUDETEXT \""</span>, <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">"\\"</span>, <span class="st">"\\\\"</span>, <span class="va">input</span>, fixed <span class="op">=</span> <span class="st">"TRUE"</span><span class="op">)</span>, <span class="st">"\""</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span>
-<span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">landscape</span><span class="op">)</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">landscape</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="va">landscape</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">field</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="op">}</span></span>
-<span></span>
-<span>  <span class="va">docx</span> <span class="op">&lt;-</span> <span class="fu">officer</span><span class="fu">::</span><span class="fu"><a href="https://davidgohel.github.io/officer/reference/read_docx.html">read_docx</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span>  <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">input</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">docx</span> <span class="op">&lt;-</span></span>
-<span>      <span class="va">docx</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>      <span class="fu">officer</span><span class="fu">::</span><span class="fu"><a href="https://davidgohel.github.io/officer/reference/body_add_fpar.html">body_add_fpar</a></span><span class="op">(</span></span>
-<span>        <span class="fu">officer</span><span class="fu">::</span><span class="fu"><a href="https://davidgohel.github.io/officer/reference/fpar.html">fpar</a></span><span class="op">(</span></span>
-<span>          <span class="fu">officer</span><span class="fu">::</span><span class="fu"><a href="https://davidgohel.github.io/officer/reference/ftext.html">ftext</a></span><span class="op">(</span><span class="st">"Table "</span><span class="op">)</span>,</span>
-<span>          <span class="fu">officer</span><span class="fu">::</span><span class="fu"><a href="https://davidgohel.github.io/officer/reference/run_word_field.html">run_word_field</a></span><span class="op">(</span><span class="st">"SEQ Table \\* ARABIC"</span><span class="op">)</span>,</span>
-<span>          <span class="fu">officer</span><span class="fu">::</span><span class="fu"><a href="https://davidgohel.github.io/officer/reference/run_linebreak.html">run_linebreak</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>          <span class="fu">officer</span><span class="fu">::</span><span class="fu"><a href="https://davidgohel.github.io/officer/reference/run_word_field.html">run_word_field</a></span><span class="op">(</span><span class="va">field</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>,</span>
-<span>          <span class="fu">officer</span><span class="fu">::</span><span class="fu"><a href="https://davidgohel.github.io/officer/reference/run_pagebreak.html">run_pagebreak</a></span><span class="op">(</span><span class="op">)</span></span>
-<span>        <span class="op">)</span></span>
-<span>      <span class="op">)</span></span>
-<span>    <span class="kw">if</span> <span class="op">(</span><span class="va">landscape</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span> <span class="op">{</span></span>
-<span>      <span class="va">docx</span> <span class="op">&lt;-</span> <span class="fu">officer</span><span class="fu">::</span><span class="fu"><a href="https://davidgohel.github.io/officer/reference/body_end_section_landscape.html">body_end_section_landscape</a></span><span class="op">(</span><span class="va">docx</span><span class="op">)</span></span>
-<span>    <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
-<span>      <span class="va">docx</span> <span class="op">&lt;-</span> <span class="fu">officer</span><span class="fu">::</span><span class="fu"><a href="https://davidgohel.github.io/officer/reference/body_end_section_portrait.html">body_end_section_portrait</a></span><span class="op">(</span><span class="va">docx</span><span class="op">)</span></span>
-<span>    <span class="op">}</span></span>
-<span>  <span class="op">}</span></span>
-<span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">docx</span>, target <span class="op">=</span> <span class="va">output</span><span class="op">)</span></span>
-<span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/invisible.html">invisible</a></span><span class="op">(</span><span class="va">output</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div>
-</details><p>The <code>rtf_assemble2()</code> function
+<p>The <code><a href="https://merck.github.io/r2rtf/reference/assemble_docx.html">assemble_docx()</a></code> function
 allows you to create a word file with toggle fields as below.
 One benefit is to control the page direction of each TLF as below.</p>
-<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">rtf_assemble2</span><span class="op">(</span></span>
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">r2rtf</span><span class="fu">::</span><span class="fu"><a href="https://merck.github.io/r2rtf/reference/assemble_docx.html">assemble_docx</a></span><span class="op">(</span></span>
 <span>  <span class="va">tlf_path</span>,</span>
 <span>  output <span class="op">=</span> <span class="st">"tlf/rtf-combine-toggle.docx"</span>,</span>
 <span>  landscape <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -245,7 +174,7 @@ with hyperlinks.</p>
 <p>By using <code>Alt + F9</code> to display the fields and you will
 see information similar to the screenshot below.</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-139"></span>
+<span style="display:block;" id="fig:unnamed-chunk-137"></span>
 <img src="images/rtf-alt-f9.png" alt="Using Alt + F9 to display fields" width="99%"><p class="caption">
 FIGURE 9.1: Using Alt + F9 to display fields
 </p>
@@ -261,7 +190,7 @@ click <code>Update Field</code>.</p>
 by using <code>Alt + F9</code>.
 It is a shortcut to change between results and field display mode.</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-140"></span>
+<span style="display:block;" id="fig:unnamed-chunk-138"></span>
 <img src="images/rtf-after-update.png" alt="Update fields" width="99%"><p class="caption">
 FIGURE 9.2: Update fields
 </p>
