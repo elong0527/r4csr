@@ -149,7 +149,7 @@ In this workshop, we have three parts:
 In this workshop, we assume you have
 some R programming experience and clinical development knowledge.
 
-- Data manipulation: `tidyverse`, `dplyr`, `tidyr`, `ggplot2` etc.
+- Data manipulation: tidyverse, dplyr, tidyr, ggplot2 etc.
 - ADaM data: `adsl`, `adae` etc.
 
 ```{r, echo = TRUE, eval = FALSE}
@@ -229,10 +229,10 @@ In a CSR, most of TLFs are located in
 
 ## Tools
 
-- `tidyverse`: a collection of R packages to simplify the workflow to manipulate,
+- tidyverse: a collection of R packages to simplify the workflow to manipulate,
 visualize and analyze data in R.
 
-- `r2rtf`: an R package to create production-ready tables and figures in RTF format.
+- r2rtf: an R package to create production-ready tables and figures in RTF format.
 
 # r2rtf Introduction
 
@@ -247,15 +247,15 @@ Different organizations can have different table standards
 
 - E.g., Table layout, Font size, Border type, Footnote, Data source
 
-- `r2rtf` is an R package to create production-ready tables and figures in RTF format.
+- r2rtf is an R package to create production-ready tables and figures in RTF format.
 
-`r2rtf` is designed to:
+r2rtf is designed to:
 
 - provide simple "verb" functions that correspond to each component of a table,
   to help you translate a data frame to a table in RTF format;
 - enable pipes (`%>%`);
 - only focus on the **table format**.
-  - Data manipulation and analysis should be handled by other R packages. (e.g., `tidyverse`)
+  - Data manipulation and analysis should be handled by other R packages. (e.g., tidyverse)
 
 ## Workflow
 
@@ -269,7 +269,7 @@ Before creating an RTF table, we need to:
 
 ## Minimal Example
 
-`r2rtf` is designed to enable pipes (`%>%`).
+r2rtf is designed to enable pipes (`%>%`).
 
 ```{r, echo = TRUE, eval = FALSE}
 head(iris) %>%
@@ -284,18 +284,18 @@ knitr::include_graphics("minimal.pdf")
 
 ## Package Overview
 
-`r2rtf` package provides the flexibility to customize table appearance for
+r2rtf package provides the flexibility to customize table appearance for
 
 - **Table component**: title, column header, footnote, etc.
 - **Table cell style**: size, border type, color, font size, text color, alignment, etc.
 - **Flexible control**: the specification of the cell style can be row or column vectorized.
 - **Complicated format**: pagination, section grouping, multiple table concatenations, etc.
 
-`r2rtf` package also provides the flexibility to convert figures in RTF format.
+r2rtf package also provides the flexibility to convert figures in RTF format.
 
 ## Function Summary
 
-`r2rtf` provides simple "verb" functions that correspond to each component of a table,
+r2rtf provides simple "verb" functions that correspond to each component of a table,
   to help you translate data frame to tables in RTF file.
 
 ```{r, echo = FALSE}

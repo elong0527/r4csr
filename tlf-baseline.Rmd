@@ -56,7 +56,7 @@ tbl
 The code below transfer the output into a dataframe
 that only contains ASCII characters
 recommended by regulatory agencies.
-`tbl_base` is used as input for `r2rtf` to create the final report.
+`tbl_base` is used as input for r2rtf to create the final report.
 
 ```{r}
 tbl_base <- tbl %>%
@@ -120,4 +120,4 @@ In conclusion, the procedure to generate demographic and baseline characteristic
 - Step 1: Read the data set.
 - Step 2: Use `table1::table1()` to get the baseline characteristics table.
 - Step 3: Transfer the output from Step 2 into a data frame that only contains ASCII characters.
-- Step 4: Define the format of the RTF table by using the R package `r2rtf`.
+- Step 4: Define the format of the RTF table by using the R package r2rtf.

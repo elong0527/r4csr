@@ -94,7 +94,7 @@ fmt_num(n / n() * 100, digits = 1)
 
 To calculate the numbers and percentages of participants by groups, we
 provide a simple (but not robust) wrapper function, `count_by()`, using
-the `dplyr` and `tidyr` package.
+the dplyr and tidyr package.
 
 The function can be enhanced in multiple ways, but here we only focus on
 simplicity and readability. More details about writing R functions can
@@ -169,7 +169,7 @@ pop1 <- bind_rows(
 ```
 
 Now we combine individual rows into one table for reporting
-purpose. `tbl_pop` is used as input for `r2rtf` to create the final
+purpose. `tbl_pop` is used as input for r2rtf to create the final
 report.
 
 ```{r}
@@ -225,4 +225,4 @@ as follows:
 - Step 2: Bind the counts/percentages of the ITT population, the
   efficacy population, and the safety population by row using the
   `count_by()` function.
-- Step 3: Format the output from Step 2 using `r2rtf`.
+- Step 3: Format the output from Step 2 using r2rtf.
