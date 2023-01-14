@@ -115,7 +115,7 @@ we need to assemble them into one file in a pre-specified order.</p>
 <p>There are two general approaches to achieving the goal.</p>
 <ol style="list-style-type: decimal">
 <li>Combine RTF source code in individual files into one large RTF file.</li>
-<li>Leverage Microsoft Word <code>Toggle Fields</code> feature to embed RTF files using
+<li>Leverage the <code>Toggle Fields</code> feature in Microsoft Word to embed RTF files using
 hyperlinks.</li>
 </ol>
 <p>Let’s illustrate the idea by using selected TLFs generated from previous chapters.
@@ -130,19 +130,19 @@ Here, we assume files are saved in the <code>tlf/</code> folder.</p>
 <h2>
 <span class="header-section-number">9.1</span> Combine RTF Source Code<a class="anchor" aria-label="anchor" href="#combine-rtf-source-code"><i class="fas fa-link"></i></a>
 </h2>
-<blockquote>
-<p>The code below requires r2rtf version &gt;= 0.4.0.</p>
-</blockquote>
-<p>The <code><a href="https://merck.github.io/r2rtf/reference/assemble_rtf.html">r2rtf::assemble_rtf()</a></code> function allows user to combine RTF
+<div class="rmdnote">
+<p>The code below requires r2rtf version &gt;= 1.0.0.</p>
+</div>
+<p>The <code><a href="https://merck.github.io/r2rtf/reference/assemble_rtf.html">r2rtf::assemble_rtf()</a></code> function allows the user to combine RTF
 source code in individual files into one larger RTF file.</p>
 <div class="rmdnote">
 <p>One limitation of combining RTF source code is that
-we are not able to specify page orientation of each TLF
+we are not able to specify the page orientation of each TLF
 in the combined document.</p>
 </div>
 <div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">r2rtf</span><span class="fu">::</span><span class="fu"><a href="https://merck.github.io/r2rtf/reference/assemble_rtf.html">assemble_rtf</a></span><span class="op">(</span></span>
-<span>  input <span class="op">=</span> <span class="va">tlf_path</span>, </span>
+<span>  input <span class="op">=</span> <span class="va">tlf_path</span>,</span>
 <span>  output <span class="op">=</span> <span class="st">"tlf/rtf-combine.rtf"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -150,17 +150,17 @@ in the combined document.</p>
 <h2>
 <span class="header-section-number">9.2</span> Using Toggle Fields<a class="anchor" aria-label="anchor" href="#using-toggle-fields"><i class="fas fa-link"></i></a>
 </h2>
-<p>Microsoft Words uses toggle fields to embed files into one Word document.
+<p>Microsoft Word uses toggle fields to embed files into one Word document.
 The approach is a dynamic link between files by providing the absolute file path.</p>
 <div class="rmdnote">
 <p>There is a slight learning curve on how toggle fields work
-in Microsoft Words.
+in Microsoft Word.
 After you become familiar with the workflow,
-toggle fields can extend your capability to manage a large amount of TLFs
+toggle fields can extend your capability to manage a large number of TLFs
 in RTF format.</p>
 </div>
 <p>The <code><a href="https://merck.github.io/r2rtf/reference/assemble_docx.html">assemble_docx()</a></code> function
-allows you to create a word file with toggle fields as below.
+allows you to create a <code>.docx</code> file with toggle fields as below.
 One benefit is to control the page direction of each TLF as below.</p>
 <div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">r2rtf</span><span class="fu">::</span><span class="fu"><a href="https://merck.github.io/r2rtf/reference/assemble_docx.html">assemble_docx</a></span><span class="op">(</span></span>
@@ -171,7 +171,7 @@ One benefit is to control the page direction of each TLF as below.</p>
 <p>After opening the generated <code>.docx</code> file,
 you will see a blank file because the file only contains fields
 with hyperlinks.</p>
-<p>By using <code>Alt + F9</code> to display the fields and you will
+<p>By using Alt + F9 to display the fields and you will
 see information similar to the screenshot below.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:unnamed-chunk-137"></span>
@@ -187,7 +187,7 @@ Please double-check that the correct absolute file path is in the <code>INCLUDET
 <p>To test the toggle field, you can right-click an <code>INCLUDETEXT</code> filed and
 click <code>Update Field</code>.</p>
 <p>If it works, you can see a table similar to the snapshot below
-by using <code>Alt + F9</code>.
+by using Alt + F9.
 It is a shortcut to change between results and field display mode.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:unnamed-chunk-138"></span>
@@ -196,21 +196,21 @@ FIGURE 9.2: Update fields
 </p>
 </div>
 <p>Now you can update all toggle fields to display all TLFs by
-selecting all fields (<code>Ctrl + A</code>), then type <code>F9</code>.
+selecting all fields (Ctrl + A), then press F9.
 We suggest testing one toggle field before updating all of them.</p>
-<p>As the <code>docx</code> file contain dynamic links,
+<p>As the <code>.docx</code> file contain dynamic links,
 you can keep updating the TLFs if you need to refresh content in
-individual RTF files by selecting all fields (<code>Ctrl + A</code>), then type <code>F9</code>.</p>
+individual RTF files by selecting all fields (Ctrl + A), then press F9.</p>
 <div class="rmdnote">
 <p>If you modify table content in the combined <code>.docx</code> file,
 you may get a weird table layout if you update all fields within a toggle field.
-To resolve the issue, please remove all <code>\* MERGEFORMAT</code> in the filed mode using <code>Alt + F9</code> before updating all toggle fields.</p>
+To resolve the issue, please remove all <code>\* MERGEFORMAT</code> in the filed mode using Alt + F9 before updating all toggle fields.</p>
 </div>
 <p>After the combined TLF is ready for delivery,
 you can also unlink toggle fields to save table contents,
-because the absolute path may not work for others.<br>
-To unlink toggle fields, you can select all fields (<code>Ctrl + A</code>),
-then type <code>Ctrl + Shift + F9</code>.</p>
+because the absolute path may only work for some.
+To unlink toggle fields, you can select all fields (Ctrl + A),
+then press Ctrl + Shift + F9.</p>
 
 </div>
 </div>
