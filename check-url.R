@@ -3,15 +3,15 @@
 #' @param from Source directory path
 #' @param to Destination directory path
 #'
-#' @details Copy all `.Rmd` and `.md` files from source to destination,
-#' rename the `.md` files with an additional `.Rmd` extension, and get a
-#' flat destination directory structure with path-preserving file names.
+#' @details Copy all `.Rmd`, `.qmd`, and `.md` files from source to destination,
+#' rename the `.qmd` and `.md` files with an additional `.Rmd` extension,
+#' and get a flat destination structure with path-preserving file names.
 flatten_copy <- function(from, to) {
   rmd <- list.files(from, pattern = "\\.Rmd$", recursive = TRUE, full.names = TRUE)
-  md <- list.files(from, pattern = "\\.md", recursive = TRUE, full.names = TRUE)
+  xmd <- list.files(from, pattern = "\\.qmd$|\\.md$", recursive = TRUE, full.names = TRUE)
 
-  src <- c(rmd, md)
-  dst <- c(rmd, paste0(md, ".Rmd"))
+  src <- c(rmd, xmd)
+  dst <- c(rmd, paste0(xmd, ".Rmd"))
 
   # Remove starting `./` (if any)
   dst <- gsub("^\\./", replacement = "", x = dst)
@@ -28,7 +28,7 @@ flatten_copy <- function(from, to) {
 #' @param input Path to the bookdown project directory.
 #'
 #' @return URL checking results from `urlchecker::url_check()`
-#' for all `.Rmd` and `.md` files in the project.
+#' for all `.Rmd`, `.qmd`, and `.md` files in the project.
 #'
 #' @note The `tools::pkgVignettes()$docs` call in urlchecker
 #' requires two things (`VignetteBuilder` and `VignetteEngine`)
