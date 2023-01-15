@@ -38,15 +38,15 @@ check_url <- function(input = ".") {
   pkg <- tempfile()
   dir.create(pkg)
 
-  # Create a minimal DESCRIPTION file
-  write("VignetteBuilder: knitr", file = file.path(pkg, "DESCRIPTION"))
-
   # Flatten copy relevant files
   vig <- file.path(pkg, "vignettes")
   dir.create(vig)
   flatten_copy(input, vig)
 
-  # Make the files look like vignettes
+  # Create a minimal DESCRIPTION file
+  write("VignetteBuilder: knitr", file = file.path(pkg, "DESCRIPTION"))
+
+  # Make the copied files look like vignettes
   lapply(
     list.files(vig, full.names = TRUE),
     function(x) {
