@@ -43,7 +43,7 @@ data("r2rtf_adae")
 
 ## Clarification from FDA
 
-- [FDA: Statistical Software Clarifying Statement](https://www.fda.gov/files/about%20fda/published/Statistical-Software-Clarifying-Statement-PDF.pdf)
+- [FDA: Statistical Software Clarifying Statement](https://www.fda.gov/media/161196/download)
 
 "FDA does not require use of any specific software for statistical analyses, and statistical software
 is not explicitly discussed in Title 21 of the Code of Federal Regulations [e.g., in 21CFR part
@@ -69,7 +69,7 @@ however, executable file extensions should not be used."
 ## Philosophy
 
 We share the same philosophy described in
-[Section 1.1 of R Packages book](https://r-pkgs.org/intro.html#intro-phil) and quote here.
+[Section 1.1 of the R Packages book](https://r-pkgs.org/introduction.html#intro-phil) and quote here.
 
 - "Anything that can be automated, should be automated."
 - "Do as little as possible by hand. Do as much as possible with functions."
@@ -90,7 +90,7 @@ an experimental R package for analytical-based group sequential design under pro
 
 Bookdown: <https://keaven.github.io/gsd-deming/>
 
-Training: [December 6th, Deming Conference 2021](https://demingconference.org/programs/2021-program/)
+Training: [December 6th, Deming Conference 2021](https://demingconference.org/wp-content/uploads/2021/07/2021-Deming-Conference-Printed-Program-v1.0.pdf)
 
 ## Tools for reporting and submission
 
@@ -255,7 +255,7 @@ More details: <https://r4csr.org/manage.html>
 - Contact us for R developer or Methodology Research Positions:
   - Yilong Zhang: <https://elong0527.github.io/>
   - Nan Xiao: <https://nanx.me/>
-  - Keaven Anderson: <https://www.linkedin.com/in/keaven-anderson-09aa7538/>
+  - Keaven Anderson: <https://keaven.github.io/>
 
 - Multiple open positions (statisticians/programmers) in China, EU, and US
   - US: <https://jobs.merck.com/bards>

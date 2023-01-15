@@ -20,7 +20,7 @@ git clone https://github.com/elong0527/esubdemo.git
 ```
 
 For R users, you already benefit from a well-defined and consistent folder structure.
-That is the [R package folder structure](https://github.com/rstudio/cheatsheets/raw/master/package-development.pdf).
+That is the [R package folder structure](https://github.com/rstudio/cheatsheets/blob/main/package-development.pdf).
 Every R package developer is required to follow the same convention to organize
 their R functions before the R package can be disseminated through the Comprehensive R Archive Network (CRAN).
 As a user, you can easily install and use those R packages after downloading from CRAN.
@@ -137,7 +137,7 @@ we illustrate how to achieve reproducibility for R and R package versions.
 
 ::: {.rmdnote data-latex=""}
 This is the same level of reproducibility in most SAS environments:
-<https://support.sas.com/techsup/pcn/altopsys.html>
+<https://support.sas.com/en/technical-support/services-policies.html#altos>
 :::
 
 ### R version
@@ -178,7 +178,7 @@ The snapshot date allows us to freeze the source code repository.
 snapshot <- "2021-08-06"
 
 # set up repository based on the snapshot date
-repos <- paste0("https://mran.microsoft.com/snapshot/", snapshot)
+repos <- paste0("https://mran.microsoft.com/snapshot/", snapshot, "/")
 
 # define repo URL for project-specific package installation
 options(repos = repos)
@@ -197,7 +197,7 @@ Below information will be displayed after a new R session is opened.
 
 ```
 Current project R package repository:
-    https://mran.microsoft.com/snapshot/2021-08-06
+    https://mran.microsoft.com/snapshot/2021-08-06/
 ```
 
 ::: {.rmdnote data-latex=""}

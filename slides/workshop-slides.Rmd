@@ -65,7 +65,7 @@ In this workshop, we have three parts:
 - [Contributors](https://r4csr.org/) of the training materials.
   - Please consider submitting issues or PR in the repo.
 
-- [R Consortium](https://www.r-consortium.org/projects/isc-working-groups)
+- [R Consortium](https://www.r-consortium.org/all-projects/isc-working-groups)
   - R validation hub
   - Submission working group
   - R Tables for Regulatory Submission (RTRS) working group
@@ -115,7 +115,7 @@ install.packages(c(
 ## Philosophy
 
 We share the same philosophy described in
-[Section 1.1 of R Packages book](https://r-pkgs.org/intro.html#intro-phil) and quote here.
+[Section 1.1 of the R Packages book](https://r-pkgs.org/introduction.html#intro-phil) and quote here.
 
 - "Anything that can be automated, should be automated."
 - "Do as little as possible by hand. Do as much as possible with functions."
@@ -138,7 +138,7 @@ In a CSR, most of TLFs are located in
 
 ## Datasets
 
-- Public available CDISC pilot [study data located at CDISC Bitbucket repository](https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse/updated-pilot-submission-package/900172/m5/datasets/cdiscpilot01/analysis/adam/datasets).
+- Public available CDISC pilot [study data located at CDISC GitHub repository](https://github.com/cdisc-org/sdtm-adam-pilot-project/tree/master/updated-pilot-submission-package/900172/m5/datasets/cdiscpilot01/analysis/adam/datasets).
 
 - The dataset structure follows the [CDISC Analysis Data Model (ADaM)](https://www.cdisc.org/standards/foundational/adam).
 
@@ -252,7 +252,7 @@ knitr::include_graphics("function-summary.png")
 
 ## Efficacy table
 
-<https://r4csr.org/efficacy.html>
+<https://r4csr.org/efficacy-table.html>
 
 ## AE Summary table
 
