@@ -1,9 +1,12 @@
 #' Flatten copy
 #'
-#' @param from Source directory path
-#' @param to Destination directory path
+#' @param from Source directory path.
+#' @param to Destination directory path.
 #'
-#' @details Copy all `.Rmd`, `.qmd`, and `.md` files from source to destination,
+#' @return Destination directory path.
+#'
+#' @details
+#' Copy all `.Rmd`, `.qmd`, and `.md` files from source to destination,
 #' rename the `.qmd` and `.md` files with an additional `.Rmd` extension,
 #' and get a flat destination structure with path-preserving file names.
 flatten_copy <- function(from, to) {
@@ -23,15 +26,16 @@ flatten_copy <- function(from, to) {
   invisible(to)
 }
 
-#' Check URLs in a bookdown project
+#' Check URLs in an R Markdown or Quarto project
 #'
-#' @param input Path to the bookdown project directory.
+#' @param input Path to the project directory.
 #'
 #' @return URL checking results from `urlchecker::url_check()`
 #' for all `.Rmd`, `.qmd`, and `.md` files in the project.
 #'
-#' @note The `tools::pkgVignettes()$docs` call in urlchecker
-#' requires two things (`VignetteBuilder` and `VignetteEngine`)
+#' @details
+#' The `tools::pkgVignettes()$docs` call in urlchecker requires
+#' two core criteria (`VignetteBuilder` and `VignetteEngine`)
 #' to recognize `.Rmd` files as package vignettes.
 check_url <- function(input = ".") {
   # Create a source package directory
