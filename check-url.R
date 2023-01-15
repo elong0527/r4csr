@@ -41,12 +41,12 @@ check_url <- function(input = ".") {
   # Create a minimal DESCRIPTION file
   write("VignetteBuilder: knitr", file = file.path(pkg, "DESCRIPTION"))
 
-  # Flatten copy all .Rmd and .md files
+  # Flatten copy relevant files
   vig <- file.path(pkg, "vignettes")
   dir.create(vig)
   flatten_copy(input, vig)
 
-  # Make the .Rmd files look like vignettes
+  # Make the files look like vignettes
   lapply(
     list.files(vig, full.names = TRUE),
     function(x) {
