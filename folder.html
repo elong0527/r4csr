@@ -124,7 +124,7 @@ illustrate the project folder structure for the A&amp;R project. You can
 the project using RStudio with</p>
 <div class="sourceCode" id="cb119"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb119-1"><a href="folder.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/elong0527/esubdemo.git</span></code></pre></div>
 <p>For R users, you already benefit from a well-defined and consistent folder structure.
-That is the <a href="https://github.com/rstudio/cheatsheets/raw/master/package-development.pdf">R package folder structure</a>.
+That is the <a href="https://github.com/rstudio/cheatsheets/blob/main/package-development.pdf">R package folder structure</a>.
 Every R package developer is required to follow the same convention to organize
 their R functions before the R package can be disseminated through the Comprehensive R Archive Network (CRAN).
 As a user, you can easily install and use those R packages after downloading from CRAN.
@@ -226,7 +226,7 @@ By using the R package folder structure and proper tools (e.g., renv, packrat),
 we illustrate how to achieve reproducibility for R and R package versions.</p>
 <div class="rmdnote">
 <p>This is the same level of reproducibility in most SAS environments:
-<a href="https://support.sas.com/techsup/pcn/altopsys.html" class="uri">https://support.sas.com/techsup/pcn/altopsys.html</a></p>
+<a href="https://support.sas.com/en/technical-support/services-policies.html#altos" class="uri">https://support.sas.com/en/technical-support/services-policies.html#altos</a></p>
 </div>
 <div id="r-version" class="section level3" number="11.2.1">
 <h3>
@@ -262,7 +262,7 @@ The snapshot date allows us to freeze the source code repository.</p>
 <span><span class="va">snapshot</span> <span class="op">&lt;-</span> <span class="st">"2021-08-06"</span></span>
 <span></span>
 <span><span class="co"># set up repository based on the snapshot date</span></span>
-<span><span class="va">repos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"https://mran.microsoft.com/snapshot/"</span>, <span class="va">snapshot</span><span class="op">)</span></span>
+<span><span class="va">repos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"https://mran.microsoft.com/snapshot/"</span>, <span class="va">snapshot</span>, <span class="st">"/"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># define repo URL for project-specific package installation</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="va">repos</span><span class="op">)</span></span></code></pre></div>
@@ -275,7 +275,7 @@ are based on the frozen R version at the snapshot date.
 Here it is <code>2021-08-06</code> by using the MRAN server.</p>
 <p>Below information will be displayed after a new R session is opened.</p>
 <pre><code>Current project R package repository:
-    https://mran.microsoft.com/snapshot/2021-08-06</code></pre>
+    https://mran.microsoft.com/snapshot/2021-08-06/</code></pre>
 <div class="rmdnote">
 <p>RStudio Package Manager (RSPM) provides a solution to host both
 publicly available and internally developed R packages.
