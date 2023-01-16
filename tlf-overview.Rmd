@@ -17,7 +17,7 @@ For example, the United States Food and Drug Administration (US FDA) requires
 new drug applications and biologics license applications
 [must be submitted using the eCTD format](https://www.fda.gov/drugs/electronic-regulatory-submission-and-review/electronic-common-technical-document-ectd).
 The Clinical Data Interchange Standards Consortium (CDISC) provides a
-[pilot project following ICH E3 guidance](https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse).
+[pilot project following ICH E3 guidance](https://github.com/cdisc-org/sdtm-adam-pilot-project).
 
 Within eCTD, clinical study reports (CSRs) are located at module 5.
 [ICH E3 guidance](https://www.ich.org/page/efficacy-guidelines) provides
@@ -27,7 +27,7 @@ A typical CSR contains full details on the methods and results of an individual 
 In support of the statistical analysis, a large number of tables, listings, and figures are
 incorporated into the main text and appendices.
 In the CDISC pilot project, an
-[example CSR](https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse/updated-pilot-submission-package/900172/m5/53-clin-stud-rep/535-rep-effic-safety-stud/5351-stud-rep-contr/cdiscpilot01/cdiscpilot01.pdf)
+[example CSR](https://github.com/cdisc-org/sdtm-adam-pilot-project/blob/master/updated-pilot-submission-package/900172/m5/53-clin-stud-rep/535-rep-effic-safety-stud/5351-stud-rep-contr/cdiscpilot01/cdiscpilot01.pdf)
 is also provided. If you are interested in more examples of clinical study reports,
 you can go to the [European Medicines Agency (EMA) clinical data website](https://clinicaldata.ema.europa.eu/web/cdp/home).
 
@@ -66,7 +66,7 @@ In a CSR, most of TLFs are located in
 ## Datasets
 
 We used publicly available CDISC pilot
-[study data located in the CDISC Bitbucket repository](https://bitbucket.cdisc.org/projects/CED/repos/sdtm-adam-pilot-project/browse/updated-pilot-submission-package/900172/m5/datasets/cdiscpilot01/analysis/adam/datasets).
+[study data located in the CDISC GitHub repository](https://github.com/cdisc-org/sdtm-adam-pilot-project/tree/master/updated-pilot-submission-package/900172/m5/datasets/cdiscpilot01/analysis/adam/datasets).
 
 For simplicity, we have downloaded all these datasets into the `data-adam/`
 folder of this project and converted them from the `.xpt` format to
@@ -95,10 +95,10 @@ Readers are encouraged to explore other R packages to find the proper tools to f
 tidyverse is a collection of R packages to simplify the workflow to manipulate,
 visualize and analyze data in R.
 Those R packages share
-[the tidy tools manifesto](https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html)
+[the tidy tools manifesto](https://tidyverse.tidyverse.org/articles/manifesto.html)
 and are easy to use for interactive data analysis.
 
-RStudio provided outstanding [cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
+RStudio provided outstanding [cheatsheets](https://posit.co/resources/cheatsheets/)
 and [tutorials](https://github.com/rstudio-education/remaster-the-tidyverse) for tidyverse.
 
 There are also books to introduce tidyverse.

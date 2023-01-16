@@ -135,7 +135,7 @@ As an organization, we need to ensure compliance and reduce the risk of using R 
 
 - R is widely used in visualization
   - [SafetyGraphics](https://github.com/SafetyGraphics/safetyGraphics)
-  - [forestly](https://elong0527.github.io/forestly/articles/example.html#construct-interactive-forest-plot-1): [Interactive forest plot for DMC safety monitoring in clinical trials](https://rinpharma.com/publication/rinpharma_194/)
+  - [forestly](https://elong0527.github.io/forestly/articles/example.html#construct-interactive-forest-plot-1): [Interactive forest plot for DMC safety monitoring in clinical trials](https://rinpharma.com/publication/rinpharma_206/)
 
 ## Background
 
@@ -249,7 +249,7 @@ sponsor shall enhance reproducibility.
 ## Philosophy
 
 We share the same philosophy described in
-[Section 1.1 of R Packages book](https://r-pkgs.org/intro.html#intro-phil) and quote here.
+[Section 1.1 of the R Packages book](https://r-pkgs.org/introduction.html#intro-phil) and quote here.
 
 - "Anything that can be automated, should be automated."
 - "Do as little as possible by hand. Do as much as possible with functions."

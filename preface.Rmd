@@ -10,7 +10,7 @@ a consistent and well-defined folder structure is crucial in
 managing a clinical trial analysis and reporting (A&R) project.
 
 We recommend using the
-[R package folder structure](https://github.com/rstudio/cheatsheets/raw/master/package-development.pdf)
+[R package folder structure](https://github.com/rstudio/cheatsheets/blob/main/package-development.pdf)
 to organize all the A&R-related source code and documentation for a clinical trial A&R project.
 The R package folder structure is well defined and widely used in the R community through repositories (e.g., CRAN).
 
