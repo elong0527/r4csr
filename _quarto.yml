@@ -20,20 +20,20 @@ book:
   image: "images/preview.png"
   favicon: "images/favicon.png"
 
-  site-url: https://nanx.me/r4csr/
-  repo-url: https://github.com/nanxstats/r4csr
+  site-url: https://r4csr.org/
+  repo-url: https://github.com/elong0527/r4csr
   repo-actions: [edit, issue, source]
   sharing: [twitter, linkedin]
   reader-mode: true
 
   open-graph:
-    image: https://nanx.me/r4csr/images/preview.jpg
+    image: https://r4csr.org/images/preview.jpg
     description: |
       Learn how to prepare tables, listings, and figures for
       clinical study report and submit to regulatory agencies,
       the essential part of clinical trial development.
   twitter-card:
-    image: https://nanx.me/r4csr/images/preview.jpg
+    image: https://r4csr.org/images/preview.jpg
     description: |
       Learn how to prepare tables, listings, and figures for
       clinical study report and submit to regulatory agencies,
