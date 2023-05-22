@@ -6,9 +6,6 @@ r2rtf:::rtf_convert_format(
   output_dir = "tlf"
 )
 
-# Update manifest
-rsconnect::writeManifest(contentCategory = "site")
-
 #' Flatten copy
 #'
 #' @param from Source directory path.
