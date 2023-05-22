@@ -16,7 +16,9 @@ Imports:
     haven,
     kableExtra,
     knitr,
+    officer,
     pkglite,
+    quarto,
     r2rtf,
     table1,
     tidyr
