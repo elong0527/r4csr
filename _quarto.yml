@@ -75,5 +75,5 @@ bibliography: references.bib
 format:
   html:
     theme: [cosmo, custom.scss]
-  # pdf:
-  #   documentclass: scrreprt
+  pdf:
+    documentclass: scrbook

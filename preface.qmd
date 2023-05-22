@@ -93,9 +93,3 @@ cat("  We are grateful for all the improvements brought by these contributors (i
 cat(paste0(contributors$desc, collapse = ", "))
 cat(".\n")
 ```
-
-```{block2, type="flushright", html.tag="p"}
-Yilong Zhang, Nan Xiao, Keaven Anderson, Yalin Zhu
-
-May 2023
-```
