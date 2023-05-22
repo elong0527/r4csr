@@ -1,4 +1,4 @@
-# Project folder {#folder}
+# Project folder {#sec-folder}
 
 A clearly defined clinical project folder structure can have many benefits
 to clinical development teams in an organization.
@@ -31,7 +31,7 @@ We recommend using the R package folder structure to organize analysis scripts f
 Using the R package folder structure to streamline data analysis work has also been proposed before
 (see @marwick2018packaging, @wuanalysis).
 
-## Consistency {#consistency}
+## Consistency {#sec-consistency}
 
 For consistency, a well-defined folder structure with potential templates
 ensures project teams organize the A&R work consistently across multiple projects.
@@ -60,7 +60,7 @@ We demonstrate the idea using the [`esubdemo`](https://github.com/elong0527/esub
 
 In the `esubdemo` project, we saved all TLF generation scripts in previous chapters into the `vignettes/` folder.
 
-::: {.rmdnote data-latex=""}
+::: {.callout-note}
 Under the `vignettes/` folder, there are two folders: `adam/` and `tlf/`.
 The `adam/` folder contains ADaM datasets.
 The `tlf/` folder contains output TLFs in RTF format.
@@ -127,7 +127,7 @@ A typical workflow is to add roxygen2 documentation before each function in the 
 Then `devtools::document()` is used to generate all the documentation files in the `man/` folder.
 More details can be found in [Chapter 16 of the R Packages book](https://r-pkgs.org/man.html).
 
-## Reproducibility {#reproduce}
+## Reproducibility {#sec-reproduce}
 
 Reproducibility of analysis is one of the most important aspects of regulatory deliverables.
 To ensure a successful reproduction, we need a controlled R environment,
@@ -135,7 +135,7 @@ including the control of the R version and the R package versions.
 By using the R package folder structure and proper tools (e.g., renv, packrat),
 we illustrate how to achieve reproducibility for R and R package versions.
 
-::: {.rmdnote data-latex=""}
+::: {.callout-tip}
 This is the same level of reproducibility in most SAS environments:
 <https://support.sas.com/en/technical-support/services-policies.html#altos>
 :::
@@ -162,7 +162,7 @@ If there is an R version mismatch, an error message is displayed as below.
 Error: The current R version is not the same as the current project in R4.1.1
 ```
 
-::: {.rmdnote data-latex=""}
+::: {.callout-caution}
 `.Rprofile` is only for project-specific R packages.
 A standard R package should not use `.Rprofile`.
 :::
@@ -200,10 +200,10 @@ Current project R package repository:
     https://mran.microsoft.com/snapshot/2021-08-06/
 ```
 
-::: {.rmdnote data-latex=""}
-RStudio Package Manager (RSPM) provides a solution to host both
-publicly available and internally developed R packages.
-However, the [public RSPM server](https://packagemanager.rstudio.com/client/#/repos/2/overview)
+::: {.callout-note}
+Posit Package Manager provides a solution to host both publicly available
+and internally developed R packages. However, the
+[Posit Public Package Manager](https://packagemanager.posit.co/)
 does not provide a daily snapshot as MRAN does.
 :::
 
@@ -226,7 +226,7 @@ In the analysis project, the renv package will
 - create a `renv.lock` file to save the state of package versions.
 - create a `renv/` folder to manage R packages for a project.
 
-::: {.rmdnote data-latex=""}
+::: {.callout-caution}
 The `renv.lock` file and `renv/` folder are only for project-specific R package.
 A standard R package should not use renv.
 :::
@@ -254,14 +254,14 @@ Below R package path are searching in order to find installed R packages in this
     "/rtmp/RtmpT3ljoY/renv-system-library"
 ```
 
-::: {.rmdnote data-latex=""}
+::: {.callout-tip}
 A cloud-based R environment (e.g., RStudio Workbench)
 can enhance the reproducibility within an organization
 by using the same operating system, R version, and R package versions for an A&R project.
 More details can be found at <https://environments.rstudio.com/>.
 :::
 
-::: {.rmdnote data-latex=""}
+::: {.callout-note}
 A container solution like Docker [@RJ-2020-007] could further enhance
 the reproducibility across an organization at the operating system level
 but beyond the scope of this book.

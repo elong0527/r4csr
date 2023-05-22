@@ -1,5 +1,9 @@
 # Baseline characteristics
 
+```{r, include=FALSE}
+source("_common.R")
+```
+
 Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
 we need to summarize critical demographic and baseline characteristics of the participants
 in Section 11.2, Demographic and Other Baseline Characteristics.
@@ -7,16 +11,12 @@ in Section 11.2, Demographic and Other Baseline Characteristics.
 In this chapter, we illustrate how to create a simplified
 baseline characteristics table for a study.
 
-```{r, include=FALSE}
-source("common.R")
-```
-
 ```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tlf_base.pdf")
 ```
 
 There are many R packages that can efficiently summarize baseline information.
-The [`table1`](https://github.com/benjaminrich/table1) R package is one of them.
+The [table1](https://github.com/benjaminrich/table1) R package is one of them.
 
 ```{r}
 library(table1)
@@ -36,11 +36,11 @@ adsl <- read_sas("data-adam/adsl.sas7bdat")
 ```
 
 For simplicity, we only analyze `SEX`, `AGE` and, `RACE` in this example
-using the `table1` R package. More details of the `table1` R package can
+using the table1 R package. More details of the table1 R package can
 be found in the package
 [vignettes](https://benjaminrich.github.io/table1/vignettes/table1-examples.html).
 
-The `table1` R package directly creates an HTML report.
+The table1 R package directly creates an HTML report.
 
 ```{r}
 ana <- adsl %>%

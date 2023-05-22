@@ -1,11 +1,11 @@
 # Specific AE
 
+```{r, include=FALSE}
+source("_common.R")
+```
+
 Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
 we need to summarize number of participants for each specific AE in Section 12.2, Adverse Events (AEs).
-
-```{r, include=FALSE}
-source("common.R")
-```
 
 ```{r}
 library(haven) # Read SAS data
@@ -30,7 +30,7 @@ adae <- read_sas("data-adam/adae.sas7bdat")
 
 For illustration purpose, we only provide counts in the simplified
 table. The percentage of participants for each AE can be
-calculated as shown in Chapter \@ref(aesummary).
+calculated as shown in @sec-aesummary.
 
 Here, we focus on the analysis script for two advanced
 features for a table layout.
@@ -48,10 +48,21 @@ as `0`. The variable `order` can help with
 the data manipulation later.
 
 ```{r}
+fmt_num <- function(x, digits, width = digits + 4) {
+  formatC(
+    x,
+    digits = digits,
+    format = "f",
+    width = width
+  )
+}
+```
+
+```{r}
 ana <- adae %>%
   mutate(
-    AESOC = toTitleCase(tolower(AESOC)),
-    AEDECOD = toTitleCase(tolower(AEDECOD))
+    AESOC = tools::toTitleCase(tolower(AESOC)),
+    AEDECOD = tools::toTitleCase(tolower(AEDECOD))
   )
 
 t1 <- ana %>%
@@ -93,6 +104,34 @@ t_ae %>% head(4)
 ```
 
 We prepare reporting data for analysis population using code below:
+
+```{r}
+count_by <- function(data, # Input data set
+                     grp, # Group variable
+                     var, # Analysis variable
+                     var_label = var, # Analysis variable label
+                     id = "USUBJID") { # Subject ID variable
+  data <- data %>% rename(grp = !!grp, var = !!var, id = !!id)
+
+  left_join(
+    count(data, grp, var),
+    count(data, grp, name = "tot"),
+    by = "grp",
+  ) %>%
+    mutate(
+      pct = fmt_num(100 * n / tot, digits = 1),
+      n = fmt_num(n, digits = 0),
+      npct = paste0(n, " (", pct, ")")
+    ) %>%
+    pivot_wider(
+      id_cols = var,
+      names_from = grp,
+      values_from = c(n, pct, npct),
+      values_fill = list(n = "0", pct = fmt_num(0, digits = 0))
+    ) %>%
+    mutate(var_label = var_label)
+}
+```
 
 ```{r}
 t_pop <- adsl %>%

@@ -1,28 +1,22 @@
 Package: r4csr
+Type: Book
 Title: R for Clinical Study Reports and Submission
 Version: 0.1.0
 Authors@R: c(
-    person("Yilong", "Zhang", email = "yilong.zhang@merck.com", role = c("aut", "cre")),
+    person("Yilong", "Zhang", email = "elong0527@gmail.com", role = c("aut", "cre")),
     person("Nan", "Xiao", role = "aut"),
     person("Keaven", "Anderson", role = c("aut")),
     person("Yalin", "Zhu", role = "aut")
     )
-URL: https://r4csr.org/
+URL: https://r4csr.org/, https://github.com/elong0527/r4csr
 Encoding: UTF-8
 Imports:
-  bslib,
-  bookdown,
-  xml2,
-  downlit,
-  haven,
-  dplyr,
-  tidyr,
-  r2rtf,
-  knitr,
-  kableExtra,
-  table1,
-  gert,
-  servr,
-  pkglite,
-  emmeans, 
-  officer
+    dplyr,
+    emmeans,
+    haven,
+    kableExtra,
+    knitr,
+    pkglite,
+    r2rtf,
+    table1,
+    tidyr

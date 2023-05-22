@@ -1,11 +1,7 @@
-\mainmatter
-
-# (PART) Delivering TLFs in CSR {-}
-
 # Overview {#tlf-overview}
 
 ```{r, include=FALSE}
-source("common.R")
+source("_common.R")
 ```
 
 ## Background
@@ -44,7 +40,7 @@ In this chapter, our focus is to illustrate how to create tables, listings, and 
 that is commonly used in a CSR. The examples are in compliance with the
 [FDA's Portable Document Format (PDF) Specifications](https://www.fda.gov/media/76797/download).
 
-::: {.rmdnote data-latex=""}
+::: {.callout-note}
 FDA's PDF specification is a general reference. Each organization can define
 more specific TLF format requirements that can be different from the examples in this book.
 :::
@@ -83,11 +79,11 @@ how to deliver TLFs in a CSR.
 - [tidyverse](https://www.tidyverse.org/): prepare datasets ready for reporting.
 - [r2rtf](https://merck.github.io/r2rtf/): create RTF outputs
 
-::: {.rmdnote data-latex=""}
+::: {.callout-note}
 There are other R packages to create TLFs in ASCII, RTF and Word format.
 For example, rtables, huxtable, pharmaRTF, gt, officer, flextable etc.
-Here we focus on r2rtf to illustrate the concept.  
-Readers are encouraged to explore other R packages to find the proper tools to fit your purpose. 
+Here we focus on r2rtf to illustrate the concept.
+Readers are encouraged to explore other R packages to find the proper tools to fit your purpose.
 :::
 
 ### tidyverse
@@ -338,4 +334,3 @@ there are more examples to illustrate how to customize
 - etc.
 
 Those features will be introduced when we first use them in the rest of the chapters.
-

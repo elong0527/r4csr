@@ -13,5 +13,3 @@ RnwWeave: Sweave
 LaTeX: pdfLaTeX
 
 StripTrailingWhitespace: Yes
-
-BuildType: Website

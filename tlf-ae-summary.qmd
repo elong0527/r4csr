@@ -1,11 +1,11 @@
-# AE summary {#aesummary}
+# AE summary {#sec-aesummary}
+
+```{r, include=FALSE}
+source("_common.R")
+```
 
 Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
 we summarize number of participants that were included in each safety analysis in Section 12.2, Adverse Events (AEs).
-
-```{r, include=FALSE}
-source("common.R")
-```
 
 ```{r}
 library(haven) # Read SAS data
@@ -62,6 +62,17 @@ tidy_ae %>% head(4)
 ```
 
 We summarize the number and percentage of participants who meet each AE criteria.
+
+```{r}
+fmt_num <- function(x, digits, width = digits + 4) {
+  formatC(
+    x,
+    digits = digits,
+    format = "f",
+    width = width
+  )
+}
+```
 
 ```{r}
 ana <- tidy_ae %>%

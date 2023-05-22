@@ -1,4 +1,4 @@
-# Submission package {#submission-package}
+# Submission package {#sec-submission-package}
 
 In this chapter, we will first give a high-level overview of what
 assets in the eCTD submission package we should focus on when
@@ -12,7 +12,7 @@ analysis results.
 
 ## Prerequisites
 
-This chapter uses `pkglite` to convert R source packages
+This chapter uses pkglite [@zhao2023electronic] to convert R source packages
 into text files and back.
 
 ```{r, eval=FALSE}
@@ -141,7 +141,7 @@ syntax or the
 
 For dependencies hosted in private Git repositories, you should pack them
 with the primary R package(s) you want to submit,
-as `pkglite` supports packing multiple R packages into a single text file;
+as pkglite supports packing multiple R packages into a single text file;
 then restore and install them in the order they are packed.
 
 ### R version
@@ -156,7 +156,7 @@ This can be automatically checked using a
 
 Always use the same snapshot package repo for developing the TLFs and for submission.
 Again, this can be checked in the project startup script,
-as discussed in section \@ref(reproduce).
+as discussed in @sec-reproduce.
 
 ### System environments
 

@@ -1,4 +1,8 @@
-# Disposition {#disposition}
+# Disposition {#sec-disposition}
+
+```{r, include=FALSE}
+source("_common.R")
+```
 
 Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
 a summary table needs to be provided to include all participants who entered the study in Section 10.1, Disposition of Participants.
@@ -7,10 +11,6 @@ The disposition of participants table reports the numbers of participants who we
 and who entered and completed each phase of the study.
 In addition, the reasons for all post-randomization discontinuations,
 grouped by treatment and by major reason (lost to follow-up, adverse event, poor compliance, etc.) are reported.
-
-```{r, include=FALSE}
-source("common.R")
-```
 
 ```{r}
 library(haven) # Read SAS data

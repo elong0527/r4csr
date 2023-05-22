@@ -1,4 +1,4 @@
-# Running environment {#running-environment}
+# Running environment {#sec-running-environment}
 
 In the previous chapter, we generated instructions to manually
 create the running environments for reproducing the A&R deliverables.
@@ -10,17 +10,17 @@ different environment settings with reproducible analysis results.
 
 ## Prerequisites
 
-`cleanslate` is an R package that offers a solution to
+cleanslate is an R package that offers a solution to
 create portable R environments.
 
 ::: {.rmdnote data-latex=""}
-As of Q4 2021, the `cleanslate` package used in this chapter
+As of Q4 2021, the cleanslate package used in this chapter
 is still under active development and validation.
 This chapter gives a preview of the planned APIs.
 They may change in the future.
 :::
 
-Install `cleanslate` from CRAN (once available):
+Install cleanslate from CRAN (once available):
 
 ```{r, eval=FALSE}
 install.packages("cleanslate")
@@ -34,14 +34,14 @@ remotes::install_github("Merck/cleanslate")
 
 ## Practical considerations
 
-The `cleanslate` package supports:
+The cleanslate package supports:
 
 - Creating a project folder with project-specific context
   (`.Rproj`, `.Rprofile`, `.Renviron`)
 - Installing a specific version of R into the project folder
 - Installing a specific version of Rtools into the project folder
 
-An essential feature of `cleanslate` is that it does **not** require
+An essential feature of cleanslate is that it does **not** require
 administrator privileges to run R and Rtools installers.
 This makes it easier to deploy under enterprise settings
 and avoids security and portability concerns.
@@ -113,7 +113,7 @@ besides generating and verifying the snapshot repo links.
 
 ## Update ADRG
 
-If you use `cleanslate`, remember to update the ADRG instructions for
+If you use cleanslate, remember to update the ADRG instructions for
 executing the analysis programs in R. Mostly, this can simplify
 the first three steps on creating a project, installing a specific
 version of R, and configuring the package repo location.
@@ -190,8 +190,8 @@ To reproduce the analysis results, rerun the following programs:
 
 ## RStudio addin
 
-To make it convenient to use `cleanslate` in experiments,
-one can also use its RStudio addin. After `cleanslate`
+To make it convenient to use cleanslate in experiments,
+one can also use its RStudio addin. After cleanslate
 is installed, click `Addins` -> `cleanslate` -> `Create portable R environment`
 in RStudio, or call `cleanslate:::create_env_addin()` to open it.
 

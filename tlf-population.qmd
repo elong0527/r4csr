@@ -1,13 +1,13 @@
-# Analysis population {#population}
+# Analysis population {#sec-population}
+
+```{r, include=FALSE}
+source("_common.R")
+```
 
 Following [ICH E3
 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
 we need to summarize the number of participants included in each efficacy
 analysis in Section 11.1, Data Sets Analysed.
-
-```{r, include=FALSE}
-source("common.R")
-```
 
 ```{r}
 library(haven) # Read SAS data
@@ -34,10 +34,10 @@ adsl <- read_sas("data-adam/adsl.sas7bdat")
 We illustrate how to prepare a report data for a simplified analysis
 population table using variables below:
 
--   USUBJID: unique subject identifier
--   ITTFL: intent-to-treat population flag
--   EFFFL: efficacy population flag
--   SAFFL: safty population flag
+- USUBJID: unique subject identifier
+- ITTFL: intent-to-treat population flag
+- EFFFL: efficacy population flag
+- SAFFL: safety population flag
 
 ```{r}
 adsl %>%
@@ -55,10 +55,10 @@ science](https://r4ds.had.co.nz/functions.html#when-should-you-write-a-function)
 "You should consider writing a function whenever you've copied and
 pasted a block of code more than twice".
 
-In Chapter \@ref(disposition), there are a few repeating steps to:
+In @sec-disposition, there are a few repeating steps to:
 
--   Format the percentages using the `formatC()` function.
--   Calculate the numbers and percentages by treatment arm.
+- Format the percentages using the `formatC()` function.
+- Calculate the numbers and percentages by treatment arm.
 
 We create two ad-hoc functions and use them to create the
 tables in the rest of this book.
@@ -68,7 +68,8 @@ To format numbers and percentages, we create a function called
 
 ```{r}
 fmt_num <- function(x, digits, width = digits + 4) {
-  formatC(x,
+  formatC(
+    x,
     digits = digits,
     format = "f",
     width = width
@@ -80,7 +81,7 @@ The main reason to create the `fmt_num()` function is to enhance the
 readability of the analysis code.
 
 For example, we can compare the two versions of code to format the
-percentage used in Chapter \@ref(disposition) and `fmt_num`.
+percentage used in @sec-disposition and `fmt_num()`.
 
 ```{r, eval = FALSE}
 formatC(n / n() * 100,
@@ -187,7 +188,7 @@ colheader <- " | Placebo | Xanomeline line Low Dose| Xanomeline line High Dose"
 tbl_pop %>%
   # Table title
   rtf_title(
-    "Summary of Analysis Sets", ## "Participants Accounting in Analysis Population" is a weird title for me. Merck uses this table title for CSR? 
+    "Summary of Analysis Sets",
     "(All Participants Randomized)"
   ) %>%
   # First row of column header

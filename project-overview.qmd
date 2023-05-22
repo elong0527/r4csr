@@ -1,5 +1,3 @@
-# (PART) Clinical trial project {-}
-
 # Overview {#project-overview}
 
 In a late-stage clinical trial, the number of A&R deliverables can easily be in the hundreds.
@@ -9,10 +7,10 @@ To deliver the A&R results of a clinical trial project,
 it is teamwork that typically requires collaborations from both statisticians and programmers.
 In this part, let's consider how to organize a clinical trial project as an A&R lead.
 
-Chapter \@ref(folder) will discuss how to organize source code, documents, and
+@sec-folder will discuss how to organize source code, documents, and
 deliverables in an A&R clinical project.
 We recommend using the R package folder structure.
 
-Chapter \@ref(manage) will discuss a process or system development lifecycle
+@sec-manage will discuss a process or system development lifecycle
 to manage the A&R of a clinical project.
 We recommend following an agile management approach to define, develop, validate, and deliver work.

@@ -1,12 +1,12 @@
 # Efficacy table
 
+```{r, include=FALSE}
+source("_common.R")
+```
+
 Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
 primary and secondary efficacy endpoints need to be summarized
 in Section 11.4, Efficacy Results and Tabulations of Individual Participant.
-
-```{r, include=FALSE}
-source("common.R")
-```
 
 ```{r}
 library(haven) # Read SAS data
@@ -71,9 +71,20 @@ ana %>%
 ## Helper functions
 
 To prepare the report, we create a few helper functions
-by using the `fmt_num()` function defined in Chapter \@ref(population).
+by using the `fmt_num()` function defined in @sec-population.
 
 - Format estimators
+
+```{r}
+fmt_num <- function(x, digits, width = digits + 4) {
+  formatC(
+    x,
+    digits = digits,
+    format = "f",
+    width = width
+  )
+}
+```
 
 ```{r}
 fmt_est <- function(.mean,
@@ -212,7 +223,7 @@ t2 <- fit_between %>%
     ),
     p = fmt_pval(p.value)
   ) %>%
-  filter(str_detect(contrast, "- Placebo")) %>%
+  filter(stringr::str_detect(contrast, "- Placebo")) %>%
   select(contrast, ls, p)
 
 t2
@@ -252,12 +263,13 @@ t1_rtf <- t1 %>%
   rtf_colheader("| Baseline | Week 24 | Change from Baseline",
     col_rel_width = c(2.5, 2, 2, 4)
   ) %>%
-  rtf_colheader(paste(
-    "Treatment |",
-    paste0(rep("N | Mean (SD) | ", 3), collapse = ""),
-    "LS Mean (95% CI){^a}"
-  ),
-  col_rel_width = c(2.5, rep(c(0.5, 1.5), 3), 2)
+  rtf_colheader(
+    paste(
+      "Treatment |",
+      paste0(rep("N | Mean (SD) | ", 3), collapse = ""),
+      "LS Mean (95% CI){^a}"
+    ),
+    col_rel_width = c(2.5, rep(c(0.5, 1.5), 3), 2)
   ) %>%
   rtf_body(
     text_justification = c("l", rep("c", 7)),

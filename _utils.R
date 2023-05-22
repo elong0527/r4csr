@@ -1,3 +1,14 @@
+# Utilities that can be ran manually
+
+# Convert RTF to PDF
+r2rtf:::rtf_convert_format(
+  list.files("tlf", pattern = ".rtf", full.names = TRUE),
+  output_dir = "tlf"
+)
+
+# Update manifest
+rsconnect::writeManifest(contentCategory = "site")
+
 #' Flatten copy
 #'
 #' @param from Source directory path.

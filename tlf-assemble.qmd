@@ -1,7 +1,7 @@
 # Assemble TLFs {#assemble}
 
 ```{r, include=FALSE}
-source("common.R")
+source("_common.R")
 ```
 
 ```{r}
@@ -23,8 +23,8 @@ Here, we assume files are saved in the `tlf/` folder.
 ```{r}
 tlf_path <- c(
   "tlf/tbl_disp.rtf", # Disposition table
-  "tlf/tlf_eff.rtf",  # Efficacy table
-  "tlf/tlf_km.rtf"    # K-M plot
+  "tlf/tlf_eff.rtf", # Efficacy table
+  "tlf/tlf_km.rtf" # K-M plot
 )
 ```
 
@@ -34,14 +34,14 @@ knitr::include_graphics("tlf/rtf-combine.pdf")
 
 ## Combine RTF Source Code
 
-::: {.rmdnote data-latex=""}
+::: {.callout-note}
 The code below requires r2rtf version >= 1.0.0.
 :::
 
 The `r2rtf::assemble_rtf()` function allows the user to combine RTF
 source code in individual files into one larger RTF file.
 
-::: {.rmdnote data-latex=""}
+::: {.callout-caution}
 One limitation of combining RTF source code is that
 we are not able to specify the page orientation of each TLF
 in the combined document.
@@ -59,7 +59,7 @@ r2rtf::assemble_rtf(
 Microsoft Word uses toggle fields to embed files into one Word document.
 The approach is a dynamic link between files by providing the absolute file path.
 
-::: {.rmdnote data-latex=""}
+::: {.callout-tip}
 There is a slight learning curve on how toggle fields work
 in Microsoft Word.
 After you become familiar with the workflow,
@@ -90,7 +90,7 @@ see information similar to the screenshot below.
 knitr::include_graphics("images/rtf-alt-f9.png")
 ```
 
-::: {.rmdnote data-latex=""}
+::: {.callout-tip}
 A typical error message is that system can not find the file
 if you only provide a relative path.
 Please double-check that the correct absolute file path is in the `INCLUDETEXT` field.
@@ -115,7 +115,7 @@ As the `.docx` file contain dynamic links,
 you can keep updating the TLFs if you need to refresh content in
 individual RTF files by selecting all fields (Ctrl + A), then press F9.
 
-::: {.rmdnote data-latex=""}
+::: {.callout-tip}
 If you modify table content in the combined `.docx` file,
 you may get a weird table layout if you update all fields within a toggle field.
 To resolve the issue, please remove all `\* MERGEFORMAT` in the filed mode using Alt + F9 before updating all toggle fields.

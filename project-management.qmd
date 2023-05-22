@@ -1,4 +1,4 @@
-# Project management {#manage}
+# Project management {#sec-manage}
 
 ## Setting up for success
 
@@ -125,21 +125,21 @@ df %>%
 
 <p></p>
 
-The project lead should also set up a project folder, as discussed in Chapter \@ref(folder).
+The project lead should also set up a project folder, as discussed in @sec-folder.
 The project initiation can be simplified by creating an
 [RStudio project template](https://rstudio.github.io/rstudio-extensions/rstudio_project_templates.html).
 
 To enable reproducibility, the project leader should also review the startup file
-(i.e. `.Rprofile` discussed in Section \@ref(reproduce)) and define:
+(i.e. `.Rprofile` discussed in @sec-reproduce) and define:
 
 - R version
 - Repository of R packages with a snapshot date
 - Project package library path
 - etc.
 
-::: {.rmdnote data-latex=""}
-After project initiation, modifying `.Rprofile` will be a risk of reproducibility
-and should be handled carefully if necessary.
+::: {.callout-caution}
+After project initiation, modifying `.Rprofile` will be a risk for
+reproducibility and should be handled carefully if necessary.
 :::
 
 ## Development
@@ -159,7 +159,8 @@ Multiple TLFs with similar designs can be included in one R Markdown file.
 For example, in the `esubdemo` project, we have six R Markdown files to create TLFs.
 
 If there are any project-specific R functions that need to be developed,
-the R functions can be placed in the `R/` folder as discussed in Section \@ref(consistency).
+the R functions can be placed in the `R/` folder as discussed in
+@sec-consistency.
 
 ## Validation
 
