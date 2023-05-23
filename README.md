@@ -1,12 +1,11 @@
 # R for Clinical Study Reports and Submission
 
-The project is still under development.
-
 The book is available at <https://r4csr.org>.
 
-The document is maintained by a community.
-While reading the document, you can be a contributor as well.
-The quality of this document relies on you.
+This project is a work in progress, enriched by the community's collective efforts.
+As you read this book, consider joining us as a contributor.
+The quality of this resource relies heavily on your input and expertise.
+We value your participation and contribution.
 
 - Authors: contributed the majority of content to at least one chapter.
 - Contributors: contributed at least one commit to the source code.
@@ -14,7 +13,9 @@ The quality of this document relies on you.
 
 ## Installing dependencies
 
-Install the R packages used by the book with:
+To build the book, first install Quarto.
+
+Then, install the R packages used by the book with:
 
 ```r
 # install.packages("remotes")
@@ -25,6 +26,6 @@ remotes::install_deps()
 
 In RStudio, press Cmd/Ctrl + Shift + B. Or run:
 
-```R
-bookdown::render_book("index.Rmd")
+```r
+quarto::quarto_render()
 ```

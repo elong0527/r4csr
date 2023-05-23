@@ -1,0 +1,79 @@
+project:
+  type: book
+  resources:
+    - CNAME
+    - tlf/
+    - slides/
+
+book:
+  title: "R for Clinical Study Reports and Submission"
+  author:
+    - Yilong Zhang
+    - Nan Xiao
+    - Keaven Anderson
+  description: |
+    This book will teach you how to prepare tables, listings, and figures for
+    clinical study report and submit to regulatory agencies,
+    the essential part of clinical trial development.
+
+  cover-image: "images/cover.png"
+  image: "images/preview.png"
+  favicon: "images/favicon.png"
+
+  site-url: https://r4csr.org/
+  repo-url: https://github.com/elong0527/r4csr
+  repo-actions: [edit, issue, source]
+  sharing: [twitter, linkedin]
+  reader-mode: true
+
+  open-graph:
+    image: https://r4csr.org/images/preview.jpg
+    description: |
+      Learn how to prepare tables, listings, and figures for
+      clinical study report and submit to regulatory agencies,
+      the essential part of clinical trial development.
+  twitter-card:
+    image: https://r4csr.org/images/preview.jpg
+    description: |
+      Learn how to prepare tables, listings, and figures for
+      clinical study report and submit to regulatory agencies,
+      the essential part of clinical trial development.
+    card-style: summary_large_image
+
+  google-analytics: "G-MKYDL3PNW1"
+
+  chapters:
+    - index.qmd
+    - preface.qmd
+
+    - part: "Delivering TLFs in CSR"
+      chapters:
+        - tlf-overview.qmd
+        - tlf-disposition.qmd
+        - tlf-population.qmd
+        - tlf-baseline.qmd
+        - tlf-efficacy-ancova.qmd
+        - tlf-efficacy-km.qmd
+        - tlf-ae-summary.qmd
+        - tlf-ae-specific.qmd
+        - tlf-assemble.qmd
+    - part: "Clinical trial project"
+      chapters:
+        - project-overview.qmd
+        - project-folder.qmd
+        - project-management.qmd
+    - part: "eCTD submission"
+      chapters:
+        - submission-overview.qmd
+        - submission-package.qmd
+        - submission-environment.qmd
+
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: [cosmo, custom.scss]
+  pdf:
+    documentclass: scrbook

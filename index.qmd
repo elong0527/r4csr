@@ -1,0 +1,31 @@
+`r if (knitr::is_latex_output()) '<!--'`
+
+# Welcome {.unnumbered}
+
+Welcome to R for Clinical Study Reports and Submission.
+Clinical study reports (CSR) are crucial components in clinical trial development.
+A CSR is an "integrated" full scientific report of an individual clinical trials.
+
+The [ICH E3: Structure and Content of Clinical Study Reports](https://database.ich.org/sites/default/files/E3_Guideline.pdf)
+provides robust guidance to sponsors for developing a CSR.
+This book demystifies the complexity by guiding you on how to use R for
+streamlining the preparation of CSRs. Moreover, it walks you through the
+process of preparing the submission to regulatory agencies. Regardless of your
+expertise level in R programming, this book serves as an essential resource
+in your statistical programming toolkit, enhancing efficiency and accuracy
+in clinical trials reporting.
+
+**This is a work-in-progress draft.**
+
+## Events {.unnumbered}
+
+```{r, echo=FALSE}
+knitr::kable(read.table("events.tsv", stringsAsFactors = FALSE, header = TRUE, sep = "\t"))
+```
+
+## License {.unnumbered}
+
+This book is licensed to you under the
+[Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+
+`r if (knitr::is_latex_output()) '-->'`

@@ -1,8 +1,0 @@
-^renv$
-^renv\.lock$
-^\.github$
-^.*\.Rproj$
-^\.Rproj\.user$
-^r4csr\.Rcheck$
-^r4csr.*\.tar\.gz$
-^r4csr.*\.tgz$

@@ -1,0 +1,229 @@
+# Analysis population {#sec-population}
+
+```{r, include=FALSE}
+source("_common.R")
+```
+
+Following [ICH E3
+guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
+we need to summarize the number of participants included in each efficacy
+analysis in Section 11.1, Data Sets Analysed.
+
+```{r}
+library(haven) # Read SAS data
+library(dplyr) # Manipulate data
+library(tidyr) # Manipulate data
+library(r2rtf) # Reporting in RTF format
+```
+
+In this chapter, we illustrate how to create a summary table for
+the analysis population for a study.
+
+```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("tlf/tbl_pop.pdf")
+```
+
+The first step is to read relevant datasets into R. For the analysis
+population table, all the required information is saved in the ADSL
+dataset. We can use the `haven` package to read the dataset.
+
+```{r}
+adsl <- read_sas("data-adam/adsl.sas7bdat")
+```
+
+We illustrate how to prepare a report data for a simplified analysis
+population table using variables below:
+
+- USUBJID: unique subject identifier
+- ITTFL: intent-to-treat population flag
+- EFFFL: efficacy population flag
+- SAFFL: safety population flag
+
+```{r}
+adsl %>%
+  select(USUBJID, ITTFL, EFFFL, SAFFL) %>%
+  head(4)
+```
+
+## Helper functions
+
+Before we write the analysis code, let's discuss the possibility of reusing R
+code by writing helper functions.
+
+As discussed in [R for data
+science](https://r4ds.had.co.nz/functions.html#when-should-you-write-a-function),
+"You should consider writing a function whenever you've copied and
+pasted a block of code more than twice".
+
+In @sec-disposition, there are a few repeating steps to:
+
+- Format the percentages using the `formatC()` function.
+- Calculate the numbers and percentages by treatment arm.
+
+We create two ad-hoc functions and use them to create the
+tables in the rest of this book.
+
+To format numbers and percentages, we create a function called
+`fmt_num()`. It is a very simple function wrapping `formatC()`.
+
+```{r}
+fmt_num <- function(x, digits, width = digits + 4) {
+  formatC(
+    x,
+    digits = digits,
+    format = "f",
+    width = width
+  )
+}
+```
+
+The main reason to create the `fmt_num()` function is to enhance the
+readability of the analysis code.
+
+For example, we can compare the two versions of code to format the
+percentage used in @sec-disposition and `fmt_num()`.
+
+```{r, eval = FALSE}
+formatC(n / n() * 100,
+  digits = 1, format = "f", width = 5
+)
+```
+
+```{r, eval = FALSE}
+fmt_num(n / n() * 100, digits = 1)
+```
+
+To calculate the numbers and percentages of participants by groups, we
+provide a simple (but not robust) wrapper function, `count_by()`, using
+the dplyr and tidyr package.
+
+The function can be enhanced in multiple ways, but here we only focus on
+simplicity and readability. More details about writing R functions can
+be found in the [STAT 545
+course](https://stat545.com/functions-part1.html).
+
+```{r}
+count_by <- function(data, # Input data set
+                     grp, # Group variable
+                     var, # Analysis variable
+                     var_label = var, # Analysis variable label
+                     id = "USUBJID") { # Subject ID variable
+  data <- data %>% rename(grp = !!grp, var = !!var, id = !!id)
+
+  left_join(
+    count(data, grp, var),
+    count(data, grp, name = "tot"),
+    by = "grp",
+  ) %>%
+    mutate(
+      pct = fmt_num(100 * n / tot, digits = 1),
+      n = fmt_num(n, digits = 0),
+      npct = paste0(n, " (", pct, ")")
+    ) %>%
+    pivot_wider(
+      id_cols = var,
+      names_from = grp,
+      values_from = c(n, pct, npct),
+      values_fill = list(n = "0", pct = fmt_num(0, digits = 0))
+    ) %>%
+    mutate(var_label = var_label)
+}
+```
+
+By using the `count_by()` function, we can simplify the analysis code as
+below.
+
+```{r}
+count_by(adsl, "TRT01PN", "EFFFL") %>%
+  select(-ends_with(c("_54", "_81")))
+```
+
+## Analysis code
+
+With the helper function `count_by`, we can easily prepare a report
+dataset as
+
+```{r}
+# Derive a randomization flag
+adsl <- adsl %>% mutate(RANDFL = "Y")
+
+pop <- count_by(adsl, "TRT01PN", "RANDFL",
+  var_label = "Participants in Population"
+) %>%
+  select(var_label, starts_with("n_"))
+```
+
+```{r}
+pop1 <- bind_rows(
+  count_by(adsl, "TRT01PN", "ITTFL",
+    var_label = "Participants included in ITT population"
+  ),
+  count_by(adsl, "TRT01PN", "EFFFL",
+    var_label = "Participants included in efficacy population"
+  ),
+  count_by(adsl, "TRT01PN", "SAFFL",
+    var_label = "Participants included in safety population"
+  )
+) %>%
+  filter(var == "Y") %>%
+  select(var_label, starts_with("npct_"))
+```
+
+Now we combine individual rows into one table for reporting
+purpose. `tbl_pop` is used as input for r2rtf to create the final
+report.
+
+```{r}
+names(pop) <- gsub("n_", "npct_", names(pop))
+tbl_pop <- bind_rows(pop, pop1)
+
+tbl_pop %>% select(var_label, npct_0)
+```
+
+We define the format of the output using code below.
+
+```{r}
+rel_width <- c(2, rep(1, 3))
+colheader <- " | Placebo | Xanomeline line Low Dose| Xanomeline line High Dose"
+tbl_pop %>%
+  # Table title
+  rtf_title(
+    "Summary of Analysis Sets",
+    "(All Participants Randomized)"
+  ) %>%
+  # First row of column header
+  rtf_colheader(colheader,
+    col_rel_width = rel_width
+  ) %>%
+  # Second row of column header
+  rtf_colheader(" | n (%) | n (%) | n (%)",
+    border_top = "",
+    col_rel_width = rel_width
+  ) %>%
+  # Table body
+  rtf_body(
+    col_rel_width = rel_width,
+    text_justification = c("l", rep("c", 3))
+  ) %>%
+  # Encoding RTF syntax
+  rtf_encode() %>%
+  # Save to a file
+  write_rtf("tlf/tbl_pop.rtf")
+```
+
+```{r, include=FALSE}
+rtf2pdf("tlf/tbl_pop.rtf")
+```
+
+```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("tlf/tbl_pop.pdf")
+```
+
+The procedure to generate an analysis population table can be summarized
+as follows:
+
+- Step 1: Read data (i.e., `adsl`) into R.
+- Step 2: Bind the counts/percentages of the ITT population, the
+  efficacy population, and the safety population by row using the
+  `count_by()` function.
+- Step 3: Format the output from Step 2 using r2rtf.

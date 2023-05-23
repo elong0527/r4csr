@@ -1,0 +1,192 @@
+# Disposition {#sec-disposition}
+
+```{r, include=FALSE}
+source("_common.R")
+```
+
+Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf),
+a summary table needs to be provided to include all participants who entered the study in Section 10.1, Disposition of Participants.
+
+The disposition of participants table reports the numbers of participants who were randomized,
+and who entered and completed each phase of the study.
+In addition, the reasons for all post-randomization discontinuations,
+grouped by treatment and by major reason (lost to follow-up, adverse event, poor compliance, etc.) are reported.
+
+```{r}
+library(haven) # Read SAS data
+library(dplyr) # Manipulate data
+library(tidyr) # Manipulate data
+library(r2rtf) # Reporting in RTF format
+```
+
+In this chapter, we show how to create a typical disposition table.
+
+```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("tlf/tbl_disp.pdf")
+```
+
+The first step is to read in the relevant datasets into R.
+For a disposition table, all the required information is saved in a Subject-level Analysis Dataset (ADSL).
+This dataset is provided in `sas7bdat` format, which is a SAS data format currently used in many clinical trial analysis and reporting.
+The `haven` package is able to read the dataset, while maintaining its attributes (e.g., variable labels).
+
+```{r}
+adsl <- read_sas("data-adam/adsl.sas7bdat")
+```
+
+The following variables are used in the preparation of a simplified disposition of participants table:
+
+- USUBJID: unique subject identifier
+- TRT01P: planned treatment
+- TRT01PN: planned treatment numeric encoding
+- DISCONFL: discontinued from study flag
+- DCREASCD: discontinued from study reason coded
+
+```{r}
+adsl %>%
+  select(USUBJID, TRT01P, TRT01PN, DISCONFL, DCREASCD) %>%
+  head(4)
+```
+
+In the code below, we calculate the number of participants in the analysis population by treatment arms.
+
+```{r}
+n_rand <- adsl %>%
+  group_by(TRT01PN) %>%
+  summarize(n = n()) %>%
+  pivot_wider(
+    names_from = TRT01PN,
+    names_prefix = "n_",
+    values_from = n
+  ) %>%
+  mutate(row = "Participants in population")
+
+n_rand
+```
+
+```{r}
+n_disc <- adsl %>%
+  group_by(TRT01PN) %>%
+  summarize(
+    n = sum(DISCONFL == "Y"),
+    pct = formatC(n / n() * 100,
+      digits = 1, format = "f", width = 5
+    )
+  ) %>%
+  pivot_wider(
+    names_from = TRT01PN,
+    values_from = c(n, pct)
+  ) %>%
+  mutate(row = "Discontinued")
+
+n_disc
+```
+
+In the code below, we calculate the number and percentage of
+participants who completed/discontinued the study for different reasons by treatment arms.
+
+```{r}
+n_reason <- adsl %>%
+  group_by(TRT01PN) %>%
+  mutate(n_total = n()) %>%
+  group_by(TRT01PN, DCREASCD) %>%
+  summarize(
+    n = n(),
+    pct = formatC(n / unique(n_total) * 100,
+      digits = 1, format = "f", width = 5
+    )
+  ) %>%
+  pivot_wider(
+    id_cols = DCREASCD,
+    names_from = TRT01PN,
+    values_from = c(n, pct),
+    values_fill = list(n = 0, pct = "  0.0")
+  ) %>%
+  rename(row = DCREASCD)
+
+n_reason
+```
+
+In the code below, we calculate the number and percentage of participants who complete the study by treatment arms.
+We split `n_reason` because we want to customize the row order of the table.
+
+```{r}
+n_complete <- n_reason %>%
+  filter(row == "Completed")
+
+n_complete
+```
+
+In the code below, we calculate the numbers and percentages of participants who discontinued the study for different reasons by treatment arms.
+For display purpose, `paste0("    ", row)` is used to add leading spaces to produce indentation in the final report.
+
+```{r}
+n_reason <- n_reason %>%
+  filter(row != "Completed") %>%
+  mutate(row = paste0("    ", row))
+
+n_reason
+```
+
+Now we combine individual rows into one table for reporting purpose.
+`tbl_disp` is used as input for r2rtf to create final report.
+
+```{r}
+tbl_disp <- bind_rows(n_rand, n_complete, n_disc, n_reason) %>%
+  select(row, ends_with(c("_0", "_54", "_81")))
+
+tbl_disp
+```
+
+In the below code, formatting of the final table is defined.
+Items that were not discussed in the previous sections, are highlighted below.
+
+The `rtf_title` defines table title.
+We can provide a vector for the title argument.
+Each value is a separate line.
+The format can also be controlled by providing a vector input in text format.
+
+```{r}
+tbl_disp %>%
+  # Table title
+  rtf_title("Disposition of Participants") %>%
+  # First row of column header
+  rtf_colheader(" | Placebo | Xanomeline Low Dose| Xanomeline High Dose",
+    col_rel_width = c(3, rep(2, 3))
+  ) %>%
+  # Second row of column header
+  rtf_colheader(" | n | (%) | n | (%) | n | (%)",
+    col_rel_width = c(3, rep(c(0.7, 1.3), 3)),
+    border_top = c("", rep("single", 6)),
+    border_left = c("single", rep(c("single", ""), 3))
+  ) %>%
+  # Table body
+  rtf_body(
+    col_rel_width = c(3, rep(c(0.7, 1.3), 3)),
+    text_justification = c("l", rep("c", 6)),
+    border_left = c("single", rep(c("single", ""), 3))
+  ) %>%
+  # Encoding RTF syntax
+  rtf_encode() %>%
+  # Save to a file
+  write_rtf("tlf/tbl_disp.rtf")
+```
+
+```{r, include=FALSE}
+rtf2pdf("tlf/tbl_disp.rtf")
+```
+
+```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("tlf/tbl_disp.pdf")
+```
+
+The procedure to generate a disposition table can be summarized as follows:
+
+- Step 1: Read subject level data (i.e., `adsl`) into R.
+- Step 2: Count participants in the analysis population and name the dataset `n_rand`.
+- Step 3: Calculate the number and percentage of participants who discontinued the study by treatment arm, and name the dataset `n_disc`.
+- Step 4: Calculate the numbers and percentages of participants who discontinued the study for different reasons by treatment arm,
+  and name the dataset `n_reason`.
+- Step 5: Calculate the number and percentage of participants who completed the study by treatment arm, and name the dataset `n_complete`.
+- Step 6: Bind `n_rand`, `n_disc`, `n_reason`, and `n_complete` by row.
+- Step 7: Write the final table to RTF
