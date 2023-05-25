@@ -82,7 +82,10 @@ The quality of this document relies on you.
 
 - Authors: contributed the majority of content to at least one chapter.
 
-  Yilong Zhang <<elong0527@gmail.com>>, Nan Xiao, Keaven Anderson, Yalin Zhu
+  [Yilong Zhang](https://elong0527.github.io/),
+  [Nan Xiao](https://nanx.me/),
+  [Keaven Anderson](https://keaven.github.io/),
+  Yalin Zhu
 
 - Contributors: contributed at least one commit to the [source code](https://github.com/elong0527/r4csr).
 
