@@ -364,7 +364,7 @@ project, with 4 goals in mind:
 - Automation
 - Compliance
 
-<https://r4csr.org/folder.html>
+<https://r4csr.org/project-folder.html>
 
 ## Project Management
 

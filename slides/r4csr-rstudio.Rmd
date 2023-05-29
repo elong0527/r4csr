@@ -342,7 +342,7 @@ We recommended to use **R package structure** to organize standard tools, analys
 - Automation: automatically check the integration of a project.
 - Compliance: reduce compliance issues.
 
-More details: <https://r4csr.org/folder.html>
+More details: <https://r4csr.org/project-folder.html>
 
 Example: <https://github.com/elong0527/esubdemo>
 
