@@ -7,3 +7,7 @@ $primary: #00857C !default;
 img.quarto-cover-image {
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
 }
+
+body {
+    -webkit-font-smoothing: auto;
+}
