@@ -316,7 +316,7 @@ knitr::include_graphics("function-summary.png")
 
 ## Disposition Table
 
-<https://r4csr.org/disposition.html>
+<https://r4csr.org/tlf-disposition.html>
 
 ## Analysis Population
 
@@ -328,7 +328,7 @@ knitr::include_graphics("function-summary.png")
 
 ## Efficacy Table
 
-<https://r4csr.org/efficacy-table.html>
+<https://r4csr.org/tlf-efficacy-ancova.html>
 
 ## AE Summary Table
 
@@ -336,11 +336,11 @@ knitr::include_graphics("function-summary.png")
 
 ## Specific AE Table
 
-<https://r4csr.org/specific-ae.html>
+<https://r4csr.org/tlf-ae-specific.html>
 
 ## Assemble TLFs 
 
-<https://r4csr.org/assemble.html>
+<https://r4csr.org/tlf-assemble.html>
 
 # Break (10 min)
 
