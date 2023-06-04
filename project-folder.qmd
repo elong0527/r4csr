@@ -13,7 +13,7 @@ Specifically, a well-defined project structure can achieve:
 We will use the [`esubdemo`](https://github.com/elong0527/esubdemo) R package to
 illustrate the project folder structure for the A&R project. You can
 [clone](https://happygitwithr.com/rstudio-git-github.html#clone-the-new-github-repository-to-your-computer-via-rstudio)
-the project using RStudio with
+the project using RStudio IDE with
 
 ```bash
 git clone https://github.com/elong0527/esubdemo.git
@@ -144,8 +144,8 @@ This is the same level of reproducibility in most SAS environments:
 
 First, we introduce the control of the R version.
 In the esubdemo project, a reproducible environment is created when you open
-the `esubdemo.Rproj` from RStudio.
-When we open the `esubdemo` project, RStudio will execute the R code in `.Rprofile` automatically.
+the `esubdemo.Rproj` from RStudio IDE.
+When we open the `esubdemo` project, RStudio IDE will execute the R code in `.Rprofile` automatically.
 So we can use `.Rprofile` to set up a reproducible environment.
 More details can be found in <https://rstats.wtf/r-startup.html>.
 After we open the `esubdemo` project, the code in `.Rprofile` will
@@ -255,7 +255,7 @@ Below R package path are searching in order to find installed R packages in this
 ```
 
 ::: {.callout-tip}
-A cloud-based R environment (e.g., RStudio Workbench)
+A cloud-based R environment (e.g., [Posit Workbench](https://posit.co/products/enterprise/workbench/))
 can enhance the reproducibility within an organization
 by using the same operating system, R version, and R package versions for an A&R project.
 More details can be found at <https://environments.rstudio.com/>.

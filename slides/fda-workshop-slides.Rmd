@@ -170,8 +170,8 @@ install.packages(c(
   - <https://github.com/RConsortium/submissions-pilot1>
 
 - During the workshop, we will use `esubdemo` project.
-  - `esubdemo` is shared in RStudio Cloud (<https://rstudio.cloud/>)
-  - You can also clone the `esubdemo` project to your local RStudio.  
+  - `esubdemo` is shared in Posit Cloud (<https://posit.cloud/>)
+  - You can also clone the `esubdemo` project to your local RStudio IDE.  
 
 ## Motivation
 

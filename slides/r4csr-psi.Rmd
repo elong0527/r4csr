@@ -247,7 +247,7 @@ sponsor shall enhance reproducibility.
 
 - Fixed R version: e.g., R 4.1.0
 - Fixed R package snapshot date: e.g., 2021-08-31
-  - [RStudio Public Package Manager](https://packagemanager.rstudio.com/)
+  - [Posit Package Manager](https://packagemanager.posit.co/)
   - [CRAN Time Machine by MRAN](https://mran.microsoft.com/timemachine)
 - Flexibility of input and output path:
   - Define path as parameter.
