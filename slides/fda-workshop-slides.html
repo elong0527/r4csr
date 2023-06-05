@@ -3070,7 +3070,7 @@ var loadDeck = function(event) {
 };
 
 if (document.readyState !== "loading" &&
-    document.querySelector('slides') === null) {
+    document.querySelector('slides') === null) { 
   // if the document is done loading but our element hasn't yet appeared, defer
   // loading of the deck
   window.setTimeout(function() {
@@ -3192,7 +3192,7 @@ slide:not(.current) .plotly.html-widget{
             code span.va { color: #19177c; } /* Variable */
             code span.vs { color: #4070a0; } /* VerbatimString */
             code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-
+        
   </style>
 
 
@@ -3363,7 +3363,7 @@ slides > slide:not(.segue) > hgroup > h2 {
 <p>In this workshop, we assume you have some R programming experience and clinical development knowledge.</p>
 
 <ul>
-<li>Data manipulation: <code>tidyverse</code>, <code>dplyr</code>, <code>tidyr</code>, <code>ggplot2</code> etc.</li>
+<li>Data manipulation: tidyverse, dplyr, tidyr, ggplot2 etc.</li>
 <li>ADaM data: <code>adsl</code>, <code>adae</code> etc.</li>
 </ul>
 
@@ -3464,8 +3464,8 @@ slides > slide:not(.segue) > hgroup > h2 {
 </article></slide><slide class=""><hgroup><h2>Tools</h2></hgroup><article  id="tools" class="smaller ">
 
 <ul>
-<li><p><code>tidyverse</code>: a collection of R packages to simplify the workflow to manipulate, visualize and analyze data in R.</p></li>
-<li><p><code>r2rtf</code>: an R package to create production-ready tables and figures in RTF format.</p></li>
+<li><p>tidyverse: a collection of R packages to simplify the workflow to manipulate, visualize and analyze data in R.</p></li>
+<li><p>r2rtf: an R package to create production-ready tables and figures in RTF format.</p></li>
 </ul>
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>r2rtf Introduction</h2></hgroup><article  id="r2rtf-introduction" class="smaller ">
@@ -3482,10 +3482,10 @@ slides > slide:not(.segue) > hgroup > h2 {
 
 <ul>
 <li><p>E.g., Table layout, Font size, Border type, Footnote, Data source</p></li>
-<li><p><code>r2rtf</code> is an R package to create production-ready tables and figures in RTF format.</p></li>
+<li><p>r2rtf is an R package to create production-ready tables and figures in RTF format.</p></li>
 </ul>
 
-<p><code>r2rtf</code> is designed to:</p>
+<p>r2rtf is designed to:</p>
 
 <ul>
 <li>provide simple &ldquo;verb&rdquo; functions that correspond to each component of a table, to help you translate a data frame to a table in RTF format;</li>
@@ -3493,7 +3493,7 @@ slides > slide:not(.segue) > hgroup > h2 {
 <li>only focus on the <strong>table format</strong>.
 
 <ul>
-<li>Data manipulation and analysis should be handled by other R packages. (e.g., <code>tidyverse</code>)</li>
+<li>Data manipulation and analysis should be handled by other R packages. (e.g., tidyverse)</li>
 </ul></li>
 </ul>
 
@@ -3509,7 +3509,7 @@ slides > slide:not(.segue) > hgroup > h2 {
 
 </article></slide><slide class=""><hgroup><h2>Minimal Example</h2></hgroup><article  id="minimal-example" class="smaller ">
 
-<p><code>r2rtf</code> is designed to enable pipes (<code>%&gt;%</code>).</p>
+<p>r2rtf is designed to enable pipes (<code>%&gt;%</code>).</p>
 
 <pre class = 'prettyprint lang-r'>head(iris) %&gt;%
   rtf_body() %&gt;%           # Step 1 Add table attributes
@@ -3520,7 +3520,7 @@ slides > slide:not(.segue) > hgroup > h2 {
 
 </article></slide><slide class=""><hgroup><h2>Package Overview</h2></hgroup><article  id="package-overview" class="smaller ">
 
-<p><code>r2rtf</code> package provides the flexibility to customize table appearance for</p>
+<p>r2rtf package provides the flexibility to customize table appearance for</p>
 
 <ul>
 <li><strong>Table component</strong>: title, column header, footnote, etc.</li>
@@ -3529,11 +3529,11 @@ slides > slide:not(.segue) > hgroup > h2 {
 <li><strong>Complicated format</strong>: pagination, section grouping, multiple table concatenations, etc.</li>
 </ul>
 
-<p><code>r2rtf</code> package also provides the flexibility to convert figures in RTF format.</p>
+<p>r2rtf package also provides the flexibility to convert figures in RTF format.</p>
 
 </article></slide><slide class=""><hgroup><h2>Function Summary</h2></hgroup><article  id="function-summary" class="smaller ">
 
-<p><code>r2rtf</code> provides simple &ldquo;verb&rdquo; functions that correspond to each component of a table, to help you translate data frame to tables in RTF file.</p>
+<p>r2rtf provides simple &ldquo;verb&rdquo; functions that correspond to each component of a table, to help you translate data frame to tables in RTF file.</p>
 
 <table class = 'rmdtable'>
 <tr class="header">
@@ -3607,11 +3607,11 @@ slides > slide:not(.segue) > hgroup > h2 {
 
 </article></slide><slide class=""><hgroup><h2>Analysis Population</h2></hgroup><article  id="analysis-population" class="smaller ">
 
-<p><a href='https://r4csr.org/population.html' title=''>https://r4csr.org/population.html</a></p>
+<p><a href='https://r4csr.org/tlf-population.html' title=''>https://r4csr.org/tlf-population.html</a></p>
 
 </article></slide><slide class=""><hgroup><h2>Baseline Characteristics</h2></hgroup><article  id="baseline-characteristics" class="smaller ">
 
-<p><a href='https://r4csr.org/baseline-characteristics.html' title=''>https://r4csr.org/baseline-characteristics.html</a></p>
+<p><a href='https://r4csr.org/tlf-baseline.html' title=''>https://r4csr.org/tlf-baseline.html</a></p>
 
 </article></slide><slide class=""><hgroup><h2>Efficacy Table</h2></hgroup><article  id="efficacy-table" class="smaller ">
 
@@ -3619,7 +3619,7 @@ slides > slide:not(.segue) > hgroup > h2 {
 
 </article></slide><slide class=""><hgroup><h2>AE Summary Table</h2></hgroup><article  id="ae-summary-table" class="smaller ">
 
-<p><a href='https://r4csr.org/aesummary.html' title=''>https://r4csr.org/aesummary.html</a></p>
+<p><a href='https://r4csr.org/tlf-ae-summary.html' title=''>https://r4csr.org/tlf-ae-summary.html</a></p>
 
 </article></slide><slide class=""><hgroup><h2>Specific AE Table</h2></hgroup><article  id="specific-ae-table" class="smaller ">
 
@@ -3675,7 +3675,7 @@ slides > slide:not(.segue) > hgroup > h2 {
 </ul></li>
 </ul>
 
-<p><a href='https://r4csr.org/manage.html' title=''>https://r4csr.org/manage.html</a></p>
+<p><a href='https://r4csr.org/project-management.html' title=''>https://r4csr.org/project-management.html</a></p>
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Break (10 min)</h2></hgroup><article  id="break-10-min-1" class="smaller ">
 
@@ -3700,7 +3700,7 @@ slides > slide:not(.segue) > hgroup > h2 {
 <li><a href='https://rconsortium.github.io/submissions-wg/' title=''>members and affiliations</a></li>
 </ul></li>
 <li>Mission: Easier R-based clinical trial regulatory submissions</li>
-<li><a href='https://rconsortium.github.io/submissions-wg/pilot-overall.html#pilot-1---common-analyses' title=''>pilot 1 - common analyses</a>
+<li><a href='https://rconsortium.github.io/submissions-wg/pilot1.html' title=''>pilot 1 - common analyses</a>
 
 <ul>
 <li>2021.11 Initial submission to FDA.</li>
@@ -3749,14 +3749,14 @@ slides > slide:not(.segue) > hgroup > h2 {
 <ul>
 <li>&ldquo;Using R version 4.1.1, FDA was able to run the submitted code and confirm the applicant’s tables and the submitted figure in report-tlf pdf file.&rdquo;</li>
 <li>&ldquo;Using FDA developed code, a statistical analyst was able to independently generate tables using the submitted data.&rdquo;</li>
-<li><a href='https://github.com/RConsortium/submissions-wg/blob/main/Documents/Summary_R_Pilot_Submission.pdf' title=''>Initial submission FDA response</a></li>
+<li><a href='https://github.com/RConsortium/submissions-wg/blob/main/_Documents/Summary_R_Pilot_Submission.pdf' title=''>Initial submission FDA response</a></li>
 </ul>
 
 <h3>Revised Submission</h3>
 
 <ul>
 <li>FDA agrees that the initial phase of the R Pilot submission has been completed.</li>
-<li><a href='https://github.com/RConsortium/submissions-wg/blob/main/Documents/Summary_R_Pilot_Submission2.pdf' title=''>Revised submission FDA response</a></li>
+<li><a href='https://github.com/RConsortium/submissions-wg/blob/main/_Documents/Summary_R_Pilot_Submission2.pdf' title=''>Revised submission FDA response</a></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Future Work</h2></hgroup><article  id="future-work" class="smaller ">
@@ -3785,7 +3785,7 @@ slides > slide:not(.segue) > hgroup > h2 {
 
 <p>We will also give recommendations to make the R code running environment reproducible for dry run tests and reviews using <code>cleanslate</code>.</p>
 
-<p><a href='https://r4csr.org/running-environment.html' title=''>https://r4csr.org/running-environment.html</a></p>
+<p><a href='https://r4csr.org/submission-environment.html' title=''>https://r4csr.org/submission-environment.html</a></p>
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>pkglite</h2></hgroup><article  id="pkglite" class="smaller ">
 
