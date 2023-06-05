@@ -60,7 +60,7 @@ cleanslate::use_cleanslate(
   "C:/temp/",
   r_version = "4.1.1",
   from = "https://cran.r-project.org/",
-  repo = "https://mran.microsoft.com/snapshot/2021-08-06/"
+  repo = "https://packagemanager.posit.co/cran/2021-08-06"
 )
 ```
 
@@ -70,7 +70,7 @@ This will
 - Download R `4.1.1` installer from CRAN, and install it into `C:/temp/R/`;
 - Not install Rtools (by default, `rtools_version = NULL`);
 - Create a `.Rprofile` file under the project folder, set `options(repos)`
-  to use the specified `repo` (an MRAN snapshot in this example),
+  to use the specified `repo` (a Posit Public Package Manager snapshot in this example),
   and give instruction to set the R binary path in RStudio IDE;
 - Create a `.Renviron` file under the project folder and set the
   library path to be the library of the project-specific R installation.
@@ -137,7 +137,7 @@ cleanslate::use_cleanslate(
   "C:/temp/",
   r_version = "4.1.1",
   from = "https://cran.r-project.org/",
-  repo = "https://mran.microsoft.com/snapshot/2021-08-06/"
+  repo = "https://packagemanager.posit.co/cran/2021-08-06"
 )
 
 2. Open the project
