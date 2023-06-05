@@ -71,7 +71,7 @@ This will
 - Not install Rtools (by default, `rtools_version = NULL`);
 - Create a `.Rprofile` file under the project folder, set `options(repos)`
   to use the specified `repo` (an MRAN snapshot in this example),
-  and give instruction to set the R binary path in RStudio;
+  and give instruction to set the R binary path in RStudio IDE;
 - Create a `.Renviron` file under the project folder and set the
   library path to be the library of the project-specific R installation.
 
@@ -143,8 +143,8 @@ cleanslate::use_cleanslate(
 2. Open the project
 
 Go to the working directory created above, double click the .Rproj file
-to open the project in RStudio. Follow the instructions to select the
-project-specific R version, then restart RStudio. If successful,
+to open the project in RStudio IDE. Follow the instructions to select the
+project-specific R version, then restart RStudio IDE. If successful,
 the R version and package repo should be printed as defined above.
 
 3. Install open-source R packages
@@ -191,9 +191,9 @@ To reproduce the analysis results, rerun the following programs:
 ## RStudio addin
 
 To make it convenient to use cleanslate in experiments,
-one can also use its RStudio addin. After cleanslate
+one can also use its RStudio IDE addin. After cleanslate
 is installed, click `Addins` -> `cleanslate` -> `Create portable R environment`
-in RStudio, or call `cleanslate:::create_env_addin()` to open it.
+in RStudio IDE, or call `cleanslate:::create_env_addin()` to open it.
 
 ```{r, out.width="65%", echo=FALSE, fig.cap="cleanslate RStudio addin"}
 # Web browser DevTools -> Print as PDF ->

@@ -24,7 +24,7 @@ remotes::install_deps()
 
 ## Build the book
 
-In RStudio, press Cmd/Ctrl + Shift + B. Or run:
+In RStudio IDE, press Cmd/Ctrl + Shift + B. Or run:
 
 ```r
 quarto::quarto_render()
