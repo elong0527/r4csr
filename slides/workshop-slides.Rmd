@@ -108,7 +108,7 @@ install.packages(c(
   - <https://github.com/RConsortium/submissions-pilot1>
 
 - During the workshop, we will use `esubdemo` project.
-  - `esubdemo` is shared in RStudio Cloud (<https://rstudio.cloud/>)
+  - `esubdemo` is shared in Posit Cloud (<https://posit.cloud/>)
   - Project link will be shared in chat
   - Post questions in group chat.
 
@@ -240,7 +240,7 @@ knitr::include_graphics("function-summary.png")
 
 ## Disposition table
 
-<https://r4csr.org/disposition.html>
+<https://r4csr.org/tlf-disposition.html>
 
 ## Analysis population
 
@@ -252,7 +252,7 @@ knitr::include_graphics("function-summary.png")
 
 ## Efficacy table
 
-<https://r4csr.org/efficacy-table.html>
+<https://r4csr.org/tlf-efficacy-ancova.html>
 
 ## AE Summary table
 
@@ -260,7 +260,7 @@ knitr::include_graphics("function-summary.png")
 
 ## Specific AE table
 
-<https://r4csr.org/specific-ae.html>
+<https://r4csr.org/tlf-ae-specific.html>
 
 # Break (10 min)
 
