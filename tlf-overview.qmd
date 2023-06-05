@@ -94,7 +94,7 @@ Those R packages share
 [the tidy tools manifesto](https://tidyverse.tidyverse.org/articles/manifesto.html)
 and are easy to use for interactive data analysis.
 
-RStudio provided outstanding [cheatsheets](https://posit.co/resources/cheatsheets/)
+Posit provided outstanding [cheatsheets](https://posit.co/resources/cheatsheets/)
 and [tutorials](https://github.com/rstudio-education/remaster-the-tidyverse) for tidyverse.
 
 There are also books to introduce tidyverse.
