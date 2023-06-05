@@ -432,7 +432,7 @@ df2 <- data.frame(
 )
 
 # # Commented out as the snapshot availability is not guaranteed
-# x <- available.packages(contriburl = contrib.url("https://mran.microsoft.com/snapshot/2021-08-06/"))
+# x <- available.packages(contriburl = contrib.url("https://packagemanager.posit.co/cran/2021-08-06"))
 # df2$version <- x[match(df2$package, x[, "Package"]), "Version"]
 df2$version <- c("0.2.0", "2.4.3", "1.0.7", "1.1.3", "1.6.2-1", "0.3.0")
 
@@ -515,7 +515,7 @@ The R packages are based on CRAN at 2021-08-06. To install the exact
 R package versions used in this project, run the code below to set
 the snapshot repository.
 
-options(repos = "https://mran.microsoft.com/snapshot/2021-08-06/")
+options(repos = "https://packagemanager.posit.co/cran/2021-08-06")
 
 4. Install open-source R packages
 
