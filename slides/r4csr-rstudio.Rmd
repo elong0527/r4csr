@@ -360,7 +360,7 @@ Example: <https://github.com/elong0527/esubdemo>
   - Validation: verify target deliverables
   - Operation: deliver work to stakeholders
 
-More details: <https://r4csr.org/manage.html>
+More details: <https://r4csr.org/project-management.html>
 
 ## Cross-industry collaborations
 

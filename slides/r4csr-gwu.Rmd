@@ -104,7 +104,7 @@ in preparing eCTD package?
 
 - "Using R version 4.1.1, FDA was able to run the submitted code and confirm the applicant's tables and the submitted figure in report-tlf pdf file."
 - "Using FDA developed code, a statistical analyst was able to independently generate tables using the submitted data."
-- [Original FDA response](https://github.com/RConsortium/submissions-wg/blob/main/Documents/Summary_R_Pilot_Submission.pdf)
+- [Original FDA response](https://github.com/RConsortium/submissions-wg/blob/main/_Documents/Summary_R_Pilot_Submission.pdf)
 
 ## Future work
 
@@ -292,7 +292,7 @@ Example: <https://github.com/elong0527/esubdemo>
   - Validation: verify target deliverables
   - Operation: deliver work to stakeholders
 
-More details: <https://r4csr.org/manage.html>
+More details: <https://r4csr.org/project-management.html>
 
 ## Cross-industry collaborations
 

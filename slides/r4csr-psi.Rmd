@@ -162,7 +162,7 @@ knitr::include_graphics("submission-group-logo.png")
 ## Objective and Timeline 
 
 - Objective: Create open source example for R-based clinical trial regulatory submissions
-- [pilot 1 - common analyses](https://rconsortium.github.io/submissions-wg/pilot-overall.html#pilot-1---common-analyses)
+- [pilot 1 - common analyses](https://rconsortium.github.io/submissions-wg/pilot1.html)
   - 2021.11   Initial submission to FDA. 
   - 2022.12   Received FDA response 
   - 2022.02   Revised submission to FDA
@@ -171,7 +171,7 @@ knitr::include_graphics("submission-group-logo.png")
 - [pilot 2 - shiny app](https://github.com/RConsortium/submissions-pilot2-to-fda)
   - 2022.10   Public review of initial submission to FDA.
 
-- [pilot 3 - ADaM data](https://github.com/RConsortium/submissions-wg/blob/main/Documents/R%20Submission%20%20Pilot%201%20Extension%20Proposal.pdf)
+- [pilot 3 - ADaM data](https://github.com/RConsortium/submissions-wg/blob/main/_Documents/R%20Submission%20%20Pilot%201%20Extension%20Proposal.pdf)
   - 2022.10   Proposal initiation.
   
 ## Pilot 1 Challenges and Assumptions
@@ -204,12 +204,12 @@ in preparing eCTD package?
 
 - "Using R version 4.1.1, FDA was able to run the submitted code and confirm the applicant's tables and the submitted figure in report-tlf pdf file."
 - "Using FDA developed code, a statistical analyst was able to independently generate tables using the submitted data."
-- [Initial submission FDA response](https://github.com/RConsortium/submissions-wg/blob/main/Documents/Summary_R_Pilot_Submission.pdf)
+- [Initial submission FDA response](https://github.com/RConsortium/submissions-wg/blob/main/_Documents/Summary_R_Pilot_Submission.pdf)
 
 ### Revised Submission 
 
 - FDA agrees that the initial phase of the R Pilot submission has been completed.
-- [Revised  submission FDA response](https://github.com/RConsortium/submissions-wg/blob/main/Documents/Summary_R_Pilot_Submission2.pdf)
+- [Revised  submission FDA response](https://github.com/RConsortium/submissions-wg/blob/main/_Documents/Summary_R_Pilot_Submission2.pdf)
 
 ## Future Work
 
@@ -328,7 +328,7 @@ Example: <https://github.com/elong0527/esubdemo>
   - Validation: verify target deliverables
   - Operation: deliver work to stakeholders
 
-More details: <https://r4csr.org/manage.html>
+More details: <https://r4csr.org/project-management.html>
 
 ## Cross-industry Collaborations
 

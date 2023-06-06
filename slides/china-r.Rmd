@@ -90,7 +90,7 @@ an experimental R package for analytical-based group sequential design under pro
 
 Bookdown: <https://keaven.github.io/gsd-deming/>
 
-Training: [December 6th, Deming Conference 2021](https://demingconference.org/wp-content/uploads/2021/07/2021-Deming-Conference-Printed-Program-v1.0.pdf)
+Training: [December 6th, Deming Conference 2021](https://web.archive.org/web/20220531042701/https://demingconference.org/wp-content/uploads/2021/11/2021-Deming-Conference-Virtual-Printed-Program-v1.1.pdf)
 
 ## Tools for reporting and submission
 
@@ -223,7 +223,7 @@ Example: <https://github.com/elong0527/esubdemo>
   - Validation: verify target deliverables
   - Operation: deliver work to stakeholders
 
-More details: <https://r4csr.org/manage.html>
+More details: <https://r4csr.org/project-management.html>
 
 ## Cross-industry collaborations
 

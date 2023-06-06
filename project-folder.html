@@ -503,16 +503,16 @@ Caution
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>snapshot <span class="ot">&lt;-</span> <span class="st">"2021-08-06"</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># set up repository based on the snapshot date</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>repos <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"https://mran.microsoft.com/snapshot/"</span>, snapshot, <span class="st">"/"</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>repos <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"https://packagemanager.posit.co/cran/"</span>, snapshot)</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># define repo URL for project-specific package installation</span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> repos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We can also define the package repository to be a specific snapshot date. For example, we used Microsoft R Application Network (MRAN) to define the snapshot date to be <code>2021-08-06</code>. The snapshot date freezes the R package repository.</p>
-<p>In other words, all R packages installed in this RStudio project are based on the frozen R version at the snapshot date. Here it is <code>2021-08-06</code> by using the MRAN server.</p>
-<p>Below information will be displayed after a new R session is opened.</p>
+<p>We can also define the package repository to be a specific snapshot date. For example, we used Posit Public Package Manager to define the snapshot date to be <code>2021-08-06</code>. The snapshot date freezes the R package repository.</p>
+<p>In other words, all R packages installed in this R project are based on the frozen R version at the snapshot date. Here it is <code>2021-08-06</code> by using the Posit Package Manager.</p>
+<p>The information below will be displayed after a new R session is opened.</p>
 <pre><code>Current project R package repository:
-    https://mran.microsoft.com/snapshot/2021-08-06/</code></pre>
+    https://packagemanager.posit.co/cran/2021-08-06</code></pre>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -523,7 +523,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Posit Package Manager provides a solution to host both publicly available and internally developed R packages. However, the <a href="https://packagemanager.posit.co/">Posit Public Package Manager</a> does not provide a daily snapshot as MRAN does.</p>
+<p><a href="https://packagemanager.posit.co/">Posit Public Package Manager</a> hosts daily CRAN snapshots for Mondays to Fridays of the week. Posit Package Manager, when deployed internally within an organization, provides a solution to host both publicly available and internally developed R packages.</p>
 </div>
 </div>
 <p>Secondly, we use renv to lock R package versions and save them in the <code>renv.lock</code> file. renv provides a robust and stable approach to managing R package versions for project-specific R packages. An introduction of renv can be found on its <a href="https://rstudio.github.io/renv/articles/renv.html">website</a>.</p>

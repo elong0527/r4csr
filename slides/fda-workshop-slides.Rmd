@@ -320,11 +320,11 @@ knitr::include_graphics("function-summary.png")
 
 ## Analysis Population
 
-<https://r4csr.org/population.html>
+<https://r4csr.org/tlf-population.html>
 
 ## Baseline Characteristics
 
-<https://r4csr.org/baseline-characteristics.html>
+<https://r4csr.org/tlf-baseline.html>
 
 ## Efficacy Table
 
@@ -332,7 +332,7 @@ knitr::include_graphics("function-summary.png")
 
 ## AE Summary Table
 
-<https://r4csr.org/aesummary.html>
+<https://r4csr.org/tlf-ae-summary.html>
 
 ## Specific AE Table
 
@@ -380,7 +380,7 @@ project, with 4 goals in mind:
   - Validation
   - Operation
 
-<https://r4csr.org/manage.html>
+<https://r4csr.org/project-management.html>
 
 # Break (10 min)
 
@@ -401,7 +401,7 @@ in the submission, including version and build identification."
 - The R submission working group is a cross-industry pharma working group focusing on improving practices of R-based clinical trial regulatory submission.
   - [members and affiliations](https://rconsortium.github.io/submissions-wg/)
 - Mission: Easier R-based clinical trial regulatory submissions
-- [pilot 1 - common analyses](https://rconsortium.github.io/submissions-wg/pilot-overall.html#pilot-1---common-analyses)
+- [pilot 1 - common analyses](https://rconsortium.github.io/submissions-wg/pilot1.html)
   - 2021.11   Initial submission to FDA. 
   - 2022.12   Received FDA response 
   - 2022.02   Revised submission to FDA
@@ -437,12 +437,12 @@ in preparing eCTD package?
 
 - "Using R version 4.1.1, FDA was able to run the submitted code and confirm the applicant's tables and the submitted figure in report-tlf pdf file."
 - "Using FDA developed code, a statistical analyst was able to independently generate tables using the submitted data."
-- [Initial submission FDA response](https://github.com/RConsortium/submissions-wg/blob/main/Documents/Summary_R_Pilot_Submission.pdf)
+- [Initial submission FDA response](https://github.com/RConsortium/submissions-wg/blob/main/_Documents/Summary_R_Pilot_Submission.pdf)
 
 ### Revised Submission 
 
 - FDA agrees that the initial phase of the R Pilot submission has been completed.
-- [Revised  submission FDA response](https://github.com/RConsortium/submissions-wg/blob/main/Documents/Summary_R_Pilot_Submission2.pdf)
+- [Revised  submission FDA response](https://github.com/RConsortium/submissions-wg/blob/main/_Documents/Summary_R_Pilot_Submission2.pdf)
 
 ## Future Work
 
@@ -469,7 +469,7 @@ We will also give recommendations to make the R code
 running environment reproducible for dry run tests and reviews
 using `cleanslate`.
 
-<https://r4csr.org/running-environment.html>
+<https://r4csr.org/submission-environment.html>
 
 # pkglite
 
