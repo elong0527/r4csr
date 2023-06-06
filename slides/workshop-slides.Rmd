@@ -244,11 +244,11 @@ knitr::include_graphics("function-summary.png")
 
 ## Analysis population
 
-<https://r4csr.org/population.html>
+<https://r4csr.org/tlf-population.html>
 
 ## Baseline characteristics
 
-<https://r4csr.org/baseline-characteristics.html>
+<https://r4csr.org/tlf-baseline.html>
 
 ## Efficacy table
 
@@ -256,7 +256,7 @@ knitr::include_graphics("function-summary.png")
 
 ## AE Summary table
 
-<https://r4csr.org/aesummary.html>
+<https://r4csr.org/tlf-ae-summary.html>
 
 ## Specific AE table
 
@@ -300,7 +300,7 @@ project, with 4 goals in mind:
   - Validation
   - Operation
 
-<https://r4csr.org/manage.html>
+<https://r4csr.org/project-management.html>
 
 # Break (10 min)
 
@@ -329,7 +329,7 @@ We will also give recommendations to make the R code
 running environment reproducible for dry run tests and reviews
 using `cleanslate`.
 
-<https://r4csr.org/running-environment.html>
+<https://r4csr.org/submission-environment.html>
 
 # pkglite
 
