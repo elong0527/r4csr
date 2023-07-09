@@ -11,7 +11,6 @@ Authors@R: c(
 URL: https://r4csr.org/, https://github.com/elong0527/r4csr
 Encoding: UTF-8
 Imports:
-    tidyverse,
     emmeans,
     haven,
     kableExtra,
@@ -20,4 +19,5 @@ Imports:
     pkglite,
     quarto,
     r2rtf,
-    table1
+    table1,
+    tidyverse
