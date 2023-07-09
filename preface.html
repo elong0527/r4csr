@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -130,7 +130,7 @@ gtag('config', 'G-MKYDL3PNW1', { 'anonymize_ip': true});
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R for Clinical Study Reports and Submission</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/elong0527/r4csr" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/elong0527/r4csr" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -343,42 +343,41 @@ gtag('config', 'G-MKYDL3PNW1', { 'anonymize_ip': true});
 
 <section id="folder-structure" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="folder-structure">Folder structure</h2>
-<p>In clinical trial development, source code needs to be developed and maintained to generate and deliver Study Data Tabulation Model (SDTM), Analysis Dataset Model (ADaM) datasets and tables, listings, and figures (TLFs). A typical example is a Phase 3 clinical trial where hundreds of TLFs are required for submission. Considering the number of programs required for such an effort, a consistent and well-defined folder structure is crucial in managing a clinical trial analysis and reporting (A&amp;R) project.</p>
-<p>We recommend using the <a href="https://github.com/rstudio/cheatsheets/blob/main/package-development.pdf">R package folder structure</a> to organize all the A&amp;R-related source code and documentation for a clinical trial A&amp;R project. The R package folder structure is well defined and widely used in the R community through repositories (e.g., CRAN).</p>
-<p>The consistent approach of using the R package folder structure simplifies the communication for all developers within and across organizations.</p>
+<p>In the development of clinical trials, it is necessary to create and manage source code for generating and delivering Study Data Tabulation Model (SDTM), Analysis Dataset Model (ADaM) datasets, as well as tables, listings, and figures (TLFs). This is particularly evident in Phase 3 trials, where numerous TLFs are needed for submission. To effectively handle the large number of programs involved in such endeavors, it is essential to establish a consistent and well-defined folder structure for managing the analysis and reporting (A&amp;R) project of a clinical trial.</p>
+<p>To streamline the organization of source code and documentation for a clinical trial A&amp;R project, we suggest employing the R package folder structure. This folder structure is extensively utilized within the R community and is well-defined, often found in repositories like CRAN. By adopting this structure, you can benefit from a standardized and widely accepted framework for managing your A&amp;R-related materials in an efficient and accessible manner.</p>
+<p>Using the R package folder structure provides a consistent approach that simplifies communication among developers, both within and across organizations.</p>
 <ul>
-<li>For a new R developer, it is an essential step to develop R packages when you want to share your work with others. You will learn one folder structure widely used in the R community with outstanding tutorials and tools for free.</li>
+<li>For newcomers to R development, creating R packages is an essential step when sharing their work with others. The R community offers a widely adopted folder structure accompanied by excellent tutorials and free tools.</li>
 <li>For an experienced R developer, there is a minimal learning curve.</li>
-<li>For an organization, it simplifies the process, tool, template, and training development, because a unified folder structure is used to develop and maintain standard tool and analysis projects.</li>
+<li>For an organization, adopting the R package folder structure simplifies the development of processes, tools, templates, and training. It enables the use of a unified folder structure for building and maintaining standardized tool and analysis projects.</li>
 </ul>
 <p>The workflow around an R package can also improve the traceability and reproducibility of an analysis project <span class="citation" data-cites="marwick2018packaging">(<a href="references.html#ref-marwick2018packaging" role="doc-biblioref">Marwick, Boettiger, and Mullen 2018</a>)</span>.</p>
-<p>We will revisit folder structure when we discuss project management for a clinical trial project.</p>
-<p>In addition, R package folder structure is also recommended to develop Shiny apps as discussed in Chapter 20 of the <a href="https://mastering-shiny.org/scaling-packaging.html">Mastering Shiny</a> book and the <a href="https://engineering-shiny.org/golem.html">Engineering Production-Grade Shiny Apps</a> book.</p>
+<p>We will revisit the folder structure topic when discussing project management for a clinical trial project.</p>
+<p>Additionally, the R package folder structure is also recommended for developing Shiny apps, as discussed in Chapter 20 of the <a href="https://mastering-shiny.org/scaling-packaging.html">Mastering Shiny</a> book and the <a href="https://engineering-shiny.org/golem.html">Engineering Production-Grade Shiny Apps</a> book.</p>
 </section>
 <section id="in-this-book" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="in-this-book">In this book</h2>
-<p>This book is an intermediate-level book by assuming readers have R programming and clinical development knowledge. The assumption of each part is as below:</p>
+<p>This book is designed for intermediate-level readers who possess knowledge in both R programming and clinical development. Each part of the book makes certain assumptions about the readers’ background:</p>
 <ul>
-<li><p>Part 1, “Delivering TLFs in CSR” provides general information with examples to create tables, listings, and figures. In this part, we assume readers are individual contributors to a clinical project with some experience in R programming. We expect readers are familiar with data manipulation in R. Some good references include <a href="https://rstudio-education.github.io/hopr/">Hands-On Programming with R</a>, <a href="https://r4ds.had.co.nz/">R for Data Science</a> and <a href="https://www.amazon.com/Data-Manipulation-R-Use/dp/0387747303">Data Manipulation with R</a>.</p></li>
-<li><p>Part 2, “Clinical trial project” provides general information with examples to manage a clinical trial A&amp;R project. In this part, we assume a reader is a project lead with experience in R package development. Some good references include <a href="https://r-pkgs.org/">R Packages</a> and the <a href="https://style.tidyverse.org/">tidyverse style guide</a>.</p></li>
-<li><p>Part 3, “eCTD submission package” provides general information in preparing submission packages related to clinical study report (CSR) in electronic Common Technical Document (eCTD). In this part, we assume a reader is a project lead of a clinical project with experience in R package development and submission.</p></li>
+<li><p>Part 1, titled “Delivering TLFs in CSR”, provides general information and examples on creating tables, listings, and figures. It assumes that readers are individual contributors to a clinical project with prior experience in R programming. Familiarity with data manipulation in R is expected. Some recommended references for this part include <a href="https://rstudio-education.github.io/hopr/">Hands-On Programming with R</a>, <a href="https://r4ds.had.co.nz/">R for Data Science</a>, and <a href="https://doi.org/10.1007/978-0-387-74731-6">Data Manipulation with R</a>.</p></li>
+<li><p>Part 2, titled “Clinical trial project”, provides general information and examples on managing a clinical trial A&amp;R project. It assumes that readers are project leads who have experience in R package development. Recommended references for this part include <a href="https://r-pkgs.org/">R Packages</a> and the <a href="https://style.tidyverse.org/">tidyverse style guide</a>.</p></li>
+<li><p>Part 3, titled “eCTD submission package”, provides general information on preparing submission packages related to the CSR in the electronic Common Technical Document (eCTD) format. It assumes that readers are project leads of clinical projects who possess experience in R package development and submission.</p></li>
 </ul>
 </section>
 <section id="philosophy" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="philosophy">Philosophy</h2>
-<p>We share the same philosophy described in Section 1.1 of the <a href="https://r-pkgs.org/Introduction.html#intro-phil">R Packages</a> book and quote here.</p>
+<p>We share the same philosophy described in the introduction of the <a href="https://r-pkgs.org/introduction.html#sec-intro-phil">R Packages</a> book <span class="citation" data-cites="wickham2023r">(<a href="references.html#ref-wickham2023r" role="doc-biblioref">Wickham and Bryan 2023</a>)</span>, which we quote below:</p>
 <ul>
 <li>“Anything that can be automated, should be automated.”</li>
 <li>“Do as little as possible by hand. Do as much as possible with functions.”</li>
-<li>“The goal is to spend your time thinking about what you want to do rather than thinking about the minutiae of the package structure.”</li>
 </ul>
 </section>
 <section id="authors-and-contributors" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="authors-and-contributors">Authors and contributors</h2>
-<p>The document is maintained by a community. While reading the document, you can be a contributor as well. The quality of this document relies on you.</p>
+<p>This document is a collaborative effort maintained by a community. As you read through it, you also have the opportunity to contribute and enhance its quality. Your input and involvement play a vital role in shaping the excellence of this document.</p>
 <ul>
-<li><p>Authors: contributed the majority of content to at least one chapter.</p>
-<p><a href="https://elong0527.github.io/">Yilong Zhang</a>, <a href="https://nanx.me/">Nan Xiao</a>, <a href="https://keaven.github.io/">Keaven Anderson</a>, Yalin Zhu</p></li>
+<li><p>Authors: made significant contributions to at least one chapter, constituting the majority of the content.</p>
+<p><a href="https://elong0527.github.io/">Yilong Zhang</a>, <a href="https://nanx.me/">Nan Xiao</a>, <a href="https://keaven.github.io/">Keaven Anderson</a>, <a href="https://yalin.netlify.app/">Yalin Zhu</a></p></li>
 <li><p>Contributors: contributed at least one commit to the <a href="https://github.com/elong0527/r4csr">source code</a>.</p>
 <p>We are grateful for all the improvements brought by these contributors (in chronological order): Yujie Zhao (@LittleBeannie), Aiming Yang, Steven Haesendonckx (@SHAESEN2), Howard Baek (@howardbaek), Xiaoxia Han (@echohan), Jie Wang (@ifendo).</p></li>
 </ul>
@@ -387,6 +386,9 @@ gtag('config', 'G-MKYDL3PNW1', { 'anonymize_ip': true});
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-marwick2018packaging" class="csl-entry" role="listitem">
 Marwick, Ben, Carl Boettiger, and Lincoln Mullen. 2018. <span>“Packaging Data Analytical Work Reproducibly Using <span>R</span> (and Friends).”</span> <em>The American Statistician</em> 72 (1): 80–88.
+</div>
+<div id="ref-wickham2023r" class="csl-entry" role="listitem">
+Wickham, Hadley, and Jennifer Bryan. 2023. <em>R Packages</em>. O’Reilly Media, Inc.
 </div>
 </div>
 </section>
