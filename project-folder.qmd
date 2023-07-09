@@ -54,7 +54,7 @@ based on the R package folder structure.
 - `man/`: Manual of project-specific R functions.
 
 A general discussion of the R package folder structure can be found
-in Chapter 4 of the R Packages book (@wickham2015r).
+in Chapter 3 of the [R Packages](https://r-pkgs.org/structure.html) book [@wickham2023r].
 
 We demonstrate the idea using the [`esubdemo`](https://github.com/elong0527/esubdemo) project.
 
