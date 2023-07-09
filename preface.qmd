@@ -2,56 +2,99 @@
 
 ## Folder structure {.unnumbered}
 
-In the development of clinical trials, it is necessary to create and manage source code for generating and delivering Study Data Tabulation Model (SDTM), Analysis Dataset Model (ADaM) datasets, as well as tables, listings, and figures (TLFs). This is particularly evident in Phase 3 trials, where numerous TLFs are needed for submission. To effectively handle the large number of programs involved in such endeavors, it is essential to establish a consistent and well-defined folder structure for managing the analysis and reporting (A&R) project of a clinical trial.
+In the development of clinical trials, it is necessary to create and manage
+source code for generating and delivering Study Data Tabulation Model (SDTM),
+Analysis Dataset Model (ADaM) datasets, as well as tables, listings, and
+figures (TLFs). This is particularly evident in Phase 3 trials, where numerous
+TLFs are needed for submission. To effectively handle the large number of
+programs involved in such endeavors, it is essential to establish a consistent
+and well-defined folder structure for managing the analysis and reporting (A&R)
+project of a clinical trial.
 
-To streamline the organization of source code and documentation for a clinical trial A&R project, we suggest employing the R package folder structure. This folder structure is extensively utilized within the R community and is well-defined, often found in repositories like CRAN. By adopting this structure, you can benefit from a standardized and widely accepted framework for managing your A&R-related materials in an efficient and accessible manner.
+To streamline the organization of source code and documentation for a
+clinical trial A&R project, we suggest employing the R package folder structure.
+This folder structure is extensively utilized within the R community and is
+well-defined, often found in repositories like CRAN. By adopting this structure,
+you can benefit from a standardized and widely accepted framework for managing
+your A&R-related materials in an efficient and accessible manner.
 
-Using the R package folder structure provides a consistent approach that simplifies communication among developers, both within and across organizations.
+Using the R package folder structure provides a consistent approach that
+simplifies communication among developers, both within and across organizations.
 
-- For newcomers to R development, creating R packages is an essential step when sharing their work with others. The R community offers a widely adopted folder structure accompanied by excellent tutorials and free tools. 
+- For newcomers to R development, creating R packages is an essential step
+  when sharing their work with others. The R community offers a widely adopted
+  folder structure accompanied by excellent tutorials and free tools.
 - For an experienced R developer, there is a minimal learning curve.
-- For an organization, adopting the R package folder structure simplifies the development of processes, tools, templates, and training. It enables the use of a unified folder structure for building and maintaining standardized tool and analysis projects.
-  
-The workflow around an R package can also improve the traceability and reproducibility of an analysis project [@marwick2018packaging].
+- For an organization, adopting the R package folder structure simplifies
+  the development of processes, tools, templates, and training.
+  It enables the use of a unified folder structure for building and
+  maintaining standardized tool and analysis projects.
 
-We will revisit the folder structure topic when discussing project management for a clinical trial project.
+The workflow around an R package can also improve the traceability and
+reproducibility of an analysis project [@marwick2018packaging].
 
-Additionally, the R package folder structure is also recommended for developing Shiny apps, as discussed in Chapter 20 of the [Mastering Shiny](https://mastering-shiny.org/scaling-packaging.html) book and the [Engineering Production-Grade Shiny Apps](https://engineering-shiny.org/golem.html) book.
+We will revisit the folder structure topic when discussing project management
+for a clinical trial project.
+
+Additionally, the R package folder structure is also recommended for developing
+Shiny apps, as discussed in Chapter 20 of the
+[Mastering Shiny](https://mastering-shiny.org/scaling-packaging.html) book
+and the [Engineering Production-Grade Shiny Apps](https://engineering-shiny.org/golem.html) book.
 
 ## In this book {.unnumbered}
 
-This book is designed for intermediate-level readers who possess knowledge in both R programming and clinical development. Each part of the book makes certain assumptions about the readers' background:
+This book is designed for intermediate-level readers who possess knowledge
+in both R programming and clinical development. Each part of the book makes
+certain assumptions about the readers' background:
 
-- Part 1, titled "Delivering TLFs in CSR," provides general information and examples on creating tables, listings, and figures. It assumes that readers are individual contributors to a clinical project with prior experience in R programming. Familiarity with data manipulation in R is expected. Some recommended references for this part include [Hands-On Programming with R](https://rstudio-education.github.io/hopr/),
-  [R for Data Science](https://r4ds.had.co.nz/) and
-  [Data Manipulation with R](https://www.amazon.com/Data-Manipulation-R-Use/dp/0387747303).
+- Part 1, titled "Delivering TLFs in CSR", provides general information and
+  examples on creating tables, listings, and figures. It assumes that readers
+  are individual contributors to a clinical project with prior experience in
+  R programming. Familiarity with data manipulation in R is expected.
+  Some recommended references for this part include
+  [Hands-On Programming with R](https://rstudio-education.github.io/hopr/),
+  [R for Data Science](https://r4ds.had.co.nz/), and
+  [Data Manipulation with R](https://doi.org/10.1007/978-0-387-74731-6).
 
-- Part 2, titled "Clinical trial project," provides general information and examples on managing a clinical trial A&R project. It assumes that readers are project leads who have experience in R package development. Recommended references for this part include [R Packages](https://r-pkgs.org/) and the
+- Part 2, titled "Clinical trial project", provides general information and
+  examples on managing a clinical trial A&R project. It assumes that readers
+  are project leads who have experience in R package development.
+  Recommended references for this part include
+  [R Packages](https://r-pkgs.org/) and the
   [tidyverse style guide](https://style.tidyverse.org/).
 
-- Part 3, titled "eCTD submission package," provides general information on preparing submission packages related to the CSR in the electronic Common Technical Document (eCTD) format. It assumes that readers are project leads of clinical projects who possess experience in R package development and submission.
+- Part 3, titled "eCTD submission package", provides general information on
+  preparing submission packages related to the CSR in the
+  electronic Common Technical Document (eCTD) format.
+  It assumes that readers are project leads of clinical projects who possess
+  experience in R package development and submission.
 
 ## Philosophy {.unnumbered}
 
-We share the same philosophy described in
-the introduction of the [R Packages](https://r-pkgs.org/Introduction.html#intro-phil) book [@wickham2023r]
-, which we quote below:
+We share the same philosophy described in the introduction of the
+[R Packages](https://r-pkgs.org/introduction.html#sec-intro-phil)
+book [@wickham2023r], which we quote below:
 
 - "Anything that can be automated, should be automated."
 - "Do as little as possible by hand. Do as much as possible with functions."
 
 ## Authors and contributors {.unnumbered}
 
-This document is a collaborative effort maintained by a community. As you read through it, you also have the opportunity to contribute and enhance its quality. Your input and involvement play a vital role in shaping the excellence of this document.
+This document is a collaborative effort maintained by a community.
+As you read through it, you also have the opportunity to contribute
+and enhance its quality. Your input and involvement play a vital role
+in shaping the excellence of this document.
 
-- Authors: made significant contributions to at least one chapter, constituting the majority of the content.
+- Authors: made significant contributions to at least one chapter,
+  constituting the majority of the content.
 
   [Yilong Zhang](https://elong0527.github.io/),
   [Nan Xiao](https://nanx.me/),
   [Keaven Anderson](https://keaven.github.io/),
   [Yalin Zhu](https://yalin.netlify.app/)
 
-- Contributors: contributed at least one commit to the [source code](https://github.com/elong0527/r4csr).
+- Contributors: contributed at least one commit to the
+  [source code](https://github.com/elong0527/r4csr).
 
 ```{r, results = "asis", echo = FALSE, message = FALSE}
 contributors <- read.csv("contributors.csv", stringsAsFactors = FALSE, na.strings = "")
