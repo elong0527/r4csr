@@ -6,52 +6,55 @@ source("_common.R")
 
 ## Background
 
-In clinical trials, a critical step is to submit trial results to regulatory agencies.
-[Electronic Common Technical Document (eCTD)](https://en.wikipedia.org/wiki/Electronic_common_technical_document)
-has become a worldwide regulatory submission standard format.
-For example, the United States Food and Drug Administration (US FDA) requires
-new drug applications and biologics license applications
-[must be submitted using the eCTD format](https://www.fda.gov/drugs/electronic-regulatory-submission-and-review/electronic-common-technical-document-ectd).
-The Clinical Data Interchange Standards Consortium (CDISC) provides a
-[pilot project following ICH E3 guidance](https://github.com/cdisc-org/sdtm-adam-pilot-project).
+Submitting clinical trial results to regulatory agencies is a crucial aspect
+of clinical development.
+The [Electronic Common Technical Document (eCTD)](https://en.wikipedia.org/wiki/Electronic_common_technical_document)
+has emerged as the global standard format for regulatory submissions.
+For instance, the United States Food and Drug Administration (US FDA)
+[mandates the use of eCTD]((https://www.fda.gov/drugs/electronic-regulatory-submission-and-review/electronic-common-technical-document-ectd))
+for new drug applications and biologics license applications.
 
-Within eCTD, clinical study reports (CSRs) are located at module 5.
-[ICH E3 guidance](https://www.ich.org/page/efficacy-guidelines) provides
-a compilation of the structure and content of clinical study reports.
-
-A typical CSR contains full details on the methods and results of an individual clinical study.
-In support of the statistical analysis, a large number of tables, listings, and figures are
-incorporated into the main text and appendices.
-In the CDISC pilot project, an
+A CSR provides comprehensive information about the methods and results of an
+individual clinical study. To support the statistical analysis, numerous tables,
+listings, and figures are included within the main text and appendices.
+As part of the CDISC pilot project, an
 [example CSR](https://github.com/cdisc-org/sdtm-adam-pilot-project/blob/master/updated-pilot-submission-package/900172/m5/53-clin-stud-rep/535-rep-effic-safety-stud/5351-stud-rep-contr/cdiscpilot01/cdiscpilot01.pdf)
-is also provided. If you are interested in more examples of clinical study reports,
-you can go to the [European Medicines Agency (EMA) clinical data website](https://clinicaldata.ema.europa.eu/web/cdp/home).
+is also available for reference. If you seek additional examples of CSR,
+you can visit the clinical data website of the
+[European Medicines Agency (EMA) clinical data website](https://clinicaldata.ema.europa.eu/web/cdp/home).
 
-Building CSRs is teamwork between clinicians, medical writers, statisticians, statistical programmers,
-and other relevant specialists such as experts on biomarkers.
-Here, we focus on the work and deliverables completed by statisticians and statistical programmers.
-In an organization, they commonly work together to
-define, develop, validate and deliver tables, listings, and figures (TLFs) required for a CSR to
-summarize the efficacy and/or safety of the pharmaceutical product.
-Microsoft Word is widely used to prepare CSR in the pharmaceutical industry.
-Therefore, `.rtf`, `.doc`, `.docx` are commonly used formats in their deliverables.
+The creation of CSR is a collaborative effort that involves various
+professionals such as clinicians, medical writers, statisticians,
+statistical programmers. In this context, we will focus on the specific
+deliverables provided by statisticians and statistical programmers.
 
-In this chapter, our focus is to illustrate how to create tables, listings, and figures (TLFs) in RTF format
-that is commonly used in a CSR. The examples are in compliance with the
-[FDA's Portable Document Format (PDF) Specifications](https://www.fda.gov/media/76797/download).
+Within an organization, these professionals typically collaborate to define,
+develop, validate, and deliver the necessary tables, listings,
+and figures (TLFs) for a CSR. These TLFs serve to summarize the efficacy
+and/or safety of the pharmaceutical product under study.
+In the pharmaceutical industry, Microsoft Word is widely utilized for
+CSR preparation. As a result, the deliverables from statisticians and
+statistical programmers are commonly provided in formats such as
+`.rtf`, `.doc`, `.docx` to align with industry standards and requirements.
+
+Our focus is to demonstrate the process of generating TLFs in RTF format,
+which is commonly employed in CSRs. The examples provided in this chapter
+adhere to the
+[ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf)
+and the [FDA's PDF Specifications](https://www.fda.gov/media/76797/download).
 
 ::: {.callout-note}
 FDA's PDF specification is a general reference. Each organization can define
-more specific TLF format requirements that can be different from the examples in this book.
+more specific TLF format requirements that can be different from the examples
+in this book. The FDA's PDF specification serves as a general reference for
+formatting requirements. Each organization has the flexibility to define its
+own specific requirements for TLFs. These specific format requirements may
+differ from the examples provided in this book. It is advisable to consult
+and adhere to the guidelines and specifications set by your respective
+organization when preparing TLFs for submission.
 :::
 
-## Structure and content
-
-In the rest of this chapter, we are following the
-[ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guideline.pdf)
-on the structure and content of clinical study reports.
-
-In a CSR, most of TLFs are located in
+By following the ICH E3 guidance, most of TLFs in a CSR are located at
 
 - Section 10: Study participants
 - Section 11: Efficacy evaluation
@@ -61,101 +64,129 @@ In a CSR, most of TLFs are located in
 
 ## Datasets
 
-We used publicly available CDISC pilot
-[study data located in the CDISC GitHub repository](https://github.com/cdisc-org/sdtm-adam-pilot-project/tree/master/updated-pilot-submission-package/900172/m5/datasets/cdiscpilot01/analysis/adam/datasets).
-
-For simplicity, we have downloaded all these datasets into the `data-adam/`
-folder of this project and converted them from the `.xpt` format to
-the `.sas7bdat` format.
-
 The dataset structure follows
 [CDISC Analysis Data Model (ADaM)](https://www.cdisc.org/standards/foundational/adam).
 
+In this project, we used publicly available CDISC pilot study data, which is
+accessible through the
+[CDISC GitHub repository](https://github.com/cdisc-org/sdtm-adam-pilot-project/tree/master/updated-pilot-submission-package/900172/m5/datasets/cdiscpilot01/analysis/adam/datasets).
+
+To streamline the process, we have downloaded all the datasets from the
+repository and stored them in the
+[`data-adam/` folder](https://github.com/elong0527/r4csr/tree/main/data-adam)
+within this project. Additionally, we converted these datasets from the
+`.xpt` format to the `.sas7bdat` format for ease of use and compatibility.
+The dataset structure adheres to the CDISC
+[Analysis Data Model (ADaM)](https://www.cdisc.org/standards/foundational/adam)
+standard.
+
 ## Tools
 
-In this part, we mainly use the R packages below to illustrate
-how to deliver TLFs in a CSR.
+To exemplify the generation of TLFs in RTF format, we rely on the functionality
+provided by two R packages:
 
-- [tidyverse](https://www.tidyverse.org/): prepare datasets ready for reporting.
-- [r2rtf](https://merck.github.io/r2rtf/): create RTF outputs
+- [tidyverse](https://www.tidyverse.org/): preparation of datasets in a format
+  suitable for reporting purposes. The tidyverse package offers a comprehensive
+  suite of tools and functions for data manipulation and transformation,
+  ensuring that the data is structured appropriately.
+- [r2rtf](https://merck.github.io/r2rtf/): creation RTF files.
+  The r2rtf package offers functions specifically designed for generating
+  RTF files, allowing us to produce TLFs in the desired format.
 
 ::: {.callout-note}
-There are other R packages to create TLFs in ASCII, RTF and Word format.
-For example, rtables, huxtable, pharmaRTF, gt, officer, flextable etc.
-Here we focus on r2rtf to illustrate the concept.
-Readers are encouraged to explore other R packages to find the proper tools to fit your purpose.
+There are indeed several other R packages available that can assist in
+creating TLFs in ASCII, RTF, and Word formats such as rtables, huxtable,
+pharmaRTF, gt, officer, and flextable. However, in this particular context,
+we will concentrate on demonstrating the concept using the r2rtf package.
+It is highly recommended for readers to explore and experiment with various
+R packages to identify the most suitable tools that align with their
+specific needs and objectives.
 :::
 
 ### tidyverse
 
-tidyverse is a collection of R packages to simplify the workflow to manipulate,
-visualize and analyze data in R.
-Those R packages share
+The tidyverse is a comprehensive collection of R packages that aim to
+simplify the workflow of manipulating, visualizing, and analyzing data in R.
+These packages adhere to the principles outlined in the
 [the tidy tools manifesto](https://tidyverse.tidyverse.org/articles/manifesto.html)
-and are easy to use for interactive data analysis.
+and offer user-friendly interfaces for interactive data analysis.
 
-Posit provided outstanding [cheatsheets](https://posit.co/resources/cheatsheets/)
-and [tutorials](https://github.com/rstudio-education/remaster-the-tidyverse) for tidyverse.
+The creators of the tidyverse, Posit, have provided exceptional
+[cheatsheets](https://posit.co/resources/cheatsheets/)
+and [tutorials](https://github.com/rstudio-education/remaster-the-tidyverse)
+that serve as valuable resources for learning and mastering the
+functionalities of these packages.
 
-There are also books to introduce tidyverse.
-We assume the reader have experience in using tidyverse in this book.
+Furthermore, there are several books available that serve as introductions
+to the tidyverse. For example:
 
 - [The tidyverse cookbook](https://rstudio-education.github.io/tidyverse-cookbook/)
 - [R for Data Science](https://r4ds.had.co.nz/)
 
+::: {.callout-note}
+In this book, we assume that the reader already has experience in using the
+tidyverse. This prior knowledge and familiarity with the tidyverse tools
+enable a more efficient and focused exploration of the concepts presented
+throughout the book.
+:::
+
 ### r2rtf
 
-r2rtf is an R package to create production-ready tables and figures in RTF format.
-This R package is designed to
+r2rtf is an R package specifically designed to create production-ready
+tables and figures in RTF format.
 
-- provide simple "verb" functions that correspond to each component of a table,
-  to help you translate a data frame to a table in an RTF file;
-- enable pipes (`%>%`);
-- focus on the **table format** only.
-  Data manipulation and analysis shall be handled by other R packages (e.g., tidyverse).
+- Provide simple "verb" functions that correspond to each component of a table,
+  to help you translate a data frame to a table in an RTF file.
+- Enable pipes (`|>`).
+- Focus on the **table format** only. Data manipulation and analysis tasks
+  can be handled by other R packages like the tidyverse.
 
-Before creating an RTF table, we need to
+Before generating an RTF table using r2rtf, there are a few steps to follow:
 
-- figure out the table layout;
-- split the layout into small tasks in the form of a computer program;
-- execute the program.
+- Determine the desired layout of the table.
+- Break down the layout into smaller tasks, which can be programmed.
+- Execute the program to generate the table.
 
 We provide a brief introduction of r2rtf and show how to transfer
 data frames into table, listing, and figures (TLFs).
 
-Other extended examples and features are covered on the
+We provide a concise introduction to r2rtf and demonstrate how to convert
+data frames into TLFs. For more comprehensive examples and additional features,
+we encourage readers to explore the
 [r2rtf package website](https://merck.github.io/r2rtf/articles/index.html).
 
-To explore the basic RTF generation verbs in r2rtf,
-we will use the dataset `r2rtf_adae` saved in the r2rtf package.
-This dataset contains adverse events (AEs) information from a clinical trial.
+To illustrate the basic usage of the r2rtf package, we will work with the
+"r2rtf_adae" dataset, available within the r2rtf package.
+This dataset contains information on adverse events (AEs) from a clinical trial,
+which will serve as a practical example for generating RTF tables using r2rtf.
 
-We will begin by loading the packages:
+To begin, let's load the required packages:
 
-```{r}
-library(dplyr) # Manipulate data
-library(tidyr) # Manipulate data
+```{r, message=FALSE}
+library(tidyverse) # Manipulate data
 library(r2rtf) # Reporting in RTF format
 ```
 
-Below is the meaning of relevant variables.
-More information can be found on the help page of the dataset (`?r2rtf_adae`)
+In this example, we will focus on three variables from the `r2rtf_adae` dataset:
 
-In this example, we consider three variables:
+- `USUBJID`: unique subject identifier.
+- `TRTA`: actual treatment group.
+- `AEDECOD`: dictionary-derived derm.
 
-- USUBJID: Unique Subject Identifier
-- TRTA: Actual Treatment
-- AEDECOD: Dictionary-Derived Term
+::: {.callout-note}
+Additional information about these variables can be found on the help page
+of the dataset, which can be accessed by using the command `?r2rtf_adae` in R.
+:::
 
 ```{r}
-r2rtf_adae %>%
-  select(USUBJID, TRTA, AEDECOD) %>%
+r2rtf_adae |>
+  select(USUBJID, TRTA, AEDECOD) |>
   head(4)
 ```
 
-dplyr and tidyr packages within tidyverse are used
-for data manipulation to create a data frame
-that contains all the information we want to add in an RTF table.
+To manipulate the data and create a data frame containing the necessary
+information for the RTF table, we can use the dplyr and tidyr packages
+within the tidyverse.
 
 ```{r}
 tbl <- r2rtf_adae %>%
@@ -165,10 +196,10 @@ tbl <- r2rtf_adae %>%
 tbl %>% head(4)
 ```
 
-Now we have a dataset `tbl` in preparing the final RTF table.
-
-r2rtf aims to provide one function for each type of table layout.
-Commonly used verbs include:
+Having prepared the dataset `tbl`, we can now proceed with constructing the
+final RTF table using the r2rtf package.
+The r2rtf package has various functions, each designed for a specific type
+of table layout. Some commonly used verbs include:
 
 - `rtf_page()`: RTF page information
 - `rtf_title()`: RTF title information
@@ -177,160 +208,162 @@ Commonly used verbs include:
 - `rtf_footnote()`: RTF footnote information
 - `rtf_source()`: RTF data source information
 
-All these verbs are designed to enable the usage of pipes (`%>%`).
-A full list of all functions can be found in the
-[r2rtf package function reference manual](https://merck.github.io/r2rtf/reference/index.html).
+Functions provided by the r2rtf package are designed to work seamlessly
+with the pipe operator (`|>`). This allows for a more concise and readable
+code structure, enhancing the efficiency of table creation in RTF format.
+A full list of functions in the r2rtf package can be found in the
+[package reference page](https://merck.github.io/r2rtf/reference/index.html).
 
-A minimal example below illustrates how to combine verbs using pipes to create an RTF table.
+Here is a minimal example that demonstrates how to combine functions using
+pipes to create an RTF table.
 
 - `rtf_body()` is used to define table body layout.
 - `rtf_encode()` transfers table layout information into RTF syntax.
-- `write_rtf()` save RTF encoding into a file with file extension `.rtf`
+- `write_rtf()` save RTF encoding into a file with file extension `.rtf`.
 
 ```{r}
-head(tbl) %>%
-  rtf_body() %>% # Step 1 Add table attributes
-  rtf_encode() %>% # Step 2 Convert attributes to RTF encode
-  write_rtf("tlf/intro-ae1.rtf") # Step 3 Write to a .rtf file
-```
-
-```{r, include=FALSE}
-rtf2pdf("tlf/intro-ae1.rtf")
+head(tbl) |>
+  rtf_body() |>
+  rtf_encode() |>
+  write_rtf("tlf/intro-ae1.rtf")
 ```
 
 ```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
+rtf2pdf("tlf/intro-ae1.rtf")
 knitr::include_graphics("tlf/intro-ae1.pdf")
 ```
 
-If we want to adjust the width of each column to
-provide more space to the first column,
-this can be achieved by updating the `col_rel_width` argument
+In the previous example, we may want to add more column space to the first
+column. We can achieve the goal by updating the `col_rel_width argument`
 in the `rtf_body()` function.
 
-In this example, the input of `col_rel_width` is a vector
-with the same length for the number of columns.
-This argument defines the relative width of each column
-within a pre-defined total column width.
+In the example below, the `col_rel_width` argument expects a vector with
+the same length as the number of columns in the table `tbl`.
+This vector defines the relative width of each column within a
+predetermined total column width.
+Here, the relative width is defined as `3:2:2:2` that allow us to
+allocate more space to specific columns.
 
-In this example, the defined relative width is `3:2:2:2`.
-Only the ratio of `col_rel_width` is used.
-Therefore it is equivalent to use `col_rel_width = c(6, 4, 4, 4)`
-or `col_rel_width = c(1.5, 1, 1, 1)`.
+::: {.callout-note}
+Only the ratio of the `col_rel_width` values is considered.
+Therefore, using `col_rel_width = c(6, 4, 4, 4)` or
+`col_rel_width = c(1.5, 1, 1, 1)` would yield equivalent results,
+as they maintain the same ratio.
+:::
 
 ```{r}
-head(tbl) %>%
-  rtf_body(col_rel_width = c(3, 2, 2, 2)) %>%
-  # define relative width
-  rtf_encode() %>%
+head(tbl) |>
+  rtf_body(col_rel_width = c(3, 2, 2, 2)) |>
+  rtf_encode() |>
   write_rtf("tlf/intro-ae2.rtf")
 ```
 
-```{r, include=FALSE}
-rtf2pdf("tlf/intro-ae2.rtf")
-```
-
 ```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
+rtf2pdf("tlf/intro-ae2.rtf")
 knitr::include_graphics("tlf/intro-ae2.pdf")
 ```
 
-In the previous example, we found the issue of a misaligned column header.
-We can fix the issue by using the `rtf_colheader()` function.
+In the previous example, we encountered a misalignment issue with the
+column header. To address this, we can use the `rtf_colheader()`
+function to adjust column header width and provide more informative
+column headers.
 
-In `rtf_colheader()`, the `colheader` argument is used to provide the content of the column header.
-We use `"|"` to separate the columns.
-
-In the example below, `"Adverse Events | Placebo | Xanomeline High Dose | Xanomeline Low Dose"`
-define a column header with 4 columns.
+Within the `rtf_colheader()` function, the `colheader` argument is used to
+specify the content of the column header.
+The columns are separated using the `|` symbol.
+In the following example, we define the column header as
+`"Adverse Events | Placebo | Xanomeline High Dose | Xanomeline Low Dose"`,
+representing the four columns in the table:
 
 ```{r}
-head(tbl) %>%
+head(tbl) |>
   rtf_colheader(
     colheader = "Adverse Events | Placebo | Xanomeline High Dose | Xanomeline Low Dose",
     col_rel_width = c(3, 2, 2, 2)
-  ) %>%
-  rtf_body(col_rel_width = c(3, 2, 2, 2)) %>%
+  ) |>
+  rtf_body(col_rel_width = c(3, 2, 2, 2)) |>
   rtf_encode() %>%
   write_rtf("tlf/intro-ae3.rtf")
 ```
 
-```{r, include=FALSE}
-rtf2pdf("tlf/intro-ae3.rtf")
-```
-
 ```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
+rtf2pdf("tlf/intro-ae3.rtf")
 knitr::include_graphics("tlf/intro-ae3.pdf")
 ```
 
-In `rtf_*()` functions such as `rtf_body()`, `rtf_footnote()`,
-the `text_justification` argument is used to align text.
-Default is `"c"` for center justification.
-To vary text justification by column, use character vector with length of vector equals to
-number of columns displayed (e.g., `c("c", "l", "r")`).
+In `rtf_body()` and `rtf_colheader()`, the `text_justification` argument is
+used to align text within the generated RTF table.
+The default value is `"c"`, representing center justification.
+However, you can customize the text justification by column using a character
+vector with a length equal to the number of displayed columns.
+Here is a table displaying the possible inputs for the `text_justification`
+argument:
 
-All possible inputs can be found in the table below.
-
-```{r}
-r2rtf:::justification()
+```{r, echo = FALSE}
+r2rtf:::justification() |>
+  select(1:2) |>
+  knitr::kable()
 ```
 
-Below is an example to make the first column left-aligned and center-aligned for the rest.
+Below is an example to make the first column left-aligned and the rest columns
+center-aligned.
 
 ```{r}
-head(tbl) %>%
-  rtf_body(text_justification = c("l", "c", "c", "c")) %>%
-  rtf_encode() %>%
+head(tbl) |>
+  rtf_body(text_justification = c("l", "c", "c", "c")) |>
+  rtf_encode() |>
   write_rtf("tlf/intro-ae5.rtf")
 ```
 
-```{r, include=FALSE}
-rtf2pdf("tlf/intro-ae5.rtf")
-```
-
 ```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
+rtf2pdf("tlf/intro-ae5.rtf")
 knitr::include_graphics("tlf/intro-ae5.pdf")
 ```
 
-In `rtf_*()` functions such as `rtf_body()`, `rtf_footnote()`, etc.,
-`border_left`, `border_right`, `border_top`, and `border_bottom` control cell borders.
-
+The `border_left`, `border_right`, `border_top`, and `border_bottom` arguments
+in the `rtf_body()` and `rtf_colheader()` functions are used to control the
+cell borders in the RTF table.
 If we want to remove the top border of `"Adverse Events"` in the header,
-we can change the default value `"single"` to `""` in the `border_top` argument, as shown below.
+we can change the default value `"single"` to `""` in the `border_top` argument.
+Below is an example to demonstrate the possibility of adding multiple column
+headers with proper border lines.
 
-r2rtf supports 26 different border types. The details can be found on
-the [r2rtf package website](https://merck.github.io/r2rtf/articles/rtf-row.html#border-type).
-
-In this example, we also demonstrate the possibility of adding multiple column headers.
+::: {.callout-note}
+ the r2rtf package supports 26 different border types, each offering unique
+ border styles. For more details and examples regarding these border types,
+ you can refer to the
+ [r2rtf package website](https://merck.github.io/r2rtf/articles/rtf-row.html#border-type).
+:::
 
 ```{r}
 head(tbl) %>%
   rtf_colheader(
     colheader = " | Treatment",
     col_rel_width = c(3, 6)
-  ) %>%
+  ) |>
   rtf_colheader(
     colheader = "Adverse Events | Placebo | Xanomeline High Dose | Xanomeline Low Dose",
     border_top = c("", "single", "single", "single"),
     col_rel_width = c(3, 2, 2, 2)
-  ) %>%
+  ) |>
   rtf_body(col_rel_width = c(3, 2, 2, 2)) %>%
-  rtf_encode() %>%
+  rtf_encode() |>
   write_rtf("tlf/intro-ae7.rtf")
 ```
 
-```{r, include=FALSE}
-rtf2pdf("tlf/intro-ae7.rtf")
-```
-
 ```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
+rtf2pdf("tlf/intro-ae7.rtf")
 knitr::include_graphics("tlf/intro-ae7.pdf")
 ```
 
-In the r2rtf R package [get started](https://merck.github.io/r2rtf/articles/r2rtf.html) page,
-there are more examples to illustrate how to customize
+The r2rtf R [package website](https://merck.github.io/r2rtf/articles/index.html)
+provides additional examples that demonstrate how to customize various aspects
+of the generated RTF tables. These examples cover topics such as customizing
+the title, subtitle, footnote, data source, and handling special characters
+within the table content.
 
-- title, subtitle
-- footnote, data source
-- special character
-- etc.
-
-Those features will be introduced when we first use them in the rest of the chapters.
+In the upcoming chapters of this book, we will introduce and explore these
+features as they become relevant to the specific use cases and scenarios
+discussed. By following along with the chapters, readers will gradually
+learn how to leverage these features to customize and enhance their RTF
+tables in real examples.
