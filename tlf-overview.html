@@ -330,12 +330,11 @@ gtag('config', 'G-MKYDL3PNW1', { 'anonymize_ip': true});
    
   <ul>
   <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background"><span class="header-section-number">1.1</span> Background</a></li>
-  <li><a href="#structure-and-content" id="toc-structure-and-content" class="nav-link" data-scroll-target="#structure-and-content"><span class="header-section-number">1.2</span> Structure and content</a></li>
-  <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets"><span class="header-section-number">1.3</span> Datasets</a></li>
-  <li><a href="#tools" id="toc-tools" class="nav-link" data-scroll-target="#tools"><span class="header-section-number">1.4</span> Tools</a>
+  <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets"><span class="header-section-number">1.2</span> Datasets</a></li>
+  <li><a href="#tools" id="toc-tools" class="nav-link" data-scroll-target="#tools"><span class="header-section-number">1.3</span> Tools</a>
   <ul class="collapse">
-  <li><a href="#tidyverse" id="toc-tidyverse" class="nav-link" data-scroll-target="#tidyverse"><span class="header-section-number">1.4.1</span> tidyverse</a></li>
-  <li><a href="#r2rtf" id="toc-r2rtf" class="nav-link" data-scroll-target="#r2rtf"><span class="header-section-number">1.4.2</span> r2rtf</a></li>
+  <li><a href="#tidyverse" id="toc-tidyverse" class="nav-link" data-scroll-target="#tidyverse"><span class="header-section-number">1.3.1</span> tidyverse</a></li>
+  <li><a href="#r2rtf" id="toc-r2rtf" class="nav-link" data-scroll-target="#r2rtf"><span class="header-section-number">1.3.2</span> r2rtf</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/elong0527/r4csr/edit/main/tlf-overview.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/elong0527/r4csr/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/elong0527/r4csr/blob/main/tlf-overview.qmd" class="toc-action">View source</a></p></div></div></nav>
@@ -362,11 +361,11 @@ gtag('config', 'G-MKYDL3PNW1', { 'anonymize_ip': true});
 
 <section id="background" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="background"><span class="header-section-number">1.1</span> Background</h2>
-<p>In clinical trials, a critical step is to submit trial results to regulatory agencies. <a href="https://en.wikipedia.org/wiki/Electronic_common_technical_document">Electronic Common Technical Document (eCTD)</a> has become a worldwide regulatory submission standard format. For example, the United States Food and Drug Administration (US FDA) requires new drug applications and biologics license applications <a href="https://www.fda.gov/drugs/electronic-regulatory-submission-and-review/electronic-common-technical-document-ectd">must be submitted using the eCTD format</a>. The Clinical Data Interchange Standards Consortium (CDISC) provides a <a href="https://github.com/cdisc-org/sdtm-adam-pilot-project">pilot project following ICH E3 guidance</a>.</p>
-<p>Within eCTD, clinical study reports (CSRs) are located at module 5. <a href="https://www.ich.org/page/efficacy-guidelines">ICH E3 guidance</a> provides a compilation of the structure and content of clinical study reports.</p>
-<p>A typical CSR contains full details on the methods and results of an individual clinical study. In support of the statistical analysis, a large number of tables, listings, and figures are incorporated into the main text and appendices. In the CDISC pilot project, an <a href="https://github.com/cdisc-org/sdtm-adam-pilot-project/blob/master/updated-pilot-submission-package/900172/m5/53-clin-stud-rep/535-rep-effic-safety-stud/5351-stud-rep-contr/cdiscpilot01/cdiscpilot01.pdf">example CSR</a> is also provided. If you are interested in more examples of clinical study reports, you can go to the <a href="https://clinicaldata.ema.europa.eu/web/cdp/home">European Medicines Agency (EMA) clinical data website</a>.</p>
-<p>Building CSRs is teamwork between clinicians, medical writers, statisticians, statistical programmers, and other relevant specialists such as experts on biomarkers. Here, we focus on the work and deliverables completed by statisticians and statistical programmers. In an organization, they commonly work together to define, develop, validate and deliver tables, listings, and figures (TLFs) required for a CSR to summarize the efficacy and/or safety of the pharmaceutical product. Microsoft Word is widely used to prepare CSR in the pharmaceutical industry. Therefore, <code>.rtf</code>, <code>.doc</code>, <code>.docx</code> are commonly used formats in their deliverables.</p>
-<p>In this chapter, our focus is to illustrate how to create tables, listings, and figures (TLFs) in RTF format that is commonly used in a CSR. The examples are in compliance with the <a href="https://www.fda.gov/media/76797/download">FDA’s Portable Document Format (PDF) Specifications</a>.</p>
+<p>Submitting clinical trial results to regulatory agencies is a crucial aspect of clinical development. The <a href="https://en.wikipedia.org/wiki/Electronic_common_technical_document">Electronic Common Technical Document (eCTD)</a> has emerged as the global standard format for regulatory submissions. For instance, the United States Food and Drug Administration (US FDA) <a href="(https://www.fda.gov/drugs/electronic-regulatory-submission-and-review/electronic-common-technical-document-ectd)">mandates the use of eCTD</a> for new drug applications and biologics license applications.</p>
+<p>A CSR provides comprehensive information about the methods and results of an individual clinical study. To support the statistical analysis, numerous tables, listings, and figures are included within the main text and appendices. As part of the CDISC pilot project, an <a href="https://github.com/cdisc-org/sdtm-adam-pilot-project/blob/master/updated-pilot-submission-package/900172/m5/53-clin-stud-rep/535-rep-effic-safety-stud/5351-stud-rep-contr/cdiscpilot01/cdiscpilot01.pdf">example CSR</a> is also available for reference. If you seek additional examples of CSR, you can visit the clinical data website of the <a href="https://clinicaldata.ema.europa.eu/web/cdp/home">European Medicines Agency (EMA) clinical data website</a>.</p>
+<p>The creation of CSR is a collaborative effort that involves various professionals such as clinicians, medical writers, statisticians, statistical programmers. In this context, we will focus on the specific deliverables provided by statisticians and statistical programmers.</p>
+<p>Within an organization, these professionals typically collaborate to define, develop, validate, and deliver the necessary tables, listings, and figures (TLFs) for a CSR. These TLFs serve to summarize the efficacy and/or safety of the pharmaceutical product under study. In the pharmaceutical industry, Microsoft Word is widely utilized for CSR preparation. As a result, the deliverables from statisticians and statistical programmers are commonly provided in formats such as <code>.rtf</code>, <code>.doc</code>, <code>.docx</code> to align with industry standards and requirements.</p>
+<p>Our focus is to demonstrate the process of generating TLFs in RTF format, which is commonly employed in CSRs. The examples provided in this chapter adhere to the <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3 guidance</a> and the <a href="https://www.fda.gov/media/76797/download">FDA’s PDF Specifications</a>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -377,14 +376,10 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>FDA’s PDF specification is a general reference. Each organization can define more specific TLF format requirements that can be different from the examples in this book.</p>
+<p>FDA’s PDF specification is a general reference. Each organization can define more specific TLF format requirements that can be different from the examples in this book. The FDA’s PDF specification serves as a general reference for formatting requirements. Each organization has the flexibility to define its own specific requirements for TLFs. These specific format requirements may differ from the examples provided in this book. It is advisable to consult and adhere to the guidelines and specifications set by your respective organization when preparing TLFs for submission.</p>
 </div>
 </div>
-</section>
-<section id="structure-and-content" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="structure-and-content"><span class="header-section-number">1.2</span> Structure and content</h2>
-<p>In the rest of this chapter, we are following the <a href="https://database.ich.org/sites/default/files/E3_Guideline.pdf">ICH E3 guidance</a> on the structure and content of clinical study reports.</p>
-<p>In a CSR, most of TLFs are located in</p>
+<p>By following the ICH E3 guidance, most of TLFs in a CSR are located at</p>
 <ul>
 <li>Section 10: Study participants</li>
 <li>Section 11: Efficacy evaluation</li>
@@ -393,18 +388,18 @@ Note
 <li>Section 16: Appendices</li>
 </ul>
 </section>
-<section id="datasets" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="datasets"><span class="header-section-number">1.3</span> Datasets</h2>
-<p>We used publicly available CDISC pilot <a href="https://github.com/cdisc-org/sdtm-adam-pilot-project/tree/master/updated-pilot-submission-package/900172/m5/datasets/cdiscpilot01/analysis/adam/datasets">study data located in the CDISC GitHub repository</a>.</p>
-<p>For simplicity, we have downloaded all these datasets into the <code>data-adam/</code> folder of this project and converted them from the <code>.xpt</code> format to the <code>.sas7bdat</code> format.</p>
+<section id="datasets" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="datasets"><span class="header-section-number">1.2</span> Datasets</h2>
 <p>The dataset structure follows <a href="https://www.cdisc.org/standards/foundational/adam">CDISC Analysis Data Model (ADaM)</a>.</p>
+<p>In this project, we used publicly available CDISC pilot study data, which is accessible through the <a href="https://github.com/cdisc-org/sdtm-adam-pilot-project/tree/master/updated-pilot-submission-package/900172/m5/datasets/cdiscpilot01/analysis/adam/datasets">CDISC GitHub repository</a>.</p>
+<p>To streamline the process, we have downloaded all the datasets from the repository and stored them in the <a href="https://github.com/elong0527/r4csr/tree/main/data-adam"><code>data-adam/</code> folder</a> within this project. Additionally, we converted these datasets from the <code>.xpt</code> format to the <code>.sas7bdat</code> format for ease of use and compatibility. The dataset structure adheres to the CDISC <a href="https://www.cdisc.org/standards/foundational/adam">Analysis Data Model (ADaM)</a> standard.</p>
 </section>
-<section id="tools" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="tools"><span class="header-section-number">1.4</span> Tools</h2>
-<p>In this part, we mainly use the R packages below to illustrate how to deliver TLFs in a CSR.</p>
+<section id="tools" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="tools"><span class="header-section-number">1.3</span> Tools</h2>
+<p>To exemplify the generation of TLFs in RTF format, we rely on the functionality provided by two R packages:</p>
 <ul>
-<li><a href="https://www.tidyverse.org/">tidyverse</a>: prepare datasets ready for reporting.</li>
-<li><a href="https://merck.github.io/r2rtf/">r2rtf</a>: create RTF outputs</li>
+<li><a href="https://www.tidyverse.org/">tidyverse</a>: preparation of datasets in a format suitable for reporting purposes. The tidyverse package offers a comprehensive suite of tools and functions for data manipulation and transformation, ensuring that the data is structured appropriately.</li>
+<li><a href="https://merck.github.io/r2rtf/">r2rtf</a>: creation RTF files. The r2rtf package offers functions specifically designed for generating RTF files, allowing us to produce TLFs in the desired format.</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -416,52 +411,76 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>There are other R packages to create TLFs in ASCII, RTF and Word format. For example, rtables, huxtable, pharmaRTF, gt, officer, flextable etc. Here we focus on r2rtf to illustrate the concept. Readers are encouraged to explore other R packages to find the proper tools to fit your purpose.</p>
+<p>There are indeed several other R packages available that can assist in creating TLFs in ASCII, RTF, and Word formats such as rtables, huxtable, pharmaRTF, gt, officer, and flextable. However, in this particular context, we will concentrate on demonstrating the concept using the r2rtf package. It is highly recommended for readers to explore and experiment with various R packages to identify the most suitable tools that align with their specific needs and objectives.</p>
 </div>
 </div>
-<section id="tidyverse" class="level3" data-number="1.4.1">
-<h3 data-number="1.4.1" class="anchored" data-anchor-id="tidyverse"><span class="header-section-number">1.4.1</span> tidyverse</h3>
-<p>tidyverse is a collection of R packages to simplify the workflow to manipulate, visualize and analyze data in R. Those R packages share <a href="https://tidyverse.tidyverse.org/articles/manifesto.html">the tidy tools manifesto</a> and are easy to use for interactive data analysis.</p>
-<p>Posit provided outstanding <a href="https://posit.co/resources/cheatsheets/">cheatsheets</a> and <a href="https://github.com/rstudio-education/remaster-the-tidyverse">tutorials</a> for tidyverse.</p>
-<p>There are also books to introduce tidyverse. We assume the reader have experience in using tidyverse in this book.</p>
+<section id="tidyverse" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="tidyverse"><span class="header-section-number">1.3.1</span> tidyverse</h3>
+<p>The tidyverse is a comprehensive collection of R packages that aim to simplify the workflow of manipulating, visualizing, and analyzing data in R. These packages adhere to the principles outlined in the <a href="https://tidyverse.tidyverse.org/articles/manifesto.html">the tidy tools manifesto</a> and offer user-friendly interfaces for interactive data analysis.</p>
+<p>The creators of the tidyverse, Posit, have provided exceptional <a href="https://posit.co/resources/cheatsheets/">cheatsheets</a> and <a href="https://github.com/rstudio-education/remaster-the-tidyverse">tutorials</a> that serve as valuable resources for learning and mastering the functionalities of these packages.</p>
+<p>Furthermore, there are several books available that serve as introductions to the tidyverse. For example:</p>
 <ul>
 <li><a href="https://rstudio-education.github.io/tidyverse-cookbook/">The tidyverse cookbook</a></li>
 <li><a href="https://r4ds.had.co.nz/">R for Data Science</a></li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In this book, we assume that the reader already has experience in using the tidyverse. This prior knowledge and familiarity with the tidyverse tools enable a more efficient and focused exploration of the concepts presented throughout the book.</p>
+</div>
+</div>
 </section>
-<section id="r2rtf" class="level3" data-number="1.4.2">
-<h3 data-number="1.4.2" class="anchored" data-anchor-id="r2rtf"><span class="header-section-number">1.4.2</span> r2rtf</h3>
-<p>r2rtf is an R package to create production-ready tables and figures in RTF format. This R package is designed to</p>
+<section id="r2rtf" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="r2rtf"><span class="header-section-number">1.3.2</span> r2rtf</h3>
+<p>r2rtf is an R package specifically designed to create production-ready tables and figures in RTF format.</p>
 <ul>
-<li>provide simple “verb” functions that correspond to each component of a table, to help you translate a data frame to a table in an RTF file;</li>
-<li>enable pipes (<code>%&gt;%</code>);</li>
-<li>focus on the <strong>table format</strong> only. Data manipulation and analysis shall be handled by other R packages (e.g., tidyverse).</li>
+<li>Provide simple “verb” functions that correspond to each component of a table, to help you translate a data frame to a table in an RTF file.</li>
+<li>Enable pipes (<code>|&gt;</code>).</li>
+<li>Focus on the <strong>table format</strong> only. Data manipulation and analysis tasks can be handled by other R packages like the tidyverse.</li>
 </ul>
-<p>Before creating an RTF table, we need to</p>
+<p>Before generating an RTF table using r2rtf, there are a few steps to follow:</p>
 <ul>
-<li>figure out the table layout;</li>
-<li>split the layout into small tasks in the form of a computer program;</li>
-<li>execute the program.</li>
+<li>Determine the desired layout of the table.</li>
+<li>Break down the layout into smaller tasks, which can be programmed.</li>
+<li>Execute the program to generate the table.</li>
 </ul>
 <p>We provide a brief introduction of r2rtf and show how to transfer data frames into table, listing, and figures (TLFs).</p>
-<p>Other extended examples and features are covered on the <a href="https://merck.github.io/r2rtf/articles/index.html">r2rtf package website</a>.</p>
-<p>To explore the basic RTF generation verbs in r2rtf, we will use the dataset <code>r2rtf_adae</code> saved in the r2rtf package. This dataset contains adverse events (AEs) information from a clinical trial.</p>
-<p>We will begin by loading the packages:</p>
+<p>We provide a concise introduction to r2rtf and demonstrate how to convert data frames into TLFs. For more comprehensive examples and additional features, we encourage readers to explore the <a href="https://merck.github.io/r2rtf/articles/index.html">r2rtf package website</a>.</p>
+<p>To illustrate the basic usage of the r2rtf package, we will work with the “r2rtf_adae” dataset, available within the r2rtf package. This dataset contains information on adverse events (AEs) from a clinical trial, which will serve as a practical example for generating RTF tables using r2rtf.</p>
+<p>To begin, let’s load the required packages:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># Manipulate data</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr) <span class="co"># Manipulate data</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(r2rtf) <span class="co"># Reporting in RTF format</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># Manipulate data</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(r2rtf) <span class="co"># Reporting in RTF format</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Below is the meaning of relevant variables. More information can be found on the help page of the dataset (<code>?r2rtf_adae</code>)</p>
-<p>In this example, we consider three variables:</p>
+<p>In this example, we will focus on three variables from the <code>r2rtf_adae</code> dataset:</p>
 <ul>
-<li>USUBJID: Unique Subject Identifier</li>
-<li>TRTA: Actual Treatment</li>
-<li>AEDECOD: Dictionary-Derived Term</li>
+<li><code>USUBJID</code>: unique subject identifier.</li>
+<li><code>TRTA</code>: actual treatment group.</li>
+<li><code>AEDECOD</code>: dictionary-derived derm.</li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Additional information about these variables can be found on the help page of the dataset, which can be accessed by using the command <code>?r2rtf_adae</code> in R.</p>
+</div>
+</div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>r2rtf_adae <span class="sc">%&gt;%</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(USUBJID, TRTA, AEDECOD) <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>r2rtf_adae <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(USUBJID, TRTA, AEDECOD) <span class="sc">|&gt;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">4</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       USUBJID    TRTA                   AEDECOD</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 01-701-1015 Placebo APPLICATION SITE ERYTHEMA</span></span>
@@ -469,7 +488,7 @@ Note
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 01-701-1015 Placebo                 DIARRHOEA</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 01-701-1023 Placebo                  ERYTHEMA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>dplyr and tidyr packages within tidyverse are used for data manipulation to create a data frame that contains all the information we want to add in an RTF table.</p>
+<p>To manipulate the data and create a data frame containing the necessary information for the RTF table, we can use the dplyr and tidyr packages within the tidyverse.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> r2rtf_adae <span class="sc">%&gt;%</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(TRTA, AEDECOD) <span class="sc">%&gt;%</span></span>
@@ -484,8 +503,7 @@ Note
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 ALOPECIA             1                      0                     0</span></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 ANXIETY              2                      0                     4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now we have a dataset <code>tbl</code> in preparing the final RTF table.</p>
-<p>r2rtf aims to provide one function for each type of table layout. Commonly used verbs include:</p>
+<p>Having prepared the dataset <code>tbl</code>, we can now proceed with constructing the final RTF table using the r2rtf package. The r2rtf package has various functions, each designed for a specific type of table layout. Some commonly used verbs include:</p>
 <ul>
 <li><code>rtf_page()</code>: RTF page information</li>
 <li><code>rtf_title()</code>: RTF title information</li>
@@ -494,18 +512,18 @@ Note
 <li><code>rtf_footnote()</code>: RTF footnote information</li>
 <li><code>rtf_source()</code>: RTF data source information</li>
 </ul>
-<p>All these verbs are designed to enable the usage of pipes (<code>%&gt;%</code>). A full list of all functions can be found in the <a href="https://merck.github.io/r2rtf/reference/index.html">r2rtf package function reference manual</a>.</p>
-<p>A minimal example below illustrates how to combine verbs using pipes to create an RTF table.</p>
+<p>Functions provided by the r2rtf package are designed to work seamlessly with the pipe operator (<code>|&gt;</code>). This allows for a more concise and readable code structure, enhancing the efficiency of table creation in RTF format. A full list of functions in the r2rtf package can be found in the <a href="https://merck.github.io/r2rtf/reference/index.html">package reference page</a>.</p>
+<p>Here is a minimal example that demonstrates how to combine functions using pipes to create an RTF table.</p>
 <ul>
 <li><code>rtf_body()</code> is used to define table body layout.</li>
 <li><code>rtf_encode()</code> transfers table layout information into RTF syntax.</li>
-<li><code>write_rtf()</code> save RTF encoding into a file with file extension <code>.rtf</code></li>
+<li><code>write_rtf()</code> save RTF encoding into a file with file extension <code>.rtf</code>.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tbl) <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rtf_body</span>() <span class="sc">%&gt;%</span> <span class="co"># Step 1 Add table attributes</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rtf_encode</span>() <span class="sc">%&gt;%</span> <span class="co"># Step 2 Convert attributes to RTF encode</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_rtf</span>(<span class="st">"tlf/intro-ae1.rtf"</span>) <span class="co"># Step 3 Write to a .rtf file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tbl) <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rtf_body</span>() <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rtf_encode</span>() <span class="sc">|&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_rtf</span>(<span class="st">"tlf/intro-ae1.rtf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -516,15 +534,26 @@ Note
 </div>
 </div>
 </div>
-<p>If we want to adjust the width of each column to provide more space to the first column, this can be achieved by updating the <code>col_rel_width</code> argument in the <code>rtf_body()</code> function.</p>
-<p>In this example, the input of <code>col_rel_width</code> is a vector with the same length for the number of columns. This argument defines the relative width of each column within a pre-defined total column width.</p>
-<p>In this example, the defined relative width is <code>3:2:2:2</code>. Only the ratio of <code>col_rel_width</code> is used. Therefore it is equivalent to use <code>col_rel_width = c(6, 4, 4, 4)</code> or <code>col_rel_width = c(1.5, 1, 1, 1)</code>.</p>
+<p>In the previous example, we may want to add more column space to the first column. We can achieve the goal by updating the <code>col_rel_width argument</code> in the <code>rtf_body()</code> function.</p>
+<p>In the example below, the <code>col_rel_width</code> argument expects a vector with the same length as the number of columns in the table <code>tbl</code>. This vector defines the relative width of each column within a predetermined total column width. Here, the relative width is defined as <code>3:2:2:2</code> that allow us to allocate more space to specific columns.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Only the ratio of the <code>col_rel_width</code> values is considered. Therefore, using <code>col_rel_width = c(6, 4, 4, 4)</code> or <code>col_rel_width = c(1.5, 1, 1, 1)</code> would yield equivalent results, as they maintain the same ratio.</p>
+</div>
+</div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tbl) <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rtf_body</span>(<span class="at">col_rel_width =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># define relative width</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rtf_encode</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_rtf</span>(<span class="st">"tlf/intro-ae2.rtf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tbl) <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rtf_body</span>(<span class="at">col_rel_width =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rtf_encode</span>() <span class="sc">|&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_rtf</span>(<span class="st">"tlf/intro-ae2.rtf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -535,16 +564,15 @@ Note
 </div>
 </div>
 </div>
-<p>In the previous example, we found the issue of a misaligned column header. We can fix the issue by using the <code>rtf_colheader()</code> function.</p>
-<p>In <code>rtf_colheader()</code>, the <code>colheader</code> argument is used to provide the content of the column header. We use <code>"|"</code> to separate the columns.</p>
-<p>In the example below, <code>"Adverse Events | Placebo | Xanomeline High Dose | Xanomeline Low Dose"</code> define a column header with 4 columns.</p>
+<p>In the previous example, we encountered a misalignment issue with the column header. To address this, we can use the <code>rtf_colheader()</code> function to adjust column header width and provide more informative column headers.</p>
+<p>Within the <code>rtf_colheader()</code> function, the <code>colheader</code> argument is used to specify the content of the column header. The columns are separated using the <code>|</code> symbol. In the following example, we define the column header as <code>"Adverse Events | Placebo | Xanomeline High Dose | Xanomeline Low Dose"</code>, representing the four columns in the table:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tbl) <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tbl) <span class="sc">|&gt;</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rtf_colheader</span>(</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">colheader =</span> <span class="st">"Adverse Events | Placebo | Xanomeline High Dose | Xanomeline Low Dose"</span>,</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">col_rel_width =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rtf_body</span>(<span class="at">col_rel_width =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rtf_body</span>(<span class="at">col_rel_width =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rtf_encode</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_rtf</span>(<span class="st">"tlf/intro-ae3.rtf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -557,23 +585,47 @@ Note
 </div>
 </div>
 </div>
-<p>In <code>rtf_*()</code> functions such as <code>rtf_body()</code>, <code>rtf_footnote()</code>, the <code>text_justification</code> argument is used to align text. Default is <code>"c"</code> for center justification. To vary text justification by column, use character vector with length of vector equals to number of columns displayed (e.g., <code>c("c", "l", "r")</code>).</p>
-<p>All possible inputs can be found in the table below.</p>
+<p>In <code>rtf_body()</code> and <code>rtf_colheader()</code>, the <code>text_justification</code> argument is used to align text within the generated RTF table. The default value is <code>"c"</code>, representing center justification. However, you can customize the text justification by column using a character vector with a length equal to the number of displayed columns. Here is a table displaying the possible inputs for the <code>text_justification</code> argument:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>r2rtf<span class="sc">:::</span><span class="fu">justification</span>()</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   type      name rtf_code_text rtf_code_row</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    l      left          \\ql       \\trql</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    c    center          \\qc       \\trqc</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    r     right          \\qr       \\trqr</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    d   decimal          \\qj             </span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    j justified          \\qj</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">type</th>
+<th style="text-align: left;">name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">l</td>
+<td style="text-align: left;">left</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">center</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">right</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">decimal</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">j</td>
+<td style="text-align: left;">justified</td>
+</tr>
+</tbody>
+</table>
 </div>
-<p>Below is an example to make the first column left-aligned and center-aligned for the rest.</p>
+</div>
+<p>Below is an example to make the first column left-aligned and the rest columns center-aligned.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tbl) <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rtf_body</span>(<span class="at">text_justification =</span> <span class="fu">c</span>(<span class="st">"l"</span>, <span class="st">"c"</span>, <span class="st">"c"</span>, <span class="st">"c"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rtf_encode</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_rtf</span>(<span class="st">"tlf/intro-ae5.rtf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tbl) <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rtf_body</span>(<span class="at">text_justification =</span> <span class="fu">c</span>(<span class="st">"l"</span>, <span class="st">"c"</span>, <span class="st">"c"</span>, <span class="st">"c"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rtf_encode</span>() <span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_rtf</span>(<span class="st">"tlf/intro-ae5.rtf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -584,24 +636,34 @@ Note
 </div>
 </div>
 </div>
-<p>In <code>rtf_*()</code> functions such as <code>rtf_body()</code>, <code>rtf_footnote()</code>, etc., <code>border_left</code>, <code>border_right</code>, <code>border_top</code>, and <code>border_bottom</code> control cell borders.</p>
-<p>If we want to remove the top border of <code>"Adverse Events"</code> in the header, we can change the default value <code>"single"</code> to <code>""</code> in the <code>border_top</code> argument, as shown below.</p>
-<p>r2rtf supports 26 different border types. The details can be found on the <a href="https://merck.github.io/r2rtf/articles/rtf-row.html#border-type">r2rtf package website</a>.</p>
-<p>In this example, we also demonstrate the possibility of adding multiple column headers.</p>
+<p>The <code>border_left</code>, <code>border_right</code>, <code>border_top</code>, and <code>border_bottom</code> arguments in the <code>rtf_body()</code> and <code>rtf_colheader()</code> functions are used to control the cell borders in the RTF table. If we want to remove the top border of <code>"Adverse Events"</code> in the header, we can change the default value <code>"single"</code> to <code>""</code> in the <code>border_top</code> argument. Below is an example to demonstrate the possibility of adding multiple column headers with proper border lines.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>the r2rtf package supports 26 different border types, each offering unique border styles. For more details and examples regarding these border types, you can refer to the <a href="https://merck.github.io/r2rtf/articles/rtf-row.html#border-type">r2rtf package website</a>.</p>
+</div>
+</div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tbl) <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rtf_colheader</span>(</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">colheader =</span> <span class="st">" | Treatment"</span>,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">col_rel_width =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rtf_colheader</span>(</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">colheader =</span> <span class="st">"Adverse Events | Placebo | Xanomeline High Dose | Xanomeline Low Dose"</span>,</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">border_top =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"single"</span>, <span class="st">"single"</span>, <span class="st">"single"</span>),</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">col_rel_width =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rtf_body</span>(<span class="at">col_rel_width =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rtf_encode</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_rtf</span>(<span class="st">"tlf/intro-ae7.rtf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tbl) <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rtf_colheader</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">colheader =</span> <span class="st">" | Treatment"</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">col_rel_width =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rtf_colheader</span>(</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">colheader =</span> <span class="st">"Adverse Events | Placebo | Xanomeline High Dose | Xanomeline Low Dose"</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">border_top =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"single"</span>, <span class="st">"single"</span>, <span class="st">"single"</span>),</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">col_rel_width =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rtf_body</span>(<span class="at">col_rel_width =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rtf_encode</span>() <span class="sc">|&gt;</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_rtf</span>(<span class="st">"tlf/intro-ae7.rtf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -612,14 +674,8 @@ Note
 </div>
 </div>
 </div>
-<p>In the r2rtf R package <a href="https://merck.github.io/r2rtf/articles/r2rtf.html">get started</a> page, there are more examples to illustrate how to customize</p>
-<ul>
-<li>title, subtitle</li>
-<li>footnote, data source</li>
-<li>special character</li>
-<li>etc.</li>
-</ul>
-<p>Those features will be introduced when we first use them in the rest of the chapters.</p>
+<p>The r2rtf R <a href="https://merck.github.io/r2rtf/articles/index.html">package website</a> provides additional examples that demonstrate how to customize various aspects of the generated RTF tables. These examples cover topics such as customizing the title, subtitle, footnote, data source, and handling special characters within the table content.</p>
+<p>In the upcoming chapters of this book, we will introduce and explore these features as they become relevant to the specific use cases and scenarios discussed. By following along with the chapters, readers will gradually learn how to leverage these features to customize and enhance their RTF tables in real examples.</p>
 
 
 </section>
