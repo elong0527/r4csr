@@ -7,20 +7,20 @@ Clinical study reports (CSR) are crucial components in clinical trial developmen
 A CSR is an "integrated" full scientific report of an individual clinical trials.
 
 The [ICH E3: Structure and Content of Clinical Study Reports](https://database.ich.org/sites/default/files/E3_Guideline.pdf)
-provides robust guidance to sponsors for developing a CSR.
-This book demystifies the complexity by guiding you on how to use R for
-streamlining the preparation of CSRs. Moreover, it walks you through the
-process of preparing the submission to regulatory agencies. Regardless of your
-expertise level in R programming, this book serves as an essential resource
-in your statistical programming toolkit, enhancing efficiency and accuracy
-in clinical trials reporting.
+offer comprehensive instructions to sponsors on the creation of a CSR.
+This book is a clear and straightforward guide on using R to streamline the process of preparing CSRs. Additionally, it provides detailed guidance on the submission process to regulatory agencies. Whether you are a beginner or an experienced R programmer, this book is an indispensable asset in your clinical reporting arsenal.
 
 **This is a work-in-progress draft.**
 
 ## Events {.unnumbered}
 
 ```{r, echo=FALSE}
-knitr::kable(read.table("events.tsv", stringsAsFactors = FALSE, header = TRUE, sep = "\t"))
+knitr::kable(
+  read.table("events.tsv", 
+             stringsAsFactors = FALSE, 
+             header = TRUE, 
+             sep = "\t")
+  )
 ```
 
 ## License {.unnumbered}
