@@ -20,13 +20,13 @@ There are many R packages that can efficiently summarize baseline information.
 The [table1](https://github.com/benjaminrich/table1) R package is one of them.
 
 ```{r}
-library(haven)
-library(dplyr)
-library(tidyr)
-library(stringr)
-library(tools)
-library(table1)
-library(r2rtf)
+library(haven)   # Read SAS data
+library(dplyr)   # Manipulate data
+library(tidyr)   # Manipulate data
+library(stringr) # Manipulate string
+library(tools)   # Manipulate string
+library(table1)  # Baseline characteristics table
+library(r2rtf)   # Reporting in RTF format
 ```
 
 ## Input data 
