@@ -40,7 +40,7 @@ we can use the `read_sas` function in haven package.
 adsl <- read_sas("data-adam/adsl.sas7bdat")
 ```
 
-To prepare a simplified disposition of participants table using the `adsl` dataset, the following variables are utilized:
+To prepare a simplified disposition of participants table using the `adsl` dataset, the following variables are used:
 
 - `USUBJID`: unique subject identifier
 - `TRT01P`: planned treatment
@@ -160,7 +160,7 @@ tbl_disp
 
 ## Reporting 
 
-By using `tbl_disp` as input, we create generate the disposition table using following code.
+By using `tbl_disp` as input, we can generate the disposition table using following code.
 The `r2rtf` elements that were not covered in the previous sections are highlighted.
 Here, the `rtf_title` function is utilized to define the title of the table. 
 For the `title` argument, 

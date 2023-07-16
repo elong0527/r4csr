@@ -16,23 +16,23 @@ library(tidyr) # Manipulate data
 library(r2rtf) # Reporting in RTF format
 ```
 
-In this chapter, we illustrate how to create a summary table for
-the analysis population for a study.
+This chapter provides a step-by-step guide on creating a simple table for
+the analysis population of a study in RTF format.
+The expected output of the table is as follows:
 
 ```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tbl_pop.pdf")
 ```
 
-The first step is to read relevant datasets into R. For the analysis
-population table, all the required information is saved in the ADSL
-dataset. We can use the `haven` package to read the dataset.
+## Input data 
+
+The initial step involves reading the ADSL datasets into R. 
 
 ```{r}
 adsl <- read_sas("data-adam/adsl.sas7bdat")
 ```
 
-We illustrate how to prepare a report data for a simplified analysis
-population table using variables below:
+the following variables are utilized:
 
 - USUBJID: unique subject identifier
 - ITTFL: intent-to-treat population flag
@@ -47,24 +47,31 @@ adsl %>%
 
 ## Helper functions
 
-Before we write the analysis code, let's discuss the possibility of reusing R
-code by writing helper functions.
+Before we writing the analysis code, 
+let's explore the possibility of maximizing 
+code reuse in R by creating helper functions.
 
-As discussed in [R for data
+::: {.callout-note}
+As emphasized in the book [R for data
 science](https://r4ds.had.co.nz/functions.html#when-should-you-write-a-function),
 "You should consider writing a function whenever you've copied and
 pasted a block of code more than twice".
+:::
 
-In @sec-disposition, there are a few repeating steps to:
+In @sec-disposition, there are a few repetitive steps involved:
 
-- Format the percentages using the `formatC()` function.
-- Calculate the numbers and percentages by treatment arm.
+- Formatting the percentages using the `formatC()` function.
+- Calculating  the numbers and percentages by treatment arm.
 
 We create two ad-hoc functions and use them to create the
 tables in the rest of this book.
 
-To format numbers and percentages, we create a function called
-`fmt_num()`. It is a very simple function wrapping `formatC()`.
+To address this, we introduce two ad-hoc functions that 
+will assist us in creating tables throughout the remainder of this book.
+
+The first function, named `fmt_num()`, is a straightforward implementation that 
+wraps `formatC()` to format numbers and percentages.
+
 
 ```{r}
 fmt_num <- function(x, digits, width = digits + 4) {
@@ -77,11 +84,11 @@ fmt_num <- function(x, digits, width = digits + 4) {
 }
 ```
 
-The main reason to create the `fmt_num()` function is to enhance the
-readability of the analysis code.
+One purpose of creating the `fmt_num()` function 
+is to improve the readability of the analysis code.
 
-For example, we can compare the two versions of code to format the
-percentage used in @sec-disposition and `fmt_num()`.
+To illustrate this, let's compare two versions of code for formatting percentages: 
+the one used in @sec-disposition and the alternative approach using fmt_num().
 
 ```{r, eval = FALSE}
 formatC(n / n() * 100,
@@ -97,10 +104,17 @@ To calculate the numbers and percentages of participants by groups, we
 provide a simple (but not robust) wrapper function, `count_by()`, using
 the dplyr and tidyr package.
 
-The function can be enhanced in multiple ways, but here we only focus on
-simplicity and readability. More details about writing R functions can
-be found in the [STAT 545
+To compute the numbers and percentages of participants in different groups,
+we offer a straightforward (albeit not robust) 
+wrapper function called `count_by()`. 
+This function depends on the dplyr and tidyr packages.
+
+::: {.callout-note}
+While there are several ways to improve the function, 
+our current focus is on enhancing simplicity and readability. 
+A good tutorial can be found from the  [STAT 545
 course](https://stat545.com/functions-part1.html).
+:::
 
 ```{r}
 count_by <- function(data, # Input data set
@@ -130,18 +144,20 @@ count_by <- function(data, # Input data set
 }
 ```
 
-By using the `count_by()` function, we can simplify the analysis code as
-below.
+The `count_by()` function help us simplify the analysis code:
 
 ```{r}
 count_by(adsl, "TRT01PN", "EFFFL") %>%
   select(-ends_with(c("_54", "_81")))
 ```
 
-## Analysis code
+## Output data 
 
-With the helper function `count_by`, we can easily prepare a report
-dataset as
+The objective of this section is to create a dataset suitable for generating the expected report. 
+This process will consist of several steps to generate each component of the reporting dataset.
+
+With the aid of the helper function `count_by()`, 
+preparing a report dataset becomes a straightforward task.
 
 ```{r}
 # Derive a randomization flag
@@ -169,10 +185,6 @@ pop1 <- bind_rows(
   select(var_label, starts_with("npct_"))
 ```
 
-Now we combine individual rows into one table for reporting
-purpose. `tbl_pop` is used as input for r2rtf to create the final
-report.
-
 ```{r}
 names(pop) <- gsub("n_", "npct_", names(pop))
 tbl_pop <- bind_rows(pop, pop1)
@@ -180,7 +192,9 @@ tbl_pop <- bind_rows(pop, pop1)
 tbl_pop %>% select(var_label, npct_0)
 ```
 
-We define the format of the output using code below.
+## Reporting 
+
+By using `tbl_pop` as input, we can generate the analysis population table using following code.
 
 ```{r}
 rel_width <- c(2, rep(1, 3))
@@ -218,12 +232,3 @@ rtf2pdf("tlf/tbl_pop.rtf")
 ```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tbl_pop.pdf")
 ```
-
-The procedure to generate an analysis population table can be summarized
-as follows:
-
-- Step 1: Read data (i.e., `adsl`) into R.
-- Step 2: Bind the counts/percentages of the ITT population, the
-  efficacy population, and the safety population by row using the
-  `count_by()` function.
-- Step 3: Format the output from Step 2 using r2rtf.
