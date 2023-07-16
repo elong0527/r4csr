@@ -8,8 +8,9 @@ Following [ICH E3 guidance](https://database.ich.org/sites/default/files/E3_Guid
 we need to summarize critical demographic and baseline characteristics of the participants
 in Section 11.2, Demographic and Other Baseline Characteristics.
 
-In this chapter, we illustrate how to create a simplified
-baseline characteristics table for a study.
+This chapter provides a step-by-step guide on creating a simple 
+baseline characteristics table in RTF format.
+The expected output of the table is as follows:
 
 ```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tlf_base.pdf")
@@ -19,28 +20,32 @@ There are many R packages that can efficiently summarize baseline information.
 The [table1](https://github.com/benjaminrich/table1) R package is one of them.
 
 ```{r}
-library(table1)
-library(r2rtf)
 library(haven)
 library(dplyr)
 library(tidyr)
 library(stringr)
 library(tools)
+library(table1)
+library(r2rtf)
 ```
 
-As in previous chapters, we first read the `adsl` dataset that contains all
-the required information for the baseline characteristics table.
+## Input data 
+
+We begin by reading the `adsl` dataset, 
+which comprises all the necessary information for generating the baseline characteristics table.
 
 ```{r}
 adsl <- read_sas("data-adam/adsl.sas7bdat")
 ```
 
-For simplicity, we only analyze `SEX`, `AGE` and, `RACE` in this example
-using the table1 R package. More details of the table1 R package can
+For simplicity, we only analyze `SEX`, `AGE` and, `RACE` in this example.
+
+## Output data 
+
+The table1 R package directly creates an HTML report for the baseline characteristic table.
+More details of the table1 R package can
 be found in the package
 [vignettes](https://benjaminrich.github.io/table1/vignettes/table1-examples.html).
-
-The table1 R package directly creates an HTML report.
 
 ```{r}
 ana <- adsl %>%
@@ -53,10 +58,8 @@ tbl <- table1(~ SEX + AGE + RACE | TRT01P, data = ana)
 tbl
 ```
 
-The code below transfer the output into a dataframe
-that only contains ASCII characters
-recommended by regulatory agencies.
-`tbl_base` is used as input for r2rtf to create the final report.
+let's transfer the output into a dataframe that 
+exclusively consists of ASCII characters, as recommended by regulatory agencies. 
 
 ```{r}
 tbl_base <- tbl %>%
@@ -72,13 +75,13 @@ names(tbl_base) <- str_replace_all(names(tbl_base), intToUtf8(160), " ")
 tbl_base
 ```
 
-We define the format of the output. We highlight items that
-are not discussed in previous discussion.
+## Reporting 
 
-`text_indent_first` and `text_indent_left` are used to control the indent
-space of text. They are helpful when you need to control the white space
-of a long phrase, "AMERICAN INDIAN OR ALASKA NATIVE"
-in the table provides an example.
+By using `tbl_base` as the input, we can generate the baseline characteristics table.
+
+In the code below, `text_indent_first` and `text_indent_left`
+are used to control the indentation space of the text. 
+These parameters come in handy when you need to manage the whitespace within a lengthy phrase.
 
 ```{r}
 colheader1 <- paste(names(tbl_base), collapse = "|")
@@ -114,10 +117,3 @@ rtf2pdf("tlf/tlf_base.rtf")
 ```{r, out.width = "100%", out.height = if (knitr::is_html_output()) "400px", echo = FALSE, fig.align = "center"}
 knitr::include_graphics("tlf/tlf_base.pdf")
 ```
-
-In conclusion, the procedure to generate demographic and baseline characteristics table is summarized as follows:
-
-- Step 1: Read the data set.
-- Step 2: Use `table1::table1()` to get the baseline characteristics table.
-- Step 3: Transfer the output from Step 2 into a data frame that only contains ASCII characters.
-- Step 4: Define the format of the RTF table by using the R package r2rtf.
