@@ -11,7 +11,7 @@ of clinical development.
 The [Electronic Common Technical Document (eCTD)](https://en.wikipedia.org/wiki/Electronic_common_technical_document)
 has emerged as the global standard format for regulatory submissions.
 For instance, the United States Food and Drug Administration (US FDA)
-[mandates the use of eCTD]((https://www.fda.gov/drugs/electronic-regulatory-submission-and-review/electronic-common-technical-document-ectd))
+[mandates the use of eCTD](https://www.fda.gov/drugs/electronic-regulatory-submission-and-review/electronic-common-technical-document-ectd)
 for new drug applications and biologics license applications.
 
 A CSR provides comprehensive information about the methods and results of an
