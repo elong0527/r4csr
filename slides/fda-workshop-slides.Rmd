@@ -194,7 +194,7 @@ As an organization, we need to ensure compliance and reduce the risk of using R 
 
 - R is widely used in visualization
   - [metalite.table1](https://elong0527.github.io/metalite.table1/articles/metalite-table1.html): Interactive demographic table.
-  - [forestly](https://elong0527.github.io/forestly/articles/forestly.html): Interactive forest plot for DMC safety monitoring in clinical trials
+  - [forestly](https://merck.github.io/forestly/articles/forestly.html): Interactive forest plot for DMC safety monitoring in clinical trials
 
 ## Philosophy
 
