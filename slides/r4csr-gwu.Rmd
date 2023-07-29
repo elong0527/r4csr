@@ -59,7 +59,7 @@ As an organization, we need to ensure compliance and reduce the risk of using R 
 
 - R is widely used in visualization
   - [SafetyGraphics](https://github.com/SafetyGraphics/safetyGraphics)
-  - [forestly](https://elong0527.github.io/forestly/articles/forestly.html): [Interactive forest plot for DMC safety monitoring in clinical trials](https://rinpharma.com/publication/rinpharma_206/)
+  - [forestly](https://merck.github.io/forestly/articles/forestly.html): [Interactive forest plot for DMC safety monitoring in clinical trials](https://rinpharma.com/publication/rinpharma_206/)
 
 ## Background
 
@@ -144,7 +144,7 @@ sponsor shall enhance reproducibility.
 - Fixed R version: e.g., R 4.1.0
 - Fixed R package snapshot date: e.g., 2021-08-31
   - [Posit Package Manager](https://packagemanager.posit.co/)
-  - [CRAN Time Machine by MRAN](https://mran.microsoft.com/timemachine)
+  - CRAN Time Machine by MRAN
 - Flexibility of input and output path:
   - Define path as parameter.
 - eCTD deliverables dry-run in Windows environment
