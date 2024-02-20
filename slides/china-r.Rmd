@@ -232,7 +232,7 @@ More details: <https://r4csr.org/project-management.html>
   - Presentations: <https://www.pharmar.org/present/>
 
 - R-based submission pilots to FDA:
-  - <https://rconsortium.github.io/r-submission-site/>
+  - <https://rconsortium.github.io/submissions-wg/>
   - Focus on improving practices of R-based clinical trial regulatory submission.
 
 - R/Pharma: <https://rinpharma.com/>
