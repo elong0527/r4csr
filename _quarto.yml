@@ -78,3 +78,7 @@ format:
     theme: [cosmo, custom.scss]
   pdf:
     documentclass: scrbook
+    # Fixes 'Undefined control sequence \cellcolor' error
+    include-in-header:
+      - text: |
+          \usepackage[table]{xcolor}
