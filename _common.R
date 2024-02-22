@@ -16,8 +16,15 @@ rtf2pdf <- function(input) {
 
 # Customize data frame and tibble printing methods.
 # See <https://github.com/elong0527/r4csr/issues/115> for details.
+more_rows <- function(x, n) if (nrow(x) <= n) NULL else paste0("# ℹ ", nrow(x) - n, " more rows")
 knit_print.data.frame <- function(x, ...) {
-  paste(capture.output(base::print.data.frame(head(x, 4))), collapse = "\n")
+  paste(
+    c(
+      capture.output(base::print.data.frame(head(x, 4))),
+      more_rows(x, 4)
+    ),
+    collapse = "\n"
+  )
 }
 
 registerS3method(
