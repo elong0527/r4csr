@@ -43,9 +43,7 @@ The following variables are used in the preparation of a simplified disposition 
 - DCREASCD: discontinued from study reason coded
 
 ```{r}
-adsl %>%
-  select(USUBJID, TRT01P, TRT01PN, DISCONFL, DCREASCD) %>%
-  head(4)
+adsl %>% select(USUBJID, TRT01P, TRT01PN, DISCONFL, DCREASCD)
 ```
 
 In the code below, we calculate the number of participants in the analysis population by treatment arms.

@@ -40,9 +40,7 @@ population table using variables below:
 - SAFFL: safety population flag
 
 ```{r}
-adsl %>%
-  select(USUBJID, ITTFL, EFFFL, SAFFL) %>%
-  head(4)
+adsl %>% select(USUBJID, ITTFL, EFFFL, SAFFL)
 ```
 
 ## Helper functions

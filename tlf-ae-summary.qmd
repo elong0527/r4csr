@@ -58,7 +58,7 @@ tidy_ae <- adae %>%
   select(USUBJID, TRTAN, all, drug, ser, drug_ser, die) %>%
   pivot_longer(cols = c(all, drug, ser, drug_ser, die))
 
-tidy_ae %>% head(4)
+tidy_ae
 ```
 
 We summarize the number and percentage of participants who meet each AE criteria.
@@ -86,7 +86,7 @@ ana <- tidy_ae %>%
     pct = paste0("(", pct, ")")
   )
 
-ana %>% head(4)
+ana
 ```
 
 We prepare reporting-ready dataset for each AE group.
