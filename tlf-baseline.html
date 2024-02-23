@@ -508,19 +508,13 @@ gtag('config', 'G-MKYDL3PNW1', { 'anonymize_ip': true});
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(tbl_base) <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(<span class="fu">names</span>(tbl_base), <span class="fu">intToUtf8</span>(<span class="dv">160</span>), <span class="st">" "</span>)</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>tbl_base</span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 11 × 5</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    ` `              Placebo `Xanomeline High Dose` `Xanomeline Low Dose` Overall</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;            &lt;chr&gt;   &lt;chr&gt;                  &lt;chr&gt;                 &lt;chr&gt;  </span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 ""               "(N=86… "(N=84)"               "(N=84)"              "(N=25…</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 "SEX"            ""      ""                     ""                    ""     </span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 "  Female"       "53 (6… "40 (47.6%)"           "50 (59.5%)"          "143 (…</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 "  Male"         "33 (3… "44 (52.4%)"           "34 (40.5%)"          "111 (…</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 "Age"            ""      ""                     ""                    ""     </span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 "  Mean (SD)"    "75.2 … "74.4 (7.89)"          "75.7 (8.29)"         "75.1 …</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 "  Median [Min,… "76.0 … "76.0 [56.0, 88.0]"    "77.5 [51.0, 88.0]"   "77.0 …</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 "RACE"           ""      ""                     ""                    ""     </span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 "  Black or Afr… "8 (9.… "9 (10.7%)"            "6 (7.1%)"            "23 (9…</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 "  White"        "78 (9… "74 (88.1%)"           "78 (92.9%)"          "230 (…</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 "  American Ind… "0 (0%… "1 (1.2%)"             "0 (0%)"              "1 (0.…</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ` `        Placebo      `Xanomeline High Dose` `Xanomeline Low Dose` Overall  </span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;                  &lt;chr&gt;                 &lt;chr&gt;    </span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 ""         "(N=86)"     "(N=84)"               "(N=84)"              "(N=254)"</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 "SEX"      ""           ""                     ""                    ""       </span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 "  Female" "53 (61.6%)" "40 (47.6%)"           "50 (59.5%)"          "143 (56…</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 "  Male"   "33 (38.4%)" "44 (52.4%)"           "34 (40.5%)"          "111 (43…</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 7 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We define the format of the output. We highlight items that are not discussed in previous discussion.</p>
 <p><code>text_indent_first</code> and <code>text_indent_left</code> are used to control the indent space of text. They are helpful when you need to control the white space of a long phrase, “AMERICAN INDIAN OR ALASKA NATIVE” in the table provides an example.</p>
