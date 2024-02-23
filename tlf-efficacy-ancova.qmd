@@ -63,9 +63,7 @@ Below is the first few records of the analysis dataset.
 - CHG: change from baseline
 
 ```{r}
-ana %>%
-  select(USUBJID, TRTPN, AVISIT, AVAL, BASE, CHG) %>%
-  head(4)
+ana %>% select(USUBJID, TRTPN, AVISIT, AVAL, BASE, CHG)
 ```
 
 ## Helper functions

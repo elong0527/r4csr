@@ -70,7 +70,7 @@ t1 <- ana %>%
   summarise(n = fmt_num(n_distinct(USUBJID), digits = 0)) %>%
   mutate(AEDECOD = AESOC, order = 0)
 
-t1 %>% head(4)
+t1
 ```
 
 In the code below, we count the number of subjects in each AE term by
@@ -83,7 +83,7 @@ t2 <- ana %>%
   summarise(n = fmt_num(n_distinct(USUBJID), digits = 0)) %>%
   mutate(order = 1)
 
-t2 %>% head(4)
+t2
 ```
 
 We prepare reporting data for AE information using code below:
@@ -100,7 +100,7 @@ t_ae <- bind_rows(t1, t2) %>%
   arrange(AESOC, order, AEDECOD) %>%
   select(AESOC, AEDECOD, starts_with("n"))
 
-t_ae %>% head(4)
+t_ae
 ```
 
 We prepare reporting data for analysis population using code below:
@@ -161,7 +161,7 @@ tbl_ae_spec <- bind_rows(
     AEDECOD, paste0("  ", AEDECOD)
   ))
 
-tbl_ae_spec %>% head(4)
+tbl_ae_spec
 ```
 
 We define the format of the output as below:

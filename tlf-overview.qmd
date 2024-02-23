@@ -179,9 +179,7 @@ of the dataset, which can be accessed by using the command `?r2rtf_adae` in R.
 :::
 
 ```{r}
-r2rtf_adae |>
-  select(USUBJID, TRTA, AEDECOD) |>
-  head(4)
+r2rtf_adae |> select(USUBJID, TRTA, AEDECOD)
 ```
 
 To manipulate the data and create a data frame containing the necessary
@@ -193,7 +191,7 @@ tbl <- r2rtf_adae %>%
   count(TRTA, AEDECOD) %>%
   pivot_wider(names_from = TRTA, values_from = n, values_fill = 0)
 
-tbl %>% head(4)
+tbl
 ```
 
 Having prepared the dataset `tbl`, we can now proceed with constructing the
@@ -222,7 +220,8 @@ pipes to create an RTF table.
 - `write_rtf()` save RTF encoding into a file with file extension `.rtf`.
 
 ```{r}
-head(tbl) |>
+tbl |>
+  head() |>
   rtf_body() |>
   rtf_encode() |>
   write_rtf("tlf/intro-ae1.rtf")
@@ -252,7 +251,8 @@ as they maintain the same ratio.
 :::
 
 ```{r}
-head(tbl) |>
+tbl |>
+  head() |>
   rtf_body(col_rel_width = c(3, 2, 2, 2)) |>
   rtf_encode() |>
   write_rtf("tlf/intro-ae2.rtf")
@@ -276,7 +276,8 @@ In the following example, we define the column header as
 representing the four columns in the table:
 
 ```{r}
-head(tbl) |>
+tbl |>
+  head() |>
   rtf_colheader(
     colheader = "Adverse Events | Placebo | Xanomeline High Dose | Xanomeline Low Dose",
     col_rel_width = c(3, 2, 2, 2)
@@ -309,7 +310,8 @@ Below is an example to make the first column left-aligned and the rest columns
 center-aligned.
 
 ```{r}
-head(tbl) |>
+tbl |>
+  head() |>
   rtf_body(text_justification = c("l", "c", "c", "c")) |>
   rtf_encode() |>
   write_rtf("tlf/intro-ae5.rtf")
@@ -336,7 +338,8 @@ headers with proper border lines.
 :::
 
 ```{r}
-head(tbl) %>%
+tbl |>
+  head() |>
   rtf_colheader(
     colheader = " | Treatment",
     col_rel_width = c(3, 6)
