@@ -18,6 +18,12 @@ clinical reporting toolkit.
 
 ## Events {.unnumbered}
 
+```{css, echo=FALSE}
+.table {
+  font-size: 0.825rem;
+}
+```
+
 ```{r, echo=FALSE}
 knitr::kable(
   read.table("events.tsv",
