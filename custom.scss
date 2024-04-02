@@ -4,6 +4,22 @@ $primary: #00857C !default;
 
 /*-- scss:rules --*/
 
+@font-face {
+    font-display: swap;
+    font-family: "Invention";
+    src: url("fonts/InventionVF_W_Wght.woff2") format("woff2");
+    font-weight: 300 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-display: swap;
+    font-family: "Invention";
+    src: url("fonts/InventionVF_Italics_W_Wght.woff2") format("woff2");
+    font-weight: 300 700;
+    font-style: italic;
+}
+
 img.quarto-cover-image {
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
 }
