@@ -13,13 +13,15 @@ book:
     - Keaven Anderson
     - Yalin Zhu
   description: |
-    This book will teach you how to prepare tables, listings, and figures for
+    Learn how to prepare tables, listings, and figures for
     clinical study report and submit to regulatory agencies,
     the essential part of clinical trial development.
 
-  cover-image: "images/cover.png"
-  image: "images/preview.png"
-  favicon: "images/favicon.png"
+  output-file: "r4csr"
+
+  cover-image: "assets/cover.png"
+  image: "assets/preview.jpg"
+  favicon: "assets/favicon.png"
 
   site-url: https://r4csr.org/
   repo-url: https://github.com/elong0527/r4csr
@@ -28,13 +30,13 @@ book:
   reader-mode: true
 
   open-graph:
-    image: https://r4csr.org/images/preview.jpg
+    image: assets/preview.jpg
     description: |
       Learn how to prepare tables, listings, and figures for
       clinical study report and submit to regulatory agencies,
       the essential part of clinical trial development.
   twitter-card:
-    image: https://r4csr.org/images/preview.jpg
+    image: assets/preview.jpg
     description: |
       Learn how to prepare tables, listings, and figures for
       clinical study report and submit to regulatory agencies,
@@ -77,9 +79,15 @@ format:
   html:
     theme: [cosmo, custom.scss]
     mainfont: "Invention, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Noto Sans, Liberation Sans, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji"
+    code-link: true
   pdf:
-    documentclass: scrbook
-    # Fixes 'Undefined control sequence \cellcolor' error
+    documentclass: tex/svmono
     include-in-header:
-      - text: |
-          \usepackage[table]{xcolor}
+      - "tex/preamble.tex"
+    include-before-body:
+      - "tex/before_body.tex"
+    include-after-body:
+      - "tex/after_body.tex"
+    cite-method: natbib
+    keep-tex: true
+    toc: true
