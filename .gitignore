@@ -5,3 +5,8 @@
 
 /.quarto/
 /_book/
+/site_libs/
+
+r4csr.tex
+index.adx
+index.thm
